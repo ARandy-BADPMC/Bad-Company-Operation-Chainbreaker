@@ -1,0 +1,2 @@
+jeff addaction ["Lights on", { light1 sethit ["light_1_hitpoint",0];light1 sethit ["light_2_hitpoint",0];light2 sethit ["light_1_hitpoint",0];light2 sethit ["light_2_hitpoint",0];}];
+jeff addaction ["Lights off", { light1 sethit ["light_1_hitpoint",1];light1 sethit ["light_2_hitpoint",1];light2 sethit ["light_1_hitpoint",1];light2 sethit ["light_2_hitpoint",1];}];
