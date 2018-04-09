@@ -58,6 +58,41 @@ class chainbreaker
 			file = "functions\artilerry.sqf";
 		};
 	};
+	class overwatch
+	{
+		class random_screen
+		{
+			file = "functions\overwatch\random_screen.sqf";
+		}; 
+		class newcam
+		{
+			file = "functions\overwatch\newcam.sqf";
+		}; 
+		class delete_cam
+		{
+			file = "functions\overwatch\delete_cam.sqf";
+		}; 
+		class jipcam
+		{
+			file = "functions\overwatch\jipcam.sqf";
+		}; 
+		class reassign_cam
+		{
+			file = "functions\overwatch\reassign_cam.sqf";
+		}; 
+		class overwatch_watch
+		{
+			file = "functions\overwatch\overwatch_watch.sqf";
+		}; 
+		class overwatch_project
+		{
+			file = "functions\overwatch\overwatch_project.sqf";
+		}; 
+		class overwatch_show
+		{
+			file = "functions\overwatch\overwatch_show.sqf";
+		}; 
+	};
 	class miscellaneous
 	{
 		class nearest
@@ -71,6 +106,18 @@ class chainbreaker
 		class lander
 		{
 			file = "functions\miscellaneous\lander.sqf";
+		};
+		class uavControls
+		{
+			file = "functions\miscellaneous\uavControls.sqf";
+		};
+		class sendDrone
+		{
+			file = "functions\miscellaneous\sendDrone.sqf";
+		};
+		class uavReassignCam
+		{
+			file = "functions\miscellaneous\uavReassignCam.sqf";
 		};
 	};
 	class choppers

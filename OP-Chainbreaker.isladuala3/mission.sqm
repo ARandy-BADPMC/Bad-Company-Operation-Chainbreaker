@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=2257;
+		nextID=2270;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4280.3716,58.667004,2176.146};
-		dir[]={-0.56028652,-0.51456362,-0.64912212};
-		up[]={-0.33622956,0.85743827,-0.38953868};
-		aside[]={-0.75702518,-8.8795787e-008,0.65342474};
+		pos[]={4266.4829,17.688135,2123.7029};
+		dir[]={0.26143566,-0.70822823,0.65596569};
+		up[]={0.26221317,0.70595509,0.65792167};
+		aside[]={0.92904145,-4.3469481e-007,-0.37026873};
 	};
 };
 binarizationWanted=0;
@@ -99,7 +99,11 @@ addons[]=
 	"ace_interaction",
 	"ace_dragging",
 	"A3_Structures_F_EPA_Items_Food",
-	"A3_Structures_F_Heli_Items_Food"
+	"A3_Structures_F_Heli_Items_Food",
+	"A3_Characters_F_Common",
+	"A3_Drones_F_Air_F_Gamma_UAV_02",
+	"ace_realisticnames",
+	"A3_Characters_F"
 };
 class AddonsMetaData
 {
@@ -21823,7 +21827,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=524;
+		items=528;
 		class Item0
 		{
 			dataType="Object";
@@ -22109,7 +22113,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4271.4102,15.251439,2137.3911};
+						position[]={4270.9033,15.251439,2137.189};
 						angles[]={0,4.6236739,0};
 					};
 					side="West";
@@ -42552,67 +42556,93 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4373.9658,16.977802,2144.0178};
-				angles[]={0,3.10465,0};
+				position[]={4373.9658,16.977528,2144.0181};
+				angles[]={0,3.1046438,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
+				name="pc5";
 			};
 			id=2192;
 			type="Land_FlatTV_01_F";
-			atlOffset=3.8146973e-006;
+			atlOffset=0.7839489;
 		};
 		class Item483
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4373.0063,16.977802,2144.092};
-				angles[]={0,3.34165,0};
+				position[]={4373.0059,16.977528,2144.092};
+				angles[]={0,3.3416424,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
+				name="pc4";
 			};
 			id=2193;
 			type="Land_FlatTV_01_F";
-			atlOffset=3.8146973e-006;
+			atlOffset=0.81532574;
 		};
 		class Item484
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4375.5005,16.89484,2144.5442};
-				angles[]={0,5.6847181,0};
+				position[]={4375.5,16.895164,2144.5439};
+				angles[]={0,5.6847119,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				name="pc1";
 			};
 			id=2194;
 			type="Land_TripodScreen_01_large_F";
-			atlOffset=9.5367432e-007;
+			atlOffset=0.00032520294;
 		};
 		class Item485
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4373.8647,16.526093,2145.5232};
-				angles[]={0,0.22896402,0};
+				position[]={4373.5962,16.526419,2145.251};
+				angles[]={0,0.22896975,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				name="pc_chair";
 			};
 			id=2195;
 			type="Land_OfficeChair_01_F";
+			atlOffset=0.00032615662;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item486
 		{
@@ -42690,7 +42720,6 @@ class Mission
 			flags=5;
 			class Attributes
 			{
-				disableSimulation=1;
 			};
 			id=2215;
 			type="Land_Cargo_HQ_V1_F";
@@ -42788,17 +42817,18 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4371.542,16.89484,2145.0933};
-				angles[]={0,0.95996416,0};
+				position[]={4371.542,16.895164,2145.093};
+				angles[]={0,0.95996594,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				name="pc2";
 			};
 			id=2223;
 			type="Land_TripodScreen_01_large_F";
-			atlOffset=9.5367432e-007;
+			atlOffset=0.00032520294;
 		};
 		class Item496
 		{
@@ -42823,16 +42853,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={4376.5967,16.781742,2146.3081};
-				angles[]={0,4.7726073,0};
+				position[]={4376.5972,16.781654,2146.3081};
+				angles[]={0,4.772603,0};
 			};
 			side="Empty";
 			class Attributes
 			{
+				name="pc3";
 			};
 			id=2226;
 			type="Land_TripodScreen_01_dual_v1_F";
-			atlOffset=0.72208691;
+			atlOffset=0.72199917;
 		};
 		class Item498
 		{
@@ -43281,6 +43312,300 @@ class Mission
 			id=2255;
 			type="Land_PortableLight_double_F";
 			atlOffset=-9.5367432e-007;
+		};
+		class Item524
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=2;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4197.6509,515.25146,2296.76};
+						angles[]={0,4.5197396,0};
+					};
+					side="West";
+					flags=2;
+					class Attributes
+					{
+						name="uav_droneD";
+					};
+					id=2259;
+					type="B_UAV_AI";
+					atlOffset=500;
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4197.6509,515.25146,2296.76};
+						angles[]={0,4.5197396,0};
+					};
+					side="West";
+					class Attributes
+					{
+						name="uav_droneG";
+					};
+					id=2260;
+					type="B_UAV_AI";
+					atlOffset=500;
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=2;
+				};
+				class Links
+				{
+					items=2;
+					class Item0
+					{
+						linkID=0;
+						item0=2259;
+						item1=2258;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+					class Item1
+					{
+						linkID=1;
+						item0=2260;
+						item1=2258;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=2257;
+			atlOffset=500;
+		};
+		class Item525
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4197.6509,516.81836,2296.699};
+				angles[]={0,4.5197396,0};
+			};
+			side="West";
+			flags=2;
+			class Attributes
+			{
+				name="uav_drone";
+				pylons="[0];[0];";
+				aiRadarUsage=2;
+			};
+			id=2258;
+			type="B_UAV_02_dynamicLoadout_F";
+			atlOffset=500;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ace_cookoff_enable";
+					expression="if !(_value) then {_this setVariable ['ace_cookoff_enable',_value,true];};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ace_refuel_fuelCargo";
+					expression="if (_value != (if (isNumber (configFile >> 'CfgVehicles' >> typeOf _this >> ""ace_refuel_fuelCargo"")) then {getNumber (configFile >> 'CfgVehicles' >> typeOf _this >> ""ace_refuel_fuelCargo"")} else {-1})) then {[_this,_value] call ace_refuel_fnc_makeSource}";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=-10;
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+						};
+					};
+				};
+				nAttributes=4;
+			};
+		};
+		class Item526
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4261.0552,16.293165,2129.9619};
+				angles[]={0,1.752337,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="testpc";
+			};
+			id=2265;
+			type="Land_TripodScreen_01_large_F";
+		};
+		class Item527
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4268.4854,15.251439,2126.1025};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						name="overwatch_guy";
+						description="Overwatch";
+						isPlayable=1;
+					};
+					id=2269;
+					type="B_RangeMaster_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="acex_headless_blacklist";
+							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"BOOL"
+										};
+									};
+									value=0;
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2266;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="acex_headless_blacklist";
+					expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections

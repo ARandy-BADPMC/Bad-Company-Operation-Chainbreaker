@@ -88,7 +88,7 @@ iedInitialArray = [
 	//["OreoKastro", "West"],
 	//["Athira", 2, "West" ],
 	["IEDSINGLE1", ["West","East"]],
-	["IEDSINGLE2", 30 ,"West"],
+	["IEDSINGLE2", 50 ,"West"],
 	["IEDSINGLE3", [0,0,0,100], "West"]
 	];
 	
