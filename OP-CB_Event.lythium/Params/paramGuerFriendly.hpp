@@ -1,0 +1,1 @@
+#include "Params\paramGuerFriendly.inc"

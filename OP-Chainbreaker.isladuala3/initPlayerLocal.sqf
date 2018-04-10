@@ -1,16 +1,31 @@
-waitUntil {!isNull player };
+waitUntil {!isNull player && player == player};
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups; // Initializes the player/client side Dynamic Groups framework
 	
-//call compile preprocessfilelinenumbers "choppers.sqf";
-//call compile preprocessfilelinenumbers "functions\adminconsole.sqf";
-//call compile preprocessfilelinenumbers "functions\tankspawner.sqf";
-//call compile preprocessfilelinenumbers "functions\helispawner.sqf";
-call compile preprocessfilelinenumbers "ArsenalWhitelist.sqf";
-call compile preprocessfilelinenumbers "functions\heliskinapply.sqf";
+player setVariable ["cams",[]];
+player setVariable ["allscreens",0];
 
-player addMPEventHandler ["MPRespawn", {_this execVM "scripts\spawnProtection.sqf"}];
+{
+	[_x,(getPlayerUID _x),player] call CHAB_fnc_newcam;
+} forEach allPlayers; 
+
+call compile preprocessfilelinenumbers "ArsenalWhitelist.sqf";
+call compile preprocessfilelinenumbers "functions\heliskinapply.sqf"; 
+
+if (didJIP) then {
+	[player,getPlayerUID player,clientOwner] remoteExecCall ["CHAB_fnc_jipcam",0,false];
+};
+
+player addMPEventHandler ["MPRespawn", 
+{
+	_this execVM "scripts\spawnProtection.sqf";
+
+	[(getPlayerUID player),player] remoteExecCall ["CHAB_fnc_reassign_cam",-2,false];
+}];
 
 jeff addAction ["<t color='#FF0000'>Request a Task</t>", "remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
+if (typeOf player == "B_RangeMaster_F") then {
+	pc5 addAction ["<t color='#FF0000'>Use Overwatch consol</t>", "[_this select 1] call CHAB_fnc_random_screen;", nil, 1, false, true, "", "true", 5, false,""];
+};
 
 if(typeOf player == "rhsusf_airforce_jetpilot")
 	then
@@ -31,9 +46,9 @@ if(typeOf player == "rhsusf_army_ocp_helipilot")
 		heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
 	};	
 
+//[] call CHAB_fnc_uavControls;
 
-
-_admins = ["76561198048254349","76561198142692277","76561198017258138","76561198002110130"];
+_admins = ["76561198048254349","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044"]; //76561197998271838-GOMEZ 76561197992821044-GRAND
 _adminid = getPlayerUID player;
 if(_adminid in _admins) 
 	then 

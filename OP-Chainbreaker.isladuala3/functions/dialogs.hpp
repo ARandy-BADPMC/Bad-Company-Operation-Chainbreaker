@@ -398,4 +398,57 @@ class jey_spectator
 		};
 	};
 };
-
+class overwatch
+{
+	idd = 9958;
+	movingEnabled = false;
+	class controls 
+	{
+		class overwatch_background: RscPicture
+		{
+			idc = 1200;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0 * GUI_GRID_W + GUI_GRID_X;
+			y = 0 * GUI_GRID_H + GUI_GRID_Y;
+			w = 40 * GUI_GRID_W;
+			h = 25 * GUI_GRID_H;
+		};
+		class overwatch_list: RscListbox
+		{
+			idc = 1500;
+			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 15 * GUI_GRID_W;
+			h = 4.5 * GUI_GRID_H;
+		};
+		class overwatch_screen: RscCombo
+		{
+			idc = 2100;
+			x = 16.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 1 * GUI_GRID_H + GUI_GRID_Y;
+			w = 9 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+		};
+		class overwatch_project: RscButton
+		{
+			idc = 1600;
+			text = "Show on screen"; //--- ToDo: Localize;
+			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 1.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 8.5 * GUI_GRID_W;
+			h = 2 * GUI_GRID_H;
+			action = "[] spawn CHAB_fnc_overwatch_project;";
+		};
+		class overwatch_cancel: RscButton
+		{
+			idc = 1601;
+			text = "Cancel"; //--- ToDo: Localize;
+			x = 33 * GUI_GRID_W + GUI_GRID_X;
+			y = 21 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.5 * GUI_GRID_H;
+			action = "closeDialog 0";
+		};
+	};
+	
+};

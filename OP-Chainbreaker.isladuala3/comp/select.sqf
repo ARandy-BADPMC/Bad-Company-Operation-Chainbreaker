@@ -18,7 +18,7 @@ missionNamespace setVariable ["TaskNumber",_tasknumber];
 _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
 
 //_taskobjective = "Minefield";
-
+missionNamespace setVariable ["TaskObjective",_taskobjective];
 switch (_taskobjective) do 
 { 
 	
@@ -53,6 +53,7 @@ switch (_taskobjective) do
 		[_guardpos] call CHAB_fnc_endmission;
 		[ _comp ] call LARs_fnc_deleteComp;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Neutralize2" :
 	{
@@ -105,6 +106,7 @@ switch (_taskobjective) do
 			
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else 
 		{
@@ -114,6 +116,7 @@ switch (_taskobjective) do
 			
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		};
 	};
 	case "Eliminate": 
@@ -152,6 +155,7 @@ switch (_taskobjective) do
 		deleteVehicle _trg;
 
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Technology" :
 	{
@@ -184,6 +188,7 @@ switch (_taskobjective) do
 		[_guardpos] call CHAB_fnc_endmission;
 		[ _comp ] call LARs_fnc_deleteComp;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Destroy" :
 	{
@@ -213,6 +218,7 @@ switch (_taskobjective) do
 		[_guardpos] call CHAB_fnc_endmission;
 		[ _comp ] call LARs_fnc_deleteComp;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Annihilate and Destroy" :
 	{
@@ -254,6 +260,7 @@ switch (_taskobjective) do
 		[ _comp ] call LARs_fnc_deleteComp;
 		deleteVehicle _trg;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Secure" :
 	{
@@ -294,6 +301,7 @@ switch (_taskobjective) do
 			[_guardpos] call CHAB_fnc_endmission;
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else 
 		{
@@ -301,6 +309,7 @@ switch (_taskobjective) do
 			[_guardpos] call CHAB_fnc_endmission;
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		};
 	};
 	case "Capture" :
@@ -338,6 +347,7 @@ switch (_taskobjective) do
 			[_guardpos] call CHAB_fnc_endmission;
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else
 		{
@@ -345,6 +355,7 @@ switch (_taskobjective) do
 			[_guardpos] call CHAB_fnc_endmission;
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		};
 	};
 	case "Exterminate" :
@@ -382,6 +393,7 @@ switch (_taskobjective) do
 		[ _comp ] call LARs_fnc_deleteComp;
 		deleteVehicle _trg;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "IDAP" :
 	{
@@ -443,6 +455,7 @@ switch (_taskobjective) do
 		
 		[ _comp ] call LARs_fnc_deleteComp;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Neutralize" :
 	{
@@ -495,6 +508,7 @@ switch (_taskobjective) do
 			
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else 
 		{
@@ -504,6 +518,7 @@ switch (_taskobjective) do
 			
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		};
 	};
 	case "Resupply" :
@@ -626,6 +641,7 @@ switch (_taskobjective) do
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
 			[_guardpos] call CHAB_fnc_endmission;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _officer;
 			deleteVehicle _container;
 			{deleteVehicle _x} forEach units _defender1;
@@ -639,6 +655,7 @@ switch (_taskobjective) do
 			{deleteVehicle _x} forEach units _defender1;
 			{deleteVehicle _x} forEach units _defender2;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _officer; 
 			deleteVehicle _container;
 			[ _comp ] call LARs_fnc_deleteComp;
@@ -777,6 +794,7 @@ switch (_taskobjective) do
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
 			[_guardpos] call CHAB_fnc_endmission;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _officer;
 			deleteVehicle _lander;
 			{deleteVehicle _x} forEach units _defender1;
@@ -791,6 +809,7 @@ switch (_taskobjective) do
 			"The officer is dead. " remoteExec ["hint"];
 			[_guardpos] call CHAB_fnc_endmission;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _officer;
 			deleteVehicle _lander;
 			{deleteVehicle _x} forEach units _defender1;
@@ -834,6 +853,7 @@ switch (_taskobjective) do
 		[_guardpos] call jey_endmission;
 		deleteVehicle _crate;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Attack" : 
 	{	
@@ -871,6 +891,7 @@ switch (_taskobjective) do
 		[_guardpos] call CHAB_fnc_endmission;
 		deleteVehicle _trg;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Minefield" :
 	{	
@@ -911,6 +932,7 @@ switch (_taskobjective) do
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
 		[_guardpos] call CHAB_fnc_endmission;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Clear out" : 
 	{
@@ -1000,12 +1022,14 @@ switch (_taskobjective) do
 			deleteVehicle _trg;
 			deleteMarker _marker;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else
 		{
 			[_current_tasknumber, "FAILED",true] spawn BIS_fnc_taskSetState;
 			[_guardpos] call CHAB_fnc_endmission;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _journal1;
 			deleteVehicle _journal2;
 			deleteVehicle _trg;
@@ -1015,6 +1039,7 @@ switch (_taskobjective) do
 	{ 
 		"Failed to spawn a task, try again" remoteExec["hint",0];
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	}; 
 };
 
