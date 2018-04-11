@@ -57,7 +57,9 @@ _tanks = [
 "O_APC_Wheeled_02_rcws_F",
 "I_APC_Wheeled_03_cannon_F",
 "rhsusf_rg33_usmc_d",
-"rhsusf_rg33_m2_usmc_d"
+"rhsusf_rg33_m2_usmc_d",
+"rhsusf_M1078A1R_SOV_M2_D_fmtv_socom",
+"rhsusf_M1084A1R_SOV_M2_D_fmtv_socom"
 ];
 
 _ctrl = (findDisplay 9901) displayCtrl 1500;
