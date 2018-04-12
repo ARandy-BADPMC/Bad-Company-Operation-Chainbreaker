@@ -2438,6 +2438,14 @@ arsenalitems =
 "SFG_TAC_SMALLBEARDD",
 "SFG_TAC_SMALLBEARDB",
 "SFG_TAC_SMALLBEARDG",
-"SFG_TAC_SMALLBEARDO"
+"SFG_TAC_SMALLBEARDO",
+
+"Weapon_launch_MRAWS_olive_F",
+"Weapon_launch_MRAWS_olive_rail_F",
+"MRAWS_HE_F",
+"MRAWS_HEAT_F",
+"Weapon_launch_O_Vorona_green_F",
+"Vorona_HE",
+"Vorona_HEAT"
 
 ];

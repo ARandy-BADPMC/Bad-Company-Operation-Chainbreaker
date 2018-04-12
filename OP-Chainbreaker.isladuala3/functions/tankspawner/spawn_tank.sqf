@@ -59,7 +59,16 @@ _tanks = [
 "rhsusf_rg33_usmc_d",
 "rhsusf_rg33_m2_usmc_d",
 "rhsusf_M1078A1R_SOV_M2_D_fmtv_socom",
-"rhsusf_M1084A1R_SOV_M2_D_fmtv_socom"
+"rhsusf_M1084A1R_SOV_M2_D_fmtv_socom",
+"I_C_Offroad_02_LMG_F",
+"I_C_Offroad_02_AT_F",
+"B_G_Offroad_01_AT_F",
+"I_LT_01_AT_F",
+"B_AFV_Wheeled_01_up_cannon_F",
+"B_AFV_Wheeled_01_cannon_F",
+"I_LT_01_AA_F",
+"I_LT_01_cannon_F",
+"I_LT_01_scout_F"
 ];
 
 _ctrl = (findDisplay 9901) displayCtrl 1500;
