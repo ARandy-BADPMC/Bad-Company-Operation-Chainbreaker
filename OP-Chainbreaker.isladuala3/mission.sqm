@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4254.2373,30.088177,2115.6697};
-		dir[]={0.24939418,-0.47019997,0.84663302};
-		up[]={0.13286927,0.88254654,0.45105946};
-		aside[]={0.95927787,-2.0954758e-007,-0.28257954};
+		pos[]={4261.0698,18.09576,2130.4265};
+		dir[]={0.0076186769,-0.40394005,0.91487765};
+		up[]={0.003364424,0.9147253,0.40403995};
+		aside[]={1.0000621,-8.1528196e-007,-0.0083305286};
 	};
 };
 binarizationWanted=0;
@@ -108,13 +108,7 @@ addons[]=
 	"A3_Boat_F_Jets_Carrier_01",
 	"A3_Static_F_Jets_AAA_System_01",
 	"A3_Static_F_Jets_SAM_System_02",
-	"A3_Static_F_Jets_SAM_System_01",
-	"PBW_German_Common",
-	"zade_boc",
-	"tf47_m3maaws",
-	"tf47_at4",
-	"tf47_smaw",
-	"hlcweapons_core"
+	"A3_Static_F_Jets_SAM_System_01"
 };
 class AddonsMetaData
 {
@@ -22145,7 +22139,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4270.9033,15.251439,2137.189};
+						position[]={4273.9551,15.251439,2137.165};
 						angles[]={0,4.6236739,0};
 					};
 					side="West";
@@ -26765,10 +26759,9 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={4411.3687,15.25,2165.7517};
-				angles[]={0,3.7154348,0};
+				position[]={4411.3691,15.25,2165.752};
+				angles[]={0,3.7154393,0};
 			};
-			init="call{box3 addaction [""Arsenal"", {[box3,arsenalitems] call ace_arsenal_fnc_addVirtualitems; _unit = player; [box3, _unit] call ace_arsenal_fnc_openBox;}];}";
 			id=105;
 			type="ModuleRespawnVehicle_F";
 			class CustomAttributes
@@ -26807,7 +26800,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="";
+							value="box3 addaction [""Arsenal"", {_box = _this select 0;    [_box] call ""Scripts\boxscript.sqf"";},nil,0,true,false,"""","""",10];";
 						};
 					};
 				};
@@ -29033,7 +29026,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{box1 addaction [""Arsenal"", {disableUserInput true; [box1,arsenalitems] call ace_arsenal_fnc_addVirtualitems; _unit = player; [box1, _unit] call ace_arsenal_fnc_openBox; disableUserInput false;},nil,0,true,false,"""","""",10]; }";
+				init="call{ box1 addaction [""Arsenal"", {disableUserInput true; [box1 ,arsenalitems] call ace_arsenal_fnc_addVirtualitems;_unit = player; [box1, _unit] call ace_arsenal_fnc_openBox; disableUserInput false; " \n "},nil,0,true,false,"""","""",10];  " \n "}";
 				name="box1";
 			};
 			id=275;
@@ -30044,6 +30037,29 @@ class Mission
 			};
 			id=313;
 			type="Land_CamoNet_NATO_EP1";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item87
 		{
@@ -30514,7 +30530,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{box2 addaction [""Arsenal"", {disableUserInput true;[box2,arsenalitems] call ace_arsenal_fnc_addVirtualitems; _unit = player; [box2, _unit] call ace_arsenal_fnc_openBox;disableUserInput false;},nil,0,true,false,"""","""",10]; }";
+				init="call{ box2 addaction [""Arsenal"", {disableUserInput true; [box2 ,arsenalitems] call ace_arsenal_fnc_addVirtualitems;_unit = player; [box2, _unit] call ace_arsenal_fnc_openBox; disableUserInput false; " \n "},nil,0,true,false,"""","""",10];  " \n "}";
 				name="box2";
 			};
 			id=417;
@@ -34033,7 +34049,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{box3 addaction [""Arsenal"", {disableUserInput true;[box3,arsenalitems] call ace_arsenal_fnc_addVirtualitems; _unit = player; [box3, _unit] call ace_arsenal_fnc_openBox;disableUserInput false;},nil,0,true,false,"""","""",10]; }";
 				name="box3";
 			};
 			id=623;
@@ -42134,7 +42149,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{box4 addaction [""Arsenal"", {disableUserInput true;[box4,arsenalitems] call ace_arsenal_fnc_addVirtualitems; _unit = player; [box4, _unit] call ace_arsenal_fnc_openBox;disableUserInput false;},nil,0,true,false,"""","""",10]; }";
 				name="box4";
 			};
 			id=2117;

@@ -8,7 +8,7 @@ player setVariable ["allscreens",0];
 	[_x,(getPlayerUID _x),player] call CHAB_fnc_newcam;
 } forEach allPlayers; 
 
-call compile preprocessfilelinenumbers "ArsenalWhitelist.sqf";
+call compile preprocessfilelinenumbers "Scripts\ArsenalWhitelist.sqf";
 call compile preprocessfilelinenumbers "functions\heliskinapply.sqf"; 
 
 if (didJIP) then {
