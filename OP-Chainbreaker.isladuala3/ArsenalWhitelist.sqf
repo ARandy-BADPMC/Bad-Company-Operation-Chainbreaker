@@ -2417,6 +2417,7 @@ arsenalitems =
 "H_CROAF_HelmetSpecB_blk",
 "H_CROAF_HelmetSpecB",
 "H_CROAF_HelmetSpecB_des",
+
 "SFG_TAC_BEARDD",
 "SFG_TAC_BEARDB",
 "SFG_TAC_BEARDG",
