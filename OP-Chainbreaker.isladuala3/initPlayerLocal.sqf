@@ -44,8 +44,15 @@ if(typeOf player == "rhsusf_army_ocp_helipilot")
 	{
 		heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
 		heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
-	};	
+	};
 
+disable_uav_conn = 
+	{	
+		_carrierdefences = [def1,def2,def3,def4,def5,def6];	
+		{player disableUAVConnectability [_x,true];} foreach _carrierdefences;
+	};
+player addeventhandler ["InventoryClosed", {[] call disable_uav_conn}];		
+	
 //[] call CHAB_fnc_uavControls;
 
 _admins = ["76561198048254349","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044"]; //76561197998271838-GOMEZ 76561197992821044-GRAND
