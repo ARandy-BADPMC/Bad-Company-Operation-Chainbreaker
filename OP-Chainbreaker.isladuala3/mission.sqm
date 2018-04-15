@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4212.2026,53.494915,2228.3723};
-		dir[]={0.53140718,-0.47107136,-0.70418948};
-		up[]={0.28378913,0.88205469,-0.37605867};
-		aside[]={-0.79830021,-8.6706132e-007,-0.60242754};
+		pos[]={4231.8828,32.970161,2180.5537};
+		dir[]={0.4367716,-0.47414753,-0.7645992};
+		up[]={0.2352137,0.88040835,-0.4117555};
+		aside[]={-0.86840868,-9.0715184e-007,-0.49607226};
 	};
 };
 binarizationWanted=0;
@@ -108,7 +108,13 @@ addons[]=
 	"A3_Boat_F_Jets_Carrier_01",
 	"A3_Static_F_Jets_AAA_System_01",
 	"A3_Static_F_Jets_SAM_System_02",
-	"A3_Static_F_Jets_SAM_System_01"
+	"A3_Static_F_Jets_SAM_System_01",
+	"PBW_German_Common",
+	"zade_boc",
+	"tf47_m3maaws",
+	"tf47_at4",
+	"tf47_smaw",
+	"hlcweapons_core"
 };
 class AddonsMetaData
 {
@@ -30530,7 +30536,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{ box2 addaction [""Arsenal"", {disableUserInput true; [box2 ,arsenalitems] call ace_arsenal_fnc_addVirtualitems; [box2, _unit] call ace_arsenal_fnc_openBox; disableUserInput false; " \n "},nil,0,true,false,"""","""",10];  " \n "}";
+				init="call{ box2 addaction [""Arsenal"", {disableUserInput true; [box2 ,arsenalitems] call ace_arsenal_fnc_addVirtualitems; [box2, player] call ace_arsenal_fnc_openBox; disableUserInput false; " \n "},nil,0,true,false,"""","""",10];  " \n "}";
 				name="box2";
 			};
 			id=417;
@@ -42150,7 +42156,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{ box4 addaction [""Arsenal"", {disableUserInput true; [box4 ,arsenalitems] call ace_arsenal_fnc_addVirtualitems; [box4, _unit] call ace_arsenal_fnc_openBox; disableUserInput false; " \n "},nil,0,true,false,"""","""",10];  " \n "}";
+				init="call{ box4 addaction [""Arsenal"", {disableUserInput true; [box4 ,arsenalitems] call ace_arsenal_fnc_addVirtualitems; [box4, player] call ace_arsenal_fnc_openBox; disableUserInput false; " \n "},nil,0,true,false,"""","""",10];  " \n "}";
 				name="box4";
 			};
 			id=2117;
