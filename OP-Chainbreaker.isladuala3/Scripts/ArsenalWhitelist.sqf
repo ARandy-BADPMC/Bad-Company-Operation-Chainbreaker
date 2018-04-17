@@ -2437,9 +2437,13 @@ arsenalitems =
 "launch_MRAWS_green_F",
 "launch_MRAWS_olive_F",
 "launch_MRAWS_sand_F",
+"MRAWS_HEAT_F",
+"MRAWS_HE_F",
 
 "launch_O_Vorona_green_F",
-"launch_O_Vorona_brown_F"
+"launch_O_Vorona_brown_F",
+"Vorona_HE",
+"Vorona_HEAT"
 
 
 
