@@ -1,9 +1,9 @@
 private ["_key", "_keys", "_values", "_keyIndex"];
 
 _key = _this select 1;
-_this = _this select 0;
-_keys = _this select 0;
-_values = _this select 1;
+_this2 = _this select 0;
+_keys = _this2 select 0;
+_values = _this2 select 1;
 
 _keyIndex = _keys find _key;
 

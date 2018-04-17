@@ -1,4 +1,4 @@
-jey_minefield = {
+
 	_unit = _this select 0;
 	_civ = ["C_man_p_beggar_F_afro","C_man_polo_1_F_afro","C_man_polo_2_F_afro","C_man_polo_3_F_afro","C_man_polo_4_F_afro","C_man_polo_5_F_afro","C_man_polo_6_F_afro","C_man_shorts_1_F_afro","C_man_p_fugitive_F_afro","C_man_p_shorts_1_F_afro","C_man_shorts_2_F_afro","C_man_shorts_3_F_afro","C_man_shorts_4_F_afro"];
 	_houses = nearestObjects [_unit, ["house"], 700] select { count ( _x buildingPos -1 ) > 2 };
@@ -33,7 +33,7 @@ jey_minefield = {
 		};
 	};
 
-	_minetobe = ceil random 7;
+	_minetobe = ceil random 4;
 	_return = [];
 	for "_i" from 0 to _minetobe do {
 		_item = selectRandom _houses;
@@ -56,4 +56,3 @@ jey_minefield = {
 
 	_return
 	
-};

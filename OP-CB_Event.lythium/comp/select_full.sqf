@@ -3,7 +3,7 @@ private ["_taskIsrunning","_comp","_current_task","_tasknumber","_current_tasknu
 _taskIsrunning = missionNamespace getVariable ["running_task",1];
 if(_taskIsrunning == 0) then {
 
-_tasks = ["Eliminate","Technology","Destroy","Annihilate and Destroy","IDAP","Secure","Capture","Exterminate","Neutralize","Retrieve","Attack","Clear out","Escort","Resupply","Neutralize2"];
+_tasks = ["Eliminate","Technology","Destroy","Annihilate and Destroy","Secure","Capture","Exterminate","Neutralize","Retrieve","Attack","Clear out","Escort","Resupply","Neutralize2","Destroy Choppers","IDAP"];
 
 _tasks call BIS_fnc_arrayShuffle;
 _markerarray = ["Mark1","Mark1_2","Mark1_3","Mark1_4","Mark1_5","Mark1_6","Mark1_7","Mark1_8","Mark1_9","Mark1_10","Mark1_11","Mark1_12","Mark1_13","Mark1_14","Mark1_15","Mark1_16","Mark1_17","Mark1_18","Mark1_19","Mark1_20"];
@@ -21,11 +21,43 @@ _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
 
 switch (_taskobjective) do 
 { 
+	case "Destroy Choppers" :
+	{
+		missionNamespace setVariable ["running_task",1];
+		_taskcomp = "destroy_chopper";
+		[_current_tasknumber ,west,["Russian airsupport is grounded at the moment. Use this to your advantage and attack thier airsupport.","Destroy Choppers",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
+
+		_guardgroup = createGroup east;
+		waitUntil {
+		  _base = [getMarkerPos _current_task, 400, 2000, 20, 0, 0.5, 0, ["base_marker"], [getMarkerPos _current_task,getMarkerPos _current_task]] call BIS_fnc_findSafePos;
+
+		  !(_base isEqualTo [0,0,0])
+		};
+		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
+
+		_guardpos = getpos _guard;
+		[_guard] spawn jey_roadblock;
+		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
+		
+		_destroytargets = nearestObjects [ _guardpos, ["RHS_Mi24Vt_vvs","rhs_mi28n_vvs"], 30];
+		_thetarget = _destroytargets call BIS_fnc_selectRandom;
+
+		waitUntil { 
+			sleep 10; 
+			!(alive _thetarget) || (damage _thetarget > 0.8)
+		};
+
+		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
+		[_guardpos] call jey_endmission;
+		[ _comp ] call LARs_fnc_deleteComp;
+		missionNamespace setVariable ["running_task",0];
+	};
 	case "Neutralize2" :
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = "weap_factory";
-		[_current_tasknumber ,west,["Russian Forces have set up a weaponfactory at an unknown position. Locate the factory and destroy important equipment.","Locate and Destroy Weapon Factory",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["Russian Forces have set up a weaponfactory at an unknown position. Locate the factory and destroy important equipment. Also, according to one of our agents, a high-ranking officer is visiting the factory. Try to capture him.","Locate and Destroy Weapon Factory",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
 
 		_capturegroup = createGroup resistance;
 		_guardgroup = createGroup resistance;
@@ -44,7 +76,7 @@ switch (_taskobjective) do
 		sleep 10;
 		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
 		sleep 5;
-
+		
 		_leader = _capturegroup createUnit ["rhs_vdv_officer_armored",  _guardpos, [], 2, "NONE"];
 		removeAllWeapons _leader;
 		_leader setunitpos "middle";
@@ -76,7 +108,7 @@ switch (_taskobjective) do
 		else 
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-			"The IED factory is destroyed, but the leader is dead." remoteExec ["hint"];
+			"The Weapon Factory is destroyed, but the officer is dead." remoteExec ["hint"];
 			[_guardpos] call jey_endmission;					
 			
 			[ _comp ] call LARs_fnc_deleteComp;
@@ -156,7 +188,7 @@ switch (_taskobjective) do
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = selectRandom ["warhead1","warhead2","destroy2"];
-		[_current_tasknumber ,west,["Our spies found out that the enemy has an imported Cheetos machine !! Search and Destroy","Destroy",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["Intel states, that the russian forces testing new systems for thier T-90 MBT. Destroy the vehicle testbed.","Destroy",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 		
 		_guardgroup = createGroup east;
 		waitUntil {
@@ -171,7 +203,7 @@ switch (_taskobjective) do
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		[_guard,10,2,1] execVM "functions\spawn_rus.sqf";
 
-		_thetarget = createVehicle ["rhs_t80ue1", _guardpos, [], 1, "NONE"];
+		_thetarget = createVehicle ["rhs_t90a_tv", _guardpos, [], 1, "NONE"];
 		_thetarget lock true;
 
 		waitUntil { sleep 10; !(alive _thetarget) || (damage _thetarget > 0.8)};
@@ -244,7 +276,7 @@ switch (_taskobjective) do
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		[_guard,10,1,3] execVM "functions\spawn_rus.sqf";
 
-		_thetarget = createVehicle ["rhs_9k79_B", _guardpos, [], 1, "NONE"];
+		_thetarget = createVehicle ["O_Truck_03_device_F", _guardpos, [], 1, "NONE"];
 
 		_thetarget setVehicleAmmo 0;
 		sleep 5;
@@ -521,11 +553,11 @@ switch (_taskobjective) do
 		_dir = [ _officer, _nearestplayer ] call BIS_fnc_dirTo;
 		_opposite = _dir + 180;
 
-		_attackpos1 = [_guardpos, 1200, _opposite +20] call BIS_fnc_relPos;
-		_attackpos2 = [_guardpos, 1200, _opposite -20] call BIS_fnc_relPos;
-		_attackpos3 = [_guardpos, 1200, _opposite +40] call BIS_fnc_relPos;
-		_attackpos4 = [_guardpos, 1200, _opposite -40] call BIS_fnc_relPos;
-		_attackpos5 = [_guardpos, 1200, _opposite] call BIS_fnc_relPos;
+		_attackpos1 = [_guardpos, 800, _opposite +20] call BIS_fnc_relPos;
+		_attackpos2 = [_guardpos, 800, _opposite -20] call BIS_fnc_relPos;
+		_attackpos3 = [_guardpos, 800, _opposite +40] call BIS_fnc_relPos;
+		_attackpos4 = [_guardpos, 800, _opposite -40] call BIS_fnc_relPos;
+		_attackpos5 = [_guardpos, 800, _opposite] call BIS_fnc_relPos;
 
 		_attacker2= [_attackpos2, east, (configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_infantry_flora" >> "rhs_group_rus_vdv_infantry_flora_squad")] call BIS_fnc_spawnGroup;
 		_attacker3= [_attackpos3, east, (configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_infantry_flora" >> "rhs_group_rus_vdv_infantry_flora_squad_2mg")] call BIS_fnc_spawnGroup;
@@ -543,16 +575,16 @@ switch (_taskobjective) do
 		_wayp4 = _attacker4 addWaypoint [_guardpos, 100];
 		_wayp4 setWaypointType "SAD";
 
-		_listofroads1 = _attackpos1 nearRoads 1600;
+		_listofroads1 = _attackpos1 nearRoads 1200;
 		_roadhelp1 = _listofroads1 call BIS_fnc_selectRandom;
 		_attackpos1 = getPos _roadhelp1;
 
-		_listofroads2 = _attackpos5 nearRoads 1600;
+		_listofroads2 = _attackpos5 nearRoads 1200;
 		_roadhelp2 = _listofroads2 call BIS_fnc_selectRandom;
 		_attackpos5 = getPos _roadhelp2;
 
 		_attacker5= [_attackpos5, east, (configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_gaz66" >> "rhs_group_rus_vdv_gaz66_squad_2mg")] call BIS_fnc_spawnGroup;
-		_attacker1= [_attackpos1, east, (configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_bmp1" >> "rhs_group_rus_vdv_bmp1_squad_mg_sniper")] call BIS_fnc_spawnGroup;
+		_attacker1= [_attackpos1, east, (configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_BTR80a" >> "rhs_group_rus_msv_BTR80a_squad_mg_sniper")] call BIS_fnc_spawnGroup;
 		_wayp1 = _attacker1 addWaypoint [_guardpos, 100];
 		_wayp1 setWaypointType "SAD";
 		_wayp5 = _attacker5 addWaypoint [_guardpos, 100];
@@ -631,7 +663,7 @@ switch (_taskobjective) do
 		_officer allowDamage false;
 
 		_landinggroup = createGroup west;
-		_plane= [[0,0,300], 90, "RHS_C130J", _landinggroup] call bis_fnc_spawnvehicle;
+		_plane= [[0,0,300], 90, "RHS_CH_47F_10", _landinggroup] call bis_fnc_spawnvehicle;
 		_planeobj = _plane select 0;
 
 		_lander moveInCargo _planeobj;
@@ -673,11 +705,11 @@ switch (_taskobjective) do
 		_dir = [ _officer, _nearestplayer ] call BIS_fnc_dirTo;
 		_opposite = _dir + 180;
 
-		_attackpos1 = [getPos _officer, 1200, _opposite +20] call BIS_fnc_relPos;
-		_attackpos2 = [getPos _officer, 1200, _opposite -20] call BIS_fnc_relPos;
-		_attackpos3 = [getPos _officer, 1200, _opposite +40] call BIS_fnc_relPos;
-		_attackpos4 = [getPos _officer, 1200, _opposite -40] call BIS_fnc_relPos;
-		_attackpos5 = [getPos _officer, 1200, _opposite] call BIS_fnc_relPos;
+		_attackpos1 = [getPos _officer, 800, _opposite +20] call BIS_fnc_relPos;
+		_attackpos2 = [getPos _officer, 800, _opposite -20] call BIS_fnc_relPos;
+		_attackpos3 = [getPos _officer, 800, _opposite +40] call BIS_fnc_relPos;
+		_attackpos4 = [getPos _officer, 800, _opposite -40] call BIS_fnc_relPos;
+		_attackpos5 = [getPos _officer, 800, _opposite] call BIS_fnc_relPos;
 
 		_attacker2= [_attackpos2, independent, (configfile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "Infantry" >> "IRG_InfSquad_Weapons")] call BIS_fnc_spawnGroup;
 		_attacker3= [_attackpos3, resistance, (configfile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "Infantry" >> "IRG_InfTeam_AT")] call BIS_fnc_spawnGroup;
@@ -704,8 +736,8 @@ switch (_taskobjective) do
 		_roadhelp2 = _listofroads2 call BIS_fnc_selectRandom;
 		_attackpos5 = getPos _roadhelp2;
 
-		_attacker5= [_attackpos5, resistance, (configfile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "rhs_group_indp_ins_bmd2" >> "rhs_group_rus_ins_bmd2_squad")] call BIS_fnc_spawnGroup;
-		_attacker1= [_attackpos1, resistance, (configfile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "rhs_group_indp_ins_bmp2" >> "rhs_group_indp_ins_bmp2_squad")] call BIS_fnc_spawnGroup;
+		_attacker5= [_attackpos5, resistance, (configfile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "rhs_group_indp_ins_btr60" >> "rhs_group_chdkz_btr60_squad_aa")] call BIS_fnc_spawnGroup;
+		_attacker1= [_attackpos1, resistance, (configfile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "rhs_group_indp_ins_ural" >> "rhs_group_chdkz_ural_squad_mg_sniper")] call BIS_fnc_spawnGroup;
 		_attacker5 deleteGroupWhenEmpty true;
 		_attacker1 deleteGroupWhenEmpty true;
 		_wayp1 = _attacker1 addWaypoint [_guardpos, 100];
@@ -863,9 +895,7 @@ switch (_taskobjective) do
 
 		//copyToClipboard str _mines;
 		sleep 60;
-		{
-		  _x setDamage 1;
-		} forEach _mines;
+		
 
 		waitUntil {
 			_van = 1;

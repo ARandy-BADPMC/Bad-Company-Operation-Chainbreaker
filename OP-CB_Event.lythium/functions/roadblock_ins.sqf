@@ -1,5 +1,4 @@
-jey_roadblock_ins = 
-{
+
 	private ["_guard","_block","_relpos","_road","_connectedroads","_connection","_direction","_roadblock","_group"];
 	_guard = _this select 0;
 
@@ -40,4 +39,3 @@ jey_roadblock_ins =
 		} forEach _spawnComp;
 
 	};
-};

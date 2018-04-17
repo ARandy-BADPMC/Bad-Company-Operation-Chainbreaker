@@ -15,34 +15,3 @@ Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [
 
 RHSDecalsOff = true;
 
-[] spawn {call compile preprocessFileLineNumbers "EPD\Ied_Init.sqf";};
-
-//Grab parameters and put them into readable variables
-/*for [ {_i = 0}, {_i < count(paramsArray)}, {_i = _i + 1} ] do
-{
-	call compile format
-	[
-		"PARAMS_%1 = %2",
-		(configName ((missionConfigFile >> "Params") select _i)),
-		(paramsArray select _i)
-	];
-};*/
-
-jey_fnc_lander_action = 
-{
-	_off = _this select 0;
-	_off addAction ["<t color='#FF0000'>Join my group</t>", jey_fnc_lander, [_off], 1, false, true, "", "true", 10, false,""];
-};
-
-jey_fnc_lander = 
-{
-	_ember = _this select 3 select 0;
-
-	[_ember] joinSilent grpNull;
-	_nearestplayer = [_ember] call jey_fnc_nearest;
-	[_ember] join (group _nearestplayer);
-};
-
-	//sholef ammo ["32Rnd_155mm_Mo_shells","2Rnd_155mm_Mo_guided","6Rnd_155mm_Mo_mine","2Rnd_155mm_Mo_Cluster","6Rnd_155mm_Mo_smoke","2Rnd_155mm_Mo_LG","6Rnd_155mm_Mo_AT_mine"]
-
-	
