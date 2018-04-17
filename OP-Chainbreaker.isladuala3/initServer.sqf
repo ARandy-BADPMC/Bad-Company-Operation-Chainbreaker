@@ -10,13 +10,14 @@ missionNamespace setVariable ["uavTarget",jeff];
 uav_drone lockDriver true; 
 uav_drone enableUAVWaypoints false;
 
-uav_drone addEventHandler["Engine",
+uav_drone addEventHandler["Fuel",
 {
 	_vehicle = _this select 0;
-	_engine = _this select 1;
-	if (!_engine) then {
+	_fuel = _this select 1;
+	if (!_fuel) then {
 		[_vehicle,1] remoteExecCall ["setFuel",_vehicle,false];
-		_vehicle engineOn true;
+		[_vehicle,true] remoteExecCall ["engineOn",_vehicle,false];
+		//_vehicle engineOn true;
 	};
 }];
 
@@ -62,19 +63,6 @@ _wp setWaypointLoiterRadius 300;
 		};
 	};
 };
-
-/*
-["JIP_camera_handle", "onPlayerConnected", {
-/*
-if (_jip) then {
-		[_uid] remoteExecCall ["CHAB_fnc_jipcam",[2,-(_owner)],false];
-	};
-
-	_base = missionNamespace getVariable ["playerID_base",[]];
-	_base pushBack _uid;
-}] call BIS_fnc_addStackedEventHandler;
-
-*/
 
 ["player_camera_delete", "onPlayerDisconnected", {
 
