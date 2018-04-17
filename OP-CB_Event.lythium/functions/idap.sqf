@@ -1,5 +1,4 @@
-jey_idap =
-{
+
 	_village = _this select 0;
 	_civ = ["C_IDAP_Man_AidWorker_01_F","C_IDAP_Man_AidWorker_08_F","C_IDAP_Man_AidWorker_09_F","C_IDAP_Man_AidWorker_02_F","C_IDAP_Man_AidWorker_05_F","C_IDAP_Man_Paramedic_01_F"];
 
@@ -59,4 +58,3 @@ jey_idap =
 		};
 	}
 	
-};

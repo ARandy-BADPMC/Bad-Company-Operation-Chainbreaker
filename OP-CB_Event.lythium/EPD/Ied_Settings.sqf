@@ -3,7 +3,7 @@ EPD_IED_debug = false;
 hideIedSectionMarkers = true;  //sets the alpha to 0 after spawning IEDs at a section
 hideSafeZoneMarkers = true;  //sets the alpha to 0 of a safezone
 
-itemsRequiredToDisarm = ["ToolKit", "ACE_DefusalKit"];   //"MineDetector" or "ToolKit" for example
+itemsRequiredToDisarm = ["ToolKit","ACE_DefusalKit"];   //"MineDetector" or "ToolKit" for example
 betterDisarmers = ["rhsusf_army_ocp_engineer", "B_engineer_F", "B_diver_exp_F", "B_recon_exp_F"]; // people who are better at disarming
 
 baseDisarmChance = 75; //how well everybody can disarm

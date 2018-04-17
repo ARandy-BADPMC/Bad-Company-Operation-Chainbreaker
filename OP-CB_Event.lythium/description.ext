@@ -3,11 +3,11 @@ respawnTemplates[] 				= {"MenuPosition"};
 respawn 						= 3;										// NONE. BIRD. INSTANT. BASE. GROUP. SIDE.	
 respawnOnStart 					= -1;										// 1 to respawn player when he joins the game. Available only for INSTANT and BASE respawn types.	
 respawnButton 					= 1;										// Respawn button in the pause menu											
-forceRotorLibSimulation 		= 0;										// 0 - options based; 1 - force enable; 2 - force disable										
+forceRotorLibSimulation 		= 1;										// 0 - options based; 1 - force enable; 2 - force disable										
 showGroupIndicator 				= 0;										// Enables/Disables the squad hud	
 enableTeamSwitch 				= 0;
 enableItemsDropping 			= 0;										// disabled with 0
-enableDebugConsole 				= 0;										// 0 = disabled. 1 = admins, 2 = everybody. 0 is recommended in MP.		
+enableDebugConsole 				= 1;										// 0 = disabled. 1 = admins, 2 = everybody. 0 is recommended in MP.		
 allowFunctionsLog 				= 0; 										// Log functions to .rpt. disabled with 0					
 //allowFunctionsRecompile 		= 1;
 
@@ -17,12 +17,10 @@ disableChannels[] = {0,2,5,6};
 
 aiKills = 1;
 
-
 corpseManagerMode = 1;
 corpseLimit = 20;
 corpseRemovalMinTime = 60;
 corpseRemovalMaxTime = 300; //seconds
-
 
 wreckManagerMode = 1;
 wreckLimit = 5;
@@ -31,76 +29,14 @@ wreckRemovalMaxTime = 300; //seconds
 
 minPlayerDistance = 300; //meters
 
-
-#define DEBUGCONSOLE_DEFAULT			0
-#define DAYTIMEPERIOD_DEFAULT			12
-#define WEATHER_DEFAULT					25
-#define TIMEACCELERATION_DEFAULT 		1
-
-#define COUNTDOWN_MIN					600
-#define COUNTDOWN_MAX					3600
-#define COUNTDOWN_DEFAULT				-1
-
-#define VIEW_DISTANCE_MIN				1500
-#define VIEW_DISTANCE_MAX				6000
-#define VIEW_DISTANCE_DEFAULT			1500
-
-#define DAYTIMEHOUR_DEFAULT				6
-
-#define DAYTIMEPERIOD_DEFAULT			18
-
-#define GUERFRIENDLY_DEFAULT			-1		
-
-#define TICKETS_MIN						500
-#define TICKETS_MAX						1500
-
-class Params
-{
-	class 41
-	{   
-		title = ".............................. M i s s i o n   S e t t i n g s v1.0..............................";
-		values[] = {0,1};
-		default = "0";
-		texts[] = {" "," "};
-	};	
-	
-	class 42
-	{   
-		title = ".............................. S e r v e r   S e t t i n g s ..............................";
-		values[] = {0,1};
-		default = "0";
-		texts[] = {" "," "};
-	};
-
-		
-	#include "Params\paramCountdown.inc"
-	#include "Params\paramDaytimeHour.inc"
-	#include "Params\paramDebugConsole.inc"
-	#include "Params\paramWeather.inc"		
-	#include "Params\paramTimeAcceleration.inc"
-	
-	class Fog
-	{
-		title = $STR_A3_Param_Fog_Title;
-		values[] = {0,1,2,3,4};
-		texts[] = {$STR_A3_Param_Fog_0, $STR_A3_Param_Fog_1, $STR_A3_Param_Fog_2, $STR_A3_Param_Fog_3, $STR_A3_Param_Fog_4};
-		default = 0;
-		file = "params\setFog.sqf";
-	};
-};
-
-//#include "VCOMAI\defines.hpp"
-//#include "VCOMAI\DialogDefines.hpp"
-//#include "VCOMAI\dialogs.hpp"
-
 #include "CHVD\dialog.hpp"
 class CfgFunctions 
 {
 	#include "CHVD\CfgFunctions.hpp"
 	#include "LARs\LARs_spawnComp.cpp"
 	#include "EPD\EPDcfgFunctions.hpp"
-	#include "VehicleRespawn\CfgFunctions.hpp"
-	class JeyR 
+	#include "CfgFunctions.hpp"
+	/*class JeyR 
     {
         class Jey_public 
         {
@@ -109,13 +45,13 @@ class CfgFunctions
             };        
         };
     };
+    */
 };
 #include "compositions\compositions.cfg"
 #include "functions\defines.hpp"
 #include "functions\dialogs.hpp"
 
-
-
+/*
 class CfgCommunicationMenu
 {
     class myArtillery_jey
@@ -130,7 +66,7 @@ class CfgCommunicationMenu
         enable = "1"; // Simple expression condition for enabling the item
         removeAfterExpressionCall = 0; // 1 to remove the item after calling
 
-        /*
+        
 
         Following arguments are passed into the expression field:
         [caller,pos,target,is3D,ID]
@@ -140,6 +76,6 @@ class CfgCommunicationMenu
         is3D: Boolean - true when in 3D scene, false when in map
         ID: String - item ID as returned by BIS_fnc_addCommMenuItem function
 
-        */
+        
     };
-};
+};*/

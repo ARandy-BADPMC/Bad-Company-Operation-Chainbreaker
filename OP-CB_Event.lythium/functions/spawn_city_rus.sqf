@@ -1,5 +1,4 @@
-jey_spawn_city_rus =
-{
+
 	_centerobj = _this select 0;
 
 	_houses = nearestObjects [_centerobj, ["house"], 500] select { count ( _x buildingPos -1 ) > 2 };
@@ -26,5 +25,5 @@ jey_spawn_city_rus =
 		};
 	};
 
-};
+
 

@@ -1,80 +1,68 @@
-waitUntil { isServer || !isNull player };
+waitUntil {!isNull player && player == player};
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups; // Initializes the player/client side Dynamic Groups framework
 	
-call compile preprocessfilelinenumbers "choppers.sqf";
-//call compile preprocessfilelinenumbers "functions\retrieve.sqf";
-call compile preprocessfilelinenumbers "functions\adminconsole.sqf";
-call compile preprocessfilelinenumbers "functions\tankspawner.sqf";
-call compile preprocessfilelinenumbers "functions\helispawner.sqf";
-call compile preprocessfilelinenumbers "ArsenalWhitelist.sqf";
-call compile preprocessfilelinenumbers "functions\heliskinapply.sqf";
+player setVariable ["cams",[]];
+player setVariable ["allscreens",0];
 
-player addMPEventHandler ["MPRespawn", {_this execVM "scripts\spawnProtection.sqf"}];
-
-jeff addAction ["<t color='#FF0000'>Request a Task</t>", "remoteExec ['task_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
-
-jey_whitelist = 
 {
-	_player = _this select 0;
-	_SOAR = ["76561198142692277","76561198117073327","76561198086630094","76561198059583284","76561198080263934","76561198027293421"];//76561198080263934 -Geo2013 , 76561198142692277 -Alex. K., 76561198086630094 -G.Drunken, 76561198027293421- S.Werben, 76561198117073327 - A.Randy
+	[_x,(getPlayerUID _x),player] call CHAB_fnc_newcam;
+} forEach allPlayers; 
 
-	_soldier = _player;
-	_playerid = getPlayerUID _player;
-	if(_playerid in _SOAR) then {
+call compile preprocessfilelinenumbers "Scripts\ArsenalWhitelist.sqf";
+call compile preprocessfilelinenumbers "functions\heliskinapply.sqf"; 
 
-		hint "Welcome to the Whitelist Club!";
-		heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn jey_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
-		heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn jey_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
-
-	} 
-	else 
-	{
-		["epicFail",false,2] call BIS_fnc_endMission;		
-	};	
+if (didJIP) then {
+	[player,getPlayerUID player,clientOwner] remoteExecCall ["CHAB_fnc_jipcam",0,false];
 };
 
-if(typeOf player == "rhsusf_airforce_jetpilot") //typeOf player == "rhsusf_army_ocp_helipilot" || 
+player addMPEventHandler ["MPRespawn", 
+{
+	_this execVM "scripts\spawnProtection.sqf";
+
+	[(getPlayerUID player),player] remoteExecCall ["CHAB_fnc_reassign_cam",-2,false];
+}];
+
+jeff addAction ["<t color='#FF0000'>Request a Task</t>", "remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
+if (typeOf player == "B_RangeMaster_F") then {
+	pc5 addAction ["<t color='#FF0000'>Use Overwatch consol</t>", "[_this select 1] call CHAB_fnc_random_screen;", nil, 1, false, true, "", "true", 5, false,""];
+};
+
+if(typeOf player == "rhsusf_airforce_jetpilot")
 	then
 	{
-	 [player] call jey_whitelist;
+	 [player] call CHAB_fnc_whitelist;
 	};	
 if(typeOf player != "rhsusf_army_ocp_helipilot" && typeOf player != "rhsusf_airforce_jetpilot")
 	then
 	{
-	 	tank_spawner addAction ["<t color='#FF0000'>Armor Spawner</t>","[] spawn jey_spawn_tank;",nil, 1, false, true, "", "true", 10, false,""];   
-		tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn jey_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
+	 	tank_spawner addAction ["<t color='#FF0000'>Armor Spawner</t>","[] spawn CHAB_fnc_spawn_tank;",nil, 1, false, true, "", "true", 10, false,""];   
+		tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
 	};	
 
-	if(typeOf player == "rhsusf_army_ocp_helipilot")
+if(typeOf player == "rhsusf_army_ocp_helipilot")
 	then
 	{
-		heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn jey_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
-		heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn jey_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
-	};	
+		heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
+		heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
+	};
 
+disable_uav_conn = 
+	{	
+		_carrierdefences = [def1,def2,def3,def4,def5,def6];	
+		{player disableUAVConnectability [_x,true];} foreach _carrierdefences;
+	};
+player addeventhandler ["InventoryClosed", {[] call disable_uav_conn}];		
+	
+//[] call CHAB_fnc_uavControls;
 
-jey_adminrespawn = 
-{
-	_player = _this select 0;
-	_corpse = _this select 1;
-
-	deleteVehicle _corpse;
-
-	_player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn jey_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
-};
-
-
-
-_admins = ["76561198048254349","76561198142692277","76561198017258138","76561198002110130"];
+_admins = ["76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044"]; //76561197998271838-GOMEZ 76561197992821044-GRAND
 _adminid = getPlayerUID player;
-if(_adminid in _admins) then {
-
-	player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn jey_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
-	player addMPEventHandler ["MPRespawn", {_this call jey_adminrespawn}];
-};
-
-
-
+if(_adminid in _admins) 
+	then 
+	{
+		player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
+		player addMPEventHandler ["MPRespawn", {_this call CHAB_fnc_adminrespawn}];
+	};
 
 campfire addAction ["<t color='#FF0000'>Rest</t>", {
 	_playerke =  _this select 1;
@@ -85,13 +73,7 @@ campfire addAction ["<t color='#FF0000'>Rest</t>", {
 
 }, nil, 1, false, true, "", "true", 10, false,""];
 
-
-
-
-["Preload"] call BIS_fnc_arsenal;
-
 Helicopter_loadouts = 
-
 [
  	"RHS_A10",["Anti-Tank",["rhs_mag_ANALQ131","rhs_mag_FFAR_7_USAF","rhs_mag_agm65d_3","rhs_mag_gbu12","rhs_mag_gbu12","","rhs_mag_gbu12","rhs_mag_gbu12","rhs_mag_agm65d_3","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder_2"],"CAS",["rhs_mag_ANALQ131","rhs_mag_FFAR_7_USAF","rhs_mag_agm65d","rhs_mag_gbu12","rhs_mag_gbu12","","rhs_mag_gbu12","rhs_mag_gbu12","rhs_mag_agm65d","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder_2"]],
 	"B_Plane_CAS_01_dynamicLoadout_F",["Normal",["PylonRack_1Rnd_Missile_AA_04_F","PylonRack_7Rnd_Rocket_04_HE_F","PylonRack_3Rnd_Missile_AGM_02_F","PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F","PylonRack_3Rnd_Missile_AGM_02_F","PylonRack_7Rnd_Rocket_04_AP_F","PylonRack_1Rnd_Missile_AA_04_F"]],
@@ -127,34 +109,13 @@ Helicopter_loadouts =
 	"B_Heli_Transport_01_F",["Unarmed",[]],
 	"B_T_VTOL_01_armed_F",["Unarmed",[]],
 	"B_T_VTOL_01_vehicle_F",["Unarmed",[]],
-	"B_T_VTOL_01_infantry_F",["Unarmed",[]]
-	
-	
+	"B_T_VTOL_01_infantry_F",["Unarmed",[]],
+	"B_UAV_02_dynamicLoadout_f", ["Vhikr",["PylonRack_3Rnd_LG_scalpel","PylonRack_3Rnd_LG_scalpel"],"Hellfire",["PylonRack_3Rnd_ACE_Hellfire_AGM114N","PylonRack_3Rnd_ACE_Hellfire_AGM114K"], "GBU-12", ["PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F"]]
+
 ];
 
-
-/*
-[ammobox,["launch_B_Titan_short_F"],false,false] call BIS_fnc_addVirtualWeaponCargo;
-
-ammobox addAction ["<t color='#FF0000'>Open arsenal</t>", {
-
-	["Open",false ] spawn BIS_fnc_arsenal;
-
-}, nil, 1, false, true, "", "true", 10, false,""];*/
-
-
-
-/*
-
-[ missionNamespace, "arsenalClosed", {
-	systemChat "Arsenal Loadout Saved";
-	player setVariable ["GHST_Current_Gear",getUnitLoadout player];
-}] call BIS_fnc_addScriptedEventHandler;
-
-*/
-
 //[player,"myArtillery_jey"] call BIS_fnc_addCommMenuItem; 
-
+/*
 jey_call_flares =
 {
 	_targetinrange = getPos _this inRangeOfArtillery [[artilerry1], (getArtilleryAmmo [artilerry1] select 1)];
@@ -187,6 +148,7 @@ jey_call_flares =
 		//["Kill Target", [3], "", -5, [["expression", "_target SetDamage 1;"]], "1", "1", "\A3\ui_f\data\IGUI\Cfg\Cursors\iconcursorsupport_ca.paa"],
 		//["Disabled", [4], "", -5, [["expression", ""]], "1", "0"],
 		//["Submenu", [5], "#USER:MENU_COMMS_2", -5, [], "1", "1"]
-	];
+	];*/
 	
+[] execVM "EPD\Ied_Init.sqf";
 

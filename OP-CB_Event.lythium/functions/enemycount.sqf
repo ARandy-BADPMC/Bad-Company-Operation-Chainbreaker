@@ -1,5 +1,4 @@
-jey_enemycount =
-{
+
 	_StartEnemies = 0;
 
 	{
@@ -41,4 +40,3 @@ jey_enemycount =
 			_item setdamage 1;
 		};
 	} forEach _groups;
-};
