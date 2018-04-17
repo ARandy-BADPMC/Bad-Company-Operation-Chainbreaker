@@ -853,7 +853,6 @@ switch (_taskobjective) do
 		[_guardpos] call jey_endmission;
 		deleteVehicle _crate;
 		missionNamespace setVariable ["running_task",0];
-		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Attack" : 
 	{	

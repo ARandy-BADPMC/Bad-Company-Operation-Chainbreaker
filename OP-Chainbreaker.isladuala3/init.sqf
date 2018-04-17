@@ -15,3 +15,5 @@ Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [
 
 RHSDecalsOff = true;
 
+call compile preprocessFileLineNumbers "scripts\Init_UPSMON.sqf";
+
