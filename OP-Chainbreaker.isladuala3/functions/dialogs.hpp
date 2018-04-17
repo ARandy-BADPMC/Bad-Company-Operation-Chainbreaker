@@ -449,6 +449,16 @@ class overwatch
 			h = 2.5 * GUI_GRID_H;
 			action = "closeDialog 0";
 		};
+		class overwatch_uav: RscButton
+		{
+			idc = 1615;
+			text = "UAV Camera"; //--- ToDo: Localize;
+			x = 0.466146 * safezoneW + safezoneX; //check x
+			y = 0.697923 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "[] spawn CHAB_fnc_overwatch_uav_cam;closeDialog 0";
+		};
 	};
 	
 };

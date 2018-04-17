@@ -5,23 +5,23 @@ missionNamespace setVariable ["running_task",0];
 missionNamespace setVariable ["zeus_enabled",0];
 missionNamespace setVariable ["current_task","asd"];
 missionNamespace setVariable ["TaskObjective","none"];
-//missionNamespace setVariable ["uavTarget",jeff,true];
-/*
+missionNamespace setVariable ["uavTarget",jeff];
+
 uav_drone lockDriver true; 
 uav_drone enableUAVWaypoints false;
 
-uav_drone addEventHandler["Fuel",
+uav_drone addEventHandler["Engine",
 {
 	_vehicle = _this select 0;
-	_fuel = _this select 1;
-	if (_fuel == 0) then {
-		_vehicle setFuel 0.9;
+	_engine = _this select 1;
+	if (!_engine) then {
+		[_vehicle,1] remoteExecCall ["setFuel",_vehicle,false];
 		_vehicle engineOn true;
 	};
 }];
 
-uav_drone lockCameraTo [jeff, [0]];
-uav_drone flyInHeight 500;
+//uav_drone lockCameraTo [jeff, [0]];
+uav_drone flyInHeight 600;
 
 _wp = group uav_drone addWaypoint [position jeff, 0];
 _wp setWaypointType "LOITER";
@@ -50,6 +50,11 @@ _wp setWaypointLoiterRadius 300;
 					[_marker] call CHAB_fnc_sendDrone;
 				};
 			};
+			waitUntil {
+			  sleep 1;
+			
+			  (missionNamespace getVariable ["running_task",0]) == 0
+			};
 		}
 		else
 		{
@@ -57,7 +62,7 @@ _wp setWaypointLoiterRadius 300;
 		};
 	};
 };
-*/
+
 /*
 ["JIP_camera_handle", "onPlayerConnected", {
 /*
@@ -112,5 +117,3 @@ _terrainobjects = nearestTerrainObjects [[3996.09,2200.36],[],5];
 {hideObjectGlobal _x} foreach _terrainobjects;
 
 [] execVM "EPD\Ied_Init.sqf";
-
-[] execVM "Scripts\Init_UPSMON.sqf";

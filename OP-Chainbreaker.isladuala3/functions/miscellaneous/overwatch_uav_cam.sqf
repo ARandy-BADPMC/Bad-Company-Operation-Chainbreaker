@@ -1,0 +1,1 @@
+player action ["SwitchToUAVGunner", uav_drone];

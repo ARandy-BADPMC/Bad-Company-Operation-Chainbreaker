@@ -9,7 +9,6 @@ if ((clientOwner == 2) || (clientOwner == _jipclient)) then
 else
 {
 	_localID = getPlayerUID player;
-	diag_log format [" playerkecske : %1 %2 %3",_localID,player,clientOwner];
 	_pipcam = "camera" camCreate [0,0,0];
 	_allscreens = player getVariable ["allscreens",0];
 	_target = str(_allscreens) + "screen";

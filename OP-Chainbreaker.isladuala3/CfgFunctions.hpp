@@ -119,6 +119,10 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\uavReassignCam.sqf";
 		};
+		class overwatch_uav_cam
+		{
+			file = "functions\miscellaneous\overwatch_uav_cam.sqf";
+		};
 	};
 	class choppers
 	{
