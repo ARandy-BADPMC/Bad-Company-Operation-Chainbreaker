@@ -1,4 +1,6 @@
 
+JeyR_fnc_retrieve = {
+
 	private["_pos"];
 
 	_guard = _this select 0;
@@ -73,3 +75,4 @@
 	};
 	_taskItems
 
+};
