@@ -56,6 +56,13 @@ if(_adminid in _admins)
 		player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
 		player addMPEventHandler ["MPRespawn", {_this call CHAB_fnc_adminrespawn}];
 	};
+	
+disable_uav_conn = 
+	{	
+		_carrierdefences = [def1,def2,def3,def4,def5,def6];	
+		{player disableUAVConnectability [_x,true];} foreach _carrierdefences;
+	};
+player addeventhandler ["InventoryClosed", {[] call disable_uav_conn}];
 
 campfire addAction ["<t color='#FF0000'>Rest</t>", {
 	_playerke =  _this select 1;
