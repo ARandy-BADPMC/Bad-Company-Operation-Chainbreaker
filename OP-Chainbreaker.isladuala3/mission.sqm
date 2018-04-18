@@ -34124,7 +34124,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{ box3 addaction [""Arsenal"", {disableUserInput true; [box3 ,arsenalitems] call ace_arsenal_fnc_addVirtualitems; [box3, _unit] call ace_arsenal_fnc_openBox; disableUserInput false; " \n "},nil,0,true,false,"""","""",10];  " \n "}";
+				init="call{ box3 addaction [""Arsenal"", {disableUserInput true; [box3 ,arsenalitems] call ace_arsenal_fnc_addVirtualitems; [box3, player] call ace_arsenal_fnc_openBox; disableUserInput false; " \n "},nil,0,true,false,"""","""",10];  " \n "}";
 				name="box3";
 			};
 			id=623;
