@@ -57,6 +57,10 @@ class chainbreaker
 		{
 			file = "functions\artilerry.sqf";
 		};
+		class retieve
+		{
+			file - "functions\retrieve.sqf";
+		};
 	};
 	class overwatch
 	{

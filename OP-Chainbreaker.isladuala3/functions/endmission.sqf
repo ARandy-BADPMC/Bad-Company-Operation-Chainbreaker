@@ -1,4 +1,3 @@
-jey_endmission = {
 
 _marker = _this select 0;
 _isClose = 1;
@@ -41,5 +40,3 @@ _groups = allgroups;
 		deleteGroup _x;
 	};
 } foreach allGroups;
-
-};
