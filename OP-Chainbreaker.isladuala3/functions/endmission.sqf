@@ -1,3 +1,5 @@
+jey_endmission = {
+
 _marker = _this select 0;
 _isClose = 1;
 _players = [];
@@ -40,3 +42,4 @@ _groups = allgroups;
 	};
 } foreach allGroups;
 
+};
