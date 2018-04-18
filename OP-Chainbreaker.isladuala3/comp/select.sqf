@@ -3,7 +3,7 @@ _taskIsrunning = missionNamespace getVariable ["running_task",1];
 
 if(_taskIsrunning == 0) then {
 
-_tasks = ["Eliminate","Technology","Destroy","Annihilate and Destroy","Secure","Capture","Exterminate","Neutralize","Retrieve","Attack","Clear out","Neutralize2","Destroy Choppers","IDAP","Minefield"];
+_tasks = ["Eliminate","Technology","Destroy","Annihilate and Destroy","Secure","Capture","Exterminate","Neutralize","Attack","Clear out","Neutralize2","Destroy Choppers","IDAP","Minefield"];
 
 _tasks call BIS_fnc_arrayShuffle;
 _markerarray = ["Mark1","Mark1_2","Mark1_3","Mark1_4","Mark1_5","Mark1_6","Mark1_7","Mark1_8","Mark1_9","Mark1_10","Mark1_11","Mark1_12","Mark1_13","Mark1_14","Mark1_15","Mark1_16","Mark1_17","Mark1_18","Mark1_19","Mark1_20"];
