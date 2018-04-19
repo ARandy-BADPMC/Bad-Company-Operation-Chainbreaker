@@ -59,7 +59,7 @@ class chainbreaker
 		};
 		class retieve
 		{
-			file - "functions\retrieve.sqf";
+			file = "functions\retrieve.sqf";
 		};
 	};
 	class overwatch
