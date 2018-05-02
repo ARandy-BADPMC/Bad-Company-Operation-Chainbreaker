@@ -2498,7 +2498,19 @@ arsenalitems =
 "sps_optic_snb_hp_1_8_ral8000",
 "sps_optic_snb_hp_3_27_black",
 "sps_optic_snb_hp_3_27_fde",
-"sps_optic_snb_hp_3_27_ral8000"
+"sps_optic_snb_hp_3_27_ral8000",
+
+"CMCSSC_MK17_CQC",
+"CMCSSC_MK17_CQC_EGLM",
+"CMCSSC_MK17_CQC_S",
+"CMCSSC_MK17_LB",
+"CMCSSC_MK17_STD",
+"CMCSSC_MK17_STD_EGLM",
+"CMCSSC_MK17_STD_S",
+"MK20_SSR",
+
+"CMCSSC_100Rnd_B_762x51_Ball",
+"20Rnd_762x51_Mag"
 
 
 ];
