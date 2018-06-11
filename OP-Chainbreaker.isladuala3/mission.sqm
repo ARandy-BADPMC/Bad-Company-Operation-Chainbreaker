@@ -5,7 +5,7 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=129;
+	toggles=1;
 	class ItemIDProvider
 	{
 		nextID=2579;
@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={4272.6274,21.690107,2128.7659};
-		dir[]={-0.86612213,-0.4330388,0.2497181};
-		up[]={-0.41609839,0.9013707,0.11996847};
-		aside[]={0.27703848,6.5282802e-007,0.96088183};
+		dir[]={-0.44320619,-0.32499698,0.83546078};
+		up[]={-0.15231036,0.9457103,0.28711104};
+		aside[]={0.88341266,6.9718226e-007,0.46864444};
 	};
 };
 binarizationWanted=0;
@@ -124,7 +124,6 @@ addons[]=
 	"tf47_at4",
 	"tf47_smaw",
 	"hlcweapons_core"
-	
 };
 class AddonsMetaData
 {
@@ -44409,7 +44408,7 @@ class Mission
 			{
 				skill=0.44999999;
 				rank="CORPORAL";
-				init="call{nul = [this,""pat3"",""SAFE"",""NORMAL"",""DELETE:"",200,""RESPAWN:"",50,""RESPAWNDELAY:"",30,""ONROAD"",""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
+				init="call{nul = [this,""pat3"",""SAFE"",""NORMAL"",""DELETE:"",200,""ONROAD"",""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
 			};
 			id=2512;
 			type="rhs_btr60_chdkz";
@@ -44870,7 +44869,7 @@ class Mission
 			flags=6;
 			class Attributes
 			{
-				init="call{nul = [this,""pat1"",""SAFE"",""NORMAL"",""DELETE:"",200,""RESPAWN:"",50,""RESPAWNDELAY:"",30,""ONROAD"",""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
+				init="call{nul = [this,""pat1"",""SAFE"",""NORMAL"",""DELETE:"",200,""ONROAD"",""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
 			};
 			id=2520;
 			type="rhs_btr80a_vmf";
@@ -45317,7 +45316,6 @@ class Mission
 				};
 			};
 			id=2523;
-			atlOffset=9.5367432e-007;
 		};
 		class Item557
 		{
@@ -45331,11 +45329,10 @@ class Mission
 			flags=6;
 			class Attributes
 			{
-				init="call{nul = [this,""pat1"",""SAFE"",""NORMAL"",""DELETE:"",200,""RESPAWN:"",50,""RESPAWNDELAY:"",30,""ONROAD"",""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
+				init="call{nul = [this,""pat1"",""SAFE"",""NORMAL"",""DELETE:"",200,""ONROAD"",""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
 			};
 			id=2524;
 			type="rhs_tigr_sts_3camo_vdv";
-			atlOffset=9.5367432e-007;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -45546,7 +45543,7 @@ class Mission
 			{
 				skill=0.44999999;
 				rank="CORPORAL";
-				init="call{nul = [this,""pat2"",""SAFE"",""NORMAL"",""DELETE:"",200,""RESPAWN:"",50,""RESPAWNDELAY:"",30,""ONROAD"",""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
+				init="call{nul = [this,""pat2"",""SAFE"",""NORMAL"",""DELETE:"",200,""ONROAD"",""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
 			};
 			id=2547;
 			type="rhs_btr70_chdkz";
@@ -46425,7 +46422,7 @@ class Mission
 			flags=6;
 			class Attributes
 			{
-				init="call{nul = [this,""pat1"",""SAFE"",""NORMAL"",""DELETE:"",200,""RESPAWN:"",50,""RESPAWNDELAY:"",30,""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
+				init="call{nul = [this,""pat1"",""SAFE"",""NORMAL"",""DELETE:"",200,""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
 				receiveRemoteTargets=1;
 			};
 			id=2565;
@@ -46485,7 +46482,7 @@ class Mission
 			flags=6;
 			class Attributes
 			{
-				init="call{nul = [this,""pat1"",""SAFE"",""NORMAL"",""DELETE:"",200,""RESPAWN:"",50,""RESPAWNDELAY:"",30,""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
+				init="call{nul = [this,""pat1"",""SAFE"",""NORMAL"",""DELETE:"",200,""NOWAIT""] execVM ""scripts\UPSMON.sqf"";}";
 			};
 			id=2572;
 			type="RHS_Mi24P_vvsc";

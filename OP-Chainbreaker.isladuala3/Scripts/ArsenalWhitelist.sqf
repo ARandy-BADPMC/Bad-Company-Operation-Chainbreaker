@@ -2510,7 +2510,45 @@ arsenalitems =
 "MK20_SSR",
 
 "CMCSSC_100Rnd_B_762x51_Ball",
-"20Rnd_762x51_Mag"
+"20Rnd_762x51_Mag",
 
+"hlc_rifle_SG550",
+"hlc_rifle_SG550_GL",
+"hlc_rifle_SG550_RIS",
+"hlc_rifle_SG550_TAC",
+"hlc_rifle_SG550_TAC_GL",
+"hlc_rifle_SG551LB",
+"hlc_rifle_SG551LB_RIS",
+"hlc_rifle_SG551LB_TAC",
+"hlc_rifle_SG551LB_TAC_GL",
+"hlc_rifle_SG551SB",
+"hlc_rifle_SG551SB_RIS",
+"hlc_rifle_SG551SB_TAC",
+"hlc_rifle_SG551SB_TAC_GL",
+"hlc_rifle_SG553LB",
+"hlc_rifle_SG553LB_RIS",
+"hlc_rifle_SG553LB_TAC",
+"hlc_rifle_SG553SB",
+"hlc_rifle_SG553SB_RIS",
+"hlc_rifle_SG553SB_TAC",
+"hlc_rifle_sg553RLB",
+"hlc_rifle_sg553RLB_TAC",
+"hlc_rifle_sg553RSB_TAC",
+"hlc_rifle_SG550Sniper",
+"hlc_rifle_SG550Sniper_RIS",
+
+"hlc_30Rnd_556x45_EPR_sg550",
+"hlc_30Rnd_556x45_SOST_sg550",
+"hlc_30Rnd_556x45_SPR_sg550",
+"hlc_30Rnd_556x45_T_sg550",
+"hlc_30Rnd_556x45_MDIM_sg550",
+"hlc_30Rnd_556x45_TDIM_sg550",
+
+"hlc_optic_fnstanag4x_550",
+"hlc_optic_fnstanag4x2d_550",
+"hlc_optic_zf95",
+"hlc_optic_kern_550",
+"hlc_optic_kern2d_550",
+"hlc_optic_diavariz_5501"
 
 ];
