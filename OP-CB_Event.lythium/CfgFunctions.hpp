@@ -57,6 +57,10 @@ class chainbreaker
 		{
 			file = "functions\artilerry.sqf";
 		};
+		class retieve
+		{
+			file = "functions\retrieve.sqf";
+		};
 	};
 	class overwatch
 	{
@@ -118,6 +122,10 @@ class chainbreaker
 		class uavReassignCam
 		{
 			file = "functions\miscellaneous\uavReassignCam.sqf";
+		};
+		class overwatch_uav_cam
+		{
+			file = "functions\miscellaneous\overwatch_uav_cam.sqf";
 		};
 	};
 	class choppers

@@ -835,7 +835,7 @@ switch (_taskobjective) do
 		_guardgroup = createGroup civilian;
 		_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", getMarkerPos _citymarker, [], 2, "NONE"];
 		_guardpos = getpos _guard;
-		_taskItems = [_guard] call JeyR_fnc_retrieve;
+		_taskItems = [_guard] call CHAB_fnc_retrieve;
 		[_guard,5,0,0] execVM "functions\spawn_ins.sqf";
 		
 		sleep 20;

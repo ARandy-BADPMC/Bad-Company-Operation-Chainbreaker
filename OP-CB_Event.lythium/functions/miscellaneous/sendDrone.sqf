@@ -11,7 +11,7 @@ _wp setWaypointLoiterType "CIRCLE_L";
 _wp setWaypointLoiterRadius 1500;
 _wp setWaypointBehaviour "STEALTH";
 
-uav_drone lockCameraTo [getMarkerPos _marker, [0]];
+//uav_drone lockCameraTo [getMarkerPos _marker, [0]];
 missionNamespace setVariable ["uavTarget",_marker];
 
 //[_marker] remoteExecCall ["CHAB_fnc_uavReassignCam",-2,false];
