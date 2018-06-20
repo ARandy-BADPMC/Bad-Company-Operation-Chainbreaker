@@ -13,5 +13,8 @@ Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [
 
 [] execVM "VCOMAI\init.sqf";
 
+//EOS SYSTEM
+[]execVM "Scripts\eos\OpenMe.sqf";
+
 RHSDecalsOff = true;
 
