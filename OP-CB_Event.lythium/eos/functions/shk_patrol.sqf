@@ -31,23 +31,30 @@ switch (typename _this) do {
   };
 };
 
-_grp setBehaviour "SAFE";
-_grp setSpeedMode "LIMITED";
-_grp setCombatMode "YELLOW";
+_grp setBehaviour "AWARE";
+_grp setSpeedMode "NORMAL";
+_grp setCombatMode "RED";
 _grp setFormation (["STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "DIAMOND"] call BIS_fnc_selectRandom);
 
-private ["_cnt","_wps","_slack"];
+private ["_cnt","_ang","_wps","_slack","_aos"];
 _cnt = 4 + (floor random 3) + (floor (_dst / 100)); // number of waypoints
+_ang = (360 / (_cnt - 1)); // split circle depending on number of waypoints
 _wps = [];
 _slack = _dst / 5.5;
 if (_slack < 20) then {_slack = 20};
+_aos = random 360;
 
 // Find positions for waypoints
-private ["_a","_p"];
+private ["_a","_p","_pos"];
+_pos = getpos leader _grp;
+
 while {count _wps < _cnt} do {
-if (surfaceiswater (getpos(leader _grp)) ) then {
-	_p = [_mkr,true] call SHK_pos;}else{_p = [_mkr,true] call SHK_pos;
-	};
+    _a = (count _wps * _ang) + _aos;
+
+    _p = [((_pos select 0) - ((sin _a) * _dst)),
+          ((_pos select 1) - ((cos _a) * _dst)),
+          0];
+
     _wps set [count _wps, _p];
 };
 

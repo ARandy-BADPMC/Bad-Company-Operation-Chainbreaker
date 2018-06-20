@@ -75,7 +75,7 @@ _tempArray=[];
 };
 // Nationalists 
 	if (_faction==5) then {
-	_InfPool=	["rhsgref_nat_scout","rhsgref_nat_commander","rhsgref_nat_hunter","rhsgref_nat_specialist_aa","rhsgref_nat_machinegunner","rhsgref_nat_militiaman_kar98k","rhsgref_nat_grenadier_rpg","rhsgref_nat_saboteur","rhsgref_nat_medic","rhsgref_nat_rifleman_akms","rhsgref_nat_rifleman_aks74","rhsgref_nat_grenadier","rhsgref_nat_rifleman","rhsgref_nat_rifleman_m92"];	
+	_InfPool=	["rhsgref_nat_rifleman","rhsgref_nat_rifleman_akms","rhsgref_nat_militiaman_kar98k","rhsgref_nat_rifleman_m92","rhsgref_nat_grenadier","rhsgref_nat_warlord","rhsgref_nat_commander","rhsgref_nat_machinegunner","rhsgref_nat_grenadier_rpg","rhsgref_nat_specialist_aa","rhsgref_nat_hunter","rhsgref_nat_scout","rhsgref_nat_saboteur","rhsgref_nat_medic"];	
 	_ArmPool=	["rhsgref_nat_btr70",];
 	_MotPool=	["rhsgref_nat_uaz_ags","rhsgref_nat_uaz_dshkm","rhsgref_nat_uaz_open","rhsgref_nat_uaz_spg9","rhsgref_nat_ural_Zu23"];
 	_ACHPool=	[];
@@ -84,7 +84,7 @@ _tempArray=[];
 	_stPool=	["rhsgref_nat_Igla_AA_pod","rhsgref_nat_AGS30_TriPod","rhsgref_nat_DSHKM","rhsgref_nat_DSHKM_Mini_TriPod"];
 	_shipPool=	[];
 	_diverPool=	[];
-	_crewPool=	[];
+	_crewPool=	["rhsgref_nat_crew"];
 	_heliCrew=	[];
 	};
 	

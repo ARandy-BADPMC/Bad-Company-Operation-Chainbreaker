@@ -1,6 +1,5 @@
 EOS_Spawn = compile preprocessfilelinenumbers "eos\core\eos_launch.sqf";Bastion_Spawn=compile preprocessfilelinenumbers "eos\core\b_launch.sqf";null=[] execVM "eos\core\spawn_fnc.sqf";onplayerConnected {[] execVM "eos\Functions\EOS_Markers.sqf";};
-/*
-
+/* EOS 1.98 by BangaBob 
 GROUP SIZES
  0 = 1
  1 = 2,4
@@ -16,31 +15,12 @@ EXAMPLE CALL - EOS
 EXAMPLE CALL - BASTION
  null = [["BAS_zone_1"],[3,1],[2,1],[2],[0,0],[0,0,EAST,false,false],[10,2,120,TRUE,TRUE]] call Bastion_Spawn;
  null=[["M1","M2","M3"],[PATROL GROUPS,SIZE OF GROUPS],[LIGHT VEHICLES,SIZE OF CARGO],[ARMOURED VEHICLES],[HELICOPTERS,SIZE OF HELICOPTER CARGO],[FACTION,MARKERTYPE,SIDE,HEIGHTLIMIT,DEBUG],[INITIAL PAUSE, NUMBER OF WAVES, DELAY BETWEEN WAVES, INTEGRATE EOS, SHOW HINTS]] call Bastion_Spawn;
- 
- 
- 
-	 null = [["m_1"],[1,2,house],[2,2,patrol],[1,1,cars],[1,armour],[1,static],[1,1,cargo],[faction,0,redzone,EAST,FALSE,FALSE]] call EOS_Spawn;
- 
 */
-
-//=============================================================================================================================
-// Settings
-//=============================================================================================================================
-
-	EOS_Spawn = compile preprocessfilelinenumbers "eos\core\eos_launch.sqf";
-	Bastion_Spawn=compile preprocessfilelinenumbers "eos\core\b_launch.sqf";
-	null=[] execVM "eos\core\spawn_fnc.sqf";
-	onplayerConnected {[] execVM "eos\Functions\EOS_Markers.sqf";};
-	
-	VictoryColor="colorGreen";	// Colour of marker after completion
-	hostileColor="colorRed";	// Default colour when enemies active
-	bastionColor="colorOrange";	// Colour for bastion marker
-	EOS_DAMAGE_MULTIPLIER=1;	// 1 is default
-	EOS_KILLCOUNTER=false;		// Counts killed units
-
-//=============================================================================================================================
-// Markers
-//=============================================================================================================================
+VictoryColor="colorBlue";	// Colour of marker after completion
+hostileColor="colorRed";	// Default colour when enemies active
+bastionColor="colorOrange";	// Colour for bastion marker
+EOS_DAMAGE_MULTIPLIER=1;	// 1 is default
+EOS_KILLCOUNTER=false;		// Counts killed units
 
 null = [["EOSinf_1","EOSinf_2"],[3,1],[2,3,75],[0,0],[0],[0],[0,0],[0,0,350,EAST,TRUE]] call EOS_Spawn;
 null = [["EOSmot_1","EOSmot_2"],[0,0],[0,0],[3,1,90],[2,60],[0],[1,0,90],[0,0,350,EAST,FALSE]] call EOS_Spawn;
