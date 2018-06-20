@@ -73,15 +73,15 @@ _tempArray=[];
 	_crewPool=	[];
 	_heliCrew=	[];
 };
-// ADD CLASSNAMES 
+// Nationalists 
 	if (_faction==5) then {
-	_InfPool=	[];	
-	_ArmPool=	[];
-	_MotPool=	[];
+	_InfPool=	["rhsgref_nat_scout","rhsgref_nat_commander","rhsgref_nat_hunter","rhsgref_nat_specialist_aa","rhsgref_nat_machinegunner","rhsgref_nat_militiaman_kar98k","rhsgref_nat_grenadier_rpg","rhsgref_nat_saboteur","rhsgref_nat_medic","rhsgref_nat_rifleman_akms","rhsgref_nat_rifleman_aks74","rhsgref_nat_grenadier","rhsgref_nat_rifleman","rhsgref_nat_rifleman_m92"];	
+	_ArmPool=	["rhsgref_nat_btr70",];
+	_MotPool=	["rhsgref_nat_uaz_ags","rhsgref_nat_uaz_dshkm","rhsgref_nat_uaz_open","rhsgref_nat_uaz_spg9","rhsgref_nat_ural_Zu23"];
 	_ACHPool=	[];
 	_CHPool=	[];
 	_uavPool=	[];
-	_stPool=	[];
+	_stPool=	["rhsgref_nat_Igla_AA_pod","rhsgref_nat_AGS30_TriPod","rhsgref_nat_DSHKM","rhsgref_nat_DSHKM_Mini_TriPod"];
 	_shipPool=	[];
 	_diverPool=	[];
 	_crewPool=	[];

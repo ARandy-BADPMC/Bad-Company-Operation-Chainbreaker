@@ -25,3 +25,4 @@ EOS_KILLCOUNTER=true;		// Counts killed units
 null = [["EOSinf_1","EOSinf_2"],[3,1],[2,3,75],[0,0],[0],[0],[0,0],[0,0,350,EAST,TRUE]] call EOS_Spawn;
 null = [["EOSmot_1","EOSmot_2"],[0,0],[0,0],[3,1,90],[2,60],[0],[1,0,90],[0,0,350,EAST,FALSE]] call EOS_Spawn;
 null = [["BAS_zone_1"],[0,1],[0,2],[0],[1,2],[0,0,EAST,TRUE],[0,2,120,TRUE,FALSE]] call Bastion_Spawn;
+null = [["mkr","mkr1","mkr2","mkr3","mkr4","mkr5","mkr6","mkr7","mkr8","mkr9","mkr10","mkr11","mkr12","mkr13","mkr14","mkr15","mkr16","mkr17","mkr18","mkr19","mkr20","mkr21","mkr22","mkr23","mkr24","mkr25","mkr26","mkr27","mkr28","mkr29","mkr30","mkr31","mkr32","mkr33","mkr34","mkr35","mkr36","mkr37","mkr38","mkr39","mkr40","mkr41","mkr42","mkr43","mkr44","mkr45","mkr46","mkr47","mkr48","mkr49","mkr50","mkr51","mkr52","mkr53","mkr54","mkr55","mkr56","mkr57"],[3,1,70],[1,2,50],[1,1,20],[1,5],[2,50],[0,0,0],[5,0,300,EAST,250,FALSE]] call EOS_Spawn;
