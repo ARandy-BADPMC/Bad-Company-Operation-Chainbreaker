@@ -76,7 +76,7 @@ _tempArray=[];
 // Nationalists 
 	if (_faction==5) then {
 	_InfPool=	["rhsgref_nat_rifleman","rhsgref_nat_rifleman_akms","rhsgref_nat_militiaman_kar98k","rhsgref_nat_rifleman_m92","rhsgref_nat_grenadier","rhsgref_nat_warlord","rhsgref_nat_commander","rhsgref_nat_machinegunner","rhsgref_nat_grenadier_rpg","rhsgref_nat_specialist_aa","rhsgref_nat_hunter","rhsgref_nat_scout","rhsgref_nat_saboteur","rhsgref_nat_medic"];	
-	_ArmPool=	["rhsgref_nat_btr70",];
+	_ArmPool=	["rhsgref_nat_btr70"];
 	_MotPool=	["rhsgref_nat_uaz_ags","rhsgref_nat_uaz_dshkm","rhsgref_nat_uaz_open","rhsgref_nat_uaz_spg9","rhsgref_nat_ural_Zu23"];
 	_ACHPool=	[];
 	_CHPool=	[];
@@ -89,18 +89,20 @@ _tempArray=[];
 	};
 	
 // ADD CLASSNAMES 	
-	if (_faction==6) then {
-	_InfPool=	[];	
-	_ArmPool=	[];
-	_MotPool=	[];
-	_ACHPool=	[];
-	_CHPool=	[];
+	if (_faction==6) then 
+	{
+	_InfPool=	["rhsusf_usmc_marpat_wd_stinger","rhsusf_usmc_marpat_wd_smaw","rhsusf_usmc_marpat_wd_autorifleman_m249","rhsusf_usmc_marpat_wd_marksman","rhsusf_usmc_marpat_wd_grenadier","rhsusf_usmc_marpat_wd_grenadier_m32","rhsusf_usmc_marpat_wd_jfo","rhsusf_usmc_marpat_wd_javelin","rhsusf_usmc_marpat_wd_engineer","rhsusf_usmc_marpat_wd_riflemanat","rhsusf_usmc_marpat_wd_sniper","rhsusf_usmc_marpat_wd_spotter","rhsusf_usmc_marpat_wd_sniper_M107","rhsusf_usmc_marpat_wd_squadleader","rhsusf_usmc_marpat_wd_autorifleman","rhsusf_usmc_marpat_wd_rifleman_m590","rhsusf_usmc_marpat_wd_fso","rhsusf_usmc_marpat_wd_explosives","rhsusf_usmc_marpat_wd_gunner","rhsusf_usmc_marpat_wd_machinegunner","rhsusf_usmc_marpat_wd_rifleman","rhsusf_usmc_marpat_wd_rifleman_m4","rhsusf_usmc_marpat_wd_rifleman_law","rhsusf_usmc_marpat_wd_teamleader"];	
+	_ArmPool=	["rhsusf_m1a1fep_wd","rhsusf_m1a1hc_wd"];
+	_MotPool=	["rhsusf_m1025_w_s_m2","rhsusf_m1025_w_s_Mk19","rhsusf_rg33_usmc_wd","rhsusf_rg33_m2_usmc_wd"];
+	_ACHPool=	["RHS_AH1Z_wd","RHS_UH1Y_GS"];
+	_CHPool=	["rhsusf_CH53E_USMC"];
 	_uavPool=	[];
-	_stPool=	[];
+	_stPool=	["RHS_M2StaticMG_USMC_WD","RHS_M2StaticMG_MiniTripod_USMC_WD","RHS_TOW_TriPod_USMC_WD","RHS_MK19_TriPod_USMC_WD","RHS_M252_USMC_WD"];
 	_shipPool=	[];
 	_diverPool=	[];
-	_crewPool=	[];
-	_heliCrew=	[];};
+	_crewPool=	["rhsusf_usmc_marpat_wd_combatcrewman"];
+	_heliCrew=	["rhsusf_usmc_marpat_wd_helicrew","rhsusf_usmc_marpat_wd_helipilot"];
+	};
 	
 // ADD CLASSNAMES 	
 	if (_faction==7) then {
