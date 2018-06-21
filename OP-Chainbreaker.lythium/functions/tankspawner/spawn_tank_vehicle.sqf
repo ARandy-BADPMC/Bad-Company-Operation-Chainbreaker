@@ -12,7 +12,7 @@ if(_tankselect != -1) then
 	_maxAPC = missionNamespace getVariable ["MaxAPC",0];
 	_attackType = ["B_MBT_01_TUSK_F","B_MBT_01_cannon_F","B_APC_Tracked_01_AA_F","rhsusf_m1a1aimd_usarmy","rhsusf_m1a2sep1tuskiid_usarmy","I_MBT_03_cannon_F","rhsusf_m1a1aim_tuski_d","rhsusf_m1a2sep1d_usarmy","rhsusf_m1a2sep1tuskid_usarmy","B_MBT_01_arty_F","rhsusf_m109d_usarmy","I_MBT_03_cannon_F","rhs_bmp2d_msv","O_APC_Wheeled_02_rcws_F","B_AFV_Wheeled_01_up_cannon_F","B_AFV_Wheeled_01_cannon_F","I_LT_01_AA_F","I_LT_01_cannon_F","I_LT_01_scout_F"];
 
-	if (count _nObjects == 1) then {
+	if (count _nObjects == 0) then {
 
 		if (_vehicle in _attackType) then 
 		{
