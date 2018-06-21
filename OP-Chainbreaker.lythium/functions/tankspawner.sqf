@@ -81,7 +81,7 @@ jey_spawn_tank_vehicle =
 	{	
 		_vehicle = _tank lbData _tankselect;
 
-		_nObjects= nearestObjects [[4166.478,2144.868,0], ["all"], 7];
+		_nObjects= nearestObjects [[12026.2,18120.9,0.0807495], ["all"], 7];
 
 		_maxtanks = missionNamespace getVariable ["MaxTanks",0];
 		_maxAPC = missionNamespace getVariable ["MaxAPC",0];
@@ -124,7 +124,7 @@ jey_spawn_tank_server =
 	if (_isAttack == 1) then 
 	{
 	 	
-		_helicopter = _vehicle createVehicle ([4166.478,2144.868,0]);
+		_helicopter = _vehicle createVehicle ([12026.2,18120.9,0.0807495]);
 
 		_helicopter addMPEventHandler ["MPKilled",{ missionNamespace setVariable ["MaxTanks",0]; }];
 		
@@ -133,7 +133,7 @@ jey_spawn_tank_server =
 
 	} else 
 	{
-		_helicopter = _vehicle createVehicle ([4166.478,2144.868,0]);
+		_helicopter = _vehicle createVehicle ([12026.2,18120.9,0.0807495]);
 
 		_helicopter addMPEventHandler ["MPKilled",
 		{
@@ -166,7 +166,7 @@ jey_remover_tank =
 	_ctrl = (findDisplay 9903) displayCtrl 1500;
 	_nearestVeh = [];
 	_i = 0;
-  	_nearestVeh = nearestObjects [[4166,2157.08,0], ["Car","Tank"], 50];
+  	_nearestVeh = nearestObjects [[12026.2,18120.9,0.0807495], ["Car","Tank"], 50];
   	{	
   		_asd = _x getVariable ["vehicleSerial","TIN"];
   		if (_asd == "TIN") then {
