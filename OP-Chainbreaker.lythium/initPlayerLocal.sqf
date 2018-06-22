@@ -69,6 +69,7 @@ campfire addAction ["<t color='#FF0000'>Rest</t>", {
 Helicopter_loadouts = 
 [
  	"RHS_A10",["Anti-Tank",["rhs_mag_ANALQ131","rhs_mag_FFAR_7_USAF","rhs_mag_agm65d_3","rhs_mag_gbu12","rhs_mag_gbu12","","rhs_mag_gbu12","rhs_mag_gbu12","rhs_mag_agm65d_3","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder_2"],"CAS",["rhs_mag_ANALQ131","rhs_mag_FFAR_7_USAF","rhs_mag_agm65d","rhs_mag_gbu12","rhs_mag_gbu12","","rhs_mag_gbu12","rhs_mag_gbu12","rhs_mag_agm65d","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder_2"]],
+	"RHS_AN2_B",["Unarmed",[]],
 	"B_Plane_CAS_01_dynamicLoadout_F",["Normal",["PylonRack_1Rnd_Missile_AA_04_F","PylonRack_7Rnd_Rocket_04_HE_F","PylonRack_3Rnd_Missile_AGM_02_F","PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F","PylonRack_3Rnd_Missile_AGM_02_F","PylonRack_7Rnd_Rocket_04_AP_F","PylonRack_1Rnd_Missile_AA_04_F"]],
 	"RHS_AH1Z",["ACE",["rhs_mag_Sidewinder_heli_2","PylonRack_4Rnd_ACE_Hellfire_AGM114K","rhs_mag_M151_19_green","rhs_mag_M151_19_green","PylonRack_4Rnd_ACE_Hellfire_AGM114K","rhs_mag_Sidewinder_heli_2"]],
 	"RHS_AH64D",["CAS",["rhs_mag_Sidewinder_heli","rhs_mag_M151_19","rhs_mag_AGM114L_4","rhs_mag_AGM114N_4","rhs_mag_M151_19","rhs_mag_Sidewinder_heli"]],
@@ -93,6 +94,9 @@ Helicopter_loadouts =
 	"O_Heli_Transport_04_F", ["Unarmed",[]],
 	"RHS_MELB_H6M",["Unarmed",[]],
 	"B_Heli_Attack_01_dynamicLoadout_F",["Simple",["PylonMissile_1Rnd_ACE_Hellfire_AGM114K","PylonMissile_1Rnd_ACE_Hellfire_AGM114K","PylonRack_12Rnd_PG_missiles","PylonRack_12Rnd_PG_missiles","PylonMissile_1Rnd_ACE_Hellfire_AGM114K","PylonMissile_1Rnd_ACE_Hellfire_AGM114K"]],
+	"RHS_L39_cdf_b_cdf", ["CAP",["rhs_mag_R73M","rhs_mag_R73M"], "Rockets",["rhs_mag_ub16_s5ko","rhs_mag_ub16_s5ko"]],
+	"RHS_l159_cdf_b_CDF", ["CAS",["rhs_mag_Sidewinder","rhs_mag_FFAR_7_USAF","rhs_mag_gbu12","rhs_mag_zpl20_mixed","rhs_mag_gbu12","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder"],"AP",["rhs_mag_Sidewinder","rhs_mag_FFAR_7_USAF","rhs_mag_cbu100_3","rhs_mag_zpl20_mixed","rhs_mag_cbu100_3","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder"],"CAP",["rhs_mag_Sidewinder","rhs_mag_aim120d","rhs_mag_aim120d","rhs_mag_l159_fuelpod_grey","rhs_mag_aim120","rhs_mag_aim120","rhs_mag_Sidewinder"]],
+	"RHSGREF_cdf_b_su25",["Normal",["rhs_mag_kh29D","rhs_mag_kh29D","rhs_mag_kh25MP","rhs_mag_kh25MP","rhs_mag_b8m1_s8kom","rhs_mag_b8m1_s8kom","rhs_mag_ub32_s5m1","rhs_mag_ub32_s5m1","rhs_mag_R60M","rhs_mag_R60M"]],
 	"RHS_UH1Y_d",["Normal",["rhs_mag_M151_7_green","rhs_mag_M151_7_green"]],
 	"RHS_UH1Y_UNARMED_d",["Unarmed",[]],
 	"RHS_UH60M_d",["Unarmed",[]],
