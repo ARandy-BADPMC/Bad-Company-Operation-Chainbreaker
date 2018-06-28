@@ -23,7 +23,7 @@ if (_isAttack == 1) then
 
 	_helicopter addMPEventHandler ["MPKilled",{ missionNamespace setVariable ["MaxAttackHelis",0]; }];
 
-	[_helicopter] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
+	[_helicopter,_isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
 	
 	
 } else 
@@ -41,6 +41,6 @@ if (_isAttack == 1) then
 	if (typeOf _helicopter == "RHS_UH60M_MEV_d") then {
 	  _helicopter setVariable ["ace_medical_medicClass",1,true];
 	};
-	[_helicopter] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
+	[_helicopter, _isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
 	
 };

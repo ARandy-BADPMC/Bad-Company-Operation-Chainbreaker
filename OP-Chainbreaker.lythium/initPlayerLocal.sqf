@@ -31,6 +31,7 @@ if(typeOf player == "rhsusf_airforce_jetpilot")
 	then
 	{
 	 [player] call CHAB_fnc_whitelist;
+	 player setvariable ["can_fly_jets",1];
 	};	
 if(typeOf player != "rhsusf_army_ocp_helipilot" && typeOf player != "rhsusf_airforce_jetpilot")
 	then
@@ -42,8 +43,21 @@ if(typeOf player != "rhsusf_army_ocp_helipilot" && typeOf player != "rhsusf_airf
 if(typeOf player == "rhsusf_army_ocp_helipilot")
 	then
 	{
-		heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
-		heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
+	 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
+	 heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
+	_SOAR = ["76561198142692277","76561198117073327","76561198086630094","76561198059583284","76561198080263934","76561198027293421"];//76561198080263934 -Geo2013 , 76561198142692277 -Alex. K., 76561198086630094 -G.Drunken, 76561198027293421- S.Werben, 76561198117073327 - A.Randy
+	 
+	 
+	 if (getplayerUID player in _SOAR) then 
+	 {
+	 player setvariable ["can_fly_helicopters",1];
+	 player setvariable ["can_fly_helicopters_attack",1];
+	 }
+	 else 
+	 {
+	 player setvariable ["can_fly_helicopters",1];
+	 player setvariable ["can_fly_helicopters_attack",0];
+	 }
 	};	
 
 //[] call CHAB_fnc_uavControls;
@@ -69,8 +83,8 @@ campfire addAction ["<t color='#FF0000'>Rest</t>", {
 Helicopter_loadouts = 
 [
  	"RHS_A10",["Anti-Tank",["rhs_mag_ANALQ131","rhs_mag_FFAR_7_USAF","rhs_mag_agm65d_3","rhs_mag_gbu12","rhs_mag_gbu12","","rhs_mag_gbu12","rhs_mag_gbu12","rhs_mag_agm65d_3","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder_2"],"CAS",["rhs_mag_ANALQ131","rhs_mag_FFAR_7_USAF","rhs_mag_agm65d","rhs_mag_gbu12","rhs_mag_gbu12","","rhs_mag_gbu12","rhs_mag_gbu12","rhs_mag_agm65d","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder_2"]],
-	"RHS_AN2_B",["Unarmed",[]],
 	"B_Plane_CAS_01_dynamicLoadout_F",["Normal",["PylonRack_1Rnd_Missile_AA_04_F","PylonRack_7Rnd_Rocket_04_HE_F","PylonRack_3Rnd_Missile_AGM_02_F","PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F","PylonRack_3Rnd_Missile_AGM_02_F","PylonRack_7Rnd_Rocket_04_AP_F","PylonRack_1Rnd_Missile_AA_04_F"]],
+	"RHS_AN2_B",["Unarmed",[]],
 	"RHS_AH1Z",["ACE",["rhs_mag_Sidewinder_heli_2","PylonRack_4Rnd_ACE_Hellfire_AGM114K","rhs_mag_M151_19_green","rhs_mag_M151_19_green","PylonRack_4Rnd_ACE_Hellfire_AGM114K","rhs_mag_Sidewinder_heli_2"]],
 	"RHS_AH64D",["CAS",["rhs_mag_Sidewinder_heli","rhs_mag_M151_19","rhs_mag_AGM114L_4","rhs_mag_AGM114N_4","rhs_mag_M151_19","rhs_mag_Sidewinder_heli"]],
 	"RHS_MELB_AH6M",["Light",["rhs_mag_M151_7","rhs_mag_m134_pylon_3000","rhs_mag_m134_pylon_3000","rhs_mag_M151_7"],"Medium",["rhsusf_mag_gau19_melb_left","","","rhs_mag_DAGR_8"],"Heavy",["rhsusf_mag_gau19_melb_left","","","rhs_mag_AGM114K_2"]],
