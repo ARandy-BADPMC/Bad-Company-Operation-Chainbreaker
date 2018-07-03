@@ -2539,7 +2539,19 @@ arsenalitems =
 "rhsgref_un_beret",
 "rhssaf_alice_smb",
 "rhssaf_kitbag_smb",
-"rhsgref_acc_zendl"
+"rhsgref_acc_zendl",
+
+"cro_vhs_d2",
+"cro_vhs_d2_ct",
+"cro_vhs_d2_ct_gl",
+"cro_vhs_d2_gl",
+"cro_vhs_k2",
+"cro_vhs_k2_ct",
+"cro_vhs_k2_ct_gl",
+"cro_vhs_k2_gl",
+
+"cro_30Rnd_556x45_Stanag",
+"cro_30Rnd_556x45_Stanag_Tracer_Red"
 
 
 ];

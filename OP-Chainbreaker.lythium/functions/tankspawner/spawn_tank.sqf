@@ -17,6 +17,9 @@ _tanks = [
 "I_MRAP_03_hmg_F",
 "I_MRAP_03_gmg_F",
 "I_APC_tracked_03_cannon_F",
+"rhs_tigr_vdv",
+"rhs_tigr_sts_vdv",
+"rhs_tigr_m_vdv",
 "O_MRAP_02_F",
 "O_MRAP_02_gmg_F",
 "O_MRAP_02_hmg_F",
@@ -69,7 +72,8 @@ _tanks = [
 "rhsusf_rg33_m2_usmc_d",
 "B_AFV_Wheeled_01_up_cannon_F",
 "B_AFV_Wheeled_01_cannon_F",
-"B_MBT_01_arty_F"
+"B_MBT_01_arty_F",
+"rhs_t72bb_tv"
 
 
 ];

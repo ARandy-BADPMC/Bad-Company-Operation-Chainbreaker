@@ -19,7 +19,7 @@ if(_loadout != -1) then
 
 	_maxAttackChoppers = missionNamespace getVariable ["MaxAttackHelis",0];
 	_maxTransChoppers = missionNamespace getVariable ["MaxTransHelis",0];
-	_attackType = ["RHS_UH60M_ESSS_d","RHS_MELB_AH6M","I_Heli_light_03_dynamicLoadout_F","RHS_UH1Y_d","B_Plane_Fighter_01_F","B_Plane_CAS_01_dynamicLoadout_F","B_Heli_Attack_01_dynamicLoadout_F","RHS_AH1Z","RHS_A10","RHS_AH64D","I_Plane_Fighter_04_F","O_Heli_Light_02_dynamicLoadout_F","B_UAV_02_dynamicLoadout_f","RHS_L39_cdf_b_cdf","RHS_l159_cdf_b_CDF","RHSGREF_cdf_b_su25","RHS_C130J", "C_Plane_Civil_01_F","C_Plane_Civil_01_racing_F","RHS_AN2_B"];
+	_attackType = ["RHS_UH60M_ESSS_d","RHS_MELB_AH6M","I_Heli_light_03_dynamicLoadout_F","RHS_UH1Y_d","B_Plane_Fighter_01_F","B_Plane_CAS_01_dynamicLoadout_F","B_Heli_Attack_01_dynamicLoadout_F","RHS_AH1Z","RHS_A10","RHS_AH64D","I_Plane_Fighter_04_F","O_Heli_Light_02_dynamicLoadout_F","B_UAV_02_dynamicLoadout_f","RHS_L39_cdf_b_cdf","RHS_l159_cdf_b_CDF","RHSGREF_cdf_b_su25","RHS_C130J", "C_Plane_Civil_01_F","C_Plane_Civil_01_racing_F","RHS_AN2_B","rhssaf_airforce_l_18"];
 
 	if (count _nObjects == 1) then {
 

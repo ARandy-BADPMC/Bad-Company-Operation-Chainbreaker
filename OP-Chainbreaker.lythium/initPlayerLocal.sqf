@@ -108,6 +108,7 @@ Helicopter_loadouts =
 	"O_Heli_Transport_04_F", ["Unarmed",[]],
 	"RHS_MELB_H6M",["Unarmed",[]],
 	"B_Heli_Attack_01_dynamicLoadout_F",["Simple",["PylonMissile_1Rnd_ACE_Hellfire_AGM114K","PylonMissile_1Rnd_ACE_Hellfire_AGM114K","PylonRack_12Rnd_PG_missiles","PylonRack_12Rnd_PG_missiles","PylonMissile_1Rnd_ACE_Hellfire_AGM114K","PylonMissile_1Rnd_ACE_Hellfire_AGM114K"]],
+	"rhssaf_airforce_l_18", ["CAS", ["rhs_mag_b8m1_bd3_umk2a_s8kom","rhs_mag_b8m1_bd3_umk2a_s8kom","rhs_mag_b8m1_bd3_umk2a_s8df","rhs_mag_b8m1_bd3_umk2a_s8df","rhs_mag_R60M_APU60","rhs_mag_R60M_APU60",""]],
 	"RHS_L39_cdf_b_cdf", ["CAP",["rhs_mag_R73M","rhs_mag_R73M"], "Rockets",["rhs_mag_ub16_s5ko","rhs_mag_ub16_s5ko"]],
 	"RHS_l159_cdf_b_CDF", ["CAS",["rhs_mag_Sidewinder","rhs_mag_FFAR_7_USAF","rhs_mag_gbu12","rhs_mag_zpl20_mixed","rhs_mag_gbu12","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder"],"AP",["rhs_mag_Sidewinder","rhs_mag_FFAR_7_USAF","rhs_mag_cbu100_3","rhs_mag_zpl20_mixed","rhs_mag_cbu100_3","rhs_mag_FFAR_7_USAF","rhs_mag_Sidewinder"],"CAP",["rhs_mag_Sidewinder","rhs_mag_aim120d","rhs_mag_aim120d","rhs_mag_l159_fuelpod_grey","rhs_mag_aim120","rhs_mag_aim120","rhs_mag_Sidewinder"]],
 	"RHSGREF_cdf_b_su25",["Normal",["rhs_mag_kh29D","rhs_mag_kh29D","rhs_mag_kh25MP","rhs_mag_kh25MP","rhs_mag_b8m1_s8kom","rhs_mag_b8m1_s8kom","rhs_mag_ub32_s5m1","rhs_mag_ub32_s5m1","rhs_mag_R60M","rhs_mag_R60M"]],

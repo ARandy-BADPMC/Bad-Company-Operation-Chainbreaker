@@ -4,7 +4,7 @@ if (_isAttack == 1) then
 {
  	
 	_helicopter = _vehicle createVehicle ([12026.2,18120.9,0.0807495]);
-	_helicopter setdir 312.769;
+	_helicopter setdir 132.769;
 	
 	_helicopter addMPEventHandler ["MPKilled",{ missionNamespace setVariable ["MaxTanks",0]; }];
 	
@@ -14,7 +14,7 @@ if (_isAttack == 1) then
 } else 
 {
 	_helicopter = _vehicle createVehicle ([12026.2,18120.9,0.0807495]);
-	_helicopter setdir 312.769;
+	_helicopter setdir 132.769;
 
 	
 	_helicopter addMPEventHandler ["MPKilled",
