@@ -823,9 +823,9 @@ switch (_taskobjective) do
 	{
 		missionNamespace setVariable ["running_task",1];
 
-		_cities = nearestLocations [getPosATL officer_jeff, ["NameCity"], 25000];
+		_cities = ["mkr27","marker_35","marker_36","mkr42","mkr82","marker_37","marker_38","marker_39","mkr78","mkr56","mkr57","mkr98","marker_40","mkr60","mkr91","mkr124","mkr49","Mark1_10","mkr53"];
 		_city = _cities call BIS_fnc_selectRandom;
-		_citypos = locationPosition _city;
+		_citypos = getMarkerPos _city;
 
 		_citymarker = missionNamespace getVariable ["citymarker",_citypos];
 		_citymarker setMarkerPos _citypos;
@@ -850,16 +850,16 @@ switch (_taskobjective) do
 		};
 
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;
+		[_guardpos] call CHAB_fnc_endmission;
 		deleteVehicle _crate;
 		missionNamespace setVariable ["running_task",0];
 	};
 	case "Attack" : 
 	{	
 		missionNamespace setVariable ["running_task",1];
-		_cities = nearestLocations [getPosATL officer_jeff, ["NameCity"], 25000];
+		_cities = ["mkr27","marker_35","marker_36","mkr42","mkr82","marker_37","marker_38","marker_39","mkr78","mkr56","mkr57","mkr98","marker_40","mkr60","mkr91","mkr124","mkr49","Mark1_10","mkr53"];
 		_city = _cities call BIS_fnc_selectRandom;
-		_citypos = locationPosition _city;
+		_citypos = getMarkerPos _city;
 
 		_citymarker = missionNamespace getVariable ["citymarker",_citypos];
 		_citymarker setMarkerPos _citypos;
@@ -895,9 +895,9 @@ switch (_taskobjective) do
 	case "Minefield" :
 	{	
 		missionNamespace setVariable ["running_task",1];
-		_cities = nearestLocations [getPosATL officer_jeff, ["NameCity"], 25000];
-		_city = selectRandom _cities;
-		_citypos = locationPosition _city;
+		_cities = ["mkr27","marker_35","marker_36","mkr42","mkr82","marker_37","marker_38","marker_39","mkr78","mkr56","mkr57","mkr98","marker_40","mkr60","mkr91","mkr124","mkr49","Mark1_10","mkr53"];
+		_city = _cities call BIS_fnc_selectRandom;
+		_citypos = getMarkerPos _city;
 
 		_citymarker = missionNamespace getVariable ["citymarker",_citypos];
 		_citymarker setMarkerPos _citypos;
@@ -936,9 +936,9 @@ switch (_taskobjective) do
 	case "Clear out" : 
 	{
 		missionNamespace setVariable ["running_task",1];
-		_cities = nearestLocations [getPosATL officer_jeff, ["NameCity"], 25000];
+		_cities = ["mkr27","marker_35","marker_36","mkr42","mkr82","marker_37","marker_38","marker_39","mkr78","mkr56","mkr57","mkr98","marker_40","mkr60","mkr91","mkr124","mkr49","Mark1_10","mkr53"];
 		_city = _cities call BIS_fnc_selectRandom;
-		_citypos = locationPosition _city;
+		_citypos = getMarkerPos _city;
 
 		_citymarker = missionNamespace getVariable ["citymarker",_citypos];
 		_citymarker setMarkerPos _citypos;

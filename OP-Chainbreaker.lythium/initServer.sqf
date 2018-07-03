@@ -1,5 +1,6 @@
 ["Initialize"] call BIS_fnc_dynamicGroups; // Initializes the Dynamic Groups framework	
 
+call compile preprocessFileLineNumbers "functions\retrieve.sqf";
 missionNamespace setVariable ["running_task",0];
 missionNamespace setVariable ["zeus_enabled",0];
 missionNamespace setVariable ["current_task","asd"];

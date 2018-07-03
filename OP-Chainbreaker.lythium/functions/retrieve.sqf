@@ -1,3 +1,4 @@
+CHAB_fnc_retrieve = {
 
 	private["_pos"];
 
@@ -72,3 +73,4 @@
 		};
 	};
 	_taskItems
+};
