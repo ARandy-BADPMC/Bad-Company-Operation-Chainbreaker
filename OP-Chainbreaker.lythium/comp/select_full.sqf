@@ -1,9 +1,9 @@
-task_selector = {
 private ["_taskIsrunning","_comp","_current_task","_tasknumber","_current_tasknumber","_markerarray","_base","_taskobjective"];
 _taskIsrunning = missionNamespace getVariable ["running_task",1];
+
 if(_taskIsrunning == 0) then {
 
-_tasks = ["Eliminate","Technology","Destroy","Annihilate and Destroy","Secure","Capture","Exterminate","Neutralize","Retrieve","Attack","Clear out","Escort","Resupply","Neutralize2","Destroy Choppers","IDAP"];
+_tasks = ["Eliminate","Technology","Destroy","Annihilate and Destroy","Secure","Capture","Exterminate","Neutralize","Neutralize2","Destroy Choppers"];
 
 _tasks call BIS_fnc_arrayShuffle;
 _markerarray = ["Mark1","Mark1_2","Mark1_3","Mark1_4","Mark1_5","Mark1_6","Mark1_7","Mark1_8","Mark1_9","Mark1_10","Mark1_11","Mark1_12","Mark1_13","Mark1_14","Mark1_15","Mark1_16","Mark1_17","Mark1_18","Mark1_19","Mark1_20"];
@@ -18,9 +18,10 @@ missionNamespace setVariable ["TaskNumber",_tasknumber];
 _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
 
 //_taskobjective = "Minefield";
-
+missionNamespace setVariable ["TaskObjective",_taskobjective];
 switch (_taskobjective) do 
 { 
+	
 	case "Destroy Choppers" :
 	{
 		missionNamespace setVariable ["running_task",1];
@@ -36,7 +37,7 @@ switch (_taskobjective) do
 		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
 
 		_guardpos = getpos _guard;
-		[_guard] spawn jey_roadblock;
+		[_guard] spawn CHAB_fnc_roadblock_rus;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
 		
@@ -49,15 +50,16 @@ switch (_taskobjective) do
 		};
 
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;
+		[_guardpos] call CHAB_fnc_endmission;
 		[ _comp ] call LARs_fnc_deleteComp;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Neutralize2" :
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = "weap_factory";
-		[_current_tasknumber ,west,["Russian Forces have set up a weaponfactory at an unknown position. Locate the factory and destroy important equipment. Also, according to one of our agents, a high-ranking officer is visiting the factory. Try to capture him.","Locate and Destroy Weapon Factory",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["Insurgents have set up a weaponfactory in an abandoned, unmarked FOB. Locate the factory and destroy important equipment. Also, according to one of our agents, a commander is visiting the factory. Try to capture him.","Locate and Destroy Weapon Factory",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
 
 		_capturegroup = createGroup resistance;
 		_guardgroup = createGroup resistance;
@@ -68,22 +70,22 @@ switch (_taskobjective) do
 		  !(_base isEqualTo [0,0,0])
 		};
 
-		_guard = _guardgroup createUnit ["rhs_vdv_officer_armored", _base, [], 2, "NONE"];
+		_guard = _guardgroup createUnit ["rhsgref_nat_warlord", _base, [], 2, "NONE"];
 
 		_guardpos = getPos _guard;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		
 		sleep 10;
-		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
+		[_guard,10,1,2] execVM "functions\spawn_nat.sqf";
 		sleep 5;
 		
-		_leader = _capturegroup createUnit ["rhs_vdv_officer_armored",  _guardpos, [], 2, "NONE"];
+		_leader = _capturegroup createUnit ["rhsgref_nat_commander",  _guardpos, [], 2, "NONE"];
 		removeAllWeapons _leader;
 		_leader setunitpos "middle";
 
 		_house = nearestObjects [ _guardpos, ["Land_i_Shed_Ind_F"], 30];
 		_thehouse = _house call BIS_fnc_selectRandom;
-		[_guard] spawn jey_roadblock;
+		[_guard] spawn CHAB_fnc_roadblock_rus;
 
 		_leader setpos (_thehouse buildingpos 0); 
 
@@ -100,19 +102,21 @@ switch (_taskobjective) do
 		if(alive _leader) then 
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;					
+			[_guardpos] call CHAB_fnc_endmission;					
 			
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else 
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-			"The Weapon Factory is destroyed, but the officer is dead." remoteExec ["hint"];
-			[_guardpos] call jey_endmission;					
+			"The Weapon Factory is destroyed, but the commander is dead." remoteExec ["hint"];
+			[_guardpos] call CHAB_fnc_endmission;					
 			
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		};
 	};
 	case "Eliminate": 
@@ -131,7 +135,7 @@ switch (_taskobjective) do
 		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
 
 		_guardpos = getPos _guard;
-		[_guard] spawn jey_roadblock;
+		[_guard] spawn CHAB_fnc_roadblock_rus;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
 		
@@ -141,16 +145,17 @@ switch (_taskobjective) do
 		_trg setTriggerActivation ["EAST", "NOT PRESENT", false];
 		_trg setTriggerStatements ["this", "", ""];
 		sleep 60;
-		[] spawn jey_enemycount;
+		[] spawn CHAB_fnc_enemycount;
 		waitUntil {sleep 10;triggerActivated _trg};
 		
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;
+		[_guardpos] call CHAB_fnc_endmission;
 
 		[ _comp ] call LARs_fnc_deleteComp;
 		deleteVehicle _trg;
 
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Technology" :
 	{
@@ -167,7 +172,7 @@ switch (_taskobjective) do
 		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
 
 		_guardpos = getpos _guard;
-		[_guard] spawn jey_roadblock;
+		[_guard] spawn CHAB_fnc_roadblock_rus;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
 		
@@ -180,9 +185,10 @@ switch (_taskobjective) do
 		};
 
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;
+		[_guardpos] call CHAB_fnc_endmission;
 		[ _comp ] call LARs_fnc_deleteComp;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Destroy" :
 	{
@@ -199,7 +205,7 @@ switch (_taskobjective) do
 		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
 
 		_guardpos = getpos _guard;
-		[_guard] spawn jey_roadblock;
+		[_guard] spawn CHAB_fnc_roadblock_rus;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		[_guard,10,2,1] execVM "functions\spawn_rus.sqf";
 
@@ -209,9 +215,10 @@ switch (_taskobjective) do
 		waitUntil { sleep 10; !(alive _thetarget) || (damage _thetarget > 0.8)};
 
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;
+		[_guardpos] call CHAB_fnc_endmission;
 		[ _comp ] call LARs_fnc_deleteComp;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Annihilate and Destroy" :
 	{
@@ -228,7 +235,7 @@ switch (_taskobjective) do
 		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
 
 		_guardpos = getPos _guard;
-		[_guard] spawn jey_roadblock;
+		[_guard] spawn CHAB_fnc_roadblock_rus;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
 		
@@ -242,23 +249,24 @@ switch (_taskobjective) do
 		_trg setTriggerStatements ["this", "", ""];
 
 		sleep 30;
-		[] spawn jey_enemycount;
+		[] spawn CHAB_fnc_enemycount;
 		waitUntil { 
 			sleep 10; 
 			(!(alive _thetarget) || (damage _thetarget > 0.8)) && (triggerActivated _trg)
 		};
 
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;
+		[_guardpos] call CHAB_fnc_endmission;
 		[ _comp ] call LARs_fnc_deleteComp;
 		deleteVehicle _trg;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Secure" :
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = selectRandom ["warhead1","warhead2"];
-		[_current_tasknumber ,west,["The invaders brought a nuclear warhead to Altis and are threatening, to launch it. Our task is to secure and recover it.","Secure nuclear Warhead",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["The invaders brought a nuclear warhead to Isla Duala and are threatening, to launch it. Our task is to secure and recover it.","Secure nuclear Warhead",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 		_guardgroup = createGroup east;
 		waitUntil {
@@ -271,7 +279,7 @@ switch (_taskobjective) do
 
 		_guardpos = getPos _guard;
 
-		[_guard] spawn jey_roadblock;
+		[_guard] spawn CHAB_fnc_roadblock_rus;
 
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		[_guard,10,1,3] execVM "functions\spawn_rus.sqf";
@@ -290,16 +298,18 @@ switch (_taskobjective) do
 		if(!alive _thetarget) then 
 		{
 			[_current_tasknumber, "FAILED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else 
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		};
 	};
 	case "Capture" :
@@ -324,7 +334,7 @@ switch (_taskobjective) do
 		removeAllWeapons _target1;
 		_target1 disableAI "AUTOCOMBAT";
 		_target1 setunitpos "middle";
-		[_target1] spawn jey_roadblock_ins;
+		[_target1] spawn CHAB_fnc_roadblock_ins;
 		waitUntil 
 		{
 			sleep 10;
@@ -334,16 +344,18 @@ switch (_taskobjective) do
 		if(alive _target1) then 
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else
 		{
 			[_current_tasknumber, "FAILED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		};
 	};
 	case "Exterminate" :
@@ -369,24 +381,25 @@ switch (_taskobjective) do
 		_trg setTriggerArea [600, 600, 0, false];
 		_trg setTriggerActivation ["GUER", "NOT PRESENT", false];
 		_trg setTriggerStatements ["this", "", ""];
-		[_guard] spawn jey_roadblock_ins;
+		[_guard] spawn CHAB_fnc_roadblock_ins;
 		sleep 60;
 
-		[] spawn jey_enemycount;
+		[] spawn CHAB_fnc_enemycount;
 
 		waitUntil {sleep 10;triggerActivated _trg};
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;
+		[_guardpos] call CHAB_fnc_endmission;
 		
 		[ _comp ] call LARs_fnc_deleteComp;
 		deleteVehicle _trg;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "IDAP" :
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = "peacekeeper";
-		[_current_tasknumber ,west,["IDAP Units have reported indirect and small arms fire on one of their locations, wounding several peacekeepers and civilians. You are tasked, to investigate, interrogate survivors, locate the enemy firing-positions and take them, including all the equipment, out. Be aware of counterattacks!","Locate Artilerry",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["IDAP Units have reported indirect and small arms fire on one of their locations, wounding several peacekeepers and civilians. You are tasked, to investigate, interrogate survivors, locate the enemy firing-positions and take them, including all the equipment, out. Be aware of counterattacks!","Locate Mortars",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
 		_resgroup = createGroup resistance;
 		_guardgroup = createGroup civilian;
 		waitUntil {
@@ -417,7 +430,7 @@ switch (_taskobjective) do
 
 		[_current_tasknumber,_guardpos] call BIS_fnc_taskSetDestination;
 
-		[_village] call jey_idap;
+		[_village] call CHAB_fnc_idap;
 
 		[_guard,["<t color='#FF0000'>Tell me which town is under attack.</t>",
 		{
@@ -429,7 +442,7 @@ switch (_taskobjective) do
 
 		}, [_nearestCity], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
 		missionNamespace setVariable ["artilerry_rem",4];
-		[_village,_guard] spawn jey_artilerry;
+		[_village,_guard] spawn CHAB_fnc_artilerry;
 
 		waitUntil {
 		  _remain = missionNamespace getVariable ["artilerry_rem",4];
@@ -438,10 +451,11 @@ switch (_taskobjective) do
 		};
 
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;					
+		[_guardpos] call CHAB_fnc_endmission;					
 		
 		[ _comp ] call LARs_fnc_deleteComp;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Neutralize" :
 	{
@@ -473,7 +487,7 @@ switch (_taskobjective) do
 
 		_house = nearestObjects [ _guardpos, ["Land_i_Shed_Ind_F"], 30];
 		_thehouse = _house call BIS_fnc_selectRandom;
-		[_guard] spawn jey_roadblock_ins;
+		[_guard] spawn CHAB_fnc_roadblock_ins;
 
 		_leader setpos (_thehouse buildingpos 0); 
 
@@ -490,19 +504,21 @@ switch (_taskobjective) do
 		if(alive _leader) then 
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;					
+			[_guardpos] call CHAB_fnc_endmission;					
 			
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else 
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
 			"The IED factory is destroyed, but the leader is dead." remoteExec ["hint"];
-			[_guardpos] call jey_endmission;					
+			[_guardpos] call CHAB_fnc_endmission;					
 			
 			[ _comp ] call LARs_fnc_deleteComp;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		};
 	};
 	case "Resupply" :
@@ -547,7 +563,7 @@ switch (_taskobjective) do
 		};
 		//sleep 300;
 
-		_nearestplayer = [_officer] call jey_fnc_nearest;
+		_nearestplayer = [_officer] call CHAB_fnc_nearest;
 		if(isnull _nearestplayer) then{ _nearestplayer == officer_jeff};
 
 		_dir = [ _officer, _nearestplayer ] call BIS_fnc_dirTo;
@@ -598,7 +614,7 @@ switch (_taskobjective) do
 		_trg setTriggerStatements ["this", "", ""];
 
 		[_current_tasknumber,_base] call BIS_fnc_taskSetDestination;
-		[] spawn jey_enemycount;
+		[] spawn CHAB_fnc_enemycount;
 		waitUntil 
 		{
 			sleep 10;
@@ -623,8 +639,9 @@ switch (_taskobjective) do
 		if(alive _officer) then 
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _officer;
 			deleteVehicle _container;
 			{deleteVehicle _x} forEach units _defender1;
@@ -634,10 +651,11 @@ switch (_taskobjective) do
 		else
 		{
 			[_current_tasknumber, "FAILED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			{deleteVehicle _x} forEach units _defender1;
 			{deleteVehicle _x} forEach units _defender2;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _officer; 
 			deleteVehicle _container;
 			[ _comp ] call LARs_fnc_deleteComp;
@@ -680,7 +698,7 @@ switch (_taskobjective) do
 		_officerpoint= _landergroup addWaypoint [getMarkerPos "move1",10];
 		_officerpoint setWaypointType "MOVE";
 
-		[_lander] remoteExec ["jey_fnc_lander_action", 0, true];
+		[_lander] remoteExec ["CHAB_fnc_lander_action", 0, true];
 
 		_guardpos = getPos _officer;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
@@ -699,7 +717,7 @@ switch (_taskobjective) do
 		[_defender2, _guardpos, 100] call bis_fnc_taskPatrol;
 		sleep 500;
 
-		_nearestplayer = [_officer] call jey_fnc_nearest;
+		_nearestplayer = [_officer] call CHAB_fnc_nearest;
 		if(isnull _nearestplayer) then{ _nearestplayer == officer_jeff};
 
 		_dir = [ _officer, _nearestplayer ] call BIS_fnc_dirTo;
@@ -774,8 +792,9 @@ switch (_taskobjective) do
 		if(alive _lander) then 
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _officer;
 			deleteVehicle _lander;
 			{deleteVehicle _x} forEach units _defender1;
@@ -788,8 +807,9 @@ switch (_taskobjective) do
 		{
 			[_current_tasknumber, "FAILED",true] spawn BIS_fnc_taskSetState;
 			"The officer is dead. " remoteExec ["hint"];
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _officer;
 			deleteVehicle _lander;
 			{deleteVehicle _x} forEach units _defender1;
@@ -815,7 +835,7 @@ switch (_taskobjective) do
 		_guardgroup = createGroup civilian;
 		_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", getMarkerPos _citymarker, [], 2, "NONE"];
 		_guardpos = getpos _guard;
-		_taskItems = [_guard] call JeyR_fnc_retrieve;
+		_taskItems = [_guard] call CHAB_fnc_retrieve;
 		[_guard,5,0,0] execVM "functions\spawn_ins.sqf";
 		
 		sleep 20;
@@ -850,7 +870,7 @@ switch (_taskobjective) do
 		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", getMarkerPos _citymarker, [], 2, "NONE"];
 
 		_guardpos = getPos _guard;
-		[_guard] call jey_spawn_city_rus;
+		[_guard] call CHAB_fnc_spawn_city_rus;
 
 		sleep 5;
 		_trg = createTrigger ["EmptyDetector", _guardpos,true];
@@ -860,16 +880,17 @@ switch (_taskobjective) do
 
 		[_guard,10,2,2] execVM "functions\spawn_rus.sqf";
 		sleep 20;
-		[] spawn jey_enemycount;
+		[] spawn CHAB_fnc_enemycount;
 
 		waitUntil {
 			sleep 10;
 			triggerActivated _trg
 		};
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;
+		[_guardpos] call CHAB_fnc_endmission;
 		deleteVehicle _trg;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Minefield" :
 	{	
@@ -880,12 +901,12 @@ switch (_taskobjective) do
 
 		_citymarker = missionNamespace getVariable ["citymarker",_citypos];
 		_citymarker setMarkerPos _citypos;
-		[_current_tasknumber ,west,["Enemy forces laid mines to stop our advance against them. These mines are not just a threat to us, but also for the local population.Clear the minefields, but be careful, the enemy might be watching them.","Minefield",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["Enemy forces laid mines to stop our advance against them. These mines are not just a threat to us, but also for the local population. Clear the minefields, but be careful, the enemy might be watching them.","Minefield",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 
 		_guardgroup = createGroup resistance;
 		_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", getMarkerPos _citymarker, [], 2, "NONE"];
 		_guardpos = getPos _guard;
-		_mines = [_guard] call jey_minefield;
+		_mines = [_guard] call CHAB_fnc_minefield;
 
 		[_guard,6,0,2] execVM "functions\spawn_ins.sqf";
 		{
@@ -908,8 +929,9 @@ switch (_taskobjective) do
 		};
 
 		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call jey_endmission;
+		[_guardpos] call CHAB_fnc_endmission;
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	};
 	case "Clear out" : 
 	{
@@ -959,7 +981,7 @@ switch (_taskobjective) do
 		[_journal1, true] call ACE_captives_fnc_setSurrendered;
 		[_journal2, true] call ACE_captives_fnc_setSurrendered;
 
-		[_guard] call jey_spawn_city_ins;
+		[_guard] call CHAB_fnc_spawn_city_ins;
 
 		_trg = createTrigger ["EmptyDetector", _guardpos,true];
 		_trg setTriggerArea [600, 600, 0, false];
@@ -967,7 +989,7 @@ switch (_taskobjective) do
 		_trg setTriggerStatements ["this", "", ""];
 		[_guard,10,1,1] execVM "functions\spawn_ins.sqf";
 		sleep 30;
-		[] spawn jey_enemycount;
+		[] spawn CHAB_fnc_enemycount;
 
 		waitUntil 
 		{
@@ -993,18 +1015,20 @@ switch (_taskobjective) do
 		then
 		{
 			[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			deleteVehicle _journal1;
 			deleteVehicle _journal2;
 			deleteVehicle _trg;
 			deleteMarker _marker;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 		}
 		else
 		{
 			[_current_tasknumber, "FAILED",true] spawn BIS_fnc_taskSetState;
-			[_guardpos] call jey_endmission;
+			[_guardpos] call CHAB_fnc_endmission;
 			missionNamespace setVariable ["running_task",0];
+			missionNamespace setVariable ["TaskObjective","none"];
 			deleteVehicle _journal1;
 			deleteVehicle _journal2;
 			deleteVehicle _trg;
@@ -1014,6 +1038,7 @@ switch (_taskobjective) do
 	{ 
 		"Failed to spawn a task, try again" remoteExec["hint",0];
 		missionNamespace setVariable ["running_task",0];
+		missionNamespace setVariable ["TaskObjective","none"];
 	}; 
 };
 
@@ -1023,35 +1048,3 @@ else
 	_callerRE = remoteExecutedOwner;
   "There are still BLUFOR units in the AO" remoteExec ["hint",_callerRE];
 };
-
-};
-jey_fnc_nearest = {
-
-	_p = _this select 0;
-	_d = objNull;
-	_r = 20000;
-	{
-	       _n = _x distance _p;
-	       if((isPlayer _x) && (_n < _r)) then
-	       {
-	           _d = _x;
-	           _r = _n;
-	       };
-	} forEach playableUnits;
-	_d
-};
-
-
-/*
-	destroy artilerry base;
-
-	without compounds tasks - siege town  + bring supplies;
-
-	secure meeting;
-
-	OMG enormous IED, defuse it - wires on the laptop;
-
-	build a communication tower;
-	
-	meeting between insurgent + russian;
-*/

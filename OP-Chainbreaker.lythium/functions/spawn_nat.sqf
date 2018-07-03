@@ -1,6 +1,6 @@
 params ["_centerobj", "_groupsToSpawn", "_tanksToSpawn","_mechToSpawn"];
 
-_tanks = ["rhs_zsu234_chdkz","rhs_t72bb_chdkz"];
+_tanks = ["rhs_zsu234_chdkz","rhsgref_nat_ural_Zu23"];
 
 _cfgGroups =  configFile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhsgref_group_national_infantry";
 _groupArray = [];

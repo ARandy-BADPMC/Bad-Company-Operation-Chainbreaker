@@ -3,7 +3,7 @@ _taskIsrunning = missionNamespace getVariable ["running_task",1];
 
 if(_taskIsrunning == 0) then {
 
-_tasks = ["Eliminate","Technology","Destroy","Annihilate and Destroy","Secure","Capture","Exterminate","Neutralize","Neutralize2","Destroy Choppers"];
+_tasks = ["Attack","Retrieve","Clear out","Minefield","IDAP"];
 
 _tasks call BIS_fnc_arrayShuffle;
 _markerarray = ["Mark1","Mark1_2","Mark1_3","Mark1_4","Mark1_5","Mark1_6","Mark1_7","Mark1_8","Mark1_9","Mark1_10","Mark1_11","Mark1_12","Mark1_13","Mark1_14","Mark1_15","Mark1_16","Mark1_17","Mark1_18","Mark1_19","Mark1_20"];
@@ -59,7 +59,7 @@ switch (_taskobjective) do
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = "weap_factory";
-		[_current_tasknumber ,west,["Insurgents have set up a weaponfactory at an unknown position. Locate the factory and destroy important equipment. Also, according to one of our agents, a commander is visiting the factory. Try to capture him.","Locate and Destroy Weapon Factory",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["Insurgents have set up a Weaponfactory in an abandoned, unmarked FOB. Locate the factory and destroy important equipment. Also, according to one of our agents, a commander is visiting the factory. Try to capture him.","Locate and Destroy Weapon Factory",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
 
 		_capturegroup = createGroup resistance;
 		_guardgroup = createGroup resistance;
@@ -132,12 +132,12 @@ switch (_taskobjective) do
 
 		   !(_base isEqualTo [0,0,0])
 		};
-		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
+		_guard = _guardgroup createUnit ["rhsgref_nat_commander", _base, [], 2, "NONE"];
 
 		_guardpos = getPos _guard;
 		[_guard] spawn CHAB_fnc_roadblock_rus;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
+		[_guard,10,1,2] execVM "functions\spawn_nat.sqf";
 		
 		sleep 10;
 		_trg = createTrigger ["EmptyDetector", _guardpos,true];
@@ -161,7 +161,7 @@ switch (_taskobjective) do
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = "generator1";
-		[_current_tasknumber ,west,["We have reports, that OPFOR is transporting new, to us unknown, technology, which could change the war to their favor. Destroy it under any circumstances!","Destroy Technology",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["We have reports, that the Insurgents stole new technology from a local research lab. They are planning to sell it to the highest bidder, which could have horrible consequences. Don`t let this happen!","Destroy Technology",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 
 		_guardgroup = createGroup east;
 		waitUntil {
@@ -169,12 +169,12 @@ switch (_taskobjective) do
 
 		  !(_base isEqualTo [0,0,0])
 		};
-		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
+		_guard = _guardgroup createUnit ["rhsgref_nat_commander", _base, [], 2, "NONE"];
 
 		_guardpos = getpos _guard;
 		[_guard] spawn CHAB_fnc_roadblock_rus;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
+		[_guard,10,1,2] execVM "functions\spawn_nat.sqf";
 		
 		_destroytargets = nearestObjects [ _guardpos, ["Land_Device_assembled_F"], 30];
 		_thetarget = _destroytargets call BIS_fnc_selectRandom;
@@ -194,7 +194,7 @@ switch (_taskobjective) do
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = selectRandom ["warhead1","warhead2","destroy2"];
-		[_current_tasknumber ,west,["Intel states, that the russian forces testing new systems for thier T-90 MBT. Destroy the vehicle testbed.","Destroy",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["Last night an american Tank was stolen. You are tasked with destroying it as quickly as possible, before media notice","Destroy",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 		
 		_guardgroup = createGroup east;
 		waitUntil {
@@ -202,14 +202,14 @@ switch (_taskobjective) do
 
 		   !(_base isEqualTo [0,0,0])
 		};
-		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
+		_guard = _guardgroup createUnit ["rhsgref_nat_commander", _base, [], 2, "NONE"];
 
 		_guardpos = getpos _guard;
 		[_guard] spawn CHAB_fnc_roadblock_rus;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-		[_guard,10,2,1] execVM "functions\spawn_rus.sqf";
+		[_guard,10,2,1] execVM "functions\spawn_nat.sqf";
 
-		_thetarget = createVehicle ["rhs_t90a_tv", _guardpos, [], 1, "NONE"];
+		_thetarget = createVehicle ["rhsusf_m1a1aimd_usarmy", _guardpos, [], 1, "NONE"];
 		_thetarget lock true;
 
 		waitUntil { sleep 10; !(alive _thetarget) || (damage _thetarget > 0.8)};
@@ -224,7 +224,7 @@ switch (_taskobjective) do
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = selectRandom ["destroy_chopper","destroy_radar","destroy_tower","destroy_tower2","weap_factory"];
-		[_current_tasknumber ,west,["OPFOR set up a base and will hold it under any circumstances. Clear out the area and destroy any important equipment.","Annihilate and Destroy",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["Insurgents set up a base and will hold it under any circumstances. Clear out the area and destroy any important equipment.","Annihilate and Destroy",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 		
 		_guardgroup = createGroup east;
 		waitUntil {
@@ -232,12 +232,12 @@ switch (_taskobjective) do
 
 		   !(_base isEqualTo [0,0,0])
 		};
-		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
+		_guard = _guardgroup createUnit ["rhsgref_nat_commander", _base, [], 2, "NONE"];
 
 		_guardpos = getPos _guard;
 		[_guard] spawn CHAB_fnc_roadblock_rus;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
+		[_guard,10,1,2] execVM "functions\spawn_nat.sqf";
 		
 		_destroytargets = nearestObjects [ _guardpos, ["Land_Device_assembled_F","RHS_Mi24Vt_vvs","rhs_mi28n_vvs","Land_TTowerBig_1_F","Land_TTowerBig_2_F","rhs_p37","Land_i_Shed_Ind_F"], 30];
 		_thetarget = _destroytargets call BIS_fnc_selectRandom;
@@ -266,7 +266,7 @@ switch (_taskobjective) do
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = selectRandom ["warhead1","warhead2"];
-		[_current_tasknumber ,west,["The invaders brought a nuclear warhead to Isla Duala and are threatening, to launch it. Our task is to secure and recover it.","Secure nuclear Warhead",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["Russians are transporting new technology through to region and will stop for refueling at an old abandoned FOB. Try to secure the object.","Secure nuclear Warhead",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 		_guardgroup = createGroup east;
 		waitUntil {
