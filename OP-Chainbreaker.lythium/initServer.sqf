@@ -105,5 +105,3 @@ _terrainobjects = nearestTerrainObjects [[3996.09,2200.36],[],5];
 {hideObjectGlobal _x} foreach _terrainobjects;
 
 [] execVM "EPD\Ied_Init.sqf";
-
-[] execVM "Scripts\Init_UPSMON.sqf";
