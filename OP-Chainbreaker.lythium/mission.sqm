@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=4649;
+		nextID=4661;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={10851.419,247.39592,1310.5315};
-		dir[]={-0.65693659,-0.71060967,0.25193295};
-		up[]={-0.66349214,0.70358586,0.25444698};
-		aside[]={0.35806936,2.0023435e-008,0.93369502};
+		pos[]={12075.677,367.58679,18076.205};
+		dir[]={-0.62326872,-0.47244105,0.62319112};
+		up[]={-0.33420089,0.8812747,0.3341572};
+		aside[]={0.7070716,4.6124478e-007,0.70716095};
 	};
 };
 binarizationWanted=0;
@@ -21926,7 +21926,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=986;
+		items=988;
 		class Item0
 		{
 			dataType="Object";
@@ -59779,6 +59779,42 @@ class Mission
 			a=50;
 			b=50;
 			id=4648;
+		};
+		class Item986
+		{
+			dataType="Trigger";
+			position[]={12032.056,341.95001,18162.166};
+			angle=5.4437165;
+			class Attributes
+			{
+				condition="call{(""LandVehicle"" countType thislist  > 0) && ((getpos (thislist select 0)) select 2 < 1) " \n "}";
+				onActivation="call{_xhandle= (thislist select 0) execVM ""Scripts\repair_pad.sqf""; " \n "}";
+				sizeA=5;
+				sizeB=7.5;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isRectangle=1;
+			};
+			id=4659;
+			type="EmptyDetector";
+		};
+		class Item987
+		{
+			dataType="Trigger";
+			position[]={12453.353,341.97104,17753.184};
+			angle=5.4349728;
+			class Attributes
+			{
+				condition="call{(getPos ((list triggername) select 0) select 2) <= 1 " \n "}";
+				onActivation="call{_xhandle= (thislist select 0) execVM ""Scripts\repair_pad.sqf""; " \n "}";
+				sizeA=45;
+				sizeB=45;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isRectangle=1;
+			};
+			id=4660;
+			type="EmptyDetector";
 		};
 	};
 	class Connections

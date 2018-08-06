@@ -101,7 +101,4 @@ flares_server =
 	artilerry2 commandArtilleryFire [_markpos,getArtilleryAmmo [artilerry2] select 1,1];
 };*/
 
-_terrainobjects = nearestTerrainObjects [[3996.09,2200.36],[],5];
-{hideObjectGlobal _x} foreach _terrainobjects;
-
 [] execVM "EPD\Ied_Init.sqf";

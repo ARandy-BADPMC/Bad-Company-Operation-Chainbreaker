@@ -73,7 +73,19 @@ _tanks = [
 "B_AFV_Wheeled_01_up_cannon_F",
 "B_AFV_Wheeled_01_cannon_F",
 "B_MBT_01_arty_F",
-"rhs_t72bb_tv"
+"rhs_t72bb_tv",
+"",
+"",
+"",
+"rhs_Metis_9k115_2_vmf",
+"rhs_Kornet_9M133_2_vmf",
+"RHS_Stinger_AA_pod_D",
+"RHS_M2StaticMG_D",
+"RHS_M2StaticMG_MiniTripod_D",
+"RHS_TOW_TriPod_D",
+"RHS_MK19_TriPod_D",
+"B_Mortar_01_F",
+"B_Static_Designator_01_F"
 
 
 ];
