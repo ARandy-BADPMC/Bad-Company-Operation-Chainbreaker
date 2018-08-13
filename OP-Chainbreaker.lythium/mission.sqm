@@ -8,7 +8,11 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
+<<<<<<< HEAD
 		nextID=4656;
+=======
+		nextID=4661;
+>>>>>>> fb21453fb321b96d493e780a9f4959c14dfb7a0d
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +20,17 @@ class EditorData
 	};
 	class Camera
 	{
+<<<<<<< HEAD
 		pos[]={12142.021,366.94751,18107.906};
 		dir[]={-0.52513534,-0.84271115,-0.11864302};
 		up[]={-0.82199407,0.53836668,-0.18571205};
 		aside[]={-0.22037542,-2.6769703e-007,0.97541714};
+=======
+		pos[]={12075.677,367.58679,18076.205};
+		dir[]={-0.62326872,-0.47244105,0.62319112};
+		up[]={-0.33420089,0.8812747,0.3341572};
+		aside[]={0.7070716,4.6124478e-007,0.70716095};
+>>>>>>> fb21453fb321b96d493e780a9f4959c14dfb7a0d
 	};
 };
 binarizationWanted=0;
@@ -116,7 +127,8 @@ addons[]=
 	"rhsusf_c_ch53",
 	"PBW_German_Common",
 	"zade_boc",
-	"hlcweapons_core"
+	"hlcweapons_core",
+	"BadCo_PublicServer_Extras"
 };
 class AddonsMetaData
 {
@@ -21925,7 +21937,11 @@ class Mission
 	};
 	class Entities
 	{
+<<<<<<< HEAD
 		items=993;
+=======
+		items=988;
+>>>>>>> fb21453fb321b96d493e780a9f4959c14dfb7a0d
 		class Item0
 		{
 			dataType="Object";
@@ -59794,6 +59810,7 @@ class Mission
 		};
 		class Item986
 		{
+<<<<<<< HEAD
 			dataType="Object";
 			class PositionInfo
 			{
@@ -59904,6 +59921,41 @@ class Mission
 			};
 			id=4655;
 			type="Flag_NATO_F";
+=======
+			dataType="Trigger";
+			position[]={12032.056,341.95001,18162.166};
+			angle=5.4437165;
+			class Attributes
+			{
+				condition="call{(""LandVehicle"" countType thislist  > 0) && ((getpos (thislist select 0)) select 2 < 1) " \n "}";
+				onActivation="call{_xhandle= (thislist select 0) execVM ""Scripts\repair_pad.sqf""; " \n "}";
+				sizeA=5;
+				sizeB=7.5;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isRectangle=1;
+			};
+			id=4659;
+			type="EmptyDetector";
+		};
+		class Item987
+		{
+			dataType="Trigger";
+			position[]={12453.353,341.97104,17753.184};
+			angle=5.4349728;
+			class Attributes
+			{
+				condition="call{(getPos ((list triggername) select 0) select 2) <= 1 " \n "}";
+				onActivation="call{_xhandle= (thislist select 0) execVM ""Scripts\repair_pad.sqf""; " \n "}";
+				sizeA=45;
+				sizeB=45;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isRectangle=1;
+			};
+			id=4660;
+			type="EmptyDetector";
+>>>>>>> fb21453fb321b96d493e780a9f4959c14dfb7a0d
 		};
 	};
 	class Connections

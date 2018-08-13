@@ -27,11 +27,13 @@ if (typeOf player == "B_RangeMaster_F") then {
 	player addAction ["<t color='#FF0000'>Use Overwatch console</t>", "[_this select 1] call CHAB_fnc_random_screen;", nil, 1, false, true, "", "player distance pc5 < 5", 5, false,""];
 };
 
+SOAR = ["76561198142692277","76561198117073327","76561198086630094","76561198059583284","76561198080263934","76561198027293421"];//76561198080263934 -Geo2013 , 76561198142692277 -Alex. K., 76561198086630094 -G.Drunken, 76561198027293421- S.Werben, 76561198117073327 - A.Randy   76561198059583284 - Vittex?
+
+
 if(typeOf player == "rhsusf_airforce_jetpilot")
 	then
 	{
 	 [player] call CHAB_fnc_whitelist;
-	 player setvariable ["can_fly_jets",1];
 	};	
 if(typeOf player != "rhsusf_army_ocp_helipilot" && typeOf player != "rhsusf_airforce_jetpilot")
 	then
@@ -45,24 +47,11 @@ if(typeOf player == "rhsusf_army_ocp_helipilot")
 	{
 	 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
 	 heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
-	_SOAR = ["76561198142692277","76561198117073327","76561198086630094","76561198059583284","76561198080263934","76561198027293421"];//76561198080263934 -Geo2013 , 76561198142692277 -Alex. K., 76561198086630094 -G.Drunken, 76561198027293421- S.Werben, 76561198117073327 - A.Randy
-	 
-	 
-	 if (getplayerUID player in _SOAR) then 
-	 {
-	 player setvariable ["can_fly_helicopters",1];
-	 player setvariable ["can_fly_helicopters_attack",1];
-	 }
-	 else 
-	 {
-	 player setvariable ["can_fly_helicopters",1];
-	 player setvariable ["can_fly_helicopters_attack",0];
-	 }
 	};	
 
 //[] call CHAB_fnc_uavControls;
 
-_admins = ["76561198117073327","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044","76561197988793826"]; //76561197998271838-GOMEZ 76561197992821044-GRAND 76561197988793826-WEEDO
+_admins = ["76561198117073327","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044","76561197988793826"]; //76561197998271838-GOMEZ 76561197992821044-GRAND 76561197988793826-WEEDO  76561198117073327-Randy  76561198142692277-Alex.K   76561198017258138 - A.Mitchell 76561198002110130 K.Hunter
 _adminid = getPlayerUID player;
 if(_adminid in _admins) 
 	then 
@@ -163,4 +152,3 @@ jey_call_flares =
 	];*/
 	
 [] execVM "EPD\Ied_Init.sqf";
-
