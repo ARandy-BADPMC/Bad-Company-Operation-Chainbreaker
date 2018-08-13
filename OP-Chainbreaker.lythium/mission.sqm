@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=4649;
+		nextID=4656;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={10851.419,247.39592,1310.5315};
-		dir[]={-0.65693659,-0.71060967,0.25193295};
-		up[]={-0.66349214,0.70358586,0.25444698};
-		aside[]={0.35806936,2.0023435e-008,0.93369502};
+		pos[]={12142.021,366.94751,18107.906};
+		dir[]={-0.52513534,-0.84271115,-0.11864302};
+		up[]={-0.82199407,0.53836668,-0.18571205};
+		aside[]={-0.22037542,-2.6769703e-007,0.97541714};
 	};
 };
 binarizationWanted=0;
@@ -28,6 +28,7 @@ addons[]=
 	"A3_Structures_F_Mil_Cargo",
 	"ace_medical",
 	"rhsusf_c_troops",
+	"ace_compat_rhs_usf3",
 	"A3_Modules_F_Curator_Curator",
 	"A3_Modules_F_Multiplayer",
 	"ace_zeus",
@@ -48,7 +49,6 @@ addons[]=
 	"A3_Structures_F_Ind_FuelStation_Small",
 	"ace_refuel",
 	"rhsusf_c_weapons",
-	"ace_compat_rhs_usf3",
 	"A3_Weapons_F",
 	"ace_optics",
 	"acre_main",
@@ -146,94 +146,93 @@ class AddonsMetaData
 		};
 		class Item3
 		{
+			name="ACE3 - RHS USF Compatibility";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item4
+		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item4
+		class Item5
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item5
+		class Item6
 		{
 			className="ace_zeus";
 			name="ACE3 - Zeus";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item6
+		class Item7
 		{
 			className="A3_Structures_F_EPC";
 			name="Arma 3 Win Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item7
+		class Item8
 		{
 			className="A3_Structures_F";
 			name="Arma 3 - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item8
+		class Item9
 		{
 			className="A3_Ui_F";
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item9
+		class Item10
 		{
 			className="A3_Structures_F_Heli";
 			name="Arma 3 Helicopters - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item10
+		class Item11
 		{
 			className="A3_Structures_F_Ind";
 			name="Arma 3 - Industrial Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item11
+		class Item12
 		{
 			className="ace_cargo";
 			name="ACE3 - Cargo";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item12
+		class Item13
 		{
 			className="rhsusf_c_HEMTT_A4";
 			name="HEMMTT A4 Trucks";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
-		class Item13
+		class Item14
 		{
 			className="ace_refuel";
 			name="ACE3 - Refuel";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item14
+		class Item15
 		{
 			className="rhsusf_c_weapons";
 			name="RHSUSF Weapons & Accessories";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
-		};
-		class Item15
-		{
-			className="ace_compat_rhs_usf3";
-			name="ACE3 - RHS USF Compatibility";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
 		};
 		class Item16
 		{
@@ -21925,7 +21924,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=986;
+		items=993;
 		class Item0
 		{
 			dataType="Object";
@@ -27281,7 +27280,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={12141.742,343.30142,18176.889};
-				angles[]={0,2.6857409,0};
+				angles[]={0,2.6857476,0};
 			};
 			side="Empty";
 			flags=4;
@@ -57041,7 +57040,7 @@ class Mission
 			};
 			id=4535;
 			type="rhsusf_f22";
-			atlOffset=0.14898682;
+			atlOffset=-0.20742798;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -57105,6 +57104,7 @@ class Mission
 			};
 			id=4537;
 			type="rhsusf_f22";
+			atlOffset=-0.20700073;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -57168,6 +57168,7 @@ class Mission
 			};
 			id=4538;
 			type="rhsusf_f22";
+			atlOffset=-0.20700073;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -57427,6 +57428,7 @@ class Mission
 			};
 			id=4550;
 			type="RHS_UH60M2_d";
+			atlOffset=-0.92871094;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -57666,6 +57668,7 @@ class Mission
 			};
 			id=4562;
 			type="RHS_A10";
+			atlOffset=-0.067993164;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -57727,6 +57730,7 @@ class Mission
 			};
 			id=4563;
 			type="RHS_A10";
+			atlOffset=-0.067993164;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -57788,6 +57792,7 @@ class Mission
 			};
 			id=4564;
 			type="RHS_A10";
+			atlOffset=-0.067993164;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -57851,6 +57856,7 @@ class Mission
 			};
 			id=4565;
 			type="RHS_AH64D_wd";
+			atlOffset=-0.14733887;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -57994,6 +58000,7 @@ class Mission
 			};
 			id=4569;
 			type="RHS_AH64D_wd";
+			atlOffset=-0.14730835;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -58137,6 +58144,7 @@ class Mission
 			};
 			id=4572;
 			type="RHS_AH64D_wd";
+			atlOffset=-0.14730835;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -58318,6 +58326,7 @@ class Mission
 			};
 			id=4577;
 			type="RHS_UH60M2_d";
+			atlOffset=-0.92871094;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -58438,6 +58447,7 @@ class Mission
 			};
 			id=4579;
 			type="RHS_UH60M2_d";
+			atlOffset=-0.92871094;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -58556,6 +58566,7 @@ class Mission
 			};
 			id=4585;
 			type="rhsusf_CH53E_USMC_D";
+			atlOffset=-0.049804688;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -59158,6 +59169,7 @@ class Mission
 			};
 			id=4603;
 			type="rhsusf_CH53E_USMC_D";
+			atlOffset=-0.049804688;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -59778,6 +59790,119 @@ class Mission
 			a=50;
 			b=50;
 			id=4648;
+		};
+		class Item986
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3816.3557,675.83588,17783.584};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[this,[""Teleport to Base"",{player setPos [12129.8,18100.4,0];}]] remoteExec [""addAction"",0,true];}";
+			};
+			id=4649;
+			type="Flag_NATO_F";
+		};
+		class Item987
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5312.3579,300.89804,10735.328};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[this,[""Teleport to Base"",{player setPos [12129.8,18100.4,0];}]] remoteExec [""addAction"",0,true];}";
+			};
+			id=4650;
+			type="Flag_NATO_F";
+		};
+		class Item988
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={6882.4702,415.91458,5317.3701};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[this,[""Teleport to Base"",{player setPos [12129.8,18100.4,0];}]] remoteExec [""addAction"",0,true];}";
+			};
+			id=4651;
+			type="Flag_NATO_F";
+		};
+		class Item989
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11779.221,28.740561,2275.2739};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[this,[""Teleport to Base"",{player setPos [12129.8,18100.4,0];}]] remoteExec [""addAction"",0,true];}";
+			};
+			id=4652;
+			type="Flag_NATO_F";
+		};
+		class Item990
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={10895.965,46.57592,7579.3657};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[this,[""Teleport to Base"",{player setPos [12129.8,18100.4,0];}]] remoteExec [""addAction"",0,true];}";
+			};
+			id=4653;
+			type="Flag_NATO_F";
+			atlOffset=-3.8146973e-006;
+		};
+		class Item991
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15100.625,50.411263,4329.2817};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[this,[""Teleport to Base"",{player setPos [12129.8,18100.4,0];}]] remoteExec [""addAction"",0,true];}";
+			};
+			id=4654;
+			type="Flag_NATO_F";
+		};
+		class Item992
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16794.756,41.629234,9813.5996};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[this,[""Teleport to Base"",{player setPos [12129.8,18100.4,0];}]] remoteExec [""addAction"",0,true];}";
+			};
+			id=4655;
+			type="Flag_NATO_F";
 		};
 	};
 	class Connections
