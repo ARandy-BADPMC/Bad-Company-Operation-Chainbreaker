@@ -7,10 +7,7 @@ waitUntil {
 };
 _tanks = [
 
-"I_LT_01_AT_F",
-"I_LT_01_AA_F",
-"I_LT_01_cannon_F",
-"I_LT_01_scout_F",
+
 "B_APC_Wheeled_01_cannon_F",
 "B_APC_Tracked_01_AA_F",
 "rhs_bmp2d_msv",
@@ -52,12 +49,12 @@ _tanks = [
 "rhsusf_M1237_M2_usarmy_d",
 "rhsusf_M1237_MK19_usarmy_d",
 "rhsusf_M1117_D",
+"rhsusf_M142_usarmy_D",
 "rhsusf_m1a1aimd_usarmy",
 "rhsusf_m1a1aim_tuski_d",
 "rhsusf_m1a2sep1d_usarmy",
 "rhsusf_m1a2sep1tuskid_usarmy",
 "rhsusf_m1a2sep1tuskiid_usarmy",
-"rhsusf_M142_usarmy_D",
 "RHS_M2A2",
 "RHS_M2A2_BUSKI",
 "RHS_M2A3",
@@ -79,6 +76,10 @@ _tanks = [
 "B_AFV_Wheeled_01_cannon_F",
 "B_MBT_01_arty_F",
 "rhs_t72bb_tv",
+"I_LT_01_AT_F",
+"I_LT_01_AA_F",
+"I_LT_01_cannon_F",
+"I_LT_01_scout_F",
 "",
 "",
 "",
