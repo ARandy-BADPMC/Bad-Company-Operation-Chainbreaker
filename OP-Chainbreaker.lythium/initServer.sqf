@@ -22,12 +22,12 @@ uav_drone addEventHandler["Fuel",
 }];
 
 //uav_drone lockCameraTo [jeff, [0]];
-uav_drone flyInHeight 600;
+uav_drone flyInHeight 2500;
 
 _wp = group uav_drone addWaypoint [position jeff, 0];
 _wp setWaypointType "LOITER";
 _wp setWaypointLoiterType "CIRCLE_L";
-_wp setWaypointLoiterRadius 300;
+_wp setWaypointLoiterRadius 2500;
 
 [] spawn {
 	while {true} do {

@@ -9,7 +9,6 @@ player setVariable ["allscreens",0];
 } forEach allPlayers; 
 
 call compile preprocessfilelinenumbers "scripts\ArsenalWhitelist.sqf";
-call compile preprocessfilelinenumbers "functions\heliskinapply.sqf"; 
 
 if (didJIP) then {
 	[player,getPlayerUID player,clientOwner] remoteExecCall ["CHAB_fnc_jipcam",0,false];
