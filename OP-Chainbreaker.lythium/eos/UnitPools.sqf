@@ -78,14 +78,14 @@ _tempArray=[];
 	_InfPool=	["rhsgref_nat_rifleman","rhsgref_nat_rifleman_akms","rhsgref_nat_militiaman_kar98k","rhsgref_nat_rifleman_m92","rhsgref_nat_grenadier","rhsgref_nat_warlord","rhsgref_nat_commander","rhsgref_nat_machinegunner","rhsgref_nat_grenadier_rpg","rhsgref_nat_specialist_aa","rhsgref_nat_hunter","rhsgref_nat_scout","rhsgref_nat_saboteur","rhsgref_nat_medic"];	
 	_ArmPool=	["rhsgref_nat_btr70"];
 	_MotPool=	["rhsgref_nat_uaz_ags","rhsgref_nat_uaz_dshkm","rhsgref_nat_uaz_open","rhsgref_nat_uaz_spg9","rhsgref_nat_ural_Zu23"];
-	_ACHPool=	[];
-	_CHPool=	[];
+	_ACHPool=	["rhsgref_cdf_Mi24D","rhsgref_cdf_Mi24D_early","rhsgref_cdf_Mi35","rhsgref_mi24g_CAS"];
+	_CHPool=	["rhsgref_cdf_reg_Mi8amt","rhsgref_cdf_reg_Mi17Sh"];
 	_uavPool=	[];
-	_stPool=	["rhsgref_nat_Igla_AA_pod","rhsgref_nat_AGS30_TriPod","rhsgref_nat_DSHKM","rhsgref_nat_DSHKM_Mini_TriPod"];
+	_stPool=	["rhsgref_nat_Igla_AA_pod","rhsgref_nat_AGS30_TriPod","rhsgref_nat_DSHKM","rhsgref_nat_DSHKM_Mini_TriPod","rhsgref_nat_d30_at","rhsgref_nat_2b14"];
 	_shipPool=	[];
 	_diverPool=	[];
 	_crewPool=	["rhsgref_nat_crew"];
-	_heliCrew=	[];
+	_heliCrew=	["rhsgref_cdf_air_pilot","rhsgref_cdf_air_pilot"];
 	};
 	
 // ADD CLASSNAMES 	

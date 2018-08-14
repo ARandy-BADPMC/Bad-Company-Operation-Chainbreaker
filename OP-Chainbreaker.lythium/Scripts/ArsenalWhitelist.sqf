@@ -2676,6 +2676,15 @@ arsenalitems =
 "uk3cb_underbarrel_acc_fgrip",
 "uk3cb_underbarrel_acc_fgrip_bipod",
 "uk3cb_underbarrel_acc_grippod",
-"uk3cb_underbarrel_acc_bipod"
+"uk3cb_underbarrel_acc_bipod",
+
+"UK3CB_BAF_L119A1_CQB",
+"UK3CB_BAF_L115A3",
+"UK3CB_BAF_338_5Rnd",
+"UK3CB_BAF_338_5Rnd_Tracer",
+"UK3CB_BAF_L118A1_Covert_BL",
+"UK3CB_BAF_762_L42A1_10Rnd",
+"UK3CB_BAF_762_L42A1_10Rnd_T",
+"uk3cb_baf_silencer_l115a3"
 
 ];
