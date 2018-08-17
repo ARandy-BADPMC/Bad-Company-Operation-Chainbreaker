@@ -22,72 +22,7 @@ missionNamespace setVariable ["TaskObjective",_taskobjective];
 switch (_taskobjective) do 
 { 
 
-	case "Destroy Artillery" :
-	{
-		missionNamespace setVariable ["running_task",1];
-		_taskcomp = "artilerry2";
-		[_current_tasknumber ,west,["Insurgents for thier hands on old soviet artillery pieces. Destroy them before the can inflict any damage!","Destroy Artillery",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 
-		_guardgroup = createGroup resistance;
-		waitUntil {
-		  _base = [getMarkerPos _current_task, 400, 2000, 20, 0, 0.5, 0, ["base_marker"], [getMarkerPos _current_task,getMarkerPos _current_task]] call BIS_fnc_findSafePos;
-
-		  !(_base isEqualTo [0,0,0])
-		};
-		_guard = _guardgroup createUnit ["rhsgref_nat_warlord", _base, [], 2, "NONE"];
-
-		_guardpos = getpos _guard;
-		[_guard] spawn CHAB_fnc_roadblock_rus;
-		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-		[_guard,10,1,2] execVM "functions\spawn_nat.sqf";
-		
-		_destroytargets = nearestObjects [ _guardpos, ["RHS_BM21_VMF_01"], 30];
-		_thetarget = _destroytargets call BIS_fnc_selectRandom;
-
-		waitUntil { 
-			sleep 10; 
-			!(alive _thetarget) || (damage _thetarget > 0.8)
-		};
-
-		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call CHAB_fnc_endmission;
-		[ _comp ] call LARs_fnc_deleteComp;
-		missionNamespace setVariable ["running_task",0];
-		missionNamespace setVariable ["TaskObjective","none"];
-	};	
-	case "Destroy Choppers" :
-	{
-		missionNamespace setVariable ["running_task",1];
-		_taskcomp = "destroy_chopper";
-		[_current_tasknumber ,west,["Russian airsupport is grounded at the moment. Use this to your advantage and attack thier airsupport.","Destroy Choppers",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
-
-		_guardgroup = createGroup east;
-		waitUntil {
-		  _base = [getMarkerPos _current_task, 400, 2000, 20, 0, 0.5, 0, ["base_marker"], [getMarkerPos _current_task,getMarkerPos _current_task]] call BIS_fnc_findSafePos;
-
-		  !(_base isEqualTo [0,0,0])
-		};
-		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", _base, [], 2, "NONE"];
-
-		_guardpos = getpos _guard;
-		[_guard] spawn CHAB_fnc_roadblock_rus;
-		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-		[_guard,10,1,2] execVM "functions\spawn_rus.sqf";
-		
-		_destroytargets = nearestObjects [ _guardpos, ["RHS_Mi24Vt_vvs","rhs_mi28n_vvs"], 30];
-		_thetarget = _destroytargets call BIS_fnc_selectRandom;
-
-		waitUntil { 
-			sleep 10; 
-			!(alive _thetarget) || (damage _thetarget > 0.8)
-		};
-
-		[_current_tasknumber, "SUCCEEDED",true] spawn BIS_fnc_taskSetState;
-		[_guardpos] call CHAB_fnc_endmission;
-		[ _comp ] call LARs_fnc_deleteComp;
-		missionNamespace setVariable ["running_task",0];
-		missionNamespace setVariable ["TaskObjective","none"];
-	};
 	case "Neutralize2" :
 	{
 		missionNamespace setVariable ["running_task",1];
