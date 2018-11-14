@@ -532,6 +532,10 @@ class ScenarioData
 		minPlayers=1;
 		maxPlayers=30;
 	};
+	wreckManagerMode=1;
+	wreckRemovalMaxTime=120.00001;
+	corpseManagerMode=1;
+	corpseRemovalMaxTime=120.00001;
 };
 class CustomAttributes
 {
@@ -6392,7 +6396,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=1;
+														value=0;
 													};
 												};
 												class Item1
