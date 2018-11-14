@@ -5,8 +5,9 @@ missionNamespace setVariable ["running_task",0];
 missionNamespace setVariable ["zeus_enabled",0];
 missionNamespace setVariable ["current_task","asd"];
 missionNamespace setVariable ["TaskObjective","none"];
-missionNamespace setVariable ["uavTarget",jeff];
+//missionNamespace setVariable ["uavTarget",jeff];
 
+/*
 uav_drone lockDriver true; 
 uav_drone enableUAVWaypoints false;
 
@@ -62,14 +63,16 @@ _wp setWaypointLoiterRadius 2500;
 			sleep 60;
 		};
 	};
-};
-
+};*/
+/*
 ["player_camera_delete", "onPlayerDisconnected", {
 
 [_uid] remoteExecCall ["CHAB_fnc_delete_cam",-2,false];
 
-}] call BIS_fnc_addStackedEventHandler;
+}] call BIS_fnc_addStackedEventHandler;*/
 
+// removed UAV 
+/*
 officer_jeff allowDamage false;
 [officer_jeff, "LISTEN_BRIEFING", "NONE"] call BIS_fnc_ambientAnim;
 
@@ -77,12 +80,17 @@ officer_jeff allowDamage false;
 tank_spawner allowDamage false;
 
 heli_jeff allowDamage false;
-[heli_jeff, "LISTEN_BRIEFING", "Light"] call BIS_fnc_ambientAnim; 
+[heli_jeff, "LISTEN_BRIEFING", "Light"] call BIS_fnc_ambientAnim; */
+
+{
+ 	_x allowDamage false;
+	[_x, "LISTEN_BRIEFING", "Light"] call BIS_fnc_ambientAnim;  //better performance. 
+} forEach [officer_jeff,tank_spawner,heli_jeff];
 
 _citymarker = createMarker ["citymarker",  getpos officer_jeff];
 missionNamespace setVariable ["citymarker",_citymarker];
 
-fnc_cleanup = compileFinal preprocessFileLineNumbers "cleanup.sqf";
+/*fnc_cleanup = compileFinal preprocessFileLineNumbers "cleanup.sqf";
 
 [] spawn {
 
@@ -92,7 +100,7 @@ fnc_cleanup = compileFinal preprocessFileLineNumbers "cleanup.sqf";
 
 	sleep 1200;
 	};
-};
+};*/ //Alex said garbage collector is already enabled, then this should be removed
 /*
 flares_server =
 {

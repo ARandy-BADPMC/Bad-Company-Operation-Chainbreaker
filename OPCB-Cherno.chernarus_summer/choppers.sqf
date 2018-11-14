@@ -1,3 +1,5 @@
+// where is this script used anymore?
+
 checkpilot = 
 {
   _vehicle = _this select 0;

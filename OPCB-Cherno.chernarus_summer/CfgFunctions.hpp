@@ -290,9 +290,9 @@ class chainbreaker
 		{
 			file = "functions\playerreq\whitelist.sqf";
 		};
-		class adminrespawn
+		/*class adminrespawn
 		{
-			file = "functions\playerreq\adminrespawn.sqf";
-		};
+			file = "functions\playerreq\adminrespawn.sqf"; obsolete
+		};*/
 	};
 };

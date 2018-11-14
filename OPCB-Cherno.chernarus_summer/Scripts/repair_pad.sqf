@@ -1,12 +1,12 @@
-_object = _this;
+//_object = _this;  //unused variable handle, "_this" can be used in this script wherever you want. Let's save CPU power
 
-_type = typeOf _object;
+_type = typeOf _this;
 
-x_reload_time_factor = 1;
+x_reload_time_factor = 1; // does this have to be global?
 
-_object setVehicleAmmo 1;
+_this setVehicleAmmo 1;
 
-_object vehicleChat format ["Servicing %1... Please stand by...", _type];
+_this vehicleChat format ["Servicing %1... Please stand by...", _type];
 
 _magazines = getArray(configFile >> "CfgVehicles" >> _type >> "magazines");
 
@@ -14,14 +14,14 @@ if (count _magazines > 0) then {
 	_removed = [];
 	{
 		if (!(_x in _removed)) then {
-			_object removeMagazines _x;
+			_this removeMagazines _x;
 			_removed = _removed + [_x];
 		};
 	} forEach _magazines;
 	{
-		_object vehicleChat format ["Reloading %1", _x];
+		_this vehicleChat format ["Reloading %1", _x];
 		sleep x_reload_time_factor;
-		_object addMagazine _x;
+		_this addMagazine _x;
 	} forEach _magazines;
 };
 
@@ -35,14 +35,14 @@ if (_count > 0) then {
 		_removed = [];
 		{
 			if (!(_x in _removed)) then {
-				_object removeMagazines _x;
+				_this removeMagazines _x;
 				_removed = _removed + [_x];
 			};
 		} forEach _magazines;
 		{
-			_object vehicleChat format ["Reloading %1", _x];
+			_this vehicleChat format ["Reloading %1", _x];
 			sleep x_reload_time_factor;
-			_object addMagazine _x;
+			_this addMagazine _x;
 			sleep x_reload_time_factor;
 		} forEach _magazines;
 		_count_other = count (_config >> "Turrets");
@@ -53,33 +53,33 @@ if (_count > 0) then {
 				_removed = [];
 				{
 					if (!(_x in _removed)) then {
-						_object removeMagazines _x;
+						_this removeMagazines _x;
 						_removed = _removed + [_x];
 					};
 				} forEach _magazines;
 				{
-					_object vehicleChat format ["Reloading %1", _x]; 
+					_this vehicleChat format ["Reloading %1", _x]; 
 					sleep x_reload_time_factor;
-					_object addMagazine _x;
+					_this addMagazine _x;
 					sleep x_reload_time_factor;
 				} forEach _magazines;
 			};
 		};
 	};
 };
-_object setVehicleAmmo 1;	// Reload turrets / drivers magazine
+_this setVehicleAmmo 1;	// Reload turrets / drivers magazine
 
 sleep x_reload_time_factor;
-_object vehicleChat "Repairing...";
-_object setDamage 0;
+_this vehicleChat "Repairing...";
+_this setDamage 0;
 sleep x_reload_time_factor;
-_object vehicleChat "Refueling...";
-while {fuel _object < 0.99} do {
-	//_object setFuel ((fuel _vehicle + 0.1) min 1);
-	_object setFuel 1;
+_this vehicleChat "Refueling...";
+while {fuel _this < 0.99} do {
+	//_this setFuel ((fuel _vehicle + 0.1) min 1);
+	_this setFuel 1;
 	sleep 0.01;
 };
 sleep x_reload_time_factor;
-_object vehicleChat format ["%1 is ready...", _type];
+_this vehicleChat format ["%1 is ready...", _type];
 
-if (true) exitWith {};
+if (true) exitWith {}; //and if not true? then what does this do?

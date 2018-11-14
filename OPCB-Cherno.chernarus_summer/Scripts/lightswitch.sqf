@@ -1,4 +1,4 @@
-base_lights_on = 
+base_lights_on = //where is this script called?
 {
 light1 sethit ["light_1_hitpoint",0];
 light1 sethit ["light_2_hitpoint",0];

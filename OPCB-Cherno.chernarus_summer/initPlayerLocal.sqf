@@ -1,47 +1,55 @@
 waitUntil {!isNull player && player == player};
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups; // Initializes the player/client side Dynamic Groups framework
 	
-player setVariable ["cams",[]];
+/*player setVariable ["cams",[]];
 player setVariable ["allscreens",0];
 
 {
 	[_x,(getPlayerUID _x),player] call CHAB_fnc_newcam;
-} forEach allPlayers; 
+} forEach allPlayers; */
 
 call compile preprocessfilelinenumbers "scripts\ArsenalWhitelist.sqf";
 
-if (didJIP) then {
+/*if (didJIP) then {
 	[player,getPlayerUID player,clientOwner] remoteExecCall ["CHAB_fnc_jipcam",0,false];
-};
+};*/
 
 player addMPEventHandler ["MPRespawn", 
 {
-	_this execVM "scripts\spawnProtection.sqf";
+	//_this execVM "scripts\spawnProtection.sqf"; obsolete, less vram usage this way
+	player allowDamage false;
+	titleText ["\n\nSpawn Protection is ACTIVATED","PLAIN DOWN"];
+	titleFadeOut 5;
+	sleep 60;
+	titleText ["\n\nSpawn Protection is DEACTIVATED","PLAIN DOWN"];
+	titleFadeOut 5;
+	player allowDamage true;
 
-	[(getPlayerUID player),player] remoteExecCall ["CHAB_fnc_reassign_cam",-2,false];
+	//[(getPlayerUID player),player] remoteExecCall ["CHAB_fnc_reassign_cam",-2,false];
 }];
 
 jeff addAction ["<t color='#FF0000'>Request a Task</t>", "remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
-if (typeOf player == "B_RangeMaster_F") then {
+/*if (typeOf player == "B_RangeMaster_F") then {
 	player addAction ["<t color='#FF0000'>Use Overwatch console</t>", "[_this select 1] call CHAB_fnc_random_screen;", nil, 1, false, true, "", "player distance pc5 < 5", 5, false,""];
-};
+};*/
 
-SOAR = ["76561198142692277","76561198117073327","76561198086630094","76561198059583284","76561198080263934","76561198027293421"];//76561198080263934 -Geo2013 , 76561198142692277 -Alex. K., 76561198086630094 -G.Drunken, 76561198027293421- S.Werben, 76561198117073327 - A.Randy   76561198059583284 - Vittex?
-
+//SOAR = ["76561198142692277","76561198117073327","76561198086630094","76561198059583284","76561198080263934","76561198027293421"];//76561198080263934 -Geo2013 , 76561198142692277 -Alex. K., 76561198086630094 -G.Drunken, 76561198027293421- S.Werben, 76561198117073327 - A.Randy   76561198059583284 - Vittex?
+//Soar moved to whitelist script, avoid using global variables please.
 
 if(typeOf player == "rhsusf_airforce_jetpilot")
 	then
 	{
-	 [player] call CHAB_fnc_whitelist;
+		[player] call CHAB_fnc_whitelist;
 	};	
-if(typeOf player != "rhsusf_army_ocp_helipilot" && typeOf player != "rhsusf_airforce_jetpilot")
+//if(typeOf player != "rhsusf_army_ocp_helipilot" && typeOf player != "rhsusf_airforce_jetpilot") obsolete
+if(!(typeOf player in ["rhsusf_army_ocp_helipilot","rhsusf_airforce_jetpilot"])) //does the same with less comparisons
 	then
 	{
 	 	tank_spawner addAction ["<t color='#FF0000'>Armor Spawner</t>","[] spawn CHAB_fnc_spawn_tank;",nil, 1, false, true, "", "true", 10, false,""];   
 		tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
 	};	
 
-if(typeOf player == "rhsusf_army_ocp_helipilot")
+if(typeOf player == "rhsusf_army_ocp_helipilot") //Helicopters are not whitelisted anymore?
 	then
 	{
 	 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
@@ -51,14 +59,21 @@ if(typeOf player == "rhsusf_army_ocp_helipilot")
 //[] call CHAB_fnc_uavControls;
 
 _admins = ["76561198117073327","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044","76561197988793826"]; //76561197998271838-GOMEZ 76561197992821044-GRAND 76561197988793826-WEEDO  76561198117073327-Randy  76561198142692277-Alex.K   76561198017258138 - A.Mitchell 76561198002110130 K.Hunter
-_adminid = getPlayerUID player;
-if(_adminid in _admins) 
+//_adminid = getPlayerUID player; obsolete
+if(getPlayerUID player in _admins) 
 	then 
 	{
 		player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
-		player addMPEventHandler ["MPRespawn", {_this call CHAB_fnc_adminrespawn}];
-	};
+		player addMPEventHandler ["MPRespawn", {
+		//_this call CHAB_fnc_adminrespawn obsolete
+		//_player = _this select 0;
+		//_corpse = _this select 1;
 
+		player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
+
+		}];
+	};
+/*
 campfire addAction ["<t color='#FF0000'>Rest</t>", {
 	_playerke =  _this select 1;
     _playerke playAction "SitDown";
@@ -66,7 +81,7 @@ campfire addAction ["<t color='#FF0000'>Rest</t>", {
 		_playerke setVariable [_x, nil];
 	} forEach ["ace_advanced_fatigue_ae1reserve", "ace_advanced_fatigue_ae2reserve", "ace_advanced_fatigue_anreserve", "ace_advanced_fatigue_anfatigue", "ace_advanced_fatigue_muscledamage"];
 
-}, nil, 1, false, true, "", "true", 10, false,""];
+}, nil, 1, false, true, "", "true", 10, false,""];*/ // doesn't work anymore should be removed.
 
 Helicopter_loadouts = 
 [
@@ -111,8 +126,7 @@ Helicopter_loadouts =
 	"B_T_VTOL_01_vehicle_F",["Unarmed",[]],
 	"B_T_VTOL_01_infantry_F",["Unarmed",[]],
 	"B_UAV_02_dynamicLoadout_f", ["Vhikr",["PylonRack_3Rnd_LG_scalpel","PylonRack_3Rnd_LG_scalpel"],"Hellfire",["PylonRack_3Rnd_ACE_Hellfire_AGM114N","PylonRack_3Rnd_ACE_Hellfire_AGM114K"], "GBU-12", ["PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F"]]
-
-];
+]; // This is a huge global array, this should be fixed ASAP
 
 //[player,"myArtillery_jey"] call BIS_fnc_addCommMenuItem; 
 /*
