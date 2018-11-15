@@ -25,7 +25,7 @@
 	  	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
 
 	  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
-		[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\idap_speak.sqf", [_village], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
+		[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
 	  
 	  };
 	}
@@ -53,7 +53,7 @@
 			  	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
 
 			  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
-				[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\idap_speak.sqf", [_village], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
+				[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
 			};
 		};
 	}

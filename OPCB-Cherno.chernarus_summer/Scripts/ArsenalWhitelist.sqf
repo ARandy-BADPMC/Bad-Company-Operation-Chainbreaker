@@ -1,6 +1,5 @@
 arsenalitems = 
 [
-//This is a huge global array, probably more than 1.0s CPU time heavy, (an if statement is less than 0.000001), can we make this array local?
 "rhs_weap_ak103_gp25_npz",
 "rhs_weap_ak103_gp25",
 "rhs_weap_ak103",
@@ -2768,5 +2767,4 @@ arsenalitems =
 "rhsusf_acc_m24_silencer_d",
 "rhsusf_acc_m24_silencer_wd",
 "rhsusf_5Rnd_762x51_m993_Mag"
-
 ];

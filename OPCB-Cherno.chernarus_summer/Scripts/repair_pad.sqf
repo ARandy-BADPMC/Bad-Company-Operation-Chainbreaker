@@ -1,8 +1,7 @@
-//_object = _this;  //unused variable handle, "_this" can be used in this script wherever you want. Let's save CPU power
 
 _type = typeOf _this;
 
-x_reload_time_factor = 1; // does this have to be global?
+x_reload_time_factor = 1; // does this have to be global??
 
 _this setVehicleAmmo 1;
 

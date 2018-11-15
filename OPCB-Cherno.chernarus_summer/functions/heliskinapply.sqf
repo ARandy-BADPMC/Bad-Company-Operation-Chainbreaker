@@ -1,4 +1,5 @@
 skinapplier = {
+//please do something with this script, 
 params ["_helicopter"];
 //aircraft
 if (typeOf _helicopter == "I_Plane_Fighter_04_F") then { _helicopter setObjectTextureGlobal [0,"\Gripen_textures\Gripen_Skin1.paa"]; _helicopter setObjectTextureGlobal [1,"\Gripen_textures\Grippen_Skin2.paa"];};

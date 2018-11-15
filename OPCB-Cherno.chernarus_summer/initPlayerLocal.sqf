@@ -1,22 +1,10 @@
 waitUntil {!isNull player && player == player};
-["InitializePlayer", [player]] call BIS_fnc_dynamicGroups; // Initializes the player/client side Dynamic Groups framework
-	
-/*player setVariable ["cams",[]];
-player setVariable ["allscreens",0];
+["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
-{
-	[_x,(getPlayerUID _x),player] call CHAB_fnc_newcam;
-} forEach allPlayers; */
-
-call compile preprocessfilelinenumbers "scripts\ArsenalWhitelist.sqf";
-
-/*if (didJIP) then {
-	[player,getPlayerUID player,clientOwner] remoteExecCall ["CHAB_fnc_jipcam",0,false];
-};*/
+call compileFinal preprocessfilelinenumbers "scripts\ArsenalWhitelist.sqf"; //more secure
 
 player addMPEventHandler ["MPRespawn", 
 {
-	//_this execVM "scripts\spawnProtection.sqf"; obsolete, less vram usage this way
 	player allowDamage false;
 	titleText ["\n\nSpawn Protection is ACTIVATED","PLAIN DOWN"];
 	titleFadeOut 5;
@@ -24,64 +12,42 @@ player addMPEventHandler ["MPRespawn",
 	titleText ["\n\nSpawn Protection is DEACTIVATED","PLAIN DOWN"];
 	titleFadeOut 5;
 	player allowDamage true;
-
-	//[(getPlayerUID player),player] remoteExecCall ["CHAB_fnc_reassign_cam",-2,false];
 }];
 
 jeff addAction ["<t color='#FF0000'>Request a Task</t>", "remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
-/*if (typeOf player == "B_RangeMaster_F") then {
-	player addAction ["<t color='#FF0000'>Use Overwatch console</t>", "[_this select 1] call CHAB_fnc_random_screen;", nil, 1, false, true, "", "player distance pc5 < 5", 5, false,""];
-};*/
 
-//SOAR = ["76561198142692277","76561198117073327","76561198086630094","76561198059583284","76561198080263934","76561198027293421"];//76561198080263934 -Geo2013 , 76561198142692277 -Alex. K., 76561198086630094 -G.Drunken, 76561198027293421- S.Werben, 76561198117073327 - A.Randy   76561198059583284 - Vittex?
-//Soar moved to whitelist script, avoid using global variables please.
-
-if(typeOf player == "rhsusf_airforce_jetpilot")
-	then
-	{
-		[player] call CHAB_fnc_whitelist;
-	};	
-//if(typeOf player != "rhsusf_army_ocp_helipilot" && typeOf player != "rhsusf_airforce_jetpilot") obsolete
-if(!(typeOf player in ["rhsusf_army_ocp_helipilot","rhsusf_airforce_jetpilot"])) //does the same with less comparisons
-	then
-	{
+switch (typeOf player) do {  //instead of casking for comparisons 5 times, this only does it once. far more advanced. 
+	case "rhsusf_airforce_jetpilot" : {  [player] call CHAB_fnc_whitelist; }; 
+	case "rhsusf_army_ocp_helipilot" : {  
+		heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
+		heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
+	}; 
+	default {
 	 	tank_spawner addAction ["<t color='#FF0000'>Armor Spawner</t>","[] spawn CHAB_fnc_spawn_tank;",nil, 1, false, true, "", "true", 10, false,""];   
 		tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
-	};	
-
-if(typeOf player == "rhsusf_army_ocp_helipilot") //Helicopters are not whitelisted anymore?
-	then
-	{
-	 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
-	 heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
-	};	
-
-//[] call CHAB_fnc_uavControls;
+	}; 
+};
 
 _admins = ["76561198117073327","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044","76561197988793826"]; //76561197998271838-GOMEZ 76561197992821044-GRAND 76561197988793826-WEEDO  76561198117073327-Randy  76561198142692277-Alex.K   76561198017258138 - A.Mitchell 76561198002110130 K.Hunter
-//_adminid = getPlayerUID player; obsolete
 if(getPlayerUID player in _admins) 
 	then 
 	{
 		player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
 		player addMPEventHandler ["MPRespawn", {
-		//_this call CHAB_fnc_adminrespawn obsolete
-		//_player = _this select 0;
-		//_corpse = _this select 1;
-
-		player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
-
+			player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
 		}];
 	};
-/*
-campfire addAction ["<t color='#FF0000'>Rest</t>", {
-	_playerke =  _this select 1;
-    _playerke playAction "SitDown";
-	{
-		_playerke setVariable [_x, nil];
-	} forEach ["ace_advanced_fatigue_ae1reserve", "ace_advanced_fatigue_ae2reserve", "ace_advanced_fatigue_anreserve", "ace_advanced_fatigue_anfatigue", "ace_advanced_fatigue_muscledamage"];
 
-}, nil, 1, false, true, "", "true", 10, false,""];*/ // doesn't work anymore should be removed.
+jeff addaction ["Lights on", {
+	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
+	_lamp sethit ["light_1_hitpoint",0];
+	_lamp sethit ["light_2_hitpoint",0];
+}];
+jeff addaction ["Lights off", {
+	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
+	_lamp sethit ["light_1_hitpoint",1];
+	_lamp sethit ["light_2_hitpoint",1];	
+}];
 
 Helicopter_loadouts = 
 [
@@ -126,42 +92,4 @@ Helicopter_loadouts =
 	"B_T_VTOL_01_vehicle_F",["Unarmed",[]],
 	"B_T_VTOL_01_infantry_F",["Unarmed",[]],
 	"B_UAV_02_dynamicLoadout_f", ["Vhikr",["PylonRack_3Rnd_LG_scalpel","PylonRack_3Rnd_LG_scalpel"],"Hellfire",["PylonRack_3Rnd_ACE_Hellfire_AGM114N","PylonRack_3Rnd_ACE_Hellfire_AGM114K"], "GBU-12", ["PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F"]]
-]; // This is a huge global array, this should be fixed ASAP
-
-//[player,"myArtillery_jey"] call BIS_fnc_addCommMenuItem; 
-/*
-jey_call_flares =
-{
-	_targetinrange = getPos _this inRangeOfArtillery [[artilerry1], (getArtilleryAmmo [artilerry1] select 1)];
-	if (_targetinrange) then {
-	  hint "Shells are on the way!";
-	  [_this] remoteExec ["flares_server",2];
-	  
-	} else { hint "Out of artilerry range!";};
-};
-
-  MENU_COMMS_1 =
-	[
-		// First array: "User menu" This will be displayed under the menu, bool value: has Input Focus or not.
-		// Note that as to version Arma2 1.05, if the bool value set to false, Custom Icons will not be displayed.
-		["Support Menu",false],
-		// Syntax and semantics for following array elements:
-
-		// ["Title_in_menu", [assigned_key], "Submenu_name", CMD, [["expression",script-string]], "isVisible", "isActive" <, optional icon path> ]
-		// Title_in_menu: string that will be displayed for the player
-		// Assigned_key: 0 - no key, 1 - escape key, 2 - key-1, 3 - key-2, ... , 10 - key-9, 11 - key-0, 12 and up... the whole keyboard
-		// Submenu_name: User menu name string (eg "#USER:MY_SUBMENU_NAME" ), "" for script to execute.
-		// CMD: (for main menu:) CMD_SEPARATOR -1; CMD_NOTHING -2; CMD_HIDE_MENU -3; CMD_BACK -4; (for custom menu:) CMD_EXECUTE -5
-		// script-string: command to be executed on activation.  (_target=CursorTarget,_pos=CursorPos) 
-		// isVisible - Boolean 1 or 0 for yes or no, - or optional argument string, eg: "CursorOnGround"
-		// isActive - Boolean 1 or 0 for yes or no - if item is not active, it appears gray.
-		// optional icon path: The path to the texture of the cursor, that should be used on this menuitem.
-		
-
-		["Call Flares", [2], "", -5, [["expression", "player spawn jey_call_flares;"]], "1", "1", "\A3\ui_f\data\IGUI\Cfg\Cursors\iconcursorsupport_ca.paa"]
-		//["Kill Target", [3], "", -5, [["expression", "_target SetDamage 1;"]], "1", "1", "\A3\ui_f\data\IGUI\Cfg\Cursors\iconcursorsupport_ca.paa"],
-		//["Disabled", [4], "", -5, [["expression", ""]], "1", "0"],
-		//["Submenu", [5], "#USER:MENU_COMMS_2", -5, [], "1", "1"]
-	];*/
-	
-//[] execVM "EPD\Ied_Init.sqf";
+]; 

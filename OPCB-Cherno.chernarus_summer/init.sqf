@@ -13,9 +13,6 @@ Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [
 
 [] execVM "VCOMAI\init.sqf";
 
-//EOS SYSTEM
-//[]execVM "eos\OpenMe.sqf";
-
 RHSDecalsOff = true;
 
 //try to safely resolve 'stuck in loading screen bug' of Arma 3... thank you again BIS

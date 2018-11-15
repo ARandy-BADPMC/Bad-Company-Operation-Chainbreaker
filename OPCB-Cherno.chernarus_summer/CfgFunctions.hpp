@@ -23,19 +23,19 @@ class chainbreaker
 		};
 		class roadblock_rus
 		{
-			file = "functions\roadblock.sqf";
+			file = "functions\missions\roadblock.sqf";
 		};
 		class roadblock_ins
 		{
-			file = "functions\roadblock_ins.sqf";
+			file = "functions\missions\roadblock_ins.sqf";
 		};
 		class spawn_city_rus
 		{
-			file = "functions\spawn_city_rus.sqf";
+			file = "functions\missions\spawn_city_rus.sqf";
 		};
 		class spawn_city_ins 
 		{
-			file = "functions\spawn_city_ins.sqf";
+			file = "functions\missions\spawn_city_ins.sqf";
 		};
 		class enemycount  
 		{
@@ -43,59 +43,20 @@ class chainbreaker
 		};
 		class minefield  
 		{
-			file = "functions\minefield.sqf";
+			file = "functions\missions\minefield.sqf";
 		};
 		class idap  
 		{
-			file = "functions\idap.sqf";
+			file = "functions\missions\idap.sqf";
 		};
 		class fire_artilerry  
 		{
-			file = "functions\fire_artilerry.sqf";
+			file = "functions\missions\fire_artilerry.sqf";
 		};
 		class artilerry  
 		{
-			file = "functions\artilerry.sqf";
+			file = "functions\missions\artilerry.sqf";
 		};
-		class retieve
-		{
-			file = "functions\retrieve.sqf";
-		};
-	};
-	class overwatch
-	{
-		class random_screen
-		{
-			file = "functions\overwatch\random_screen.sqf";
-		}; 
-		class newcam
-		{
-			file = "functions\overwatch\newcam.sqf";
-		}; 
-		class delete_cam
-		{
-			file = "functions\overwatch\delete_cam.sqf";
-		}; 
-		class jipcam
-		{
-			file = "functions\overwatch\jipcam.sqf";
-		}; 
-		class reassign_cam
-		{
-			file = "functions\overwatch\reassign_cam.sqf";
-		}; 
-		class overwatch_watch
-		{
-			file = "functions\overwatch\overwatch_watch.sqf";
-		}; 
-		class overwatch_project
-		{
-			file = "functions\overwatch\overwatch_project.sqf";
-		}; 
-		class overwatch_show
-		{
-			file = "functions\overwatch\overwatch_show.sqf";
-		}; 
 	};
 	class miscellaneous
 	{
@@ -110,22 +71,6 @@ class chainbreaker
 		class lander
 		{
 			file = "functions\miscellaneous\lander.sqf";
-		};
-		class uavControls
-		{
-			file = "functions\miscellaneous\uavControls.sqf";
-		};
-		class sendDrone
-		{
-			file = "functions\miscellaneous\sendDrone.sqf";
-		};
-		class uavReassignCam
-		{
-			file = "functions\miscellaneous\uavReassignCam.sqf";
-		};
-		class overwatch_uav_cam
-		{
-			file = "functions\miscellaneous\overwatch_uav_cam.sqf";
 		};
 	};
 	class choppers
@@ -290,9 +235,5 @@ class chainbreaker
 		{
 			file = "functions\playerreq\whitelist.sqf";
 		};
-		/*class adminrespawn
-		{
-			file = "functions\playerreq\adminrespawn.sqf"; obsolete
-		};*/
 	};
 };
