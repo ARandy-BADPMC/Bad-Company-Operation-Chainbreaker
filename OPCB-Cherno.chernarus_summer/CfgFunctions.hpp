@@ -72,6 +72,10 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\lander.sqf";
 		};
+		class findSpot
+		{
+			file = "functions\findSpot.sqf";
+		};
 	};
 	class choppers
 	{

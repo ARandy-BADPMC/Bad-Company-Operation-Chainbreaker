@@ -1,10 +1,11 @@
 ["Initialize"] call BIS_fnc_dynamicGroups;
 call compileFinal preprocessfilelinenumbers "functions\heliskinapply.sqf";
-call compileFinal preprocessFileLineNumbers "functions\retrieve.sqf";
 missionNamespace setVariable ["running_task",0];
 missionNamespace setVariable ["zeus_enabled",0];
 missionNamespace setVariable ["current_task","asd"];
 missionNamespace setVariable ["TaskObjective","none"];
+missionNamespace setVariable ["task_underway",false];
+
 
 {
  	_x allowDamage false;
@@ -29,5 +30,26 @@ Result:
 Cycles:
 9651/10000
 */ //if you want to check execution time : BIS_fnc_codePerformance; 
+
+
+//[7427,7955,0] [7480,13351,0] [1403.27,7529.75,0]
+/*
+
+11680
+[5840,5700,0];
+11400
+
+*/
+missionNamespace setVariable ["World_center",[5840,5700,0]];
 _citymarker = createMarker ["citymarker",  getpos officer_jeff];
 missionNamespace setVariable ["citymarker",_citymarker];
+
+
+_nearbyLocations = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital","NameVillage"], 7000];
+/*
+{
+	_marker1 = createMarker ["Marker"+ str _x, getPos _x];
+	_marker1 setMarkerType "hd_objective";
+} forEach _nearbyLocations;*/
+
+missionNamespace setVariable ["Cities",_nearbyLocations];

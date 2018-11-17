@@ -17,7 +17,7 @@ _tasknumber = (missionNamespace getVariable ["TaskNumber",-1]) + 1;
 missionNamespace setVariable ["TaskNumber",_tasknumber];
 _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
 
-//_taskobjective = "Minefield";
+//_taskobjective = "Destroy";
 missionNamespace setVariable ["TaskObjective",_taskobjective];
 switch (_taskobjective) do 
 { 
@@ -832,7 +832,7 @@ switch (_taskobjective) do
 			deleteVehicle _planeobj;
 		};
 	};
-	case "Retrieve" :
+	/*case "Retrieve" :
 	{
 		missionNamespace setVariable ["running_task",1];
 
@@ -866,7 +866,7 @@ switch (_taskobjective) do
 		[_guardpos] call CHAB_fnc_endmission;
 		deleteVehicle _crate;
 		missionNamespace setVariable ["running_task",0];
-	};
+	};*/
 	case "Attack" : 
 	{	
 		missionNamespace setVariable ["running_task",1];

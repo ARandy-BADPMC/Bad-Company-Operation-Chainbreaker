@@ -819,7 +819,7 @@ switch (_taskobjective) do
 			deleteVehicle _planeobj;
 		};
 	};
-	case "Retrieve" :
+	/*case "Retrieve" :
 	{
 		missionNamespace setVariable ["running_task",1];
 
@@ -853,7 +853,7 @@ switch (_taskobjective) do
 		[_guardpos] call jey_endmission;
 		deleteVehicle _crate;
 		missionNamespace setVariable ["running_task",0];
-	};
+	};*/
 	case "Attack" : 
 	{	
 		missionNamespace setVariable ["running_task",1];

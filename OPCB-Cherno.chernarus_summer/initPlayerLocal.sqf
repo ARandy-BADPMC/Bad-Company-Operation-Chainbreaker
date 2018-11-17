@@ -17,7 +17,7 @@ player addMPEventHandler ["MPRespawn",
 jeff addAction ["<t color='#FF0000'>Request a Task</t>", "remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
 
 switch (typeOf player) do {  //instead of casking for comparisons 5 times, this only does it once. far more advanced. 
-	case "rhsusf_airforce_jetpilot" : {  [player] call CHAB_fnc_whitelist; }; 
+	case "rhsusf_airforce_jetpilot" : {  player call CHAB_fnc_whitelist; }; 
 	case "rhsusf_army_ocp_helipilot" : {  
 		heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
 		heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
@@ -27,12 +27,33 @@ switch (typeOf player) do {  //instead of casking for comparisons 5 times, this 
 		tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
 	}; 
 };
-
-_admins = ["76561198117073327","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044","76561197988793826"]; //76561197998271838-GOMEZ 76561197992821044-GRAND 76561197988793826-WEEDO  76561198117073327-Randy  76561198142692277-Alex.K   76561198017258138 - A.Mitchell 76561198002110130 K.Hunter
+handle =
+{
+	player addAction ["<t color='#FF0000'>asdasdsa</t>",{
+		player removeAction (_this select 2) ;
+		_handle = [100] spawn CHAB_fnc_findSpot;
+		waitUntil {
+		  scriptDone _handle
+		};
+		[player] call handle;
+	},nil, 1, false, true, "", "true", 10, false,""];
+};
+_admins = ["76561198117073327","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044","76561197988793826","76561198048254349"]; //76561197998271838-GOMEZ 76561197992821044-GRAND 76561197988793826-WEEDO  76561198117073327-Randy  76561198142692277-Alex.K   76561198017258138 - A.Mitchell 76561198002110130 K.Hunter
 if(getPlayerUID player in _admins) 
 	then 
 	{
 		player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
+		player addAction ["<t color='#FF0000'>Test locations</t>",{
+
+		player removeAction (_this select 2) ;
+		_handle = [100] spawn CHAB_fnc_findSpot;
+		waitUntil {
+		  scriptDone _handle
+		};
+		[player] call handle;
+
+		},nil, 1, false, true, "", "true", 10, false,""];
+
 		player addMPEventHandler ["MPRespawn", {
 			player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
 		}];
