@@ -6,7 +6,8 @@ _mechanized = selectRandom ["rhs_group_rus_msv_bmp1","rhs_group_rus_msv_bmp2","r
 
 _cfgMechanized =  configFile >> "CfgGroups" >> "East" >> "rhs_faction_msv" >> _mechanized;
 _MechArray = [];
-
+private ["_suitable"];
+_suitable = [0,0,0];
 for "_j" from 0 to (count _cfgMechanized)-1 do {
 	_currentGroup = _cfgMechanized select _j;
 	_MechArray pushback _currentGroup;
@@ -15,23 +16,19 @@ _MechArray deleteat 0;
 if (_mechToSpawn != 0) then {
 
 	for "_i" from 1 to _mechToSpawn do { 
-		_randomDistance = 0;
-
-		waitUntil {
-		  _randomDistance = random 700;
-		  _randomDistance > 200
-		}; 
-
-		_spawnPos = "pos" + str _i;
-
-		_spawnPos = [getpos _centerobj, _randomDistance, random 360] call BIS_fnc_relPos; 
-		
-		_groupNumber = "group" + str _i;
+		_spawnPos = [0,0,0];
+		while {surfaceIsWater _spawnPos || (_suitable select 0)<=100 || (_suitable select 1) >= 13000 } do {
+			_spawnPos = (getpos _centerobj) getPos[random 1000,random 360];
+			_suitable = [_spawnPos, 0, 300, 10, 0, 0.7, 0] call BIS_fnc_findSafePos;
+			if (count _suitable == 3) then {
+			  _suitable = [_suitable select 0,_suitable select 1];
+			};
+			_spawnPos = _suitable;
+		};
 
 		_groupNumber = [_spawnPos, east,selectrandom _MechArray] call BIS_fnc_spawnGroup;
-		[_groupNumber, getPos _centerobj, _randomDistance] call bis_fnc_taskPatrol;
+		[_groupNumber, getPos _centerobj, random 800] call bis_fnc_taskPatrol;
 		_groupNumber deleteGroupWhenEmpty true;
-		sleep 2;
 	};
 };
 
@@ -47,49 +44,39 @@ _groupArray deleteat 0;
 
 if (_groupsToSpawn != 0) then {
 	for "_i" from 1 to _groupsToSpawn do {
-		_randomDistance = 0;
-
-		waitUntil {
-		  _randomDistance = random 700;
-		  _randomDistance > 200
-		}; 
-
-		_spawnPos = "pos" + str _i;
-
-		_spawnPos = [getpos _centerobj, _randomDistance, random 360] call BIS_fnc_relPos; 
-		
-		_groupNumber = "group" + str _i;
+		_spawnPos = [0,0,0];
+		while {surfaceIsWater _spawnPos || (_suitable select 0)<=100 || (_suitable select 1) >= 13000 } do {
+			_spawnPos = (getpos _centerobj) getPos[random 1000,random 360];
+			_suitable = [_spawnPos, 0, 300, 10, 0, 0.7, 0] call BIS_fnc_findSafePos;
+			if (count _suitable == 3) then {
+			  _suitable = [_suitable select 0,_suitable select 1];
+			};
+			_spawnPos = _suitable;
+		};
 
 		_groupNumber = [_spawnPos, east,selectrandom _groupArray] call BIS_fnc_spawnGroup;
-		[_groupNumber, getPos _centerobj, _randomDistance] call bis_fnc_taskPatrol;
+		[_groupNumber, getPos _centerobj, random 800] call bis_fnc_taskPatrol;
 		_groupNumber deleteGroupWhenEmpty true;
 		sleep 2;
 	};
 };
 if (_tanksToSpawn != 0) then {
 	for "_i" from 1 to _tanksToSpawn do {
-		_randomDistance = 0;
-
-		waitUntil {
-		  _randomDistance = random 700;
-		  _randomDistance > 200
-		}; 
-
-		_spawnPos = "pos" + str _i;
-
-		_spawnPos = [getpos _centerobj, _randomDistance, random 360] call BIS_fnc_relPos; 
-		
-		_groupNumber = "group" + str _i;
+		_spawnPos = [0,0,0];
+		while {surfaceIsWater _spawnPos || (_suitable select 0)<=100 || (_suitable select 1) >= 13000 } do {
+			_spawnPos = (getpos _centerobj) getPos[random 1000,random 360];
+			_suitable = [_spawnPos, 0, 300, 10, 0, 0.7, 0] call BIS_fnc_findSafePos;
+			if (count _suitable == 3) then {
+			  _suitable = [_suitable select 0,_suitable select 1];
+			};
+			_spawnPos = _suitable;
+		};
 
 		_groupNumber = [_spawnPos,random 360,selectrandom _tanks,east] call BIS_fnc_spawnVehicle;
 
-		_roadPos = [_spawnPos, 3000] call BIS_fnc_nearestRoad;
-		(_groupNumber select 0) setPos (getPos _roadPos);
-
-		[_groupNumber select 2, getPos _centerobj, _randomDistance] call bis_fnc_taskPatrol;
+		[_groupNumber select 2, getPos _centerobj, random 800] call bis_fnc_taskPatrol;
 
 		_groupNumber select 2 deleteGroupWhenEmpty true;
-		sleep 2;
 	};
 };
 

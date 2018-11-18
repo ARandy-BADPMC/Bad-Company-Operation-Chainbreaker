@@ -27,7 +27,7 @@ switch (typeOf player) do {  //instead of casking for comparisons 5 times, this 
 		tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
 	}; 
 };
-handle =
+handle = //for testing
 {
 	player addAction ["<t color='#FF0000'>asdasdsa</t>",{
 		player removeAction (_this select 2) ;

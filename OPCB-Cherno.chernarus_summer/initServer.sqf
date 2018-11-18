@@ -4,7 +4,7 @@ missionNamespace setVariable ["running_task",0];
 missionNamespace setVariable ["zeus_enabled",0];
 missionNamespace setVariable ["current_task","asd"];
 missionNamespace setVariable ["TaskObjective","none"];
-missionNamespace setVariable ["task_underway",false];
+missionNamespace setVariable ["task_spot",[5840,5700,0]];
 
 
 {
@@ -43,7 +43,6 @@ Cycles:
 missionNamespace setVariable ["World_center",[5840,5700,0]];
 _citymarker = createMarker ["citymarker",  getpos officer_jeff];
 missionNamespace setVariable ["citymarker",_citymarker];
-
 
 _nearbyLocations = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital","NameVillage"], 7000];
 /*

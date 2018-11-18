@@ -17,7 +17,7 @@ _tasknumber = (missionNamespace getVariable ["TaskNumber",-1]) + 1;
 missionNamespace setVariable ["TaskNumber",_tasknumber];
 _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
 
-//_taskobjective = "Destroy";
+_taskobjective = "Prison";
 missionNamespace setVariable ["TaskObjective",_taskobjective];
 switch (_taskobjective) do 
 { 
@@ -29,11 +29,18 @@ switch (_taskobjective) do
 		[_current_tasknumber ,west,["A high ranking officer has arrived at an Insurgent camp near the marked area. You have to Capture him","Prisonbreak",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"search",true] call BIS_fnc_setTask;
 		_capturegroup = createGroup east;
 
-		waitUntil {
+		/*waitUntil {
 		  _base = [getMarkerPos _current_task, 400, 2000, 20, 0, 0.5, 0, ["base_marker"], [getMarkerPos _current_task,getMarkerPos _current_task]] call BIS_fnc_findSafePos;
 
 		  !(_base isEqualTo [0,0,0])
+		};*/
+
+		_handle = [100] spawn CHAB_fnc_findSpot;
+		waitUntil {
+		  scriptDone _handle
 		};
+		_base = missionNamespace getVariable ["task_spot",[5840,5700,0]];
+
 		_target1 = _capturegroup createUnit ["rhs_g_Soldier_TL_F", _base, [], 2, "NONE"];
 
 		_guardpos = getPos _target1;
