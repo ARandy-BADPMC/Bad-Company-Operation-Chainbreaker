@@ -84,7 +84,7 @@ switch (_taskobjective) do
 		_capturegroup = createGroup resistance;
 		_guardgroup = createGroup resistance;
 		
-		_handle = [100] spawn CHAB_fnc_findSpot;
+		_handle = [45] spawn CHAB_fnc_findSpot;
 		waitUntil {
 		scriptDone _handle
 		};
@@ -217,7 +217,7 @@ switch (_taskobjective) do
 		[_current_tasknumber ,west,["Last night an american Tank was stolen. You are tasked with destroying it as quickly as possible, before media notice","Destroy",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 		
 		_guardgroup = createGroup east;
-		_handle = [100] spawn CHAB_fnc_findSpot;
+		_handle = [60] spawn CHAB_fnc_findSpot;
 		waitUntil {
 		scriptDone _handle
 		};
@@ -247,7 +247,7 @@ switch (_taskobjective) do
 		[_current_tasknumber ,west,["Insurgents set up a base and will hold it under any circumstances. Clear out the area and destroy any important equipment.","Annihilate and Destroy",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 		
 		_guardgroup = createGroup east;
-		_handle = [100] spawn CHAB_fnc_findSpot;
+		_handle = [45] spawn CHAB_fnc_findSpot;
 		waitUntil {
 		scriptDone _handle
 		};
@@ -289,7 +289,7 @@ switch (_taskobjective) do
 		[_current_tasknumber ,west,["Russians are transporting new technology through to region and will stop for refueling at an old abandoned FOB. Try to secure the object.","Secure",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 		_guardgroup = createGroup east;
-		_handle = [100] spawn CHAB_fnc_findSpot;
+		_handle = [60] spawn CHAB_fnc_findSpot;
 		waitUntil {
 		scriptDone _handle
 		};
@@ -339,7 +339,7 @@ switch (_taskobjective) do
 		[_current_tasknumber ,west,["A high ranking officer has arrived at an Insurgent camp near the marked area. You have to Capture him","Capture the HRO",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"search",true] call BIS_fnc_setTask;
 		_capturegroup = createGroup east;
 
-		_handle = [100] spawn CHAB_fnc_findSpot;
+		_handle = [25] spawn CHAB_fnc_findSpot;
 		waitUntil {
 		scriptDone _handle
 		};
@@ -385,7 +385,7 @@ switch (_taskobjective) do
 		[_current_tasknumber ,west,["Insurgents terrorising the total population. We can not tolerate this.","Defend the defensless",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 		_guardgroup = createGroup east;
-		_handle = [100] spawn CHAB_fnc_findSpot;
+		_handle = [25] spawn CHAB_fnc_findSpot;
 		waitUntil {
 		scriptDone _handle
 		};
@@ -422,7 +422,7 @@ switch (_taskobjective) do
 		[_current_tasknumber ,west,["IDAP Units have reported indirect and small arms fire on one of their locations, wounding several peacekeepers and civilians. You are tasked, to investigate, interrogate survivors, locate the enemy firing-positions and take them, including all the equipment, out. Be aware of counterattacks!","Locate Mortars",_current_task],getMarkerPos _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
 		_resgroup = createGroup resistance;
 		_guardgroup = createGroup civilian;
-		_handle = [100] spawn CHAB_fnc_findSpot;
+		_handle = [85] spawn CHAB_fnc_findSpot;
 		waitUntil {
 		scriptDone _handle
 		};
@@ -486,7 +486,7 @@ switch (_taskobjective) do
 		_capturegroup = createGroup resistance;
 		_guardgroup = createGroup resistance;
 		
-		_handle = [100] spawn CHAB_fnc_findSpot;
+		_handle = [40] spawn CHAB_fnc_findSpot;
 		waitUntil {
 		scriptDone _handle
 		};
