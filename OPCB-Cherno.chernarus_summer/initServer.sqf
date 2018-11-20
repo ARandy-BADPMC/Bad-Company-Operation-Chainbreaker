@@ -2,8 +2,6 @@
 call compileFinal preprocessfilelinenumbers "functions\heliskinapply.sqf";
 missionNamespace setVariable ["running_task",0];
 missionNamespace setVariable ["zeus_enabled",0];
-missionNamespace setVariable ["current_task","asd"];
-missionNamespace setVariable ["TaskObjective","none"];
 missionNamespace setVariable ["task_spot",[5840,5700,0]];
 
 
@@ -44,7 +42,7 @@ missionNamespace setVariable ["World_center",[5840,5700,0]];
 _citymarker = createMarker ["citymarker",  getpos officer_jeff];
 missionNamespace setVariable ["citymarker",_citymarker];
 
-_nearbyLocations = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital","NameVillage"], 7000];
+_nearbyLocations = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital","NameVillage"], 8000];
 /*
 {
 	_marker1 = createMarker ["Marker"+ str _x, getPos _x];

@@ -50,6 +50,8 @@
 		  	};
 		  	_segment = _road select _closest;
 		  	_mine = createMine [selectRandom _mines, getPos _segment, [], 3];
+		  	_marker1 = createMarker ["Marker"+ str _mine, getPos _segment]; 
+			_marker1 setMarkerType "hd_objective";
 		  	_return pushBack _mine;
 		};
 	};
