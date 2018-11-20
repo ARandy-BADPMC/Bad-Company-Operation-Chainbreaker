@@ -8,7 +8,7 @@ _taskobjective = selectRandom _tasks;
 _tasknumber = (missionNamespace getVariable ["TaskNumber",-1]) + 1;
 missionNamespace setVariable ["TaskNumber",_tasknumber];
 _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
-//_taskobjective = "Prison";
+_taskobjective = "Neutralize";
 switch (_taskobjective) do 
 { 
 	case "Prison" :
@@ -63,14 +63,17 @@ switch (_taskobjective) do
 		_base = missionNamespace getVariable ["task_spot",[5840,5700,0]];
 		_current_task = _base getPos[random 600,random 360];
 		[_current_tasknumber ,west,["Insurgents have set up a Weaponfactory in an abandoned, unmarked FOB. Locate the factory and destroy important equipment. Also, according to one of our agents, a commander is visiting the factory. Try to capture him.","Locate and Destroy Weapon Factory"], _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
-		_comp = [_taskcomp,_current_task, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-		_house = nearestObjects [ _base, ["Land_i_Shed_Ind_F"], 30];
-		_thehouse = _house call BIS_fnc_selectRandom;
-		_leader = _capturegroup createUnit ["rhsgref_nat_commander",  _thehouse buildingPos 0, [], 2, "NONE"];
+		
+		_leader = _capturegroup createUnit ["rhsgref_nat_commander",  _base, [], 2, "NONE"];
+		_comp = [_taskcomp,_leader, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+
+		_house = nearestObjects [ _base, ["Land_i_Shed_Ind_F"], 100];
+		_thehouse = selectRandom _house;
+		_leader setPos (_thehouse buildingPos 0);
 		removeAllWeapons _leader;
 		_leader setunitpos "middle";
 		[_leader,10,1,2] execVM "functions\spawn_nat.sqf";
-		[_guard] spawn CHAB_fnc_roadblock_rus;
+		[_leader] spawn CHAB_fnc_roadblock_rus;
 		waitUntil 
 		{
 			sleep 10;
@@ -390,11 +393,13 @@ switch (_taskobjective) do
 		_base = missionNamespace getVariable ["task_spot",[5840,5700,0]];
 		_current_task = _base getPos[random 600,random 360];
 		[_current_tasknumber ,west,["Insurgents set up an IED Factory. To protect our own and the lifes of the innocent population, we need to take it out. If possible, capture the Leader, that is controlling the manufacturing process","Locate and Destroy IED Factory"], _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
-		_comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+		_leader = _capturegroup createUnit ["rhs_g_Soldier_TL_F",  _base, [], 2, "NONE"];
+		_comp = [_taskcomp,_leader, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		
-		_house = nearestObjects [ _base, ["Land_i_Shed_Ind_F"], 30];
+		_house = nearestObjects [ _base, ["Land_i_Shed_Ind_F"], 100];
 		_thehouse = selectrandom _house ;
-		_leader = _capturegroup createUnit ["rhs_g_Soldier_TL_F",  _thehouse buildingPos 0, [], 2, "NONE"];
+		//_leader = _capturegroup createUnit ["rhs_g_Soldier_TL_F",  _thehouse buildingPos 0, [], 2, "NONE"];
+		_leader setPos (_thehouse buildingPos 0);
 		removeAllWeapons _leader;
 		_leader setunitpos "middle";
 		[_leader] spawn CHAB_fnc_roadblock_ins;

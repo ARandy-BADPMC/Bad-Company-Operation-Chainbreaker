@@ -38,7 +38,7 @@
 	for "_i" from 0 to _minetobe do {
 		_item = selectRandom _houses;
 
-		_road = (getPos _item) nearRoads 300;
+		_road = (getPos _item) nearRoads 200;
 		_closest = 0;
 		if (count _road > 1) then {
 		  for "_j" from 0 to count _road -1 do {
