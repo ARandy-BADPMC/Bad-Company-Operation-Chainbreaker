@@ -8,7 +8,7 @@ _taskobjective = selectRandom _tasks;
 _tasknumber = (missionNamespace getVariable ["TaskNumber",-1]) + 1;
 missionNamespace setVariable ["TaskNumber",_tasknumber];
 _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
-_taskobjective = "Neutralize";
+//_taskobjective = "Neutralize";
 switch (_taskobjective) do 
 { 
 	case "Prison" :
