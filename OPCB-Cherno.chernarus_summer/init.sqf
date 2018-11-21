@@ -11,7 +11,7 @@ WEST setFriend [EAST, 0]; WEST setFriend [Resistance, 0]; WEST setFriend [Civili
 
 Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [Resistance, 1];
 
-[] execVM "VCOMAI\init.sqf";
+[] execVM "Vcom\VcomInit.sqf";
 
 RHSDecalsOff = true;
 
