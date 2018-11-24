@@ -2766,5 +2766,9 @@ arsenalitems =
 "rhsusf_acc_m24_silencer_black",
 "rhsusf_acc_m24_silencer_d",
 "rhsusf_acc_m24_silencer_wd",
-"rhsusf_5Rnd_762x51_m993_Mag"
+"rhsusf_5Rnd_762x51_m993_Mag",
+
+"arifle_SPAR_03_blk_F",
+"arifle_SPAR_03_snd_F"
+
 ];
