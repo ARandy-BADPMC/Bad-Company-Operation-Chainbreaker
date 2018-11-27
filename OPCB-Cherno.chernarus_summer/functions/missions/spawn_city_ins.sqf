@@ -24,6 +24,9 @@
 			};
 		};
 	};
+	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+			_servergroups pushBack _defendergroup;
+			missionNamespace setVariable ["enemy_groups",_servergroups];
 
 
 

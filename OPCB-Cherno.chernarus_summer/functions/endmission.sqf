@@ -18,25 +18,14 @@ waitUntil
   _isClose <= 0 || count _players == 0
 };
 
+_groups = missionNamespace getVariable ["enemy_groups",[]];
 {
-if(_x isKindOf "Car" || _x isKindOf "Air" || _x isKindOf "Tank") then {_x setDamage 1;} else{deleteVehicle _x;};
-
-
-} forEach nearestObjects [_marker, ["all"], 250];
-
-_groups = allgroups;
-{
-  if(side _x == east || side _x == resistance || side _x == civilian) then
-  	{
-  		_delgroup = _x;
-  		{
-  		  deletevehicle _x;
-  		} forEach units _delgroup;
-  	};
+	{
+		if (vehicle _x != _x) then {
+			(vehicle _x) setDamage 1;
+		};
+	  deletevehicle _x;
+	} forEach units _x;
+	deleteGroup _x;
 } forEach _groups;
-
-{
-	if (count (units _x) == 0) then {
-		deleteGroup _x;
-	};
-} foreach allGroups;
+missionNamespace setVariable ["enemy_groups",[]];

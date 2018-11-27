@@ -30,6 +30,9 @@ if (_mechToSpawn != 0) then {
 		_groupNumber = [_spawnPos, resistance,selectrandom _MechArray] call BIS_fnc_spawnGroup;
 		[_groupNumber, getPos _centerobj, random 800] call bis_fnc_taskPatrol;
 		_groupNumber deleteGroupWhenEmpty true;
+		_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+			_servergroups pushBack _groupNumber;
+			missionNamespace setVariable ["enemy_groups",_servergroups];
 	};
 };
 
@@ -55,6 +58,9 @@ if (_groupsToSpawn != 0) then {
 		_groupNumber = [_spawnPos, resistance,selectrandom _groupArray] call BIS_fnc_spawnGroup;
 		[_groupNumber, getPos _centerobj, random 799] call bis_fnc_taskPatrol;
 		_groupNumber deleteGroupWhenEmpty true;
+		_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+			_servergroups pushBack _groupNumber;
+			missionNamespace setVariable ["enemy_groups",_servergroups];
 	};
 };
 if (_tanksToSpawn != 0) then {
@@ -77,6 +83,9 @@ if (_tanksToSpawn != 0) then {
 		[_groupNumber select 2, getPos _centerobj, random 801] call bis_fnc_taskPatrol;
 
 		(_groupNumber select 2) deleteGroupWhenEmpty true;
+		_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+			_servergroups pushBack (_groupNumber select 2);
+			missionNamespace setVariable ["enemy_groups",_servergroups];
 	};
 };
 

@@ -33,6 +33,18 @@ class chainbreaker
 		{
 			file = "functions\missions\spawn_city_rus.sqf";
 		};
+		class spawn_ins
+		{
+			file = "functions\spawn_ins.sqf";
+		};
+		class spawn_rus
+		{
+			file = "functions\spawn_rus.sqf";
+		};
+		class spawn_nat
+		{
+			file = "functions\spawn_nat.sqf";
+		};
 		class spawn_city_ins 
 		{
 			file = "functions\missions\spawn_city_ins.sqf";
@@ -75,6 +87,10 @@ class chainbreaker
 		class findSpot
 		{
 			file = "functions\findSpot.sqf";
+		};
+		class shk_patrol
+		{
+			file = "functions\shk_patrol.sqf";
 		};
 	};
 	class choppers

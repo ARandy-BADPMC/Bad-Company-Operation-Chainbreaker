@@ -22,7 +22,7 @@ class jey_adminconsole_dialog
 			y = 0.247099 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_getgroups";
+			action = "[] call CHAB_fnc_getgroups";
 		};
 		class jey_close: RscButton
 		{
@@ -52,7 +52,7 @@ class jey_adminconsole_dialog
 			y = 0.697923 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_zeus_out";
+			action = "[] call CHAB_fnc_zeus_out";
 		};
 		class fix_task: RscButton
 		{
@@ -72,7 +72,7 @@ class jey_adminconsole_dialog
 			y = 0.42303 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_zeus";
+			action = "[] call CHAB_fnc_zeus";
 		};
 		class jey_kick: RscButton
 		{
@@ -82,7 +82,7 @@ class jey_adminconsole_dialog
 			y = 0.247099 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_kick";
+			action = "[] call CHAB_fnc_kick";
 		};
 		class jey_ban: RscButton
 		{
@@ -92,7 +92,7 @@ class jey_adminconsole_dialog
 			y = 0.327013 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_ban";
+			action = "[] call CHAB_fnc_ban";
 		};
 		class jey_kicklist: RscListbox
 		{
@@ -120,7 +120,7 @@ class jey_adminconsole_dialog
 			y = 0.598962 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_spectate;closeDialog 0";
+			action = "[] call CHAB_fnc_spectate;closeDialog 0";
 		};
 		class jey_restart_server: RscButton
 		{
@@ -140,7 +140,7 @@ class jey_adminconsole_dialog
 			y = 0.247099 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_getpilots";
+			action = "[] call CHAB_fnc_getpilots";
 		};
 		class jey_gettankcrew: RscButton
 		{
@@ -150,7 +150,7 @@ class jey_adminconsole_dialog
 			y = 0.336016 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_gettankcrew";
+			action = "[] call CHAB_fnc_gettankcrew";
 		};
 		
 		class jey_day: RscButton
@@ -161,7 +161,7 @@ class jey_adminconsole_dialog
 			y = 0.336016 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_skip12";
+			action = "[] call CHAB_fnc_skip12";
 		};
 		class jey_night: RscButton
 		{
@@ -171,7 +171,7 @@ class jey_adminconsole_dialog
 			y = 0.42303 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_skip6";
+			action = "[] call CHAB_fnc_skip6";
 		};
 	};
 };
@@ -199,7 +199,7 @@ class jey_helispawner
 			y = 0.229506 * safezoneH + safezoneY;
 			w = 0.1405209 * safezoneW;
 			h = 0.543189 * safezoneH;
-			onLBSelChanged  = "[] spawn CHAB_fnc_heli_loadouts;";
+			onLBSelChanged  = "[] call CHAB_fnc_heli_loadouts;";
 		};
 		class loadout_list: RscListbox
 		{
@@ -236,7 +236,7 @@ class jey_helispawner
 			y = 0.361456 * safezoneH + safezoneY;
 			w = 0.0458333 * safezoneW;
 			h = 0.0593768 * safezoneH;
-			action = "[] spawn CHAB_fnc_spawn_heli_vehicle;";
+			action = "[] call CHAB_fnc_spawn_heli_vehicle;";
 		};
 	};
 };
@@ -282,7 +282,7 @@ class jey_tankspawner
 			y = 0.361456 * safezoneH + safezoneY;
 			w = 0.0458333 * safezoneW;
 			h = 0.0593768 * safezoneH;
-			action = "[] spawn CHAB_fnc_spawn_tank_vehicle;";
+			action = "[] call CHAB_fnc_spawn_tank_vehicle;";
 		};
 	};
 };
@@ -322,7 +322,7 @@ class jey_remover
 			y = 0.258094 * safezoneH + safezoneY;
 			w = 0.0802083 * safezoneW;
 			h = 0.0549786 * safezoneH;
-			action = "[] spawn CHAB_fnc_deletebutton_heli";
+			action = "[] call CHAB_fnc_deletebutton_heli";
 		};
 		class RscListbox_1500: RscListbox
 		{
@@ -368,7 +368,7 @@ class jey_remover_tank
 			y = 0.258094 * safezoneH + safezoneY;
 			w = 0.0802083 * safezoneW;
 			h = 0.0549786 * safezoneH;
-			action = "[] spawn CHAB_fnc_deletebutton_tank";
+			action = "[] call CHAB_fnc_deletebutton_tank";
 		};
 		class RscListbox_1500: RscListbox
 		{
@@ -397,68 +397,4 @@ class jey_spectator
 			action = "['Terminate'] call BIS_fnc_EGSpectator;closeDialog 0";
 		};
 	};
-};
-class overwatch
-{
-	idd = 9958;
-	movingEnabled = false;
-	class controls 
-	{
-		class overwatch_background: RscPicture
-		{
-			idc = 1200;
-			text = "#(argb,8,8,3)color(0,0,0,0.5)";
-			x = 0 * GUI_GRID_W + GUI_GRID_X;
-			y = 0 * GUI_GRID_H + GUI_GRID_Y;
-			w = 40 * GUI_GRID_W;
-			h = 25 * GUI_GRID_H;
-		};
-		class overwatch_list: RscListbox
-		{
-			idc = 1500;
-			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 15 * GUI_GRID_W;
-			h = 4.5 * GUI_GRID_H;
-		};
-		class overwatch_screen: RscCombo
-		{
-			idc = 2100;
-			x = 16.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1 * GUI_GRID_H + GUI_GRID_Y;
-			w = 9 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
-		class overwatch_project: RscButton
-		{
-			idc = 1600;
-			text = "Show on screen"; //--- ToDo: Localize;
-			x = 27.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 1.5 * GUI_GRID_H + GUI_GRID_Y;
-			w = 8.5 * GUI_GRID_W;
-			h = 2 * GUI_GRID_H;
-			action = "[] spawn CHAB_fnc_overwatch_project;";
-		};
-		class overwatch_cancel: RscButton
-		{
-			idc = 1601;
-			text = "Cancel"; //--- ToDo: Localize;
-			x = 33 * GUI_GRID_W + GUI_GRID_X;
-			y = 21 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4 * GUI_GRID_W;
-			h = 2.5 * GUI_GRID_H;
-			action = "closeDialog 0";
-		};
-		class overwatch_uav: RscButton
-		{
-			idc = 1615;
-			text = "UAV Camera"; //--- ToDo: Localize;
-			x = 0.466146 * safezoneW + safezoneX; //check x
-			y = 0.697923 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] spawn CHAB_fnc_overwatch_uav_cam;closeDialog 0";
-		};
-	};
-	
 };

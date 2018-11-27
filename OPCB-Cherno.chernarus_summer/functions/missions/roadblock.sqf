@@ -14,16 +14,22 @@ if (side _guard == east) then
 		_block = selectRandom _insurgent;
 		_relpos = [_guard, 800, _posHelp select _i] call BIS_fnc_relPos;
 		_road = [ _relpos,5000] call BIS_fnc_nearestRoad;
-		_connectedroads = roadsConnectedTo _road;
-		_connection = _connectedroads select 0;
-		_direction = [_road, _connection] call BIS_fnc_DirTo;
+		if (!isNull _road) then {
+			_connectedroads = roadsConnectedTo _road;
+			_connection = _connectedroads select 0;
+			_direction = [_road, _connection] call BIS_fnc_DirTo;
 
-		_roadblock = [_block,getpos _road, [0,0,0], _direction, true, true ] call LARs_fnc_spawnComp;
-		_spawnComp pushBack _roadblock;
+			_roadblock = [_block,getpos _road, [0,0,0], _direction, true, true ] call LARs_fnc_spawnComp;
+			_spawnComp pushBack _roadblock;
 
-		_group = [getpos _road, east,(configfile >> "CfgGroups" >> "East" >> "rhs_faction_msv" >> "rhs_group_rus_msv_infantry" >> selectRandom _groups)] call BIS_fnc_spawnGroup;
-		[_group,150] execVM "functions\shk_patrol.sqf";
-		sleep 2;
+			_group = [getpos _road, east,(configfile >> "CfgGroups" >> "East" >> "rhs_faction_msv" >> "rhs_group_rus_msv_infantry" >> selectRandom _groups)] call BIS_fnc_spawnGroup;
+			[_group,150] call CHAB_fnc_shk_patrol;
+			_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+				_servergroups pushBack _group;
+				missionNamespace setVariable ["enemy_groups",_servergroups];
+			sleep 2;
+		};
+		
 	};
 	waitUntil {
 		sleep 10;

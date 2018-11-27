@@ -2,21 +2,10 @@ waitUntil {!isNull player && player == player};
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 call compileFinal preprocessfilelinenumbers "scripts\ArsenalWhitelist.sqf"; //more secure
-/*
-player addMPEventHandler ["MPRespawn", 
-{
-	player allowDamage false;
-	titleText ["\n\nSpawn Protection is ACTIVATED","PLAIN DOWN"];
-	titleFadeOut 5;
-	sleep 60;
-	titleText ["\n\nSpawn Protection is DEACTIVATED","PLAIN DOWN"];
-	titleFadeOut 5;
-	player allowDamage true;
-}];*/
 
 jeff addAction ["<t color='#FF0000'>Request a Task</t>", "remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
 
-switch (typeOf player) do {  //instead of casking for comparisons 5 times, this only does it once. far more advanced. 
+switch (typeOf player) do { 
 	case "rhsusf_airforce_jetpilot" : {  player call CHAB_fnc_whitelist; }; 
 	case "rhsusf_army_ocp_helipilot" : {  
 		heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
@@ -53,10 +42,6 @@ if(getPlayerUID player in _admins)
 		[player] call handle;
 
 		},nil, 1, false, true, "", "true", 10, false,""];
-
-		/*player addMPEventHandler ["MPRespawn", {
-			player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
-		}];*/
 	};
 
 jeff addaction ["Lights on", {

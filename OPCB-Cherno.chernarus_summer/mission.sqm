@@ -94,11 +94,7 @@ addons[]=
 	"rhsusf_c_fmtv",
 	"rhsusf_vehicles",
 	"rhsusf_c_Caiman",
-	"A3_Structures_F_Mil_TentHangar",
-	"PBW_German_Common",
-	"zade_boc",
-	"hlcweapons_core",
-	"BadCo_PublicServer_Extras"
+	"A3_Structures_F_Mil_TentHangar"
 };
 class AddonsMetaData
 {
@@ -25984,7 +25980,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={11991.966,158.98291,12696.218};
-			angle=1.9130546;
+			angle=1.9130535;
 			class Attributes
 			{
 				condition="call{(""LandVehicle"" countType thislist  > 0) && ((getpos (thislist select 0)) select 2 < 1) " \n "}";
@@ -30731,7 +30727,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11997.277,158.98021,12684.824};
-				angles[]={-0,5.8218679,0};
+				angles[]={0,5.8218679,0};
 			};
 			side="Empty";
 			flags=4;
@@ -30771,7 +30767,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11989.14,159.40036,12688.35};
-				angles[]={-0,5.3688502,0};
+				angles[]={0,5.3688502,0};
 			};
 			side="Empty";
 			flags=4;
@@ -30781,6 +30777,7 @@ class Mission
 			};
 			id=345;
 			type="Land_TankTracks_01_long_F";
+			atlOffset=-9.1552734e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -30811,7 +30808,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11987.478,159.40036,12688.433};
-				angles[]={-0,5.0055075,0};
+				angles[]={0,5.0055075,0};
 			};
 			side="Empty";
 			flags=4;
@@ -30821,6 +30818,7 @@ class Mission
 			};
 			id=346;
 			type="Land_TankTracks_01_long_F";
+			atlOffset=-9.1552734e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -30851,7 +30849,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11994.183,158.97928,12686.419};
-				angles[]={-0,3.8251762,0};
+				angles[]={0,3.8251762,0};
 			};
 			side="Empty";
 			flags=4;
@@ -30891,7 +30889,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11995.208,158.97928,12685.941};
-				angles[]={-0,1.5307316,0};
+				angles[]={0,1.5307316,0};
 			};
 			side="Empty";
 			flags=4;
@@ -30931,16 +30929,16 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11990.858,159.77863,12687.495};
-				angles[]={-0,5.8218679,0};
+				angles[]={0,5.8218679,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				disableSimulation=1;
 			};
 			id=349;
 			type="Land_BoreSighter_01_F";
+			atlOffset=0.81552124;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -31011,7 +31009,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11990.89,159.74113,12688.015};
-				angles[]={-0,0.51182497,0};
+				angles[]={0,0.51182497,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31051,7 +31049,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11996.879,159.508,12686.239};
-				angles[]={-0,5.8218679,0};
+				angles[]={0,5.8218679,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31091,7 +31089,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11992.974,158.91083,12686.812};
-				angles[]={-0,3.3561888,0};
+				angles[]={0,3.3561888,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31171,7 +31169,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11991.088,159.31148,12687.674};
-				angles[]={-0,3.4144478,0};
+				angles[]={0,3.4144478,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31181,6 +31179,7 @@ class Mission
 			};
 			id=355;
 			type="Land_CampingTable_white_F";
+			atlOffset=-6.1035156e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -31211,7 +31210,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11991.501,159.8716,12687.396};
-				angles[]={-0,0.13778436,0};
+				angles[]={0,0.13778436,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31260,6 +31259,7 @@ class Mission
 			};
 			id=357;
 			type="Land_PortableLight_double_F";
+			atlOffset=-1.5258789e-005;
 		};
 		class Item190
 		{
@@ -31307,7 +31307,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={11990.385,160.37677,12687.768};
-				angles[]={-0,3.8625326,0};
+				angles[]={0,3.8625326,0};
 			};
 			side="Empty";
 			flags=4;

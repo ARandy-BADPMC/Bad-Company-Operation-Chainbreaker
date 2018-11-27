@@ -1,5 +1,5 @@
 
-	_StartEnemies = 0;
+	/*_StartEnemies = 0;
 
 	{
 		if (side _x == east || side _x == resistance) then {
@@ -8,11 +8,32 @@
 		    _StartEnemies = _StartEnemies + 1;
 		  } forEach units _y;
 		};
-	} forEach allgroups;
+	} forEach allgroups;*/
+	_enemysum = 0;
 
-	_enemies = 0;
+	_groups = missionNamespace getVariable ["enemy_groups",[]];
+	{
+		{
+		  _enemysum = _enemysum +1;
+		} forEach units _x;
+		deleteGroup _x;
+	} forEach _groups;
 
-	waitUntil {
+
+	_enemies = 9999;
+	while {
+		_enemies > (_enemysum / 3)
+		
+	} do {
+		sleep 10;
+		_enemies = 0;
+		{
+			{
+			  _enemies = _enemies +1;
+			} forEach units _x;
+		} forEach _groups;
+	};
+	/*waitUntil {
 	sleep 10;_enemies = 0;
 	 	{
 			if (side _x == east || side _x == resistance) then {
@@ -23,20 +44,23 @@
 			};
 		} forEach allgroups;
 	
-	  _enemies < (_StartEnemies / 3)
-	};
+	  
+	};*/
 
-	_groups = [];
+	/*_groups = [];
 	{
 	  if (side _x == east || side _x == resistance) then {
 	    _groups pushback _x;
 	  };
-	} forEach allgroups;
+	} forEach allgroups;*/
 
 	{
-		_units = units _x;
-		for "_i" from 0 to count _units -1 do {
-			_item = _units select _i;
-			_item setdamage 1;
-		};
+		{
+			if (vehicle _x != _x) then {
+				(vehicle _x) setDamage 1;
+			};
+		  deletevehicle _x;
+		} forEach units _x;
+		deleteGroup _x;
 	} forEach _groups;
+	missionNamespace setVariable ["enemy_groups",[]];
