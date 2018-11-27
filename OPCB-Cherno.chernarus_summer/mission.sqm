@@ -399,7 +399,7 @@ class AddonsMetaData
 randomSeed=9966067;
 class ScenarioData
 {
-	author="MadMan";
+	author="A. Randy [B.A.D. PMC], Jey R. [B.A.D. PMC], Alex K. [B.A.D. PMC]";
 	disabledAI=1;
 	respawn=3;
 	respawnDelay=25;
@@ -14286,6 +14286,7 @@ class Mission
 {
 	class Intel
 	{
+		briefingName="Operation Chainbreaker";
 		timeOfChanges=1800.0002;
 		startWeather=0.25;
 		startWind=0.1;
@@ -25945,7 +25946,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={11991.966,158.98291,12696.218};
-			angle=1.9130533;
+			angle=1.913053;
 			class Attributes
 			{
 				condition="call{(""LandVehicle"" countType thislist  > 0) && ((getpos (thislist select 0)) select 2 < 1) " \n "}";
