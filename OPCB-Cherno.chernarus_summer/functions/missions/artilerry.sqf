@@ -4,6 +4,9 @@ _village = _this select 0;
 _guard = _this select 1;
 _stations = [];
 _group = createGroup resistance;
+_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+			_servergroups pushBack _group;
+			missionNamespace setVariable ["enemy_groups",_servergroups];
 _comps = ["mortar1","mortar2","mortar3"];
 
 	
