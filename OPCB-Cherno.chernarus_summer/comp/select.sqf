@@ -22,7 +22,7 @@ switch (_taskobjective) do
 		};
 		_base = missionNamespace getVariable ["task_spot",[5840,5700,0]];
 		_current_task = _base getPos[random 600,random 360];
-		[_current_tasknumber ,west,["A high ranking officer has arrived at an Insurgent camp near the marked area. You have to Capture him","Prisonbreak"],_current_task,"ASSIGNED",10,true,true,"search",true] call BIS_fnc_setTask;
+		[_current_tasknumber ,west,["Insurgents have captured several civilians and transported them into an abandoned prison. Rescue them.","Prisonbreak"],_current_task,"ASSIGNED",10,true,true,"search",true] call BIS_fnc_setTask;
 		_target1 = _capturegroup createUnit ["rhs_g_Soldier_TL_F", _base, [], 2, "NONE"];
 		_guardpos = getPos _target1;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
