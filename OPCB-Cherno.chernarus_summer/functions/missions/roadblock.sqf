@@ -12,7 +12,7 @@ if (side _guard == east) then
 	for "_i" from 0 to _roadblocks - 1 do 
 	{
 		_block = selectRandom _insurgent;
-		_relpos = [_guard, 800, _posHelp select _i] call BIS_fnc_relPos;
+		_relpos = (getPos _guard) getPos[random 800,_posHelp select _i ];
 		_road = [ _relpos,5000] call BIS_fnc_nearestRoad;
 		if (!isNull _road) then {
 			_connectedroads = roadsConnectedTo _road;

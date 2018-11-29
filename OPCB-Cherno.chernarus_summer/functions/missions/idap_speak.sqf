@@ -1,17 +1,27 @@
 _civilian = _this select 0;
 
 _village = _this select 3 select 0;
+_arts = _this select 3 select 1;
+_done = false;
+{
 
-_arti = allUnits select { side _x == resistance};
+  if (alive _x) exitWith {
+	    _direction = [ _civilian, _x ] call BIS_fnc_dirTo;
+	  hint format ["I think the shots are coming from %1 degrees",_direction];
+	  _done = true;
+  };
+} forEach _arts;
 
-_enemy = _arti select 0;
-
-if (count _arti != 0) then {
+if (!_done) then {
+  hint "The Village seems quite now.";
+};
+/*
+if (count _a != 0) then {
 	_direction = [ _civilian, _enemy ] call BIS_fnc_dirTo;
   hint format ["I think the shots are coming from %1 degrees",_direction];
 } else
 {
 	hint "The Village seems quite now.";
-};
+};*/
 
 removeAllActions _civilian; 

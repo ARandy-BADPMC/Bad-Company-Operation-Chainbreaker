@@ -8,12 +8,11 @@ _taskobjective = selectRandom _tasks;
 _tasknumber = (missionNamespace getVariable ["TaskNumber",-1]) + 1;
 missionNamespace setVariable ["TaskNumber",_tasknumber];
 _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
-//_taskobjective = "Eliminate";
+_taskobjective = "Neutralize2";
 switch (_taskobjective) do 
 { 
-	case "Prison" :
-	{call
-	case "Neutralize2" :
+	//prison task remake here
+	case "Neutralize2" : //checked 
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = "weap_factory";
@@ -35,7 +34,7 @@ switch (_taskobjective) do
 		removeAllWeapons _leader;
 		_leader setunitpos "middle";
 		[_leader,10,1,2] call CHAB_fnc_spawn_nat;
-		_spawncomps = [_leader] call CHAB_fnc_roadblock_rus;
+		_spawncomps = [_leader] call CHAB_fnc_roadblock_ins;
 		waitUntil 
 		{
 			sleep 10;
@@ -293,11 +292,12 @@ switch (_taskobjective) do
 		_guardpos = getPos _guard;
 		_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 		[_guard,10,2,2] call CHAB_fnc_spawn_ins;
+		sleep 60;
 		_trg = createTrigger ["EmptyDetector", _guardpos,true];
 		_trg setTriggerArea [600, 600, 0, false];
 		_trg setTriggerActivation ["GUER", "NOT PRESENT", false];
 		_trg setTriggerStatements ["this", "", ""];
-		_spawncomps=[_guard] spawn CHAB_fnc_roadblock_ins;
+		_spawncomps = [_guard] call CHAB_fnc_roadblock_ins;
 		[] call CHAB_fnc_enemycount;
 		waitUntil {sleep 10;triggerActivated _trg};
 		[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
@@ -313,8 +313,8 @@ switch (_taskobjective) do
 	{
 		missionNamespace setVariable ["running_task",1];
 		_taskcomp = "peacekeeper";
-		_resgroup = createGroup resistance;
-		_guardgroup = createGroup civilian;
+		_resgroup = createGroup [resistance,true];
+		_guardgroup = createGroup [civilian,true];
 		_handle = [85] spawn CHAB_fnc_findSpot;
 		waitUntil {
 		scriptDone _handle
@@ -329,11 +329,13 @@ switch (_taskobjective) do
 		_markpos1 = _guardpos getPos[100,random 360];
 		_defender1 = [_markpos1, civilian,["B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Commander_F"]] call BIS_fnc_spawnGroup;
 		[_defender1,150] call CHAB_fnc_shk_patrol;
+		
 		_defender1 deleteGroupWhenEmpty true;
 		_nearestCity = nearestLocation [ _guardpos, "NameVillage"]; //village only? What if it's a city?
 		_village = locationPosition _nearestCity;
 		[_current_tasknumber,_guardpos] call BIS_fnc_taskSetDestination;
-		[_village] call CHAB_fnc_idap;
+		_stations = [_village,_guard] call CHAB_fnc_artilerry;
+		[_village,(_stations select 1)] call CHAB_fnc_idap;
 		[_guard,["<t color='#FF0000'>Tell me which town is under attack.</t>",
 		{
 			_village = _this select 3 select 0;
@@ -341,7 +343,7 @@ switch (_taskobjective) do
 			hint format ["%1 is currently under heavy artilerry fire. Please save the Village.",_townName];
 		}, [_nearestCity], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
 		missionNamespace setVariable ["artilerry_rem",4];
-		[_village,_guard] spawn CHAB_fnc_artilerry;
+		
 		waitUntil {
 		  _remain = missionNamespace getVariable ["artilerry_rem",4];
 		  _remain <= 0
@@ -350,6 +352,9 @@ switch (_taskobjective) do
 		[_guardpos] call CHAB_fnc_endmission;					
 		[ _comp ] call LARs_fnc_deleteComp;
 		missionNamespace setVariable ["running_task",0];
+		{
+		  [ _x ] call LARs_fnc_deleteComp;
+		} forEach (_stations select 0);
 
 	};
 	case "Neutralize" :
@@ -737,13 +742,12 @@ switch (_taskobjective) do
 		_guard = _guardgroup createUnit ["rhs_msv_emr_officer_armored", getMarkerPos _citymarker, [], 2, "NONE"];
 		_guardpos = getPos _guard;
 		[_guard] call CHAB_fnc_spawn_city_rus;
-		sleep 5;
 		_trg = createTrigger ["EmptyDetector", _guardpos,true];
 		_trg setTriggerArea [450, 450, 0, false];
 		_trg setTriggerActivation ["EAST", "NOT PRESENT", false];
 		_trg setTriggerStatements ["this", "", ""];
 		[_guard,10,2,2] call CHAB_fnc_spawn_rus;
-		sleep 20;
+		sleep 60;
 		[] call CHAB_fnc_enemycount;
 		waitUntil {
 			sleep 10;
@@ -801,12 +805,12 @@ switch (_taskobjective) do
 
 		[_current_tasknumber ,west,["There is a riot going on. Clear out the area and capture the leader. We also have intel of two captured journalists, which need to be rescued.","Clear out and rescue",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
-		_guardgroup = createGroup resistance;
+		_guardgroup = createGroup [resistance,true];
 		_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", getMarkerPos _citymarker, [], 2, "NONE"];
 		removeAllWeapons _guard;
 		_guard disableAI "AUTOCOMBAT";
 		_guard setunitpos "MIDDLE";
-		_rescuegroup = createGroup civilian;
+		_rescuegroup = createGroup [civilian,true];
 
 		_guardpos = getPos _guard;
 		_houses = nearestObjects [_guardpos, ["house"], 200];
@@ -844,6 +848,7 @@ switch (_taskobjective) do
 		_trg setTriggerActivation ["GUER", "NOT PRESENT", false];
 		_trg setTriggerStatements ["this", "", ""];
 		[_guard,10,1,1] call CHAB_fnc_spawn_ins;
+		sleep 60;
 		[] call CHAB_fnc_enemycount;
 
 		waitUntil 

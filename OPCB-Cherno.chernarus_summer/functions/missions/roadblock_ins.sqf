@@ -2,8 +2,6 @@
 	private ["_guard","_block","_relpos","_spawnComp","_road","_connectedroads","_connection","_direction","_roadblock","_group","_taskisrunning"];
 	_guard = _this select 0;
 
-	if (side _guard == resistance) then
-	{
 		_roadblocks = 4;
 		_insurgent = ["roadblock_ins","roadblock_ins2"];
 		_posHelp = [90,180,270,359];
@@ -13,8 +11,8 @@
 		for "_i" from 0 to _roadblocks - 1 do 
 		{
 			_block = selectRandom _insurgent;
-			_relpos = [_guard, 800, _posHelp select _i] call BIS_fnc_relPos;
-			_road = [ _relpos,5000] call BIS_fnc_nearestRoad;
+			_relpos = (getPos _guard) getPos[random 800,_posHelp select _i ];
+			_road = [ _relpos,800] call BIS_fnc_nearestRoad;
 			if (!isNull _road) then {
 			 	_connectedroads = roadsConnectedTo _road;
 				_connection = _connectedroads select 0;
@@ -28,27 +26,7 @@
 				_servergroups = missionNamespace getVariable ["enemy_groups",[]];
 				_servergroups pushBack _group;
 				missionNamespace setVariable ["enemy_groups",_servergroups];
-				sleep 2;
+				sleep 1;
 			};
-			
-
 		};
-		/*_taskisrunning = 1;
-		while {
-			_taskisrunning != 0
-
-		} do {
-			_taskisrunning = missionNamespace getVariable ["running_task",1];
-		};*/
-		/*waitUntil {
-			sleep 10;
-			_taskisrunning = missionNamespace getVariable ["running_task",1];
-			_taskisrunning == 0
-		};*/
-
-		/*{
-		  [ _x ] call LARs_fnc_deleteComp;
-		} forEach _spawnComp;*/
-
-	};
 	_spawnComp

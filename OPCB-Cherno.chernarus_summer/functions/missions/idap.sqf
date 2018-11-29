@@ -1,5 +1,6 @@
 
 	_village = _this select 0;
+	_artgroups = _this select 1;
 	_civ = ["C_IDAP_Man_AidWorker_01_F","C_IDAP_Man_AidWorker_08_F","C_IDAP_Man_AidWorker_09_F","C_IDAP_Man_AidWorker_02_F","C_IDAP_Man_AidWorker_05_F","C_IDAP_Man_Paramedic_01_F"];
 
 	_houses = nearestObjects [_village, ["house"], 400] select { count ( _x buildingPos -1 ) > 2 };
@@ -21,11 +22,14 @@
 
 
 	  	_segment = _road select _closest;
-	  	_group = createGroup civilian;
+	  	_group = createGroup [civilian,true];
+	  	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+			_servergroups pushBack _group;
+			missionNamespace setVariable ["enemy_groups",_servergroups];
 	  	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
 
 	  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
-		[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
+		[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village,_artgroups], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
 	  
 	  };
 	}
@@ -49,12 +53,15 @@
 
 
 			  	_segment = _road select _closest;
-			  	_group = createGroup civilian;
+			  	_group = createGroup [civilian,true];
+			  	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+			_servergroups pushBack _group;
+			missionNamespace setVariable ["enemy_groups",_servergroups];
 			  	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
 
 			  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
-				[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
+				[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village,_artgroups], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
 			};
 		};
-	}
+	};
 	

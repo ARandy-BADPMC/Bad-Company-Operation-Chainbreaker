@@ -1,20 +1,18 @@
 params ["_centerobj", "_groupsToSpawn", "_tanksToSpawn","_mechToSpawn"];
 
-_tanks = ["rhs_zsu234_chdkz","rhsgref_nat_ural_Zu23"];
-
+_tanks = ["rhs_zsu234_chdkz"];
+_suitable = [0,0,0];
 _cfgGroups =  configFile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhsgref_group_national_infantry";
 _groupArray = [];
-
-_mechanized = selectRandom ["rhs_group_nat_btr70_squad_2mg","rhs_group_nat_btr70_squad","rhs_group_nat_btr70_squad_mg_sniper"];
-_cfgMechanized =  configFile >> "CfgGroups" >> "Indep" >> "rhs_faction_nationalist" >> _mechanized;
-_MechArray = [];
-private ["_suitable"];
-_suitable = [0,0,0];
-for "_j" from 0 to (count _cfgMechanized)-1 do {
-	_currentGroup = _cfgMechanized select _j;
-	_MechArray pushback _currentGroup;
-};
-_MechArray deleteat 0;
+private ["_suitable"]; 
+_MechArray = [
+	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_chq",
+	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad",
+	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad_2mg",
+	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad_aa",
+	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad_mg_sniper",
+	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad_sniper"
+];
 if (_mechToSpawn != 0) then {
 	for "_i" from 1 to _mechToSpawn do { 
 		_spawnPos = [0,0,0];
@@ -26,7 +24,6 @@ if (_mechToSpawn != 0) then {
 			};
 			_spawnPos = _suitable;
 		};
-
 		_groupNumber = [_spawnPos, resistance,selectrandom _MechArray] call BIS_fnc_spawnGroup;
 		[_groupNumber, getPos _centerobj, random 800] call bis_fnc_taskPatrol;
 		_groupNumber deleteGroupWhenEmpty true;
@@ -60,7 +57,7 @@ if (_groupsToSpawn != 0) then {
 		_servergroups = missionNamespace getVariable ["enemy_groups",[]];
 			_servergroups pushBack _groupNumber;
 			missionNamespace setVariable ["enemy_groups",_servergroups];
-		sleep 2;
+		sleep 1;
 	};
 };
 if (_tanksToSpawn != 0) then {
@@ -85,4 +82,3 @@ if (_tanksToSpawn != 0) then {
 			missionNamespace setVariable ["enemy_groups",_servergroups];
 	};
 };
-

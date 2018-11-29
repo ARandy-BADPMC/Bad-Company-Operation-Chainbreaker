@@ -19,7 +19,8 @@ _unitar = _this select 0;
 			{
 				if ( _playerInRange )// && _player distance _unit <2000
 		       	exitWith{
-			       	_markpos = [getPos _x, random 500, random 359] call BIS_fnc_relPos;
+			       //	_markpos = [getPos _x, random 500, random 359] call BIS_fnc_relPos;
+			       	_markpos = (getPos _x) getPos[random 500,random 360];
 			       	_gep commandArtilleryFire [_markpos,getArtilleryAmmo [_gep] select 1,1];
 		       	};  
 			}
@@ -27,7 +28,8 @@ _unitar = _this select 0;
 			{
 				if ( _playerInRange )// && _player distance _unit <2000
 		       	exitWith{
-			       	_markpos = [getPos _x, random 500, random 359] call BIS_fnc_relPos;
+			       	//_markpos = [getPos _x, random 500, random 359] call BIS_fnc_relPos;
+			       	_markpos = (getPos _x) getPos[random 500,random 360];
 			       	_gep commandArtilleryFire [_markpos,getArtilleryAmmo [_gep] select 0,2];
 		       	};
 			}

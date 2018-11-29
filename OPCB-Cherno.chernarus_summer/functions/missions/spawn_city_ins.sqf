@@ -4,7 +4,7 @@
 	_houses = nearestObjects [_centerobj, ["house"], 500] select { count ( _x buildingPos -1 ) > 2 };
 	_InfPool= ["rhs_g_medic_F","rhs_g_Soldier_TL_F","rhs_g_Soldier_SL_F","rhs_g_Soldier_M_F","rhs_g_Soldier_lite_F","rhs_g_Soldier_LAT_F","rhs_g_Soldier_GL_F","rhs_g_Soldier_F3","rhs_g_Soldier_F2","rhs_g_Soldier_F","rhs_g_Soldier_exp_F","rhs_g_Soldier_AT_F","rhs_g_Soldier_AR_F","rhs_g_Soldier_AAT_F","rhs_g_Soldier_AAR_F","rhs_g_Soldier_AA_F"];
 
-	_defendergroup = creategroup resistance;
+	_defendergroup = creategroup [resistance,true];
 
 	for "_i" from 0 to count _houses -1 do {
 		_item = _houses select _i;
