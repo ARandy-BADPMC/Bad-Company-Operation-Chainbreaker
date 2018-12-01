@@ -57,12 +57,12 @@ class jey_adminconsole_dialog
 		class fix_task: RscButton
 		{
 			idc = 1632;
-			text = "Fix [0,0,0] task"; //--- ToDo: Localize;
+			text = "Order task spec."; //--- ToDo: Localize;
 			x = 0.536146 * safezoneW + safezoneX; //check x
 			y = 0.697923 * safezoneH + safezoneY;
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
-			action = "missionNamespace setVariable ['running_task',0];";
+			action = "closeDialog 0;[] call CHAB_fnc_adminTask;";
 		};
 		class jey_zeus: RscButton
 		{
@@ -172,6 +172,54 @@ class jey_adminconsole_dialog
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
 			action = "[] call CHAB_fnc_skip6";
+		};
+	};
+};
+class CHAB_adminTask 
+{
+	idd = 9904;
+	movingEnabled = false;
+
+	class controls 
+	{
+		class adminTask_background: RscPicture
+		{
+			idc = 1200;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0.270833 * safezoneW + safezoneX;
+			y = 0.225107 * safezoneH + safezoneY;
+			w = 0.458333 * safezoneW;
+			h = 0.549786 * safezoneH;
+		};
+		class adminTask_close: RscButton
+		{
+			idc = 1601;
+			text = "Close"; //--- ToDo: Localize;
+			x = 0.666146 * safezoneW + safezoneX;
+			y = 0.697923 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "closeDialog 0";
+		};
+		
+		class adminTask_spawn: RscButton
+		{
+			idc = 1602;
+			text = "Spawn selected task"; //--- ToDo: Localize;
+			x = 0.4325 * safezoneW + safezoneX;
+			y = 0.247099 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "[] call CHAB_fnc_admin_order_task";
+		};
+		
+		class adminTask_list: RscListbox
+		{
+			idc = 1500;
+			x = 0.491667 * safezoneW + safezoneX;
+			y = 0.247099 * safezoneH + safezoneY;
+			w = 0.22042 * safezoneW;
+			h = 0.175931 * safezoneH;
 		};
 	};
 };

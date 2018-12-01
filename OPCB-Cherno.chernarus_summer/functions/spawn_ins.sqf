@@ -20,7 +20,7 @@ if (_mechToSpawn != 0) then {
 		_spawnPos = [0,0,0];
 		while {surfaceIsWater _spawnPos || (_suitable select 0)<=100 || (_suitable select 1) >= 13000 } do {
 			_spawnPos = (getpos _centerobj) getPos[random 1000,random 360];
-			_suitable = [_spawnPos, 0, 300, 10, 0, 0.7, 0] call BIS_fnc_findSafePos;
+			_suitable = [_spawnPos, 0, 300, 10, 0, 0.7, 0,[],[[0,0,0],[0,0,0]]] call BIS_fnc_findSafePos;
 			if (count _suitable == 3) then {
 			  _suitable = [_suitable select 0,_suitable select 1];
 			};
@@ -48,7 +48,7 @@ if (_groupsToSpawn != 0) then {
 
 		while {surfaceIsWater _spawnPos || (_suitable select 0)<=100 || (_suitable select 1) >= 13000 } do {
 			_spawnPos = (getpos _centerobj) getPos[random 998,random 360];
-			_suitable = [_spawnPos, 0, 300, 10, 0, 0.7, 0] call BIS_fnc_findSafePos;
+			_suitable = [_spawnPos, 0, 300, 10, 0, 0.7, 0,[],[[0,0,0],[0,0,0]]] call BIS_fnc_findSafePos;
 			if (count _suitable == 3) then {
 			  _suitable = [_suitable select 0,_suitable select 1];
 			};
@@ -71,7 +71,7 @@ if (_tanksToSpawn != 0) then {
 
 		while {surfaceIsWater _spawnPos || (_suitable select 0)<=100 || (_suitable select 1) >= 13000 } do {
 			_spawnPos = (getpos _centerobj) getPos[random 999,random 360];
-			_suitable = [_spawnPos, 0, 300, 10, 0, 0.7, 0] call BIS_fnc_findSafePos;
+			_suitable = [_spawnPos, 0, 300, 10, 0, 0.7, 0,[],[[0,0,0],[0,0,0]]] call BIS_fnc_findSafePos;
 			if (count _suitable == 3) then {
 			  _suitable = [_suitable select 0,_suitable select 1];
 			};

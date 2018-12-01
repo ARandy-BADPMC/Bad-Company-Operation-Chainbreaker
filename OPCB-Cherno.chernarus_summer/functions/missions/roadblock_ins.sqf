@@ -13,20 +13,23 @@
 			_block = selectRandom _insurgent;
 			_relpos = (getPos _guard) getPos[random 800,_posHelp select _i ];
 			_road = [ _relpos,800] call BIS_fnc_nearestRoad;
-			if (!isNull _road) then {
+			if (!(isNull _road)) then {
 			 	_connectedroads = roadsConnectedTo _road;
-				_connection = _connectedroads select 0;
-				_direction = [_road, _connection] call BIS_fnc_DirTo;
+			 	if (!(isNil {_connectedroads select 0})) then {
+				 	_connection = _connectedroads select 0;
+					_direction = [_road, _connection] call BIS_fnc_DirTo;
 
-				_roadblock = [_block,getpos _road, [0,0,0], _direction, true, true ] call LARs_fnc_spawnComp;
-				_spawnComp pushBack _roadblock;
+					_roadblock = [_block,getpos _road, [0,0,0], _direction, true, true ] call LARs_fnc_spawnComp;
+					_spawnComp pushBack _roadblock;
 
-				_group = [getpos _road, resistance,(configfile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "Infantry" >> selectRandom _groups)] call BIS_fnc_spawnGroup;
-				[_group,150] call CHAB_fnc_shk_patrol;
-				_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-				_servergroups pushBack _group;
-				missionNamespace setVariable ["enemy_groups",_servergroups];
-				sleep 1;
+					_group = [getpos _road, resistance,(configfile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "Infantry" >> selectRandom _groups)] call BIS_fnc_spawnGroup;
+					[_group,150] call CHAB_fnc_shk_patrol;
+					_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+					_servergroups pushBack _group;
+					missionNamespace setVariable ["enemy_groups",_servergroups];
+					sleep 1;
+			 	};
+				
 			};
 		};
 	_spawnComp

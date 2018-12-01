@@ -16,7 +16,7 @@
 		{
 		  _enemysum = _enemysum +1;
 		} forEach units _x;
-		deleteGroup _x;
+		//deleteGroup _x;
 	} forEach _groups;
 
 

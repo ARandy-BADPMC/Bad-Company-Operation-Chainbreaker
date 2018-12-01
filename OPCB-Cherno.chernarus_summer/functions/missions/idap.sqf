@@ -1,67 +1,47 @@
+params ["_base","_current_tasknumber"];
+_taskcomp = "peacekeeper";
+_resgroup = createGroup [resistance,true];
+_guardgroup = createGroup [civilian,true];
 
-	_village = _this select 0;
-	_artgroups = _this select 1;
-	_civ = ["C_IDAP_Man_AidWorker_01_F","C_IDAP_Man_AidWorker_08_F","C_IDAP_Man_AidWorker_09_F","C_IDAP_Man_AidWorker_02_F","C_IDAP_Man_AidWorker_05_F","C_IDAP_Man_Paramedic_01_F"];
-
-	_houses = nearestObjects [_village, ["house"], 400] select { count ( _x buildingPos -1 ) > 2 };
-
-	if (count _houses < 10) then {
-	  for "_i" from 0 to count _houses -1 do
-	   {
-	  	_item = _houses select _i;
-	  	_road = (getPos _item) nearRoads 300;
-	  	_closest = 0;
-
-	  	for "_j" from 0 to count _road -1 do {
-	  		_roadseg = _road select _j;
-	  		_first = _road select _closest;
-	  		if (_roadseg distance _item < _first distance _item) then {
-	  		  _closest = _j;
-	  		};
-	  	};
+_servergroups = missionNamespace getVariable ["enemy_groups",[]];
+_servergroups pushBack _resgroup;
+_servergroups pushBack _guardgroup;
 
 
-	  	_segment = _road select _closest;
-	  	_group = createGroup [civilian,true];
-	  	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-			_servergroups pushBack _group;
-			missionNamespace setVariable ["enemy_groups",_servergroups];
-	  	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
+_current_task = _base getPos[random 600,random 360];
+[_current_tasknumber ,west,["IDAP Units have reported indirect and small arms fire on one of their locations, wounding several peacekeepers and civilians. You are tasked, to investigate, interrogate survivors, locate the enemy firing-positions and take them, including all the equipment, out. Be aware of counterattacks!","Locate Mortars"], _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
+_guard = _guardgroup createUnit ["B_GEN_Commander_F", _base, [], 2, "NONE"];
+_guardpos = getPos _guard;
+_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+//copyToClipboard str _comp;
 
-	  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
-		[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village,_artgroups], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
-	  
-	  };
-	}
-	else{
-		for "_i" from 0 to count _houses -1 do {
-			_item = _houses select _i;
+_markpos1 = _guardpos getPos[100,random 360];
+_defender1 = [_markpos1, civilian,["B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Commander_F"]] call BIS_fnc_spawnGroup;
+[_defender1,150] call CHAB_fnc_shk_patrol;
+_servergroups pushBack _defender1;
 
-			_chance = floor random 5;
+missionNamespace setVariable ["enemy_groups",_servergroups];
+_defender1 deleteGroupWhenEmpty true;
+_nearestCity = nearestLocation [ _guardpos, "NameVillage"]; //village only? What if it's a city?
+_village = locationPosition _nearestCity;
+[_current_tasknumber,_guardpos] call BIS_fnc_taskSetDestination;
+_stations = [_village,_guard] call CHAB_fnc_artilerry;
+[_village,(_stations select 1)] call CHAB_fnc_idap_fn;
+[_guard,["<t color='#FF0000'>Tell me which town is under attack.</t>",
+{
+	_village = _this select 3 select 0;
+	_townName = text _village;
+	hint format ["%1 is currently under heavy artilerry fire. Please save the Village.",_townName];
+}, [_nearestCity], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
+missionNamespace setVariable ["artilerry_rem",4];
 
-			if (_chance == 2) then {
-			  	_road = (getPos _item) nearRoads 300;
-				_closest = 0;
+waitUntil {
+  _remain = missionNamespace getVariable ["artilerry_rem",4];
+  _remain <= 0
+};
+[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;				
+[ _comp ] call LARs_fnc_deleteComp;
 
-			  	for "_j" from 0 to count _road -1 do {
-			  		_roadseg = _road select _j;
-			  		_first = _road select _closest;
-			  		if (_roadseg distance _item < _first distance _item) then {
-			  		  _closest = _j;
-			  		};
-			  	};
-
-
-			  	_segment = _road select _closest;
-			  	_group = createGroup [civilian,true];
-			  	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-			_servergroups pushBack _group;
-			missionNamespace setVariable ["enemy_groups",_servergroups];
-			  	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
-
-			  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
-				[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village,_artgroups], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
-			};
-		};
-	};
-	
+{
+  [ _x ] call LARs_fnc_deleteComp;
+} forEach (_stations select 0);

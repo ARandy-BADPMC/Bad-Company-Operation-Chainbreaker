@@ -2,7 +2,7 @@
 	
 _p = _this select 0;
 _d = objNull;
-_r = 20000;
+_r = 80000;
 {
        _n = _x distance _p;
        if((isPlayer _x) && (_n < _r)) then
