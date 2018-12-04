@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={12209.764,184,12620.916};
-		dir[]={-0.74254692,-0.53649443,0.40101212};
-		up[]={-0.47206509,0.84389877,0.25493944};
-		aside[]={0.47518674,2.7084025e-007,0.87989396};
+		pos[]={12062.038,165.05298,12639.596};
+		dir[]={-0.28262761,-0.27357578,-0.91941512};
+		up[]={-0.080393292,0.96184659,-0.26152304};
+		aside[]={-0.95588434,3.1385571e-007,0.2938374};
 	};
 };
 binarizationWanted=0;
@@ -90,7 +90,11 @@ addons[]=
 	"rhsusf_c_fmtv",
 	"rhsusf_vehicles",
 	"rhsusf_c_Caiman",
-	"A3_Structures_F_Mil_TentHangar"
+	"A3_Structures_F_Mil_TentHangar",
+	"PBW_German_Common",
+	"zade_boc",
+	"hlcweapons_core",
+	"BadCo_PublicServer_Extras"
 };
 class AddonsMetaData
 {
@@ -15958,7 +15962,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={12062.108,158.80144,12624.125};
-						angles[]={0,3.3586135,0};
+						angles[]={0,3.3586071,0};
 					};
 					side="West";
 					flags=4;
@@ -22842,8 +22846,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={12025.396,158.85846,12644.46};
-						angles[]={0,4.9178162,0};
+						position[]={12025.396,158.85844,12644.46};
+						angles[]={0,4.9178138,0};
 					};
 					side="West";
 					flags=7;
@@ -22853,6 +22857,7 @@ class Mission
 					};
 					id=184;
 					type="rhsusf_army_ocp_engineer";
+					atlOffset=0.057006836;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -22939,6 +22944,7 @@ class Mission
 			{
 			};
 			id=183;
+			atlOffset=0.057006836;
 		};
 		class Item104
 		{

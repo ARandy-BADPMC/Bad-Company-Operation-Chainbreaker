@@ -2769,6 +2769,25 @@ arsenalitems =
 "rhsusf_5Rnd_762x51_m993_Mag",
 
 "arifle_SPAR_03_blk_F",
-"arifle_SPAR_03_snd_F"
+"arifle_SPAR_03_snd_F",
+
+"50Rnd_570x28_SMG_03",
+"muzzle_snds_570",
+"SMG_03_hex",
+"SMG_03_khaki",
+"SMG_03_black",
+"SMG_03_camo",
+"SMG_03_TR_hex",
+"SMG_03_TR_khaki",
+"SMG_03_TR_black",
+"SMG_03_TR_camo",
+"SMG_03C_hex",
+"SMG_03C_khaki",
+"SMG_03C_black",
+"SMG_03C_camo",
+"SMG_03C_TR_hex",
+"SMG_03C_TR_khaki",
+"SMG_03C_TR_black",
+"SMG_03C_TR_camo"
 
 ];
