@@ -25,9 +25,7 @@ if (side _guard == east) then
 
 				_group = [getpos _road, east,(configfile >> "CfgGroups" >> "East" >> "rhs_faction_msv" >> "rhs_group_rus_msv_infantry" >> selectRandom _groups)] call BIS_fnc_spawnGroup;
 				[_group,150] call CHAB_fnc_shk_patrol;
-				_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-					_servergroups pushBack _group;
-					missionNamespace setVariable ["enemy_groups",_servergroups];
+				[_group] call CHAB_fnc_serverGroups;
 				sleep 1;
 			};
 			

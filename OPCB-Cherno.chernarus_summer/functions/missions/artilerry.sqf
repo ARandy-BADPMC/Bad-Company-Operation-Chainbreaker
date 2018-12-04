@@ -7,9 +7,7 @@ _artgroups = [];
 private ["_base"];
 _base = [0,0,0];
 _group = createGroup [resistance,true];
-_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-_servergroups pushBack _group;
-missionNamespace setVariable ["enemy_groups",_servergroups];
+[_group] call CHAB_fnc_serverGroups;
 _comps = ["mortar1","mortar2","mortar3"];
 
 	

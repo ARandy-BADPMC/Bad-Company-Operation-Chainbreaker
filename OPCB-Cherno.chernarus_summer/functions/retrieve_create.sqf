@@ -7,9 +7,7 @@
 	_taskItems = [];
 	_pos = 0;
 	_defendergroup = createGroup [civilian,true];
-	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-	_servergroups pushBack _defendergroup;
-	missionNamespace setVariable ["enemy_groups",_servergroups];
+	[_defendergroup] call CHAB_fnc_serverGroups;
 
 	_houses = nearestObjects [_guard, ["house"], 400] select { count ( _x buildingPos -1 ) > 2 };
 	//Make sure we have atleast one valid house

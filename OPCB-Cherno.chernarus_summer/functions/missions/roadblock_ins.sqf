@@ -24,9 +24,7 @@
 
 					_group = [getpos _road, resistance,(configfile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "Infantry" >> selectRandom _groups)] call BIS_fnc_spawnGroup;
 					[_group,150] call CHAB_fnc_shk_patrol;
-					_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-					_servergroups pushBack _group;
-					missionNamespace setVariable ["enemy_groups",_servergroups];
+					[_group] call CHAB_fnc_serverGroups;
 					sleep 1;
 			 	};
 				

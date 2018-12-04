@@ -21,10 +21,7 @@ _defender2 = [_markpos2, west,["rhsusf_army_ocp_rifleman_m590","rhsusf_army_ocp_
 [_defender1, _guardpos, 100] call bis_fnc_taskPatrol;
 [_defender2, _guardpos, 100] call bis_fnc_taskPatrol;
 
-_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-	_servergroups pushBack _defender2;
-	_servergroups pushBack _defender1;
-	missionNamespace setVariable ["enemy_groups",_servergroups];
+[[_defender2,_defender1]] call CHAB_fnc_serverGroups;
 
 waitUntil {
   sleep 5;
@@ -65,9 +62,7 @@ if (_tries > 0) then {
 	_wayp = _attacker addWaypoint [_guardpos, 100];
 	_wayp setWaypointType "SAD";
 
-	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-	_servergroups pushBack _attacker;
-	missionNamespace setVariable ["enemy_groups",_servergroups];
+	[_attacker] call CHAB_fnc_serverGroups;
 };
 	
 };
@@ -97,9 +92,8 @@ for "_i" from 0 to 1 do {
 		_wayp = _attacker addWaypoint [_guardpos, 100];
 		_wayp setWaypointType "SAD";
 
-		_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-		_servergroups pushBack _attacker;
-		missionNamespace setVariable ["enemy_groups",_servergroups];
+		[_attacker] call CHAB_fnc_serverGroups;
+
 	};
 
 

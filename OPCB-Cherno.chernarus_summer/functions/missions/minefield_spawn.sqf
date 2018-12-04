@@ -29,9 +29,8 @@
 			  	_maxcivs = _maxcivs +1;
 
 			  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
-			  	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-				_servergroups pushBack _group;
-				missionNamespace setVariable ["enemy_groups",_servergroups];
+			  	
+				[_group] call CHAB_fnc_serverGroups;
 			};
 		};
 	};

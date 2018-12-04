@@ -54,13 +54,17 @@
 	  };
 	} forEach allgroups;*/
 
+	with missionNamespace do
 	{
 		{
-			if (vehicle _x != _x) then {
-				(vehicle _x) setDamage 1;
-			};
-		  deletevehicle _x;
-		} forEach units _x;
-		deleteGroup _x;
-	} forEach _groups;
-	missionNamespace setVariable ["enemy_groups",[]];
+			{
+				if (vehicle _x != _x) then {
+					(vehicle _x) setDamage 1;
+				};
+			  deletevehicle _x;
+			} forEach units _x;
+			deleteGroup _x;
+		} forEach enemy_groups;
+		enemy_groups = [];
+	};
+	//missionNamespace setVariable ["enemy_groups",[]];

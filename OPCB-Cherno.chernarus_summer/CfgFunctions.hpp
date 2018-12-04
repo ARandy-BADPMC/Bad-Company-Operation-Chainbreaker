@@ -160,6 +160,10 @@ class chainbreaker
 		{
 			file = "functions\shk_patrol.sqf";
 		};
+		class serverGroups
+		{
+			file = "functions\miscellaneous\serverGroups.sqf";
+		};
 	};
 	class choppers
 	{

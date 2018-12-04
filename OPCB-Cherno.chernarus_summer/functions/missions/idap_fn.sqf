@@ -23,9 +23,7 @@ if (count _houses < 10) then {
 
   	_segment = _road select _closest;
   	_group = createGroup [civilian,true];
-  	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-		_servergroups pushBack _group;
-		missionNamespace setVariable ["enemy_groups",_servergroups];
+	[_group] call CHAB_fnc_serverGroups;
   	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
 
   	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
@@ -54,9 +52,8 @@ else{
 
 		  	_segment = _road select _closest;
 		  	_group = createGroup [civilian,true];
-		  	_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-		_servergroups pushBack _group;
-		missionNamespace setVariable ["enemy_groups",_servergroups];
+		  	
+			[_group] call CHAB_fnc_serverGroups;
 		  	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
 
 		  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;

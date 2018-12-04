@@ -3,24 +3,18 @@ _taskcomp = "peacekeeper";
 _resgroup = createGroup [resistance,true];
 _guardgroup = createGroup [civilian,true];
 
-_servergroups = missionNamespace getVariable ["enemy_groups",[]];
-_servergroups pushBack _resgroup;
-_servergroups pushBack _guardgroup;
-
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,["IDAP Units have reported indirect and small arms fire on one of their locations, wounding several peacekeepers and civilians. You are tasked, to investigate, interrogate survivors, locate the enemy firing-positions and take them, including all the equipment, out. Be aware of counterattacks!","Locate Mortars"], _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
 _guard = _guardgroup createUnit ["B_GEN_Commander_F", _base, [], 2, "NONE"];
 _guardpos = getPos _guard;
 _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-//copyToClipboard str _comp;
 
 _markpos1 = _guardpos getPos[100,random 360];
 _defender1 = [_markpos1, civilian,["B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Commander_F"]] call BIS_fnc_spawnGroup;
 [_defender1,150] call CHAB_fnc_shk_patrol;
-_servergroups pushBack _defender1;
 
-missionNamespace setVariable ["enemy_groups",_servergroups];
+[[_resgroup,_guardgroup,_defender1]] call CHAB_fnc_serverGroups;
 _defender1 deleteGroupWhenEmpty true;
 _nearestCity = nearestLocation [ _guardpos, "NameVillage"]; //village only? What if it's a city?
 _village = locationPosition _nearestCity;
