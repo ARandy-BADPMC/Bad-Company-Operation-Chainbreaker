@@ -24,6 +24,7 @@ else
 {
 	[_current_tasknumber, "FAILED",true] call BIS_fnc_taskSetState;
 };
+[_base] call CHAB_fnc_endmission;
 {
   [ _x ] call LARs_fnc_deleteComp;
 } forEach _spawncomps;

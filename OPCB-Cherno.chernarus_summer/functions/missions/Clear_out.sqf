@@ -83,6 +83,7 @@ else
 {
 	[_current_tasknumber, "FAILED",true] call BIS_fnc_taskSetState;
 };
+[_base] call CHAB_fnc_endmission;
 deleteVehicle _journal1;
 deleteVehicle _journal2;
 deleteVehicle _guard;

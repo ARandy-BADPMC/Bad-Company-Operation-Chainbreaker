@@ -26,6 +26,7 @@ else
 {
 	[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
 };
+[_base] call CHAB_fnc_endmission;
 [ _comp ] call LARs_fnc_deleteComp;
 {
   [ _x ] call LARs_fnc_deleteComp;

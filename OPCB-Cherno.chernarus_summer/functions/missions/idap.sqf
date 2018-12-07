@@ -33,7 +33,8 @@ waitUntil {
   _remain = missionNamespace getVariable ["artilerry_rem",4];
   _remain <= 0
 };
-[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;				
+[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;	
+[_base] call CHAB_fnc_endmission;			
 [ _comp ] call LARs_fnc_deleteComp;
 
 {

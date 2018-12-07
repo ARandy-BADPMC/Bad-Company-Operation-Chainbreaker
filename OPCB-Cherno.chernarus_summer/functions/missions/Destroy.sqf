@@ -13,6 +13,7 @@ _thetarget = createVehicle ["rhsusf_m1a1aimd_usarmy", _guardpos, [], 1, "NONE"];
 _thetarget lock true;
 waitUntil { sleep 10; !(alive _thetarget) || (damage _thetarget > 0.8)};
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+[_base] call CHAB_fnc_endmission;
 [ _comp ] call LARs_fnc_deleteComp;
 {
   [ _x ] call LARs_fnc_deleteComp;

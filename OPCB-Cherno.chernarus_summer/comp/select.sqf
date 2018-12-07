@@ -111,7 +111,6 @@ switch ( _selected) do {
 	}; 
 };
 missionNamespace setVariable ["running_task",0];
-[_base] call CHAB_fnc_endmission;
 
 } 
 else 

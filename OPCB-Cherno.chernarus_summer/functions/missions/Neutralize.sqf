@@ -28,6 +28,7 @@ if(!(alive _leader)) then
 {
 	"The IED factory is destroyed, but the leader is dead." remoteExec ["hint"];
 };
+[_base] call CHAB_fnc_endmission;
 {
   [ _x ] call LARs_fnc_deleteComp;
 } forEach _spawncomps;

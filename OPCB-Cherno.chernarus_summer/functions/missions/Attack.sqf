@@ -21,5 +21,6 @@ waitUntil {
 	triggerActivated _trg
 };
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+[_base] call CHAB_fnc_endmission;
 
 deleteVehicle _trg;

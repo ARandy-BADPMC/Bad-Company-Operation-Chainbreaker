@@ -15,6 +15,7 @@ _spawncomps = [_guard] call CHAB_fnc_roadblock_ins;
 [] call CHAB_fnc_enemycount;
 waitUntil {sleep 10;triggerActivated _trg};
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+[_base] call CHAB_fnc_endmission;
 [ _comp ] call LARs_fnc_deleteComp;
 deleteVehicle _trg;
 {
