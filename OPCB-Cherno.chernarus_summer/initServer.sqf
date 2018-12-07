@@ -8,7 +8,7 @@ missionNamespace setVariable ["enemy_groups",[]];
 
 
 {
- 	_x allowDamage false;
+	_x allowDamage false;
 	[_x, "LISTEN_BRIEFING", "Light"] call BIS_fnc_ambientAnim;
 } forEach [officer_jeff,tank_spawner,heli_jeff]; 
 
