@@ -8,7 +8,7 @@ waitUntil
 	sleep 10;
 	_players = [];
 	{
-	  if( (isplayer _x) && (_x distance _marker ) < 600)
+	  if( (isplayer _x) && (_x distance _marker ) < 800)
 	  	then
 	  	{
 	  	_isClose = _isClose +1;

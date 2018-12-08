@@ -1,6 +1,7 @@
 params ["_base","_current_tasknumber"];
 _cities = missionNamespace getVariable["Cities",0];
 _city = selectRandom _cities;
+private ["_crate"];
 _citypos = locationPosition _city;
 _citymarker = missionNamespace getVariable ["citymarker",_citypos];
 _citymarker setMarkerPos _citypos;
@@ -25,4 +26,5 @@ waitUntil {
 };
 
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+[_base] call CHAB_fnc_endmission;
 deleteVehicle (_crate select 0);

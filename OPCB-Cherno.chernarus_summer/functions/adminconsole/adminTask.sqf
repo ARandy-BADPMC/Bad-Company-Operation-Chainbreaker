@@ -20,7 +20,7 @@ disableSerialization;
 	"Clear out",
 	"Resupply",
 	"IDAP",
-	//"Retrieve",
+	"Retrieve",
 	"Minefield"
 	];
 	{

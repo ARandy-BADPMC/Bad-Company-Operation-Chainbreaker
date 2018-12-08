@@ -22,7 +22,7 @@ _tasks = [
 ["Clear out",9999],
 ["Resupply",100],
 ["IDAP",85],
-//["Retrieve",9999],
+["Retrieve",9999],
 ["Minefield",9999]
 
 ];
