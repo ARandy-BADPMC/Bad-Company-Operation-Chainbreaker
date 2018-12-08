@@ -9,6 +9,7 @@ _current_task = _base getPos[random 600,random 360];
 _guard = _guardgroup createUnit ["B_GEN_Commander_F", _base, [], 2, "NONE"];
 _guardpos = getPos _guard;
 _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+_reference = [ _comp ] call LARs_fnc_getCompObjects;
 
 _markpos1 = _guardpos getPos[100,random 360];
 _defender1 = [_markpos1, civilian,["B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Commander_F"]] call BIS_fnc_spawnGroup;
@@ -40,3 +41,15 @@ waitUntil {
 {
   [ _x ] call LARs_fnc_deleteComp;
 } forEach (_stations select 0);
+{
+	if(typeName _x == "GROUP") then
+	{
+		{
+		  deleteVehicle _x;
+		} forEach (units _x);
+		deleteGroup _x;
+	}
+	else{
+		deleteVehicle _x;
+	};
+} forEach _reference;

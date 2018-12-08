@@ -17,6 +17,10 @@ class chainbreaker
 		{
 			file = "functions\missions\Minefield.sqf";
 		};
+		class GDrunken
+		{
+			file = "functions\missions\GDrunken.sqf";
+		};
 		class Neutralize2
 		{
 			file = "functions\missions\Neutralize2.sqf";
@@ -77,6 +81,10 @@ class chainbreaker
 	};
 	class mission_related
 	{
+		class gdrunken_spawn
+		{
+			file = "functions\missions\gdrunken_spawn.sqf";
+		};
 		class retrieve_create
 		{
 			file = "functions\retrieve_create.sqf";

@@ -1,11 +1,9 @@
 
 params ["_taskobjective"];
-//copyToClipboard str [_taskobjective];
 private ["_radius","_comp","_current_task","_tasknumber","_current_tasknumber","_base","_taskobjective","_selected"];
 _taskIsrunning = missionNamespace getVariable ["running_task",1];
 
 if(_taskIsrunning == 0) then {
-
 
 _tasks = [
 
@@ -23,6 +21,7 @@ _tasks = [
 ["Resupply",100],
 ["IDAP",85],
 ["Retrieve",9999],
+["GDrunken",80],
 ["Minefield",9999]
 
 ];
@@ -42,8 +41,6 @@ if (!_done) then {
 _tasknumber = (missionNamespace getVariable ["TaskNumber",-1]) + 1;
 missionNamespace setVariable ["TaskNumber",_tasknumber];
 _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
-
-//_selected = "Eliminate";
 
 {
 	if (_selected isEqualTo (_x select 0)) exitWith{
@@ -102,6 +99,9 @@ switch ( _selected) do {
 	}; 
 	case "Clear out" : {
 		[_base,_current_tasknumber] call CHAB_fnc_Clear_out;
+	};
+	case "GDrunken" : {
+		[_base,_current_tasknumber] call CHAB_fnc_GDrunken;
 	};  
 	case "Minefield" : {
 		[_base,_current_tasknumber] call CHAB_fnc_Minefield;

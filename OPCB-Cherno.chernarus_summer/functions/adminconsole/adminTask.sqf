@@ -21,7 +21,8 @@ disableSerialization;
 	"Resupply",
 	"IDAP",
 	"Retrieve",
-	"Minefield"
+	"Minefield",
+	"GDrunken"
 	];
 	{
 		_ctrl lbAdd _x;
