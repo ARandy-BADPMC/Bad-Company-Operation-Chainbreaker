@@ -1,0 +1,170 @@
+version=53;
+center[]={79.627113,5,8126.0254};
+class items
+{
+	items=9;
+	class Item0
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={-1.5655136,0.58268595,-3.6586914};
+			angles[]={0,1.7198827,0};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=383;
+		type="Land_TentA_F";
+	};
+	class Item1
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={3.6122818,0.58268595,-0.73828125};
+			angles[]={0,3.5227106,0};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=384;
+		type="Land_TentA_F";
+	};
+	class Item2
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={1.1495132,0.58268595,2.0766602};
+			angles[]={0,2.2017822,0};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=385;
+		type="Land_TentA_F";
+	};
+	class Item3
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={-4.6735458,0.58268595,0.62695313};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=386;
+		type="Land_TentA_F";
+	};
+	class Item4
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={-0.94799042,0.21958399,0.13867188};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=387;
+		type="Land_Campfire_F";
+	};
+	class Item5
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={2.2266006,0.13120365,0.83447266};
+			angles[]={0.0033296358,0,0.0019223655};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=388;
+		type="Land_Camping_Light_F";
+		atlOffset=0.012530327;
+	};
+	class Item6
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={2.6783218,0.11867428,-2.2724609};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=389;
+		type="Land_Camping_Light_F";
+	};
+	class Item7
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={-2.2556686,0,1.5551758};
+			angles[]={0,2.7941067,0};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=390;
+		type="Land_WoodenBox_F";
+		class CustomAttributes
+		{
+			class Attribute0
+			{
+				property="ammoBox";
+				expression="[_this,_value] call bis_fnc_initAmmoBox;";
+				class Value
+				{
+					class data
+					{
+						class type
+						{
+							type[]=
+							{
+								"STRING"
+							};
+						};
+						value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+					};
+				};
+			};
+			nAttributes=1;
+		};
+	};
+	class Item8
+	{
+		dataType="Object";
+		class PositionInfo
+		{
+			position[]={-0.21279144,1.2556248,1.4418945};
+		};
+		side="Empty";
+		flags=4;
+		class Attributes
+		{
+		};
+		id=694;
+		type="CamoNet_OPFOR_F";
+	};
+};
