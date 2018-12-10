@@ -1,7 +1,7 @@
 _howBig = _this select 0;
 missionNamespace setVariable["task_underway",true];
 
-_center = missionNamespace getVariable ["World_center",[5840,5700,0]];
+_center = missionNamespace getVariable ["World_center",[10000.1,10479.8,0]];
 _suitable = [0,0,0];
 private ["_step","_prevStep","_spot","_heading"];
 _list = _suitable;
@@ -45,6 +45,6 @@ while { surfaceIsWater _suitable || count _list > 0 || (_suitable select 0)<=100
 	sleep 1;
 };*/
 _marker1 = createMarker ["Marker"+ str _suitable,_suitable];
-_marker1 setMarkerType "hd_objective";
+//_marker1 setMarkerType "hd_objective";
 
 missionNamespace setVariable ["task_spot",_suitable];
