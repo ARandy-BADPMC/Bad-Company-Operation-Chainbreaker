@@ -2,21 +2,10 @@ waitUntil {!isNull player && player == player};
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 call compileFinal preprocessfilelinenumbers "scripts\ArsenalWhitelist.sqf"; //more secure
-/*
-player addMPEventHandler ["MPRespawn", 
-{
-	player allowDamage false;
-	titleText ["\n\nSpawn Protection is ACTIVATED","PLAIN DOWN"];
-	titleFadeOut 5;
-	sleep 60;
-	titleText ["\n\nSpawn Protection is DEACTIVATED","PLAIN DOWN"];
-	titleFadeOut 5;
-	player allowDamage true;
-}];*/
 
-jeff addAction ["<t color='#FF0000'>Request a Task</t>", "remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
+jeff addAction ["<t color='#FF0000'>Request a Task</t>", "[0] remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
 
-switch (typeOf player) do {  //instead of casking for comparisons 5 times, this only does it once. far more advanced. 
+switch (typeOf player) do { 
 	case "rhsusf_airforce_jetpilot" : {  player call CHAB_fnc_whitelist; }; 
 	case "rhsusf_army_ocp_helipilot" : {  
 		heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
@@ -27,36 +16,12 @@ switch (typeOf player) do {  //instead of casking for comparisons 5 times, this 
 		tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
 	}; 
 };
-handle = //for testing
-{
-	player addAction ["<t color='#FF0000'>asdasdsa</t>",{
-		player removeAction (_this select 2) ;
-		_handle = [100] spawn CHAB_fnc_findSpot;
-		waitUntil {
-		  scriptDone _handle
-		};
-		[player] call handle;
-	},nil, 1, false, true, "", "true", 10, false,""];
-};
-_admins = ["76561198117073327","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044","76561197988793826","76561198048254349"]; //76561197998271838-GOMEZ 76561197992821044-GRAND 76561197988793826-WEEDO  76561198117073327-Randy  76561198142692277-Alex.K   76561198017258138 - A.Mitchell 76561198002110130 K.Hunter
+_admins = ["76561198117073327","76561198142692277","76561198017258138","76561198002110130","76561197998271838","76561197992821044","76561197988793826","76561198048254349","76561198088658039"]; //76561197998271838-GOMEZ 76561197992821044-GRAND 76561197988793826-WEEDO  76561198117073327-Randy  76561198142692277-Alex.K   76561198017258138 - A.Mitchell 76561198002110130 K.Hunter 76561198088658039 Ayoub
 if(getPlayerUID player in _admins) 
 	then 
 	{
 		player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
-		player addAction ["<t color='#FF0000'>Test locations</t>",{
-
-		player removeAction (_this select 2) ;
-		_handle = [100] spawn CHAB_fnc_findSpot;
-		waitUntil {
-		  scriptDone _handle
-		};
-		[player] call handle;
-
-		},nil, 1, false, true, "", "true", 10, false,""];
-
-		/*player addMPEventHandler ["MPRespawn", {
-			player addAction ["<t color='#FF0000'>Admin Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, 1, false, true, "", "true", 10, false,""];
-		}];*/
+	
 	};
 
 jeff addaction ["Lights on", {
@@ -68,6 +33,16 @@ jeff addaction ["Lights off", {
 	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
 	_lamp sethit ["light_1_hitpoint",1];
 	_lamp sethit ["light_2_hitpoint",1];	
+}];
+
+base_flag addAction ["Teleport to Shootingrange", {
+	[player,[12028,12608.6,0]] remoteExec ["setPos",2];
+}];
+base_flag addAction ["Teleport to Heli-Spawner", {
+	[player,[12204.2,12621,0]] remoteExec ["setPos",2];
+}];
+ShootingRange_flag addAction ["Teleport to Base", {
+	[player,[12129.8,18100.4,0]] remoteExec ["setPos",2];
 }];
 
 Helicopter_loadouts = 
@@ -95,6 +70,8 @@ Helicopter_loadouts =
 	"C_Heli_Light_01_civil_F",["Unarmed",[]],
 	"B_Heli_Light_01_F",["Unarmed",[]],
 	"RHS_MELB_MH6M",["Unarmed",[]],
+	"RHS_Mi8AMTSh_vvs", ["Unarmed",[]],
+	"RHS_Mi24P_vdv", ["Standard",["rhs_mag_fab250","rhs_mag_fab250","rhs_mag_b8v20a_s8kom","rhs_mag_b8v20a_s8kom","rhs_mag_9M120M_Mi24_2x","rhs_mag_9M120M_Mi24_2x"],"Rockets", ["rhs_mag_ub32_s5m1","rhs_mag_ub32_s5m1","rhs_mag_ub32_s5m1","rhs_mag_ub16_s5m1","rhs_mag_9M120M_Mi24_2x","rhs_mag_9M120M_Mi24_2x"]],
 	"O_Heli_Transport_04_F", ["Unarmed",[]],
 	"RHS_MELB_H6M",["Unarmed",[]],
 	"B_Heli_Attack_01_dynamicLoadout_F",["Simple",["PylonMissile_1Rnd_ACE_Hellfire_AGM114K","PylonMissile_1Rnd_ACE_Hellfire_AGM114K","PylonRack_12Rnd_PG_missiles","PylonRack_12Rnd_PG_missiles","PylonMissile_1Rnd_ACE_Hellfire_AGM114K","PylonMissile_1Rnd_ACE_Hellfire_AGM114K"]],

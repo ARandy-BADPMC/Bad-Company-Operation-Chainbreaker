@@ -1,7 +1,14 @@
-_istherezeus = missionNamespace getVariable["zeus_enabled",1];
-	if(_istherezeus == 0) then {
-		hint "You are now the Zeus of the mission.";
-		[player] remoteExec ["CHAB_fnc_zeus_server"];
-	} else {
-	hint "There is already a Zeus operator!";
+_zeus = ["76561198142692277","76561198117073327","76561198048254349"];
+_haszeus = false;
+{
+	if ((getAssignedCuratorUnit _x) == player) exitWith {
+	  _haszeus = true;
 	};
+} forEach allCurators;
+
+if((getPlayerUID player) in _zeus && !_haszeus) then {
+	hint "Fetching Zeus for you in a second.";
+	[player] remoteExec ["CHAB_fnc_zeus_server",2];
+} else {
+	hint "You are not allowed to use this function yet";
+};

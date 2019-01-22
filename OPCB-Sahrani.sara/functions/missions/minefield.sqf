@@ -1,60 +1,30 @@
 
-	_unit = _this select 0;
-	_civ = ["C_man_p_beggar_F_afro","C_man_polo_1_F_afro","C_man_polo_2_F_afro","C_man_polo_3_F_afro","C_man_polo_4_F_afro","C_man_polo_5_F_afro","C_man_polo_6_F_afro","C_man_shorts_1_F_afro","C_man_p_fugitive_F_afro","C_man_p_shorts_1_F_afro","C_man_shorts_2_F_afro","C_man_shorts_3_F_afro","C_man_shorts_4_F_afro"];
-	_houses = nearestObjects [_unit, ["house"], 700] select { count ( _x buildingPos -1 ) > 2 };
-	
-	_mines = ["ACE_IEDUrbanSmall_Range","ACE_IEDLandSmall_Range","ACE_IEDUrbanBig_Range","ACE_IEDLandBig_Range"];
-	_maxcivs = 0;
-	for "_i" from 0 to count _houses -1 do {
-		_item = _houses select _i;
+_cities = missionNamespace getVariable["Cities",0];
+_city = selectRandom _cities;
+_citypos = locationPosition _city;
 
-		_chance = floor random 6;
+_citymarker = missionNamespace getVariable ["citymarker",_citypos];
+_citymarker setMarkerPos _citypos;
+[_current_tasknumber ,west,["Enemy forces laid mines to stop our advance against them. These mines are not just a threat to us, but also for the local population. Clear the minefields, but be careful, the enemy might be watching them.","Minefield",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
+_guardgroup = createGroup [resistance,true];
+_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", getMarkerPos _citymarker, [], 2, "NONE"];
+_guardpos = getPos _guard;
+_mines = [_guard] call CHAB_fnc_minefield_spawn;
+[_guard,6,0,2] call CHAB_fnc_spawn_ins;
+{
+  resistance revealMine _x;
+  civilian revealMine _x;
+} forEach _mines;
 
-		if (_chance == 2) then {
-		  	_road = (getPos _item) nearRoads 300;
-			_closest = 0;
-			if (count _road > 1) then {
-			  for "_j" from 0 to count _road -1 do {
-			  		_roadseg = _road select _j;
-			  		_first = _road select _closest;
-			  		if (_roadseg distance _item < _first distance _item) then {
-			  		  _closest = _j;
-			  		};
-			  	};
-				_group = createGroup civilian;
-			  	_segment = _road select _closest;
-			  	if (_maxcivs < 26) then {
-			  		_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
-			  	};
-			  	_maxcivs = _maxcivs +1;
+waitUntil {
+	_van = 1;
+  	{
+  	 	if ( alive _x ) exitWith { _van = 1;};
+  	 	_van = 0;
+  	} forEach _mines;
 
-			  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
-			};
-		};
-	};
-
-	_minetobe = ceil random 4;
-	_return = [];
-	for "_i" from 0 to _minetobe do {
-		_item = selectRandom _houses;
-
-		_road = (getPos _item) nearRoads 200;
-		_closest = 0;
-		if (count _road > 1) then {
-		  for "_j" from 0 to count _road -1 do {
-		  		_roadseg = _road select _j;
-		  		_first = _road select _closest;
-		  		if (_roadseg distance _item < _first distance _item) then {
-		  		  _closest = _j;
-		  		};
-		  	};
-		  	_segment = _road select _closest;
-		  	_mine = createMine [selectRandom _mines, getPos _segment, [], 3];
-		  	_marker1 = createMarker ["Marker"+ str _mine, getPos _segment]; 
-			_marker1 setMarkerType "hd_objective";
-		  	_return pushBack _mine;
-		};
-	};
-
-	_return
-	
+  _van == 0
+};
+deleteVehicle _guard;
+[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+[_base] call CHAB_fnc_endmission;

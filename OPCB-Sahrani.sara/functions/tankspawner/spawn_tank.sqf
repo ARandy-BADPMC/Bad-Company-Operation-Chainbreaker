@@ -10,6 +10,7 @@ _tanks = [
 
 "B_APC_Wheeled_01_cannon_F",
 "B_APC_Tracked_01_AA_F",
+"O_T_APC_Tracked_02_cannon_ghex_F",
 "rhs_bmp2d_msv",
 "rhsusf_CGRCAT1A2_usmc_d",
 "rhsusf_CGRCAT1A2_Mk19_usmc_d",
@@ -52,8 +53,6 @@ _tanks = [
 "rhsusf_M1237_MK19_usarmy_d",
 "rhsusf_M1117_D",
 "rhsusf_M142_usarmy_D",
-"Burnes_M1A1_MEU_01_Public",
-"Burnes_M1A1_MEU_02_Public",
 "rhsusf_m1a1aimd_usarmy",
 "rhsusf_m1a1aim_tuski_d",
 "rhsusf_m1a2sep1d_usarmy",

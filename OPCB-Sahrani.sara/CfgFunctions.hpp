@@ -11,8 +11,84 @@ class FRED_VehicleRespawn
 class chainbreaker
 {
 	tag = "CHAB";
+	class missions
+	{
+		class Minefield
+		{
+			file = "functions\missions\Minefield.sqf";
+		};
+		class GDrunken
+		{
+			file = "functions\missions\GDrunken.sqf";
+		};
+		class Neutralize2
+		{
+			file = "functions\missions\Neutralize2.sqf";
+		};
+		class Neutralize
+		{
+			file = "functions\missions\Neutralize.sqf";
+		};
+		class Eliminate
+		{
+			file = "functions\missions\Eliminate.sqf";
+		};
+		class Technology
+		{
+			file = "functions\missions\Technology.sqf";
+		};
+		class Destroy
+		{
+			file = "functions\missions\Destroy.sqf";
+		};
+		class Annihilate_and_Destroy
+		{
+			file = "functions\missions\Annihilate_and_Destroy.sqf";
+		};
+		class Secure
+		{
+			file = "functions\missions\Secure.sqf";
+		};
+		class Capture
+		{
+			file = "functions\missions\Capture.sqf";
+		};
+		class Exterminate
+		{
+			file = "functions\missions\Exterminate.sqf";
+		};
+		class IDAP
+		{
+			file = "functions\missions\IDAP.sqf";
+		};
+		class Resupply
+		{
+			file = "functions\missions\Resupply.sqf";
+		};
+		class Retrieve
+		{
+			file = "functions\missions\Retrieve.sqf";
+		};
+		class Attack
+		{
+			file = "functions\missions\Attack.sqf";
+		};
+		class Clear_out
+		{
+			file = "functions\missions\Clear_out.sqf";
+		};
+		
+	};
 	class mission_related
 	{
+		class gdrunken_spawn
+		{
+			file = "functions\missions\gdrunken_spawn.sqf";
+		};
+		class retrieve_create
+		{
+			file = "functions\retrieve_create.sqf";
+		};
 		class mission_selector   //from here on, this script is called CHAB_fnc_mission_selector
 		{
 			file = "comp\select.sqf";
@@ -33,6 +109,18 @@ class chainbreaker
 		{
 			file = "functions\missions\spawn_city_rus.sqf";
 		};
+		class spawn_ins
+		{
+			file = "functions\spawn_ins.sqf";
+		};
+		class spawn_rus
+		{
+			file = "functions\spawn_rus.sqf";
+		};
+		class spawn_nat
+		{
+			file = "functions\spawn_nat.sqf";
+		};
 		class spawn_city_ins 
 		{
 			file = "functions\missions\spawn_city_ins.sqf";
@@ -41,13 +129,13 @@ class chainbreaker
 		{
 			file = "functions\enemycount.sqf";
 		};
-		class minefield  
+		class minefield_spawn  
 		{
-			file = "functions\missions\minefield.sqf";
+			file = "functions\missions\minefield_spawn.sqf";
 		};
-		class idap  
+		class idap_fn  
 		{
-			file = "functions\missions\idap.sqf";
+			file = "functions\missions\idap_fn.sqf";
 		};
 		class fire_artilerry  
 		{
@@ -75,6 +163,14 @@ class chainbreaker
 		class findSpot
 		{
 			file = "functions\findSpot.sqf";
+		};
+		class shk_patrol
+		{
+			file = "functions\shk_patrol.sqf";
+		};
+		class serverGroups
+		{
+			file = "functions\miscellaneous\serverGroups.sqf";
 		};
 	};
 	class choppers
@@ -105,6 +201,14 @@ class chainbreaker
 		class adminconsole
 		{
 			file = "functions\adminconsole\adminconsole.sqf";
+		};
+		class adminTask
+		{
+			file = "functions\adminconsole\adminTask.sqf";
+		};
+		class admin_order_task
+		{
+			file = "functions\adminconsole\admin_order_task.sqf";
 		};
 		class kick
 		{
@@ -145,14 +249,6 @@ class chainbreaker
 		class zeus_server
 		{
 			file = "functions\adminconsole\zeus_server.sqf";
-		};
-		class zeus_out
-		{
-			file = "functions\adminconsole\zeus_out.sqf";
-		};
-		class zeus_out_server
-		{
-			file = "functions\adminconsole\zeus_out_server.sqf";
 		};
 		class getpilots
 		{

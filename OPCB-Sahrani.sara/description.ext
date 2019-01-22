@@ -7,9 +7,9 @@ forceRotorLibSimulation 		= 0;										// 0 - options based; 1 - force enable; 
 showGroupIndicator 				= 0;										// Enables/Disables the squad hud	
 enableTeamSwitch 				= 0;
 enableItemsDropping 			= 0;										// disabled with 0
-enableDebugConsole 				= 1;										// 0 = disabled. 1 = admins, 2 = everybody. 0 is recommended in MP.		
+//enableDebugConsole 				= 1;										// 0 = disabled. 1 = admins, 2 = everybody. 0 is recommended in MP.		
 allowFunctionsLog 				= 0; 										// Log functions to .rpt. disabled with 0					
-
+enableDebugConsole[] = {"76561198142692277","76561198117073327","76561198048254349"};
 respawnDelay = 30;
 ReviveMode = 0;
 disableChannels[] = {0,2,5,6};
@@ -49,6 +49,4 @@ class CfgRemoteExec
 		class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
 		
 	};
-	
-	
 };

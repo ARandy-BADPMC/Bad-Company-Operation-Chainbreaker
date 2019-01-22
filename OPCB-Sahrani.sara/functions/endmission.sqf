@@ -8,7 +8,7 @@ waitUntil
 	sleep 10;
 	_players = [];
 	{
-	  if( (isplayer _x) && (_x distance _marker ) < 600)
+	  if( (isplayer _x) && (_x distance _marker ) < 800)
 	  	then
 	  	{
 	  	_isClose = _isClose +1;
@@ -18,25 +18,29 @@ waitUntil
   _isClose <= 0 || count _players == 0
 };
 
+/*_groups = missionNamespace getVariable ["enemy_groups",[]];
 {
-if(_x isKindOf "Car" || _x isKindOf "Air" || _x isKindOf "Tank") then {_x setDamage 1;} else{deleteVehicle _x;};
+	{
+		if (vehicle _x != _x) then {
+			(vehicle _x) setDamage 1;
+		};
+	  deletevehicle _x;
+	} forEach units _x;
+	deleteGroup _x;
+} forEach _groups;*/
 
-
-} forEach nearestObjects [_marker, ["all"], 250];
-
-_groups = allgroups;
+with missionNamespace do
 {
-  if(side _x == east || side _x == resistance || side _x == civilian) then
-  	{
-  		_delgroup = _x;
-  		{
-  		  deletevehicle _x;
-  		} forEach units _delgroup;
-  	};
-} forEach _groups;
-
-{
-	if (count (units _x) == 0) then {
+	{
+		{
+			if (vehicle _x != _x) then {
+				(vehicle _x) setDamage 1;
+			};
+		  deletevehicle _x;
+		} forEach units _x;
 		deleteGroup _x;
-	};
-} foreach allGroups;
+	} forEach enemy_groups;
+	enemy_groups = [];
+};
+
+//missionNamespace setVariable ["enemy_groups",[]];

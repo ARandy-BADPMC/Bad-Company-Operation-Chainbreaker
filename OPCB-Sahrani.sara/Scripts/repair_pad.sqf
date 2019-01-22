@@ -4,7 +4,7 @@ _type = typeOf _this;
 x_reload_time_factor = 1; // does this have to be global??
 
 _this setVehicleAmmo 1;
-
+_this engineOn false;
 _this vehicleChat format ["Servicing %1... Please stand by...", _type];
 
 _magazines = getArray(configFile >> "CfgVehicles" >> _type >> "magazines");

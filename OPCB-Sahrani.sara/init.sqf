@@ -13,6 +13,8 @@ Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [
 
 [] execVM "Vcom\VcomInit.sqf";
 
+execVM"Scripts\ied.sqf";
+
 RHSDecalsOff = true;
 
 //try to safely resolve 'stuck in loading screen bug' of Arma 3... thank you again BIS

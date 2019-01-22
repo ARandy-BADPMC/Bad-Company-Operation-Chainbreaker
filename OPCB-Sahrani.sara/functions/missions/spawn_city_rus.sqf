@@ -24,6 +24,8 @@
 			};
 		};
 	};
+	
+	[_defendergroup] call CHAB_fnc_serverGroups;
 
 
 
