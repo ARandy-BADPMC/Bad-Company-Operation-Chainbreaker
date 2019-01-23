@@ -2842,7 +2842,8 @@ arsenalitems =
 "TRYK_Beard4",
 "TRYK_Beard_BW4",
 "TRYK_Beard_Gr4",
-"TRYK_SBeard_BK5"
+"TRYK_SBeard_BK5",
+"TRYK_U_denim_hood_nc"
 
 
 ];
