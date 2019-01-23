@@ -21,6 +21,10 @@ class chainbreaker
 		{
 			file = "functions\missions\GDrunken.sqf";
 		};
+		class El_Chapo
+		{
+			file = "functions\missions\El_Chapo.sqf";
+		};
 		class Neutralize2
 		{
 			file = "functions\missions\Neutralize2.sqf";
@@ -85,6 +89,10 @@ class chainbreaker
 		{
 			file = "functions\missions\gdrunken_spawn.sqf";
 		};
+		class reinforcement
+		{
+			file = "functions\missions\reinforcement.sqf";
+		};
 		class retrieve_create
 		{
 			file = "functions\retrieve_create.sqf";
@@ -96,6 +104,10 @@ class chainbreaker
 		class endmission
 		{
 			file = "functions\endmission.sqf";
+		};
+		class spawn_hmg
+		{
+			file = "functions\spawn_hmg.sqf";
 		};
 		class roadblock_rus
 		{

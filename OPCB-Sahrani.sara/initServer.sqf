@@ -5,6 +5,9 @@ missionNamespace setVariable ["task_spot",[5840,5700,0]];
 
 missionNamespace setVariable ["enemy_groups",[]];
 
+missionNamespace setVariable ["Chapo_trigger",false];
+
+
 missionNamespace setVariable ["MaxTanks",0,true];
 missionNamespace setVariable ["MaxAttackHelis",0,true];
 missionNamespace setVariable ["MaxTransHelis",0,true];

@@ -25,6 +25,12 @@ _tasks = [
 ["Minefield",9999]
 
 ];
+
+_Restricted =
+[
+	["El Chapo",9999]
+];
+
 _done =false;
 {
 	_name = (_x select 0);
@@ -35,7 +41,15 @@ _done =false;
 } forEach _tasks;
 
 if (!_done) then {
-	_selected = ((selectRandom _tasks) select 0);
+	_done = false;
+	{
+		_name = (_x select 0);
+		if (_name isEqualTo _taskobjective) exitWith {
+			_selected = (_x select 0);
+			_done = true;
+		};
+		_selected = ((selectRandom _tasks) select 0);
+	} forEach _Restricted;
 };
 
 _tasknumber = (missionNamespace getVariable ["TaskNumber",-1]) + 1;
@@ -45,9 +59,8 @@ _current_tasknumber = format ["TaskNumberFinal_%1",_tasknumber];
 {
 	if (_selected isEqualTo (_x select 0)) exitWith{
 		_radius = (_x select 1);
-
-
 	};
+	_radius = 9999;
 } forEach _tasks;
 
 _handle = [_radius] spawn CHAB_fnc_findSpot;
@@ -105,6 +118,9 @@ switch ( _selected) do {
 	};  
 	case "Minefield" : {
 		[_base,_current_tasknumber] call CHAB_fnc_Minefield;
+	};
+	case "El Chapo" : {
+		[_base,_current_tasknumber] call CHAB_fnc_El_Chapo;
 	};  
 	default { 
 		"Failed to spawn a task, try again" remoteExec["hint",0];

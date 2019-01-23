@@ -6,7 +6,7 @@ if(_tankselect != -1) then
 {	
 	_vehicle = _tank lbData _tankselect;
 
-	_nObjects= nearestObjects [[12013.8,12646.8,0], ["all"], 7];
+	_nObjects= nearestObjects [[9767.66,9978.72,0], ["all"], 7];
 
 	_maxtanks = missionNamespace getVariable ["MaxTanks",0];
 	_maxAPC = missionNamespace getVariable ["MaxAPC",0];

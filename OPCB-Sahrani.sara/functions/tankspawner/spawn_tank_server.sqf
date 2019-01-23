@@ -4,8 +4,8 @@ _staticType = ["rhs_Metis_9k115_2_vmf","rhs_Kornet_9M133_2_vmf","RHS_Stinger_AA_
 if (_isAttack == 1) then 
 {
  	
-	_helicopter = _vehicle createVehicle ([12013.8,12646.8,0]);
-	_helicopter setdir 20.798;
+	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
+	_helicopter setdir 0;
 	
 	_helicopter addMPEventHandler ["MPKilled",{ missionNamespace setVariable ["MaxTanks",0,true]; }];
 	
@@ -15,8 +15,8 @@ if (_isAttack == 1) then
 } else {if (_vehicle in _staticType) then 
 	
 	{
-	_helicopter = _vehicle createVehicle ([12013.8,12646.8,0]);
-	_helicopter setdir 20.798;
+	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
+	_helicopter setdir 0;
 
 	
 	_helicopter addMPEventHandler ["MPKilled",
@@ -28,8 +28,8 @@ if (_isAttack == 1) then
 
 } else  
 {
-	_helicopter = _vehicle createVehicle ([12013.8,12646.8,0]);
-	_helicopter setdir 20.798;
+	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
+	_helicopter setdir 0;
 
 	
 	_helicopter addMPEventHandler ["MPKilled",

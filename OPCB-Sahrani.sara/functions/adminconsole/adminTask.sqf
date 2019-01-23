@@ -22,7 +22,8 @@ disableSerialization;
 	"IDAP",
 	"Retrieve",
 	"Minefield",
-	"GDrunken"
+	"GDrunken",
+	"El Chapo"
 	];
 	{
 		_ctrl lbAdd _x;

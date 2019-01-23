@@ -91,3 +91,33 @@ Helicopter_loadouts =
 	"B_T_VTOL_01_infantry_F",["Unarmed",[]],
 	"B_UAV_02_dynamicLoadout_f", ["Vhikr",["PylonRack_3Rnd_LG_scalpel","PylonRack_3Rnd_LG_scalpel"],"Hellfire",["PylonRack_3Rnd_ACE_Hellfire_AGM114N","PylonRack_3Rnd_ACE_Hellfire_AGM114K"], "GBU-12", ["PylonMissile_1Rnd_Bomb_04_F","PylonMissile_1Rnd_Bomb_04_F"]]
 ]; 
+
+
+/*addMissionEventHandler ["Draw3D",{
+
+	_pos = getposATL player;
+	_buildings = nearestObjects [_pos,["house"],15];
+	_windowPositions = [];
+	{
+
+		_building = _x;
+		_it = 0;
+
+		_selectionNames = selectionNames _building;
+		_selectionPositions = [];
+		_windows = _selectionNames select {toUpper _x find "GLASS" >= 0};
+		{
+			_selectionPositions pushBack (_building modelToWorldVisual (_building selectionPosition [_x,"GEOMETRY"]));
+		} forEach _windows;
+
+		_windowPositions append _selectionPositions;
+
+	} forEach _buildings;
+
+	_text = "Window";
+
+	{
+	drawIcon3D ["",[1,1,1,1],_x,1,1,0,_text,2];
+
+	} forEach _windowPositions;
+}];*/
