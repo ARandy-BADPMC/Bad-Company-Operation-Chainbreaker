@@ -36,13 +36,13 @@ jeff addaction ["Lights off", {
 }];
 
 base_flag addAction ["Teleport to Shootingrange", {
-	[player,[12028,12608.6,0]] remoteExec ["setPos",2];
+	[player,[9882.12,9979.88,0]] remoteExec ["setPos",2];
 }];
 base_flag addAction ["Teleport to Heli-Spawner", {
-	[player,[12204.2,12621,0]] remoteExec ["setPos",2];
+	[player,[9927.14,10071.4,0]] remoteExec ["setPos",2];
 }];
 ShootingRange_flag addAction ["Teleport to Base", {
-	[player,[12129.8,18100.4,0]] remoteExec ["setPos",2];
+	[player,[9838.25,9949.16,0.0807343]] remoteExec ["setPos",2];
 }];
 
 Helicopter_loadouts = 
