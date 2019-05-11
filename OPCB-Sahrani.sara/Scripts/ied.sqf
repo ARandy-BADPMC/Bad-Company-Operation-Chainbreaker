@@ -1,5 +1,5 @@
-iedMkr=["ied","ied1","ied2"];	//List of markers to spawn IEDs in
-iedNum=35;								//Number of IEDs per marker, defined in iedMkr	[Default: 5]
+iedMkr=["ied"];	//List of markers to spawn IEDs in
+iedNum=60;								//Number of IEDs per marker, defined in iedMkr	[Default: 5]
 iedDmg=false;							//Can the IED be killed with weapons?			[Default: false] TRUE = Yes | FALSE = Can only be disarmed
 Dbug=false;								//Show IED markers on map?						[Default: false]
 

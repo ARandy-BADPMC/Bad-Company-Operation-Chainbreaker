@@ -7,7 +7,10 @@ if (_isAttack == 1) then
 	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
 	_helicopter setdir 0;
 	
-	_helicopter addMPEventHandler ["MPKilled",{ missionNamespace setVariable ["MaxTanks",0,true]; }];
+	_helicopter addMPEventHandler ["MPKilled",{ 
+		_maxtanks = missionNamespace getVariable ["MaxTanks",0];
+		missionNamespace setVariable ["MaxTanks",_maxtanks -1,true];
+	}];
 	
 	[_helicopter] call skinapplier;
 	[_helicopter] remoteExec ["CHAB_fnc_tank_restriction",0,true];
@@ -17,7 +20,6 @@ if (_isAttack == 1) then
 	{
 	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
 	_helicopter setdir 0;
-
 	
 	_helicopter addMPEventHandler ["MPKilled",
 	{
@@ -31,7 +33,6 @@ if (_isAttack == 1) then
 	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
 	_helicopter setdir 0;
 
-	
 	_helicopter addMPEventHandler ["MPKilled",
 	{
 		_current_helis = missionNamespace getVariable ["MaxAPC",1];

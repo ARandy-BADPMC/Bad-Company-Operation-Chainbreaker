@@ -76,9 +76,7 @@ _guard allowDamage true;
 _officer allowDamage true;
 
 _spawncomps = [_officer] call CHAB_fnc_roadblock_ins; //double fun
-_spawncomps2 =[_officer] call CHAB_fnc_roadblock_ins;
-[_officer,10,2,4] call CHAB_fnc_spawn_ins;
-[_officer] call CHAB_fnc_spawn_city_ins;
+[_officer,7,1,2] call CHAB_fnc_spawn_ins;
 
 _hmgs = [_officer] call CHAB_fnc_spawn_hmg;
 
@@ -92,6 +90,7 @@ with missionNamespace do
 				{
 					Chapo_trigger = true;
 				};
+				_unit removeEventHandler ["FiredNear", _thisEventHandler];
 			}];
 		} forEach units _x;
 	} forEach enemy_groups;
@@ -118,9 +117,6 @@ if (alive _officer) then {
 {
   [ _x ] call LARs_fnc_deleteComp;
 } forEach _spawncomps;
-{
-  [ _x ] call LARs_fnc_deleteComp;
-} forEach _spawncomps2;
 {
   [ _x ] call LARs_fnc_deleteComp;
 } forEach _hmgs;

@@ -4,6 +4,12 @@ _tanks = ["rhs_zsu234_chdkz"];
 _suitable = globalWaterPos;
 _cfgGroups =  configFile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhsgref_group_national_infantry";
 _groupArray = [];
+_playerRate = [] call CHAB_fnc_playerScale;
+
+_groupsToSpawn = ceil (_playerRate*_groupsToSpawn);
+_tanksToSpawn = ceil (_playerRate*_tanksToSpawn);
+_mechToSpawn = ceil (_playerRate*_mechToSpawn);
+
 private ["_suitable"]; 
 _MechArray = [
 	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_chq",

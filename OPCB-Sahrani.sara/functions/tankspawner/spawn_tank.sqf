@@ -6,8 +6,6 @@ waitUntil {
   !isNull (findDisplay 9901)
 };
 _tanks = [
-
-
 "B_APC_Wheeled_01_cannon_F",
 "B_APC_Tracked_01_AA_F",
 "O_T_APC_Tracked_02_cannon_ghex_F",
@@ -95,17 +93,31 @@ _tanks = [
 "RHS_MK19_TriPod_D",
 "B_Mortar_01_F",
 "B_Static_Designator_01_F"
-
-
 ];
 
 _ctrl = (findDisplay 9901) displayCtrl 1500;
+_imageCtrl = (findDisplay 9901) displayCtrl 1608;
+ 
 
 _i = 0;
 {
 	_text = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
 	_ctrl lbAdd _text;
-	_ctrl lbSetData [_i,_x];
+	_ctrl lbSetData [_i,_x]; 
 	_i = _i +1;
 } forEach _tanks;
+_ctrl lbSetSelected [0, true];
 
+_classname = _ctrl lbData 0;
+_picture = getText (configFile >> "CfgVehicles" >> _classname >> "editorPreview"); 
+_imageCtrl ctrlSetText _picture;
+
+
+_ctrl ctrlAddEventHandler ["LBSelChanged",{
+	params ["_control", "_selectedIndex"];
+	
+	_classname = _control lbData _selectedIndex;
+	_picture = getText (configFile >> "CfgVehicles" >> _classname >> "editorPreview"); 
+	_imageCtrl = (findDisplay 9901) displayCtrl 1608;
+	_imageCtrl ctrlSetText _picture;
+}];

@@ -180,6 +180,10 @@ class chainbreaker
 		{
 			file = "functions\shk_patrol.sqf";
 		};
+		class playerScale
+		{
+			file = "functions\miscellaneous\playerScale.sqf";
+		};
 		class serverGroups
 		{
 			file = "functions\miscellaneous\serverGroups.sqf";
@@ -346,6 +350,10 @@ class chainbreaker
 		class whitelist
 		{
 			file = "functions\playerreq\whitelist.sqf";
+		};
+		class setServerVariables
+		{
+			file = "functions\playerreq\setServerVariables.sqf";
 		};
 	};
 };

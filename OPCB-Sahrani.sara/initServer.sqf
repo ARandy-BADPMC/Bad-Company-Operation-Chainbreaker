@@ -23,7 +23,7 @@ missionNamespace setVariable ["Zeus_group",_zeus_group];
 	[_x, "LISTEN_BRIEFING", "Light"] call BIS_fnc_ambientAnim;
 } forEach [officer_jeff,tank_spawner,heli_jeff]; 
 
-globalWaterPos = [0,0,0]; //universal for all maps, has to be changed manually 
+globalWaterPos = [3067.06,16839.7,10.1122]; //universal for all maps, has to be changed manually 
 
 
 /*

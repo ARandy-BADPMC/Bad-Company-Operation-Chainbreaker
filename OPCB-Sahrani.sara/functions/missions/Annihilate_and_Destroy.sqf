@@ -7,7 +7,9 @@ _guard = _guardgroup createUnit ["rhsgref_nat_commander", _base, [], 2, "NONE"];
 _guardpos = getPos _guard;
 _spawncomps = [_guard] call CHAB_fnc_roadblock_rus;
 _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+
 [_guard,10,1,2] call CHAB_fnc_spawn_nat;
+
 _destroytargets = nearestObjects [ _guardpos, ["Land_Device_assembled_F","RHS_Mi24Vt_vvs","rhs_mi28n_vvs","Land_TTowerBig_1_F","Land_TTowerBig_2_F","rhs_p37","Land_i_Shed_Ind_F"], 30];
 _thetarget =selectRandom _destroytargets ;
 _trg = createTrigger ["EmptyDetector", _guardpos,true];

@@ -10,6 +10,8 @@ for "_i" from 0 to _numbers do {
 	_j = _j+100;
 
 	[_groupNumber select 2, getPos _object, random 800] call bis_fnc_taskPatrol;
+	[_groupNumber select 2, 0] setWaypointSpeed "FULL";
+
 	(_groupNumber select 0) setSkill 0.9;
 	[_groupNumber select 2] call CHAB_fnc_serverGroups;
 };

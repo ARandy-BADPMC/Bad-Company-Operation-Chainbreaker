@@ -2843,7 +2843,30 @@ arsenalitems =
 "TRYK_Beard_BW4",
 "TRYK_Beard_Gr4",
 "TRYK_SBeard_BK5",
-"TRYK_U_denim_hood_nc"
+"TRYK_U_denim_hood_nc",
+
+"UA_MM14_camo_rolled",
+"UA_MM14_camo",
+"UA_SOF_camo",
+"UA_SOF_camo_rolled",
+
+"hlc_optic_docterr",
+"hlc_optic_atacr",
+"hlc_optic_atacr_offset",
+"hlc_muzzle_snds_rotex3p",
+"hlc_muzzle_gunfighter_comp",
+"hlc_muzzle_kx3_comp",
+"hlc_muzzle_sf3p_556",
+
+"hlc_mp510_tac",
+"hlc_smg_mp5a2_tac",
+"hlc_smg_mp5a3_tac",
+"hlc_smg_mp5a4_tac",
+"hlc_smg_mp5N_tac",
+"hlc_wp_m16A1",
+"hlc_rifle_A1m203",
+"hlc_wp_m16a2",
+"hlc_rifle_m203"
 
 
 ];

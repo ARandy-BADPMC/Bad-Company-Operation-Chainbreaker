@@ -276,8 +276,18 @@ class jey_helispawner
 			h = 0.0593768 * safezoneH;
 			action = "[] call CHAB_fnc_spawn_heli_vehicle;";
 		};
+		class heli_picture: RscPicture
+		{
+			idc = 1618;
+			text = "#(argb,8,8,3)color(1,1,1,1)";
+			x = 13 * GUI_GRID_W + GUI_GRID_X;
+			y = 13.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 20 * GUI_GRID_W;
+			h = 11 * GUI_GRID_H;
+		};
 	};
 };
+
 class jey_tankspawner 
 {
 	idd = 9901;
@@ -289,18 +299,18 @@ class jey_tankspawner
 		{
 			idc = 1200;
 			text = "#(argb,8,8,3)color(0,0,0,0.5)";
-			x = 0.273055 * safezoneW + safezoneX;
-			y = 0.229503 * safezoneH + safezoneY;
-			w = 0.4538 * safezoneW;
-			h = 0.543159 * safezoneH;
+			x = -11.5 * GUI_GRID_W + GUI_GRID_X;
+			y = -0.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 58.5 * GUI_GRID_W;
+			h = 26 * GUI_GRID_H;
 		};
 		class tank_list: RscListbox
 		{
 			idc = 1500;
-			x = 0.273125 * safezoneW + safezoneX;
-			y = 0.229506 * safezoneH + safezoneY;
-			w = 0.1405209 * safezoneW;
-			h = 0.543189 * safezoneH;
+			x = -9.88 * GUI_GRID_W + GUI_GRID_X;
+			y = 0.2 * GUI_GRID_H + GUI_GRID_Y;
+			w = 13.6263 * GUI_GRID_W;
+			h = 24.6904 * GUI_GRID_H;
 		};
 		class tank_exit: RscButton
 		{
@@ -322,9 +332,18 @@ class jey_tankspawner
 			h = 0.0593768 * safezoneH;
 			action = "[] call CHAB_fnc_spawn_tank_vehicle;";
 		};
-	};
-};
+		class tank_image: RscPicture
+		{
+			idc = 1608;
+			text = "#(argb,8,8,3)color(1,1,1,1)";
+			x = 5 * GUI_GRID_W + GUI_GRID_X;
+			y = 4 * GUI_GRID_H + GUI_GRID_Y;
+			w = 23 * GUI_GRID_W;
+			h = 16.5 * GUI_GRID_H;
+		};
 
+	}; 
+};
 
 class jey_remover
 {

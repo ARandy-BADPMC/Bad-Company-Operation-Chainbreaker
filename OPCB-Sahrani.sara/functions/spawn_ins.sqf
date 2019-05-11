@@ -5,6 +5,12 @@ _tanks = ["rhs_zsu234_chdkz","rhs_t72bb_chdkz"];
 _cfgGroups =  configFile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> "Infantry";
 _groupArray = [];
 
+_playerRate = [] call CHAB_fnc_playerScale;
+
+_groupsToSpawn = ceil (_playerRate*_groupsToSpawn);
+_tanksToSpawn = ceil (_playerRate*_tanksToSpawn);
+_mechToSpawn = ceil (_playerRate*_mechToSpawn);
+
 _mechanized = selectRandom ["rhs_group_indp_ins_bmd1","rhs_group_indp_ins_bmd2","rhs_group_indp_ins_bmp1","rhs_group_indp_ins_bmp2","rhs_group_indp_ins_btr60","rhs_group_indp_ins_btr70"];
 _cfgMechanized =  configFile >> "CfgGroups" >> "Indep" >> "rhs_faction_insurgents" >> _mechanized;
 _MechArray = [];

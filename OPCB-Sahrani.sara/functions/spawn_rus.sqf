@@ -7,6 +7,13 @@ _mechanized = selectRandom ["rhs_group_rus_msv_bmp1","rhs_group_rus_msv_bmp2","r
 _cfgMechanized =  configFile >> "CfgGroups" >> "East" >> "rhs_faction_msv" >> _mechanized;
 _MechArray = [];
 private ["_suitable"];
+
+_playerRate = [] call CHAB_fnc_playerScale;
+
+_groupsToSpawn = ceil (_playerRate*_groupsToSpawn);
+_tanksToSpawn = ceil (_playerRate*_tanksToSpawn);
+_mechToSpawn = ceil (_playerRate*_mechToSpawn);
+
 _suitable = globalWaterPos;
 for "_j" from 0 to (count _cfgMechanized)-1 do {
 	_currentGroup = _cfgMechanized select _j;
