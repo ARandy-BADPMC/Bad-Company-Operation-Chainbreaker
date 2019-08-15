@@ -114,6 +114,12 @@ if (typeOf _helicopter == "O_T_APC_Tracked_02_cannon_ghex_F") then
 		_helicopter setObjectTextureGlobal [0,"\BTRK_textures\BTRK0.paa"];
 		_helicopter setObjectTextureGlobal [1,"\BTRK_textures\BTRK1.paa"];
 	};
+	
+if (typeOf _helicopter == "rhsusf_stryker_m1126_m2_wd") then 
+	{
+		[_helicopter,["Tan",1],["Hatch_Commander",0,"Hatch_Front",0,"Hatch_Left",0,"Hatch_Right",0,"Ramp",0,"Hide_Antenna_1",0,"Hide_Antenna_2",0,"Hide_Antenna_3",0,"Hatch_Driver",0]] call BIS_fnc_initVehicle;
+
+	};
 
 if (typeOf _helicopter == "B_APC_Wheeled_01_cannon_F") then 
 	{
