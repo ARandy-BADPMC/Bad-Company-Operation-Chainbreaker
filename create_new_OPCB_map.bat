@@ -41,9 +41,15 @@ cd %~dp0
 
 if exist mission-files\%mapName%\mission.sqm (
 
-	echo "Creating mission folder link for %mapName%..."
-
-	mklink /J OPCB-%mapname%.%mapExtention% OPCB
+	echo "Creating mission folder links for %mapName%..."
+	
+	FOR /D %%A IN ("OPCB\*") DO (
+		mklink /D "OPCB-%mapname%.%mapExtention%\%%~NA" "%%~A"
+	)
+	FOR %%A IN ("%OPCB%\*") DO (
+		mklink "OPCB-%mapname%.%mapExtention%\%%~NXA" "%%~A"
+	)
+		
 	mklink "OPCB-%mapname%.%mapExtention%\mission.sqm" "mission-files\%mapName%\mission.sqm"
 	
 	echo "Done!"
