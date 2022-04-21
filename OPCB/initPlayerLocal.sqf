@@ -1,4 +1,15 @@
 waitUntil {!isNull player && player == player};
+
+//ACRE check & kick
+if (isMultiplayer) then {
+	[] spawn {
+		sleep 10;	
+		if ((isnil "acre_sys_io_serverStarted") || {!acre_sys_io_serverStarted}) then {
+			endMission "ACRE_disabled";
+		};
+	};
+};
+
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 call compileFinal preprocessfilelinenumbers "scripts\ArsenalWhitelist.sqf"; //more secure
