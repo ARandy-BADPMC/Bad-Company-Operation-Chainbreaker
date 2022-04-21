@@ -1,8 +1,8 @@
-# BAD-Company-Public-Master
+# Bad Company Operation Chainbreaker
 
-Operation Chainbreaker is an ArmA 3 BAD Company project between Alex K., Jey R. & A. Randy. 
-Our goal is to create a fun, laid back yet realistic ArmA 3 mission (though not as hardcore as K.Hunter's Patrol Ops @ https://github.com/KHunter-Arma/Patrol_Ops_Hz).
-This is our second port of our mission on Duala and our third and hopefully final port is to Lythium. 
+Operation Chainbreaker is an ArmA 3 Bad Company project between Alex K., Jey R. & A. Randy. 
+Our goal is to create a fun, laid back yet realistic ArmA 3 mission.
 
-You can find us at: www.badcompanypmc.com or on Teamspeak @ ts3.badcompanypmc.com
-About us: http://www.badcompanypmc.com/aboutus
+The mission is now under redevelopment with tweaks and new additions after a long break.
+
+Find us at: www.BadCompanyPMC.com
