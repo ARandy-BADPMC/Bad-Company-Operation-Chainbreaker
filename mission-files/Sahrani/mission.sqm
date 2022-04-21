@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={10206.513,152.90948,10197.565};
-		dir[]={0.60198665,-0.46496549,-0.64921415};
-		up[]={0.31615868,0.88531703,-0.3409631};
-		aside[]={-0.73329979,-6.0873572e-007,-0.67995179};
+		dir[]={0.54905671,-0.61004925,-0.57129389};
+		up[]={0.42272469,0.79236346,-0.43984532};
+		aside[]={-0.72099972,1.4901161e-008,-0.69293535};
 	};
 };
 binarizationWanted=0;
@@ -474,15 +474,16 @@ dlcs[]=
 randomSeed=9966067;
 class ScenarioData
 {
-	author="MadMan";
+	author="Alex K., JeyR., A.Randy, K.Hunter & pogoman, Fireball, Kol9yn";
+	saving=0;
+	respawnDialog=0;
 	disabledAI=1;
 	respawn=3;
-	respawnDelay=25;
+	respawnDelay=45;
 	class Header
 	{
 		gameType="Coop";
-		minPlayers=1;
-		maxPlayers=30;
+		maxPlayers=60;
 	};
 };
 class CustomAttributes
@@ -623,7 +624,7 @@ class CustomAttributes
 								};
 								class value
 								{
-									items=332;
+									items=338;
 									class Item0
 									{
 										class data
@@ -5272,6 +5273,90 @@ class CustomAttributes
 											value="ace_medical_gui_maxdistance";
 										};
 									};
+									class Item332
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="acex_volume_enabled";
+										};
+									};
+									class Item333
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="acex_volume_fadedelay";
+										};
+									};
+									class Item334
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="acex_volume_lowerinvehicles";
+										};
+									};
+									class Item335
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="acex_volume_shownotification";
+										};
+									};
+									class Item336
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="acex_volume_remindiflowered";
+										};
+									};
+									class Item337
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="ace_hearing_disableearringing";
+										};
+									};
 								};
 							};
 						};
@@ -5288,7 +5373,7 @@ class CustomAttributes
 								};
 								class value
 								{
-									items=332;
+									items=338;
 									class Item0
 									{
 										class data
@@ -11434,7 +11519,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=0.40000001;
+														value=0;
 													};
 												};
 												class Item1
@@ -20262,6 +20347,276 @@ class CustomAttributes
 											};
 										};
 									};
+									class Item332
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"BOOL"
+															};
+														};
+														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item333
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item334
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"BOOL"
+															};
+														};
+														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item335
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"BOOL"
+															};
+														};
+														value=0;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item336
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"BOOL"
+															};
+														};
+														value=0;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item337
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"BOOL"
+															};
+														};
+														value=0;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
 								};
 							};
 						};
@@ -20283,13 +20638,33 @@ class CustomAttributes
 				};
 			};
 		};
-		nAttributes=1;
+		class Attribute1
+		{
+			property="EnableDebugConsole";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=1;
+				};
+			};
+		};
+		nAttributes=2;
 	};
 };
 class Mission
 {
 	class Intel
 	{
+		briefingName="BadCo Operation Chainbreaker";
 		timeOfChanges=1800.0002;
 		startWeather=0.25;
 		startWind=0.1;
