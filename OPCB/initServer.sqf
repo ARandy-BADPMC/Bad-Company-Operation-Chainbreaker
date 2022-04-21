@@ -1,5 +1,6 @@
 ["Initialize"] call BIS_fnc_dynamicGroups;
-call compileFinal preprocessfilelinenumbers "functions\heliskinapply.sqf";
+call compileFinal preprocessfilelinenumbers "functions\BADCO_skin_applier.sqf";
+
 missionNamespace setVariable ["running_task",0];
 missionNamespace setVariable ["task_spot",[5840,5700,0]];
 
