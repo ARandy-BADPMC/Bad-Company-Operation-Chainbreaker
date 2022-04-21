@@ -1,0 +1,396 @@
+version=1;
+class GraphItems
+{
+	class Item0
+	{
+		Flags=250;
+		BasicText="";
+		Left=-96.262619;
+		Top=136.01894;
+		Right=-6.2626419;
+		Bottom=186.01894;
+		BgColor=255;
+		class ItemInfo
+		{
+			Text="Init ServicePoint";
+			lStyle=-842150451;
+			Shape=6;
+			FontFace="Arial";
+			FontHeight=9;
+			FontWeight=700;
+			FontUnderline=1;
+			FontCharSet=0;
+			ItemType=0;
+			class ItemInfo
+			{
+				Id=0;
+				InitCode="private [""_objlist"",""_vcl"",""_timedelay"",""_pos""];" \n "_timedelay = time+11;";
+			};
+		};
+	};
+	class Item1
+	{
+		Flags=218;
+		BasicText="";
+		Left=-96.79274;
+		Top=401.94778;
+		Right=-6.7927341;
+		Bottom=451.94748;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="Vehicle present?";
+			lStyle=-842150451;
+			Shape=2;
+			FontFace="Arial";
+			FontHeight=8;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=1;
+				Priority=1;
+				Condition="count _objlist > 0 && (_objlist select 0) in [humv11,humv12,humv13,humv14,humv15,humv16,atv11,atv12,atv13,atv14,atv15,heli,MHQ]";
+			};
+		};
+	};
+	class Item2
+	{
+		Flags=250;
+		BasicText="";
+		Left=-96.956436;
+		Top=319.48734;
+		Right=-6.9564037;
+		Bottom=369.48734;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="Gather Objects";
+			lStyle=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=2;
+				InitCode="_pos = vehicleServicePoint modelToWorld [-5,0,0];" \n "_pos set [2,0];" \n "_objlist = _pos nearEntities [[""Air"",""Car""],5];";
+			};
+		};
+	};
+	class Item3
+	{
+		Flags=218;
+		BasicText="";
+		Left=-96.465317;
+		Top=229.54578;
+		Right=-6.4652371;
+		Bottom=279.54578;
+		BgColor=65535;
+		class ItemInfo
+		{
+			Text="Wait";
+			lStyle=-842150451;
+			Shape=2;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=4;
+			class ItemInfo
+			{
+				Id=3;
+				Condition="time > _timedelay";
+				ConditionTab=2;
+			};
+		};
+	};
+	class Item4
+	{
+		Flags=4346;
+		BasicText="";
+		Left=-262.25064;
+		Top=408.89178;
+		Right=-172.25058;
+		Bottom=458.89194;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="Repair Vehicle";
+			lStyle=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=4;
+				InitCode="_vcl setVehicleInit '" \n "this setVehicleAmmo 1;" \n "this setFuel 1;" \n "this setDamage 0;" \n "{ this addMagazineCargo [_x select 0, _x select 1]; } forEach humvMagazines;" \n "if (player in crew this) then { titleText[""Vehicle serviced"", ""PLAIN DOWN""]; };" \n "';" \n "processInitCommands;";
+			};
+		};
+	};
+	class Item5
+	{
+		Flags=218;
+		BasicText="";
+		Left=-261.71317;
+		Top=320.83105;
+		Right=-171.71307;
+		Bottom=370.83105;
+		BgColor=8421440;
+		class ItemInfo
+		{
+			Text="";
+			lStyle=-842150451;
+			Shape=2;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=8;
+			class ItemInfo
+			{
+				Id=5;
+			};
+		};
+	};
+	class Item6
+	{
+		Flags=250;
+		BasicText="";
+		Left=-261.35068;
+		Top=229.09021;
+		Right=-171.35068;
+		Bottom=279.09021;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="Delay";
+			lStyle=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=6;
+				InitCode="_timedelay = time+11;";
+			};
+		};
+	};
+	class Item7
+	{
+		Flags=250;
+		BasicText="";
+		Left=-97.245003;
+		Top=489.35303;
+		Right=-7.2450352;
+		Bottom=539.35303;
+		BgColor=16777215;
+		class ItemInfo
+		{
+			Text="Vehicle Check";
+			lStyle=-842150451;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=2;
+			class ItemInfo
+			{
+				Id=17;
+				InitCode="_vcl = _objlist select 0;" \n "";
+			};
+		};
+	};
+	class Item8
+	{
+		Flags=218;
+		BasicText="";
+		Left=-262.66339;
+		Top=488.27878;
+		Right=-172.66339;
+		Bottom=538.27881;
+		BgColor=8421440;
+		class ItemInfo
+		{
+			Text="";
+			lStyle=-842150451;
+			Shape=2;
+			Group=-842150451;
+			FontFace="Arial";
+			FontHeight=10;
+			FontWeight=0;
+			FontCharSet=0;
+			ItemType=8;
+			class ItemInfo
+			{
+				Id=18;
+				Priority=1;
+			};
+		};
+	};
+};
+class GraphLinks
+{
+	class Link0
+	{
+		From=0;
+		To=3;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link1
+	{
+		From=1;
+		To=7;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link2
+	{
+		From=2;
+		To=1;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link3
+	{
+		From=2;
+		To=5;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link4
+	{
+		From=3;
+		To=2;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link5
+	{
+		From=4;
+		To=5;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link6
+	{
+		From=5;
+		To=6;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link7
+	{
+		From=6;
+		To=3;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link8
+	{
+		From=7;
+		To=5;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link9
+	{
+		From=7;
+		To=8;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+	class Link10
+	{
+		From=8;
+		To=4;
+		Color=6316128;
+		Flags=2;
+		class Extra
+		{
+			ArrowSize=0;
+		};
+	};
+};
+class Globals
+{
+	NextGroupID=1;
+	NextID=19;
+	FSMName="ServicePoint";
+	CompileConfig="D:\Games\BI Tools\FSM Editor Personal Edition\scriptedFSM.cfg";
+	class DefaultLink
+	{
+		ArrowSize=0;
+	};
+	DefaultLinkColor=6316128;
+	DefaultLinkUseCustom=1;
+	PZoomLeft=-288.01981;
+	PZoomRight=64.836761;
+	PZoomBottom=572.51917;
+	PZoomTop=121.91543;
+	Clxs=657;
+	Clys=839;
+	Aspect=1;
+};
+class Window
+{
+	Flags=2;
+	MaxPosX=-1;
+	MaxPosY=-1;
+	MinPosX=-1;
+	MinPosY=-1;
+	Left=125;
+	Top=125;
+	Right=1085;
+	Bottom=843;
+	ShowCmd=3;
+	SplitPos=675;
+};

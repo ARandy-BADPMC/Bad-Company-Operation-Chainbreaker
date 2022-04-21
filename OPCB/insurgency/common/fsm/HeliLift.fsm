@@ -1,0 +1,379 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, HeliLift">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"start",0,250,-373.032593,-284.857239,-318.484283,-253.586380,0.000000,"start"};
+item1[] = {"died",4,218,-391.451599,228.116882,-301.451599,278.116913,0.000000,"died"};
+item2[] = {"is_dead",2,250,-391.269012,87.134377,-301.268982,137.134491,0.000000,"is dead"};
+item3[] = {"on_foot",2,250,-21.742039,-285.148743,32.806461,-247.188858,0.000000,"on foot"};
+item4[] = {"_",8,218,-251.031876,-280.686462,-194.052063,-251.006500,0.000000,""};
+item5[] = {"entered_vehicle",4,218,-39.488911,-189.243393,50.511112,-139.243393,0.000000,"entered" \n "vehicle"};
+item6[] = {"in_vehicle",2,250,-44.157448,-71.059593,57.565674,2.034799,0.000000,"in vehicle"};
+item7[] = {"get_out",4,218,-27.269299,469.415649,62.730694,519.415649,99.000000,"get out"};
+item8[] = {"remove_actions",2,250,-13.643346,680.463928,40.309288,718.207825,0.000000,"remove" \n "actions"};
+item9[] = {"_",8,218,276.669250,-286.053375,337.110413,-246.867584,0.000000,""};
+item10[] = {"is_crew",4,218,-155.750076,92.536636,-65.750084,142.536621,0.000000,"is crew"};
+item11[] = {"no_crew",4,218,48.788742,90.360695,138.788818,140.360687,0.000000,"no crew"};
+item12[] = {"is_driver",2,250,-155.750092,226.357239,-65.750061,276.357300,0.000000,"is driver"};
+item13[] = {"is_not_driver",2,250,48.788738,223.093323,138.788727,273.093292,0.000000,"is not driver"};
+item14[] = {"not_playable",4,218,-391.231781,-13.326699,-301.231781,36.673271,0.000000,"not playable"};
+item15[] = {"exit",1,250,-373.518372,-109.127876,-316.243805,-74.962837,0.000000,"exit"};
+item16[] = {"not_local_unit",4,218,-390.408997,-215.380112,-300.408997,-165.380112,0.000000,"not local" \n "unit"};
+item17[] = {"is_playable",4,218,-512.367798,87.683662,-440.136139,137.264435,0.000000,"is" \n "playable"};
+item18[] = {"wait_for_respawn",2,250,-637.015747,94.686630,-586.250916,130.419525,0.000000,"wait for" \n "respawn"};
+item19[] = {"alive_again",4,4314,-648.175781,-17.617540,-578.863342,34.522636,0.000000,"alive" \n "again"};
+item20[] = {"set_Entity",2,250,-645.959534,-408.561798,-583.369629,-385.210632,0.000000,"set Entity"};
+item21[] = {"",7,210,300.773651,692.957947,308.773682,700.957947,0.000000,""};
+item22[] = {"",7,210,-226.233566,-398.654358,-218.233566,-390.654358,0.000000,""};
+link0[] = {0,4};
+link1[] = {0,16};
+link2[] = {1,2};
+link3[] = {2,14};
+link4[] = {2,17};
+link5[] = {3,1};
+link6[] = {3,5};
+link7[] = {4,3};
+link8[] = {5,6};
+link9[] = {6,1};
+link10[] = {6,10};
+link11[] = {6,11};
+link12[] = {7,8};
+link13[] = {8,1};
+link14[] = {8,21};
+link15[] = {9,3};
+link16[] = {10,12};
+link17[] = {11,13};
+link18[] = {12,1};
+link19[] = {12,7};
+link20[] = {12,11};
+link21[] = {13,7};
+link22[] = {13,10};
+link23[] = {14,15};
+link24[] = {16,15};
+link25[] = {17,18};
+link26[] = {18,19};
+link27[] = {19,20};
+link28[] = {20,22};
+link29[] = {21,9};
+link30[] = {22,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,32,6316128,1,-832.201660,643.785278,820.161255,-450.471039,1035,891,1};
+window[] = {2,-1,-1,-32000,-32000,937,200,1460,200,3,1053};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "HeliLift";
+  class States
+  {
+    /*%FSM<STATE "start">*/
+    class start
+    {
+      name = "start";
+      init = /*%FSM<STATEINIT""">*/"private [""_vehicle"",""_supplydropaction""];" \n
+       "" \n
+       "_unit = player;" \n
+       "if(not isNil ""_this"") then {" \n
+       "	if(count _this > 0) then {_unit = _this select 0};" \n
+       "};" \n
+       "" \n
+       "_isplayable =" \n
+       "	if(isMultiplayer) then{" \n
+       "		if(_unit in playableUnits) then{true} else{false};" \n
+       "	} else {	false};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "not_local_unit">*/
+        class not_local_unit
+        {
+          priority = 0.000000;
+          to="exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"not local _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="on_foot";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "is_dead">*/
+    class is_dead
+    {
+      name = "is_dead";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "is_playable">*/
+        class is_playable
+        {
+          priority = 0.000000;
+          to="wait_for_respawn";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_isplayable"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "not_playable">*/
+        class not_playable
+        {
+          priority = 0.000000;
+          to="exit";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"not _isplayable"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "on_foot">*/
+    class on_foot
+    {
+      name = "on_foot";
+      init = /*%FSM<STATEINIT""">*/"_vehicle = vehicle _unit;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "entered_vehicle">*/
+        class entered_vehicle
+        {
+          priority = 0.000000;
+          to="in_vehicle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"vehicle _unit != _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "died">*/
+        class died
+        {
+          priority = 0.000000;
+          to="is_dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"not alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "in_vehicle">*/
+    class in_vehicle
+    {
+      name = "in_vehicle";
+      init = /*%FSM<STATEINIT""">*/"_vehicle = vehicle _unit;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "is_crew">*/
+        class is_crew
+        {
+          priority = 0.000000;
+          to="is_driver";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"driver _vehicle == _unit || commander _vehicle == _unit || gunner _vehicle == _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_crew">*/
+        class no_crew
+        {
+          priority = 0.000000;
+          to="is_not_driver";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"driver _vehicle != _unit && commander _vehicle != _unit && gunner _vehicle != _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "died">*/
+        class died
+        {
+          priority = 0.000000;
+          to="is_dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"not alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "remove_actions">*/
+    class remove_actions
+    {
+      name = "remove_actions";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="on_foot";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "died">*/
+        class died
+        {
+          priority = 0.000000;
+          to="is_dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"not alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "is_driver">*/
+    class is_driver
+    {
+      name = "is_driver";
+      init = /*%FSM<STATEINIT""">*/"if(driver _vehicle == _unit && typeOf _vehicle in HelisCanLift) then {" \n
+       "	[_vehicle] execVM ""common\Lift\heli_lift.sqf"";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "get_out">*/
+        class get_out
+        {
+          priority = 99.000000;
+          to="remove_actions";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"vehicle _unit == _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_crew">*/
+        class no_crew
+        {
+          priority = 0.000000;
+          to="is_not_driver";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"driver _vehicle != _unit && commander _vehicle != _unit && gunner _vehicle != _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "died">*/
+        class died
+        {
+          priority = 0.000000;
+          to="is_dead";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"not alive _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "is_not_driver">*/
+    class is_not_driver
+    {
+      name = "is_not_driver";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "get_out">*/
+        class get_out
+        {
+          priority = 99.000000;
+          to="remove_actions";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"vehicle _unit == _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "is_crew">*/
+        class is_crew
+        {
+          priority = 0.000000;
+          to="is_driver";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"driver _vehicle == _unit || commander _vehicle == _unit || gunner _vehicle == _unit"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "exit">*/
+    class exit
+    {
+      name = "exit";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "wait_for_respawn">*/
+    class wait_for_respawn
+    {
+      name = "wait_for_respawn";
+      init = /*%FSM<STATEINIT""">*/"_name_unit = name _unit;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "alive_again">*/
+        class alive_again
+        {
+          priority = 0.000000;
+          to="set_Entity";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"{_name_unit == name _x} count playableUnits > 0"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "set_Entity">*/
+    class set_Entity
+    {
+      name = "set_Entity";
+      init = /*%FSM<STATEINIT""">*/"{" \n
+       "	if(name _x == _name_unit) exitWith{_unit = _x};" \n
+       "} foreach playableUnits;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="on_foot";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="start";
+  finalStates[] =
+  {
+    "exit",
+  };
+};
+/*%FSM</COMPILE>*/

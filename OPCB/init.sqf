@@ -17,3 +17,4 @@ execVM"Scripts\ied.sqf";
 
 RHSDecalsOff = true;
 
+[] execVM "insurgency\init.sqf";
