@@ -1,5 +1,11 @@
 waitUntil {!isNull player && player == player};
 
+removeAllWeapons player;
+removeVest player;
+removeBackpack player;
+removeHeadgear player;
+removeGoggles player;
+
 //ACRE check & kick
 if (isMultiplayer) then {
 	[] spawn {
@@ -35,7 +41,11 @@ if (typeof player == "rhsusf_usmc_marpat_d_uav" || typeOf player == "rhsusf_airf
 		hint "Welcome whitelisted player"
 	} else 
 	{
-		["epicFail",false,2] call BIS_fnc_endMission;				
+		hint "You must be whitelisted to use this slot.";
+		[] spawn {
+			sleep 10;
+			endMission "not_Whitelisted";				
+		};
 	};
 };
 
@@ -74,7 +84,7 @@ Helicopter_loadouts =
 [
 	"RHS_AN2_B",["Default",[]],
 	"RHS_MELB_AH6M",["Light",["rhs_mag_M151_7","rhs_mag_m134_pylon_3000","rhs_mag_m134_pylon_3000","rhs_mag_M151_7"],"Medium",["rhsusf_mag_gau19_melb_left","","","rhs_mag_DAGR_8"],"Heavy",["rhsusf_mag_gau19_melb_left","","","rhs_mag_AGM114K_2"]],
-	"I_Heli_Transport_02_F",["Default",[]],
+	//"I_Heli_Transport_02_F",["Default",[]],
 	"I_Heli_light_03_dynamicLoadout_F",["Anti Tank",["PylonWeapon_300Rnd_20mm_shells","PylonRack_4Rnd_ACE_Hellfire_AGM114K"],"Anti Infantry",["PylonWeapon_300Rnd_20mm_shells","PylonRack_12Rnd_missiles"]],
 	"I_Heli_light_03_unarmed_F",["Default",[]],
 	//"C_Plane_Civil_01_F",["Default",[]],

@@ -35,8 +35,6 @@ _tanks = [
 	"rhsusf_CGRCAT1A2_usmc_d",
 	"rhsusf_CGRCAT1A2_Mk19_usmc_d",
 	"rhsusf_CGRCAT1A2_M2_usmc_d",
-	"I_MRAP_03_hmg_F",
-	"I_MRAP_03_gmg_F",
 	"rhsusf_M1078A1R_SOV_M2_D_fmtv_socom",
 	"rhsusf_M1084A1R_SOV_M2_D_fmtv_socom",
 	"rhsusf_m113d_usarmy_supply",

@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=544;
+		nextID=549;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={9724.9023,153.31769,10105.96};
-		dir[]={0.58071679,-0.60469931,-0.54524088};
-		up[]={0.44087762,0.79640454,-0.41394597};
-		aside[]={-0.68455178,8.0816972e-007,-0.72909099};
+		pos[]={9894.3701,176.75792,10097.096};
+		dir[]={0.25720382,-0.75273043,-0.60600579};
+		up[]={0.29408577,0.65832889,-0.69290453};
+		aside[]={-0.92052144,-1.4901161e-008,-0.39069203};
 	};
 };
 binarizationWanted=0;
@@ -29385,12 +29385,13 @@ class Mission
 					class PositionInfo
 					{
 						position[]={9926.6553,139.99643,10065.855};
-						angles[]={0,0.2835525,0};
+						angles[]={0,0.28354618,0};
 					};
 					side="West";
 					flags=7;
 					class Attributes
 					{
+						init="this disableAI ""ALL"";";
 						name="heli_jeff";
 					};
 					id=189;
