@@ -19,4 +19,4 @@ _base = markerpos "base_marker";
 	} else {
 		_mkr setMarkerColorLocal "ColorGreen";
 	};
-} forEach (_houses select {(_x distance _base) > 500});
+} forEach (_houses select {(_x distance _base) > 750});

@@ -5,6 +5,6 @@ maxAIPerPlayer = 4;
 playersNeeded = 1;
 
 // number of map patrol vehicles that will spawn
-eastVehicleNum = 4;
+eastVehicleNum = 5;
 
 aiVehicleRespawnTime = 1800;

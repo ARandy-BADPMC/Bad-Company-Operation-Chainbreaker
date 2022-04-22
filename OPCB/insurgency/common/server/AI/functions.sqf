@@ -85,43 +85,90 @@ spawnAIVehicles = {
 }; 	
 
 spawnAIGuns = { 
-	private ["_id","_gCount","_house","_houses"]; 
+	private ["_id","_gCount","_house","_houses","_bpos","_gunTypes"]; 
 	
-	_houses = [CENTERPOS,AORADIUS, 4, true] call findHouses; 	
-	_gCount	= 0; 
-	while{ _gCount < maxStaticGuns && count _houses > 0} do{ 
-		_house = _houses select random(count _houses - 1); 
-		_id	   = GUNROOFPOSITIONS find (typeOf _house); 
-		if (_id != -1 && _house distance startLocation > 500) then { 
-			if (count nearestObjects[getPosATL _house, eastStationaryGuns, staticWepDistances] == 0) then { 
-				[_id, _house, _gCount] call createRoofGun; 	
+	_houses = [CENTERPOS,AORADIUS, 5, true] call findHouses; 	
+	_gCount	= 0;
+	
+	while{ _gCount < maxStaticGuns && count _houses > 0} do { 
+	
+		_house = _houses select random(count _houses - 1);
+		
+		if ((_house distance startLocation > gunDistanceFromStartLocation) && {(count nearestObjects[getPosATL _house, eastStationaryGuns, staticWepDistances]) == 0}) then {
+		
+			_bpos = [];
+			_gunTypes = [];
+			
+			{		
+				_bpos = AGLToASL _x;
+				
+				private _roofpos = _bpos vectorAdd [0,0,50];
+
+				private _collisions = lineIntersectsSurfaces [_bpos,_roofpos];
+				private _topCollision = false;
+
+				if ((count _collisions) > 0) then {
+					_topCollision = true;
+				};
+								
+				private _sidePositions = [
+					_bpos vectorAdd [50,0,0],
+					_bpos vectorAdd [-50,0,0],
+					_bpos vectorAdd [0,50,0],
+					_bpos vectorAdd [0,-50,0]
+				];
+				
+				private _collisionCount = 0;
+				{
+					_collisions = lineIntersectsSurfaces [_bpos,_x];
+					if ((count _collisions) > 0) then {
+						_collisionCount = _collisionCount + 1;
+					};
+				} foreach _sidePositions;
+						
+				if (_collisionCount < 3) then {
+					if (!_topCollision) then {
+						_bpos = _x;
+						if ((_bpos select 2) > 1.6) then {
+							_gunTypes = stationaryGunsHigh;
+						} else {
+							_gunTypes = stationaryGunsMed;
+						};
+					} else {
+						_gunTypes = stationaryGunsMed;
+						_bpos = _x;
+					};
+				};
+							
+				if ((count _gunTypes) > 0) exitWith {};
+			
+			} foreach (_house buildingPos -1);
+			
+			if ((count _gunTypes) > 0) then { 
+				[_bpos, _house, selectRandom _gunTypes] call createRoofGun; 	
 				_gCount = _gCount + 1; 
 			}; 
+			
 		}; 
-		_houses = _houses - [_house]; 		
+		
+		_houses = _houses - [_house]; 	
+		
 	}; 
 	
 	_gCount
+	
 }; 
 
 createRoofGun = { 	
 	private ["_class","_pos","_housePositions","_id","_housePosition","_classId","_gun","_house","_dir","_grp","_gCount","_ai"]; 
-	_id		= _this select 0;
+	_pos		= _this select 0;
 	_house	= _this select 1;
-	_gCount = _this select 2;
-	
-	_housePositions = GUNROOFPOSITIONS select (_id+1); 
-	_housePosition  = (_housePositions select random (count _housePositions - 1)) select 0; 
-	_classId        = (_housePositions select random (count _housePositions - 1)) select 1; 
-	if (_classId <= 0.2) then { _class = stationaryGunsLow select random(count stationaryGunsLow - 1); }; 
-	if (_classId > 0.2 && _classId < 0.5) then { _class = stationaryGunsMed select random(count stationaryGunsMed - 1); }; 
-	if (_classId >= 0.5) then { _class = stationaryGunsHigh select random(count stationaryGunsHigh - 1); }; 
+	_class = _this select 2;
+
 	_gun = createVehicle [_class, spawnPos, [], 500, "None"]; 
 	for "_j" from 0 to 10 do { _gun addMagazine (magazines _gun select 0); };	
 	_dir = ((boundingCenter _house select 0) - (getPosATL _gun select 0)) atan2 ((boundingCenter _house select 1) - (getPosATL _gun select 1)); 
 	_dir = (360 - _dir); 
-	//_dir = ((getPosATL startLocation select 0) - (getPosATL _gun select 0)) atan2 ((getPosATL startLocation select 1) - (getPosATL _gun select 1)); 
-	_pos = _house buildingPos _housePosition;
 	_dummy = "Land_Wrench_F" createVehicle _pos;
 	_dummy setDir _dir;
 	_dummy setPosATL (_pos vectorAdd [0,0,2]);
@@ -153,7 +200,7 @@ createRoofGun = {
 			};
 		};
 	};		
-	//_grp = ["static","Grp",str _gCount,"east"] call getGroup; 
+	
 	_grp = createGroup east;
 	_ai  = _grp createUnit [staticClass, spawnPos, [], 100, "NONE"];	
 	_ai assignAsGunner _gun; 

@@ -56,7 +56,7 @@ aiMonitorRemote = {
 		_dir = ((getPosATL _plr select 0) - (getPosATL _gun select 0)) atan2 ((getPosATL _plr select 1) - (getPosATL _gun select 1)); 
 		group _gun setFormDir _dir;
 		_gun doTarget _plr;
-		sleep 1;
+		sleep 3;
 		_curTime = time;
 		while { time - _curTime < 5 } do {
 			vehicle _gun fireAtTarget [_plr,currentWeapon vehicle _gun];

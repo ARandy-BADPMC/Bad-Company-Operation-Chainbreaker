@@ -8,7 +8,7 @@ findHouses = {
 	_enterables = []; 	
 	{ 
 		if (
-			format["%1", _x buildingPos _minPositions] != "[0,0,0]" 
+			((count (_x buildingPos -1)) >= _minPositions)
 		&& {EP1HOUSES} 
 		&& {(alive _x || {!_alive}) && {!(typeOf _x in ILLEGALHOUSES)} }
 		) then { 

@@ -91,6 +91,7 @@ _areadir = 0;
 _areaname = ""; 
 _areatrigger = objNull; 
 _showmarker = "HIDEMARKER"; 
+_mindist=500; 
 _getAreaInfo = { 
 	_obj = ((nearestPlayers(getPosATL _this,20000,true,"array")+[startLocation]) select 0);
 	_centerpos = CENTERPOS;
@@ -182,7 +183,6 @@ _sindir=sin(_areadir);
 if (_rangeX==0) exitWith { 
 	hint format["UPS: Cannot patrol Sector: %1\nArea Marker doesn't exist",_areaname]; 
 }; 
-_mindist=(_rangeX^2+_rangeY^2)/4; 
 
 // remember the original mode & speed
 _orgMode = behaviour _npc; 
@@ -223,8 +223,8 @@ _sin90=1; _cos90=0;
 _sin270=-1; _cos270=0; 
 
 // set target tolerance high for choppers & planes
-_closeenough=CLOSEENOUGH*CLOSEENOUGH; 
-if (_isair) then { _closeenough=5000}; 
+_closeenough=CLOSEENOUGH; 
+if (_isair) then { _closeenough=2500}; 
 
 // ***************************************** optional arguments *****************************************
 
@@ -597,14 +597,14 @@ while { _loop} do {
 					// find a new target that's not too close to the current position
 					_targetPos=_currPos; 
 					_tries=0; 
-					while { (([_currPos,_targetPos] call KRON_distancePosSqr) < _mindist) && (_tries<20)} do { 
+					while { ((([_currPos,_targetPos] call KRON_distancePosSqr) < _mindist) || {surfaceIsWater _targetPos}) && (_tries<100)} do { 
 						_tries=_tries+1; 
 						// generate new target position (on the road)
 						_targetPos=[_centerX,_centerY,_rangeX,_rangeY,_cosdir,_sindir,_areadir] call KRON_randomPos; 
 						_posX = _targetPos select 0;
 						_posY = _targetPos select 1;
 						if (isNil "_posX" || isNil "_posY") then { _targetPos = CENTERPOS; };
-						_roadlist = _targetPos nearRoads 2000;
+						_roadlist = _targetPos nearRoads 200;
 						if (count _roadlist>0) exitWith { _targetPos = getPosATL (_roadlist select 0); };
 						//_road=[_targetPos,(_isair||_isboat),_road] call KRON_OnRoad; 
 						sleep .01; 			
