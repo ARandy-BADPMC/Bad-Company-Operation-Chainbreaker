@@ -14,7 +14,7 @@ class jey_adminconsole_dialog
 			w = 0.458333 * safezoneW;
 			h = 0.549786 * safezoneH;
 		};
-		class jey_getgroups: RscButton
+		/*class jey_getgroups: RscButton
 		{
 			idc = 1600;
 			text = "Groups"; //--- ToDo: Localize;
@@ -23,7 +23,7 @@ class jey_adminconsole_dialog
 			w = 0.0572917 * safezoneW;
 			h = 0.0659743 * safezoneH;
 			action = "[] call CHAB_fnc_getgroups";
-		};
+		};*/
 		class jey_close: RscButton
 		{
 			idc = 1601;
@@ -34,6 +34,7 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "closeDialog 0";
 		};
+		/*
 		class jey_leave_spectator: RscButton
 		{
 			idc = 1622;
@@ -44,6 +45,7 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "['Terminate'] call BIS_fnc_EGSpectator;closeDialog 0";
 		};
+		*/
 		class fix_task: RscButton
 		{
 			idc = 1632;
@@ -64,6 +66,7 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "[] call CHAB_fnc_zeus";
 		};
+		/*
 		class jey_kick: RscButton
 		{
 			idc = 1602;
@@ -84,6 +87,7 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "[] call CHAB_fnc_ban";
 		};
+		
 		class jey_kicklist: RscListbox
 		{
 			idc = 1500;
@@ -112,6 +116,7 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "[] call CHAB_fnc_spectate;closeDialog 0";
 		};
+		
 		class jey_restart_server: RscButton
 		{
 			idc = 1625;
@@ -142,7 +147,7 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "[] call CHAB_fnc_gettankcrew";
 		};
-		
+		*/
 		class jey_day: RscButton
 		{
 			idc = 1609;
