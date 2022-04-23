@@ -6,13 +6,17 @@ for "_i" from 1 to 20 do {
 aiMonitor = {
     private ["_ai","_gun","_ais","_guns","_gunner"];
     
-    _ais  = nearestEastMen(getPosATL player,100,true,"array");
-	_guns = nearestObjects[getPosATL player, eastStationaryGuns+eastVclClasses, 500];
+  _ais  = nearestEastMen(getPos player,750,true,"array");
+	_guns = nearestObjects[getPos player, eastStationaryGuns+eastVclClasses, 1200];
 	_guns = _guns apply {_gunner = gunner _x; if (alive _gunner && {!isplayer _gunner} && {(lifeState _gunner) != "UNCONSCIOUS"}) then {_gunner} else {objNull}};
 	_guns = _guns - [objNull];
 	_ai   = objNull;
 	_gun  = objNull;
-	if (count _ais > 0) then { if (vehicle (_ais select 0) == (_ais select 0)) exitWith { _ai = _ais select 0; }; };
+	{
+		if ((vehicle _x) == _x) exitWith {
+			_ai = _x;
+		}; 
+	} foreach _ais;
 	if (count _guns > 0) then { _gun = _guns select 0; };
 	if (!isNull _gun) then {
 		if (local _gun) then {

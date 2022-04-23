@@ -40,6 +40,9 @@
 // bugfix value
 #define CENTERPOS			getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition")
 
+#define DEFAULT_RANGEX (worldSize/2)
+#define DEFAULT_RANGEY (worldSize/2)
+
 nearestPlayers = {
 	private ["_result","_pos","_range","_type","_alive"];
 	_pos   = _this select 0;
@@ -50,7 +53,7 @@ nearestPlayers = {
 	{
 		_plr = _x;
 		if (!isNull _plr) then {
-			if ((alive _plr || {!_alive}) && {(_plr distance _pos) <= _range}) then { 
+			if ((alive _plr || {!_alive}) && {((side _npc) knowsAbout _plr) > 0} && {(_plr distance _pos) <= _range}) then { 
 				if (_type == "count") then { _result = _result + 1; } else { _result = _result + [_plr]; };
 			};
 		};
@@ -93,18 +96,22 @@ _areatrigger = objNull;
 _showmarker = "HIDEMARKER"; 
 _mindist=500; 
 _getAreaInfo = { 
-	_obj = ((nearestPlayers(getPosATL _this,20000,true,"array")+[startLocation]) select 0);
+	_obj = nearestPlayers(getPosATL _this,20000,true,"array");
 	_centerpos = CENTERPOS;
-	if (!isnil "_obj") then {
-		_centerpos = getPosATL _obj;
+	_rangeX = DEFAULT_RANGEX; 
+	_rangeY = DEFAULT_RANGEY; 
+	if ((count _obj) > 0) then {
+		_obj = selectRandom _obj;
+		_centerpos = getPos _obj;
 		_areadir = (getDir _obj); 
-	};	
+		_rangeX = 1500; 
+		_rangeY = 1500; 
+	};
 	_centerX = abs(_centerpos select 0); 
 	_centerY = abs(_centerpos select 1); 
-	_rangeX = 2000; 
-	_rangeY = 2000; 	
-	_areaname = "USBASE"; 
-}; 
+		
+	_areaname = "DEFAULT"; 
+};
 
 // unit that's moving
 _obj = _this select 0; 		

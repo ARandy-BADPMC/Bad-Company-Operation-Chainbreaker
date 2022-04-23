@@ -45,18 +45,18 @@ aiMonitorRemote = {
 	_plr = _this select 1;
 	_gun = _this select 2;
 	if !isNull _ai then {
-		//_ai reveal _plr;
+		_ai reveal _plr;
 		_ai setUnitPos "UP";
 		//_ai doWatch _plr;
 		_ai doWatch (getpos _plr);
 		_ai doMove getPosATL _plr;
 	};
-	if !isNull _gun then {
+	if !isNull _gun then {		
 		_gun reveal _plr;
 		_dir = ((getPosATL _plr select 0) - (getPosATL _gun select 0)) atan2 ((getPosATL _plr select 1) - (getPosATL _gun select 1)); 
 		group _gun setFormDir _dir;
 		_gun doTarget _plr;
-		sleep 3;
+		sleep 5;
 		_curTime = time;
 		while { time - _curTime < 5 } do {
 			vehicle _gun fireAtTarget [_plr,currentWeapon vehicle _gun];

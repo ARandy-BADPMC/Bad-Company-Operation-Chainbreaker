@@ -15,7 +15,9 @@ _HQstate 			= startLocation;
 		//if (time - _aiTimer > 30) then { _aiTimer = time + (random 10) - 5; };
 		//call groupAI;
 		sleep 1;
-		call aiMonitor; 
+		if ((player distance2D startLocation) > 1000) then {
+			call aiMonitor; 
+		};		
 		sleep (25 + (random 10));
 	};
 };
