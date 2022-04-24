@@ -94,7 +94,7 @@ Helicopter_loadouts =
 	"O_Heli_Light_02_dynamicLoadout_F",["Light",["PylonWeapon_2000Rnd_65x39_belt","PylonRack_12Rnd_missiles"],"Medium",["PylonRack_12Rnd_missiles","PylonRack_12Rnd_missiles"],"Heavy",["PylonRack_1Rnd_ACE_Hellfire_AGM114N","PylonRack_1Rnd_ACE_Hellfire_AGM114N"]],
 	"O_Heli_Light_02_unarmed_F",["Default",[]],
 	//"C_Heli_Light_01_civil_F",["Default",[]],
-	"B_Heli_Light_01_F",["Default",[]],
+	//"B_Heli_Light_01_F",["Default",[]],
 	"RHS_MELB_MH6M",["Default",[]],
 	//"RHS_Mi8AMTSh_vvs", ["Default",[]],
 	"O_Heli_Transport_04_F", ["Default",[]],
