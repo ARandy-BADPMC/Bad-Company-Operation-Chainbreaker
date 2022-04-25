@@ -21,7 +21,7 @@ BADCO_role_check =
 		};
 		if (_vehicle isKindOf "Helicopter") then 
 		{		
-			if (_unitType != "rhsusf_usmc_marpat_d_helipilot") then
+			if (_unitType != "rhsusf_army_ocp_helipilot") then
 			{
 				_vehicle engineOn false;
 				moveOut _unit;			
@@ -37,7 +37,7 @@ BADCO_role_check =
 		};
 		if (_vehicle isKindOf "Tank") then 
 		{
-			if (_unitType != "rhsusf_usmc_marpat_d_engineer") then 
+			if (_unitType != "rhsusf_army_ocp_engineer") then 
 			{
 				_vehicle engineOn false;
 				moveOut _unit;
