@@ -1,19 +1,25 @@
 aiDespawn = {
+
 	private ["_var","_plrs","_pos"];
 	
+	private _AIunits = (allunits - playableUnits) select {((group _x) getVariable ["insAI", false]) && {!isPlayer _x} && {(typeof _x) in eastInfClasses}};
+	private _dude = objNull;
+	private _nearDudes = 0;
+	private _nearPlayers = 0;
+	private _playerDist = SPAWNRANGE+200;
+	
 	{
-		if (((group _x) getVariable ["insAI", false]) && {!isPlayer _x} && {(typeof _x) in eastInfClasses}) then {
-			if alive _x then {
-				_pos = getpos _x;
-				_plrs = playableUnits apply {if ((_x distance2D _pos) > (SPAWNRANGE+200)) then {objNull} else {_x}};
-				_plrs = _plrs - [objNull];
-				if (count _plrs == 0) then {
-					deleteVehicle _x; 
-				};
-				sleep 0.3;	
-			};			
+		if (!isNull _x) then {
+			_dude = _x;
+			_nearDudes = {(_x distance2D _dude) < 200} count _AIunits;
+			_nearPlayers = {(_x distance2D _dude) < _playerDist} count playableUnits;
+			if (_nearPlayers < (_nearDudes/maxAIPerPlayer)) then {
+				deleteVehicle _dude; 
+			};
+			sleep 0.3;
 		};
-	} foreach (allunits - playableUnits);
+	} foreach _AIunits;
+
 };
 
 quickCleanup = {
