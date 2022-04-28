@@ -101,7 +101,19 @@ _getAreaInfo = {
 	_rangeX = DEFAULT_RANGEX; 
 	_rangeY = DEFAULT_RANGEY; 
 	if ((count _obj) > 0) then {
-		_obj = selectRandom _obj;
+	
+		// get closest player
+		private _closestDist = 9999999;
+		private _closestPlayer = _obj select 0;
+		{
+			private _thisDist = _this distance2D _x;
+			if (_thisDist < _closestDist) then {
+				_closestPlayer = _x;
+				_closestDist = _thisDist;
+			};
+		} foreach _obj;
+		
+		_obj = _closestPlayer;
 		_centerpos = getPos _obj;
 		_areadir = (getDir _obj); 
 		_rangeX = 1500; 
@@ -327,6 +339,9 @@ while { _loop} do {
 	// keep track of how long we've been moving towards a destination
 	_curTimeontarget=_curTimeontarget+_currcycle; 
 	_react=_react+_currcycle; 
+		
+	//Hunter: update enemies and point it to players 
+	_enemies = nearestPlayers(getPosATL _npc,20000,true,"array");
 	
 	if ((count allplayers) == 0) then {
 		{
@@ -334,9 +349,6 @@ while { _loop} do {
 			(vehicle _x) setDamage 1;
 		} foreach _members;
 	};
-	
-	//Hunter: update enemies and point it to players 
-	_enemies = playableUnits select {(lifeState _x) != "UNCONSCIOUS"};
 	
 	// did anybody in the group got hit?
 	_newdamage=0; 
