@@ -7,6 +7,8 @@ BADCO_role_check =
 	_attack = _unit getVariable ["SOAR",0];
 	_attackVehicle = count getPylonMagazines _vehicle;
 
+	if ((typeof _vehicle ==  "NonSteerable_Parachute_F") || (typeof _vehicle == "Steerable_Parachute_F")) exitWith {}; 
+	
 	if (_role == "Driver") then 
 	{
 		if (_vehicle isKindOf "Plane") then 
