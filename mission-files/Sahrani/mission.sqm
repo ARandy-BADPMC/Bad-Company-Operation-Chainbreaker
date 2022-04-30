@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=807;
+		nextID=822;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={9806.3223,177.11987,10020.565};
-		dir[]={0.37466493,-0.64807963,-0.66321427};
-		up[]={0.31878963,0.76153529,-0.56430686};
-		aside[]={-0.87077487,4.9387745e-007,-0.49191234};
+		pos[]={9714.7871,143.31587,10097.601};
+		dir[]={0.32423398,-0.90919381,-0.26122588};
+		up[]={0.70799834,0.41637313,-0.57041371};
+		aside[]={-0.62738407,-1.4901161e-008,-0.77871001};
 	};
 };
 binarizationWanted=0;
@@ -121,13 +121,16 @@ addons[]=
 	"CUP_Ind_Shed_02",
 	"A3_Structures_F_Enoch_Infrastructure_Roads",
 	"A3_Structures_F_Exp_Infrastructure_Pavements",
-	"A3_Structures_F_Exp_Walls_Concrete"
+	"A3_Structures_F_Exp_Walls_Concrete",
+	"A3_Boat_F_Boat_Transport_01",
+	"A3_Boat_F_Gamma_Boat_Civil_01",
+	"A3_Boat_F_Exp_Scooter_Transport_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=68;
+		items=70;
 		class Item0
 		{
 			className="rhsusf_c_troops";
@@ -581,6 +584,20 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Exp_Infrastructure";
 			name="Arma 3 Apex - Infrastructure Objects";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item68
+		{
+			className="A3_Boat_F";
+			name="Arma 3 Alpha - Boats and Submersibles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item69
+		{
+			className="A3_Boat_F_Gamma";
+			name="Arma 3 - Boats and Submersibles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -9350,7 +9367,7 @@ class CustomAttributes
 																"BOOL"
 															};
 														};
-														value=1;
+														value=0;
 													};
 												};
 												class Item1
@@ -13355,7 +13372,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=12;
+														value=20.015503;
 													};
 												};
 												class Item1
@@ -13490,7 +13507,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=0.60000002;
+														value=0.40031007;
 													};
 												};
 												class Item1
@@ -13625,7 +13642,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=2;
+														value=3;
 													};
 												};
 												class Item1
@@ -14074,7 +14091,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=5;
+														value=3.0346105;
 													};
 												};
 												class Item1
@@ -14088,7 +14105,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=2;
+														value=1;
 													};
 												};
 											};
@@ -14164,7 +14181,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=1;
+														value=1.4527409;
 													};
 												};
 												class Item1
@@ -16324,7 +16341,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=20;
+														value=19.555813;
 													};
 												};
 												class Item1
@@ -16369,7 +16386,7 @@ class CustomAttributes
 																"BOOL"
 															};
 														};
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -16538,7 +16555,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=20;
+														value=27;
 													};
 												};
 												class Item1
@@ -16628,7 +16645,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=25;
+														value=41;
 													};
 												};
 												class Item1
@@ -16673,7 +16690,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=15;
+														value=19;
 													};
 												};
 												class Item1
@@ -20990,7 +21007,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=368;
+		items=376;
 		class Item0
 		{
 			dataType="Group";
@@ -42603,6 +42620,326 @@ class Mission
 			type="b_naval";
 			id=806;
 			atlOffset=0.00042629242;
+		};
+		class Item368
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9517.792,0.94818652,11212.353};
+				angles[]={0,0.0085560642,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[this, 1200, {_this allowDamage true; [_this, 6] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
+			};
+			id=808;
+			type="B_Boat_Transport_01_F";
+			atlOffset=10.524889;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item369
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9515.1064,1.2435327,11212.438};
+				angles[]={0,0.0085560642,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[this, 1200, {_this allowDamage true; [_this, 6] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
+			};
+			id=809;
+			type="B_Boat_Transport_01_F";
+			atlOffset=10.990792;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item370
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9512.5342,1.2435327,11212.47};
+				angles[]={0,0.0085560642,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[this, 1200, {_this allowDamage true; [_this, 6] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
+			};
+			id=810;
+			type="B_Boat_Transport_01_F";
+			atlOffset=11.149689;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item371
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9522.9688,1.2970161,11169.646};
+				angles[]={0,1.5613009,-0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[this, 1200, {_this allowDamage true; [_this, 6] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
+			};
+			id=813;
+			type="C_Boat_Civil_01_F";
+			atlOffset=2.3177912;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item372
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9496.5186,1.3881395,11169.343};
+				angles[]={0,5.881475,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[this, 1200, {_this allowDamage true; [_this, 6] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
+			};
+			id=816;
+			type="C_Scooter_Transport_01_F";
+			atlOffset=1.6528325;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item373
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9499.0518,1.1684377,11169.817};
+				angles[]={0,5.881475,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[this, 1200, {_this allowDamage true; [_this, 6] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
+			};
+			id=818;
+			type="C_Scooter_Transport_01_F";
+			atlOffset=1.6528325;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item374
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9502.0537,1.09832,11170.283};
+				angles[]={0,5.881475,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[this, 1200, {_this allowDamage true; [_this, 6] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
+			};
+			id=819;
+			type="C_Scooter_Transport_01_F";
+			atlOffset=1.8068964;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item375
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9493.8477,1.3881395,11168.61};
+				angles[]={0,5.881475,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[this, 1200, {_this allowDamage true; [_this, 6] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
+			};
+			id=820;
+			type="C_Scooter_Transport_01_F";
+			atlOffset=1.2694321;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[2]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections
