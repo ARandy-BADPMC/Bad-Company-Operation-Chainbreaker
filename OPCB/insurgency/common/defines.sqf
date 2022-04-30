@@ -51,16 +51,22 @@ aiMonitorRemote = {
 		_ai doWatch (getpos _plr);
 		_ai doMove getPosATL _plr;
 	};
-	if !isNull _gun then {		
+	if !isNull _gun then {
 		_gun reveal _plr;
+		/*
 		_dir = ((getPosATL _plr select 0) - (getPosATL _gun select 0)) atan2 ((getPosATL _plr select 1) - (getPosATL _gun select 1)); 
-		group _gun setFormDir _dir;
+		group _gun setFormDir _dir;		
 		_gun doTarget _plr;
 		sleep 5;
 		_curTime = time;
 		while { time - _curTime < 5 } do {
 			vehicle _gun fireAtTarget [_plr,currentWeapon vehicle _gun];
 			sleep (0.1 + random 0.2);
-		};			
+		};
+		*/
+		private _target = assignedTarget _gun;
+		if (!isNull _target) then {
+			_gun doSuppressiveFire _target;
+		};
 	};
 };

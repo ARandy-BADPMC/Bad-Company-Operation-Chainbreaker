@@ -224,7 +224,8 @@ countPositions = {
 	[_house, _i+1] call countPositions; 
 }; 
 
-#define nPos(X) ([X,0] call countPositions)
+//#define nPos(X) ([X,0] call countPositions)
+#define nPos(X) (count (X buildingPos -1))
 
 getGridPos = { 		
     private ["_pos","_x","_y"];

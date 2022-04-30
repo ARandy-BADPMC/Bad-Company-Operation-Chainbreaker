@@ -30,5 +30,5 @@ while { true } do {
 	//Misc
 	call clearHouses;
 
-	sleep 0.1; 
+	sleep 1;
 };	
