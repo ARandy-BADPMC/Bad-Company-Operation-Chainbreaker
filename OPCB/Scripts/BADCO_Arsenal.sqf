@@ -2870,6 +2870,8 @@ _boxes = [box1,box2,box3,box4];
 
 {
 	[_x,_arsenalitems,true] call ace_arsenal_fnc_initBox;
+	[_x,-1] call ace_cargo_fnc_setSize;
+	_x enableRopeAttach false;
 } forEach _boxes;
 
 
