@@ -1,4 +1,6 @@
-KRON_UPS_Debug = DEBUG;
+if (isNil "KRON_UPS_Debug") then {
+	KRON_UPS_Debug = DEBUG;
+};
 
 // find a random position within a radius
 KRON_randomPos = { 

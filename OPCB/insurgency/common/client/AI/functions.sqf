@@ -20,16 +20,16 @@ aiMonitor = {
 	if (count _guns > 0) then { _gun = _guns select 0; };
 	if (!isNull _gun) then {
 		if (local _gun) then {
-			[objNull,player,_gun] spawn aiMonitorRemote;
+			[objNull,vehicle player,_gun] spawn aiMonitorRemote;
 		} else {
-			[objNull,player,_gun] remoteExec ["aiMonitorRemote",_gun,false];
+			[objNull,vehicle player,_gun] remoteExec ["aiMonitorRemote",_gun,false];
 		};
 	};
 	if (!isNull _ai) then {
 		if (local _ai) then {
-			[_ai,player,objNull] spawn aiMonitorRemote;
+			[_ai,vehicle player,objNull] spawn aiMonitorRemote;
 		} else {
-			[_ai,player,objNull] remoteExec ["aiMonitorRemote",_ai,false];
+			[_ai,vehicle player,objNull] remoteExec ["aiMonitorRemote",_ai,false];
 		};		
 	};
 };
@@ -84,7 +84,7 @@ findSquadAIName = {
 
 fillHouseEast = {
 
-	private ["_pID","_pos","_posASL","_intersections", "_manPackingRadius", "_numOfNearbyBuildings",	"_intersectionPosASL", "_isVisibleToPlayer", "_unit","_name","_class","_ai","_house","_cCount","_hID","_wUnits","_i","_group","_skill"];
+	private ["_pID","_pos","_posASL", "_magazine", "_weapon", "_intersections", "_manPackingRadius", "_numOfNearbyBuildings",	"_intersectionPosASL", "_isVisibleToPlayer", "_unit","_name","_class","_ai","_house","_cCount","_hID","_wUnits","_i","_group","_skill"];
 	
 	scopeName "fillHouseEastMain";
 	
@@ -143,15 +143,30 @@ fillHouseEast = {
 				_group  = [player, "EastAIGrp", "", "east"] call getGroup; // create an AI group
 				_ai    = _group createUnit [_class, spawnPos, [], 0, "NONE"];
 				
-				// insurgent RPG-wielders!!!! :D
+				// insurgent RPG-wielders!!!! :D								
 				if (((secondaryWeapon _ai) != "") && {(random 1) < 0.3}) then {
-					_ai removeMagazines (primaryWeaponMagazine _ai);
-					_ai removeMagazines (handgunMagazine _ai);
-					_ai removeWeapon (primaryWeapon _ai);
-					_ai removeWeapon (handgunWeapon _ai);
-					_ai selectWeapon (secondaryWeapon _ai);
-					_ai addMagazines [secondaryWeaponMagazine _ai, 4];
+					_ai spawn {
+						_ai = _this;
+						
+						// need to wait for a long time to make sure all types of launchers are loaded, or magazine will be nil!
+						sleep 30;
+						if (!alive _ai) exitWith {};
+						if ((count (secondaryWeaponMagazine _ai)) == 0) exitWith {};
+											
+						//remove all mags since otherwise they prefer to switch to grenades...
+						_magazine = (secondaryWeaponMagazine _ai) select 0;
+						_weapon = secondaryWeapon _ai;
+						removeAllWeapons _ai;
+						_ai addWeapon _weapon;
+						_ai addSecondaryWeaponItem _magazine;
+						_ai addMagazines [_magazine, 6];
+						_ai selectWeapon _weapon;
+						_ai addItem "ACE_bandage";
+						_ai addItem "ACE_bandage";
+						
+					};				
 				};
+
 				
 				aiArray set [_name, _ai];
 				// Hunter: prevent fall damage
@@ -166,8 +181,8 @@ fillHouseEast = {
 				}];
 				_ai setPosATL _pos;
 				doStop _ai;
-				_ai addMagazine (IEDList select (random (count IEDList - 1)));
-				_ai addMagazine (IEDList select (random (count IEDList - 1)));
+				//_ai addMagazine (IEDList select (random (count IEDList - 1)));
+				//_ai addMagazine (IEDList select (random (count IEDList - 1)));
 			
 			};
 

@@ -10,7 +10,7 @@ spawnAIVehicle = {
 	_obj 	= call compile ("vclSpawn" + str(_num)); 
 	_mkr 	= str _unum; 
 	_pos 	= getPosATL _obj; 
-	_vcl 	= createVehicle [_type, _pos, [], 100, "None"];
+	_vcl 	= createVehicle [_type, _pos, [], 0, "NONE"];
 	_vcl setPosATL ((getPosATL _vcl) vectorAdd [0,0,1]);
 	_vcl setVectorUp (surfaceNormal _pos);	
 	// Hunter: anti-bad driving fix (does not cover flipping...)
@@ -80,7 +80,7 @@ spawnAIVehicles = {
 	for "_i" from 1 to eastVehicleNum do { 		
 		_i call spawnAIVehicle;
 		if (DEBUG) then { server globalChat format ["SPAWNING AI VEHICLE %1", _i]; };
-		sleep 120; 
+		sleep 240; 
 	};
 }; 	
 

@@ -50,6 +50,11 @@ aiMonitorRemote = {
 		//_ai doWatch _plr;
 		_ai doWatch (getpos _plr);
 		_ai doMove getPosATL _plr;
+		
+		// RPG-wielders in arma 3 won't do shit against infantry unless ordered to "suppress"
+		if (((primaryWeapon _ai) == "") && {(secondaryWeapon _ai) != ""}) then {
+			_ai doSuppressiveFire _plr;
+		};
 	};
 	if !isNull _gun then {
 		_gun reveal _plr;

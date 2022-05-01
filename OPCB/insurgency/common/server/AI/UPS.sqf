@@ -37,8 +37,8 @@
 // how long AI units should be in alert mode after initially spotting an enemy
 #define ALERTTIME 300
 
-// bugfix value
-#define CENTERPOS			getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition")
+private __CENTERPOS = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition");
+__CENTERPOS set [2, 0];
 
 #define DEFAULT_RANGEX (worldSize/2)
 #define DEFAULT_RANGEY (worldSize/2)
@@ -80,10 +80,12 @@ _onroof = false;
 KRON_UPS_Instances =	KRON_UPS_Instances + 1; 
 
 // get name of area marker 
+/*
 _areamarker = _this select 1; 
 if (isNil ("_areamarker")) exitWith { 
 	hint "UPS: Area marker not defined.\n(Typo, or name not enclosed in quotation marks?)"; 
 }; 	
+*/
 
 _centerpos = []; 
 _centerX = []; 
@@ -97,7 +99,7 @@ _showmarker = "HIDEMARKER";
 _mindist=500; 
 _getAreaInfo = { 
 	_obj = nearestPlayers(getPosATL _this,20000,true,"array");
-	_centerpos = CENTERPOS;
+	_centerpos = __CENTERPOS;
 	_rangeX = DEFAULT_RANGEX; 
 	_rangeY = DEFAULT_RANGEY; 
 	if ((count _obj) > 0) then {
@@ -131,11 +133,11 @@ _npc = _obj;
 _npc call _getAreaInfo; 
 // is anybody alive in the group?
 _exit = true; 		
-if (typename _obj=="OBJECT") then { 
+if (typename _npc=="OBJECT") then { 
 	if (alive _npc) then { _exit = false; }		
 } else { 
-	if (count _obj>0) then { 
-		{ if (alive _x) then { _npc = _x; _exit = false; }} forEach _obj; 
+	if (count _npc>0) then { 
+		{ if (alive _x) then { _npc = _x; _exit = false; }} forEach _npc; 
 	}; 
 }; 
 
@@ -559,7 +561,7 @@ while { _loop} do {
 	if !(_newpos) then { 
 		// calculate new distance
 		// if we're waiting at a waypoint, no calculating necessary
-		if (_waiting<=0) then { 
+		if (_waiting<=0) then {
 			// distance to target
 			_dist = [_currPos,_targetPos] call KRON_distancePosSqr; 
 			if (_lastdist==0) then { _lastdist=_dist}; 
@@ -610,7 +612,7 @@ while { _loop} do {
 					} else { 
 						_targetPos=_orgPos; 
 					}; 
-				} else { 
+				} else {
 					// re-read marker position/size
 					_npc call _getAreaInfo; 
 					// find a new target that's not too close to the current position
@@ -619,12 +621,12 @@ while { _loop} do {
 					while { ((([_currPos,_targetPos] call KRON_distancePosSqr) < _mindist) || {surfaceIsWater _targetPos}) && (_tries<100)} do { 
 						_tries=_tries+1; 
 						// generate new target position (on the road)
-						_targetPos=[_centerX,_centerY,_rangeX,_rangeY,_cosdir,_sindir,_areadir] call KRON_randomPos; 
+						_targetPos=[_centerX,_centerY,_rangeX,_rangeY,_cosdir,_sindir,_areadir] call KRON_randomPos;
 						_posX = _targetPos select 0;
 						_posY = _targetPos select 1;
-						if (isNil "_posX" || isNil "_posY") then { _targetPos = CENTERPOS; };
+						if (isNil "_posX" || isNil "_posY") then { _targetPos = __CENTERPOS; };
 						_roadlist = _targetPos nearRoads 200;
-						if (count _roadlist>0) exitWith { _targetPos = getPosATL (_roadlist select 0); };
+						if (count _roadlist>0) then { _targetPos = getPosATL (_roadlist select 0); };
 						//_road=[_targetPos,(_isair||_isboat),_road] call KRON_OnRoad; 
 						sleep .01; 			
 					}; 
