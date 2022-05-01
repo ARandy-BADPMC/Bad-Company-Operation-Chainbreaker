@@ -25,7 +25,7 @@
 "LOP_AM_OPF_Infantry_AT",\
 "LOP_AM_OPF_Infantry_AR_Asst",\
 "LOP_AM_OPF_Infantry_Rifleman_9",\
-"LOP_AM_OPF_Infantry_Rifleman_8",\
+"LOP_AM_OPF_Infantry_Rifleman_2",\
 "LOP_AM_OPF_Infantry_Rifleman_7",\
 "LOP_AM_OPF_Infantry_SL"\
 ]
