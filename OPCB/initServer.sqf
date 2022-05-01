@@ -68,3 +68,7 @@ _nearbyLocations = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital
 } forEach _nearbyLocations;*/
 
 missionNamespace setVariable ["Cities",_nearbyLocations];
+
+// for AI -- let's see if this strains the server too much (with more AI)
+setViewDistance 3500;
+setObjectViewDistance 3500;
