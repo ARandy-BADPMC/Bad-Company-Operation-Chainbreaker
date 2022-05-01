@@ -15,7 +15,7 @@ Vcm_Settings =
 	VcmAI_ActiveList = []; //Leave this alone.
 	Vcm_ArtilleryArray = []; //Leave this alone
 	VCM_ARTYENABLE = true; //Enable improved artillery handling.
-	VCM_AIMagLimit = 5; //Number of mags remaining before AI looks for ammo.
+	VCM_AIMagLimit = 3; //Number of mags remaining before AI looks for ammo.
 	VCM_Debug = false; //Enable debug mode.
 	VCM_MINECHANCE = 75; //Chance to lay a mine
 	
@@ -34,16 +34,16 @@ Vcm_Settings =
 	VCM_SIDEENABLED = [west,east,resistance]; //Sides that will activate Vcom AI
 	VCM_RAGDOLL = true; //Should AI ragdoll when hit
 	VCM_RAGDOLLCHC = 50; //CHANCE AI RAGDOLL	
-	VCM_FullSpeed = true; //Enforce full speedmode during combat (Does not reset after combat end)
-	VCM_HEARINGDISTANCE = 600; //Distance AI hear unsuppressed gunshots.
+	VCM_FullSpeed = false; //Enforce full speedmode during combat (Does not reset after combat end)
+	VCM_HEARINGDISTANCE = 1000; //Distance AI hear unsuppressed gunshots.
 	VCM_WARNDIST = 1000; //How far AI can request help from other groups.
 	VCM_WARNDELAY = 30; //How long the AI have to survive before they can call in for support. This activates once the AI enter combat.
 	VCM_STATICARMT = 300; //How long AI stay on static weapons when initially arming them. This is just for AI WITHOUT static bags. They will stay for this duration when NO ENEMIES ARE SEEN, or their group gets FAR away.	
 	VCM_StealVeh = false; //Will the AI steal vehicles.
 	VCM_AIDISTANCEVEHPATH = 100; //Distance AI check from the squad leader to steal vehicles
-	VCM_ADVANCEDMOVEMENT = true; //True means AI will actively generate waypoints if no other waypoints are generated for the AI group (2 or more). False disables this advanced movements.
+	VCM_ADVANCEDMOVEMENT = false; //True means AI will actively generate waypoints if no other waypoints are generated for the AI group (2 or more). False disables this advanced movements.
 	VCM_FRMCHANGE = true; //AI GROUPS WILL CHANGE FORMATIONS TO THEIR BEST GUESS.
-	VCM_SKILLCHANGE = true; //AI Groups will have their skills changed by Vcom.
+	VCM_SKILLCHANGE = false; //AI Groups will have their skills changed by Vcom.
 	
 	//AI SKILL SETTINGS HERE!!!!!!!!!!!!
 	//LOW DIFFICULTY
