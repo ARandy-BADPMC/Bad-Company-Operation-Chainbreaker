@@ -112,6 +112,15 @@ _boxes = [box1,box2,box3,box4];
 	{[_this select 0, _this select 1] call ace_arsenal_fnc_openBox;},nil,0,true,false,"","",10];
 } forEach _boxes;
 
+// disable the long-term effect of stamina...
+[] spawn {
+	scriptName "ACE_advanced_fatigue_rebalance";		
+	while {true} do {
+			sleep 5;
+			ace_advanced_fatigue_anfatigue = 1;
+	};
+};
+
 /*addMissionEventHandler ["Draw3D",{
 
 	_pos = getposATL player;
