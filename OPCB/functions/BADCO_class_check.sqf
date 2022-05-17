@@ -35,14 +35,6 @@ BADCO_role_check =
 				moveOut _unit;
 				if (true) exitWith {hint "You must be whitelisted to fly this"};				
 			};
-			
-				if (getPlayerUID _unit == "76561198059583284") then 
-			{
-				_vehicle engineOn false;
-				moveOut _unit;
-				if (true) exitWith {hint "You are grounded till 17.05.2022"};			//vittex grounding	
-			};
-			
 		};
 		if (_vehicle isKindOf "Tank") then 
 		{
