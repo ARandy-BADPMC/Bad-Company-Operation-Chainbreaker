@@ -53,7 +53,7 @@ nearestPlayers = {
 	{
 		_plr = _x;
 		if (!isNull _plr) then {
-			if ((alive _plr || {!_alive}) && {((side _npc) knowsAbout _plr) > 0} && {(_plr distance _pos) <= _range}) then { 
+			if ((alive _plr || {!_alive}) && {((side _npc) knowsAbout _plr) > 0} && {(_plr distance startLocation) > 1500} && {(_plr distance _pos) < _range}) then { 
 				if (_type == "count") then { _result = _result + 1; } else { _result = _result + [_plr]; };
 			};
 		};
@@ -388,7 +388,7 @@ while { _loop} do {
 		_exit=true; 
 		if (KRON_UPS_Debug) then { server globalChat format["UPS group %1 all dead or surrendered", _grpidx]; };
 		//deleteGroup (group _npc);
-		sleep 300+(random aiVehicleRespawnTime);
+		sleep (300+(random aiVehicleRespawnTime));
 		(call compile _grpidx) call spawnAIVehicle;
 	} else { 
 		// did the leader die?
