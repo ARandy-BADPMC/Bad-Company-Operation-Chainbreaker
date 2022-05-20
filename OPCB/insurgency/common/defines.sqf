@@ -2,7 +2,7 @@
 
 //Constants
 #define VIEWDISTANCE		3500
-#define SPAWNRANGE 			700
+#define SPAWNRANGE 			ins_AIspawnMaxRange
 #define WEP_DESPAWN_RANGE	1000
 
 //AI

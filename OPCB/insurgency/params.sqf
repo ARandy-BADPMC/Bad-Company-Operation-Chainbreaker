@@ -8,3 +8,12 @@ playersNeeded = 1;
 eastVehicleNum = 5;
 
 aiVehicleRespawnTime = 1800;
+
+ins_AIspawnMaxRange = switch (toLower worldName) do {
+	case "zargabad" : {700};
+	case "sara" : {1000};
+	case "takistan" : {1200};
+	default {1000};
+};
+
+ins_AIspawnMinRange = 100;

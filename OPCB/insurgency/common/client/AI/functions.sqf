@@ -36,24 +36,26 @@ aiMonitor = {
 
 // findHousesFront; find enterable houses close to the player
 findHousesFront = { 
-	private ["_buildings","_minPositions","_enterables"];
+	private ["_buildings","_minPositions","_enterables", "_enterable"];
     
 	// find houses within a certain radius based on a position
 	_buildings = nearestObjects [_this select 0, ["House"], _this select 1, true]; 
 	// house should have _minPositions spawn points
 	_minPositions = _this select 2; 
 	_enterables = []; 	
-	{ 
+	{
+		_enterable = _x;
 		//checking if enough spawn positions are found in the house ([0,0,0] returned means illegal position),
 		//if it's a house from OA (optional through mapping defines), is not listed in 'ILLEGALHOUSES', is not damaged and player can see it
 		if (
-		((count (_x buildingPos -1)) >= _minPositions) && 
-		//{EP1HOUSES} &&
-		//{!(typeOf _x in ILLEGALHOUSES)} && 
-		{damage _x < 0.3} &&
-		{canSee(player,_x,60)}
+			((count (_enterable buildingPos -1)) >= _minPositions) && 
+			//{EP1HOUSES} &&
+			//{!(typeOf _enterable in ILLEGALHOUSES)} && 
+			{damage _enterable < 0.3} &&
+			{canSee(player,_enterable,60)} &&
+			{(count (playableUnits select {(_enterable distance2D _x) < ins_AIspawnMinRange})) == 0}
 		) then { 
-			_enterables pushBack _x; 
+			_enterables pushBack _enterable; 
 		}; 
 	} forEach _buildings; 
 	_enterables
