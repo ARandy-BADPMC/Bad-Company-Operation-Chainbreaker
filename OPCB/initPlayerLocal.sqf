@@ -31,7 +31,7 @@ tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] 
 
 
 _uid = getPlayerUID player;
-_SOAR = ["76561198117073327","76561198142692277","76561198067590754","76561198059583284"];//76561198142692277 -Alex. K., 76561198117073327 - A.Randy,   76561198059583284 - Vittex, 76561198067590754 - Mas Pater
+_SOAR = ["76561198117073327","76561198142692277","76561198067590754","76561198059583284","76561199005382007"];//76561198142692277 -Alex. K., 76561198117073327 - A.Randy,   76561198059583284 - Vittex, 76561198067590754 - Mas Pater, 76561199005382007 - W.Frost
 if (_uid in _soar) then {player setVariable ["SOAR",1]};
 player addEventHandler ["GetInMan",{[_this select 0,_this select 1, _this select 2] call BADCO_role_check;}];
 if (typeof player == "rhsusf_usmc_marpat_d_uav" || typeOf player == "rhsusf_airforce_jetpilot") then 
@@ -49,7 +49,7 @@ if (typeof player == "rhsusf_usmc_marpat_d_uav" || typeOf player == "rhsusf_airf
 	};
 };
 
-_devs = ["76561198117073327","76561198142692277","76561198002110130","76561198048254349"];  //76561198142692277 -Alex. K., 76561198117073327 - A.Randy
+_devs = ["76561198117073327","76561198142692277","76561198002110130","76561198048254349"];  //76561198142692277 -Alex. K., 76561198117073327 - A.Randy,
 if(getPlayerUID player in _devs) 
 	then 
 	{
