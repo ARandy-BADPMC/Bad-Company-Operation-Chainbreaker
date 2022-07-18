@@ -1,0 +1,170 @@
+/*%FSM<COMPILE "Q:\Program Files (x86)\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, ServicePoint">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init_ServicePoin",0,250,-96.262619,136.018936,-6.262642,186.018936,0.000000,"Init ServicePoint"};
+item1[] = {"Vehicle_present",4,218,-96.792740,401.947784,-6.792734,451.947479,1.000000,"Vehicle present?"};
+item2[] = {"Gather_Objects",2,250,-96.956436,319.487335,-6.956404,369.487335,0.000000,"Gather Objects"};
+item3[] = {"Wait",4,218,-96.465317,229.545776,-6.465237,279.545776,0.000000,"Wait"};
+item4[] = {"Repair_Vehicle",2,250,-262.250641,408.891785,-172.250580,458.891937,0.000000,"Repair Vehicle"};
+item5[] = {"__1",8,218,-261.713165,320.831055,-171.713074,370.831055,0.000000,""};
+item6[] = {"Delay",2,4346,-261.350677,229.090210,-171.350677,279.090210,0.000000,"Delay"};
+item7[] = {"Vehicle_Check",2,250,-97.245003,489.353027,-7.245035,539.353027,0.000000,"Vehicle Check"};
+item8[] = {"_",8,218,-262.663391,488.278778,-172.663391,538.278809,1.000000,""};
+link0[] = {0,3};
+link1[] = {1,7};
+link2[] = {2,1};
+link3[] = {2,5};
+link4[] = {3,2};
+link5[] = {4,5};
+link6[] = {5,6};
+link7[] = {6,3};
+link8[] = {7,5};
+link9[] = {7,8};
+link10[] = {8,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,19,6316128,1,-288.019806,64.836761,572.519165,121.915428,657,1031,1};
+window[] = {2,-1,-1,-1,-1,768,50,1010,50,3,675};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "ServicePoint";
+  class States
+  {
+    /*%FSM<STATE "Init_ServicePoin">*/
+    class Init_ServicePoin
+    {
+      name = "Init_ServicePoin";
+      init = /*%FSM<STATEINIT""">*/"private [""_objlist"",""_vcl"",""_timedelay"",""_pos""];" \n
+       "_timedelay = time+11;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Gather_Objects";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timedelay && {(vehicle player) != player}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Gather_Objects">*/
+    class Gather_Objects
+    {
+      name = "Gather_Objects";
+      init = /*%FSM<STATEINIT""">*/"_pos = vehicleServicePoint modelToWorld [-7,0,0];" \n
+       "_pos set [2,0];" \n
+       "_objlist = _pos nearEntities [[""Air"",""LandVehicle""],7];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Vehicle_present">*/
+        class Vehicle_present
+        {
+          priority = 1.000000;
+          to="Vehicle_Check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"count _objlist > 0 && {(_objlist select 0) == (vehicle player)} && { (vehicle player) in [humv11,humv12,humv13,humv14,humv15,humv16,atv11,atv12,atv13,atv14,atv15,heli,MHQ]}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Delay";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Repair_Vehicle">*/
+    class Repair_Vehicle
+    {
+      name = "Repair_Vehicle";
+      init = /*%FSM<STATEINIT""">*/"_vcl setVehicleAmmo 1;" \n
+       "_vcl setFuel 1;" \n
+       "_vcl setDamage 0;" \n
+       "titleText[""Vehicle serviced"", ""PLAIN DOWN""];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Delay";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Delay">*/
+    class Delay
+    {
+      name = "Delay";
+      init = /*%FSM<STATEINIT""">*/"_timedelay = time+11;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Gather_Objects";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _timedelay && {(vehicle player) != player}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Vehicle_Check">*/
+    class Vehicle_Check
+    {
+      name = "Vehicle_Check";
+      init = /*%FSM<STATEINIT""">*/"_vcl = _objlist select 0;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 1.000000;
+          to="Repair_Vehicle";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "__1">*/
+        class __1
+        {
+          priority = 0.000000;
+          to="Delay";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Init_ServicePoin";
+  finalStates[] =
+  {
+  };
+};
+/*%FSM</COMPILE>*/

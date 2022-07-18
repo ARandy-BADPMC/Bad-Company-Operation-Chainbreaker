@@ -1,5 +1,7 @@
 ["Initialize"] call BIS_fnc_dynamicGroups;
-call compileFinal preprocessfilelinenumbers "functions\heliskinapply.sqf";
+call compileFinal preprocessfilelinenumbers "functions\BADCO_skin_applier.sqf";
+call compileFinal preprocessfilelinenumbers "Scripts\BADCO_Arsenal.sqf";
+
 missionNamespace setVariable ["running_task",0];
 missionNamespace setVariable ["task_spot",[5840,5700,0]];
 
@@ -66,3 +68,7 @@ _nearbyLocations = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital
 } forEach _nearbyLocations;*/
 
 missionNamespace setVariable ["Cities",_nearbyLocations];
+
+// for AI -- let's see if this strains the server too much (with more AI)
+setViewDistance 3500;
+setObjectViewDistance 3500;

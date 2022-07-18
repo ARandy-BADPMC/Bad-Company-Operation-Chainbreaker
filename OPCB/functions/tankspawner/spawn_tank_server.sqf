@@ -7,9 +7,11 @@ if (_isAttack == 1) then
 	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
 	_helicopter setdir 0;
 	
-	_helicopter addMPEventHandler ["MPKilled",{ 
-		_maxtanks = missionNamespace getVariable ["MaxTanks",0];
-		missionNamespace setVariable ["MaxTanks",_maxtanks -1,true];
+	_helicopter addMPEventHandler ["MPKilled",{
+		if (local (_this select 0)) then {
+			_maxtanks = missionNamespace getVariable ["MaxTanks",0];
+			missionNamespace setVariable ["MaxTanks",_maxtanks -1,true];
+		};
 	}];
 	
 	[_helicopter] call skinapplier;
@@ -23,9 +25,11 @@ if (_isAttack == 1) then
 	
 	_helicopter addMPEventHandler ["MPKilled",
 	{
-		_current_helis = missionNamespace getVariable ["MaxStatic",1];
-		_current_helis = _current_helis -1;
-		missionNamespace setVariable ["MaxStatic",_current_helis,true];
+		if (local (_this select 0)) then {
+			_current_helis = missionNamespace getVariable ["MaxStatic",1];
+			_current_helis = _current_helis -1;
+			missionNamespace setVariable ["MaxStatic",_current_helis,true];
+		};
 	}];
 
 } else  
@@ -35,9 +39,11 @@ if (_isAttack == 1) then
 
 	_helicopter addMPEventHandler ["MPKilled",
 	{
-		_current_helis = missionNamespace getVariable ["MaxAPC",1];
-		_current_helis = _current_helis -1;
-		missionNamespace setVariable ["MaxAPC",_current_helis,true];
+		if (local (_this select 0)) then {
+			_current_helis = missionNamespace getVariable ["MaxAPC",1];
+			_current_helis = _current_helis -1;
+			missionNamespace setVariable ["MaxAPC",_current_helis,true];
+		};
 	}];
 	[_helicopter] call skinapplier;
 };
