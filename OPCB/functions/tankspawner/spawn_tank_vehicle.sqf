@@ -6,38 +6,13 @@ if(_tankselect != -1) then
 {	
 	_vehicle = _tank lbData _tankselect;
 
-	_nObjects= nearestObjects [[9767.66,9978.72,0], ["all"], 7];
+	_nObjects= nearestObjects [[9767.66,9978.72,0], ["LandVehicle", "Thing", "Static", "Ship", "Air"], 7];
 
 	//remoteExec ["CHAB_fnc_setServerVariables",2];
 	_maxtanks = missionNamespace getVariable ["MaxTanks",1];
 	_maxAPC = missionNamespace getVariable ["MaxAPC",1];
 	_maxStatics = missionNamespace getVariable ["MaxStatic",1];
-	_attackType = [
-		"B_MBT_01_TUSK_F",
-		"B_MBT_01_cannon_F",
-		"B_APC_Tracked_01_AA_F",
-		"rhsusf_m1a1aimd_usarmy",
-		"rhsusf_m1a2sep1tuskiid_usarmy",
-		"I_MBT_03_cannon_F",
-		"rhsusf_m1a1aim_tuski_d",
-		"rhsusf_m1a2sep1d_usarmy",
-		"rhsusf_m1a2sep1tuskid_usarmy",
-		"B_MBT_01_arty_F",
-		"rhsusf_m109d_usarmy",
-		"I_MBT_03_cannon_F",
-		"rhs_bmp2d_msv",
-		"O_APC_Wheeled_02_rcws_F",
-		"B_AFV_Wheeled_01_up_cannon_F",
-		"B_AFV_Wheeled_01_cannon_F",
-		"I_LT_01_AA_F",
-		"I_LT_01_cannon_F",
-		"I_LT_01_scout_F",
-		"rhs_t72bb_tv",
-		"rhsusf_M142_usarmy_D",
-		"Burnes_FV4034_02",
-		"Burnes_FV4034_01",
-		"O_T_APC_Tracked_02_cannon_ghex_F"
-	];
+
 	_staticType = [
 		"rhs_Metis_9k115_2_vmf",
 		"rhs_Kornet_9M133_2_vmf",
@@ -52,11 +27,29 @@ if(_tankselect != -1) then
 	
 	if (count _nObjects == 0) then {
 
-		if (_vehicle in _attackType) then 
+		if ((toUpper _vehicle) in OPCB_econ_vehicleGroundAttackTypes) then 
 		{
 		  if (_maxtanks == 0) then
 		  {
-		  	missionNamespace setVariable ["MaxTanks",_maxtanks +1,true];
+			
+				_tier = ["ENG", _vehicle] call OPCB_econ_fnc_getVehicleTier;
+				_cost = ["ENG", _tier] call OPCB_econ_fnc_getTierCost;				
+				// just in case
+				if (_tier == -1) then {
+					_tier = ["INF", _vehicle] call OPCB_econ_fnc_getVehicleTier;
+					_cost = ["INF", _tier] call OPCB_econ_fnc_getTierCost;
+				};
+				
+				if (OPCB_econ_credits < _cost) exitWith {
+					hint "You don't have enough credits to buy this vehicle!";
+				};
+				
+				OPCB_econ_credits = OPCB_econ_credits - _cost;
+				publicVariable "OPCB_econ_credits";
+				
+				hint "Vehicle delivered";
+			
+		  	missionNamespace setVariable ["MaxTanks",_maxtanks + 1,true];
 		    [_vehicle,1] remoteExec ["CHAB_fnc_spawn_tank_server",2];
 
 		  } else {hint "There is already a tank/SPG in game";};
@@ -75,11 +68,28 @@ if(_tankselect != -1) then
 			
 		  } else {hint "5 statics are already in game";};
 		} else
-		{		
+		{
 		  if (_maxAPC != 12) then
-		  {
-		  	_maxAPC = _maxAPC + 1;
-		  	missionNamespace setVariable ["MaxAPC",_maxAPC,true];
+		  {	
+				
+				_tier = ["INF", _vehicle] call OPCB_econ_fnc_getVehicleTier;
+				_cost = ["INF", _tier] call OPCB_econ_fnc_getTierCost;				
+				// just in case
+				if (_tier == -1) then {
+					_tier = ["ENG", _vehicle] call OPCB_econ_fnc_getVehicleTier;
+					_cost = ["ENG", _tier] call OPCB_econ_fnc_getTierCost;
+				};
+				
+				if (OPCB_econ_credits < _cost) exitWith {
+					hint "You don't have enough credits to buy this vehicle!";
+				};
+				
+				OPCB_econ_credits = OPCB_econ_credits - _cost;
+				publicVariable "OPCB_econ_credits";
+				
+				hint "Vehicle delivered";
+			
+		  	missionNamespace setVariable ["MaxAPC",_maxAPC + 1,true];
 		    [_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2];
 
 		  } else{hint "12 vehicles are already in game. Recover or destroy existing ones.";};

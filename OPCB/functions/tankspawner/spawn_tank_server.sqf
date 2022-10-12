@@ -7,6 +7,20 @@ if (_isAttack == 1) then
 	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
 	_helicopter setdir 0;
 	
+	private _cargoIndex = -1;
+	_vehicle = toUpper _vehicle;
+	{
+		if ((_x select 0) == _vehicle) exitWith {
+			_cargoIndex = _foreachIndex;
+		};
+	} foreach OPCB_econ_vehicleCargoSpaces;
+	
+	if (_cargoIndex != -1) then {
+		[_helicopter, (OPCB_econ_vehicleCargoSpaces select _cargoIndex) select 1] call ace_cargo_fnc_setSize;
+	};
+	
+	_helicopter call Hz_pers_API_addVehicle;
+	
 	_helicopter addMPEventHandler ["MPKilled",{
 		if (local (_this select 0)) then {
 			_maxtanks = missionNamespace getVariable ["MaxTanks",0];
@@ -34,8 +48,22 @@ if (_isAttack == 1) then
 
 } else  
 {
-	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
+	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);	
 	_helicopter setdir 0;
+	
+	private _cargoIndex = -1;
+	_vehicle = toUpper _vehicle;
+	{
+		if ((_x select 0) == _vehicle) exitWith {
+			_cargoIndex = _foreachIndex;
+		};
+	} foreach OPCB_econ_vehicleCargoSpaces;
+	
+	if (_cargoIndex != -1) then {
+		[_helicopter, (OPCB_econ_vehicleCargoSpaces select _cargoIndex) select 1] call ace_cargo_fnc_setSize;
+	};
+	
+	_helicopter call Hz_pers_API_addVehicle;
 
 	_helicopter addMPEventHandler ["MPKilled",
 	{

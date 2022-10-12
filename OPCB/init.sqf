@@ -1,3 +1,14 @@
+if (isServer) then {
+
+	Hz_pers_var_insurgencyClearedMarkers = [];
+	
+	Hz_pers_customLoadFunction = compile preprocessFileLineNumbers "Hz_pers_customLoadFunction.sqf";
+	Hz_pers_firstTimeLaunchFunction = compile preprocessFileLineNumbers "Hz_pers_firstTimeLaunchFunction.sqf";	
+
+};
+
+call compile preprocessFileLineNumbers "economy\init.sqf";
+
 if (!isServer && isNull player) then {isJIP=true;} else {isJIP=false;};
 enableSaving [false, false];
 enableSentences true;

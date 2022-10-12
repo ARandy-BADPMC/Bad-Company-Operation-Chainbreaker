@@ -1,5 +1,5 @@
 gridPath = {
-    private ["_gMkr"];
+    private ["_gMkr", "_mkrVar"];
     
     if (vehicle player != player) exitWith {};
 	_gMkr  = str(player call getGridPos);
@@ -8,6 +8,12 @@ gridPath = {
 	if (nearestEastMen(call compile _gMkr,70,true,"count") > 0 
 		|| nearestPlayers(call compile _gMkr,140,true,"count") < playersNeeded) exitWith {};
 	_gMkr setMarkerColor "ColorGreen";
-	missionNamespace setVariable [format["%1cleared", _gMkr], true];
-	publicVariable format["%1cleared", _gMkr];
+	
+	_mkrVar = format["%1cleared", _gMkr];	
+	missionNamespace setVariable [_mkrVar, true];
+	publicVariable _mkrVar;
+	
+	insurgencyMarkerUpdate = _gMkr;
+	publicVariableServer "insurgencyMarkerUpdate";
+	
 };
