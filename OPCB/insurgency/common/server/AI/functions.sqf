@@ -94,7 +94,14 @@ spawnAIGuns = {
 	
 		_house = _houses select random(count _houses - 1);
 		
-		if ((_house distance startLocation > gunDistanceFromStartLocation) && {(count nearestObjects[getPosATL _house, eastStationaryGuns, staticWepDistances]) == 0}) then {
+		if ((_house distance startLocation > gunDistanceFromStartLocation)
+		&& {(count nearestObjects[getPosATL _house, eastStationaryGuns, staticWepDistances]) == 0}
+		// add an extra check for grid for better persistency (no guns on green grids)
+		&& {private _mkr = str (_house call getGridPos);
+				private _var = missionNamespace getVariable format["%1cleared", _mkr];
+				isNil "_var"
+			}
+		) then {
 		
 			_bpos = [];
 			_gunTypes = [];
