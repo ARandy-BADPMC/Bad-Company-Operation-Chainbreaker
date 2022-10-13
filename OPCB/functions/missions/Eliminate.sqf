@@ -1,3 +1,4 @@
+private _reward = 60;
 params ["_base","_current_tasknumber"];
 _taskcomp = selectRandom ["warhead1","warhead2","destroy1","destroy2","destroy_tower","destroy_tower2","destroy_radar"];
 _guardgroup = createGroup [east,true];
@@ -17,6 +18,10 @@ _trg setTriggerStatements ["this", "", ""];
 [] call CHAB_fnc_enemycount;
 waitUntil {sleep 10;triggerActivated _trg};
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+OPCB_econ_credits = OPCB_econ_credits + _reward;
+publicVariable "OPCB_econ_credits";
+    
+(format ["You earned %1 C for successfully completing the mission!", _reward]) remoteExec ["hint"];
 [_base] call CHAB_fnc_endmission;
 [ _comp ] call LARs_fnc_deleteComp;
 deleteVehicle _trg;
