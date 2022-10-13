@@ -28685,6 +28685,19 @@ class Mission
 				};
 				class Attribute9
 				{
+					property="Hz_pers_module_pClientLoadingScreenUntilReady";
+					expression="_this setVariable ['ClientLoadingScreenUntilReady',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=1;
+						};
+					};
+				};
+				class Attribute10
+				{
 					property="Hz_pers_module_pClientEnableManualLoadSwitch";
 					expression="_this setVariable ['ClientEnableManualLoadSwitch',_value,true];";
 					class Value
@@ -28696,7 +28709,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute10
+				class Attribute11
 				{
 					property="Hz_pers_module_pClientLoadDelay";
 					expression="_this setVariable ['ClientLoadDelay',_value,true];";
@@ -28709,7 +28722,7 @@ class Mission
 						};
 					};
 				};
-				nAttributes=11;
+				nAttributes=12;
 			};
 		};
 	};
