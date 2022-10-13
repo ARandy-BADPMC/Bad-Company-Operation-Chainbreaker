@@ -2,7 +2,7 @@
 maxAIPerPlayer = 4;
 
 // min number of players needed to capture a grid
-playersNeeded = 1;
+playersNeeded = 2;
 
 // number of map patrol vehicles that will spawn
 eastVehicleNum = 5;
