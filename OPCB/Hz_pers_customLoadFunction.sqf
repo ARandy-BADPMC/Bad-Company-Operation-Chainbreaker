@@ -3,8 +3,7 @@ private ["_mkrVar", "_cargoIndex", "_vehType", "_vehicle"];
 {
 	_mkrVar = format["%1cleared", _x];	
 	missionNamespace setVariable [_mkrVar, true];
-	publicVariable _mkrVar;	
-	_x setMarkerColor "ColorGreen";
+	publicVariable _mkrVar;
 } foreach Hz_pers_var_insurgencyClearedMarkers;
 
 // calculate current tier

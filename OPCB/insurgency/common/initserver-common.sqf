@@ -5,9 +5,30 @@
 #include "server\AI\functions.sqf"
 #include "server\AI\initUPS.sqf"
 
+
+// get marker count
+private ["_mkr","_pos","_houses", "_markerPositions"];
+
+_houses = [CENTERPOS,AORADIUS, 3, true] call findHouses;
+_base = markerpos "base_marker";
+
+_markerPositions = [];
+{
+	_pos = _x call getGridPos;
+	_mkr = str _pos;
+	
+	_markerPositions pushBackUnique _mkr;
+	
+} forEach (_houses select {(_x distance _base) > 750});
+
+ins_allMarkerCount = count _markerPositions;
+// it's actually 55% for reasons...
+ins_halfMarkerCount = round (ins_allMarkerCount*0.55);
+
+
 call compile preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\init.sqf";
 
-// Hunter: check if Pops4 has something similar or if this would break any Pops functionality
+// AI rearm & refuel
 [] spawn {
 
 	while {true} do {
@@ -28,7 +49,22 @@ call compile preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\ini
 
 cleanupVics = [];
 
-[] spawn { call spawnAIGuns; };
+[] spawn {
+
+	#ifdef ENABLE_PERSISTENCY
+		waitUntil {
+			sleep 2;
+			!isNil "Hz_pers_serverInitialised" && {Hz_pers_serverInitialised}
+		};
+				
+		// reaches minimum distance in between (70 m) when 70% of all grids cleared
+		private _gunsDistanceInBetween = 70 max (70 + (round ((gunDistanceFromStartLocation - 70)*(1 - (1 min ((count Hz_pers_var_insurgencyClearedMarkers) / (ins_allMarkerCount*0.7)))))));
+		[_gunsDistanceInBetween] call spawnAIGuns;
+	#else
+		[gunDistanceFromStartLocation] call spawnAIGuns;
+	#endif
+
+};
 [] spawn { call spawnAIVehicles; };
 
 #include "server\mainLoop.sqf"

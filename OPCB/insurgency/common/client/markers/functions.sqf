@@ -13,7 +13,9 @@ gridPath = {
 	missionNamespace setVariable [_mkrVar, true];
 	publicVariable _mkrVar;
 	
-	insurgencyMarkerUpdate = _gMkr;
-	publicVariableServer "insurgencyMarkerUpdate";
+	#ifdef ENABLE_PERSISTENCY
+		insurgencyMarkerUpdate = _gMkr;
+		publicVariableServer "insurgencyMarkerUpdate";
+	#endif
 	
 };

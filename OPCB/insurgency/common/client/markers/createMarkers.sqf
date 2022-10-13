@@ -1,3 +1,10 @@
+#ifdef ENABLE_PERSISTENCY
+	waitUntil {
+		sleep 2;
+		!isNil "Hz_pers_serverInitialised" && {Hz_pers_serverInitialised}
+	};
+#endif
+
 private ["_mkr","_var","_pos","_houses"];
 
 _houses = [CENTERPOS,AORADIUS, 3, true] call findHouses;
