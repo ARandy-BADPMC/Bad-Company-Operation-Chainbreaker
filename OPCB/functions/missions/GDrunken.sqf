@@ -1,3 +1,4 @@
+private _reward = 60;
 params ["_base","_current_tasknumber"];
 _taskcomp = "gdrunken";
 _guardgroup = createGroup [resistance,true];
@@ -39,6 +40,10 @@ sleep 10;
 };
 
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+OPCB_econ_credits = OPCB_econ_credits + _reward;
+publicVariable "OPCB_econ_credits";
+    
+(format ["You earned %1 C for successfully completing the mission!", _reward]) remoteExec ["hint"];
 
 [_base] call CHAB_fnc_endmission;
 [ _comp ] call LARs_fnc_deleteComp;

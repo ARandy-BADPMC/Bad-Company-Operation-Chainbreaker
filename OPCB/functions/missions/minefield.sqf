@@ -1,4 +1,4 @@
-
+private _reward = 60;
 _cities = missionNamespace getVariable["Cities",0];
 _city = selectRandom _cities;
 _citypos = locationPosition _city;
@@ -27,4 +27,8 @@ waitUntil {
 };
 deleteVehicle _guard;
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+OPCB_econ_credits = OPCB_econ_credits + _reward;
+publicVariable "OPCB_econ_credits";
+    
+(format ["You earned %1 C for successfully completing the mission!", _reward]) remoteExec ["hint"];
 [_base] call CHAB_fnc_endmission;

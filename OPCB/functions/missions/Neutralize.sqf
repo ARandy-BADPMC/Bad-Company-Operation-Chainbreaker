@@ -1,3 +1,4 @@
+private _reward = 60;
 params ["_base","_current_tasknumber"];
 _taskcomp = "ied_factory";
 _capturegroup = createGroup resistance;
@@ -24,6 +25,10 @@ waitUntil {
   (_leader distance (getPos dropoffpoint) < 10) || !alive _leader
 };
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+OPCB_econ_credits = OPCB_econ_credits + _reward;
+publicVariable "OPCB_econ_credits";
+    
+(format ["You earned %1 C for successfully completing the mission!", _reward]) remoteExec ["hint"];
 if(!(alive _leader)) then 
 {
 	"The IED factory is destroyed, but the leader is dead." remoteExec ["hint"];
