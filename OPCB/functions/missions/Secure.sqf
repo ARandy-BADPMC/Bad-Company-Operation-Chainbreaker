@@ -4,7 +4,7 @@ _taskcomp = selectRandom ["warhead1","warhead2"];
 _guardgroup = createGroup [east,true];
 
 _current_task = _base getPos[random 600,random 360];
-[_current_tasknumber ,west,["Russians are transporting new technology through to region and will stop for refueling at an old abandoned FOB. Try to secure the object.","Secure"], _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
+[_current_tasknumber ,west,["OPFOR are transporting new technology through to region and will stop for refueling at an old abandoned FOB. Try to secure the object.","Secure"], _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_commander, _base, [], 2, "NONE"];
 _guardpos = getPos _guard;
 _spawncomps = [_guard] call CHAB_fnc_roadblock_rus;
