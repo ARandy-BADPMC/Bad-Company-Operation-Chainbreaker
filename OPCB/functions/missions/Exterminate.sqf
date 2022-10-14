@@ -4,7 +4,7 @@ _taskcomp = selectRandom ["insurgent1","insurgent2","insurgent3","insurgent4","i
 _guardgroup = createGroup [east,true];
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,["Insurgents terrorising the total population. We can not tolerate this.","Defend the defensless"], _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
-_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", _base, [], 2, "NONE"];
+_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, _base, [], 2, "NONE"];
 _guardpos = getPos _guard;
 _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 [_guard,10,2,2] call CHAB_fnc_spawn_ins;

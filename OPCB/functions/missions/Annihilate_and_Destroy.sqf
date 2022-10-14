@@ -4,7 +4,7 @@ _taskcomp = selectRandom ["destroy_chopper","destroy_radar","destroy_tower","des
 _guardgroup = createGroup [east,true];
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,["Insurgents set up a base and will hold it under any circumstances. Clear out the area and destroy any important equipment.","Annihilate and Destroy"], _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
-_guard = _guardgroup createUnit ["rhsgref_nat_commander", _base, [], 2, "NONE"];
+_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_commander, _base, [], 2, "NONE"];
 _guardpos = getPos _guard;
 _spawncomps = [_guard] call CHAB_fnc_roadblock_rus;
 _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;

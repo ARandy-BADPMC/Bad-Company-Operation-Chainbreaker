@@ -2,8 +2,7 @@ _pos = _this select 0;
 _suitable = globalWaterPos;
 _list = [];
 _comps = [];
-_group = createGroup resistance;
-_tanks = ["rhsgref_ins_g_t72bc","rhsgref_ins_g_t72bb","rhsgref_ins_g_t72ba"];
+_group = createGroup east;
 _tankss = [];
 
 for "_i" from 0 to 3 do {
@@ -15,12 +14,12 @@ for "_i" from 0 to 3 do {
 		};
 		_list = nearestTerrainObjects [_suitable,["TREE","BUILDING","RUIN","ROCK","HOUSE"], 55,false];
 	};
-	_unit = _group createUnit ["B_GEN_Commander_F", _suitable, [], 2, "NONE"];
+	_unit = _group createUnit [OPCB_unitTypes_inf_ins_commander, _suitable, [], 2, "NONE"];
 	_comp = ["ammodepot",_unit, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 	_pad = nearestObject [_unit, "Land_HelipadEmpty_F"];
 	deleteVehicle _unit;
 
-	_groupNumber = [getPos _pad,random 360,selectrandom _tanks,resistance] call BIS_fnc_spawnVehicle;
+	_groupNumber = [getPos _pad,random 360,selectrandom OPCB_unitTypes_veh_ins_armor, east] call BIS_fnc_spawnVehicle;
 	(_groupNumber select 0) setFuel 0; 
 	_tankss pushBack (_groupNumber select 0);
 

@@ -1,11 +1,11 @@
 private _reward = 60;
 params ["_base","_current_tasknumber"];
 _taskcomp = "ied_factory";
-_capturegroup = createGroup resistance;
+_capturegroup = createGroup east;
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,["Insurgents set up an IED Factory. To protect our own and the lifes of the innocent population, we need to take it out. If possible, capture the Leader, that is controlling the manufacturing process","Locate and Destroy IED Factory"], _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
-_leader = _capturegroup createUnit ["rhs_g_Soldier_TL_F",  _base, [], 2, "NONE"];
+_leader = _capturegroup createUnit [OPCB_unitTypes_inf_ins_TL,  _base, [], 2, "NONE"];
 _comp = [_taskcomp,_leader, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 
 _house = nearestObjects [ _base, ["Land_i_Shed_Ind_F"], 100];

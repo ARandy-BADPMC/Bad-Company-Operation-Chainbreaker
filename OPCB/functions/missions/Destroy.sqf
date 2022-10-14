@@ -5,7 +5,7 @@ _guardgroup = createGroup [east,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,["Last night an american Tank was stolen. You are tasked with destroying it as quickly as possible, before media notice","Destroy"], _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
-_guard = _guardgroup createUnit ["rhsgref_nat_commander", _base, [], 2, "NONE"];
+_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_commander, _base, [], 2, "NONE"];
 _guardpos = getpos _guard;
 _spawncomps = [_guard] call CHAB_fnc_roadblock_rus;
 _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;

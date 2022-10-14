@@ -32,11 +32,6 @@ waitUntil {
 };
 "You have delivered the supplies. Maybe you should stick around in case the enemies got news about our envoy" remoteExec ["hint"];
 
-_groups = [
-	configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_infantry_flora" >> "rhs_group_rus_vdv_infantry_flora_squad",
-	configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_infantry_flora" >> "rhs_group_rus_vdv_infantry_flora_squad_2mg",
-	configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_infantry_flora" >> "rhs_group_rus_vdv_infantry_flora_squad_mg_sniper"
-];
 _nearestplayer = [_officer] call CHAB_fnc_nearest;
 if(isnull _nearestplayer) then{ _nearestplayer == officer_jeff};
 
@@ -59,7 +54,7 @@ for "_i" from 0 to 5 do {
 			_tries = _tries -1;
 		};
 if (_tries > 0) then {
-	_attacker= [_attackpos, east, selectRandom _groups] call BIS_fnc_spawnGroup;
+	_attacker= [_attackpos, east, selectRandom OPCB_unitTypes_grp_inf] call BIS_fnc_spawnGroup;
 	_wayp = _attacker addWaypoint [_guardpos, 100];
 	_wayp setWaypointType "SAD";
 
@@ -67,10 +62,6 @@ if (_tries > 0) then {
 };
 	
 };
-_vehicles = [
-configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_gaz66" >> "rhs_group_rus_vdv_gaz66_squad_2mg",
-configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_BTR80a" >> "rhs_group_rus_msv_BTR80a_squad_mg_sniper"
-];
 
 _opposite = _dir +160;
 for "_i" from 0 to 1 do {
@@ -89,7 +80,7 @@ for "_i" from 0 to 1 do {
 		_tries = _tries -1;
 	};
 	if (_tries > 0) then {
-		_attacker= [_attackpos, east, selectRandom _vehicles] call BIS_fnc_spawnGroup;
+		_attacker= [_attackpos, east, selectRandom OPCB_unitTypes_grp_mech] call BIS_fnc_spawnGroup;
 		_wayp = _attacker addWaypoint [_guardpos, 100];
 		_wayp setWaypointType "SAD";
 

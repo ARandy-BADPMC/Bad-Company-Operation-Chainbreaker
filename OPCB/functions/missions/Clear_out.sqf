@@ -10,8 +10,8 @@ _citymarker setMarkerPos _citypos;
 
 [_current_tasknumber ,west,["There is a riot going on. Clear out the area and capture the leader. We also have intel of two captured journalists, which need to be rescued.","Clear out and rescue",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
-_guardgroup = createGroup [resistance,true];
-_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", getMarkerPos _citymarker, [], 2, "NONE"];
+_guardgroup = createGroup [east,true];
+_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, getMarkerPos _citymarker, [], 2, "NONE"];
 removeAllWeapons _guard;
 _guard disableAI "AUTOCOMBAT";
 _guard setunitpos "MIDDLE";

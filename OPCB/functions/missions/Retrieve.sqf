@@ -10,7 +10,7 @@ _citymarker setMarkerPos _citypos;
 [_current_tasknumber ,west,["Insurgent forces have stolen an ammo crate from a nearby FOB. Retrieve the Ammo crate and find out who is the fugitive.","Retrieve",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"listen",true] call BIS_fnc_setTask;
 
 _guardgroup = createGroup [civilian,true];
-_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", getMarkerPos _citymarker, [], 2, "NONE"];
+_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, getMarkerPos _citymarker, [], 2, "NONE"];
 _guardpos = getpos _guard;
 _taskItems = [_guard] call CHAB_fnc_retrieve_create;
 [_guard,5,0,0] call CHAB_fnc_spawn_ins;
