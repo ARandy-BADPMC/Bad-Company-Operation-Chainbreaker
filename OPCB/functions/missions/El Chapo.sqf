@@ -8,9 +8,6 @@ _current_task = _base getPos[random 600,random 360];
 _officer = _officergroup createUnit ["rhsusf_usmc_marpat_d_officer", _base, [], 2, "NONE"];
 _officer disableAI "MOVE";
 
-*/_container = "C_IDAP_supplyCrate_F" createVehicle (getMarkerPos "object_dropoff");
-[_container, 5] call ace_cargo_fnc_setSize;
-clearItemCargoGlobal _container;/
 _guardpos = getPos _officer;
 _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 
@@ -111,4 +108,3 @@ publicVariable "OPCB_econ_credits";
 };
 [_base] call CHAB_fnc_endmission;
 [ _comp ] call LARs_fnc_deleteComp;
-deleteVehicle _container;
