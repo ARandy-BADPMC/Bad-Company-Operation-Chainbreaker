@@ -58,10 +58,10 @@ cleanupVics = [];
 		};
 				
 		// reaches minimum distance in between (70 m) when 70% of all grids cleared
-		private _gunsDistanceInBetween = 70 max (70 + (round ((gunDistanceFromStartLocation - 70)*(1 - (1 min ((count Hz_pers_var_insurgencyClearedMarkers) / (ins_allMarkerCount*0.7)))))));
+		private _gunsDistanceInBetween = 70 max (70 + (round ((staticWepDistances - 70)*(1 - (1 min ((count Hz_pers_var_insurgencyClearedMarkers) / (ins_allMarkerCount*0.7)))))));
 		[_gunsDistanceInBetween] call spawnAIGuns;
 	#else
-		[gunDistanceFromStartLocation] call spawnAIGuns;
+		[staticWepDistances] call spawnAIGuns;
 	#endif
 
 };
