@@ -20,7 +20,7 @@ if (isMultiplayer) then {
 call compile preprocessFileLineNumbers "functions\BADCO_class_check.sqf"; 
 
 
-jeff addAction ["<t color='#FF0000'>Request a Task</t>", "[0] remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
+jeff addAction ["<t color='#FF0000'>Request Mission</t>", "if (({((markerpos "base_marker") distance2d _x) < 1000} count playableUnits) > 1) then {[0] remoteExec ['CHAB_fnc_mission_selector',2]} else {hint 'At least 2 people are required to be at base to request a mission!'}", nil, 1, false, true, "", "true", 10, false,""];
 
 
 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
