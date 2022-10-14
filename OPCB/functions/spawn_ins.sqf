@@ -7,6 +7,9 @@ _groupsToSpawn = ceil (_playerRate*_groupsToSpawn);
 _tanksToSpawn = ceil (_playerRate*_tanksToSpawn);
 _mechToSpawn = ceil (_playerRate*_mechToSpawn);
 
+private ["_suitable"];
+_suitable = globalWaterPos;
+
 if (_mechToSpawn != 0) then {
 	for "_i" from 1 to _mechToSpawn do { 
 		_spawnPos = globalWaterPos;
