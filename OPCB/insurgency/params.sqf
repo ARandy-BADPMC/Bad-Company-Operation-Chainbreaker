@@ -1,3 +1,5 @@
+#include "unitTypes.sqf"
+
 // number of dynamically spawned AI units per player
 maxAIPerPlayer = 4;
 

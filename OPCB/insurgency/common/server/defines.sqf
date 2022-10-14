@@ -1,7 +1,3 @@
-#define vclCrewClass		"LOP_AM_OPF_Infantry_Rifleman_5"
-
-#define staticClass		"LOP_AM_OPF_Infantry_Rifleman_5"
-
 #define eastVehiclesFreq	["rhsgref_BRDM2_ins","rhsgref_BRDM2_ins","rhsgref_BRDM2_ins","rhsgref_BRDM2_ins",\
 "LOP_AM_OPF_Offroad","LOP_AM_OPF_Offroad","LOP_AM_OPF_Offroad","LOP_AM_OPF_Offroad",\
 "LOP_AM_OPF_UAZ_DshKM","LOP_AM_OPF_UAZ_DshKM","LOP_AM_OPF_UAZ_DshKM","LOP_AM_OPF_UAZ_DshKM","LOP_AM_OPF_UAZ_DshKM",\
