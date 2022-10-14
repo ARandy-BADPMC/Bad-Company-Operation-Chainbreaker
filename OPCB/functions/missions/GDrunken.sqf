@@ -12,9 +12,11 @@ _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_sp
 _reference = [ _comp ] call LARs_fnc_getCompObjects;
 
 _trucks = [];
+private _tanktype = "";
 for "_i" from 0 to 3 do {
-	_truckpos = _guardpos findEmptyPosition [1, 20, "RHS_T72BB_chdkz"];
-	_thetarget = createVehicle [selectRandom OPCB_unitTypes_veh_ins_armor, _truckpos, [], 1, "NONE"];
+	_tanktype = selectRandom OPCB_unitTypes_veh_ins_armor;
+	_truckpos = _guardpos findEmptyPosition [1, 20, _tanktype];
+	_thetarget = createVehicle [_tanktype, _truckpos, [], 1, "NONE"];
 	_thetarget setFuel 0; 
 	_thetarget setDamage 0;
 	_trucks pushBack _thetarget;
