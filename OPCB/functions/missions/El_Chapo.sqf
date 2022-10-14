@@ -1,4 +1,4 @@
-private _reward = 60;
+private _reward = 100;
 params ["_base","_current_tasknumber"];
 
 _cities = missionNamespace getVariable["Cities",0];

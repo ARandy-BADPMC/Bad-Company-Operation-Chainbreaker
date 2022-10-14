@@ -1,4 +1,4 @@
-private _reward = 60;
+private _reward = 80;
 params ["_base","_current_tasknumber"];
 _taskcomp = selectRandom ["fob1","fob2","fob3","fob4","fob5"];
 _officergroup = createGroup [west,true];

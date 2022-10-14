@@ -1,4 +1,4 @@
-private _reward = 60;
+private _reward = 40;
 params ["_base","_current_tasknumber"];
 _cities = missionNamespace getVariable["Cities",0];
 _city = selectRandom _cities;

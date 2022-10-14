@@ -1,4 +1,4 @@
-private _reward = 60;
+private _reward = 80;
 params ["_base","_current_tasknumber"];
 _taskcomp = selectRandom ["warhead1","warhead2","destroy1","destroy2","destroy_tower","destroy_tower2","destroy_radar"];
 _guardgroup = createGroup [east,true];
