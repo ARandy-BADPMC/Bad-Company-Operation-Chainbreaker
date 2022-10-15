@@ -2862,7 +2862,15 @@ _arsenalitems =
 "hlc_acc_vfg_pcap_tan",
 "hlc_acc_flashlight_pcap",
 "hlc_grip_pmvfg_black",
-"hlc_grip_afg2"
+"hlc_grip_afg2",
+
+"ACE_rope12",
+"ACE_rope15",
+"ACE_rope18",
+"ACE_rope27",
+"ACE_rope3",
+"ACE_rope36",
+"ACE_rope6"
 ];
 
 
