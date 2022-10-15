@@ -28,25 +28,6 @@ ins_halfMarkerCount = round (ins_allMarkerCount*0.55);
 
 call compile preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\init.sqf";
 
-// AI rearm & refuel
-[] spawn {
-
-	while {true} do {
-	
-		sleep 600;
-		
-		{
-			if ((local _x) && {({alive _x} count crew _x) > 0}) then {
-				_x setFuel 1;
-				_x setVehicleAmmo 1;
-			};
-		} foreach vehicles;
-		
-	};
-
-};
-
-
 cleanupVics = [];
 
 [] spawn {
