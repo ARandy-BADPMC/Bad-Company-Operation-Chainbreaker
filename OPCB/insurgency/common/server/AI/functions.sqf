@@ -71,6 +71,7 @@ spawnAIVehicle = {
 	_grp deleteGroupWhenEmpty true;
 	sleep 1;
 	cleanupVics pushBack _vcl;
+	_vcl setVehicleLock "LOCKED";
 	[_vcl, _mkr, _speed, "nowait", _track] execVM "insurgency\common\server\AI\UPS.sqf";
 };
 
