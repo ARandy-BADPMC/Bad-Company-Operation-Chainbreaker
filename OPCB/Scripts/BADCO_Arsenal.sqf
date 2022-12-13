@@ -2994,7 +2994,8 @@ _arsenalitems =
 "hlc_30Rnd_762x51_B_fal",
 "hlc_acc_dbalpl_side",
 "hlc_acc_dbalpl_side_fl",
-"hlc_acc_tlr1_side"
+"hlc_acc_tlr1_side",
+"rhsusf_ihadss"
 ];
 
 
