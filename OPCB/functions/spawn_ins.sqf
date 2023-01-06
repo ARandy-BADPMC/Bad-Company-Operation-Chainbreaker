@@ -23,6 +23,11 @@ if (_mechToSpawn != 0) then {
 		};
 
 		_groupNumber = [_spawnPos, east, selectrandom OPCB_unitTypes_grp_ins_mech] call BIS_fnc_spawnGroup;
+		
+		{
+			(vehicle _x) setVehicleLock "LOCKED";
+		} foreach ((units _groupNumber) select {_x == (effectiveCommander vehicle _x)});
+		
 		[_groupNumber, getPos _centerobj, random 800] call bis_fnc_taskPatrol;
 		_groupNumber deleteGroupWhenEmpty true;
 		[_groupNumber] call CHAB_fnc_serverGroups;
@@ -44,6 +49,11 @@ if (_groupsToSpawn != 0) then {
 		};
 
 		_groupNumber = [_spawnPos, east, selectrandom OPCB_unitTypes_grp_ins_inf] call BIS_fnc_spawnGroup;
+		
+		{
+			(vehicle _x) setVehicleLock "LOCKED";
+		} foreach ((units _groupNumber) select {_x == (effectiveCommander vehicle _x)});
+		
 		[_groupNumber, getPos _centerobj, random 799] call bis_fnc_taskPatrol;
 		_groupNumber deleteGroupWhenEmpty true;
 		[_groupNumber] call CHAB_fnc_serverGroups;
@@ -65,6 +75,8 @@ if (_tanksToSpawn != 0) then {
 		};
 
 		_groupNumber = [_spawnPos,random 360, selectrandom OPCB_unitTypes_veh_ins_armor, east] call BIS_fnc_spawnVehicle;
+		
+		(_groupNumber select 0) setVehicleLock "LOCKED";
 
 		[_groupNumber select 2, getPos _centerobj, random 801] call bis_fnc_taskPatrol;
 

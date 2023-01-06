@@ -76,6 +76,9 @@ for "_i" from 0 to 1 do {
 	};
 	if (_tries > 0) then {
 		_attacker= [_attackpos, east, selectRandom OPCB_unitTypes_grp_mech] call BIS_fnc_spawnGroup;
+		{
+			(vehicle _x) setVehicleLock "LOCKED";
+		} foreach ((units _attacker) select {_x == (effectiveCommander vehicle _x)});
 		_wayp = _attacker addWaypoint [_guardpos, 100];
 		_wayp setWaypointType "SAD";
 

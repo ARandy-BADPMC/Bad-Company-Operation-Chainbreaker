@@ -60,10 +60,6 @@ spawnAIVehicle = {
 		_ai moveInTurret [_vcl, _x];
 	} foreach allTurrets [_vcl, false];
 
-	if !(typeOf _vcl in eastLightVehicles) then {
-		_vcl lockDriver true;
-		_vcl lockTurret [[0], true];
-	};
 	_speed = "slow"; 
 	_track = ""; 
 	if (DEBUG) then { _track = "track"; }; 
@@ -217,5 +213,10 @@ createRoofGun = {
 	_ai moveInGunner _gun;	
 	_grp setFormDir _dir;
 	_grp deleteGroupWhenEmpty true;
+	
+	_gun enableWeaponDisassembly false;
+	_gun setVariable ["ace_dragging_canDrag", false, true];
+	_gun setVehicleLock "LOCKED";
+	
 	if DEBUG then { [_house, _ai] call createDebugMarker; };  		
 }; 

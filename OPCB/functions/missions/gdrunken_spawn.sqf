@@ -20,7 +20,8 @@ for "_i" from 0 to 3 do {
 	deleteVehicle _unit;
 
 	_groupNumber = [getPos _pad,random 360,selectrandom OPCB_unitTypes_veh_ins_armor, east] call BIS_fnc_spawnVehicle;
-	(_groupNumber select 0) setFuel 0; 
+	(_groupNumber select 0) setFuel 0;
+	(_groupNumber select 0) setVehicleLock "LOCKED";
 	_tankss pushBack (_groupNumber select 0);
 
 	_comps pushBack _comp;
