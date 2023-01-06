@@ -7,7 +7,7 @@ aiMonitor = {
     private ["_ai","_gun","_ais","_guns","_gunner"];
   
 	_guns = nearestObjects[getPos player, eastStationaryGuns+eastVclClasses, 1200];
-	_guns = _guns apply {_gunner = gunner _x; if (alive _gunner && {!isplayer _gunner} && {(lifeState _gunner) != "UNCONSCIOUS"}) then {_gunner} else {objNull}};
+	_guns = _guns apply {_gunner = gunner _x; if (alive _gunner && {!isplayer _gunner} && {(lifeState _gunner) != "INCAPACITATED"}) then {_gunner} else {objNull}};
 	_guns = _guns - [objNull];
 	
 	_gun  = objNull;

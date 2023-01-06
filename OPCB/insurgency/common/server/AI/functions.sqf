@@ -198,7 +198,7 @@ createRoofGun = {
 				sleep 10;
 				_gunner = gunner _gun;
 				if (!alive _gunner) exitWith {};
-				if ((lifeState _gunner) != "UNCONSCIOUS") then {
+				if ((lifeState _gunner) != "INCAPACITATED") then {
 					_target = assignedTarget _gunner;
 					if (!isnull _target) then {
 						_bearing = ([_gun,_target] call BIS_fnc_dirTo) % 360;
