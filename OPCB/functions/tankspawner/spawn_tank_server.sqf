@@ -29,6 +29,15 @@ if (_isAttack == 1) then
 	}];
 	
 	[_helicopter] call skinapplier;
+	
+	if (_helicopter isKindOf "Tank") then {
+			[_helicopter, 2, "ACE_Track", true] call ace_repair_fnc_addSpareParts;
+	} else {
+		if (_helicopter isKindOf "Car") then {
+			[_helicopter, 2, "ACE_Wheel", true] call ace_repair_fnc_addSpareParts;
+		};	
+	};
+	
 	[_helicopter] remoteExec ["CHAB_fnc_tank_restriction",0,true];
 
 } else {if (_vehicle in _staticType) then 
@@ -74,5 +83,14 @@ if (_isAttack == 1) then
 		};
 	}];
 	[_helicopter] call skinapplier;
+	
+	if (_helicopter isKindOf "Tank") then {
+			[_helicopter, 2, "ACE_Track", true] call ace_repair_fnc_addSpareParts;
+	} else {
+		if (_helicopter isKindOf "Car") then {
+			[_helicopter, 2, "ACE_Wheel", true] call ace_repair_fnc_addSpareParts;
+		};	
+	};
+	
 };
 };
