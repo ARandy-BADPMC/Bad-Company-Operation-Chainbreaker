@@ -35,7 +35,7 @@ waitUntil {
 sleep 10;
 	_done = true;
 	{
-		if (alive _x) exitWith {
+		if (canMove _x) exitWith {
 		  _done = false;
 		};
 	} forEach _trucks;
