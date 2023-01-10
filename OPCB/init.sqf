@@ -14,6 +14,8 @@ enableSaving [false, false];
 enableSentences true;
 enableTeamswitch false;
 
+RHSDecalsOff = true;
+
 Resistance setFriend [EAST, 1]; Resistance setFriend [WEST, 0]; Resistance setFriend [Civilian, 1];
 
 EAST setFriend [Resistance, 1]; EAST setFriend [WEST, 0]; EAST setFriend [Civilian, 1];	
