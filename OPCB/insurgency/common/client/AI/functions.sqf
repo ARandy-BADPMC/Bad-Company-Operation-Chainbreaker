@@ -1,5 +1,5 @@
 aiArray = [];
-for "_i" from 1 to (maxAIPerPlayer*3) do {
+for "_i" from 1 to (maxAIPerPlayer*4) do {
 	aiArray pushBack objNull;
 };
 
@@ -75,7 +75,7 @@ findSquadAIName = {
 	_i     = _this select 1;  
   _unit = aiArray select _i;
 	
-	if (({alive _x} count aiArray) >= maxAIPerPlayer) exitWith { -1 };
+	if (({alive _x} count aiArray) >= (call getEffectiveMaxAICount)) exitWith { -1 };
 	
 	if (!alive _unit) exitWith { _i };
 	
@@ -216,7 +216,7 @@ aiSpawn = {
 			_hPos   = getPosATL _house;	
 			_eCount = count nearestObjects[_hPos, ["CAManBase"], 10];			
 			// players need not to be within SPAWNRANGE-200 from a house or they need not to see the spawn position for its AI to spawn
-			if (_eCount < maxAIPerPlayer) then {
+			if (_eCount < 4) then {
 				_wUnits = nearestPlayers(_hPos,SPAWNRANGE*2,true,"array");
 				_wUnitVehicles = [];
 				{

@@ -301,3 +301,28 @@ createDebugMarker = {
 		deleteMarkerLocal _mkr;
 	};
 }; 
+
+// solve issue with grids being too easy with very low player count
+getEffectiveMaxAICount = {
+
+	private _playerCnt = count allPlayers;
+
+	if (_playerCnt < 5) then {
+		if (_playerCnt < 4) then {
+			if (_playerCnt < 3) then {
+				if (_playerCnt < 2) then {
+					maxAIPerPlayer*3
+				} else {
+					maxAIPerPlayer*2
+				}				
+			} else {
+				round (maxAIPerPlayer*1.5)
+			}			
+		} else {
+			round (maxAIPerPlayer*1.25)
+		}
+	} else {
+		maxAIPerPlayer
+	}
+
+};
