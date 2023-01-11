@@ -12,7 +12,7 @@ _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_sp
 [_guard,10,2,1] call CHAB_fnc_spawn_nat;
 _thetarget = createVehicle ["rhsusf_m1a1aimd_usarmy", _guardpos, [], 1, "NONE"];
 _thetarget lock true;
-waitUntil { sleep 10; !(alive _thetarget) || (damage _thetarget > 0.8)};
+waitUntil { sleep 10; !canMove _thetarget};
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
 OPCB_econ_credits = OPCB_econ_credits + _reward;
 publicVariable "OPCB_econ_credits";
