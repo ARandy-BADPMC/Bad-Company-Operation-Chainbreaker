@@ -1,4 +1,4 @@
-private _reward = 60;
+private _reward = 80;
 params ["_base","_current_tasknumber"];
 _taskcomp = "ied_factory";
 _capturegroup = createGroup east;

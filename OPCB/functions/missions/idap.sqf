@@ -1,4 +1,4 @@
-private _reward = 80;
+private _reward = 60;
 params ["_base","_current_tasknumber"];
 _taskcomp = "peacekeeper";
 _resgroup = createGroup [resistance,true];

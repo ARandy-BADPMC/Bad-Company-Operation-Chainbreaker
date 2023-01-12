@@ -1,4 +1,4 @@
-private _reward = 100;
+private _reward = 140;
 params ["_base","_current_tasknumber"];
 _taskcomp = "gdrunken";
 _guardgroup = createGroup [east,true];

@@ -1,4 +1,4 @@
-private _reward = 60;
+private _reward = 40;
 _cities = missionNamespace getVariable["Cities",0];
 _city = selectRandom _cities;
 _citypos = locationPosition _city;
