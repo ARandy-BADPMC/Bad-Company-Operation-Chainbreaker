@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=918;
+		nextID=922;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={9660.3652,271.17572,10144.126};
-		dir[]={0.48194504,-0.51105547,-0.71176237};
-		up[]={0.2865451,0.85953474,-0.42318413};
-		aside[]={-0.8280552,4.304311e-007,-0.56068999};
+		pos[]={9027.2139,148.90784,9280.6758};
+		dir[]={-0.038277194,-0.87574518,0.48125443};
+		up[]={-0.069434188,0.4827731,0.87298793};
+		aside[]={0.99685127,3.3178367e-009,0.07928583};
 	};
 };
 binarizationWanted=0;
@@ -13079,7 +13079,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=339;
+		items=340;
 		class Item0
 		{
 			dataType="Group";
@@ -16407,7 +16407,7 @@ class Mission
 			alpha=0.15005614;
 			a=2000;
 			b=2000;
-			angle=63.691994;
+			angle=63.69199;
 			id=58;
 			atlOffset=40.556;
 		};
@@ -23990,8 +23990,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={19204.438,5.0216804,13661.977};
-				angles[]={6.2696891,6.2829685,0};
+				position[]={19199.744,8.7302637,13715.812};
+				angles[]={6.1401687,5.6795611,6.2113094};
 			};
 			name="vclSpawn2";
 			id=467;
@@ -24002,8 +24002,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={8192.6768,49.994999,17058.389};
-				angles[]={0,0.34768406,0};
+				position[]={8201.2568,49.077999,17079.688};
+				angles[]={0.053348679,0.59758466,0.0090034921};
 			};
 			name="vclSpawn3";
 			id=468;
@@ -29034,6 +29034,49 @@ class Mission
 					};
 				};
 				nAttributes=12;
+			};
+		};
+		class Item339
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={6356.5156,52.692036,7435.5571};
+				angles[]={6.2359715,0,0.069637395};
+			};
+			areaSize[]={5,-1,5};
+			flags=1;
+			id=918;
+			type="ModuleHideTerrainObjects_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
 			};
 		};
 	};

@@ -1,3 +1,5 @@
+#define patrolSpawnDelay 1800
+#define patrolSpawnPositionLogics [vclSpawn1, vclSpawn2, vclSpawn3]
 #define stationaryGunsHigh 	["rhs_KORD_high_MSV","RHS_ZU23_MSV","RHS_AGS30_TriPod_MSV","rhsgref_ins_DSHKM"]
 #define stationaryGunsMed	["rhsgref_ins_DSHKM","RHS_AGS30_TriPod_MSV","rhs_KORD_high_MSV"]
 #define stationaryGunsLow	["RHS_AGS30_TriPod_MSV","RHS_ZU23_MSV","rhsgref_ins_DSHKM","rhs_KORD_high_MSV"]

@@ -1,18 +1,25 @@
 spawnAIVehicle = {
-	private ["_num","_track","_speed","_grp","_type","_obj","_mkr","_pos","_vcl","_ai","_unum"];
-	_unum = _this;
-	waitUntil {sleep 3; ((count playableUnits) > 0) || {!isMultiplayer}};
-	_num	= _unum % 3; 
-	if (_num == 0) then { _num = 3; }; 
-	//_grp	= ["","vclGrp",_unum+1,"east"] call getGroup; 
+	private ["_track","_speed","_grp","_type","_obj","_pos","_vcl","_ai"];
+	waitUntil {
+		sleep 3;
+		((count playableUnits) > 1) || {!isMultiplayer}
+	};
+	
+	waitUntil {
+		sleep 1;
+		({_logic = _x; (({(_logic distance _x) < 2200} count playableUnits) == 0)} count patrolSpawnPositionLogics) > 0
+	};
+	
+	_obj = selectRandom (patrolSpawnPositionLogics select {_logic = _x; (({(_logic distance _x) < 2000} count playableUnits) == 0)});
+	
 	_grp = createGroup east;
 	_type = selectRandom eastVclClasses; 		
-	_obj 	= call compile ("vclSpawn" + str(_num)); 
-	_mkr 	= str _unum; 
 	_pos 	= getPosATL _obj; 
 	_vcl 	= createVehicle [_type, _pos, [], 0, "NONE"];
+	_vcl setDir getDir _obj;
 	_vcl setPosATL ((getPosATL _vcl) vectorAdd [0,0,1]);
-	_vcl setVectorUp (surfaceNormal _pos);	
+	_vcl setVectorUp (surfaceNormal _pos);
+	
 	// Hunter: anti-bad driving fix (does not cover flipping...)
 	_vcl spawn {
 		sleep 5;
@@ -40,9 +47,6 @@ spawnAIVehicle = {
 			_return
 		}];
 	};
-	
-	if (DEBUG) then { server globalChat format["AI VEHICLE %1 of TYPE %2 CREATED! POSITION: %3", _unum, str _vcl, str _pos]; };
-	_vcl setDir getDir _obj;
 	
 	_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
 	_ai setRank (eastRanks select 2);
@@ -116,17 +120,25 @@ spawnAIVehicle = {
 	sleep 1;
 	cleanupVics pushBack _vcl;
 	_vcl setVehicleLock "LOCKED";
-	[_vcl, _mkr, "noslow", "nowait", _track] execVM "insurgency\common\server\AI\UPS.sqf";
+	patrolVehicles pushBack _vcl;
+	// 2nd argument (marker) is deprecated, just pass empty string
+	[_vcl, "", "noslow", "nowait", _track] execVM "insurgency\common\server\AI\UPS.sqf";
 };
 
-spawnAIVehicles = { 
-	private "_num";
+patrolVehicles = [];
 
-	for "_i" from 1 to eastVehicleNum do { 		
-		_i call spawnAIVehicle;
-		if (DEBUG) then { server globalChat format ["SPAWNING AI VEHICLE %1", _i]; };
-		sleep 240; 
+spawnAIVehicles = {
+
+	while {true} do {
+		waitUntil {
+			sleep 10;
+			patrolVehicles = patrolVehicles select {canMove _x};
+			(count patrolVehicles) < eastVehicleNum
+		};
+		call spawnAIVehicle;
+		sleep patrolSpawnDelay;
 	};
+
 }; 	
 
 spawnAIGuns = {

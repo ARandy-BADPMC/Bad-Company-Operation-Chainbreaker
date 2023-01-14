@@ -6,8 +6,8 @@ maxAIPerPlayer = 4;
 // min number of players needed to capture a grid
 playersNeeded = 2;
 
-// number of map patrol vehicles that will spawn
-eastVehicleNum = 5;
+// max number of map patrol vehicles allowed to be active at the same time
+eastVehicleNum = 3;
 
 aiVehicleRespawnTime = 1800;
 
