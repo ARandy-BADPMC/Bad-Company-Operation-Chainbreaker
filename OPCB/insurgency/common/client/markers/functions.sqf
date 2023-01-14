@@ -5,6 +5,7 @@ gridPath = {
 	_gMkr  = str(player call getGridPos);
 	if isNil "_gMkr" exitWith {};
 	if (markerColor _gMkr == "ColorGreen") exitWith {};
+	if (markerColor _gMkr != "ColorRed") exitWith {}; // making sure blacklisted areas with no actual markers aren't getting checked
 	if (nearestEastMen(call compile _gMkr,70,true,"count") > 0 
 		|| nearestPlayers(call compile _gMkr,140,true,"count") < playersNeeded) exitWith {};
 	_gMkr setMarkerColor "ColorGreen";
