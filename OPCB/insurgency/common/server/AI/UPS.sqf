@@ -155,8 +155,13 @@ _isLandVehicle = _npc isKindOf "LandVehicle";
 _isboat = _npc isKindOf "Ship"; 
 _isair = _npc isKindOf "Air"; 
 
+_vicHasNoGun = false;
+
 if (_isLandVehicle) then {
 	_npc setUnloadInCombat [true, true];
+	if ((isNull (gunner _npc)) && {(_npc emptyPositions "Gunner") == 0}) then {
+		_vicHasNoGun = true;
+	};
 } else {
 	_npc setUnloadInCombat [false, false];
 };
@@ -455,7 +460,7 @@ while { _loop} do {
                         
 			if (_isLandVehicle) then {
 				//unload passengers
-				if (typeOf _npc in noGunVehicles) then {
+				if (_vicHasNoGun) then {
 					doGetOut driver _npc;
 				};                           
 				{

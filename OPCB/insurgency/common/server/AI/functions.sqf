@@ -1,12 +1,12 @@
 spawnAIVehicle = {
 	private ["_num","_track","_speed","_grp","_type","_obj","_mkr","_pos","_vcl","_ai","_unum"];
 	_unum = _this;
-	waitUntil {sleep 3; (count playableUnits) > 0};
+	waitUntil {sleep 3; ((count playableUnits) > 0) || {!isMultiplayer}};
 	_num	= _unum % 3; 
 	if (_num == 0) then { _num = 3; }; 
 	//_grp	= ["","vclGrp",_unum+1,"east"] call getGroup; 
 	_grp = createGroup east;
-	_type = eastVehiclesFreq select round(random (count eastVehiclesFreq - 1)); 		
+	_type = selectRandom eastVclClasses; 		
 	_obj 	= call compile ("vclSpawn" + str(_num)); 
 	_mkr 	= str _unum; 
 	_pos 	= getPosATL _obj; 
@@ -14,15 +14,32 @@ spawnAIVehicle = {
 	_vcl setPosATL ((getPosATL _vcl) vectorAdd [0,0,1]);
 	_vcl setVectorUp (surfaceNormal _pos);	
 	// Hunter: anti-bad driving fix (does not cover flipping...)
-	_vcl addEventHandler ["HandleDamage",{
-		_return = _this select 2;
-		_source = _this select 3;
-		_unit = _this select 0;		
-		if (((_this select 4) == "") && {(isnull _source) || {((side _source) getFriend (side _unit)) >= 0.6}}) then {
-			_return = 0;
-		};
-		_return 
-	}];
+	_vcl spawn {
+		sleep 5;
+		 _this removeAllEventHandlers "HandleDamage";
+		 _this addEventHandler ["HandleDamage",{
+		 
+			_return = _this select 2;
+			_source = _this select 3;
+			_unit = _this select 0;
+			_ammo = _this select 4;
+			_selection = _this select 1;
+			
+			if ((_ammo == "") && {(isnull _source) || {_source == _unit}}) then {
+				if (_selection isEqualTo "") then {
+					_return = damage _unit;
+				} else {
+					_return = _unit getHit _selection;
+				};
+			} else {
+				if ((_unit getVariable ["ace_vehicle_damage_handleDamage", -99]) != -99) then {
+					_return = _this call ace_vehicle_damage_fnc_handleDamage;
+				};
+			};
+			
+			_return
+		}];
+	};
 	
 	if (DEBUG) then { server globalChat format["AI VEHICLE %1 of TYPE %2 CREATED! POSITION: %3", _unum, str _vcl, str _pos]; };
 	_vcl setDir getDir _obj;
@@ -31,7 +48,14 @@ spawnAIVehicle = {
 	_ai setRank (eastRanks select 2);
 	_ai moveInDriver _vcl;
 	
-	if (typeOf _vcl in withPassenger) then {
+	private _withPassengers = false;
+	
+	if (((_vcl emptyPositions "Gunner") == 0)
+			|| {((count ((allTurrets [_vcl, true]) - (allTurrets [_vcl, false]))) + (_vcl emptyPositions "Cargo")) > 2}) then {	
+		_withPassengers = true;	
+	};
+	
+	if (_withPassengers) then {
 				
 		{
 			_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
@@ -49,8 +73,6 @@ spawnAIVehicle = {
 				sleep 0.05;
 			};
 		};
-		
-		_vcl setUnloadInCombat [true,true];
 
 	}; 
 	
@@ -59,16 +81,42 @@ spawnAIVehicle = {
 		_ai setRank (eastRanks select 0);
 		_ai moveInTurret [_vcl, _x];
 	} foreach allTurrets [_vcl, false];
+	
+	{
+			_x spawn {
+				sleep 2;
+				_this removeAllEventHandlers "HandleDamage";
+				_this addEventHandler ["HandleDamage", {
+				
+				_return = _this select 2;
+				_source = _this select 3;
+				_unit = _this select 0;
+				_selection = _this select 1;
+				
+				if (((_this select 4) == "") && {(isnull _source) || {((side _source) getFriend (side _unit)) >= 0.6}}) then {
+					if (_selection isEqualTo "") then {
+						_return = damage _unit;
+					} else {
+						_return = _unit getHit _selection;
+					};
+				} else {
+					if ((missionnamespace getVariable ["ace_medical_ai_enabledFor",0]) != 0) then {
+						_return = _this call ace_medical_engine_fnc_handleDamage;
+					};
+				};
+				
+			_return 
+			}];
+		};	
+	} foreach (units _grp);
 
-	_speed = "slow"; 
 	_track = ""; 
 	if (DEBUG) then { _track = "track"; }; 
-	if (typeOf _vcl in eastLightVehicles) then { _speed = "noslow"; }; 
 	_grp deleteGroupWhenEmpty true;
 	sleep 1;
 	cleanupVics pushBack _vcl;
 	_vcl setVehicleLock "LOCKED";
-	[_vcl, _mkr, _speed, "nowait", _track] execVM "insurgency\common\server\AI\UPS.sqf";
+	[_vcl, _mkr, "noslow", "nowait", _track] execVM "insurgency\common\server\AI\UPS.sqf";
 };
 
 spawnAIVehicles = { 

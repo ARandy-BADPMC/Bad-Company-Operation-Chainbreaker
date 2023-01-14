@@ -10,8 +10,6 @@
 
 #define eastStationaryGuns	["rhs_KORD_high_MSV","rhsgref_ins_DSHKM","RHS_ZU23_MSV","RHS_AGS30_TriPod_MSV"]
 
-#define eastVclClasses 	["LOP_TKA_Mi24V_UPK23","rhsgref_BRDM2_ins","LOP_TKA_T34","LOP_AM_OPF_Landrover_M2","LOP_AM_OPF_Offroad_AT","LOP_TKA_T55","LOP_TKA_BTR70","LOP_TKA_BTR60","LOP_AM_OPF_Landrover_SPG9","LOP_AM_OPF_Nissan_PKM","LOP_AM_OPF_Offroad_M2","LOP_AM_OPF_UAZ_AGS","LOP_AM_OPF_UAZ_DshKM","LOP_AM_OPF_UAZ_SPG","LOP_TKA_BMP1","LOP_TKA_BMP2","LOP_TKA_Mi8MTV3_UPK23","LOP_AM_OPF_Landrover","LOP_AM_OPF_Offroad","LOP_AM_OPF_UAZ","LOP_AFR_OPF_M113_W","LOP_AM_OPF_UAZ_Open","C_Van_01_transport_F","C_Quadbike_01_F","rhsgref_ins_zil131_flatbed","rhsgref_ins_zil131_flatbed_cover","rhsgref_ins_ural_work","rhsgref_ins_gaz66_repair","rhsgref_ins_gaz66_ammo","rhsgref_ins_ural_Zu23"]
-
 #define eastRanks			["CAPTAIN","LIEUTENANT","SERGEANT","CORPORAL","PRIVATE"] 
 
 #define IEDList             ["IEDUrbanSmall_Remote_Mag","IEDUrbanBig_Remote_Mag","IEDLandSmall_Remote_Mag","IEDLandBig_Remote_Mag"]
