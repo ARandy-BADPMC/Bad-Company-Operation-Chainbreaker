@@ -2995,7 +2995,8 @@ _arsenalitems =
 "hlc_acc_dbalpl_side",
 "hlc_acc_dbalpl_side_fl",
 "hlc_acc_tlr1_side",
-"rhsusf_ihadss"
+"rhsusf_ihadss",
+"ACE_artilleryTable"
 ];
 
 
