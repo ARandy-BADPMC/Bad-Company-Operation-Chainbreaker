@@ -20,13 +20,14 @@ if (isMultiplayer) then {
 call compile preprocessFileLineNumbers "functions\BADCO_class_check.sqf"; 
 
 
-jeff addAction ["<t color='#FF0000'>Request a Task</t>", "[0] remoteExec ['CHAB_fnc_mission_selector',2]", nil, 1, false, true, "", "true", 10, false,""];
+jeff addAction ["<t color='#FF0000'>Request Mission</t>", "if (({((markerpos 'base_marker') distance2d _x) < 1000} count playableUnits) > 1) then {[0] remoteExec ['CHAB_fnc_mission_selector',2]} else {hint 'At least 2 people are required to be at base to request a mission!'}", nil, 1, false, true, "", "true", 10, false,""];
 
 
 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
 heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
 
-tank_spawner addAction ["<t color='#FFFF00'>Vehicle Spawner</t>","[] spawn CHAB_fnc_spawn_tank;",nil, 1, false, true, "", "true", 10, false,""];   
+tank_spawner addAction ["<t color='#FFFF00'>Vehicle Spawner</t>","[] spawn CHAB_fnc_spawn_tank;",nil, 1, false, true, "", "true", 10, false,""];
+tank_spawner addAction ["<t color='#00FFFF'>Box Spawner</t>","[] spawn OPCB_crateSpawner_openDialog;",nil, 1, false, true, "", "true", 10, false,""];   
 tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
 
 
@@ -120,6 +121,8 @@ _boxes = [box1,box2,box3,box4];
 			ace_advanced_fatigue_anfatigue = 1;
 	};
 };
+
+Hz_pers_clientReadyForLoad = true;
 
 /*addMissionEventHandler ["Draw3D",{
 

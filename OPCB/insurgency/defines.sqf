@@ -1,3 +1,5 @@
+#define ENABLE_PERSISTENCY
+
 //spawnPos must remain available in global missionNamespace, a definition does not
 // do not touch any of these except the last two
 spawnPos =					[0,0,50000];

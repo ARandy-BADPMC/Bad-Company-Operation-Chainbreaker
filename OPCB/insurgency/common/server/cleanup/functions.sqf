@@ -13,7 +13,7 @@ aiDespawn = {
 			_dude = _x;
 			_nearDudes = {(_x distance2D _dude) < 200} count _AIunits;
 			_nearPlayers = {(_x distance2D _dude) < _playerDist} count playableUnits;
-			if (_nearPlayers < (_nearDudes/maxAIPerPlayer)) then {
+			if (_nearPlayers < (_nearDudes/(call getEffectiveMaxAICount))) then {
 				deleteVehicle _dude; 
 			};
 			sleep 0.3;

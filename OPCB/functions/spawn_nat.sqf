@@ -1,9 +1,6 @@
 params ["_centerobj", "_groupsToSpawn", "_tanksToSpawn","_mechToSpawn"];
 
-_tanks = ["rhs_zsu234_chdkz"];
 _suitable = globalWaterPos;
-_cfgGroups =  configFile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhsgref_group_national_infantry";
-_groupArray = [];
 _playerRate = [] call CHAB_fnc_playerScale;
 
 _groupsToSpawn = ceil (_playerRate*_groupsToSpawn);
@@ -11,14 +8,7 @@ _tanksToSpawn = ceil (_playerRate*_tanksToSpawn);
 _mechToSpawn = ceil (_playerRate*_mechToSpawn);
 
 private ["_suitable"]; 
-_MechArray = [
-	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_chq",
-	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad",
-	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad_2mg",
-	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad_aa",
-	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad_mg_sniper",
-	configfile >> "CfgGroups" >> "Indep" >> "rhsgref_faction_nationalist" >> "rhs_group_indp_nat_btr70" >> "rhs_group_nat_btr70_squad_sniper"
-];
+
 if (_mechToSpawn != 0) then {
 	for "_i" from 1 to _mechToSpawn do { 
 		_spawnPos = globalWaterPos;
@@ -30,7 +20,12 @@ if (_mechToSpawn != 0) then {
 			};
 			_spawnPos = _suitable;
 		};
-		_groupNumber = [_spawnPos, resistance,selectrandom _MechArray] call BIS_fnc_spawnGroup;
+		_groupNumber = [_spawnPos, east,selectrandom OPCB_unitTypes_grp_ins_mech] call BIS_fnc_spawnGroup;
+		
+		{
+			(vehicle _x) setVehicleLock "LOCKED";
+		} foreach ((units _groupNumber) select {_x == (effectiveCommander vehicle _x)});
+		
 		[_groupNumber, getPos _centerobj, random 800] call bis_fnc_taskPatrol;
 		_groupNumber deleteGroupWhenEmpty true;
 		
@@ -38,12 +33,6 @@ if (_mechToSpawn != 0) then {
 	};
 };
 
-for "_j" from 0 to (count _cfgGroups)-1 do {
-	_currentGroup = _cfgGroups select _j;
-	_groupArray pushback _currentGroup;
-};
-
-_groupArray deleteat 0;
 if (_groupsToSpawn != 0) then {
 	for "_i" from 1 to _groupsToSpawn do {
 		_spawnPos = globalWaterPos;
@@ -56,7 +45,12 @@ if (_groupsToSpawn != 0) then {
 			_spawnPos = _suitable;
 		};
 
-		_groupNumber = [_spawnPos, resistance,selectrandom _groupArray] call BIS_fnc_spawnGroup;
+		_groupNumber = [_spawnPos, east,selectrandom OPCB_unitTypes_grp_ins_inf] call BIS_fnc_spawnGroup;
+		
+		{
+			(vehicle _x) setVehicleLock "LOCKED";
+		} foreach ((units _groupNumber) select {_x == (effectiveCommander vehicle _x)});
+		
 		[_groupNumber, getPos _centerobj, random 799] call bis_fnc_taskPatrol;
 		_groupNumber deleteGroupWhenEmpty true;
 		
@@ -76,7 +70,9 @@ if (_tanksToSpawn != 0) then {
 			_spawnPos = _suitable;
 		};
 
-		_groupNumber = [_spawnPos,random 360,selectrandom _tanks,resistance] call BIS_fnc_spawnVehicle;
+		_groupNumber = [_spawnPos,random 360,selectrandom OPCB_unitTypes_veh_ins_armor,east] call BIS_fnc_spawnVehicle;
+		
+		(_groupNumber select 0) setVehicleLock "LOCKED";
 
 		[_groupNumber select 2, getPos _centerobj, random 800] call bis_fnc_taskPatrol;
 

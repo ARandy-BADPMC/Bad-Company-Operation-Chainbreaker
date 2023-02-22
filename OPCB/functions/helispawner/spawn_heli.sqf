@@ -4,21 +4,33 @@ createDialog "jey_helispawner";
 waitUntil {
   !isNull (findDisplay 9900)
 };
+
+waitUntil {
+	(!isNil "OPCB_econ_initDone") && {OPCB_econ_initDone}
+};
+
+if (!((typeof player) in ["rhsusf_airforce_jetpilot", "rhsusf_army_ocp_helipilot"])) exitWith {
+
+	closeDialog 0;
+	hint "You must be a pilot to use the aircraft spawner!";
+
+};
+
 _helicopters = [];
 
 _ctrl = (findDisplay 9900) displayCtrl 1500;
 _imageCtrl = (findDisplay 9900) displayCtrl 1618;
 
-for "_j" from 0 to count Helicopter_loadouts -1 step 2 do {
-	_item = Helicopter_loadouts select _j;
-	_helicopters pushBack _item;
-};
-_i = 0;
+{
+	if ((["AIR", _x] call OPCB_econ_fnc_getVehicleTier) >= OPCB_econ_currentTier) then {
+		_helicopters pushBack _x;
+	};
+} foreach OPCB_econ_vehicleTypes_AIR;
+
 {
 	_text = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
 	_ctrl lbAdd _text;
-	_ctrl lbSetData [_i,_x];
-	_i = _i +1;
+	_ctrl lbSetData [_foreachIndex,_x];
 } forEach _helicopters;
 
 _ctrl lbSetSelected [0, true];
@@ -34,4 +46,19 @@ _ctrl ctrlAddEventHandler ["LBSelChanged",{
 	_picture = getText (configFile >> "CfgVehicles" >> _classname >> "editorPreview"); 
 	_imageCtrl = (findDisplay 9900) displayCtrl 1618;
 	_imageCtrl ctrlSetText _picture;
+	
+	_ctrl = (findDisplay 9900) displayCtrl 1001;	
+	_tier = ["AIR", _classname] call OPCB_econ_fnc_getVehicleTier;
+	_cost = ["AIR", _tier] call OPCB_econ_fnc_getTierCost;
+		
+	_textFormat = "<t color='#07FFFF'>Vehicle Cost:   </t><t>" + (str _cost) + " C" + "</t><t color='#07FFFF'>        Vehicle Tier:   </t><t>" + (str (_tier + 1)) + "</t><t color='#07FFFF'>        Current Tier:   </t><t>" + (str (OPCB_econ_currentTier + 1))+ "</t><br/><br/>" + "<t color='#07FFFF'>Credits available:    </t><t>" + (str OPCB_econ_credits) + " C" + "</t>";
+	_ctrl ctrlSetStructuredText parseText _textFormat;
+	
 }];
+
+_ctrl = (findDisplay 9900) displayCtrl 1001;	
+_tier = ["AIR", _classname] call OPCB_econ_fnc_getVehicleTier;
+_cost = ["AIR", _tier] call OPCB_econ_fnc_getTierCost;
+	
+_textFormat = "<t color='#07FFFF'>Vehicle Cost:   </t><t>" + (str _cost) + " C" + "</t><t color='#07FFFF'>        Vehicle Tier:   </t><t>" + (str (_tier + 1)) + "</t><t color='#07FFFF'>        Current Tier:   </t><t>" + (str (OPCB_econ_currentTier + 1))+ "</t><br/><br/>" + "<t color='#07FFFF'>Credits available:    </t><t>" + (str OPCB_econ_credits) + " C" + "</t>";
+_ctrl ctrlSetStructuredText parseText _textFormat;

@@ -15,8 +15,24 @@ if (_isAttack == 1) then
 	_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
 	};
 	
-	[_helicopter] call skinapplier;
 	_helicopter setdir (getdir heli_spawnpos);
+	
+	private _cargoIndex = -1;
+	_vehicle = toUpper _vehicle;
+	{
+		if ((_x select 0) == _vehicle) exitWith {
+			_cargoIndex = _foreachIndex;
+		};
+	} foreach OPCB_econ_vehicleCargoSpaces;
+	
+	if (_cargoIndex != -1) then {
+		[_helicopter, (OPCB_econ_vehicleCargoSpaces select _cargoIndex) select 1] call ace_cargo_fnc_setSize;
+	};
+	
+	_helicopter call Hz_pers_API_addVehicle;
+	
+	[_helicopter] call skinapplier;
+	
 	_pylonPaths = (configProperties [configFile >> "CfgVehicles" >> typeOf _helicopter >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"]) apply {getArray (_x >> "turret")};
 	{ _helicopter removeWeaponGlobal getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon") } forEach getPylonMagazines _helicopter;
 	{ _helicopter setPylonLoadOut [_forEachIndex + 1, _x, true, _pylonPaths select _forEachIndex] } forEach _pylons;
@@ -27,13 +43,28 @@ if (_isAttack == 1) then
 	}];
 
 	[_helicopter,_isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
-	
-	
+		
 } else 
 {
 	_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
-	[_helicopter] call skinapplier;
 	_helicopter setdir (getdir heli_spawnpos);
+	
+	private _cargoIndex = -1;
+	_vehicle = toUpper _vehicle;
+	{
+		if ((_x select 0) == _vehicle) exitWith {
+			_cargoIndex = _foreachIndex;
+		};
+	} foreach OPCB_econ_vehicleCargoSpaces;
+	
+	if (_cargoIndex != -1) then {
+		[_helicopter, (OPCB_econ_vehicleCargoSpaces select _cargoIndex) select 1] call ace_cargo_fnc_setSize;
+	};
+	
+	_helicopter call Hz_pers_API_addVehicle;
+	
+	[_helicopter] call skinapplier;
+	
 	_helicopter addMPEventHandler ["MPKilled",
 	{
 		_current_helis = missionNamespace getVariable ["MaxTransHelis",1];

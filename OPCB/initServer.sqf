@@ -1,3 +1,5 @@
+call compile preprocessFileLineNumbers "unitTypes.sqf";
+
 ["Initialize"] call BIS_fnc_dynamicGroups;
 call compileFinal preprocessfilelinenumbers "functions\BADCO_skin_applier.sqf";
 call compileFinal preprocessfilelinenumbers "Scripts\BADCO_Arsenal.sqf";

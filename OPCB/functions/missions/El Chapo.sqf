@@ -1,3 +1,4 @@
+private _reward = 100;
 params ["_base","_current_tasknumber"];
 _taskcomp = "druglord";
 _officergroup = createGroup [east,true];
@@ -7,9 +8,6 @@ _current_task = _base getPos[random 600,random 360];
 _officer = _officergroup createUnit ["rhsusf_usmc_marpat_d_officer", _base, [], 2, "NONE"];
 _officer disableAI "MOVE";
 
-*/_container = "C_IDAP_supplyCrate_F" createVehicle (getMarkerPos "object_dropoff");
-[_container, 5] call ace_cargo_fnc_setSize;
-clearItemCargoGlobal _container;/
 _guardpos = getPos _officer;
 _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 
@@ -29,11 +27,6 @@ waitUntil {
 };
 "The Leader is dead. Prepare for an attack!" remoteExec ["hint"];
 
-_groups = [
-	configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_infantry_flora" >> "rhs_group_rus_vdv_infantry_flora_squad",
-	configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_infantry_flora" >> "rhs_group_rus_vdv_infantry_flora_squad_2mg",
-	configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_infantry_flora" >> "rhs_group_rus_vdv_infantry_flora_squad_mg_sniper"
-];
 _nearestplayer = [_officer] call CHAB_fnc_nearest;
 if(isnull _nearestplayer) then{ _nearestplayer == officer_jeff};
 
@@ -56,7 +49,7 @@ for "_i" from 0 to 5 do {
 			_tries = _tries -1;
 		};
 if (_tries > 0) then {
-	_attacker= [_attackpos, east, selectRandom _groups] call BIS_fnc_spawnGroup;
+	_attacker= [_attackpos, east, selectRandom OPCB_unitTypes_grp_inf] call BIS_fnc_spawnGroup;
 	_wayp = _attacker addWaypoint [_guardpos, 100];
 	_wayp setWaypointType "SAD";
 
@@ -64,10 +57,6 @@ if (_tries > 0) then {
 };
 	
 };
-_vehicles = [
-configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_gaz66" >> "rhs_group_rus_vdv_gaz66_squad_2mg",
-configfile >> "CfgGroups" >> "East" >> "rhs_faction_vdv" >> "rhs_group_rus_vdv_BTR80a" >> "rhs_group_rus_msv_BTR80a_squad_mg_sniper"
-];
 
 _opposite = _dir +160;
 for "_i" from 0 to 1 do {
@@ -86,7 +75,10 @@ for "_i" from 0 to 1 do {
 		_tries = _tries -1;
 	};
 	if (_tries > 0) then {
-		_attacker= [_attackpos, east, selectRandom _vehicles] call BIS_fnc_spawnGroup;
+		_attacker= [_attackpos, east, selectRandom OPCB_unitTypes_grp_mech] call BIS_fnc_spawnGroup;
+		{
+			(vehicle _x) setVehicleLock "LOCKED";
+		} foreach ((units _attacker) select {_x == (effectiveCommander vehicle _x)});
 		_wayp = _attacker addWaypoint [_guardpos, 100];
 		_wayp setWaypointType "SAD";
 
@@ -112,7 +104,10 @@ waitUntil
 
 {
 	[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+	OPCB_econ_credits = OPCB_econ_credits + _reward;
+publicVariable "OPCB_econ_credits";
+    
+(format ["You earned %1 C for successfully completing the mission!", _reward]) remoteExec ["hint"];
 };
 [_base] call CHAB_fnc_endmission;
 [ _comp ] call LARs_fnc_deleteComp;
-deleteVehicle _container;

@@ -1,22 +1,16 @@
 aiArray = [];
-for "_i" from 1 to (maxAIPerPlayer*3) do {
+for "_i" from 1 to (maxAIPerPlayer*4) do {
 	aiArray pushBack objNull;
 };
 
 aiMonitor = {
     private ["_ai","_gun","_ais","_guns","_gunner"];
-    
-  _ais  = nearestEastMen(getPos player,750,true,"array");
+  
 	_guns = nearestObjects[getPos player, eastStationaryGuns+eastVclClasses, 1200];
-	_guns = _guns apply {_gunner = gunner _x; if (alive _gunner && {!isplayer _gunner} && {(lifeState _gunner) != "UNCONSCIOUS"}) then {_gunner} else {objNull}};
+	_guns = _guns apply {_gunner = gunner _x; if (alive _gunner && {!isplayer _gunner} && {(lifeState _gunner) != "INCAPACITATED"}) then {_gunner} else {objNull}};
 	_guns = _guns - [objNull];
-	_ai   = objNull;
+	
 	_gun  = objNull;
-	{
-		if ((vehicle _x) == _x) exitWith {
-			_ai = _x;
-		}; 
-	} foreach _ais;
 	if (count _guns > 0) then { _gun = _guns select 0; };
 	if (!isNull _gun) then {
 		if (local _gun) then {
@@ -25,6 +19,15 @@ aiMonitor = {
 			[objNull,vehicle player,_gun] remoteExec ["aiMonitorRemote",_gun,false];
 		};
 	};
+	
+	_ais  = nearestEastMen(getPos player,750,true,"array");
+	_ai   = objNull;
+	{
+		if (((vehicle _x) == _x) && {isNull (assignedTarget _x)}) exitWith {
+			_ai = _x;
+		}; 
+	} foreach _ais;	
+	
 	if (!isNull _ai) then {
 		if (local _ai) then {
 			[_ai,vehicle player,objNull] spawn aiMonitorRemote;
@@ -72,7 +75,7 @@ findSquadAIName = {
 	_i     = _this select 1;  
   _unit = aiArray select _i;
 	
-	if (({alive _x} count aiArray) >= maxAIPerPlayer) exitWith { -1 };
+	if (({alive _x} count aiArray) >= (call getEffectiveMaxAICount)) exitWith { -1 };
 	
 	if (!alive _unit) exitWith { _i };
 	
@@ -159,6 +162,7 @@ fillHouseEast = {
 						_magazine = (secondaryWeaponMagazine _ai) select 0;
 						_weapon = secondaryWeapon _ai;
 						removeAllWeapons _ai;
+						_ai setUnitPos "MIDDLE";
 						_ai addWeapon _weapon;
 						_ai addSecondaryWeaponItem _magazine;
 						_ai addMagazines [_magazine, 6];
@@ -212,7 +216,7 @@ aiSpawn = {
 			_hPos   = getPosATL _house;	
 			_eCount = count nearestObjects[_hPos, ["CAManBase"], 10];			
 			// players need not to be within SPAWNRANGE-200 from a house or they need not to see the spawn position for its AI to spawn
-			if (_eCount < maxAIPerPlayer) then {
+			if (_eCount < 4) then {
 				_wUnits = nearestPlayers(_hPos,SPAWNRANGE*2,true,"array");
 				_wUnitVehicles = [];
 				{

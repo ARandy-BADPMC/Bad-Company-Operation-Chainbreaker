@@ -1,3 +1,4 @@
+private _reward = 40;
 params ["_base","_current_tasknumber"];
 
 _cities = missionNamespace getVariable["Cities",0];
@@ -9,8 +10,8 @@ _citymarker setMarkerPos _citypos;
 
 [_current_tasknumber ,west,["There is a riot going on. Clear out the area and capture the leader. We also have intel of two captured journalists, which need to be rescued.","Clear out and rescue",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
-_guardgroup = createGroup [resistance,true];
-_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", getMarkerPos _citymarker, [], 2, "NONE"];
+_guardgroup = createGroup [east,true];
+_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, getMarkerPos _citymarker, [], 2, "NONE"];
 removeAllWeapons _guard;
 _guard disableAI "AUTOCOMBAT";
 _guard setunitpos "MIDDLE";
@@ -78,6 +79,10 @@ if(alive _guard && alive _journal1 && alive _journal2)
 then
 {
 	[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+	OPCB_econ_credits = OPCB_econ_credits + _reward;
+publicVariable "OPCB_econ_credits";
+    
+(format ["You earned %1 C for successfully completing the mission!", _reward]) remoteExec ["hint"];
 }
 else
 {

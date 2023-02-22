@@ -1,3 +1,4 @@
+private _reward = 60;
 params ["_base","_current_tasknumber"];
 _cities = missionNamespace getVariable["Cities",0];
 _city = selectRandom _cities;
@@ -9,7 +10,7 @@ _citymarker setMarkerPos _citypos;
 [_current_tasknumber ,west,["Insurgent forces have stolen an ammo crate from a nearby FOB. Retrieve the Ammo crate and find out who is the fugitive.","Retrieve",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"listen",true] call BIS_fnc_setTask;
 
 _guardgroup = createGroup [civilian,true];
-_guard = _guardgroup createUnit ["rhs_g_Soldier_TL_F", getMarkerPos _citymarker, [], 2, "NONE"];
+_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, getMarkerPos _citymarker, [], 2, "NONE"];
 _guardpos = getpos _guard;
 _taskItems = [_guard] call CHAB_fnc_retrieve_create;
 [_guard,5,0,0] call CHAB_fnc_spawn_ins;
@@ -26,5 +27,9 @@ waitUntil {
 };
 
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
+OPCB_econ_credits = OPCB_econ_credits + _reward;
+publicVariable "OPCB_econ_credits";
+    
+(format ["You earned %1 C for successfully completing the mission!", _reward]) remoteExec ["hint"];
 [_base] call CHAB_fnc_endmission;
 deleteVehicle (_crate select 0);

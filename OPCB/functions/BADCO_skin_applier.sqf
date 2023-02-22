@@ -54,6 +54,6 @@ if (_vehicle isKindOf "AIR") then
 		_vehicle enableCopilot false;
 	};
 
-if (_vehicle iskindof "CAR") then {_vehicle setPlateNumber "B.A.D PMC"; [_vehicle, 2, "ACE_Wheel", true] call ace_repair_fnc_addSpareParts;};
+_vehicle setPlateNumber "Bad Co";
 	
 };

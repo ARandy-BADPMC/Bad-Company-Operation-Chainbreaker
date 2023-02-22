@@ -9,6 +9,11 @@ disableSerialization;
 	{
 		_name = _ctrl lbData _heli;
 		_index = Helicopter_loadouts find _name; 
+		
+		if (_index == -1) exitWith {
+			_loadouts lbAdd "Default";
+		};
+		
 		_heli_loadouts = Helicopter_loadouts select (_index +1);
 		for "_i" from 0 to count _heli_loadouts -1 step 2 do {
 			_loadout_name = _heli_loadouts select _i;
