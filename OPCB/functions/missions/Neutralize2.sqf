@@ -15,7 +15,7 @@ _thehouse = selectRandom _house;
 _leader setPos (_thehouse buildingPos 0);
 removeAllWeapons _leader;
 _leader setunitpos "middle";
-_leader disableAI "Move"; 
+_leader disableAI "PATH"; 
 [_leader,10,1,2] call CHAB_fnc_spawn_nat;
 _spawncomps = [_leader] call CHAB_fnc_roadblock_ins;
 waitUntil 
