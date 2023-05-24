@@ -1,16 +1,14 @@
 private _reward = 60;
 params ["_base","_current_tasknumber"];
-_cities = missionNamespace getVariable["Cities",0];
-_city = selectRandom _cities;
+_city = selectRandom Cities;
 private ["_crate"];
 _citypos = locationPosition _city;
-_citymarker = missionNamespace getVariable ["citymarker",_citypos];
-_citymarker setMarkerPos _citypos;
+CityMarker setMarkerPos _citypos;
 
-[_current_tasknumber ,west,["Insurgent forces have stolen an ammo crate from a nearby FOB. Retrieve the Ammo crate and find out who is the fugitive.","Retrieve",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"listen",true] call BIS_fnc_setTask;
+[_current_tasknumber ,west,["Insurgent forces have stolen an ammo crate from a nearby FOB. Retrieve the Ammo crate and find out who is the fugitive.","Retrieve",CityMarker],getMarkerPos CityMarker,"ASSIGNED",10,true,true,"listen",true] call BIS_fnc_setTask;
 
 _guardgroup = createGroup [civilian,true];
-_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, getMarkerPos _citymarker, [], 2, "NONE"];
+_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, getMarkerPos CityMarker, [], 2, "NONE"];
 _guardpos = getpos _guard;
 _taskItems = [_guard] call CHAB_fnc_retrieve_create;
 [_guard,5,0,0] call CHAB_fnc_spawn_ins;

@@ -1,9 +1,7 @@
 
-_howBig = _this select 0;
+params ["_howBig"];
 
 if (_howBig < 500) then {
-
-	missionNamespace setVariable["task_underway",true];
 	
 	_suitableSpots = [];
 	
@@ -36,18 +34,10 @@ if (_howBig < 500) then {
 	
 	};
 
-	missionNamespace setVariable ["task_spot", selectRandom _suitableSpots];
-	
-	/*
-	// test code
-	_marker = createMarker [str random 1000, task_spot];
-	_marker setMarkerType "hd_destroy";
-	_marker setMarkerColor "ColorRed";
-	player setpos task_spot;
-	*/
+	TaskSpot = selectRandom _suitableSpots;
 	
 }
 else
 {
-	missionNamespace setVariable ["task_spot",[0,0,0]];
+	TaskSpot = [0,0,0];
 };

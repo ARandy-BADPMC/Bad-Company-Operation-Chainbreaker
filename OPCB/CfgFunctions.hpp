@@ -351,9 +351,5 @@ class chainbreaker
 		{
 			file = "functions\playerreq\whitelist.sqf";
 		};
-		class setServerVariables
-		{
-			file = "functions\playerreq\setServerVariables.sqf";
-		};
 	};
 };

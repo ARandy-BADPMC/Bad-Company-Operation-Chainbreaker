@@ -1,17 +1,15 @@
 private _reward = 40;
 params ["_base","_current_tasknumber"];
 
-_cities = missionNamespace getVariable["Cities",0];
-_city = selectRandom _cities;
+_city = selectRandom Cities;
 _citypos = locationPosition _city;
 
-_citymarker = missionNamespace getVariable ["citymarker",_citypos];
-_citymarker setMarkerPos _citypos;
+CityMarker setMarkerPos _citypos;
 
-[_current_tasknumber ,west,["There is a riot going on. Clear out the area and capture the leader. We also have intel of two captured journalists, which need to be rescued.","Clear out and rescue",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
+[_current_tasknumber ,west,["There is a riot going on. Clear out the area and capture the leader. We also have intel of two captured journalists, which need to be rescued.","Clear out and rescue",CityMarker],getMarkerPos CityMarker,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 _guardgroup = createGroup [east,true];
-_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, getMarkerPos _citymarker, [], 2, "NONE"];
+_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, getMarkerPos CityMarker, [], 2, "NONE"];
 removeAllWeapons _guard;
 _guard disableAI "AUTOCOMBAT";
 _guard setunitpos "MIDDLE";

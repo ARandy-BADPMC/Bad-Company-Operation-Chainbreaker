@@ -20,7 +20,7 @@ if (isMultiplayer) then {
 call compile preprocessFileLineNumbers "functions\BADCO_class_check.sqf"; 
 
 
-jeff addAction ["<t color='#FF0000'>Request Mission</t>", "if (({((markerpos 'base_marker') distance2d _x) < 1000} count playableUnits) > 1) then {[0] remoteExec ['CHAB_fnc_mission_selector',2]} else {hint 'At least 2 people are required to be at base to request a mission!'}", nil, 1, false, true, "", "true", 10, false,""];
+jeff addAction ["<t color='#FF0000'>Request Mission</t>", "if ((count allPlayers) > 1) then {[0] remoteExec ['CHAB_fnc_mission_selector',2]} else {hint 'At least 2 people are required to be at base to request a mission!'}", nil, 1, false, true, "", "true", 10, false,""];
 
 
 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
@@ -33,7 +33,10 @@ tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] 
 
 _uid = getPlayerUID player;
 _SOAR = ["76561198117073327","76561198142692277","76561198067590754","76561198059583284","76561199005382007"];//76561198142692277 -Alex. K., 76561198117073327 - A.Randy,   76561198059583284 - Vittex, 76561198067590754 - Mas Pater, 76561199005382007 - W.Frost
-if (_uid in _soar) then {player setVariable ["SOAR",1]};
+if (_uid in _soar) then {
+	player setVariable ["SOAR",1];
+};
+
 player addEventHandler ["GetInMan",{[_this select 0,_this select 1, _this select 2] call BADCO_role_check;}];
 if (typeof player == "rhsusf_usmc_marpat_d_uav" || typeOf player == "rhsusf_airforce_jetpilot") then 
 {
@@ -68,18 +71,6 @@ jeff addaction ["Lights off", {
 	_lamp sethit ["light_1_hitpoint",1];
 	_lamp sethit ["light_2_hitpoint",1];	
 }];
-
-/*
-base_flag addAction ["Teleport to Shootingrange", {
-	[player,[9882.12,9979.88,0]] remoteExec ["setPos",2];
-}];
-base_flag addAction ["Teleport to Heli-Spawner", {
-	[player,[9927.14,10071.4,0]] remoteExec ["setPos",2];
-}];
-ShootingRange_flag addAction ["Teleport to Base", {
-	[player,[9838.25,9949.16,0.0807343]] remoteExec ["setPos",2];
-}];
-*/
 
 Helicopter_loadouts = 
 [
@@ -123,32 +114,3 @@ _boxes = [box1,box2,box3,box4];
 };
 
 Hz_pers_clientReadyForLoad = true;
-
-/*addMissionEventHandler ["Draw3D",{
-
-	_pos = getposATL player;
-	_buildings = nearestObjects [_pos,["house"],15];
-	_windowPositions = [];
-	{
-
-		_building = _x;
-		_it = 0;
-
-		_selectionNames = selectionNames _building;
-		_selectionPositions = [];
-		_windows = _selectionNames select {toUpper _x find "GLASS" >= 0};
-		{
-			_selectionPositions pushBack (_building modelToWorldVisual (_building selectionPosition [_x,"GEOMETRY"]));
-		} forEach _windows;
-
-		_windowPositions append _selectionPositions;
-
-	} forEach _buildings;
-
-	_text = "Window";
-
-	{
-	drawIcon3D ["",[1,1,1,1],_x,1,1,0,_text,2];
-
-	} forEach _windowPositions;
-}];*/

@@ -4,23 +4,28 @@ call compile preprocessFileLineNumbers "unitTypes.sqf";
 call compileFinal preprocessfilelinenumbers "functions\BADCO_skin_applier.sqf";
 call compileFinal preprocessfilelinenumbers "Scripts\BADCO_Arsenal.sqf";
 
-missionNamespace setVariable ["running_task",0];
-missionNamespace setVariable ["task_spot",[5840,5700,0]];
+IsATaskRunning = false;
+TaskSpot = [5840,5700,0];
+TaskNumber = 0;
+EnemyGroups = [];
+ChapoTrigger = false;
 
-missionNamespace setVariable ["enemy_groups",[]];
+MaxTanks = 0;
+publicVariable "MaxTanks";
 
-missionNamespace setVariable ["Chapo_trigger",false];
+MaxAttackHelis = 0;
+publicVariable "MaxAttackHelis";
 
+MaxTransHelis = 0;
+publicVariable "MaxTransHelis";
 
-missionNamespace setVariable ["MaxTanks",0,true];
-missionNamespace setVariable ["MaxAttackHelis",0,true];
-missionNamespace setVariable ["MaxTransHelis",0,true];
-missionNamespace setVariable ["MaxAPC",0,true];
-missionNamespace setVariable ["MaxStatic",0,true];
+MaxAPC = 0;
+publicVariable "MaxAPC";
 
-_zeus_group = createGroup sideLogic;
+MaxStatic = 0;
+publicVariable "MaxStatic";
 
-missionNamespace setVariable ["Zeus_group",_zeus_group];
+ZeusGroup = createGroup sideLogic;
 
 {
 	_x allowDamage false;
@@ -28,48 +33,11 @@ missionNamespace setVariable ["Zeus_group",_zeus_group];
 } forEach [officer_jeff,tank_spawner,heli_jeff]; 
 
 globalWaterPos = [3067.06,16839.7,10.1122]; //universal for all maps, has to be changed manually 
+WorldCenter = [5840,5700,0];
 
+CityMarker = createMarker ["citymarker",  getpos officer_jeff];
 
-/*
-/\
-||
-
-Result:
-0.116768 ms
-
-Cycles:
-8564/10000
-
-old results:
-
-Result:
-0.242012 ms
-
-Cycles:
-9651/10000
-*/ //if you want to check execution time : BIS_fnc_codePerformance; 
-
-
-//[7427,7955,0] [7480,13351,0] [1403.27,7529.75,0]
-/*
-
-11680
-[5840,5700,0];
-11400
-
-*/
-missionNamespace setVariable ["World_center",[5840,5700,0]];
-_citymarker = createMarker ["citymarker",  getpos officer_jeff];
-missionNamespace setVariable ["citymarker",_citymarker];
-
-_nearbyLocations = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital","NameVillage"], 8000];
-/*
-{
-	_marker1 = createMarker ["Marker"+ str _x, getPos _x];
-	_marker1 setMarkerType "hd_objective";
-} forEach _nearbyLocations;*/
-
-missionNamespace setVariable ["Cities",_nearbyLocations];
+Cities = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital","NameVillage"], 8000];
 
 // for AI -- let's see if this strains the server too much (with more AI)
 setViewDistance 3500;

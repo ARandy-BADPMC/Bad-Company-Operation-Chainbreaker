@@ -23,8 +23,8 @@ if (_isAttack == 1) then
 	
 	_helicopter addMPEventHandler ["MPKilled",{
 		if (local (_this select 0)) then {
-			_maxtanks = missionNamespace getVariable ["MaxTanks",0];
-			missionNamespace setVariable ["MaxTanks",_maxtanks -1,true];
+			MaxTanks = MaxTanks - 1;
+			publicVariable "MaxTanks";
 		};
 	}];
 	
@@ -49,9 +49,8 @@ if (_isAttack == 1) then
 	_helicopter addMPEventHandler ["MPKilled",
 	{
 		if (local (_this select 0)) then {
-			_current_helis = missionNamespace getVariable ["MaxStatic",1];
-			_current_helis = _current_helis -1;
-			missionNamespace setVariable ["MaxStatic",_current_helis,true];
+			MaxStatic = MaxStatic - 1;
+			publicVariable "MaxStatic";
 		};
 	}];
 
@@ -77,9 +76,8 @@ if (_isAttack == 1) then
 	_helicopter addMPEventHandler ["MPKilled",
 	{
 		if (local (_this select 0)) then {
-			_current_helis = missionNamespace getVariable ["MaxAPC",1];
-			_current_helis = _current_helis -1;
-			missionNamespace setVariable ["MaxAPC",_current_helis,true];
+			MaxAPC = MaxAPC - 1;
+			publicVariable "MaxAPC";
 		};
 	}];
 	[_helicopter] call skinapplier;

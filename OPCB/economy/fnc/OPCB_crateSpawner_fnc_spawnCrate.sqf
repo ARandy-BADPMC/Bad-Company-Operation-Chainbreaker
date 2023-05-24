@@ -1,6 +1,4 @@
-_crateCount = missionNamespace getVariable ["crateCount",0];
-
-if (_crateCount > 19) exitWith {
+if (CrateCount > 19) exitWith {
 	hint "You have reached the box limit!";
 	closeDialog 0;
 };
@@ -18,7 +16,8 @@ if (_select != -1) then {
 		
 		hint "Box delivered";
 			
-		missionNamespace setVariable ["crateCount",_crateCount + 1,true];
+		CrateCount = CrateCount + 1;
+		publicVariable "CrateCount"; 
 		
 		_crate = _crateType createVehicle ([9767.66,9978.72,0]);	
 		_crate setdir 0;
@@ -37,9 +36,8 @@ if (_select != -1) then {
 		_crate addMPEventHandler ["MPKilled",
 		{
 			if (local (_this select 0)) then {
-				_crateCount = missionNamespace getVariable ["crateCount",1];
-				_crateCount = _crateCount -1;
-				missionNamespace setVariable ["crateCount",_crateCount,true];
+				CrateCount = CrateCount - 1;
+				publicVariable "CrateCount";
 			};
 		}];
 		

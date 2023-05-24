@@ -40,23 +40,22 @@ publicVariable "OPCB_econ_currentTier";
 		_isAttack = _vehType in OPCB_econ_vehicleAirAttackTypes;
 		
 		if (_isAttack) then {
-			
-			_maxAttackChoppers = missionNamespace getVariable ["MaxAttackHelis",1];
-			missionNamespace setVariable ["MaxAttackHelis",_maxattackchoppers + 1,true];
+			MaxAttackHelis = MaxAttackHelis + 1;
+			publicVariable "MaxAttackHelis";
+
 			_vehicle addMPEventHandler ["MPKilled",{ 
-				_maxattackchoppers = missionNamespace getVariable ["MaxAttackHelis",0];
-				missionNamespace setVariable ["MaxAttackHelis",_maxattackchoppers -1,true];
+				MaxAttackHelis = MaxAttackHelis - 1;
+				publicVariable "MaxAttackHelis";
 			}];
 				
 		} else {
-			
-			_maxTransChoppers = missionNamespace getVariable ["MaxTransHelis",1];
-			missionNamespace setVariable ["MaxTransHelis",_maxTransChoppers + 1,true];
+			MaxTransHelis = MaxTransHelis + 1;
+			publicVariable "MaxTransHelis";
+
 			_vehicle addMPEventHandler ["MPKilled",
 			{
-				_current_helis = missionNamespace getVariable ["MaxTransHelis",1];
-				_current_helis = _current_helis -1;
-				missionNamespace setVariable ["MaxTransHelis",_current_helis,true];
+				MaxTransHelis = MaxTransHelis - 1;
+				publicVariable "MaxTransHelis";
 			}];
 
 			if (_vehType == "RHS_UH60M_MEV_D") then {
@@ -72,14 +71,13 @@ publicVariable "OPCB_econ_currentTier";
 		_isAttack = _vehType in OPCB_econ_vehicleGroundAttackTypes;
 		
 		if (_isAttack) then {
-			
-			_maxtanks = missionNamespace getVariable ["MaxTanks",1];
-			missionNamespace setVariable ["MaxTanks",_maxtanks + 1,true];
+			MaxTanks = MaxTanks + 1;
+			publicVariable "MaxTanks";
 			
 			_vehicle addMPEventHandler ["MPKilled",{
 			if (local (_this select 0)) then {
-				_maxtanks = missionNamespace getVariable ["MaxTanks",0];
-				missionNamespace setVariable ["MaxTanks",_maxtanks -1,true];
+				MaxTanks = MaxTanks - 1;
+				publicVariable "MaxTanks";
 			};
 		}];
 		
@@ -87,14 +85,13 @@ publicVariable "OPCB_econ_currentTier";
 		
 		} else {
 		
-			_maxAPC = missionNamespace getVariable ["MaxAPC",1];
-			missionNamespace setVariable ["MaxAPC",_maxAPC + 1,true];
+			MaxAPC = MaxAPC + 1;
+			publicVariable "MaxAPC";
 		
 			_vehicle addMPEventHandler ["MPKilled",{
 				if (local (_this select 0)) then {
-					_maxAPC = missionNamespace getVariable ["MaxAPC",1];
-					_maxAPC = _maxAPC -1;
-					missionNamespace setVariable ["MaxAPC",_maxAPC,true];
+					MaxAPC = MaxAPC - 1;
+					publicVariable "MaxAPC";
 				};
 			}];
 		

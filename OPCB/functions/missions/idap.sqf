@@ -29,12 +29,13 @@ _stations = [_village,_guard] call CHAB_fnc_artilerry;
 	_townName = text _village;
 	hint format ["%1 is currently under heavy artilerry fire. Please save the Village.",_townName];
 }, [_nearestCity], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
-missionNamespace setVariable ["artilerry_rem",4];
+
+ArtilleryRemaining = 4;
 
 waitUntil {
-  _remain = missionNamespace getVariable ["artilerry_rem",4];
-  _remain <= 0
+	ArtilleryRemaining <= 0
 };
+
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;	
 OPCB_econ_credits = OPCB_econ_credits + _reward;
 publicVariable "OPCB_econ_credits";
