@@ -1,11 +1,12 @@
 params ["_vehicle","_isAttack"];
 _staticType = ["rhs_Metis_9k115_2_vmf","rhs_Kornet_9M133_2_vmf","RHS_Stinger_AA_pod_D","RHS_M2StaticMG_D","RHS_M2StaticMG_MiniTripod_D","RHS_TOW_TriPod_D","RHS_MK19_TriPod_D","B_Mortar_01_F","B_Static_Designator_01_F"];
+_tankpos = getPos tank_spawnpos;
 
 if (_isAttack == 1) then 
 {
  	
-	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
-	_helicopter setdir 0;
+	_helicopter = _vehicle createVehicle (_tankpos);
+	_helicopter setdir 40;
 	
 	private _cargoIndex = -1;
 	_vehicle = toUpper _vehicle;
@@ -43,8 +44,8 @@ if (_isAttack == 1) then
 } else {if (_vehicle in _staticType) then 
 	
 	{
-	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);
-	_helicopter setdir 0;
+	_helicopter = _vehicle createVehicle (_tankpos);
+	_helicopter setdir 40;
 	
 	_helicopter addMPEventHandler ["MPKilled",
 	{
@@ -57,8 +58,8 @@ if (_isAttack == 1) then
 
 } else  
 {
-	_helicopter = _vehicle createVehicle ([9767.66,9978.72,0]);	
-	_helicopter setdir 0;
+	_helicopter = _vehicle createVehicle (_tankpos);	
+	_helicopter setdir 40;
 	
 	private _cargoIndex = -1;
 	_vehicle = toUpper _vehicle;

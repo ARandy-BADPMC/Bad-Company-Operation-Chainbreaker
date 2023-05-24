@@ -2,11 +2,12 @@
 disableSerialization;
 _tank = (findDisplay 9901) displayCtrl 1500;
 _tankselect = lbCurSel _tank;
+_tankpos = getPos tank_spawnpos;
 if(_tankselect != -1) then  
 {	
 	_vehicle = _tank lbData _tankselect;
 
-	_nObjects= nearestObjects [[9767.66,9978.72,0], ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
+	_nObjects = nearestObjects [_tankpos, ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
 
 	//remoteExec ["CHAB_fnc_setServerVariables",2];
 	_maxtanks = missionNamespace getVariable ["MaxTanks",1];
@@ -25,7 +26,7 @@ if(_tankselect != -1) then
 		"B_Static_Designator_01_F"
 	];
 	
-	if (count _nObjects == 0) then {
+	if (count _nObjects <= 1) then {
 
 		if ((toUpper _vehicle) in OPCB_econ_vehicleGroundAttackTypes) then 
 		{

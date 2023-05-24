@@ -7,8 +7,9 @@ waitUntil {
 };
 _ctrl = (findDisplay 9903) displayCtrl 1500;
 _nearestVeh = [];
+_tankpos = getPos tank_spawnpos;
 _i = 0;
-	_nearestVeh = nearestObjects [[9767.66,9978.72,0], ["LandVehicle", "ReammoBox_F"], 15];
+	_nearestVeh = nearestObjects [_tankpos, ["LandVehicle", "ReammoBox_F"], 15];
 	{	
 		_asd = _x getVariable ["vehicleSerial","TIN"];
 		if (_asd == "TIN") then {
