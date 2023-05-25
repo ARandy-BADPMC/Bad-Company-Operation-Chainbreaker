@@ -5,14 +5,14 @@ if (_isAttack == 1) then
 	if (_vehicle == "B_UAV_02_dynamicLoadout_f") then 
 	
 	{
-	_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
+	_helicopter = _vehicle createVehicle (markerPos "aircraft_spawner");
 	createVehicleCrew _helicopter;
 	} 
 	
 	else 
 	
 	{
-	_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
+	_helicopter = _vehicle createVehicle (markerPos "aircraft_spawner");
 	};
 	
 	_helicopter setdir (getdir heli_spawnpos);
@@ -46,7 +46,7 @@ if (_isAttack == 1) then
 		
 } else 
 {
-	_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
+	_helicopter = _vehicle createVehicle (markerPos "aircraft_spawner");
 	_helicopter setdir (getdir heli_spawnpos);
 	
 	private _cargoIndex = -1;

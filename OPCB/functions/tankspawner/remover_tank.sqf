@@ -7,7 +7,7 @@ waitUntil {
 };
 _ctrl = (findDisplay 9903) displayCtrl 1500;
 _nearestVeh = [];
-_tankpos = getPos tank_spawnpos;
+_tankpos = markerPos "tank_spawner";
 _i = 0;
 	_nearestVeh = nearestObjects [_tankpos, ["LandVehicle", "ReammoBox_F"], 15];
 	{	

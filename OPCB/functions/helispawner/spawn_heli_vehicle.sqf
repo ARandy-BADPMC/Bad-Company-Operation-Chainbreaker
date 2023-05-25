@@ -19,7 +19,7 @@ if(_loadout != -1) then
 		_pylons = _loadoutska select (_pylons_number +1);	
 	};
 	
-	_nObjects= nearestObjects [getPos heli_spawnpos, ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
+	_nObjects= nearestObjects [markerPos "aircraft_spawner", ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
 
 	//remoteExec ["CHAB_fnc_setServerVariables",2];
 	_maxAttackChoppers = missionNamespace getVariable ["MaxAttackHelis",1];
