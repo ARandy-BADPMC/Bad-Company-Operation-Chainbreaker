@@ -2,7 +2,7 @@
 disableSerialization;
 _tank = (findDisplay 9901) displayCtrl 1500;
 _tankselect = lbCurSel _tank;
-_tankpos = getPos tank_spawnpos;
+_tankpos = markerPos "tank_spawner";
 if(_tankselect != -1) then  
 {	
 	_vehicle = _tank lbData _tankselect;

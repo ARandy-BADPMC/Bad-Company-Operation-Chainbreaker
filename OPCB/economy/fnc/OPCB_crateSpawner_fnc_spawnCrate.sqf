@@ -7,7 +7,7 @@ if (_crateCount > 19) exitWith {
 
 _ctrl = (findDisplay 74815) displayCtrl 1500;
 _select = lbCurSel _ctrl;
-_tankpos = getPos tank_spawnpos;
+_tankpos = markerPos "tank_spawner";
 
 if (_select != -1) then {
 
