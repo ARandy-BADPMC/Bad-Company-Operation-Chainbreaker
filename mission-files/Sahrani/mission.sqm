@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1023;
+		nextID=1048;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={19512.99,115.48534,14072.09};
-		dir[]={-0.80233383,-0.40540105,-0.43829113};
-		up[]={-0.35592034,0.91405576,-0.19442871};
-		aside[]={-0.47943839,-8.9383684e-007,0.87766343};
+		pos[]={19186.514,128.1244,14155.696};
+		dir[]={-0.081413813,-0.66876894,-0.73912454};
+		up[]={-0.073255859,0.74320775,-0.66502339};
+		aside[]={-0.99407959,6.4010965e-007,0.10950085};
 	};
 };
 binarizationWanted=0;
@@ -119,13 +119,14 @@ addons[]=
 	"CUP_CAStructures_A_BuildingWIP",
 	"Hz_mod_persistency",
 	"A3_Structures_F_Heli_Items_Airport",
-	"A3_Structures_F_Ind_AirPort"
+	"A3_Structures_F_Ind_AirPort",
+	"A3_Props_F_Enoch_Infrastructure_Traffic"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=64;
+		items=65;
 		class Item0
 		{
 			className="rhsusf_c_troops";
@@ -551,6 +552,13 @@ class AddonsMetaData
 			name="Hunter'z Persistency Module";
 			author="K.Hunter";
 			url="https://github.com/KHunter-Arma";
+		};
+		class Item64
+		{
+			className="A3_Props_F_Enoch";
+			name="Arma 3 Contact Platform - Decorative and Mission Objects";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -13081,7 +13089,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=410;
+		items=424;
 		class Item0
 		{
 			dataType="Group";
@@ -31095,7 +31103,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={19003.498,19.963905,14087.587};
+				position[]={19003.441,19.993809,14087.069};
 				angles[]={0,0.70024353,0};
 			};
 			areaSize[]={4,0,2};
@@ -31103,7 +31111,7 @@ class Mission
 			flags=1;
 			id=1013;
 			type="ModuleHideTerrainObjects_F";
-			atlOffset=4.9999552;
+			atlOffset=4.9997206;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -31347,7 +31355,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={19242.934,12.003,13851.403};
-				angles[]={-0,0.69813168,0.011246439};
+				angles[]={0,0.69813168,0.011246439};
 			};
 			side="Empty";
 			flags=4;
@@ -31381,7 +31389,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={19256.01,11.97,13866.988};
-				angles[]={-0,0.69813168,0};
+				angles[]={0,0.69813168,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31408,6 +31416,240 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item410
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19003.955,18.593121,14087.454};
+				angles[]={0,1.0329906,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="gate_north";
+			};
+			id=1023;
+			type="Land_RoadBarrier_01_F";
+		};
+		class Item411
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19230.074,16.500689,13834.228};
+				angles[]={0,3.8439653,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="gate_south";
+			};
+			id=1024;
+			type="Land_RoadBarrier_01_F";
+			atlOffset=-9.5367432e-007;
+		};
+		class Item412
+		{
+			dataType="Trigger";
+			position[]={19003.906,14.945136,14087.318};
+			angle=2.6733727;
+			class Attributes
+			{
+				onActivation="gate_north animate [""Door_1_rot"", 1]";
+				onDeactivation="gate_north animate [""Door_1_rot"", 0]";
+				sizeA=10;
+				sizeB=5;
+				sizeC=5;
+				repeatable=1;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=1025;
+			type="EmptyDetectorArea10x10";
+		};
+		class Item413
+		{
+			dataType="Trigger";
+			position[]={19229.998,12.857037,13833.989};
+			angle=2.310955;
+			class Attributes
+			{
+				onActivation="gate_south animate [""Door_1_rot"", 1]";
+				onDeactivation="gate_south animate [""Door_1_rot"", 0]";
+				sizeA=10;
+				sizeB=5;
+				sizeC=5;
+				repeatable=1;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=1026;
+			type="EmptyDetectorArea10x10";
+		};
+		class Item414
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18999.168,15.708891,14093.621};
+				angles[]={0.049459036,4.1820869,6.2651882};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1027;
+			type="Wire";
+		};
+		class Item415
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19007.498,15.752966,14080.499};
+				angles[]={0.049459036,3.8964758,6.2045975};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1028;
+			type="Wire";
+		};
+		class Item416
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19223.596,13.858878,13837.608};
+				angles[]={0.042724371,3.8118727,6.2202682};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1029;
+			type="Wire";
+		};
+		class Item417
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19235.25,13.522794,13828.296};
+				angles[]={0.042724371,3.8556924,6.2202682};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1030;
+			type="Wire";
+			atlOffset=9.5367432e-007;
+		};
+		class Item418
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19264.799,11.97,13877.748};
+				angles[]={-0,3.6897058,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1042;
+			type="CUP_A1_Road_ces10_25";
+		};
+		class Item419
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19266.885,11.97,13880.747};
+				angles[]={-0,3.5567164,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1043;
+			type="CUP_A1_Road_ces10_25";
+		};
+		class Item420
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19268.5,11.97,13884.587};
+				angles[]={-0,3.3804779,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1044;
+			type="CUP_A1_Road_ces10_25";
+		};
+		class Item421
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19269.775,11.97,13888.487};
+				angles[]={-0,3.3127103,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1045;
+			type="CUP_A1_Road_ces10_25";
+		};
+		class Item422
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19270.65,11.97,13892.464};
+				angles[]={-0,3.1607871,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1046;
+			type="CUP_A1_Road_ces10_25";
+		};
+		class Item423
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19270.865,11.97,13895.747};
+				angles[]={-0,3.0617452,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1047;
+			type="CUP_A1_Road_ces10_25";
 		};
 	};
 	class Connections
