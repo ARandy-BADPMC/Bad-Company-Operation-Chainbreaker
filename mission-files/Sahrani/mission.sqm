@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1048;
+		nextID=1051;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={19186.514,128.1244,14155.696};
-		dir[]={-0.081413813,-0.66876894,-0.73912454};
-		up[]={-0.073255859,0.74320775,-0.66502339};
-		aside[]={-0.99407959,6.4010965e-007,0.10950085};
+		pos[]={19259.465,33.642975,13940.147};
+		dir[]={-0.81409842,-0.5788213,0.047007464};
+		up[]={-0.57785881,0.81545436,0.033366576};
+		aside[]={0.057645723,0,0.99833703};
 	};
 };
 binarizationWanted=0;
@@ -120,13 +120,15 @@ addons[]=
 	"Hz_mod_persistency",
 	"A3_Structures_F_Heli_Items_Airport",
 	"A3_Structures_F_Ind_AirPort",
-	"A3_Props_F_Enoch_Infrastructure_Traffic"
+	"A3_Props_F_Enoch_Infrastructure_Traffic",
+	"A3_Structures_F_Civ_Dead",
+	"A3_Props_F_AoW_Items_Decorative"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=65;
+		items=66;
 		class Item0
 		{
 			className="rhsusf_c_troops";
@@ -560,6 +562,13 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item65
+		{
+			className="A3_Props_F_AoW";
+			name="Arma 3 Art of War - Decorative and Mission ";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
@@ -572,7 +581,8 @@ dlcs[]=
 	"Tank",
 	"Jets",
 	"RHS_GREF",
-	"Enoch"
+	"Enoch",
+	"AoW"
 };
 randomSeed=9966067;
 class ScenarioData
@@ -13089,7 +13099,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=424;
+		items=427;
 		class Item0
 		{
 			dataType="Group";
@@ -31475,7 +31485,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={19229.998,12.857037,13833.989};
-			angle=2.310955;
+			angle=2.3109546;
 			class Attributes
 			{
 				onActivation="gate_south animate [""Door_1_rot"", 1]";
@@ -31561,7 +31571,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={19264.799,11.97,13877.748};
-				angles[]={-0,3.6897058,0};
+				angles[]={0,3.6897058,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31577,7 +31587,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={19266.885,11.97,13880.747};
-				angles[]={-0,3.5567164,0};
+				angles[]={0,3.5567164,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31593,7 +31603,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={19268.5,11.97,13884.587};
-				angles[]={-0,3.3804779,0};
+				angles[]={0,3.3804779,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31609,7 +31619,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={19269.775,11.97,13888.487};
-				angles[]={-0,3.3127103,0};
+				angles[]={0,3.3127103,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31625,7 +31635,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={19270.65,11.97,13892.464};
-				angles[]={-0,3.1607871,0};
+				angles[]={0,3.1607871,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31641,7 +31651,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={19270.865,11.97,13895.747};
-				angles[]={-0,3.0617452,0};
+				angles[]={0,3.0617452,0};
 			};
 			side="Empty";
 			flags=4;
@@ -31650,6 +31660,54 @@ class Mission
 			};
 			id=1047;
 			type="CUP_A1_Road_ces10_25";
+		};
+		class Item424
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19266.359,12.633842,14031.128};
+				angles[]={0,5.4535027,-0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=1048;
+			type="Land_fs_feed_F";
+		};
+		class Item425
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19226.193,15.048626,13917.563};
+				angles[]={0,0.70294094,-0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=1049;
+			type="Land_Grave_obelisk_F";
+		};
+		class Item426
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19226.543,15.020933,13917.959};
+				angles[]={0,0.70154727,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=1050;
+			type="MemorialWreath_01_F";
+			atlOffset=2.2143145;
 		};
 	};
 	class Connections
