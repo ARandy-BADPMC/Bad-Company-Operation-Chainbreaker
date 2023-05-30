@@ -1,6 +1,7 @@
+_callerRE = remoteExecutedOwner;
+
 if (CrateCount > 19) exitWith {
-	hint "You have reached the box limit!";
-	closeDialog 0;
+	"You have reached the box limit!" remoteExec ["hint", _callerRE];
 };
 
 _ctrl = (findDisplay 74815) displayCtrl 1500;
@@ -14,10 +15,9 @@ if (_select != -1) then {
 	
 		_crateType = _ctrl lbData _select;
 		
-		hint "Box delivered";
+		"Box delivered" remoteExec ["hint", _callerRE];
 			
 		CrateCount = CrateCount + 1;
-		publicVariable "CrateCount"; 
 		
 		_crate = _crateType createVehicle ([9767.66,9978.72,0]);	
 		_crate setdir 0;
@@ -35,9 +35,8 @@ if (_select != -1) then {
 		
 		_crate addMPEventHandler ["MPKilled",
 		{
-			if (local (_this select 0)) then {
+			if (isServer) then {
 				CrateCount = CrateCount - 1;
-				publicVariable "CrateCount";
 			};
 		}];
 		
@@ -49,11 +48,9 @@ if (_select != -1) then {
 		};
 		
 	} else {
-		hint "Spawn position is not empty";
+		"Spawn position is not empty" remoteExec ["hint", _callerRE];
 	};
 
 } else {
-	hint "Select a box first";
+	"Select a box first" remoteExec ["hint", _callerRE];
 };
-
-closeDialog 0;

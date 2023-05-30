@@ -42,7 +42,7 @@ ins_allMarkerCount = count _markerPositions;
 ins_halfMarkerCount = round (ins_allMarkerCount*0.55);
 
 
-call compile preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\init.sqf";
+call compileFinal preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\init.sqf";
 
 cleanupVics = [];
 

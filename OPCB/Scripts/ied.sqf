@@ -3,8 +3,6 @@ iedNum=15;								//Number of IEDs per marker, defined in iedMkr	[Default: 5]
 iedDmg=false;							//Can the IED be killed with weapons?			[Default: false] TRUE = Yes | FALSE = Can only be disarmed
 Dbug=false;								//Show IED markers on map?						[Default: false]
 
-
-
 //!!DO NOT EDIT BELOW!!
 iedBlast=["Bo_Mk82","Rocket_03_HE_F","M_Mo_82mm_AT_LG","Bo_GBU12_LGB","Bo_GBU12_LGB_MI10","HelicopterExploSmall"];
 iedList=["IEDLandBig_F","IEDLandSmall_F","IEDUrbanBig_F","IEDUrbanSmall_F"];

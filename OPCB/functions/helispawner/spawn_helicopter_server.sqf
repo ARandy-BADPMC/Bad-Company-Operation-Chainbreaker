@@ -2,17 +2,11 @@ params ["_vehicle","_pylons","_isAttack"];
 private "_helicopter";
 if (_isAttack == 1) then 
 {	
-	if (_vehicle == "B_UAV_02_dynamicLoadout_f") then 
-	
-	{
-	_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
-	createVehicleCrew _helicopter;
-	} 
-	
-	else 
-	
-	{
-	_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
+	if (_vehicle == "B_UAV_02_dynamicLoadout_f") then {
+		_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
+		createVehicleCrew _helicopter;
+	} else {
+		_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
 	};
 	
 	_helicopter setdir (getdir heli_spawnpos);
@@ -31,21 +25,22 @@ if (_isAttack == 1) then
 	
 	_helicopter call Hz_pers_API_addVehicle;
 	
-	[_helicopter] call skinapplier;
+	[_helicopter] call BADCO_fnc_skinApplier;
 	
 	_pylonPaths = (configProperties [configFile >> "CfgVehicles" >> typeOf _helicopter >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"]) apply {getArray (_x >> "turret")};
 	{ _helicopter removeWeaponGlobal getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon") } forEach getPylonMagazines _helicopter;
 	{ _helicopter setPylonLoadOut [_forEachIndex + 1, _x, true, _pylonPaths select _forEachIndex] } forEach _pylons;
 
 	_helicopter addMPEventHandler ["MPKilled",{ 
-		MaxAttackHelis = MaxAttackHelis - 1;
-		publicVariable "MaxAttackHelis";
+		if (isServer) then {
+			MaxAttackHelis = MaxAttackHelis - 1;
+			publicVariable "MaxAttackHelis";
+		};
 	}];
 
 	[_helicopter,_isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
 		
-} else 
-{
+} else {
 	_helicopter = _vehicle createVehicle (getpos heli_spawnpos);
 	_helicopter setdir (getdir heli_spawnpos);
 	
@@ -63,12 +58,14 @@ if (_isAttack == 1) then
 	
 	_helicopter call Hz_pers_API_addVehicle;
 	
-	[_helicopter] call skinapplier;
+	[_helicopter] call BADCO_fnc_skinApplier;
 	
 	_helicopter addMPEventHandler ["MPKilled",
 	{
-		MaxTransHelis = MaxTransHelis - 1;
-		publicVariable "MaxTransHelis";
+		if (isServer) then {
+			MaxTransHelis = MaxTransHelis - 1;
+			publicVariable "MaxTransHelis";
+		};
 	}];
 
 	if (typeOf _helicopter == "RHS_UH60M_MEV_d") then {

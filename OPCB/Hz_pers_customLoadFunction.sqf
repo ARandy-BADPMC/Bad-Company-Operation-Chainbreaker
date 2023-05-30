@@ -28,7 +28,7 @@ publicVariable "OPCB_econ_currentTier";
 		[_vehicle, (OPCB_econ_vehicleCargoSpaces select _cargoIndex) select 1] call ace_cargo_fnc_setSize;
 	};
 	
-	[_vehicle] call skinapplier;
+	[_vehicle] call BADCO_fnc_skinApplier;
 	
 	// vehicle restrictions and other misc. stuff
 	if (_vehType isKindOf "Air") then {
@@ -44,8 +44,10 @@ publicVariable "OPCB_econ_currentTier";
 			publicVariable "MaxAttackHelis";
 
 			_vehicle addMPEventHandler ["MPKilled",{ 
-				MaxAttackHelis = MaxAttackHelis - 1;
-				publicVariable "MaxAttackHelis";
+				if (isServer) then {
+					MaxAttackHelis = MaxAttackHelis - 1;
+					publicVariable "MaxAttackHelis";
+				};
 			}];
 				
 		} else {
@@ -54,8 +56,10 @@ publicVariable "OPCB_econ_currentTier";
 
 			_vehicle addMPEventHandler ["MPKilled",
 			{
-				MaxTransHelis = MaxTransHelis - 1;
-				publicVariable "MaxTransHelis";
+				if (isServer) then {
+					MaxTransHelis = MaxTransHelis - 1;
+					publicVariable "MaxTransHelis";
+				};
 			}];
 
 			if (_vehType == "RHS_UH60M_MEV_D") then {
@@ -75,10 +79,10 @@ publicVariable "OPCB_econ_currentTier";
 			publicVariable "MaxTanks";
 			
 			_vehicle addMPEventHandler ["MPKilled",{
-			if (local (_this select 0)) then {
-				MaxTanks = MaxTanks - 1;
-				publicVariable "MaxTanks";
-			};
+				if (isServer) then {
+					MaxTanks = MaxTanks - 1;
+					publicVariable "MaxTanks";
+				};
 		}];
 		
 		[_vehicle] remoteExec ["CHAB_fnc_tank_restriction",0,true];
@@ -89,7 +93,7 @@ publicVariable "OPCB_econ_currentTier";
 			publicVariable "MaxAPC";
 		
 			_vehicle addMPEventHandler ["MPKilled",{
-				if (local (_this select 0)) then {
+				if (isServer) then {
 					MaxAPC = MaxAPC - 1;
 					publicVariable "MaxAPC";
 				};

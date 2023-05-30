@@ -353,3 +353,18 @@ class chainbreaker
 		};
 	};
 };
+class badco
+{
+	tag = "BADCO";
+	class miscellaneous
+	{
+		class classCheck
+		{
+			file = "functions\BADCO_class_check.sqf";
+		};
+		class skinApplier
+		{
+			file = "functions\BADCO_skin_applier.sqf";
+		};
+	}
+}

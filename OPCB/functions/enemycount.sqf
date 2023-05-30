@@ -7,7 +7,6 @@ _groups = EnemyGroups;
 	} forEach units _x;
 } forEach _groups;
 
-
 _enemies = 9999;
 while {
 	_enemies > (_enemysum / 3)
@@ -16,8 +15,12 @@ while {
 	sleep 10;
 	_enemies = 0;
 	{
+		private _group = _x;
 		{
-			_enemies = _enemies +1;
+			private _unit = _x;
+			if (alive _unit) then {
+				_enemies = _enemies +1;
+			};
 		} forEach units _x;
 	} forEach _groups;
 };

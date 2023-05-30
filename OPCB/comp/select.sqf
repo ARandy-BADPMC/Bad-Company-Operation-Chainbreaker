@@ -1,7 +1,11 @@
 params ["_taskobjective"];
 private ["_radius","_currentTasknumber","_base","_selected"];
 
-_selected = _taskobjective;
+if (isNil "_taskobjective") then {
+	_selected = "";
+} else {
+	_selected = _taskobjective;
+};
 
 if (IsATaskRunning) exitWith {
 	_callerRE = remoteExecutedOwner;
