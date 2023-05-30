@@ -36,13 +36,15 @@ if (_uid in _soar) then {
 };
 
 player addEventHandler ["GetInMan",{[_this select 0,_this select 1, _this select 2] call BADCO_fnc_classCheck;}];
-if (typeof player == "rhsusf_usmc_marpat_d_uav" || typeOf player == "rhsusf_airforce_jetpilot") then 
+
+private ["_soarUnitTypes"];
+#include "data\soarUnitTypes.sqf";
+
+if (typeof player in _soarUnitTypes || typeOf player in _soarUnitTypes) then 
 {
-	if (_uid in _soar) then 
-	{
+	if (_uid in _soar) then {
 		hint "Welcome whitelisted player"
-	} else 
-	{
+	} else {
 		hint "You must be whitelisted to use this slot.";
 		[] spawn {
 			sleep 10;
@@ -51,19 +53,16 @@ if (typeof player == "rhsusf_usmc_marpat_d_uav" || typeOf player == "rhsusf_airf
 	};
 };
 
-Developers = ["76561198117073327","76561198142692277","76561198002110130","76561198048254349"];  //76561198142692277 -Alex. K., 76561198117073327 - A.Randy,
-if(getPlayerUID player in Developers) 
-	then 
-	{
-		player addAction ["<t color='#00AAFF'>Developer Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, -99, false, true, "", "true", 10, false,""];
-	
-	};
+if(getPlayerUID player in Developers) then {
+	player addAction ["<t color='#00AAFF'>Developer Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, -99, false, true, "", "true", 10, false,""];
+};
 
 jeff addaction ["Lights on", {
 	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
 	_lamp sethit ["light_1_hitpoint",0];
 	_lamp sethit ["light_2_hitpoint",0];
 }];
+
 jeff addaction ["Lights off", {
 	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
 	_lamp sethit ["light_1_hitpoint",1];

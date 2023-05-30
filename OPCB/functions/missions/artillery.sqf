@@ -1,7 +1,6 @@
 params ["_village", "_guard"];
 _stations = [];
 _artgroups = [];
-private ["_base"];
 _base = [0,0,0];
 _group = createGroup [resistance,true];
 [_group] call CHAB_fnc_serverGroups;
@@ -21,10 +20,10 @@ for "_i" from 0 to 3 do {
 	_pos = getPos _civilian;
 	_comp = [selectRandom _comps,_pos, [0,0,0], _dir, true, true ] call LARs_fnc_spawnComp;
 	
-	_artilerryunit = (allUnits select {_x distance _pos < 10 && _x != _civilian}); 
-	_artgroups pushBack (_artilerryunit select 0);
-	[_artilerryunit,_village] spawn CHAB_fnc_fire_artilerry;
-	(_artilerryunit select 0) addEventHandler ["Killed", {
+	_artilleryunit = (allUnits select {_x distance _pos < 10 && _x != _civilian}); 
+	_artgroups pushBack (_artilleryunit select 0);
+	[_artilleryunit,_village] spawn CHAB_fnc_fire_artillery;
+	(_artilleryunit select 0) addEventHandler ["Killed", {
 		ArtilleryRemaining = ArtilleryRemaining - 1;
 	}];
 

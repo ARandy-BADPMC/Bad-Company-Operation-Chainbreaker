@@ -45,12 +45,12 @@ if(_loadout != -1) then
 			
 		    [_vehicle,_pylons,1] remoteExec ["CHAB_fnc_spawn_helicopter_server",2];
 
-		  } else {hint "There are already 2 attack helicopters in game";};
+		  } else {
+			hint "There are already 2 attack helicopters in game";
+			};
 
-		} else 
-		{
-		  if (MaxTransHelis != 3) then
-		  {
+		} else {
+		  if (MaxTransHelis != 3) then {
 			
 			_tier = ["AIR", _vehicle] call OPCB_econ_fnc_getVehicleTier;
 			_cost = ["AIR", _tier] call OPCB_econ_fnc_getTierCost;
@@ -71,7 +71,9 @@ if(_loadout != -1) then
 		  } else{hint "3 Transport helicopters are already in game.";};
 		};
 	  	
-	} else {hint "Spawn position is not empty";};
+	} else {
+		hint "Spawn position is not empty";
+	};
 }
 else
 {

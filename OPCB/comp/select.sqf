@@ -46,11 +46,7 @@ _currentTasknumber = format ["TaskNumberFinal_%1",TaskNumber];
 	_radius = 9999;
 } forEach _tasks;
 
-_handle = [_radius] spawn CHAB_fnc_findSpot;
-waitUntil {
-	scriptDone _handle
-};
-_base = TaskSpot;
+_base = [_radius] call CHAB_fnc_findSpot;
 
 IsATaskRunning = true;
 switch ( _selected) do { 

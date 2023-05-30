@@ -48,14 +48,14 @@ _hmgs = [_officer] call CHAB_fnc_spawn_hmg;
 	{
 		_x addEventHandler ["FiredNear", {
 			params ["_unit", "_firer", "_distance", "_weapon", "_muzzle", "_mode", "_ammo", "_gunner"];
-			ChapoTrigger = true;
+			_chapoTrigger = true;
 			_unit removeEventHandler ["FiredNear", _thisEventHandler];
 		}];
 	} forEach units _x;
 } forEach EnemyGroups;
 
 waitUntil {
-  !alive _officer || ChapoTrigger
+  !alive _officer || {_chapoTrigger}
 };
 
 if (alive _officer) then {

@@ -149,13 +149,13 @@ class chainbreaker
 		{
 			file = "functions\missions\idap_fn.sqf";
 		};
-		class fire_artilerry  
+		class fire_artillery  
 		{
-			file = "functions\missions\fire_artilerry.sqf";
+			file = "functions\missions\fire_artillery.sqf";
 		};
-		class artilerry  
+		class artillery  
 		{
-			file = "functions\missions\artilerry.sqf";
+			file = "functions\missions\artillery.sqf";
 		};
 	};
 	class miscellaneous

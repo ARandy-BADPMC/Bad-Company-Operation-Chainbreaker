@@ -1,6 +1,5 @@
-
 params ["_howBig"];
-
+_taskSpot = [0,0,0];
 if (_howBig < 500) then {
 	
 	_suitableSpots = [];
@@ -34,10 +33,7 @@ if (_howBig < 500) then {
 	
 	};
 
-	TaskSpot = selectRandom _suitableSpots;
+	_taskSpot = selectRandom _suitableSpots;
 	
-}
-else
-{
-	TaskSpot = [0,0,0];
 };
+_taskSpot
