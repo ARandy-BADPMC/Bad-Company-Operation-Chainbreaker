@@ -6,10 +6,6 @@ class EditorData
 	scaleGridStep=1;
 	autoGroupingDist=10;
 	toggles=513;
-	mods[]=
-	{
-		"3denEnhanced"
-	};
 	class ItemIDProvider
 	{
 		nextID=922;
@@ -20,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={9192.4219,154.98863,9241.7021};
-		dir[]={0.96930367,-0.08981739,0.22887389};
-		up[]={0.087413639,0.99595833,0.02064028};
-		aside[]={0.22980271,0,-0.97323728};
+		pos[]={9027.2139,148.90784,9280.6758};
+		dir[]={-0.038277194,-0.87574518,0.48125443};
+		up[]={-0.069434188,0.4827731,0.87298793};
+		aside[]={0.99685127,3.3178367e-009,0.07928583};
 	};
 };
 binarizationWanted=0;
@@ -23412,14 +23408,14 @@ class Mission
 				};
 				class Attribute4
 				{
-					property="ALiVE_sys_profile_pathfindingSize";
-					expression="_this setVariable ['pathfindingSize',_value,true];";
+					property="ALiVE_sys_profile_activeLimiter";
+					expression="_this setVariable ['activeLimiter',_value,true];";
 					class Value
 					{
 						class data
 						{
 							singleType="STRING";
-							value="[600,75]";
+							value="14";
 						};
 					};
 				};
@@ -23438,19 +23434,6 @@ class Mission
 				};
 				class Attribute6
 				{
-					property="ALiVE_sys_profile_activeLimiter";
-					expression="_this setVariable ['activeLimiter',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="14";
-						};
-					};
-				};
-				class Attribute7
-				{
 					property="ALiVE_sys_profile_spawnRadiusUAV";
 					expression="_this setVariable ['spawnRadiusUAV',_value,true];";
 					class Value
@@ -23462,7 +23445,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute8
+				class Attribute7
 				{
 					property="ALiVE_sys_profile_speedModifier";
 					expression="_this setVariable ['speedModifier',_value,true];";
@@ -23475,7 +23458,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute9
+				class Attribute8
 				{
 					property="ALiVE_sys_profile_zeusSpawn";
 					expression="_this setVariable ['zeusSpawn',_value,true];";
@@ -23488,7 +23471,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute10
+				class Attribute9
 				{
 					property="ALiVE_sys_profile_spawnTypeHeliRadius";
 					expression="_this setVariable ['spawnTypeHeliRadius',_value,true];";
@@ -23501,7 +23484,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute11
+				class Attribute10
 				{
 					property="ALiVE_sys_profile_debug";
 					expression="_this setVariable ['debug',_value,true];";
@@ -23514,7 +23497,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute12
+				class Attribute11
 				{
 					property="ALiVE_sys_profile_persistent";
 					expression="_this setVariable ['persistent',_value,true];";
@@ -23527,7 +23510,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute13
+				class Attribute12
 				{
 					property="ALiVE_sys_profile_syncronised";
 					expression="_this setVariable ['syncronised',_value,true];";
@@ -23540,7 +23523,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute14
+				class Attribute13
 				{
 					property="ALiVE_sys_profile_virtualcombat_speedmodifier";
 					expression="_this setVariable ['virtualcombat_speedmodifier',_value,true];";
@@ -23553,7 +23536,7 @@ class Mission
 						};
 					};
 				};
-				nAttributes=15;
+				nAttributes=14;
 			};
 		};
 		class Item191
