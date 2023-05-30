@@ -58,7 +58,10 @@ globalWaterPos = [3067.06,16839.7,10.1122]; //universal for all maps, has to be 
 
 CityMarker = createMarker ["citymarker",  getpos officer_jeff];
 
-Cities = nearestLocations [getPos jeff, ["NameCity","NameCityCapital","NameVillage"], 8000];
+_axis = worldSize / 2;
+_center = [_axis, _axis , 0];
+
+Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"], _axis];
 
 // for AI -- let's see if this strains the server too much (with more AI)
 setViewDistance 3500;
