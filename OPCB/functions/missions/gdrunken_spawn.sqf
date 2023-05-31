@@ -4,12 +4,16 @@ _group = createGroup east;
 _tanks = [];
 _list = [];
 _suitable = [0, 0, 0];
+_offset = 0;
 
 for "_i" from 0 to 3 do {
 
 	while {count _list > 0 || count _suitable == 3} do {
-		_suitable = [_pos, 0, 1500, 20, 0, 0.4, 0] call BIS_fnc_findSafePos;
+		_suitable = [_pos, 200 + _offset, 1500 + _offset, 20, 0, 0.4, 0] call BIS_fnc_findSafePos;
 		_list = nearestTerrainObjects [_suitable,["TREE","BUILDING","RUIN","ROCK","HOUSE"], 55,false];
+		if (count _suitable == 3) then {
+			_offset = _offset + 100;
+		}
 	};
 
 	_unit = _group createUnit [OPCB_unitTypes_inf_ins_commander, _suitable, [], 2, "NONE"];
