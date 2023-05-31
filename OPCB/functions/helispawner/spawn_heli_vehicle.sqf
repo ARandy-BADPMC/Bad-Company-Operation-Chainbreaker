@@ -20,59 +20,60 @@ if(_loadout != -1) then
 	};
 	
 	_nObjects= nearestObjects [getPos heli_spawnpos, ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
-
-	//remoteExec ["CHAB_fnc_setServerVariables",2];
-	_maxAttackChoppers = missionNamespace getVariable ["MaxAttackHelis",1];
-	_maxTransChoppers = missionNamespace getVariable ["MaxTransHelis",1];
 	
 	if (count _nObjects == 1) then {
 
 		if ((toUpper _vehicle) in OPCB_econ_vehicleAirAttackTypes) then 
 		{
-		  if (_maxAttackChoppers != 2) then
+		  if (MaxAttackHelis != 2) then
 		  {
 				
-				_tier = ["AIR", _vehicle] call OPCB_econ_fnc_getVehicleTier;
-				_cost = ["AIR", _tier] call OPCB_econ_fnc_getTierCost;
-				
-				if (OPCB_econ_credits < _cost) exitWith {
-					hint "You don't have enough credits to buy this vehicle!";
-				};
-				
-				OPCB_econ_credits = OPCB_econ_credits - _cost;
-				publicVariable "OPCB_econ_credits";
-				
-				hint "Vehicle delivered";
+			_tier = ["AIR", _vehicle] call OPCB_econ_fnc_getVehicleTier;
+			_cost = ["AIR", _tier] call OPCB_econ_fnc_getTierCost;
 			
-		  	missionNamespace setVariable ["MaxAttackHelis",_maxattackchoppers + 1,true];
+			if (OPCB_econ_credits < _cost) exitWith {
+				hint "You don't have enough credits to buy this vehicle!";
+			};
+			
+			OPCB_econ_credits = OPCB_econ_credits - _cost;
+			publicVariable "OPCB_econ_credits";
+			
+			hint "Vehicle delivered";
+
+			MaxAttackHelis = MaxAttackHelis + 1;
+			publicVariable "MaxAttackHelis"; 
+			
 		    [_vehicle,_pylons,1] remoteExec ["CHAB_fnc_spawn_helicopter_server",2];
 
-		  } else {hint "There are already 2 attack helicopters in game";};
+		  } else {
+			hint "There are already 2 attack helicopters in game";
+			};
 
-		} else 
-		{
-		  if (_maxTransChoppers != 3) then
-		  {
+		} else {
+		  if (MaxTransHelis != 3) then {
 			
-				_tier = ["AIR", _vehicle] call OPCB_econ_fnc_getVehicleTier;
-				_cost = ["AIR", _tier] call OPCB_econ_fnc_getTierCost;
-				
-				if (OPCB_econ_credits < _cost) exitWith {
-					hint "You don't have enough credits to buy this vehicle!";
-				};
-				
-				OPCB_econ_credits = OPCB_econ_credits - _cost;
-				publicVariable "OPCB_econ_credits";
-				
-				hint "Vehicle delivered";
+			_tier = ["AIR", _vehicle] call OPCB_econ_fnc_getVehicleTier;
+			_cost = ["AIR", _tier] call OPCB_econ_fnc_getTierCost;
 			
-		  	missionNamespace setVariable ["MaxTransHelis",_maxTransChoppers + 1,true];
+			if (OPCB_econ_credits < _cost) exitWith {
+				hint "You don't have enough credits to buy this vehicle!";
+			};
+			
+			OPCB_econ_credits = OPCB_econ_credits - _cost;
+			publicVariable "OPCB_econ_credits";
+			
+			hint "Vehicle delivered";
+			
+			MaxTransHelis = MaxTransHelis + 1;
+			publicVariable "MaxTransHelis";
 		    [_vehicle,_pylons,0] remoteExec ["CHAB_fnc_spawn_helicopter_server",2];
 
 		  } else{hint "3 Transport helicopters are already in game.";};
 		};
 	  	
-	} else {hint "Spawn position is not empty";};
+	} else {
+		hint "Spawn position is not empty";
+	};
 }
 else
 {

@@ -535,7 +535,7 @@ class crateSpawner {
 		class heli_spawn: RscButton
 		{
 			idc = 1602;
-			action = "call OPCB_crateSpawner_fnc_spawnCrate; closeDialog 0;";
+			action = " [] remoteExec ['OPCB_crateSpawner_fnc_spawnCrate',2]; closeDialog 0;";
 
 			text = "GIMME !"; //--- ToDo: Localize;
 			x = 31 * GUI_GRID_W + GUI_GRID_X;

@@ -16,7 +16,12 @@ _trg setTriggerArea [600, 600, 0, false];
 _trg setTriggerActivation ["EAST", "NOT PRESENT", false];
 _trg setTriggerStatements ["this", "", ""];
 [] call CHAB_fnc_enemycount;
-waitUntil {sleep 10;triggerActivated _trg};
+
+waitUntil {
+  sleep 10;
+  triggerActivated _trg
+};
+
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
 OPCB_econ_credits = OPCB_econ_credits + _reward;
 publicVariable "OPCB_econ_credits";

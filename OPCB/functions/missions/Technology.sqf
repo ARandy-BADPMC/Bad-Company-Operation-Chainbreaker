@@ -13,7 +13,7 @@ _destroytargets = nearestObjects [ _guardpos, ["Land_Device_assembled_F"], 30];
 _thetarget = selectrandom _destroytargets;
 waitUntil { 
 	sleep 10; 
-	!(alive _thetarget) || (damage _thetarget > 0.8)
+	!(alive _thetarget) || {(damage _thetarget > 0.8)}
 };
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
 OPCB_econ_credits = OPCB_econ_credits + _reward;

@@ -1,26 +1,53 @@
-call compile preprocessFileLineNumbers "unitTypes.sqf";
+#include "unitTypes.sqf"
+#include "data\helicopterLoadouts.sqf"
+
+enableSaving [false, false];
+enableSentences true;
+enableTeamswitch false;
+
+
+call compileFinal preprocessFileLineNumbers "economy\init.sqf";
+
+[] execVM "Scripts\ied.sqf";
+[] execVM "insurgency\init.sqf";
+[] execVM "Vcom\VcomInit.sqf";
+
+Resistance setFriend [EAST, 1]; Resistance setFriend [WEST, 0]; Resistance setFriend [Civilian, 1];
+
+EAST setFriend [Resistance, 1]; EAST setFriend [WEST, 0]; EAST setFriend [Civilian, 1];	
+
+WEST setFriend [EAST, 0]; WEST setFriend [Resistance, 0]; WEST setFriend [Civilian, 1]; 	
+
+Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [Resistance, 1];
+
+Hz_pers_var_insurgencyClearedMarkers = [];
+Hz_pers_customLoadFunction = compileFinal preprocessFileLineNumbers "Hz_pers_customLoadFunction.sqf";
+Hz_pers_firstTimeLaunchFunction = compileFinal preprocessFileLineNumbers "Hz_pers_firstTimeLaunchFunction.sqf";	
 
 ["Initialize"] call BIS_fnc_dynamicGroups;
-call compileFinal preprocessfilelinenumbers "functions\BADCO_skin_applier.sqf";
-call compileFinal preprocessfilelinenumbers "Scripts\BADCO_Arsenal.sqf";
+#include "functions\BADCO_Arsenal.sqf"
 
-missionNamespace setVariable ["running_task",0];
-missionNamespace setVariable ["task_spot",[5840,5700,0]];
+IsATaskRunning = false;
+TaskNumber = 0;
+EnemyGroups = [];
 
-missionNamespace setVariable ["enemy_groups",[]];
+CrateCount = 0;
+publicVariable "CrateCount";
+MaxTanks = 0;
+publicVariable "MaxTanks";
+MaxAttackHelis = 0;
+publicVariable "MaxAttackHelis";
+MaxTransHelis = 0;
+publicVariable "MaxTransHelis";
+MaxAPC = 0;
+publicVariable "MaxAPC";
+MaxStatic = 0;
+publicVariable "MaxStatic";
 
-missionNamespace setVariable ["Chapo_trigger",false];
+Developers = ["76561198117073327","76561198142692277","76561198002110130","76561198048254349"];  //76561198142692277 -Alex. K., 76561198117073327 - A.Randy,
+publicVariable "Developers";
 
-
-missionNamespace setVariable ["MaxTanks",0,true];
-missionNamespace setVariable ["MaxAttackHelis",0,true];
-missionNamespace setVariable ["MaxTransHelis",0,true];
-missionNamespace setVariable ["MaxAPC",0,true];
-missionNamespace setVariable ["MaxStatic",0,true];
-
-_zeus_group = createGroup sideLogic;
-
-missionNamespace setVariable ["Zeus_group",_zeus_group];
+ZeusGroup = createGroup sideLogic;
 
 {
 	_x allowDamage false;
@@ -29,48 +56,14 @@ missionNamespace setVariable ["Zeus_group",_zeus_group];
 
 globalWaterPos = [3067.06,16839.7,10.1122]; //universal for all maps, has to be changed manually 
 
+CityMarker = createMarker ["citymarker",  getpos officer_jeff];
 
-/*
-/\
-||
+_axis = worldSize / 2;
+_center = [_axis, _axis , 0];
 
-Result:
-0.116768 ms
-
-Cycles:
-8564/10000
-
-old results:
-
-Result:
-0.242012 ms
-
-Cycles:
-9651/10000
-*/ //if you want to check execution time : BIS_fnc_codePerformance; 
-
-
-//[7427,7955,0] [7480,13351,0] [1403.27,7529.75,0]
-/*
-
-11680
-[5840,5700,0];
-11400
-
-*/
-missionNamespace setVariable ["World_center",[5840,5700,0]];
-_citymarker = createMarker ["citymarker",  getpos officer_jeff];
-missionNamespace setVariable ["citymarker",_citymarker];
-
-_nearbyLocations = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital","NameVillage"], 8000];
-/*
-{
-	_marker1 = createMarker ["Marker"+ str _x, getPos _x];
-	_marker1 setMarkerType "hd_objective";
-} forEach _nearbyLocations;*/
-
-missionNamespace setVariable ["Cities",_nearbyLocations];
+Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"], _axis];
 
 // for AI -- let's see if this strains the server too much (with more AI)
 setViewDistance 3500;
 setObjectViewDistance 3500;
+
