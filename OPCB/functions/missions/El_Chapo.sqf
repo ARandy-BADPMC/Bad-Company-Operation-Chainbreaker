@@ -44,6 +44,8 @@ _spawncomps = [_officer] call CHAB_fnc_roadblock_ins; //double fun
 
 _hmgs = [_officer] call CHAB_fnc_spawn_hmg;
 
+ChapoTrigger = false;
+
 {
 	{
 		_x addEventHandler ["FiredNear", {
