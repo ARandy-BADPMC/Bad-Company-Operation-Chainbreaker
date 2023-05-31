@@ -1,18 +1,12 @@
-if (isServer) then {
-	
-	// tier count is 0-based in code so it goes from 9 to 0! (T10 = 9, T1 = 0)
-	OPCB_econ_currentTier = 9;
-	publicVariable "OPCB_econ_currentTier";	
-	OPCB_econ_credits = 40;
-	publicVariable "OPCB_econ_credits";
-	
-	OPCB_econ_initDone = true;
+// tier count is 0-based in code so it goes from 9 to 0! (T10 = 9, T1 = 0)
+OPCB_econ_currentTier = 9;
+OPCB_econ_credits = 40;
 
-};
+OPCB_econ_initDone = true;
 
-call compile preprocessFileLineNumbers "economy\vehicleCargoSpaces.sqf";
-call compile preprocessFileLineNumbers "economy\vehicleAttackTypes.sqf";
-call compile preprocessFileLineNumbers "economy\crateCargoSizes.sqf";
+#include "vehicleCargoSpaces.sqf";
+#include "vehicleAttackTypes.sqf";
+#include "crateCargoSizes.sqf";
 
 if (!isDedicated) then {
 
@@ -21,9 +15,9 @@ if (!isDedicated) then {
 		!isNil "OPCB_econ_credits"
 	};
 	
-	call compile preprocessFileLineNumbers "economy\tierList_INF.sqf";
-	call compile preprocessFileLineNumbers "economy\tierList_ENG.sqf";
-	call compile preprocessFileLineNumbers "economy\tierList_AIR.sqf";
+	#include "tierList_INF.sqf";
+	#include "tierList_ENG.sqf";
+	#include "tierList_AIR.sqf";
 	
 	OPCB_econ_vehicleTypes_INF = [];
 	{
@@ -51,11 +45,11 @@ if (!isDedicated) then {
 		OPCB_econ_crateTypes pushBack (_x select 0);
 	} foreach OPCB_econ_vehicleCargoSizes;
 	
-	OPCB_econ_fnc_getTierCost = compile preprocessFileLineNumbers "economy\fnc\OPCB_econ_fnc_getTierCost.sqf";
-	OPCB_econ_fnc_getVehicleTier = compile preprocessFileLineNumbers "economy\fnc\OPCB_econ_fnc_getVehicleTier.sqf";
+	OPCB_econ_fnc_getTierCost = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_econ_fnc_getTierCost.sqf";
+	OPCB_econ_fnc_getVehicleTier = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_econ_fnc_getVehicleTier.sqf";
 	
-	OPCB_crateSpawner_openDialog = compile preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_openDialog.sqf";
-	OPCB_crateSpawner_fnc_spawnCrate = compile preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_fnc_spawnCrate.sqf";
+	OPCB_crateSpawner_openDialog = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_openDialog.sqf";
+	OPCB_crateSpawner_fnc_spawnCrate = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_fnc_spawnCrate.sqf";
 	
 	OPCB_econ_initDone = true;
 

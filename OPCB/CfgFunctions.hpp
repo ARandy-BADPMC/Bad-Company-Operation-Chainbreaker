@@ -149,13 +149,13 @@ class chainbreaker
 		{
 			file = "functions\missions\idap_fn.sqf";
 		};
-		class fire_artilerry  
+		class fire_artillery  
 		{
-			file = "functions\missions\fire_artilerry.sqf";
+			file = "functions\missions\fire_artillery.sqf";
 		};
-		class artilerry  
+		class artillery  
 		{
-			file = "functions\missions\artilerry.sqf";
+			file = "functions\missions\artillery.sqf";
 		};
 	};
 	class miscellaneous
@@ -351,9 +351,20 @@ class chainbreaker
 		{
 			file = "functions\playerreq\whitelist.sqf";
 		};
-		class setServerVariables
-		{
-			file = "functions\playerreq\setServerVariables.sqf";
-		};
 	};
 };
+class badco
+{
+	tag = "BADCO";
+	class miscellaneous
+	{
+		class classCheck
+		{
+			file = "functions\BADCO_class_check.sqf";
+		};
+		class skinApplier
+		{
+			file = "functions\BADCO_skin_applier.sqf";
+		};
+	}
+}

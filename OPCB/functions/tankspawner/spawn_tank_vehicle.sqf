@@ -1,18 +1,13 @@
-
 disableSerialization;
 _tank = (findDisplay 9901) displayCtrl 1500;
 _tankselect = lbCurSel _tank;
 _tankpos = markerPos "tank_spawner";
-if(_tankselect != -1) then  
-{	
+
+if(_tankselect != -1) then  {	
+
 	_vehicle = _tank lbData _tankselect;
 
 	_nObjects = nearestObjects [_tankpos, ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
-
-	//remoteExec ["CHAB_fnc_setServerVariables",2];
-	_maxtanks = missionNamespace getVariable ["MaxTanks",1];
-	_maxAPC = missionNamespace getVariable ["MaxAPC",1];
-	_maxStatics = missionNamespace getVariable ["MaxStatic",1];
 
 	_staticType = [
 		"rhs_Metis_9k115_2_vmf",
@@ -30,7 +25,7 @@ if(_tankselect != -1) then
 
 		if ((toUpper _vehicle) in OPCB_econ_vehicleGroundAttackTypes) then 
 		{
-		  if (_maxtanks == 0) then
+		  if (MaxTanks == 0) then
 		  {
 			
 				_tier = ["ENG", _vehicle] call OPCB_econ_fnc_getVehicleTier;
@@ -49,30 +44,29 @@ if(_tankselect != -1) then
 				publicVariable "OPCB_econ_credits";
 				
 				hint "Vehicle delivered";
-			
-		  	missionNamespace setVariable ["MaxTanks",_maxtanks + 1,true];
+
+			MaxTanks = MaxTanks + 1;
+			publicVariable "MaxTanks";
 		    [_vehicle,1] remoteExec ["CHAB_fnc_spawn_tank_server",2];
 
 		  } else {hint "There is already a tank/SPG in game";};
 
-		} else 
-		{
-		
-		if (_vehicle in _staticType) then 
-		
-		{
-		  if (_maxStatics != 5) then 
-		  {
-			_maxStatics = _maxStatics + 1;
-			missionNamespace setVariable ["MaxStatic",_maxStatics,true];
-			[_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2]; 
-			
-		  } else {hint "5 statics are already in game";};
-		} else
-		{
-		  if (_maxAPC != 12) then
-		  {	
+		} else {
+			if (_vehicle in _staticType) then {
+			if (MaxStatic != 5) then 
+			{
+				MaxStatic = MaxStatic + 1;
+				publicVariable "MaxStatic";
+				[_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2]; 
 				
+			} else {
+				hint "5 statics are already in game";
+				};
+			} 
+			else {
+			if (MaxAPC != 12) then
+			{	
+					
 				_tier = ["INF", _vehicle] call OPCB_econ_fnc_getVehicleTier;
 				_cost = ["INF", _tier] call OPCB_econ_fnc_getTierCost;				
 				// just in case
@@ -89,15 +83,20 @@ if(_tankselect != -1) then
 				publicVariable "OPCB_econ_credits";
 				
 				hint "Vehicle delivered";
-			
-		  	missionNamespace setVariable ["MaxAPC",_maxAPC + 1,true];
-		    [_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2];
 
-		  } else{hint "12 vehicles are already in game. Recover or destroy existing ones.";};
-		};
+				MaxAPC = MaxAPC +1;
+				publicVariable "MaxAPC";
+				[_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2];
+
+			} else {
+					hint "12 vehicles are already in game. Recover or destroy existing ones.";
+				};
+			};
 		};
 	  	
-	} else {hint "Spawn position is not empty";};
+	} else {
+		hint "Spawn position is not empty";
+	};
 }
 else
 {

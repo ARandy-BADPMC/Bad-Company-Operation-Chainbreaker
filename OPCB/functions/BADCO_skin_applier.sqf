@@ -1,4 +1,3 @@
-skinapplier = {
 params ["_vehicle"];
 _vehicleType = typeOf _vehicle;
 
@@ -55,5 +54,3 @@ if (_vehicle isKindOf "AIR") then
 	};
 
 _vehicle setPlateNumber "Bad Co";
-	
-};

@@ -229,27 +229,3 @@ aiSpawn = {
 		if exitCondition exitWith {};
 	};
 };
-
-// this function has no purpose in 0.72 - I assume it was originally used for AIs bought by players and forgotten
-/* groupAI = {
-    private ["_unit","_waited"];
-    
-    scopeName "main";
-	if (isDead(player) || lifeState player != "ALIVE" || vehicle player != player) exitWith {};
-	if (nearestEastMen(getPosATL player,respawnRange,true,"count") > 0) exitWith {};
-	if ((round (time*10)) % 50 != 0) exitWith {};
-	{
-		if !(isNil _x) then {
-			_unit = call compile _x;
-			if (isNull _unit) exitWith {};
-			_waited = _unit getVariable "waited";
-			if !(isDead(_unit) && alive _unit && local _unit) exitWith {
-				if !(isNil "_waited") then { _unit setVariable ["waited", nil]; };
-			};			
-			if (isNil "_waited") exitWith { _unit setVariable ["waited", true]; breakTo "main"; };
-			_unit setVariable ["waited", nil];
-			_unit setPosATL getPosATL player;
-			breakTo "main";
-		};
-	} forEach squadUnitStrings(squadString(player));
-}; */
