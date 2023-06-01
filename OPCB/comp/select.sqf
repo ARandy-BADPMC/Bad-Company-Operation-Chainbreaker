@@ -102,7 +102,7 @@ switch ( _selected) do {
 		[_base,_currentTasknumber] call CHAB_fnc_El_Chapo;
 	};  
 	default { 
-		IsATaskRunning = false;
 		"Failed to spawn a task, try again" remoteExec["hint",0];
 	}; 
 };
+IsATaskRunning = false;

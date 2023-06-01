@@ -44,9 +44,6 @@ publicVariable "MaxAPC";
 MaxStatic = 0;
 publicVariable "MaxStatic";
 
-Developers = ["76561198117073327","76561198142692277","76561198002110130","76561198048254349"];  //76561198142692277 -Alex. K., 76561198117073327 - A.Randy,
-publicVariable "Developers";
-
 ZeusGroup = createGroup sideLogic;
 
 {
