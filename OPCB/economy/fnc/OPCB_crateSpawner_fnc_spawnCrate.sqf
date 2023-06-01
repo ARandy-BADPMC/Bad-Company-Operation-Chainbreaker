@@ -6,12 +6,12 @@ if (CrateCount > 19) exitWith {
 
 _ctrl = (findDisplay 74815) displayCtrl 1500;
 _select = lbCurSel _ctrl;
+_tankpos = markerPos "tank_spawner";
 
 if (_select != -1) then {
 
-	_nObjects = nearestObjects [[9767.66,9978.72,0], ["all"], 7];
-
-	if (count _nObjects == 0) then {
+	_nObjects = nearestObjects [_tankpos, ["all"], 7];
+	if (count _nObjects <= 1) then {
 	
 		_crateType = _ctrl lbData _select;
 		
@@ -19,8 +19,8 @@ if (_select != -1) then {
 			
 		CrateCount = CrateCount + 1;
 		
-		_crate = _crateType createVehicle ([9767.66,9978.72,0]);	
-		_crate setdir 0;
+		_crate = _crateType createVehicle (_tankpos);	
+		_crate setdir 40;
 		
 		_cargoRequirement = 0;
 		{

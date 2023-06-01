@@ -19,7 +19,7 @@ if(_loadout != -1) then
 		_pylons = _loadoutska select (_pylons_number +1);	
 	};
 	
-	_nObjects= nearestObjects [getPos heli_spawnpos, ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
+	_nObjects= nearestObjects [markerPos "aircraft_spawner", ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
 	
 	if (count _nObjects == 1) then {
 

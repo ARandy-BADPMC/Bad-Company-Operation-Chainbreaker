@@ -6,7 +6,7 @@ disableSerialization;
 	};
 	_ctrl = (findDisplay 9902) displayCtrl 1500;
 	_nearestVeh = [];
-	_helipos = getPos heli_spawnpos;
+	_helipos = markerPos "aircraft_spawner";
 	_i = 0;
   	_nearestVeh = nearestObjects [_helipos, ["Air"], 50];
   	{	

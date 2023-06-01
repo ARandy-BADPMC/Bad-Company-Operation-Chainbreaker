@@ -1,10 +1,13 @@
 disableSerialization;
 _tank = (findDisplay 9901) displayCtrl 1500;
 _tankselect = lbCurSel _tank;
+_tankpos = markerPos "tank_spawner";
+
 if(_tankselect != -1) then  {	
+
 	_vehicle = _tank lbData _tankselect;
 
-	_nObjects= nearestObjects [[9767.66,9978.72,0], ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
+	_nObjects = nearestObjects [_tankpos, ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
 
 	_staticType = [
 		"rhs_Metis_9k115_2_vmf",
@@ -18,7 +21,7 @@ if(_tankselect != -1) then  {
 		"B_Static_Designator_01_F"
 	];
 	
-	if (count _nObjects == 0) then {
+	if (count _nObjects <= 1) then {
 
 		if ((toUpper _vehicle) in OPCB_econ_vehicleGroundAttackTypes) then 
 		{
