@@ -18,7 +18,7 @@ if (isMultiplayer) then {
 
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
-jeff addAction ["<t color='#FF0000'>Request Mission</t>", "if ((count allPlayers) > 0) then {[] remoteExec ['CHAB_fnc_mission_selector',2]} else {hint 'At least 2 people are required to be at base to request a mission!'}", nil, 1, false, true, "", "true", 10, false,""];
+jeff addAction ["<t color='#FF0000'>Request Mission</t>", "if (({((markerpos 'base_marker') distance2d _x) < 1000} count playableUnits) > 1) then {[] remoteExec ['CHAB_fnc_mission_selector',2]} else {hint 'At least 2 people are required to be at base to request a mission!'}", nil, 1, false, true, "", "true", 10, false,""];
 
 
 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];   //HELISPAWNER
