@@ -1,6 +1,10 @@
 params ["_taskobjective"];
 private ["_radius","_currentTasknumber","_base","_selected"];
 
+if ((count allPlayers) <= 1) exitWith {
+	"At least 2 people are required to be at base to request a mission!" remoteExec["hint", _callerRE];
+};
+
 if (isNil "_taskobjective") then {
 	_selected = "";
 } else {
@@ -102,7 +106,7 @@ switch ( _selected) do {
 		[_base,_currentTasknumber] call CHAB_fnc_El_Chapo;
 	};  
 	default { 
-		"Failed to spawn a task, try again" remoteExec["hint",0];
+		"Failed to spawn a task, try again" remoteExec["hint", _callerRE];
 	}; 
 };
 IsATaskRunning = false;

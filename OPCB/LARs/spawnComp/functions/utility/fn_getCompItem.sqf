@@ -5,10 +5,6 @@
 private[ "_found" ];
 params[ "_compReference", "_item" ];
 
-if ( _compReference isEqualType objNull ) exitWith {
-	"LARs_fnc_getCompItem null passed as composition reference" call BIS_fnc_error;
-};
-
 //[ "Marker", "Object", "Group", "Waypoint", "Trigger", "Logic" ];
 {
 	if ( !isNil "_x" && { _x select 0 == _compReference } ) exitWith {
@@ -33,7 +29,7 @@ if ( _compReference isEqualType objNull ) exitWith {
 }forEach LARs_spawnedCompositions;
 
 if ( isNil "_found" ) then {
-	[ -1, objNull ] select ( _item isEqualType 0 )
+	[ -1, objNull ] select ( _item isEqualType 0 ) 
 }else{
 	_found
 };

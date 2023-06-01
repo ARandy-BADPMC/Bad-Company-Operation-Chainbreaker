@@ -3,10 +3,6 @@
 private[ "_obj", "_group", "_nul" ];
 params[ "_compReference" ];
 
-if ( _compReference isEqualType objNull ) exitWith {
-	"LARs_fnc_deleteComp null passed as composition reference" call BIS_fnc_error;
-};
-
 private _deferedGroups = [];
 //[ "Marker", "Object", "Group", "Waypoint", "Trigger", "Logic" ];
 {

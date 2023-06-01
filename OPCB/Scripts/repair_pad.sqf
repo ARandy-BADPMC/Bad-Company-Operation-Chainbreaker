@@ -82,5 +82,3 @@ while {fuel _this < 0.99} do {
 
 sleep x_reload_time_factor;
 _this vehicleChat format ["%1 is ready...", _type];
-
-if (true) exitWith {};
