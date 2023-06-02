@@ -1,10 +1,9 @@
-_pos = _this select 0;
+params ["_pos"];
 _comps = [];
 _group = createGroup east;
 _tanks = [];
 
 for "_i" from 0 to 3 do {
-
 	_suitable = [0, 0, 0];
 	_maxDist = 1500;
 	_list = [];

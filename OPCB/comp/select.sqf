@@ -72,10 +72,10 @@ switch ( _selected) do {
 		[_base,_currentTasknumber] call CHAB_fnc_Resupply;
 	};  
 	case "Retrieve" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Retrieve;
+		[_currentTasknumber] call CHAB_fnc_Retrieve;
 	};  
 	case "Attack" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Attack;
+		[_currentTasknumber] call CHAB_fnc_Attack;
 	}; 
 	case "Clear out" : {
 		[_currentTasknumber] call CHAB_fnc_Clear_out;
@@ -84,7 +84,7 @@ switch ( _selected) do {
 		[_base,_currentTasknumber] call CHAB_fnc_GDrunken;
 	};  
 	case "Minefield" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Minefield;
+		[_currentTasknumber] call CHAB_fnc_Minefield;
 	};
 	case "El Chapo" : {
 		[_base,_currentTasknumber] call CHAB_fnc_El_Chapo;

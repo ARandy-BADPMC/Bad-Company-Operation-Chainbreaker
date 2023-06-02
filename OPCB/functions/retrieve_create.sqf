@@ -1,8 +1,8 @@
-
+params ["_guard"];
 private["_pos"];
 
-_guard = _this select 0;
-_CivClasses = ["C_man_p_beggar_F_afro","C_man_polo_1_F_afro","C_man_polo_2_F_afro","C_man_polo_3_F_afro","C_man_polo_4_F_afro","C_man_polo_5_F_afro","C_man_polo_6_F_afro","C_man_shorts_1_F_afro","C_man_p_fugitive_F_afro","C_man_p_shorts_1_F_afro","C_man_shorts_2_F_afro","C_man_shorts_3_F_afro","C_man_shorts_4_F_afro"];
+#include "..\data\civClasses.sqf";
+
 _crateHouse = 0;
 _taskItems = [];
 _pos = 0;
@@ -31,7 +31,7 @@ for "_i" from 0 to count _houses -1 do {
 	{
 		_positions = [_item] call BIS_fnc_buildingPositions;
 		_pos = selectRandom _positions;
-		_unit =	 _defendergroup createUnit [selectrandom _CivClasses, _pos, [], 1, "NONE"];
+		_unit =	 _defendergroup createUnit [selectrandom _civClasses, _pos, [], 1, "NONE"];
 		_unit disableAI "MOVE";
 		_unit setunitpos "UP";
 
@@ -58,7 +58,7 @@ for "_i" from 0 to count _houses -1 do {
 	{
 		_positions = [_item] call BIS_fnc_buildingPositions;
 		_pos = selectRandom _positions;
-		_unit =	 _defendergroup createUnit [selectrandom _CivClasses, _pos, [], 1, "NONE"];
+		_unit =	 _defendergroup createUnit [selectrandom _civClasses, _pos, [], 1, "NONE"];
 		_unit disableAI "MOVE";
 		_unit setunitpos "UP";
 

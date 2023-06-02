@@ -1,26 +1,37 @@
+params ["_minEnemyPercentage"];
+
+if(isNil "_minEnemyPercentage") then {
+	_minEnemyPercentage = 33;
+};
+
+if(_minEnemyPercentage > 100) then {
+	_minEnemyPercentage = 100;
+};
+
 _enemysum = 0;
 
-_groups = EnemyGroups;
 {
 	{
 		_enemysum = _enemysum +1;
-	} forEach units _x;
-} forEach _groups;
+	} forEach units _x select { alive _x };
+} forEach EnemyGroups;
 
-_enemies = 9999;
+hint str _enemysum;
+
+_currentEnemies = _enemysum;
+
+_requiredSum = _enemysum * (_minEnemyPercentage * 0.01);
+
 while {
-	_enemies > (_enemysum / 3)
-	
+	_currentEnemies > _requiredSum
 } do {
 	sleep 10;
-	_enemies = 0;
+	_currentEnemies = 0;
 	{
-		private _group = _x;
 		{
-			private _unit = _x;
-			if (alive _unit) then {
-				_enemies = _enemies +1;
-			};
-		} forEach units _x;
-	} forEach _groups;
+			_currentEnemies = _currentEnemies +1;
+		} forEach units _x select { alive _x };
+	} forEach EnemyGroups;
 };
+
+true
