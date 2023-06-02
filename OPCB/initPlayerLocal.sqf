@@ -53,7 +53,7 @@ if (typeof player in _soarUnitTypes || typeOf player in _soarUnitTypes) then
 
 #include "data\developers.sqf";
 
-if(isServer || {getPlayerUID player in _developers}) then {
+if(getPlayerUID player in _developers) then {
 	player addAction ["<t color='#00AAFF'>Developer Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, -99, false, true, "", "true", 10, false,""];
 };
 
