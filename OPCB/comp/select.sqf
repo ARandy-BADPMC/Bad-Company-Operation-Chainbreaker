@@ -1,7 +1,9 @@
 params ["_taskobjective"];
 private ["_radius","_currentTasknumber","_base","_selected"];
 
-if ((count allPlayers) <= 1) exitWith {
+_callerRE = remoteExecutedOwner;
+
+if (count allPlayers <= 1 && {isNil "_taskobjective"}) exitWith {
 	"At least 2 people are required to be at base to request a mission!" remoteExec["hint", _callerRE];
 };
 
@@ -12,28 +14,10 @@ if (isNil "_taskobjective") then {
 };
 
 if (IsATaskRunning) exitWith {
-	_callerRE = remoteExecutedOwner;
 	"This option is unavailable at the moment" remoteExec ["hint", _callerRE];
 };
 
-_tasks = [
-	["Eliminate",100],
-	["Technology",100],
-	["Destroy",60],
-	["Annihilate and Destroy",45],
-	["Secure",60],
-	["Capture",25],
-	["Exterminate",25],
-	["Neutralize",40],
-	["Neutralize2",45], 
-	["Attack",9999],
-	["Clear out",9999],
-	["Resupply",100],
-	["IDAP",85],
-	["Retrieve",9999],
-	["GDrunken",80],
-	["Minefield",9999]
-];
+#include "..\data\tasks.sqf";
 
 if (count _selected == 0) then {
 	_selected = ((selectRandom _tasks) select 0);
@@ -44,7 +28,7 @@ TaskNumber = TaskNumber + 1;
 _currentTasknumber = format ["TaskNumberFinal_%1",TaskNumber];
 
 {
-	if (_selected isEqualTo (_x select 0)) exitWith{
+	if (_selected isEqualTo (_x select 0)) exitWith {
 		_radius = (_x select 1);
 	};
 	_radius = 9999;
@@ -94,7 +78,7 @@ switch ( _selected) do {
 		[_base,_currentTasknumber] call CHAB_fnc_Attack;
 	}; 
 	case "Clear out" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Clear_out;
+		[_currentTasknumber] call CHAB_fnc_Clear_out;
 	};
 	case "GDrunken" : {
 		[_base,_currentTasknumber] call CHAB_fnc_GDrunken;

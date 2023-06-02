@@ -1,20 +1,9 @@
 params ["_marker"];
-_isClose = 1;
-private _players = [];
 
 waitUntil 
 {
 	sleep 10;
-	_players = [];
-	{
-		if ( (isplayer _x) && (_x distance _marker ) < 800) then {
-		_isClose = _isClose + 1;
-		_players pushback _x;
-		} else {
-			_isClose = _isClose -1;
-		}
-	} forEach playableUnits;
-  	_isClose <= 0 || count _players == 0
+  	allPlayers findIf { _x  distance _marker < 1000 } == -1 || {count allPlayers == 0}
 };
 
 {

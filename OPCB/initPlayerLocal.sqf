@@ -1,4 +1,7 @@
-waitUntil {!isNull player};
+waitUntil {
+	sleep 1;
+	!isNull player
+};
 
 removeAllWeapons player;
 removeVest player;
