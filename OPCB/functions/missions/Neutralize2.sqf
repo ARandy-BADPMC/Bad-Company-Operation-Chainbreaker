@@ -22,7 +22,7 @@ _leader disableAI "PATH";
 _spawncomps = [_leader] call CHAB_fnc_roadblock_ins;
 
 waitUntil {
-	sleep 10;
+	sleep 2;
 	_houses findIf {alive _x } == -1 && {(_leader distance (getPos dropoffpoint) < 10) || {!alive _leader}}
 };
 
@@ -44,7 +44,8 @@ if(!alive _leader) then {
   [ _x ] call LARs_fnc_deleteComp;
 } forEach _spawncomps;
 
-[] spawn {
+[_leader] spawn {
+	params ["_leader"];
 	sleep 60;
 	deleteVehicle _leader;
 }

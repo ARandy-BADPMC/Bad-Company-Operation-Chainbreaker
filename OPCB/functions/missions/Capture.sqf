@@ -19,8 +19,8 @@ _target1 disableAI "AUTOCOMBAT";
 _target1 setunitpos "middle";
 _spawncomps = [_target1] call CHAB_fnc_roadblock_ins;
 waitUntil {
-	sleep 10;
-	{!alive _target1} || _target1 distance (getPos dropoffpoint) < 10
+	sleep 2;
+	!alive _target1 || {_target1 distance (getPos dropoffpoint) < 10}
 };
 
 if(alive _target1) then {
@@ -42,7 +42,8 @@ else {
 
 [ _comp ] call LARs_fnc_deleteComp;
 
-[] spawn {
-  sleep 60;
-  deleteVehicle _target1;
+[_target1] spawn {
+	params ["_target1"];
+	sleep 60;
+	deleteVehicle _target1;
 };

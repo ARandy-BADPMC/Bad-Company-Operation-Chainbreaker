@@ -14,16 +14,6 @@ class jey_adminconsole_dialog
 			w = 0.458333 * safezoneW;
 			h = 0.549786 * safezoneH;
 		};
-		/*class jey_getgroups: RscButton
-		{
-			idc = 1600;
-			text = "Groups"; //--- ToDo: Localize;
-			x = 0.282292 * safezoneW + safezoneX;
-			y = 0.247099 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_getgroups";
-		};*/
 		class jey_close: RscButton
 		{
 			idc = 1601;
@@ -34,18 +24,6 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "closeDialog 0";
 		};
-		/*
-		class jey_leave_spectator: RscButton
-		{
-			idc = 1622;
-			text = "Leave Spectator"; //--- ToDo: Localize;
-			x = 0.282292 * safezoneW + safezoneX;
-			y = 0.697923 * safezoneH + safezoneY;
-			w = 0.0632917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "['Terminate'] call BIS_fnc_EGSpectator;closeDialog 0";
-		};
-		*/
 		class fix_task: RscButton
 		{
 			idc = 1632;
@@ -66,88 +44,7 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "[] call CHAB_fnc_zeus";
 		};
-		/*
-		class jey_kick: RscButton
-		{
-			idc = 1602;
-			text = "Kick"; //--- ToDo: Localize;
-			x = 0.4325 * safezoneW + safezoneX;
-			y = 0.247099 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_kick";
-		};
-		class jey_ban: RscButton
-		{
-			idc = 1604;
-			text = "Ban"; //--- ToDo: Localize;
-			x = 0.4325 * safezoneW + safezoneX;
-			y = 0.327013 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_ban";
-		};
 		
-		class jey_kicklist: RscListbox
-		{
-			idc = 1500;
-			x = 0.491667 * safezoneW + safezoneX;
-			y = 0.247099 * safezoneH + safezoneY;
-			w = 0.22042 * safezoneW;
-			h = 0.175931 * safezoneH;
-		};
-		class jey_restart: RscButton
-		{
-			idc = 1605;
-			text = "Restart Mission"; //--- ToDo: Localize;
-			x = 0.282292 * safezoneW + safezoneX;
-			y = 0.510996 * safezoneH + safezoneY;
-			w = 0.0622917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "remoteExec ['CHAB_fnc_restart',2]";
-		};
-		class jey_spectator: RscButton
-		{
-			idc = 1626;
-			text = "Spectate"; //--- ToDo: Localize;
-			x = 0.282292 * safezoneW + safezoneX;
-			y = 0.598962 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_spectate;closeDialog 0";
-		};
-		
-		class jey_restart_server: RscButton
-		{
-			idc = 1625;
-			text = "Restart Server"; //--- ToDo: Localize;
-			x = 0.3625 * safezoneW + safezoneX;
-			y = 0.510996 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "remoteExec ['CHAB_fnc_restart_server',2]";
-		};
-		class jey_getpilots: RscButton
-		{
-			idc = 1606;
-			text = "Pilots"; //--- ToDo: Localize;
-			x = 0.3625 * safezoneW + safezoneX;
-			y = 0.247099 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_getpilots";
-		};
-		class jey_gettankcrew: RscButton
-		{
-			idc = 1607;
-			text = "Tank crew"; //--- ToDo: Localize;
-			x = 0.282887 * safezoneW + safezoneX;
-			y = 0.336016 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_gettankcrew";
-		};
-		*/
 		class jey_day: RscButton
 		{
 			idc = 1609;

@@ -1,4 +1,4 @@
-params ["_civilian"]
+params ["_civilian"];
 
 _village = _this select 3 select 0;
 _arts = _this select 3 select 1;

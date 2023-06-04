@@ -1,4 +1,5 @@
 private _reward = 40;
+params ["_current_tasknumber"];
 
 _city = selectRandom Cities;
 _citypos = locationPosition _city;
@@ -13,6 +14,7 @@ _guardpos = getPos _guard;
 _mines = [_guard] call CHAB_fnc_minefield_spawn;
 [_guard,6,0,2] call CHAB_fnc_spawn_ins;
 
+deleteVehicle _guard;
 {
   resistance revealMine _x;
   civilian revealMine _x;
@@ -23,7 +25,6 @@ waitUntil {
 	_mines findIf {alive _x } == -1
 };
 
-deleteVehicle _guard;
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
 OPCB_econ_credits = OPCB_econ_credits + _reward;
 publicVariable "OPCB_econ_credits";

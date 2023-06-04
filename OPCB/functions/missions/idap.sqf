@@ -40,7 +40,13 @@ ArtilleryRemaining = 4;
 
 waitUntil {
 	sleep 1;
-	ArtilleryRemaining <= 0
+	ArtilleryRemaining <= 0 || {!alive _guard}
+};
+
+if(!alive _guard) exitWith {
+	ArtilleryRemaining = 0;
+	"Mission failed. The IDAP officer is dead. " remoteExec ["hint"];
+	[_current_tasknumber, "FAILED",true] call BIS_fnc_taskSetState;
 };
 
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;	
@@ -60,9 +66,9 @@ publicVariable "OPCB_econ_credits";
 	params ["_reference"];
 	sleep 60;
 	{
-		if(typeName _x == "GROUP") then{
+		if(typeName _x == "GROUP") then {
 			{
-			deleteVehicle _x;
+				deleteVehicle _x;
 			} forEach (units _x);
 			deleteGroup _x;
 		}

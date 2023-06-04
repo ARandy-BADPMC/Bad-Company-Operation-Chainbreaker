@@ -15,6 +15,8 @@ _guardpos = getPos _guard;
 
 [_guard,10,2,2] call CHAB_fnc_spawn_rus;
 
+deleteVehicle _guard;
+
 [] call CHAB_fnc_enemycount;
 
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;

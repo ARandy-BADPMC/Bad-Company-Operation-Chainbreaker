@@ -1,4 +1,4 @@
-params ["p"];
+params ["_p"];
 
 _d = objNull;
 _r = 80000;

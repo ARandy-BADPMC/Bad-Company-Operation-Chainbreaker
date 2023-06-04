@@ -23,7 +23,7 @@ _spawncomps = [_leader] call CHAB_fnc_roadblock_ins;
 [_leader,10,1,2] call CHAB_fnc_spawn_ins;
 
 waitUntil {
-	sleep 10;
+	sleep 2;
 	_houses findIf {alive _x } == -1 && {(_leader distance (getPos dropoffpoint) < 10) || {!alive _leader}}
 };
 
@@ -45,7 +45,8 @@ if(!alive _leader) then {
 
 [ _comp ] call LARs_fnc_deleteComp;
 
-[] spawn {
+[_leader] spawn {
+	params ["_leader"];
 	sleep 60;
 	deleteVehicle _leader;
 }

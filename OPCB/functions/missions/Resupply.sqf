@@ -11,7 +11,7 @@ _current_task = _base getPos[random 600,random 360];
 _officer = _officergroup createUnit ["rhsusf_usmc_marpat_d_officer", _base, [], 2, "NONE"];
 _officer disableAI "MOVE";
 
-_container = "C_IDAP_supplyCrate_F" createVehicle (getMarkerPos "object_dropoff");
+_container = "C_IDAP_supplyCrate_F" createVehicle (getPos dropoffpoint);
 [_container, 5] call ace_cargo_fnc_setSize;
 clearItemCargoGlobal _container;
 _guardpos = getPos _officer;
@@ -25,11 +25,14 @@ for "_i" from 0 to 2 do {
 	_defenders pushBack _defender;
 };
 
-[_defenders] call CHAB_fnc_serverGroups;
-
 waitUntil {
   sleep 5;
-  _container distance _guardpos < 100
+  _container distance _guardpos < 100 || {!alive _container}
+};
+
+if(!alive _container) exitWith {
+	"The container is destroyed. There aer no more supplies. You have failed this one. " remoteExec ["hint"];
+	[_current_tasknumber, "FAILED",true] call BIS_fnc_taskSetState;
 };
 
 "You have delivered the supplies. Maybe you should stick around in case the enemies got news about our envoy!" remoteExec ["hint"];
@@ -99,16 +102,14 @@ for "_i" from 0 to 1 do {
 
 };
 
-_trg = createTrigger ["EmptyDetector", _guardpos,true];
-_trg setTriggerArea [1200, 1200, 0, false];
-_trg setTriggerActivation ["EAST", "NOT PRESENT", false];
-_trg setTriggerStatements ["this", "", ""];
+_handle = [] spawn CHAB_fnc_enemycount;
+
 
 [_current_tasknumber,_base] call BIS_fnc_taskSetDestination;
 
 waitUntil {
-	sleep 10;
-	!alive _officer || {triggerActivated _trg}
+	sleep 2;
+	!alive _officer || {scriptDone _handle}
 };
 
 if(!alive _officer) then {
@@ -126,8 +127,22 @@ if(!alive _officer) then {
 
 [ _comp ] call LARs_fnc_deleteComp;
 
-[] spawn {
+[_officer,_container, _defenders] spawn {
+	params ["_officer", "_container", "_defenders"];
 	sleep 60;
 	deleteVehicle _officer; 
 	deleteVehicle _container;
+
+	{
+		{
+			_vehicle = vehicle _x;
+			if (_vehicle != _x) then {
+				deleteVehicleCrew _vehicle;
+				deleteVehicle _vehicle;
+			};
+			deletevehicle _x;
+		} forEach units _x;
+		deleteGroup _x;
+	} forEach _defenders;
+
 }

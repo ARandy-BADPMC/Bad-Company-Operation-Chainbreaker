@@ -86,21 +86,16 @@ for "_i" from 0 to 1 do {
 
 	};
 
-
 };
 
-_trg = createTrigger ["EmptyDetector", _guardpos,true];
-_trg setTriggerArea [1200, 1200, 0, false];
-_trg setTriggerActivation ["EAST", "NOT PRESENT", false];
-_trg setTriggerStatements ["this", "", ""];
+_handle = [33] spawn CHAB_fnc_enemycount;
 
 [_current_tasknumber,_base] call BIS_fnc_taskSetDestination;
 waitUntil 
 {
 	sleep 10;
-	 !(alive _officer) || triggerActivated _trg
+	!alive _officer || {scriptDone _handle }
 };
-
 
 {
 	[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;

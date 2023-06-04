@@ -16,13 +16,12 @@ _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_sp
 [_guard,10,1,2] call CHAB_fnc_spawn_nat;
 
 _destroytargets = nearestObjects [ _guardpos, ["Land_Device_assembled_F","RHS_Mi24Vt_vvs","rhs_mi28n_vvs","Land_TTowerBig_1_F","Land_TTowerBig_2_F","rhs_p37","Land_i_Shed_Ind_F"], 30];
-_thetarget =selectRandom _destroytargets ;
 
 [] call CHAB_fnc_enemycount;
 
 waitUntil { 
-	sleep 10; 
-	_destroytargets findIf {alive _x} == -1 
+	sleep 2; 
+	_destroytargets findIf {alive _x } == -1 
 };
 
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
@@ -38,3 +37,11 @@ publicVariable "OPCB_econ_credits";
 {
   [ _x ] call LARs_fnc_deleteComp;
 } forEach _spawncomps;
+
+[_destroytargets] spawn {
+	params ["_destroytargets"];
+	sleep 60;
+	{
+		deleteVehicle _x;
+	} forEach _destroytargets;
+}

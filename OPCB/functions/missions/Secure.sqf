@@ -16,22 +16,22 @@ _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_sp
 
 [_guard,10,1,3] call CHAB_fnc_spawn_rus;
 
+deleteVehicle _guard;
+
 _truckpos = _guardpos findEmptyPosition [1, 20, "O_Truck_03_device_F"];
 _thetarget = createVehicle ["O_Truck_03_device_F", _truckpos, [], 1, "NONE"];
 _thetarget setVehicleAmmo 0;
 _thetarget setDamage 0;
 
 waitUntil {
- 	sleep 10; 
+ 	sleep 2; 
 	!alive _thetarget || {_thetarget distance (getPos dropoffpoint) < 15}
 };
 
-if(!alive _thetarget) then 
-{
+if(!alive _thetarget) then {
 	[_current_tasknumber, "FAILED",true] call BIS_fnc_taskSetState;
 }
-else 
-{
+else {
 	[_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
 	OPCB_econ_credits = OPCB_econ_credits + _reward;
 	publicVariable "OPCB_econ_credits";
@@ -47,7 +47,8 @@ else
   [ _x ] call LARs_fnc_deleteComp;
 } forEach _spawncomps;
 
-[] spawn {
-  sleep 60;
-  deleteVehicle _thetarget;
+[_thetarget] spawn {
+	params ["_thetarget"];
+	sleep 60;
+	deleteVehicle _thetarget;
 };
