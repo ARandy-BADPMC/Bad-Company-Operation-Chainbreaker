@@ -1,7 +1,7 @@
 params ["_vehicle"];
 
 _vehicle addEventHandler ["GetIn",{
-	params ["_vehicle","_seat", "_player" ]
+	params ["_vehicle","_seat", "_player" ];
 	#include "..\..\data\vehicleDriverUnitTypes.sqf";
 	if(_seat == "driver" ) then {
 		if !(typeOf _player in _tankDriverTypes) then {

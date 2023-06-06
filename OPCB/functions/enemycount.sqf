@@ -16,8 +16,6 @@ _countUnits = {
 	_enemies
 };
 
-hint str ["[] call (_this select 0)", _countUnits] call BIS_fnc_codePerformance;
-
 private _enemysum = [] call _countUnits;
 
 private _currentEnemies = _enemysum;
