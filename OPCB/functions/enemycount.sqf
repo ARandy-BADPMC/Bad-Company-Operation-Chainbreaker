@@ -6,6 +6,7 @@ if(_minEnemyPercentage > 100) then {
 
 
 _countUnits = {
+
 	private _enemies = 0;
 	{
 		{
@@ -14,6 +15,8 @@ _countUnits = {
 	} forEach EnemyGroups;
 	_enemies
 };
+
+hint str ["[] call (_this select 0)", _countUnits] call BIS_fnc_codePerformance;
 
 private _enemysum = [] call _countUnits;
 

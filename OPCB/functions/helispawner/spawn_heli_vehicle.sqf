@@ -2,8 +2,7 @@
 disableSerialization;
 _loadouts = (findDisplay 9900) displayCtrl 1561;
 _loadout = lbCurSel _loadouts;
-if(_loadout != -1) then  
-{	
+if(_loadout != -1) then  {	
 	_vehiclelist = (findDisplay 9900) displayCtrl 1500;
 	_heli = lbCurSel _vehiclelist;
 
@@ -23,10 +22,8 @@ if(_loadout != -1) then
 	
 	if (count _nObjects == 1) then {
 
-		if ((toUpper _vehicle) in OPCB_econ_vehicleAirAttackTypes) then 
-		{
-		  if (MaxAttackHelis != 2) then
-		  {
+		if ((toUpper _vehicle) in OPCB_econ_vehicleAirAttackTypes) then {
+		  if (MaxAttackHelis != 2) then {
 				
 			_tier = ["AIR", _vehicle] call OPCB_econ_fnc_getVehicleTier;
 			_cost = ["AIR", _tier] call OPCB_econ_fnc_getTierCost;
@@ -46,7 +43,7 @@ if(_loadout != -1) then
 		    [_vehicle,_pylons,1] remoteExec ["CHAB_fnc_spawn_helicopter_server",2];
 
 		  } else {
-			hint "There are already 2 attack helicopters in game";
+				hint "There are already 2 attack helicopters in game";
 			};
 
 		} else {
@@ -68,14 +65,15 @@ if(_loadout != -1) then
 			publicVariable "MaxTransHelis";
 		    [_vehicle,_pylons,0] remoteExec ["CHAB_fnc_spawn_helicopter_server",2];
 
-		  } else{hint "3 Transport helicopters are already in game.";};
+		  } else {
+				hint "3 Transport helicopters are already in game.";
+			};
 		};
 	  	
 	} else {
 		hint "Spawn position is not empty";
 	};
 }
-else
-{
+else {
 	hint "Select a loadout first";
 };
