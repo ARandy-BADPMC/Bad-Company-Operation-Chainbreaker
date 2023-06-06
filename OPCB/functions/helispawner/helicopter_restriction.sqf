@@ -37,14 +37,21 @@ else {
 				};
 			};
 		}];
-		_vehicle addEventHandler ["Engine",{
-			#include "..\..\data\vehicleDriverUnitTypes.sqf";
-			params ["_vehicle"];
-			_pilot = driver _vehicle;
 
-			if (! ((typeOf _pilot) in _helicopterPilotTypes)  || {isNull _pilot}) then {
-				_vehicle engineOn false; 
-			};
+		_vehicle addEventHandler ["SeatSwitched", {
+			params ["_vehicle", "_unit1", "_unit2"];
+
+			#include "..\..\data\vehicleDriverUnitTypes.sqf";
+
+			{
+				_role = assignedVehicleRole _x;
+				
+				if(_role isEqualTo ["driver"]) then {
+					if !(typeOf _x in _helicopterPilotTypes) then {
+						moveOut _x; 
+					};
+				};
+			} forEach [_unit1, _unit2];
 		}];
 	};
 };

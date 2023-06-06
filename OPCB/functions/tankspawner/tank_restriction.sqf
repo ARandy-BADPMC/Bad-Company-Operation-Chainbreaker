@@ -9,14 +9,19 @@ _vehicle addEventHandler ["GetIn",{
 		};
 	};
 }];
-_vehicle addEventHandler ["Engine",{
-	params ["_vehicle"];
-	_pilot = driver _vehicle;
+
+_vehicle addEventHandler ["SeatSwitched", {
+	params ["_vehicle", "_unit1", "_unit2"];
 
 	#include "..\..\data\vehicleDriverUnitTypes.sqf";
 
-	if (!(typeOf _player in _tankDriverTypes) || {isNull _pilot}) then {
-		_vehicle engineOn false; 
-	};
-	
+	{
+		_role = assignedVehicleRole _x;
+		
+		if(_role isEqualTo ["driver"]) then {
+			if !(typeOf _x in _tankDriverTypes) then {
+				moveOut _x; 
+			};
+		};
+	} forEach [_unit1, _unit2];
 }];
