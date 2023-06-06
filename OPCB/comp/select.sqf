@@ -38,9 +38,6 @@ _base = [_radius] call CHAB_fnc_findSpot;
 
 IsATaskRunning = true;
 switch ( _selected) do { 
-	case "Neutralize2" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Neutralize2;
-	}; 
 	case "Neutralize" : {
 		[_base,_currentTasknumber] call CHAB_fnc_Neutralize;
 	}; 

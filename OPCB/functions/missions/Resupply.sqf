@@ -18,16 +18,21 @@ _guardpos = getPos _officer;
 _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 
 _defenders = [];
+
+#include "..\..\data\friendlyClasses.sqf";
+
 for "_i" from 0 to 2 do { 
 	_markpos = _guardpos getPos[50,random 360];
- 	_defender = [_markpos, west,["rhsusf_army_ocp_rifleman_m590","rhsusf_army_ocp_rifleman_m16","rhsusf_army_ocp_riflemanat","rhsusf_army_ocp_riflemanl","rhsusf_army_ocp_rifleman_m4","rhsusf_army_ocp_rifleman_1stcav","rhsusf_army_ocp_rifleman_10th","rhsusf_army_ocp_rifleman_m16"]] call BIS_fnc_spawnGroup;
+ 	_defender = [_markpos, west,
+	_rhsUSF
+	] call BIS_fnc_spawnGroup;
 	[_defender, _guardpos, 100] call bis_fnc_taskPatrol;
 	_defenders pushBack _defender;
 };
 
 waitUntil {
   sleep 5;
-  _container distance _guardpos < 100 || {!alive _container}
+  !alive _container || {_container distance _guardpos < 100} 
 };
 
 if(!alive _container) exitWith {

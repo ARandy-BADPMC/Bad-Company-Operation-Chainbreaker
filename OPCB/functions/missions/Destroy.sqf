@@ -20,7 +20,7 @@ _thetarget lock true;
 
 waitUntil {
   sleep 10;
-  !alive _thetarget || {damage _thetarget > 0.8}
+  !canMove _thetarget || {damage _thetarget > 0.8}
 };
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
 

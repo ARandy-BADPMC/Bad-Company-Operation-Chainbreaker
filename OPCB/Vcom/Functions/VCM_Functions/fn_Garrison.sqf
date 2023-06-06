@@ -19,7 +19,7 @@ private _nBuildingLst = nearestObjects [waypointPosition [_this, 1], ["House", "
 private _nBuilding = [0,0,0];
 private _buildingPositions = [];
 {
-	_buildingPositions = [_x] call BIS_fnc_buildingPositions;
+	_buildingPositions = _x buildingPos -1;
 	if ((count _buildingPositions) > 2) exitWith {_nBuilding = _x;};
 } forEach _nBuildingLst;
 

@@ -4,12 +4,17 @@ _houses = nearestObjects [_centerobj, ["house"], 500] select { count ( _x buildi
 
 _defendergroup = creategroup east;
 
-for "_i" from 0 to count _houses -1 do {
+_count = count _houses;
+if (_count == 0) exitWith {
+	[_defendergroup] call CHAB_fnc_serverGroups;
+};
+
+for "_i" from 0 to _count -1 do {
 	_item = _houses select _i;
 	_chance = floor (random 5);
 
 	if(_chance == 1) then {
-		_positions = [_item] call BIS_fnc_buildingPositions;
+		_positions = _item buildingPos -1;
 		if (count _positions >2) then {
 			_pos = selectrandom _positions;
 			_unit =	 _defendergroup createUnit [selectrandom OPCB_unitTypes_inf, _pos, [], 1, "NONE"];

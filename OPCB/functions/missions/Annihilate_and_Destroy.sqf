@@ -20,7 +20,7 @@ _destroytargets = nearestObjects [ _guardpos, ["Land_Device_assembled_F","RHS_Mi
 [] call CHAB_fnc_enemycount;
 
 waitUntil { 
-	sleep 2; 
+	sleep 10; 
 	_destroytargets findIf {alive _x } == -1 
 };
 

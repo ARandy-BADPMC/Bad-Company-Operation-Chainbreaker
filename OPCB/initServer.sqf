@@ -1,4 +1,4 @@
-#include "unitTypes.sqf"
+#include "data\unitTypes.sqf"
 #include "data\helicopterLoadouts.sqf"
 
 enableSaving [false, false];
@@ -58,7 +58,9 @@ CityMarker = createMarker ["citymarker",  getpos officer_jeff];
 _axis = worldSize / 2;
 _center = [_axis, _axis , 0];
 
-Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"], _axis];
+#include "data\blackListedCities.sqf";
+
+Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"], _axis] select { !((text _x) in _blackListedCities)};
 
 // for AI -- let's see if this strains the server too much (with more AI)
 setViewDistance 3500;

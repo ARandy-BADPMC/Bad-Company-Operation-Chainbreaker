@@ -49,9 +49,10 @@ publicVariable "OPCB_econ_credits";
 {
   [ _x ] call LARs_fnc_deleteComp;
 } forEach (_stations select 0);
+_reference append _trucks;
 
-[_reference, _trucks] spawn {
-	params ["_reference", "_trucks"];
+[_reference] spawn {
+	params ["_reference"];
 	{
 		if(typeName _x == "GROUP") then {
 			{
@@ -62,5 +63,5 @@ publicVariable "OPCB_econ_credits";
 		else{
 			deleteVehicle _x;
 		};
-	} forEach _reference append _trucks;
+	} forEach _reference;
 }

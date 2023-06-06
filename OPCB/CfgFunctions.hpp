@@ -25,10 +25,6 @@ class chainbreaker
 		{
 			file = "functions\missions\El_Chapo.sqf";
 		};
-		class Neutralize2
-		{
-			file = "functions\missions\Neutralize2.sqf";
-		};
 		class Neutralize
 		{
 			file = "functions\missions\Neutralize.sqf";

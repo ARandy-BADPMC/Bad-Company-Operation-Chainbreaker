@@ -29,7 +29,7 @@ for "_i" from 0 to count _houses -1 do {
 	_chance = floor (random 6);
 	if(_chance == 1 || _houses select (count _houses -1) == _item) then
 	{
-		_positions = [_item] call BIS_fnc_buildingPositions;
+		_positions = _item buildingPos -1;
 		_pos = selectRandom _positions;
 		_unit =	 _defendergroup createUnit [selectrandom _civClasses, _pos, [], 1, "NONE"];
 		_unit disableAI "MOVE";
@@ -56,7 +56,7 @@ for "_i" from 0 to count _houses -1 do {
 	_chance = floor (random 6);
 	if(_chance == 1 || _houses select (count _houses -1) == _item) then
 	{
-		_positions = [_item] call BIS_fnc_buildingPositions;
+		_positions = _item buildingPos -1;
 		_pos = selectRandom _positions;
 		_unit =	 _defendergroup createUnit [selectrandom _civClasses, _pos, [], 1, "NONE"];
 		_unit disableAI "MOVE";

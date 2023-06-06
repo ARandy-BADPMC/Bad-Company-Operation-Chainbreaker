@@ -1,8 +1,4 @@
-params ["_minEnemyPercentage"];
-
-if(isNil "_minEnemyPercentage") then {
-	_minEnemyPercentage = 33;
-};
+params [["_minEnemyPercentage", 33 , [0]]];
 
 if(_minEnemyPercentage > 100) then {
 	_minEnemyPercentage = 100;
@@ -13,7 +9,7 @@ _enemysum = 0;
 {
 	{
 		_enemysum = _enemysum +1;
-	} forEach units _x select { damage _x < 0.8 };
+	} forEach units _x select { lifeState _x == "HEALTHY" };
 } forEach EnemyGroups;
 
 _currentEnemies = _enemysum;
@@ -28,6 +24,6 @@ while {
 	{
 		{
 			_currentEnemies = _currentEnemies +1;
-		} forEach units _x select { alive _x };
+		} forEach units _x select { lifeState _x == "HEALTHY" };
 	} forEach EnemyGroups;
 };

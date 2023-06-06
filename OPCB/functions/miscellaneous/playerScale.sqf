@@ -1,4 +1,4 @@
-_number = count playableUnits;
+_number = count allPlayers;
 
 switch (true) do { 
 	case (_number > 2 && _number < 5) : {  

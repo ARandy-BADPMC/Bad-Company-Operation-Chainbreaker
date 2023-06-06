@@ -1,14 +1,14 @@
 private _reward = 40;
 params ["_current_tasknumber"];
 
-_journalistCount = selectRandom [0,1];
+_journalistCount = selectRandom [1,2]; 
 
 _city = selectRandom Cities;
 _citypos = locationPosition _city;
 
 CityMarker setMarkerPos _citypos;
 
-_msg = format ["There is a riot going on. Clear out the area and capture the leader. We also have intel of %1 captured journalists, which need to be rescued.",_journalistCount+1];
+_msg = format ["There is a riot going on. Clear out the area and capture the leader. We also have intel of %1 captured journalists, which need to be rescued.",_journalistCount];
 
 [_current_tasknumber ,west,[_msg,"Clear out and rescue",CityMarker],_citypos,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
@@ -19,16 +19,16 @@ _guard disableAI "AUTOCOMBAT";
 _guard setunitpos "MIDDLE";
 _rescuegroup = createGroup [civilian,true];
 
-_houses = nearestObjects [_citypos, ["house"], 200];
+_houses = nearestObjects [_citypos, ["house"], 400];
 
 _missionObjectives = [_guard];
 
-for "_i" from 0 to _journalistCount do { 
+for "_i" from 0 to _journalistCount -1 do { 
   _house = selectRandom _houses;
-  _position = [_house] call BIS_fnc_buildingPositions;
+  _position = _house buildingPos -1;
   while {count _position == 0} do {
     _house = selectRandom _houses;
-    _position = [_house] call BIS_fnc_buildingPositions;
+    _position = _house buildingPos -1;
   };
   _posmax = count _position;
   _journal = _rescuegroup createUnit ["C_journalist_F", _citypos, [], 2, "NONE"];
@@ -45,7 +45,7 @@ for "_i" from 0 to _journalistCount do {
 
 waitUntil {
   sleep 2;
-  _missionObjectives findIf {!alive _x} != -1 || { { _x distance (getPos dropoffpoint) < 10 } count _missionObjectives == (_journalistCount + 2)} 
+  _missionObjectives findIf {!alive _x} != -1 || { { _x distance (getPos dropoffpoint) < 10 } count _missionObjectives == (_journalistCount + 1)} 
 };
 
 if(_missionObjectives findIf { !alive _x} == -1) then {
