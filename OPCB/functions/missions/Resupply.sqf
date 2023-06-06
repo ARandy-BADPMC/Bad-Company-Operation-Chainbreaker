@@ -9,7 +9,7 @@ _current_task = _base getPos[random 600,random 360];
 "Resupply"], _current_task,"ASSIGNED",10,true,true,"rearm",true] call BIS_fnc_setTask;
 
 _officer = _officergroup createUnit ["rhsusf_usmc_marpat_d_officer", _base, [], 2, "NONE"];
-_officer disableAI "MOVE";
+_officer disableAI "PATH";
 
 _container = "C_IDAP_supplyCrate_F" createVehicle (getPos dropoffpoint);
 [_container, 5] call ace_cargo_fnc_setSize;

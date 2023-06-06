@@ -6,22 +6,35 @@ _isFugitive = _civ getVariable "isFugitive";
 
 if(_isFugitive == "yes") then {
 	removeAllActions _civ;
+
 	hint "YOU WON'T GET ME ALIVE";
 	_enemySide = createGroup resistance;
+
 	removeAllWeapons _civ;
 	[_civ] joinSilent grpNull;
 	[_civ] joinSilent _enemySide;
 
 	_civ addVest "V_TacVest_blk_POLICE";
-	_civ addWeapon "hgun_ACPC2_F";
-	_civ addMagazineCargo ["9Rnd_45ACP_Mag",1];
-	_civ enableAI "MOVE";
+	_civ addWeaponItem ["hgun_ACPC2_F", "9Rnd_45ACP_Mag", true];
+
 	_civ action ['SwitchWeapon', _civ, _civ, 0];
 	_civ setUnitPos "UP";
+
 	_enemySide setCombatMode "COMBAT";
+
+	uiSleep 0.5;
+
+	_civ setDir (_civ getDir _caller);
+
 	_civ reveal _caller;
-	_civ doFire _caller;
-	_civ forceWeaponFire ["hgun_ACPC2_F", "hgun_ACPC2_F"];
+
+	for "_i" from 0 to selectRandom [3,5] do {
+		uiSleep 0.1;
+		_civ doTarget _caller;
+		_civ doFire _caller;
+		_civ forceWeaponFire ["hgun_ACPC2_F", "hgun_ACPC2_F"];
+	};
+
 }
 else {
 	if (_questionedFugitive == "no") then {

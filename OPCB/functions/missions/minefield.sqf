@@ -18,6 +18,7 @@ deleteVehicle _guard;
 {
   resistance revealMine _x;
   civilian revealMine _x;
+  east revealMine _x;
 } forEach _mines;
 
 waitUntil {

@@ -32,7 +32,7 @@ for "_i" from 0 to count _houses -1 do {
 		_positions = _item buildingPos -1;
 		_pos = selectRandom _positions;
 		_unit =	 _defendergroup createUnit [selectrandom _civClasses, _pos, [], 1, "NONE"];
-		_unit disableAI "MOVE";
+		_unit disableAI "PATH";
 		_unit setunitpos "UP";
 
 		_fugitivechance = floor random 10;
@@ -59,7 +59,7 @@ for "_i" from 0 to count _houses -1 do {
 		_positions = _item buildingPos -1;
 		_pos = selectRandom _positions;
 		_unit =	 _defendergroup createUnit [selectrandom _civClasses, _pos, [], 1, "NONE"];
-		_unit disableAI "MOVE";
+		_unit disableAI "PATH";
 		_unit setunitpos "UP";
 
 		[_unit,["<t color='#FF0000'>Do you know who stole the crate?</t>", "functions\retrieve_help1.sqf", [_theFugitive], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
