@@ -1,9 +1,8 @@
 params ["_marker"];
 
-waitUntil 
-{
+waitUntil {
 	sleep 5;
-  	playableUnits findIf { _x  distance2D _marker < 1000 } == -1
+  	playableUnits findIf { _x  distance2D _marker < 1500 } == -1
 };
 
 {
