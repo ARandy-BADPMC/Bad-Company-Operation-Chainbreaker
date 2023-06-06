@@ -4,26 +4,26 @@ if(_minEnemyPercentage > 100) then {
 	_minEnemyPercentage = 100;
 };
 
-_enemysum = 0;
 
-{
+_countUnits = {
+	private _enemies = 0;
 	{
-		_enemysum = _enemysum +1;
-	} forEach units _x select { lifeState _x == "HEALTHY" };
-} forEach EnemyGroups;
+		{
+			_enemies = _enemies + 1;
+		} forEach units _x select { alive _x && {lifeState _x != "INCAPACITATED"} };
+	} forEach EnemyGroups;
+	_enemies
+};
 
-_currentEnemies = _enemysum;
+private _enemysum = [] call _countUnits;
 
-_requiredSum = _enemysum * (_minEnemyPercentage * 0.01);
+private _currentEnemies = _enemysum;
+
+private _requiredSum = _enemysum * (_minEnemyPercentage * 0.01);
 
 while {
 	_currentEnemies > _requiredSum
 } do {
 	sleep 5;
-	_currentEnemies = 0;
-	{
-		{
-			_currentEnemies = _currentEnemies +1;
-		} forEach units _x select { lifeState _x == "HEALTHY" };
-	} forEach EnemyGroups;
+	_currentEnemies = [] call _countUnits;
 };
