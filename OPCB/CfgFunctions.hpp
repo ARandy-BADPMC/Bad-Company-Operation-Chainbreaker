@@ -25,10 +25,6 @@ class chainbreaker
 		{
 			file = "functions\missions\El_Chapo.sqf";
 		};
-		class Neutralize2
-		{
-			file = "functions\missions\Neutralize2.sqf";
-		};
 		class Neutralize
 		{
 			file = "functions\missions\Neutralize.sqf";
@@ -164,14 +160,6 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\nearest.sqf";
 		}; 
-		class lander_action
-		{
-			file = "functions\miscellaneous\lander_action.sqf";
-		};
-		class lander
-		{
-			file = "functions\miscellaneous\lander.sqf";
-		};
 		class findSpot
 		{
 			file = "functions\findSpot.sqf";
@@ -189,29 +177,6 @@ class chainbreaker
 			file = "functions\miscellaneous\serverGroups.sqf";
 		};
 	};
-	class choppers
-	{
-		class checkpilot 
-		{
-			file = "functions\miscellaneous\checkpilot.sqf";
-		};
-		class checkdriver 
-		{
-			file = "functions\miscellaneous\checkdriver.sqf";
-		};
-		class checkjetpilot
-		{
-			file = "functions\miscellaneous\checkjetpilot.sqf";
-		};
-		class checkengine
-		{
-			file = "functions\miscellaneous\checkengine.sqf";
-		};
-		class checktankengine
-		{
-			file = "functions\miscellaneous\checktankengine.sqf";
-		};
-	};
 	class admin_menu
 	{
 		class adminconsole
@@ -226,38 +191,6 @@ class chainbreaker
 		{
 			file = "functions\adminconsole\admin_order_task.sqf";
 		};
-		class kick
-		{
-			file = "functions\adminconsole\kick.sqf";
-		};
-		class hint
-		{
-			file = "functions\adminconsole\hint.sqf";
-		};
-		class restart_server
-		{
-			file = "functions\adminconsole\restart_server.sqf";
-		};
-		class ban
-		{
-			file = "functions\adminconsole\ban.sqf";
-		};
-		class ban_server
-		{
-			file = "functions\adminconsole\ban_server.sqf";
-		};
-		class kick_server
-		{
-			file = "functions\adminconsole\kick_server.sqf";
-		};
-		class getgroups
-		{
-			file = "functions\adminconsole\getgroups.sqf";
-		};
-		class restart
-		{
-			file = "functions\adminconsole\restart.sqf";
-		};
 		class zeus
 		{
 			file = "functions\adminconsole\zeus.sqf";
@@ -265,18 +198,6 @@ class chainbreaker
 		class zeus_server
 		{
 			file = "functions\adminconsole\zeus_server.sqf";
-		};
-		class getpilots
-		{
-			file = "functions\adminconsole\getpilots.sqf";
-		};
-		class gettankcrew
-		{
-			file = "functions\adminconsole\gettankcrew.sqf";
-		};
-		class spectate
-		{
-			file = "functions\adminconsole\spectate.sqf";
 		};
 		class skip12
 		{
@@ -343,13 +264,6 @@ class chainbreaker
 		class spawn_helicopter_server
 		{
 			file = "functions\helispawner\spawn_helicopter_server.sqf";
-		};
-	};
-	class player_required
-	{
-		class whitelist
-		{
-			file = "functions\playerreq\whitelist.sqf";
 		};
 	};
 };

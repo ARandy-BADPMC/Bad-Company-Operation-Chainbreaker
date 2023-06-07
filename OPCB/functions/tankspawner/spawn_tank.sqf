@@ -1,21 +1,17 @@
-
 disableSerialization;
 createDialog "jey_tankspawner";
 
 waitUntil {
-  !isNull (findDisplay 9901)
+  !isNull (findDisplay 9901) && { !(isNil "OPCB_econ_initDone") && {OPCB_econ_initDone}}
 };
 
-waitUntil {
-	(!isNil "OPCB_econ_initDone") && {OPCB_econ_initDone}
-};
-
-_isEngineer = false;
-if ((typeOf player) == "rhsusf_army_ocp_engineer") then {
+private _isEngineer = false;
+#include "..\..\data\vehicleDriverUnitTypes.sqf";
+if ((typeOf player) in _tankDriverTypes) then {
 	_isEngineer = true;
 };
 
-_vehicles = [];
+private _vehicles = [];
 {
 	if ((["INF", _x] call OPCB_econ_fnc_getVehicleTier) >= OPCB_econ_currentTier) then {
 		_vehicles pushBack _x;
@@ -84,4 +80,4 @@ if (_tier == -1) then {
 };
 
 _textFormat = "<t color='#07FFFF'>Vehicle Cost:   </t><t>" + (str _cost) + " C" + "</t><t color='#07FFFF'>        Vehicle Tier:   </t><t>" + (str (_tier + 1)) + "</t><t color='#07FFFF'>        Current Tier:   </t><t>" + (str (OPCB_econ_currentTier + 1))+ "</t><br/><br/>" + "<t color='#07FFFF'>Credits available:    </t><t>" + (str OPCB_econ_credits) + " C" + "</t>";
-	_ctrl ctrlSetStructuredText parseText _textFormat;
+_ctrl ctrlSetStructuredText parseText _textFormat;

@@ -1,4 +1,4 @@
-#include "unitTypes.sqf"
+#include "data\unitTypes.sqf"
 #include "data\helicopterLoadouts.sqf"
 
 enableSaving [false, false];
@@ -44,10 +44,6 @@ publicVariable "MaxAPC";
 MaxStatic = 0;
 publicVariable "MaxStatic";
 
-Developers = ["76561198117073327","76561198142692277","76561198002110130", "76561198048254349", "76561199005382007"]; //76561198142692277 -Alex. K.,  76561198117073327 - A.Randy, 76561198002110130: K.Hunter, 76561198048254349: jeyR, 76561199005382007 - W.Frost
-
-publicVariable "Developers";
-
 ZeusGroup = createGroup sideLogic;
 
 {
@@ -62,7 +58,9 @@ CityMarker = createMarker ["citymarker",  getpos officer_jeff];
 _axis = worldSize / 2;
 _center = [_axis, _axis , 0];
 
-Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"], _axis];
+#include "data\blackListedCities.sqf";
+
+Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"], _axis] select { !((text _x) in _blackListedCities)};
 
 // for AI -- let's see if this strains the server too much (with more AI)
 setViewDistance 3500;

@@ -1,6 +1,6 @@
-params ["_howBig"];
+params ["_radius"];
 _taskSpot = [0,0,0];
-if (_howBig < 500) then {
+if (_radius < 500) then {
 	
 	_suitableSpots = [];
 	
@@ -22,7 +22,7 @@ if (_howBig < 500) then {
 			if ((count _suitable) == 3) then {
 				_startingDist = worldSize min (_startingDist + 500);
 			} else {
-				_list = nearestTerrainObjects [_suitable,["TREE","BUILDING","RUIN","ROCK","HOUSE"], _howBig,false];
+				_list = nearestTerrainObjects [_suitable,["TREE","BUILDING","RUIN","ROCK","HOUSE"], _radius,false];
 			};		
 			
 		};

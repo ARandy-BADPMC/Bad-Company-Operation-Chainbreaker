@@ -1,6 +1,12 @@
 params ["_taskobjective"];
 private ["_radius","_currentTasknumber","_base","_selected"];
 
+_callerRE = remoteExecutedOwner;
+
+if (( {((markerpos 'base_marker') distance2d _x) < 1000} count playableUnits > 1) && {isNil "_taskobjective"}) exitWith {
+	"At least 2 people are required to be at base to request a mission!" remoteExec["hint", _callerRE];
+};
+
 if (isNil "_taskobjective") then {
 	_selected = "";
 } else {
@@ -8,28 +14,10 @@ if (isNil "_taskobjective") then {
 };
 
 if (IsATaskRunning) exitWith {
-	_callerRE = remoteExecutedOwner;
 	"This option is unavailable at the moment" remoteExec ["hint", _callerRE];
 };
 
-_tasks = [
-	["Eliminate",100],
-	["Technology",100],
-	["Destroy",60],
-	["Annihilate and Destroy",45],
-	["Secure",60],
-	["Capture",25],
-	["Exterminate",25],
-	["Neutralize",40],
-	["Neutralize2",45], 
-	["Attack",9999],
-	["Clear out",9999],
-	["Resupply",100],
-	["IDAP",85],
-	["Retrieve",9999],
-	["GDrunken",80],
-	["Minefield",9999]
-];
+#include "..\data\tasks.sqf";
 
 if (count _selected == 0) then {
 	_selected = ((selectRandom _tasks) select 0);
@@ -40,7 +28,7 @@ TaskNumber = TaskNumber + 1;
 _currentTasknumber = format ["TaskNumberFinal_%1",TaskNumber];
 
 {
-	if (_selected isEqualTo (_x select 0)) exitWith{
+	if (_selected isEqualTo (_x select 0)) exitWith {
 		_radius = (_x select 1);
 	};
 	_radius = 9999;
@@ -50,9 +38,6 @@ _base = [_radius] call CHAB_fnc_findSpot;
 
 IsATaskRunning = true;
 switch ( _selected) do { 
-	case "Neutralize2" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Neutralize2;
-	}; 
 	case "Neutralize" : {
 		[_base,_currentTasknumber] call CHAB_fnc_Neutralize;
 	}; 
@@ -84,25 +69,25 @@ switch ( _selected) do {
 		[_base,_currentTasknumber] call CHAB_fnc_Resupply;
 	};  
 	case "Retrieve" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Retrieve;
+		[_currentTasknumber] call CHAB_fnc_Retrieve;
 	};  
 	case "Attack" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Attack;
+		[_currentTasknumber] call CHAB_fnc_Attack;
 	}; 
 	case "Clear out" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Clear_out;
+		[_currentTasknumber] call CHAB_fnc_Clear_out;
 	};
 	case "GDrunken" : {
 		[_base,_currentTasknumber] call CHAB_fnc_GDrunken;
 	};  
 	case "Minefield" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Minefield;
+		[_currentTasknumber] call CHAB_fnc_Minefield;
 	};
 	case "El Chapo" : {
 		[_base,_currentTasknumber] call CHAB_fnc_El_Chapo;
 	};  
 	default { 
-		IsATaskRunning = false;
-		"Failed to spawn a task, try again" remoteExec["hint",0];
+		"Failed to spawn a task, try again" remoteExec["hint", _callerRE];
 	}; 
 };
+IsATaskRunning = false;

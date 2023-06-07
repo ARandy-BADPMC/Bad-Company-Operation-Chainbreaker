@@ -21,12 +21,12 @@ if (count _nBuildingLst < 1) exitWith {};
 private _buildingPositions = [];
 
 {
-	if (count ([_x] call BIS_fnc_buildingPositions) > 3) then {_buildingPositions pushback _x;};
+	if (count (_x buildingPos -1) > 3) then {_buildingPositions pushback _x;};
 } foreach _nBuildingLst;
 
 if (count _buildingPositions < 1) exitWith {};
 private _finalSel = [_buildingPositions,_enemy,true,"Clear0"] call VCM_fnc_ClstObj; 
-private _tempA = _finalSel call BIS_fnc_buildingPositions;
+private _tempA = _finalSel buildingPos -1;
 private _tempB = _tempA;
 
 //Filter down the closest positions

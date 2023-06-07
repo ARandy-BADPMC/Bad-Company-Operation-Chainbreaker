@@ -1,37 +1,30 @@
-_enemysum = 0;
+params [["_minEnemyPercentage", 33 , [0]]];
 
-_groups = EnemyGroups;
-{
-	{
-		_enemysum = _enemysum +1;
-	} forEach units _x;
-} forEach _groups;
-
-_enemies = 9999;
-while {
-	_enemies > (_enemysum / 3)
-	
-} do {
-	sleep 10;
-	_enemies = 0;
-	{
-		private _group = _x;
-		{
-			private _unit = _x;
-			if (alive _unit) then {
-				_enemies = _enemies +1;
-			};
-		} forEach units _x;
-	} forEach _groups;
+if(_minEnemyPercentage > 100) then {
+	_minEnemyPercentage = 100;
 };
 
-{
+
+_countUnits = {
+
+	private _enemies = 0;
 	{
-		if (vehicle _x != _x) then {
-			(vehicle _x) setDamage 1;
-		};
-		deletevehicle _x;
-	} forEach units _x;
-	deleteGroup _x;
-} forEach EnemyGroups;
-EnemyGroups = [];
+		{
+			_enemies = _enemies + 1;
+		} forEach units _x select { alive _x && {lifeState _x != "INCAPACITATED"} };
+	} forEach EnemyGroups;
+	_enemies
+};
+
+private _enemysum = [] call _countUnits;
+
+private _currentEnemies = _enemysum;
+
+private _requiredSum = _enemysum * (_minEnemyPercentage * 0.01);
+
+while {
+	_currentEnemies > _requiredSum
+} do {
+	sleep 5;
+	_currentEnemies = [] call _countUnits;
+};

@@ -7,7 +7,7 @@ _civ = _this select 0;
 	{
 		_civ setVariable ["isQuestioned", "yes", true];
 		_answers = ["IDK","IDC","YES","MAYBE","IDU"];
-		_answer = _answers call BIS_fnc_selectRandom;
+		_answer = selectRandom _answers;
 		switch (_answer) do { 
 			case "IDK" : 
 			{  

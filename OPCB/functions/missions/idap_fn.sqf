@@ -1,13 +1,11 @@
+params ["_village", "_artgroups"];
 
-_village = _this select 0;
-_artgroups = _this select 1;
-_civ = ["C_IDAP_Man_AidWorker_01_F","C_IDAP_Man_AidWorker_08_F","C_IDAP_Man_AidWorker_09_F","C_IDAP_Man_AidWorker_02_F","C_IDAP_Man_AidWorker_05_F","C_IDAP_Man_Paramedic_01_F"];
+#include "..\..\data\civClasses.sqf";
 
 _houses = nearestObjects [_village, ["house"], 400] select { count ( _x buildingPos -1 ) > 2 };
 
 if (count _houses < 10) then {
-  for "_i" from 0 to count _houses -1 do
-   {
+  for "_i" from 0 to count _houses -1 do {
   	_item = _houses select _i;
   	_road = (getPos _item) nearRoads 300;
   	_closest = 0;
@@ -20,18 +18,17 @@ if (count _houses < 10) then {
   		};
   	};
 
-
   	_segment = _road select _closest;
   	_group = createGroup [civilian,true];
 	[_group] call CHAB_fnc_serverGroups;
-  	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
+  	_civilian = _group createUnit [selectRandom _civClasses, getPos _segment, [], 2, "NONE"];
 
   	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
 	[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village,_artgroups], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];
   
   };
 }
-else{
+else {
 	for "_i" from 0 to count _houses -1 do {
 		_item = _houses select _i;
 
@@ -54,7 +51,7 @@ else{
 		  	_group = createGroup [civilian,true];
 		  	
 			[_group] call CHAB_fnc_serverGroups;
-		  	_civilian = _group createUnit [selectRandom _civ, getPos _segment, [], 2, "NONE"];
+		  	_civilian = _group createUnit [selectRandom _civClasses, getPos _segment, [], 2, "NONE"];
 
 		  	[_group, getPos _segment, 100] call bis_fnc_taskPatrol;
 			[_civilian,["<t color='#FF0000'>Do you know where the shells are coming from? </t>", "functions\missions\idap_speak.sqf", [_village,_artgroups], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];

@@ -1,8 +1,8 @@
-
+params ["_guard"];
 private["_pos"];
 
-_guard = _this select 0;
-_CivClasses = ["C_man_p_beggar_F_afro","C_man_polo_1_F_afro","C_man_polo_2_F_afro","C_man_polo_3_F_afro","C_man_polo_4_F_afro","C_man_polo_5_F_afro","C_man_polo_6_F_afro","C_man_shorts_1_F_afro","C_man_p_fugitive_F_afro","C_man_p_shorts_1_F_afro","C_man_shorts_2_F_afro","C_man_shorts_3_F_afro","C_man_shorts_4_F_afro"];
+#include "..\data\civClasses.sqf";
+
 _crateHouse = 0;
 _taskItems = [];
 _pos = 0;
@@ -29,10 +29,10 @@ for "_i" from 0 to count _houses -1 do {
 	_chance = floor (random 6);
 	if(_chance == 1 || _houses select (count _houses -1) == _item) then
 	{
-		_positions = [_item] call BIS_fnc_buildingPositions;
+		_positions = _item buildingPos -1;
 		_pos = selectRandom _positions;
-		_unit =	 _defendergroup createUnit [selectrandom _CivClasses, _pos, [], 1, "NONE"];
-		_unit disableAI "MOVE";
+		_unit =	 _defendergroup createUnit [selectrandom _civClasses, _pos, [], 1, "NONE"];
+		_unit disableAI "PATH";
 		_unit setunitpos "UP";
 
 		_fugitivechance = floor random 10;
@@ -56,10 +56,10 @@ for "_i" from 0 to count _houses -1 do {
 	_chance = floor (random 6);
 	if(_chance == 1 || _houses select (count _houses -1) == _item) then
 	{
-		_positions = [_item] call BIS_fnc_buildingPositions;
+		_positions = _item buildingPos -1;
 		_pos = selectRandom _positions;
-		_unit =	 _defendergroup createUnit [selectrandom _CivClasses, _pos, [], 1, "NONE"];
-		_unit disableAI "MOVE";
+		_unit =	 _defendergroup createUnit [selectrandom _civClasses, _pos, [], 1, "NONE"];
+		_unit disableAI "PATH";
 		_unit setunitpos "UP";
 
 		[_unit,["<t color='#FF0000'>Do you know who stole the crate?</t>", "functions\retrieve_help1.sqf", [_theFugitive], 1.5, true, true, "", "alive _target", 6, false, ""]] remoteexeccall ["addaction",0,true];

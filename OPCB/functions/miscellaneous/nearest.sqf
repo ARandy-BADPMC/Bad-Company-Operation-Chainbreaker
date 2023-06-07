@@ -1,11 +1,10 @@
-//if (!isServer) exitWith{};
-	
-_p = _this select 0;
+params ["_p"];
+
 _d = objNull;
 _r = 80000;
 {
        _n = _x distance _p;
-       if((isPlayer _x) && (_n < _r)) then
+       if(_n < _r) then
        {
            _d = _x;
            _r = _n;

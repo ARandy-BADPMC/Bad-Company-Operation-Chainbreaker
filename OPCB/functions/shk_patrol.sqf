@@ -42,7 +42,7 @@ switch (typename _this) do {
 _grp setBehaviour "SAFE";
 _grp setSpeedMode "LIMITED";
 _grp setCombatMode "YELLOW";
-_grp setFormation (["STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "DIAMOND"] call BIS_fnc_selectRandom);
+_grp setFormation (selectRandom ["STAG COLUMN", "WEDGE", "ECH LEFT", "ECH RIGHT", "VEE", "DIAMOND"]);
 
 private ["_cnt","_ang","_wps","_slack","_aos"];
 _cnt = 4 + (floor random 3) + (floor (_dst / 100)); // number of waypoints

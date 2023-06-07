@@ -1,15 +1,12 @@
 params ["_vehicle","_pylons","_isAttack"];
 private "_helicopter";
-if (_isAttack == 1) then 
-{	
+_helicopter = createVehicle [_vehicle, getMarkerPos "aircraft_spawner", [], 0 , "CAN_COLLIDE"];
+_helicopter setdir (markerDir "aircraft_spawner");
+
+if (_isAttack == 1) then {	
 	if (_vehicle == "B_UAV_02_dynamicLoadout_f") then {
-		_helicopter = _vehicle createVehicle (markerPos "aircraft_spawner");
 		createVehicleCrew _helicopter;
-	} else {
-		_helicopter = _vehicle createVehicle (markerPos "aircraft_spawner");
 	};
-	
-	_helicopter setdir (getdir heli_spawnpos);
 	
 	private _cargoIndex = -1;
 	_vehicle = toUpper _vehicle;
@@ -41,9 +38,6 @@ if (_isAttack == 1) then
 	[_helicopter,_isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
 		
 } else {
-	_helicopter = _vehicle createVehicle (markerPos "aircraft_spawner");
-	_helicopter setdir (getdir heli_spawnpos);
-	
 	private _cargoIndex = -1;
 	_vehicle = toUpper _vehicle;
 	{

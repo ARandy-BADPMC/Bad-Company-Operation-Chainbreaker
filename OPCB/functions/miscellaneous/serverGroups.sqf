@@ -1,9 +1,8 @@
-_group = _this select 0;
-if(_group isEqualType []) then{
-	{
-		EnemyGroups pushBack _x;
-	} forEach _group;
+params ["_group"];
+
+if(_group isEqualType []) then {
+	EnemyGroups append _group;
 }
-else{
+else {
 	EnemyGroups pushBack _group;
 };
