@@ -5,7 +5,7 @@ _guardgroup = createGroup [east,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
-["The insurgents have received a fraction of a large shipment of vehicles, mostly focused on reinforcing their poorly organised mechanized groups. These groups mostly consists of IFVs/AFVs/APCs and MBTs. The task is all but simple. Our scouts report that the Insurgents have already mobilized some of their groups and are about to move out. Your job is to enter the AO and destroy the Insurgent vehicles that are located within the AO itself and clear out established FOBs or repair depots if there are any.","Tracked Nightmare"],
+["The insurgents have gained possession of a fraction of a significant vehicle shipment, primarily aimed at reinforcing their disorganized mechanized troops. These forces are expected to consist mainly of IFVs/AFVs/APCs and MBTs. Our intelligence reveals that the insurgents have mobilized certain groups and are preparing to initiate movement. The primary objective of this operation is to swiftly eliminate the insurgent's vehicle threat within the AO while disrupting their logistical support by neutralizing any FOBs or repair depots encountered. By executing this mission with precision and speed, we will significantly degrade the insurgent's mechanized capabilities and restore peace and security to the region.","Operation Battlefield Purge"],
  _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_commander, _base, [], 2, "NONE"];

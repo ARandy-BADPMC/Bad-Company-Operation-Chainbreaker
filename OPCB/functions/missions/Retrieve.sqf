@@ -5,7 +5,7 @@ _city = selectRandom Cities;
 _citypos = locationPosition _city;
 CityMarker setMarkerPos _citypos;
 
-[_current_tasknumber ,west,["Insurgent forces have stolen an ammo crate from a nearby FOB. Retrieve the Ammo crate and find out who is the fugitive.","Retrieve",CityMarker],_citypos,"ASSIGNED",10,true,true,"listen",true] call BIS_fnc_setTask;
+[_current_tasknumber ,west,["Insurgent forces have stolen an ammo crate from a nearby FOB, jeopardizing the security and operational capabilities of friendly forces. Our mission is to recover the stolen ammo crate, ensuring its safe return, and capture the fugitive to disrupt enemy operations and gather valuable intelligence. The primary objective of this operation is to recover the stolen ammo crate and apprehend the fugitive responsible. By successfully completing this mission, we aim to restore the operational capabilities of friendly forces, disrupt enemy activities, and gather valuable intelligence to enhance future operations.","Operation Secure and Recover",CityMarker],_citypos,"ASSIGNED",10,true,true,"listen",true] call BIS_fnc_setTask;
 
 _guardgroup = createGroup [civilian,true];
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, _citypos, [], 2, "NONE"];

@@ -5,7 +5,7 @@ _guardgroup = createGroup [east,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
-["We have intel on an OPFOR base located in the marked area. You need to eliminate them","Eliminate"],
+["Intelligence reports indicate the presence of an OPFOR FOB in close proximity to the marked area. The FOB serves as a stronghold for enemy forces, enabling them to launch attacks and maintain control over strategic assets. Our mission is to neutralize the OPFOR presence and eliminate any valuable resources that can be used against friendly forces. The primary objective of this operation is to eliminate the OPFOR presence within the FOB and dismantle their operational capabilities. By neutralizing the enemy and destroying valuable assets, we aim to significantly degrade their ability to pose a threat to friendly forces and restore dominance in the area.","Operation Fortress Strike"],
  _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_commander, _base, [], 2, "NONE"];

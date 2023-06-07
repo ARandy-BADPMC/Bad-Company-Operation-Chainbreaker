@@ -3,14 +3,14 @@ params ["_base","_current_tasknumber"];
 _taskcomp = [
 	[
 		"ied_factory", 
-		"Insurgents set up an IED Factory. To protect our own and the lifes of the innocent population, we need to take it out. If possible, capture the Leader, that is controlling the manufacturing process",
-	 	"Locate and Destroy IED Factory",
+		"The insurgents have established an IED Factory, posing a grave danger to both our forces and the local population. Our mission is to eliminate this threat by destroying the factory and capturing the leader responsible for its operations. The primary objective of this operation is to neutralize the insurgents' IED Factory and capture the leader responsible for its operations. By doing so, we will eliminate the immediate threat to our forces and the innocent population, gather valuable intelligence, and disrupt the enemy's manufacturing capabilities.",
+	 	"Operation Blast Cleansweep",
 		{_this call CHAB_fnc_spawn_ins;}
 	],
 	[
 		"weap_factory",
-		"Insurgents have set up a Weaponfactory in an abandoned, unmarked FOB. Locate the factory and destroy important equipment. Also, according to one of our agents, a commander is visiting the factory. Try to capture him.",
-		"Locate and Destroy Weapon Factory",
+		"Insurgents have established a weapon factory within an abandoned, unmarked FOB, posing a significant threat to regional security. Our mission is to locate and neutralize the factory, destroy essential equipment, and capture the visiting commander to disrupt enemy operations and gather vital intelligence. The primary objective of this operation is to locate and neutralize the insurgents' weapon factory, destroy critical equipment, and capture the visiting commander. By accomplishing these objectives, we aim to degrade enemy capabilities, disrupt their operations, and gather valuable intelligence to enhance regional security.",
+		"Operation Steel Strike",
 		{_this call CHAB_fnc_spawn_nat;}
 	]
 ];

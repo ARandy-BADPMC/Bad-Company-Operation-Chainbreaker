@@ -5,8 +5,8 @@ _city = selectRandom Cities;
 _citypos = locationPosition _city;
 
 CityMarker setMarkerPos _citypos;
-[_current_tasknumber ,west,["Enemy forces laid mines to stop our advance against them. These mines are not just a threat to us, but also for the local population. Clear the minefields, but be careful, the enemy might be watching them."
-,"Minefield",CityMarker],_citypos,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
+[_current_tasknumber ,west,["Enemy forces have strategically emplaced IEDs to impede our progress and endanger both our troops and the local community. The presence of these deadly devices necessitates immediate action to ensure the safe passage of our forces and protect innocent lives. The primary objective of this operation is to effectively clear the enemy-laid IEDs obstructing our advance and threatening the safety of our forces and the local population. By conducting thorough and cautious mine clearance operations, we will create safe paths, neutralize the enemy's asymmetric warfare tactics, and ensure the successful continuation of our mission."
+,"Operation Safe Path",CityMarker],_citypos,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 
 _guardgroup = createGroup [east,true];
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, _citypos, [], 2, "NONE"];

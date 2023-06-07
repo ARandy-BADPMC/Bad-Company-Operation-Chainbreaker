@@ -5,7 +5,7 @@ _guardgroup = createGroup [east,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
-["Last night an american Tank was stolen. You are tasked with destroying it as quickly as possible, before media notice","Destroy"],
+["During the previous night, an American tank was illicitly taken by hostile forces. The unauthorized possession of this tank poses a significant threat as the adversaries may attempt to extract valuable technology for their own gain. Our mission is to swiftly locate and neutralize the stolen tank, denying the enemy any opportunity to exploit its advanced capabilities. The primary objective of this operation is to swiftly destroy the stolen American tank to prevent the hostile forces from extracting valuable technology. By executing the mission with speed and precision, we will neutralize their capability to utilize the tank against us or gain valuable insights into American military technology.","Operation Steel Reaper"],
  _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_commander, _base, [], 2, "NONE"];

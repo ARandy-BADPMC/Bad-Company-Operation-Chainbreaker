@@ -5,7 +5,7 @@ _taskcomp = selectRandom ["destroy_chopper","destroy_radar","destroy_tower","des
 _guardgroup = createGroup [east,true];
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
-["Insurgents set up a base and will hold it under any circumstances. Clear out the area and destroy any important equipment.","Annihilate and Destroy"],
+["Insurgents have established a fortified base and are determined to hold it at all costs. Their presence poses a significant threat to security and stability in the region. Our mission is to eliminate the insurgents, clear the area, and neutralize their ability to continue their operations. The primary objective of this operation is to clear out the insurgents' base, neutralize their presence, and destroy vital equipment. By eliminating their stronghold and disrupting their operations, we aim to restore security and stability in the area, creating a safe environment for the local population.","Operation Iron Purge"],
  _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_commander, _base, [], 2, "NONE"];
