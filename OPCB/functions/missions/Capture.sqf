@@ -5,8 +5,7 @@ _taskcomp = selectRandom ["insurgent1","insurgent2","insurgent3","insurgent4","i
 _capturegroup = createGroup [east,true];
 _current_task = _base getPos[random 600,random 360];
 
-[_current_tasknumber ,west,["A high ranking officer has arrived at an Insurgent camp near the marked area. You have to Capture him",
-"Capture the HRO"], _current_task,"ASSIGNED",10,true,true,"search",true] call BIS_fnc_setTask;
+[_current_tasknumber ,west,["A high-ranking officer from the insurgent faction has been identified at their camp, posing a valuable opportunity for intelligence gathering. Our mission is to capture this officer alive, enabling us to extract vital information that could aid in dismantling the insurgent network and ensuring regional stability. The primary objective of this operation is to capture the high-ranking officer at the insurgents' camp for subsequent interrogation. By successfully extracting critical intelligence from the officer, we aim to unravel the inner workings of the insurgent faction, disrupt their operations, and enhance regional security.","Operation Silent Intercept"], _current_task,"ASSIGNED",10,true,true,"search",true] call BIS_fnc_setTask;
 
 _target1 = _capturegroup createUnit [OPCB_unitTypes_inf_ins_TL, _base, [], 2, "NONE"];
 _guardpos = getPos _target1;

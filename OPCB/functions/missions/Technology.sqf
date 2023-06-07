@@ -6,8 +6,8 @@ _guardgroup = createGroup [east,true];
 _current_task = _base getPos[random 600,random 360];
 
 [_current_tasknumber ,west,
-["We have reports, that the Insurgents stole new technology from a local research lab. They are planning to sell it to the highest bidder, which could have horrible consequences. Don`t let this happen!",
-"Destroy Technology"], _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
+["Operation Thunderstrike has been initiated in response to intelligence reports indicating that the Insurgents have successfully infiltrated a local research lab and stolen highly advanced technology. Their nefarious intentions involve auctioning off this technology to the highest bidder, posing a grave threat to global security. The primary objective of Operation Phatom Strike is to neutralize the Insurgents and destroy the stolen device, thus preventing its potential catastrophic consequences.",
+"Operation Phantom Strike"], _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_commander, _base, [], 2, "NONE"];
 _guardpos = getpos _guard;

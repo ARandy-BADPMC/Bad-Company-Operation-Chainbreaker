@@ -8,9 +8,9 @@ _citypos = locationPosition _city;
 
 CityMarker setMarkerPos _citypos;
 
-_msg = format ["There is a riot going on. Clear out the area and capture the leader. We also have intel of %1 captured journalists, which need to be rescued.",_journalistCount];
+_msg = format ["A riot has erupted in the area, posing a significant threat to public safety and stability. Our mission is to swiftly clear the rioting area, apprehend the leader responsible for inciting the unrest, and rescue the journalists who have been captured. The primary objective of this operation is to swiftly bring an end to the riot, capture the leader, and rescue the journalists held captive. By restoring order and ensuring the safety of the civilian population, we aim to reestablish a sense of security and stability in the area.",_journalistCount];
 
-[_current_tasknumber ,west,[_msg,"Clear out and rescue",CityMarker],_citypos,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
+[_current_tasknumber ,west,[_msg,"Operation Rapid Resolve",CityMarker],_citypos,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 _guardgroup = createGroup [east,true];
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, _citypos, [], 2, "NONE"];

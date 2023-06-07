@@ -5,8 +5,8 @@ _officergroup = createGroup [west,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
-["Nearby friendly forces have requested our help. You have to bring supplies to them. You have abou 15 minutes left before the attack begins.",
-"Resupply"], _current_task,"ASSIGNED",10,true,true,"rearm",true] call BIS_fnc_setTask;
+["Nearby friendly forces have requested our immediate assistance in delivering crucial supplies before an impending attack. The successful completion of this mission is vital to bolster their capabilities and support their ongoing operations. The primary objective of this operation is to deliver urgently needed supplies to the nearby friendly forces within the limited timeframe. By providing timely support, we aim to enhance their operational effectiveness and ensure their preparedness to counter the imminent attack.",
+"Operation Rapid Ressuply"], _current_task,"ASSIGNED",10,true,true,"rearm",true] call BIS_fnc_setTask;
 
 #include "..\..\data\friendlyClasses.sqf";
 

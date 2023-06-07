@@ -5,7 +5,7 @@ _guardgroup = createGroup [east,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
-["OPFOR are transporting new technology through to region and will stop for refueling at an old abandoned FOB. Try to secure the object.","Secure"],
+["OPFOR is using the old abandoned FOB as a refueling point for transporting new technology through the region. Our mission is to intercept and secure the technology, preventing OPFOR from successfully delivering it and gaining a technological advantage.","Operation Phantom Grab"],
  _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 _guard = _guardgroup createUnit [OPCB_unitTypes_inf_commander, _base, [], 2, "NONE"];

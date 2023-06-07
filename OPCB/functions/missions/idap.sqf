@@ -6,7 +6,7 @@ _guardgroup = createGroup [civilian,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
-["IDAP Units have reported indirect and small arms fire on one of their locations, wounding several peacekeepers and civilians. You are tasked, to investigate, interrogate survivors, locate the enemy firing-positions and take them, including all the equipment, out. Be aware of counterattacks!","Locate Mortars"],
+["IDAP Units have encountered hostile mortar fire at one of their locations, resulting in injuries to both peacekeepers and civilians. The exact origin and motive of the attack are currently unknown. The mission requires immediate investigation and a swift response to ensure the safety of personnel and the local population. The primary objective of this operation is to investigate the hostile attack, identify the responsible individuals or groups, and neutralize their firing positions. By securing the area and gathering actionable intelligence, we will enhance the safety of IDAP personnel and local civilians. Additionally, we aim to prevent future attacks and maintain a secure environment.","Operation Resolute Guard"],
  _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
  
 _guard = _guardgroup createUnit ["B_GEN_Commander_F", _base, [], 2, "NONE"];
