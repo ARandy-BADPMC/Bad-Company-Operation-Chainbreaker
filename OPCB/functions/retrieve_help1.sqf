@@ -15,6 +15,7 @@ if(_isFugitive == "yes") then {
 	[_civ] joinSilent _enemySide;
 
 	_civ addVest "V_TacVest_blk_POLICE";
+	_civ addWeapon "hgun_ACPC2_F";
 	_civ addWeaponItem ["hgun_ACPC2_F", "9Rnd_45ACP_Mag", true];
 
 	_civ action ['SwitchWeapon', _civ, _civ, 0];

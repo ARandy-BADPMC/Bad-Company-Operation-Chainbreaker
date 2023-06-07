@@ -8,7 +8,9 @@ _current_task = _base getPos[random 600,random 360];
 ["Nearby friendly forces have requested our help. You have to bring supplies to them. You have abou 15 minutes left before the attack begins.",
 "Resupply"], _current_task,"ASSIGNED",10,true,true,"rearm",true] call BIS_fnc_setTask;
 
-_officer = _officergroup createUnit ["rhsusf_usmc_marpat_d_officer", _base, [], 2, "NONE"];
+#include "..\..\data\friendlyClasses.sqf";
+
+_officer = _officergroup createUnit [selectRandom _rhsOfficers, _base, [], 2, "NONE"];
 _officer disableAI "PATH";
 
 _container = "C_IDAP_supplyCrate_F" createVehicle (getPos dropoffpoint);
@@ -19,7 +21,6 @@ _comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_sp
 
 _defenders = [];
 
-#include "..\..\data\friendlyClasses.sqf";
 
 for "_i" from 0 to 2 do { 
 	_markpos = _guardpos getPos[50,random 360];
