@@ -20,7 +20,7 @@ if(_loadout != -1) then  {
 	
 	_nObjects= nearestObjects [markerPos "aircraft_spawner", ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
 	
-	if (count _nObjects == 1) then {
+	if (count _nObjects == 0) then {
 
 		if ((toUpper _vehicle) in OPCB_econ_vehicleAirAttackTypes) then {
 		  if (MaxAttackHelis != 2) then {
