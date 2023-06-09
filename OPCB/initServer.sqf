@@ -9,7 +9,6 @@ enableTeamswitch false;
 call compileFinal preprocessFileLineNumbers "economy\init.sqf";
 
 [] execVM "Scripts\ied.sqf";
-[] execVM "insurgency\init.sqf";
 [] execVM "Vcom\VcomInit.sqf";
 
 Resistance setFriend [EAST, 1]; Resistance setFriend [WEST, 0]; Resistance setFriend [Civilian, 1];
