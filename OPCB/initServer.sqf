@@ -5,8 +5,6 @@ enableSaving [false, false];
 enableSentences true;
 enableTeamswitch false;
 
-call compileFinal preprocessFileLineNumbers "economy\init.sqf";
-
 [] execVM "Scripts\ied.sqf";
 [] execVM "Vcom\VcomInit.sqf";
 
