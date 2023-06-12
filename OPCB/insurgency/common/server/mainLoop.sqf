@@ -6,6 +6,8 @@ _BCTime                 = time;
 // AI rearm & refuel
 [] spawn {
 
+	scriptName "ins_AIresupply";
+
 	while {true} do {
 	
 		sleep 600;
@@ -22,7 +24,10 @@ _BCTime                 = time;
 
 };
 
-while { true } do { 
+scriptName "ins_cleanup";
+
+while { true } do {
+
 	call aiDespawn;
 	call quickCleanup;	
 	call longCleanup;	

@@ -63,6 +63,8 @@ nearestPlayers = {
 	
 #define nearestPlayers(W,X,Y,Z)	([W,X,Y,Z] call nearestPlayers)
 
+scriptName "ins_vehiclePatrol";
+
 // ---------------------------------------------------------------------------------------------------------
 //echo format["[K] %1",_this]; 
 
@@ -350,13 +352,6 @@ while { _loop} do {
 	//Hunter: update enemies and point it to players 
 	_enemies = nearestPlayers(getPosATL _npc,20000,true,"array");
 	
-	if ((count allplayers) == 0) then {
-		{
-			(vehicle _x) setpos [50000,50000,0];
-			(vehicle _x) setDamage 1;
-		} foreach _members;
-	};
-	
 	// did anybody in the group got hit?
 	_newdamage=0; 
 	{ 
@@ -392,9 +387,6 @@ while { _loop} do {
 	if (count _members==0) then { 
 		_exit=true; 
 		if (KRON_UPS_Debug) then { server globalChat format["UPS group %1 all dead or surrendered", _grpidx]; };
-		//deleteGroup (group _npc);
-		sleep (300+(random aiVehicleRespawnTime));
-		(call compile _grpidx) call spawnAIVehicle;
 	} else { 
 		// did the leader die?
 		if (!alive _npc) then { 

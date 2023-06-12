@@ -55,8 +55,8 @@ findHousesFront = {
 			//{EP1HOUSES} &&
 			//{!(typeOf _enterable in ILLEGALHOUSES)} && 
 			{damage _enterable < 0.3} &&
-			{canSee(player,_enterable,60)} &&
-			{(count (playableUnits select {(_enterable distance2D _x) < ins_AIspawnMinRange})) == 0}
+			//{canSee(player,_enterable,60)} &&
+			{({(_enterable distance2D _x) < ins_AIspawnMinRange} count playableUnits) == 0}
 		) then { 
 			_enterables pushBack _enterable; 
 		}; 
@@ -75,7 +75,7 @@ findSquadAIName = {
 	_i     = _this select 1;  
   _unit = aiArray select _i;
 	
-	if (({alive _x} count aiArray) >= (call getEffectiveMaxAICount)) exitWith { -1 };
+	if (({alive _x} count aiArray) >= (player call getEffectiveMaxAICount)) exitWith { -1 };
 	
 	if (!alive _unit) exitWith { _i };
 	
@@ -89,33 +89,29 @@ findSquadAIName = {
 
 fillHouseEast = {
 
-	private ["_pID","_pos","_posASL", "_magazine", "_weapon", "_intersections", "_manPackingRadius", "_numOfNearbyBuildings",	"_intersectionPosASL", "_isVisibleToPlayer", "_unit","_name","_class","_ai","_house","_cCount","_hID","_wUnits","_i","_group","_skill"];
+	private ["_pID","_pos","_posASL", "_magazine", "_weapon", "_intersections", "_manPackingRadius", "_numOfNearbyBuildings",	"_intersectionPosASL", "_isVisibleToPlayer", "_unit","_name","_class","_ai","_house","_hID","_wUnits","_i","_group","_skill"];
 	
 	scopeName "fillHouseEastMain";
 	
 	_house	 = _this select 0;
 	_wUnits  = _this select 1;
 	
-	_manPackingRadius = 20;
+	_manPackingRadius = 10;
 	_numOfNearbyBuildings = count (nearestObjects [_house, ["House"], 200, true]); 
-	if (_numOfNearbyBuildings < 10) then {
-		_manPackingRadius = 3;
+	if (_numOfNearbyBuildings < 50) then {
+		_manPackingRadius = 2.5;
 	} else {
-		if (_numOfNearbyBuildings < 50) then {
-			_manPackingRadius = 10;
+		if (_numOfNearbyBuildings < 100) then {
+			_manPackingRadius = 5;
 		};
 	};
-	
-	// 0 based count of OPFOR infantry class members
-	_cCount		= count eastInfClasses - 1;
-	
+		
 	_wUnits = _wUnits apply {eyepos _x};
 	
 	{
 		_pos = _x;		
-
 		
-		if (count nearestObjects[_pos, ["CAManBase"], _manPackingRadius] == 0) then {
+		if ((count (_pos nearEntities[["CAManBase"], _manPackingRadius])) == 0) then {
 		
 			_name  = findSquadAIName(player);
 			if (_name == -1) exitWith { breakTo "fillHouseEastMain"; };
@@ -133,7 +129,7 @@ fillHouseEast = {
 				
 				_intersectionPosASL = (_intersections select 0) select 0;
 				
-				if ((_intersectionPosASL distance2D _x) < 20) exitWith {
+				if ((_intersectionPosASL distance _x) < 10) exitWith {
 					_isVisibleToPlayer = true;
 				};
 				
@@ -144,9 +140,9 @@ fillHouseEast = {
 				// if there are no appropriate AI units around,  prepare for spawning them
 				if DEBUG then { server globalChat format["spawning %1", _name]; };
 				
-				_class = eastInfClasses select (random _cCount);
+				_class = selectRandom eastInfClasses;
 				_group  = [player, "EastAIGrp", "", "east"] call getGroup; // create an AI group
-				_ai    = _group createUnit [_class, spawnPos, [], 0, "NONE"];
+				_ai    = _group createUnit [_class, spawnPos, [], 1000, "NONE"];
 				
 				// insurgent RPG-wielders!!!! :D								
 				if (((secondaryWeapon _ai) != "") && {(random 1) < 0.3}) then {
@@ -169,6 +165,17 @@ fillHouseEast = {
 						_ai selectWeapon _weapon;
 						_ai addItem "ACE_bandage";
 						_ai addItem "ACE_bandage";
+						
+						while {alive _ai} do {
+							waitUntil {
+								sleep 2;
+								(!alive _ai) || {(!isNull (assignedTarget _ai)) && {(lifeState _ai) != "INCAPACITATED"}}
+							};
+							if (alive _ai) then {
+								_ai doSuppressiveFire (assignedTarget _ai);
+								sleep 10;
+							};
+						};
 						
 					};				
 				};
@@ -208,23 +215,21 @@ aiSpawn = {
 	_hCount = count _houses;
 	if (_hCount == 0) exitWith {};	
 	
-	for "_j" from 0 to (count _houses - 1) do {				
+	for "_j" from 0 to (count _houses - 1) do {
 		_house 	= _houses select _j; 
 		_clear  = _house getVariable "cleared";
 		_gMkr   = str(_house call getGridPos);
 		if ((isNil "_clear") && {markerColor _gMkr == "ColorRed"}) then {  // make sure it's a red square
-			_hPos   = getPosATL _house;	
-			_eCount = count nearestObjects[_hPos, ["CAManBase"], 10];			
-			// players need not to be within SPAWNRANGE-200 from a house or they need not to see the spawn position for its AI to spawn
-			if (_eCount < 4) then {
-				_wUnits = nearestPlayers(_hPos,SPAWNRANGE*2,true,"array");
-				_wUnitVehicles = [];
-				{
-					_wUnitVehicles pushBackUnique (vehicle _x);
-				} foreach _wUnits;
-				[_house, _wUnitVehicles] call fillHouseEast;
-				sleep 1;
-			};
+		
+			_hPos   = getPosATL _house;			
+			_wUnits = nearestPlayers(_hPos,SPAWNRANGE*2,true,"array");
+			_wUnitVehicles = [];
+			{
+				_wUnitVehicles pushBackUnique (vehicle _x);
+			} foreach _wUnits;
+			[_house, _wUnitVehicles] call fillHouseEast;
+			sleep 1;
+				
 		};
 		if exitCondition exitWith {};
 	};
