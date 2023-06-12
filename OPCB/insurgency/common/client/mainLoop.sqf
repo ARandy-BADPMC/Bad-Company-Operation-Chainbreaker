@@ -7,7 +7,10 @@ _playergrp 		= grpNull;
 _HQstate 			= startLocation;
 
 
-[] spawn { 
+[] spawn {
+
+	scriptName "ins_AIhandler";
+ 
 	_aiTimer = time;
 	while { true } do {
 		//AI			
@@ -15,14 +18,16 @@ _HQstate 			= startLocation;
 		//if (time - _aiTimer > 30) then { _aiTimer = time + (random 10) - 5; };
 		//call groupAI;
 		sleep 1;
-		if (((player distance2D startLocation) > 1000) && {(daytime < 17.5) && {daytime > 6.5}}) then {
+		if (((player distance2D startLocation) > 1000) && {(east knowsAbout player) > 1}) then {
 			call aiMonitor; 
 		};		
 		sleep (25 + (random 10));
 	};
 };
 
-while { true } do { 
+scriptName "ins_gridHandler";
+
+while { true } do {
 
 	//Markers
 	call gridPath;

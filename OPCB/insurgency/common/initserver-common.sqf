@@ -48,6 +48,8 @@ cleanupVics = [];
 
 [] spawn {
 
+	scriptName "ins_roofGunSpawner";
+
 	#ifdef ENABLE_PERSISTENCY
 		waitUntil {
 			sleep 2;
@@ -62,6 +64,18 @@ cleanupVics = [];
 	#endif
 
 };
-[] spawn { call spawnAIVehicles; };
+
+[] spawn {
+
+	scriptName "ins_vehiclePatrolsHandler";
+	
+	waitUntil {
+		sleep 10;
+		(count playableUnits) > 1
+	};
+
+	call spawnAIVehicles; 
+
+};
 
 #include "server\mainLoop.sqf"

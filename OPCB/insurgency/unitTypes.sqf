@@ -36,8 +36,8 @@ switch (toLower worldName) do {
 			"LOP_SLA_Ural_open",
 			"LOP_UKR_Mi24V_UPK23",
 			"rhsgref_cdf_Mi35",
-			"LOP_UKR_Mi24V_FAB",
-			"LOP_SLA_Mi8MTV3_FAB"
+			//"LOP_UKR_Mi24V_FAB",
+			//"LOP_SLA_Mi8MTV3_FAB"
 		];
 		
 	};

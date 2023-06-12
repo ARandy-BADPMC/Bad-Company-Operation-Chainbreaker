@@ -1,16 +1,12 @@
 spawnAIVehicle = {
 	private ["_track","_speed","_grp","_type","_obj","_pos","_vcl","_ai"];
-	waitUntil {
-		sleep 3;
-		((count playableUnits) > 1) || {!isMultiplayer}
-	};
 	
 	waitUntil {
 		sleep 1;
-		({_logic = _x; (({(_logic distance _x) < 2200} count playableUnits) == 0)} count patrolSpawnPositionLogics) > 0
+		({_logic = _x; (({(_logic distance _x) < 1200} count playableUnits) == 0)} count patrolSpawnPositionLogics) > 0
 	};
 	
-	_obj = selectRandom (patrolSpawnPositionLogics select {_logic = _x; (({(_logic distance _x) < 2000} count playableUnits) == 0)});
+	_obj = selectRandom (patrolSpawnPositionLogics select {_logic = _x; (({(_logic distance _x) < 1000} count playableUnits) == 0)});
 	
 	_grp = createGroup east;
 	_type = selectRandom eastVclClasses; 		
@@ -129,11 +125,17 @@ patrolVehicles = [];
 
 spawnAIVehicles = {
 
+	// first run (no delay)
+	for "_i" from 1 to eastVehicleNum do {
+		call spawnAIVehicle;
+		sleep 120;
+	};
+
 	while {true} do {
 		waitUntil {
 			sleep 10;
 			patrolVehicles = patrolVehicles select {canMove _x};
-			(count patrolVehicles) < eastVehicleNum
+			((count patrolVehicles) < eastVehicleNum) && {(count playableUnits) > 1}
 		};
 		call spawnAIVehicle;
 		sleep patrolSpawnDelay;
@@ -249,6 +251,9 @@ createRoofGun = {
 	if (_maxAngle < 180) then {
 		_maxAngle = (_maxAngle - 15) max 5;
 		[_gun, _maxAngle, _dirOffset] spawn {
+		
+			scriptName "ins_roofgun";
+		
 			params ["_gun", "_maxAngle","_dirOffset"];
 			while {true} do {
 				sleep 10;
