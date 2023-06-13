@@ -2829,7 +2829,7 @@ _arsenalitems =
 "rhs_grenade_m15_mag",
 "ace_dragon_super",
 "ace_dragon_sight",
-//"ACE_splint",
+"ACE_splint",
 "rhsusf_20Rnd_762x51_SR25_m118_special_Mag",
 "rhsusf_20Rnd_762x51_SR25_m62_Mag",
 "rhsusf_20Rnd_762x51_SR25_m993_Mag",
@@ -2996,7 +2996,9 @@ _arsenalitems =
 "hlc_acc_dbalpl_side_fl",
 "hlc_acc_tlr1_side",
 "rhsusf_ihadss",
-"ACE_artilleryTable"
+"ACE_artilleryTable",
+"ACRE_VHF30108",
+"ACRE_VHF30108MAST"
 ];
 
 
