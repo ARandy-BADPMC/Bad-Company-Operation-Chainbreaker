@@ -3,7 +3,11 @@ private ["_radius","_currentTasknumber","_base","_selected"];
 
 _callerRE = remoteExecutedOwner;
 
-if (( {((markerpos 'base_marker') distance2d _x) < 1000} count playableUnits > 1) && {isNil "_taskobjective"}) exitWith {
+_baseMarker = markerPos "base_marker";
+
+_closeFriendlies = {(_baseMarker distance2d _x) < 1000 } count playableUnits;
+
+if ( _closeFriendlies < 2 && {isNil "_taskobjective"}) exitWith {
 	"At least 2 people are required to be at base to request a mission!" remoteExec["hint", _callerRE];
 };
 
