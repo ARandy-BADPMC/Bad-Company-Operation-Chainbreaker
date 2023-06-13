@@ -98,10 +98,10 @@ fillHouseEast = {
 	
 	_manPackingRadius = 10;
 	_numOfNearbyBuildings = count (nearestObjects [_house, ["House"], 200, true]); 
-	if (_numOfNearbyBuildings < 50) then {
+	if (_numOfNearbyBuildings < 20) then {
 		_manPackingRadius = 2.5;
 	} else {
-		if (_numOfNearbyBuildings < 100) then {
+		if (_numOfNearbyBuildings < 50) then {
 			_manPackingRadius = 5;
 		};
 	};
@@ -166,9 +166,19 @@ fillHouseEast = {
 						_ai addItem "ACE_bandage";
 						_ai addItem "ACE_bandage";
 						
+						private _target = objNull;
+						
 						while {alive _ai} do {
 							waitUntil {
 								sleep 2;
+								if (isNull (assignedTarget _ai)) then {
+									{
+										_target = assignedTarget _x;
+										if (!isNull _target) exitWith {
+											_ai doTarget _target;
+										};
+									} foreach units _ai;
+								};
 								(!alive _ai) || {(!isNull (assignedTarget _ai)) && {(lifeState _ai) != "INCAPACITATED"}}
 							};
 							if (alive _ai) then {
