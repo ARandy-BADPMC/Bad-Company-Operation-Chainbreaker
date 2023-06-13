@@ -1,9 +1,9 @@
-params ["_unit"];
+params ["_centerPos"];
 
 #include "..\..\data\civClasses.sqf";
 #include "..\..\data\mines.sqf";
 
-_houses = nearestObjects [_unit, ["house"], 700] select { count ( _x buildingPos -1 ) > 2 };
+_houses = nearestObjects [_centerPos, ["house"], 700] select { count ( _x buildingPos -1 ) > 2 };
 
 _maxcivs = 0;
 for "_i" from 0 to count _houses -1 do {

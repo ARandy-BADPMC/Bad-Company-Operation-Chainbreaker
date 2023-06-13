@@ -117,17 +117,9 @@ class chainbreaker
 		{
 			file = "functions\missions\spawn_city_rus.sqf";
 		};
-		class spawn_ins
+		class enemySpawner
 		{
-			file = "functions\spawn_ins.sqf";
-		};
-		class spawn_rus
-		{
-			file = "functions\spawn_rus.sqf";
-		};
-		class spawn_nat
-		{
-			file = "functions\spawn_nat.sqf";
+			file = "functions\enemySpawner.sqf";
 		};
 		class spawn_city_ins 
 		{
@@ -160,9 +152,21 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\nearest.sqf";
 		}; 
+		class setVehicleLock
+		{
+			file = "functions\miscellaneous\setVehicleLock.sqf";
+		}; 
 		class findSpot
 		{
 			file = "functions\findSpot.sqf";
+		};
+		class vehicleDeleteCheck
+		{
+			file = "functions\vehicleDeleteCheck.sqf";
+		};
+		class commanderActions
+		{
+			file = "functions\commanderActions.sqf";
 		};
 		class shk_patrol
 		{

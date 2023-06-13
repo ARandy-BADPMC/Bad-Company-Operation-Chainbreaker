@@ -1,12 +1,12 @@
-params ["_object"];
-private ["_guard","_relpos","_road","_connectedroads","_connection","_direction","_roadblock","_group"];
-_roads = (getPos _object nearRoads 200);
+params ["_centerPos"];
+private ["_relpos","_road","_connectedroads","_connection","_direction","_roadblock","_group"];
+_roads = _centerPos nearRoads 200;
 
 _posHelp = [90,180,270,359];
 _spawnComp = [];
 for "_i" from 0 to 3 do 
 {
-	_relpos = (getPos _object) getPos[random 200,_posHelp select _i ];
+	_relpos = _centerPos getPos[random 200,_posHelp select _i ];
 	_road = [ _relpos,200] call BIS_fnc_nearestRoad;
 	if (!(isNull _road)) then {
 		_connectedroads = roadsConnectedTo _road;

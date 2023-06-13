@@ -1,24 +1,20 @@
 private _reward = 140;
 params ["_base","_current_tasknumber"];
 _taskcomp = "gdrunken";
-_guardgroup = createGroup [east,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
 ["The insurgents have gained possession of a fraction of a significant vehicle shipment, primarily aimed at reinforcing their disorganized mechanized troops. These forces are expected to consist mainly of IFVs/AFVs/APCs and MBTs. Our intelligence reveals that the insurgents have mobilized certain groups and are preparing to initiate movement. The primary objective of this operation is to swiftly eliminate the insurgent's vehicle threat within the AO while disrupting their logistical support by neutralizing any FOBs or repair depots encountered. By executing this mission with precision and speed, we will significantly degrade the insurgent's mechanized capabilities and restore peace and security to the region.","Operation Battlefield Purge"],
  _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
-_guard = _guardgroup createUnit [OPCB_unitTypes_inf_commander, _base, [], 2, "NONE"];
-_guardpos = getPos _guard;
-
-_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+_comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 _reference = [ _comp ] call LARs_fnc_getCompObjects;
 
 _trucks = [];
 private _tanktype = "";
 for "_i" from 0 to 3 do {
-	_tanktype = selectRandom OPCB_unitTypes_veh_ins_armor;
-	_truckpos = _guardpos findEmptyPosition [1, 20, _tanktype];
+	_tanktype = selectRandom OPCB_ArmoredVehicles_OPFOR;
+	_truckpos = _base findEmptyPosition [1, 20, _tanktype];
 	_thetarget = createVehicle [_tanktype, _truckpos, [], 1, "NONE"];
 	_thetarget setVehicleLock "LOCKED";
 	_thetarget setFuel 0; 
@@ -26,11 +22,11 @@ for "_i" from 0 to 3 do {
 	_trucks pushBack _thetarget;
 };
 
-_stations = [_guardpos] call CHAB_fnc_gdrunken_spawn;
+_stations = [_base] call CHAB_fnc_gdrunken_spawn;
 
 _trucks append (_stations select 1);
 
-[_guard,3,0,6] call CHAB_fnc_spawn_ins;
+[_base,resistance] call CHAB_fnc_enemySpawner;
 
 waitUntil {
 	sleep 5;

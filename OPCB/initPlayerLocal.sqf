@@ -10,7 +10,7 @@ removeHeadgear player;
 removeGoggles player;
 
 //ACRE check & kick
-if (isMultiplayer) then {
+if (!isServer && {isMultiplayer}) then {
 	[] spawn {
 		sleep 10;	
 		if ((isnil "acre_sys_io_serverStarted") || {!acre_sys_io_serverStarted}) then {

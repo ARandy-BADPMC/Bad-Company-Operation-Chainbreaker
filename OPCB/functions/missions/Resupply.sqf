@@ -16,24 +16,24 @@ _officer disableAI "PATH";
 _container = "C_IDAP_supplyCrate_F" createVehicle (getPos dropoffpoint);
 [_container, 5] call ace_cargo_fnc_setSize;
 clearItemCargoGlobal _container;
-_guardpos = getPos _officer;
-_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+_officerPos = getPos _officer;
+_comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 
 _defenders = [];
 
 
 for "_i" from 0 to 2 do { 
-	_markpos = _guardpos getPos[50,random 360];
+	_markpos = _officerPos getPos[50,random 360];
  	_defender = [_markpos, west,
 	_rhsUSF
 	] call BIS_fnc_spawnGroup;
-	[_defender, _guardpos, 100] call bis_fnc_taskPatrol;
+	[_defender, _officerPos, 100] call bis_fnc_taskPatrol;
 	_defenders pushBack _defender;
 };
 
 waitUntil {
   sleep 5;
-  !alive _container || {_container distance _guardpos < 100} 
+  !alive _container || {_container distance _officerPos < 100} 
 };
 
 if(!alive _container) exitWith {
@@ -43,7 +43,7 @@ if(!alive _container) exitWith {
 
 "You have delivered the supplies. Maybe you should stick around in case the enemies got news about our envoy!" remoteExec ["hint"];
 
-_nearestplayer = [_officer] call CHAB_fnc_nearest;
+_nearestplayer = ([_officer] call CHAB_fnc_nearest) select 0;
 
 _dir = [ _officer, _nearestplayer ] call BIS_fnc_dirTo;
 _opposite = _dir + 140;
@@ -58,8 +58,8 @@ for "_i" from 0 to 5 do {
 		} do {
 		
 		sleep 1;
-		_attackpos = _guardpos getPos[random [500,700,1000],_opposite];
-		_suitable = [_attackpos, 0, 300, 10, 0, 0.7, 0,[],[globalWaterPos,globalWaterPos]] call BIS_fnc_findSafePos;
+		_attackpos = _officerPos getPos[random [500,700,1000],_opposite];
+		_suitable = [_attackpos, 0, 300, 10, 0, 0.5, 0,[],[globalWaterPos,globalWaterPos]] call BIS_fnc_findSafePos;
 		if (count _suitable == 3) then {
 			_suitable = [_suitable select 0,_suitable select 1];
 		};
@@ -68,8 +68,8 @@ for "_i" from 0 to 5 do {
 		_tries = _tries -1;
 	};
 	if (_tries > 0) then {
-		_attacker= [_attackpos, east, selectRandom OPCB_unitTypes_grp_inf] call BIS_fnc_spawnGroup;
-		_wayp = _attacker addWaypoint [_guardpos, 100];
+		_attacker= [_attackpos, east, selectRandom OPCB_InfantryGroups_Insurgents] call BIS_fnc_spawnGroup;
+		_wayp = _attacker addWaypoint [_officerPos, 100];
 		_wayp setWaypointType "SAD";
 
 		[_attacker] call CHAB_fnc_serverGroups;
@@ -84,8 +84,8 @@ for "_i" from 0 to 1 do {
 	_tries = 10;
 		
 	while {surfaceIsWater _attackpos && _tries >0 } do {
-		_attackpos = _guardpos getPos[random [500,700,1000],_opposite];
-		_suitable = [_attackpos, 0, 300, 10, 0, 0.7, 0,[],[globalWaterPos,globalWaterPos]] call BIS_fnc_findSafePos;
+		_attackpos = _officerPos getPos[random [500,700,1000],_opposite];
+		_suitable = [_attackpos, 0, 300, 10, 0, 0.5, 0,[],[globalWaterPos,globalWaterPos]] call BIS_fnc_findSafePos;
 		if (count _suitable == 3) then {
 		  _suitable = [_suitable select 0,_suitable select 1];
 		};
@@ -94,11 +94,11 @@ for "_i" from 0 to 1 do {
 		_tries = _tries -1;
 	};
 	if (_tries > 0) then {
-		_attacker= [_attackpos, east, selectRandom OPCB_unitTypes_grp_mech] call BIS_fnc_spawnGroup;
+		_attacker= [_attackpos, east, selectRandom OPCB_MechanizedGroups_Insurgents] call BIS_fnc_spawnGroup;
 		{
 			(vehicle _x) setVehicleLock "LOCKED";
 		} foreach ((units _attacker) select {_x == (effectiveCommander vehicle _x)});
-		_wayp = _attacker addWaypoint [_guardpos, 100];
+		_wayp = _attacker addWaypoint [_officerPos, 100];
 		_wayp setWaypointType "SAD";
 
 		[_attacker] call CHAB_fnc_serverGroups;
