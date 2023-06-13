@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1070;
+		nextID=1072;
 	};
 	class MarkerIDProvider
 	{
@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={19571.168,-1.5183597,13771.717};
-		dir[]={0.17736866,-0.836775,-0.51821512};
-		up[]={0.2709679,0.54756814,-0.79168624};
-		aside[]={-0.94620407,1.229273e-006,-0.32385394};
+		dir[]={0.124983,-0.90067387,-0.41613197};
+		up[]={0.25907946,0.43449578,-0.86260724};
+		aside[]={-0.95773536,0,-0.28765067};
 	};
 };
 binarizationWanted=0;
@@ -11103,7 +11103,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=0;
+														value=2;
 													};
 												};
 												class Item1
@@ -11130,7 +11130,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=0.80000001;
+														value=0.20015503;
 													};
 												};
 												class Item1
@@ -11238,7 +11238,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=900;
+														value=3600;
 													};
 												};
 												class Item1
@@ -11562,7 +11562,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -11589,7 +11589,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=1;
+														value=0;
 													};
 												};
 												class Item1
@@ -11616,7 +11616,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="BOOL";
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -11751,7 +11751,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=7;
+														value=12;
 													};
 												};
 												class Item1
@@ -11805,7 +11805,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -11886,7 +11886,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=3;
+														value=2;
 													};
 												};
 												class Item1
@@ -12021,7 +12021,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=2;
+														value=3;
 													};
 												};
 												class Item1
@@ -12102,7 +12102,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=5;
+														value=12;
 													};
 												};
 												class Item1
@@ -12183,7 +12183,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=1;
+														value=0;
 													};
 												};
 												class Item1
@@ -12318,7 +12318,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="BOOL";
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -12426,7 +12426,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=600;
+														value=3600;
 													};
 												};
 												class Item1
@@ -12804,7 +12804,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=1;
+														value=2;
 													};
 												};
 												class Item1
@@ -12966,7 +12966,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="BOOL";
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -12993,7 +12993,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=1;
+														value=2;
 													};
 												};
 												class Item1
@@ -13020,7 +13020,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="BOOL";
-														value=1;
+														value=0;
 													};
 												};
 												class Item1
@@ -30033,7 +30033,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={19003.906,14.945136,14087.318};
-			angle=2.6733732;
+			angle=2.6733727;
 			class Attributes
 			{
 				onActivation="gate_north animate [""Door_1_rot"", 1]";
@@ -30053,7 +30053,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={19229.998,12.857037,13833.989};
-			angle=2.3109555;
+			angle=2.310955;
 			class Attributes
 			{
 				onActivation="gate_south animate [""Door_1_rot"", 1]";
@@ -30902,6 +30902,7 @@ class Mission
 			};
 			id=1067;
 			type="Land_RowBoat_V2_F";
+			atlOffset=-0.00075340271;
 		};
 		class Item391
 		{
@@ -30919,7 +30920,7 @@ class Mission
 			};
 			id=1068;
 			type="CargoNet_01_box_F";
-			atlOffset=9.5367432e-007;
+			atlOffset=-0.00016880035;
 			class CustomAttributes
 			{
 				class Attribute0
