@@ -1,21 +1,19 @@
 private _reward = 100;
 params ["_base","_current_tasknumber"];
 _taskcomp = selectRandom ["warhead1","warhead2","destroy2"];
-_guardgroup = createGroup [east,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
 ["During the previous night, an American tank was illicitly taken by hostile forces. The unauthorized possession of this tank poses a significant threat as the adversaries may attempt to extract valuable technology for their own gain. Our mission is to swiftly locate and neutralize the stolen tank, denying the enemy any opportunity to exploit its advanced capabilities. The primary objective of this operation is to swiftly destroy the stolen American tank to prevent the hostile forces from extracting valuable technology. By executing the mission with speed and precision, we will neutralize their capability to utilize the tank against us or gain valuable insights into American military technology.","Operation Steel Reaper"],
  _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 
-_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_commander, _base, [], 2, "NONE"];
-_guardpos = getpos _guard;
-_spawncomps = [_guard] call CHAB_fnc_roadblock_rus;
+_spawncomps = [_base] call CHAB_fnc_roadblock_rus;
 
-_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-[_guard,10,2,1] call CHAB_fnc_spawn_nat;
+_comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 
-_thetarget = createVehicle ["rhsusf_m1a1aimd_usarmy", _guardpos, [], 1, "NONE"];
+[_base,resistance] call CHAB_fnc_enemySpawner;
+
+_thetarget = createVehicle ["rhsusf_m1a1aimd_usarmy", _base, [], 1, "NONE"];
 _thetarget lock true;
 
 waitUntil {

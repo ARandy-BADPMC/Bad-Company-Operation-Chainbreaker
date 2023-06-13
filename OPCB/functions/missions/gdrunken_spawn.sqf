@@ -20,12 +20,12 @@ for "_i" from 0 to 3 do {
 		
 	};
 
-	_unit = _group createUnit [OPCB_unitTypes_inf_ins_commander, _suitable, [], 2, "NONE"];
+	_unit = _group createUnit [selectRandom OPCB_Commanders_OPFOR, _suitable, [], 2, "NONE"];
 	_comp = ["ammodepot",_unit, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 	_pad = nearestObject [_unit, "Land_HelipadEmpty_F"];
 	deleteVehicle _unit;
 
-	_groupNumber = [getPos _pad,random 360,selectrandom OPCB_unitTypes_veh_ins_armor, east] call BIS_fnc_spawnVehicle;
+	_groupNumber = [getPos _pad,random 360,selectrandom OPCB_ArmoredVehicles_OPFOR, east] call BIS_fnc_spawnVehicle;
 	(_groupNumber select 0) setFuel 0;
 	(_groupNumber select 0) setVehicleLock "LOCKED";
 	_tanks pushBack (_groupNumber select 0);

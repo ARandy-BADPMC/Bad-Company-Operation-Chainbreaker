@@ -2,19 +2,16 @@ private _reward = 60;
 params["_base","_current_tasknumber"];
 
 _taskcomp = "generator1";
-_guardgroup = createGroup [east,true];
 _current_task = _base getPos[random 600,random 360];
 
 [_current_tasknumber ,west,
 ["Operation Thunderstrike has been initiated in response to intelligence reports indicating that the Insurgents have successfully infiltrated a local research lab and stolen highly advanced technology. Their nefarious intentions involve auctioning off this technology to the highest bidder, posing a grave threat to global security. The primary objective of Operation Phatom Strike is to neutralize the Insurgents and destroy the stolen device, thus preventing its potential catastrophic consequences.",
 "Operation Phantom Strike"], _current_task,"ASSIGNED",10,true,true,"Destroy",true] call BIS_fnc_setTask;
 
-_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_commander, _base, [], 2, "NONE"];
-_guardpos = getpos _guard;
-_spawncomps = [_guard] call CHAB_fnc_roadblock_rus;
-_comp = [_taskcomp,_guardpos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
-[_guard,10,1,2] call CHAB_fnc_spawn_nat;
-_destroytargets = nearestObjects [ _guardpos, ["Land_Device_assembled_F"], 30];
+_spawncomps = [_base] call CHAB_fnc_roadblock_rus;
+_comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+[_base,resistance] call CHAB_fnc_enemySpawner;
+_destroytargets = nearestObjects [ _base, ["Land_Device_assembled_F"], 30];
 _thetarget = selectrandom _destroytargets;
 
 waitUntil { 

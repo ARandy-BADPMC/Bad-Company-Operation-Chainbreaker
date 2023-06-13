@@ -1,4 +1,4 @@
-params ["_guard"];
+params ["_basePos"];
 private["_pos"];
 
 #include "..\data\civClasses.sqf";
@@ -9,7 +9,7 @@ _pos = 0;
 _defendergroup = createGroup [civilian,true];
 [_defendergroup] call CHAB_fnc_serverGroups;
 
-_houses = nearestObjects [_guard, ["house"], 400] select { count ( _x buildingPos -1 ) > 2 };
+_houses = nearestObjects [_basePos, ["house"], 400] select { count ( _x buildingPos -1 ) > 2 };
 //Make sure we have atleast one valid house
 if ( count _houses > 0 ) then {
 	//Select random house

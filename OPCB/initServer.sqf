@@ -30,6 +30,7 @@ Hz_pers_firstTimeLaunchFunction = compileFinal preprocessFileLineNumbers "Hz_per
 IsATaskRunning = false;
 TaskNumber = 0;
 EnemyGroups = [];
+CommanderActionUnderway = false;
 
 CrateCount = 0;
 publicVariable "CrateCount";

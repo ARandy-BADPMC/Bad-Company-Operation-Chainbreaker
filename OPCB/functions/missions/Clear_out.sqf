@@ -12,16 +12,16 @@ _msg = format ["A riot has erupted in the area, posing a significant threat to p
 
 [_current_tasknumber ,west,[_msg,"Operation Rapid Resolve",CityMarker],_citypos,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
-_guardgroup = createGroup [east,true];
-_guard = _guardgroup createUnit [OPCB_unitTypes_inf_ins_TL, _citypos, [], 2, "NONE"];
-removeAllWeapons _guard;
-_guard disableAI "AUTOCOMBAT";
-_guard setunitpos "MIDDLE";
+_officerGroup = createGroup [east,true];
+_officer = _officerGroup createUnit [selectRandom OPCB_Commanders_Insurgents, _citypos, [], 2, "NONE"];
+removeAllWeapons _officer;
+_officer disableAI "AUTOCOMBAT";
+_officer setunitpos "MIDDLE";
 _rescuegroup = createGroup [civilian,true];
 
 _houses = nearestObjects [_citypos, ["house"], 400];
 
-_missionObjectives = [_guard];
+_missionObjectives = [_officer];
 
 for "_i" from 0 to _journalistCount -1 do { 
   _house = selectRandom _houses;
@@ -37,9 +37,9 @@ for "_i" from 0 to _journalistCount -1 do {
   _missionObjectives pushBack _journal;
 };
 
-[_guard] call CHAB_fnc_spawn_city_ins;
+[_citypos] call CHAB_fnc_spawn_city_ins;
 
-[_guard,10,1,1] call CHAB_fnc_spawn_ins;
+[_citypos,resistance] call CHAB_fnc_enemySpawner;
 
 [] call CHAB_fnc_enemycount;
 

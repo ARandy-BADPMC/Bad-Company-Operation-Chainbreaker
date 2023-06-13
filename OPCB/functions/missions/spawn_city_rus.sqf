@@ -1,6 +1,6 @@
-params ["_centerobj"];
+params ["_centerPos"];
 
-_houses = nearestObjects [_centerobj, ["house"], 500] select { count ( _x buildingPos -1 ) > 2 };
+_houses = nearestObjects [_centerPos, ["house"], 500] select { count ( _x buildingPos -1 ) > 2 };
 
 _defendergroup = creategroup east;
 
