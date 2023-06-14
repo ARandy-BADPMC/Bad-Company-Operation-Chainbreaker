@@ -50,6 +50,7 @@ if (!isDedicated) then {
 	
 	OPCB_crateSpawner_openDialog = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_openDialog.sqf";
 	OPCB_crateSpawner_fnc_spawnCrate = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_fnc_spawnCrate.sqf";
+	OPCB_crateSpawner_fnc_spawnCrate_server = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_fnc_spawnCrate_server.sqf";
 	
 	OPCB_econ_initDone = true;
 
