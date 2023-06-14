@@ -23,6 +23,8 @@ switch (toLower worldName) do {
 			"LOP_RACS_T72BA"
 		];
 
+		OPCB_Artillery_Insurgents = ["LOP_SLA_BM21"];
+
 		OPCB_TransportVehicles_Insurgents = [
 			"LOP_RACS_Landrover",
 			"LOP_RACS_Landrover_M2",
@@ -65,6 +67,8 @@ switch (toLower worldName) do {
 			"LOP_SLA_T72BA",
 			"LOP_SLA_T72BB"
 		];
+
+		OPCB_Artillery_OPFOR = ["LOP_SLA_BM21"];
 
 		OPCB_TransportVehicles_OPFOR = [
 			"LOP_SLA_UAZ",

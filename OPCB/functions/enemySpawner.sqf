@@ -10,10 +10,11 @@ private _transportGroundCount = floor random [0, _transportVehiclesCount/2, _tra
 private _transportHelicoptersCount = _transportVehiclesCount - _transportGroundCount;
 
 private _attackHelicoptersCount = floor random [0 * _playerRate, 1 * _playerRate, 2 * _playerRate];
+private _artilleryCount = floor random [0 * _playerRate, 1 * _playerRate, 2 * _playerRate];
 
 private _armoredVehiclesCount = floor random [0 * _playerRate, 1 * _playerRate, 3 * _playerRate];
 
-private ["_mechGroups","_infGroups","_attackHelicopterGroups", "_transportHelicopterGroups", "_transportGroups", "_staticVehicles", "_commanderUnits", "_armoredVehicles"];
+private ["_mechGroups","_infGroups", "_staticVehicles", "_commanderUnits", "_armoredVehicles"];
 
 switch (_side) do {
 	case east: { 
@@ -22,17 +23,11 @@ switch (_side) do {
 		_staticVehicles = OPCB_StaticVehicles_OPFOR;
 		_armoredVehicles = OPCB_ArmoredVehicles_OPFOR;
 		_commanderUnits = OPCB_Commanders_OPFOR;
-		_transportGroups = OPCB_TransportVehicles_OPFOR;
-		_transportHelicopterGroups = OPCB_TransportHelicopters_OPFOR;
-		_attackHelicopterGroups = OPCB_AttackHelicopters_OPFOR;
 	};
 	case resistance: {
 		_infGroups = OPCB_InfantryGroups_Insurgents;
 		_mechGroups = OPCB_MechanizedGroups_Insurgents;
 		_staticVehicles = OPCB_StaticVehicles_Insurgents;
-		_transportHelicopterGroups = OPCB_TransportHelicopters_Insurgents;
-		_transportGroups = OPCB_TransportVehicles_Insurgents;
-		_attackHelicopterGroups = OPCB_AttackHelicopters_Insurgents;
 		_armoredVehicles = OPCB_ArmoredVehicles_Insurgents;
 		_commanderUnits = OPCB_Commanders_Insurgents;
 	};
@@ -139,9 +134,10 @@ CommanderSupportActions = [];
 		CommanderSupportActions pushBack _x;
 	};
 } forEach 
-		[["attackHelis",[0, _side]],
-		["groundTransport",[1, _side]],
-		["airTransport",[0, _side]]];
+		[["attackHelis",[_attackHelicoptersCount, _side]],
+		["groundTransport",[_transportGroundCount, _side]],
+		["airTransport",[_transportHelicoptersCount, _side]],
+		["artillery",[_artilleryCount,_side]]];
 
 private _commanderSpawnPos = [_centerPosition] call _findSavePosForGroups;
 if!(surfaceIsWater _commanderSpawnPos) then {
