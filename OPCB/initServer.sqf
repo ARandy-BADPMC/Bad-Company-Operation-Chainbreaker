@@ -19,6 +19,7 @@ Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [
 Hz_pers_var_insurgencyClearedMarkers = [];
 Hz_pers_customLoadFunction = compileFinal preprocessFileLineNumbers "Hz_pers_customLoadFunction.sqf";
 Hz_pers_firstTimeLaunchFunction = compileFinal preprocessFileLineNumbers "Hz_pers_firstTimeLaunchFunction.sqf";	
+OPCB_crateSpawner_fnc_spawnCrate_server = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_fnc_spawnCrate_server.sqf";
 
 #include "functions\BADCO_Arsenal.sqf"
 

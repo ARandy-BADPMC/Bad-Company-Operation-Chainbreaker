@@ -20,6 +20,7 @@ if (!isServer && {isMultiplayer}) then {
 };
 
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
+call compileFinal preprocessFileLineNumbers "economy\init.sqf";
 
 jeff addAction ["<t color='#FF0000'>Request Mission</t>", "[] remoteExec ['CHAB_fnc_mission_selector',2];", nil, 1, false, true, "", "true", 10, false,""];
 
