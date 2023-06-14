@@ -11,22 +11,22 @@ CommanderActionUnderway = true;
 
 (selectRandom (CommanderSupportActions select { ((_x select 1) select 0) >= 1 })) params ["_action", "_actionDescriptor"];
 
-private ["_transportGroups", "_transportHelicopterGroups", "_attackHelicopterGroups", "_infGroups"];
-
+private ["_transportGroups", "_transportHelicopterGroups", "_attackHelicopterGroups", "_infGroups","_artilleryGroups"];
 _actionDescriptor params ["_actionCount", "_side"];
-
 switch (_side) do {
 	case east: { 
 		_infGroups = OPCB_InfantryGroups_OPFOR;
 		_transportGroups = OPCB_TransportVehicles_OPFOR;
 		_transportHelicopterGroups = OPCB_TransportHelicopters_OPFOR;
 		_attackHelicopterGroups = OPCB_AttackHelicopters_OPFOR;
+		_artilleryGroups = OPCB_Artillery_OPFOR;
 	};
 	case resistance: {
 		_infGroups = OPCB_InfantryGroups_Insurgents;
 		_transportHelicopterGroups = OPCB_TransportHelicopters_Insurgents;
 		_transportGroups = OPCB_TransportVehicles_Insurgents;
 		_attackHelicopterGroups = OPCB_AttackHelicopters_Insurgents;
+		_artilleryGroups = OPCB_Artillery_Insurgents;
 	};
 	case west: {
 
@@ -36,17 +36,61 @@ switch (_side) do {
 	};
 };
 
+private _subTractPoints = {
+	params ["_actionName"];
+	CommanderSupportActions = CommanderSupportActions apply {
+		private _var = _x;
+		if( (_var select 0) == _actionName ) then {
+			_points = (_var select 1) params ["_point", "_side2"];
+
+			_var  = [_var select 0, [_point - 1, _side2]];
+		};
+		_var
+	};
+};
+
+private _getSafePos = {
+	params ["_unitOrPosition",["_minDistance", 2000 , [0]],["_maxDistance", 4500 , [0]]];
+	private _rate = 500;
+	private _randomDistance = (random 100) random [_minDistance,_maxDistance];
+	private _pos = _unitOrPosition getPos[ _randomDistance+ _rate, random 360];
+	private _nearestPlayerDistance = ([_pos] call CHAB_fnc_nearest) select 1;
+
+	while {_nearestPlayerDistance < 2000} do {
+		_rate = _rate + 500;
+		_pos = _unitOrPosition getPos[_randomDistance + _rate, random 360];
+		_nearestPlayerDistance = ([_pos] call CHAB_fnc_nearest) select 1;
+	};
+	_pos
+};
+
+private _getSafeRoads = {
+	params ["_pos",["_minDistance", 2000 , [0]]];
+	private _rate = 0;
+	private _roads = [];
+	private _safeRoads =[]; 
+
+	while {count _safeRoads == 0 } do {
+		_rate = _rate + 100;
+		_roads = _pos nearRoads _rate;
+		_safeRoads = _roads select
+		{
+			private _road = _x;
+			private _found = false;
+			{
+				if( _x distance2D _road> _minDistance) exitWith {
+					_found = true;
+				};
+			} forEach playableUnits;
+			_found
+		};
+	};
+	_safeRoads
+};
+
 switch (_action) do {
 	case "attackHelis": {
-		private _rate = 500;
-		private _pos = _unitOrPosition getPos[random 4500 + _rate, random 4500 + _rate];
-		private _nearestPlayerDistance = ([_pos] call CHAB_fnc_nearest) select 1;
-
-		while {_nearestPlayerDistance < 2000} do {
-			_rate = _rate + 500;
-			_pos = _unitOrPosition getPos[random 5000 + _rate, random 5000 + _rate];
-			_nearestPlayerDistance = ([_pos] call CHAB_fnc_nearest) select 1;
-		};
+		private _pos = [_unitOrPosition] call _getSafePos;
 		
 		([_pos, random 180, selectRandom _attackHelicopterGroups, _side] call BIS_fnc_spawnVehicle) params ["_createdVehicle", "_crew", "_spawnedGroup"];
 		[_spawnedGroup, _unitOrPosition] call BIS_fnc_taskAttack;
@@ -55,34 +99,50 @@ switch (_action) do {
 		_spawnedGroup deleteGroupWhenEmpty true;
 		[_spawnedGroup] call CHAB_fnc_serverGroups;
 
-		CommanderSupportActions = CommanderSupportActions apply {
-			private _var = _x;
-			if( (_var select 0) == "attackHelis" ) then {
-				_points = (_var select 1) params ["_point", "_side2"];
+		["attackHelis"] call _subTractPoints;
+	};
+	case "artillery": {
+		private _pos = [_unitOrPosition] call _getSafePos;
 
-				_var  = [_var select 0, [_point - 1, _side2]];
+		private _selectedRoadPos = getPos (selectRandom ([_pos,5000] call _getSafeRoads));
+
+		([_selectedRoadPos, random 180, selectRandom _artilleryGroups, _side] call BIS_fnc_spawnVehicle) params ["_createdVehicle", "_crew", "_spawnedGroup"];
+
+		[_createdVehicle] spawn {
+			params ["_createdVehicle"];
+			while {alive _createdVehicle} do {
+				private _ammos = getArtilleryAmmo [_createdVehicle];
+				if(count _ammos > 0) then {
+
+					private _selectedPos = [0,0,0,0];
+					private _ammo = selectRandom _ammos;
+					{
+						private _player = _x;
+						private _pos = ASLToAGL (getPosASL _player);
+						if(_pos inRangeOfArtillery [[_createdVehicle], _ammo]) exitWith {
+							_selectedPos = _pos;
+						};
+					} forEach playableUnits;
+
+					if(count _selectedPos != 4) then {
+						_createdVehicle commandArtilleryFire [_selectedPos, _ammo, round random[3,5,7]];
+					};
+
+				};
+				sleep random [300, 450, 600];
 			};
-			_var
 		};
+		
+		[_spawnedGroup] call CHAB_fnc_setVehicleLock;
+
+		_spawnedGroup deleteGroupWhenEmpty true;
+		[_spawnedGroup] call CHAB_fnc_serverGroups;
+
+		["artillery"] call _subTractPoints;
 	};
 	case "groundTransport": { 
-		private _rate = 500;
-		private _pos = _unitOrPosition getPos[random 4500 + _rate, random 4500 + _rate];
-		private _nearestPlayerDistance = ([_pos] call CHAB_fnc_nearest) select 1;
-
-		while {_nearestPlayerDistance < 2000} do {
-			_rate = _rate + 500;
-			_pos = _unitOrPosition getPos[random 5000 + _rate, random 5000 + _rate];
-			_nearestPlayerDistance = ([_pos] call CHAB_fnc_nearest) select 1;
-		};
-
-		_rate = 100;
-		private _roads = _pos nearRoads _rate;
-		while {count _roads == 0} do {
-			_rate = _rate + 100;
-			_roads = _pos nearRoads _rate;
-		};
-		private _selectedRoadPos = getPos (selectRandom _roads);
+		private _pos = [_unitOrPosition] call _getSafePos;
+		private _selectedRoadPos = getPos (selectRandom ([_pos] call _getSafeRoads));
 
 		private _transportGroup = [_selectedRoadPos, _side, selectrandom _infGroups] call BIS_fnc_spawnGroup;
 
@@ -113,26 +173,10 @@ switch (_action) do {
 		_spawnedGroup deleteGroupWhenEmpty true;
 		[_spawnedGroup] call CHAB_fnc_serverGroups;
 
-		CommanderSupportActions = CommanderSupportActions apply {
-			private _var = _x;
-			if( (_var select 0) == "groundTransport" ) then {
-				_points = (_var select 1) params ["_point", "_side2"];
-
-				_var  = [_var select 0, [_point - 1, _side2]];
-			};
-			_var
-		};
+		["groundTransport"] call _subTractPoints;
 	};
 	case "airTransport": {
-		private _rate = 500;
-		private _pos = _unitOrPosition getPos[random 4500 + _rate, random 4500 + _rate];
-		private _nearestPlayerDistance = ([_pos] call CHAB_fnc_nearest) select 1;
-
-		while {_nearestPlayerDistance < 2000} do {
-			_rate = _rate + 500;
-			_pos = _unitOrPosition getPos[random 5000 + _rate, random 5000 + _rate];
-			_nearestPlayerDistance = ([_pos] call CHAB_fnc_nearest) select 1;
-		};
+		private _pos = [_unitOrPosition] call _getSafePos;
 		
 		private _transportGroup = [_pos, _side, selectrandom _infGroups] call BIS_fnc_spawnGroup;
 
@@ -162,15 +206,7 @@ switch (_action) do {
 		_spawnedGroup deleteGroupWhenEmpty true;
 		[_spawnedGroup] call CHAB_fnc_serverGroups;
 
-		CommanderSupportActions = CommanderSupportActions apply {
-			private _var = _x;
-			if( (_var select 0) == "airTransport" ) then {
-				_points = (_var select 1) params ["_point", "_side2"];
-
-				_var  = [_var select 0, [_point - 1, _side2]];
-			};
-			_var
-		};
+		["airTransport"] call _subTractPoints;
 	};
 	default { 
 
