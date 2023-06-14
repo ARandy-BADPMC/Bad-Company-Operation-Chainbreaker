@@ -5,11 +5,7 @@ enableSaving [false, false];
 enableSentences true;
 enableTeamswitch false;
 
-
-call compileFinal preprocessFileLineNumbers "economy\init.sqf";
-
 [] execVM "Scripts\ied.sqf";
-[] execVM "insurgency\init.sqf";
 [] execVM "Vcom\VcomInit.sqf";
 
 Resistance setFriend [EAST, 1]; Resistance setFriend [WEST, 0]; Resistance setFriend [Civilian, 1];
@@ -24,7 +20,6 @@ Hz_pers_var_insurgencyClearedMarkers = [];
 Hz_pers_customLoadFunction = compileFinal preprocessFileLineNumbers "Hz_pers_customLoadFunction.sqf";
 Hz_pers_firstTimeLaunchFunction = compileFinal preprocessFileLineNumbers "Hz_pers_firstTimeLaunchFunction.sqf";	
 
-["Initialize"] call BIS_fnc_dynamicGroups;
 #include "functions\BADCO_Arsenal.sqf"
 
 IsATaskRunning = false;
