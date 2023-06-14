@@ -20,7 +20,7 @@ if (_radius < 500) then {
 			
 			_suitable = [_basePos, 2000, _startingDist, 10, 0, 0.3, 0, [], [[0,0,0,0],[0,0,0,0]]] call BIS_fnc_findSafePos;
 
-			_list = nearestTerrainObjects [_suitable,["TREE","BUILDING","RUIN","ROCK","HOUSE"], _radius,false];
+			_list = nearestTerrainObjects [_suitable,[], _radius,false];
 			_startingDist = worldSize min (_startingDist + 800);
 		};
 		
