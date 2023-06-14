@@ -12,7 +12,7 @@ switch (toLower worldName) do {
 	// South america
 	case "sara" : {
 
-		OPCB_Commanders_Insurgents = ["LOP_RACS_Infantry_TL"];
+		OPCB_Commanders_Insurgents = ["LOP_SLA_Infantry_Officer"];
 
 		OPCB_InfantryGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "LOP_RACS" >> "Infantry"] call _configParser;
 
