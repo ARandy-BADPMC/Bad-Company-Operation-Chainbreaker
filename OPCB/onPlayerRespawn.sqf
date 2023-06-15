@@ -1,6 +1,6 @@
-#include "data\developers.sqf";
+_dev = player getVariable ["Developer", false];
 
-if (getPlayerUID player in _developers) then {
+if (_dev) then {
 	player addAction ["<t color='#00AAFF'>Developer Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, -99, false, true, "", "true", 10, false,""];
 };
 

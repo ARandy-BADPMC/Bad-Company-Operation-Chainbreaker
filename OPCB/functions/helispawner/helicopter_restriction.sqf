@@ -6,7 +6,6 @@ if(_isAttack == 1) then {
 		_playerid = getPlayerUID _player;
 
 		#include "..\..\data\vehicleDriverUnitTypes.sqf";
-		#include "..\..\data\soar.sqf";
 
 		if (_vehicle isKindOf "Plane" && {_seat == "driver"}) then {
 			if !(typeof _player in _jetPilotTypes) then {
@@ -15,7 +14,8 @@ if(_isAttack == 1) then {
 			};
 		} else {
 			if(_seat == "driver") then {
-				if !(typeof _player in _helicopterPilotTypes && {_playerid in _SOAR}) then {
+				_whiteListed = _player getVariable ["WhiteListed", false];
+				if !(typeof _player in _helicopterPilotTypes && {_whiteListed}) then {
 					moveOut _player;
 					_vehicle engineOn false;
 				};
