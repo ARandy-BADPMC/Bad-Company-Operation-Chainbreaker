@@ -31,34 +31,7 @@ tank_spawner addAction ["<t color='#FFFF00'>Vehicle Spawner</t>","[] spawn CHAB_
 tank_spawner addAction ["<t color='#00FFFF'>Box Spawner</t>","[] spawn OPCB_crateSpawner_openDialog;",nil, 1, false, true, "", "true", 10, false,""];   
 tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
 
-_uid = getPlayerUID player;
-
-#include "data\soar.sqf";
-if (_uid in _SOAR) then {
-	player setVariable ["SOAR",1];
-};
-
-player addEventHandler ["GetInMan",{[_this select 0,_this select 1, _this select 2] call BADCO_fnc_classCheck;}];
-
-#include "data\soarUnitTypes.sqf";
-
-if (typeof player in _soarUnitTypes) then {
-	if (_uid in _soar) then {
-		hint "Welcome whitelisted player";
-	} else {
-		hint "You must be whitelisted to use this slot.";
-		[] spawn {
-			sleep 10;
-			endMission "not_Whitelisted";				
-		};
-	};
-}; 
-
-#include "data\developers.sqf";
-
-if(_uid in _developers) then {
-	player addAction ["<t color='#00AAFF'>Developer Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, -99, false, true, "", "true", 10, false,""];
-};
+player addEventHandler ["GetInMan",{[_this select 1, _this select 2] call BADCO_fnc_classCheck;}];
 
 jeff addaction ["Lights on", {
 	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
@@ -80,9 +53,35 @@ jeff addaction ["Lights off", {
 [] spawn {
 	scriptName "ACE_advanced_fatigue_rebalance";		
 	while {true} do {
-			sleep 5;
-			ace_advanced_fatigue_anfatigue = 1;
+		sleep 5;
+		ace_advanced_fatigue_anfatigue = 1;
 	};
 };
 
 Hz_pers_clientReadyForLoad = true;
+
+[] spawn {
+	waitUntil{
+		sleep 1;
+		_initDone = player getVariable ["InitDone", false];
+		_initDone
+	};
+
+	#include "data\whitelistedUnitTypes.sqf";
+
+	if (typeof player in _whitelistedUnitTypes) then {
+		_whiteListed = player getVariable ["WhiteListed", false];
+		if (_whiteListed) then {
+			hint "Welcome whitelisted player";
+		} else {
+			hint "You must be whitelisted to use this slot." ;
+			sleep 10;
+			endMission "not_Whitelisted";	
+		};
+	}; 
+
+	_developer = player getVariable ["Developer", false];
+	if(_developer) then {
+		player addAction ["<t color='#00AAFF'>Developer Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, -99, false, true, "", "true", 10, false,""];
+	};	
+};
