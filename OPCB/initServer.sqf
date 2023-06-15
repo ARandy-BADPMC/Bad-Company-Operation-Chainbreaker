@@ -23,6 +23,13 @@ OPCB_crateSpawner_fnc_spawnCrate_server = compileFinal preprocessFileLineNumbers
 
 #include "functions\BADCO_Arsenal.sqf"
 
+
+// tier count is 0-based in code so it goes from 9 to 0! (T10 = 9, T1 = 0)
+OPCB_econ_currentTier = 9;
+publicVariable "OPCB_econ_currentTier";	
+OPCB_econ_credits = 40;
+publicVariable "OPCB_econ_credits";
+
 IsATaskRunning = false;
 TaskNumber = 0;
 EnemyGroups = [];

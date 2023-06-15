@@ -1,8 +1,4 @@
-// tier count is 0-based in code so it goes from 9 to 0! (T10 = 9, T1 = 0)
-OPCB_econ_currentTier = 9;
-OPCB_econ_credits = 40;
-
-OPCB_econ_initDone = true;
+OPCB_econ_initDone = false;
 
 #include "vehicleCargoSpaces.sqf";
 #include "vehicleAttackTypes.sqf";
