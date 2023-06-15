@@ -19,7 +19,7 @@ for "_i" from 0 to 3 do {
 	};
 	_suitable = [_suitable select 0, _suitable select 1, 0];
 	{
-		hideObjectGlobal _x;
+		_x hideObjectGlobal true;
 	} forEach _list;
 
 	_comp = ["ammodepot",_suitable, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
