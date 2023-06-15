@@ -34,7 +34,7 @@ if (_radius < 500) then {
 };
 
 {
-	hideObjectGlobal _x;
+	_x hideObjectGlobal true;
 } forEach _list;
 
 [_taskSpot select 0, _taskSpot select 1, 0]
