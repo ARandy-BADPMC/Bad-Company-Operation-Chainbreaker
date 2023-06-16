@@ -48,8 +48,12 @@ _veh addEventHandler ["Engine",{
 //check if vehicle has been abandoned
 _veh addEventHandler ["GetOut",{
 	params ["_veh"];
-	if ((count crew _veh) == 0) then {
-		_veh setVariable ["CHB_CanDespawn", true, false];
+	["_veh"] spawn {
+		params ["_veh"];
+		sleep 5;
+		if ((count crew _veh) == 0) then {
+			_veh setVariable ["CHB_CanDespawn", true, false];
+		};
 	};
 
 }];

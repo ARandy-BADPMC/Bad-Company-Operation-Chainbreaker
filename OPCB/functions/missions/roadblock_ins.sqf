@@ -24,7 +24,7 @@ for "_i" from 0 to _roadblocks - 1 do
 			_roadblock = [_block,getpos _road, [0,0,0], _direction, true, true ] call LARs_fnc_spawnComp;
 			_spawnComp pushBack _roadblock;
 
-			_group = [getpos _road, east,selectRandom OPCB_InfantryGroups_OPFOR] call BIS_fnc_spawnGroup;
+			_group = [getpos _road, east,selectRandom OPCB_InfantryGroups_Insurgents] call BIS_fnc_spawnGroup;
 			[_group,150] call CHAB_fnc_shk_patrol;
 			[_group] call CHAB_fnc_serverGroups;
 			sleep 1;
