@@ -1,5 +1,6 @@
 #include "data\unitTypes.sqf"
-#include "data\helicopterLoadouts.sqf"
+#include "economy\vehicleCargoSpaces.sqf";
+#include "economy\vehicleAttackTypes.sqf";
 #include "economy\crateCargoSizes.sqf";
 
 enableSaving [false, false];
