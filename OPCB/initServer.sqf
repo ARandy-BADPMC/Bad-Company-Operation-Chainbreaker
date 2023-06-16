@@ -6,7 +6,7 @@
 enableSaving [false, false];
 enableSentences true;
 enableTeamswitch false;
-
+VCM_Debug = false;
 [] execVM "Scripts\ied.sqf";
 [] execVM "Vcom\VcomInit.sqf";
 
