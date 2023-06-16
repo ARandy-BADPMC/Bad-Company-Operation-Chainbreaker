@@ -1,10 +1,5 @@
 params ["_tierType", "_tier"];
 
-if (!(_tierType in ["INF", "ENG", "AIR"])) exitWith {
-	hintc "ERROR in code. Tier type must be either INF, ENG or AIR!";
-	diag_log "ERROR in code. Tier type must be either INF, ENG or AIR!";
-};
-
 private _cost = 0;
 
 switch (_tierType) do {
@@ -64,6 +59,30 @@ switch (_tierType) do {
 			
 		};
 		
+	};
+
+	case "DRONE" : {
+		
+		_cost = switch (_tier) do {
+		
+			case 9: {5};
+			case 8: {10};
+			case 7: {15};
+			case 6: {20};
+			case 5: {20};
+			case 4: {20};
+			case 3: {20};
+			case 2: {20};
+			case 1: {20};
+			case 0: {20};
+			
+		};
+		
+	};
+
+	default {
+		hintc "ERROR in code. Tier type not recognized!";
+		diag_log "ERROR in code. Tier type not recognized!";
 	};
 
 };

@@ -54,7 +54,6 @@ OPCB_econ_TierList_AIR = [
 
 	//TIER 9
 	[
-
 	],
 
 	//TIER 10
