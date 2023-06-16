@@ -13,11 +13,9 @@ for "_i" from 0 to 3 do {
 		
 		_maxDist = worldSize min (_maxDist + 100);
 		
-	
-		_list = nearestTerrainObjects [_suitable,[], 55,false];
-		
 	};
 	_suitable = [_suitable select 0, _suitable select 1, 0];
+	_list = nearestTerrainObjects [_suitable,[], 55,false];
 	{
 		_x hideObjectGlobal true;
 	} forEach _list;
