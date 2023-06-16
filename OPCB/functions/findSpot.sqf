@@ -20,7 +20,6 @@ if (_radius < 500) then {
 			
 			_suitable = [_basePos, 2000, _startingDist, 10, 0, 0.3, 0, [], [[0,0,0,0],[0,0,0,0]]] call BIS_fnc_findSafePos;
 
-			_list = nearestTerrainObjects [_suitable,[], _radius,false];
 			_startingDist = worldSize min (_startingDist + 800);
 		};
 		
@@ -32,6 +31,7 @@ if (_radius < 500) then {
 	_taskSpot = selectRandom _suitableSpots;
 	
 };
+_list = nearestTerrainObjects [_taskSpot,[], _radius,false];
 
 {
 	_x hideObjectGlobal true;

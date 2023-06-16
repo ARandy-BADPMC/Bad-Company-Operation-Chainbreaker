@@ -8,22 +8,17 @@ CityMarker setMarkerPos _citypos;
 [_current_tasknumber ,west,["We have intel on the local arms-dealer who is supplying the resistance and is one of the main financers of the Armored Vehicle trades.He is guarded by Brutes and War veterans who aren't afraid to die for their Overlord. Take him out, but be careful; if enemy forces spot you, they will do everything in their power to stop you.","El Chapo",CityMarker],getMarkerPos CityMarker,"ASSIGNED",10,true,true,"kill",true] call BIS_fnc_setTask;
 
 _group = createGroup [east,true];
-_officer = _group createUnit [selectRandom OPCB_Commanders_Insurgents, getMarkerPos CityMarker, [], 2, "NONE"];
-_officerPos = getPos _officer;
 
-_houses = nearestObjects [_officer, ["house"], 300] select { count ( _x buildingPos -1 ) > 10 };
+_houses = nearestObjects [getMarkerPos CityMarker, ["house"], 300] select { count ( _x buildingPos -1 ) > 10 };
 
 _building = selectRandom _houses;
 
 _number = count (_building buildingPos -1);
 _buildpos = (_building buildingPos -1) select ( ceil _number/2);
-_officer = _group createUnit [selectRandom OPCB_Commanders_Insurgents, _buildpos, [], 2, "NONE"]; 
-_officer disableAI "PATH";
-_officer allowDamage false;
+
+_officer = setPos  _group createUnit [selectRandom OPCB_Commanders_Insurgents, _buildpos, [], 2, "NONE"]; 
 _officer setUnitLoadout [["rhs_weap_t5000","","","rhsusf_acc_LEUPOLDMK4",["rhs_5Rnd_338lapua_t5000",5],[],"bipod_02_F_blk"],[],["rhs_weap_makarov_pm","","","",["rhs_mag_9x18_8_57N181S",8],[],""],["U_I_C_Soldier_Para_3_F",[["ACRE_PRC343",1],["ACRE_PRC148",1],["ACE_fieldDressing",3],["ACE_elasticBandage",2],["ACE_quikclot",1],["ACE_microDAGR",1],["ACE_MapTools",1],["ACE_RangeCard",1]]],["TAC_Jvest_U2O",[["rhs_5Rnd_338lapua_t5000",10,5],["rhs_mag_9x18_8_57N181S",4,8],["rhs_mag_rgo",2,1],["rhs_mag_rgn",1,1],["rhs_mag_rgd5",1,1],["rhs_mag_rdg2_white",3,1],["rhs_mag_zarya2",2,1]]],[],"rhsgref_patrolcap_specter","G_Bandanna_khk",["rhs_pdu4","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]];
-_officer setUnitLoadout [[],[],[],["TRYK_U_pad_j_blk",[["ACRE_PRC343",1],["ACRE_PRC148",1],["ACE_fieldDressing",3],["ACE_elasticBandage",2],["ACE_quikclot",1]]],["TAC_FS_FOL_B",[]],[],"rhs_beret_mp1","rhs_googles_black",[],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]];
 _officer disableAI "PATH";
-_officer allowDamage false;
 _officer setSkill 1;
 
 _j = 0;
@@ -34,11 +29,7 @@ for "_i" from 0 to 4 do {
 	_unit setSkill 1;
 };
 
-_officer setPos [(getPos _officer select 0),(getPos _officer select 1),(getPos _officer select 2)+30];
-sleep 4;
-_officer allowDamage true;
-
-_spawncomps = [_base] call CHAB_fnc_roadblock_ins; //double fun
+_spawncomps = [_base] call CHAB_fnc_roadblock_ins; 
 [_base,resistance] call CHAB_fnc_enemySpawner;
 
 _hmgs = [_base] call CHAB_fnc_spawn_hmg;
