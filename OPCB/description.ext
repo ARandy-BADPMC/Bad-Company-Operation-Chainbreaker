@@ -41,8 +41,8 @@ class CfgFunctions
 #include "functions\dialogs.hpp"
 
 class Extended_PreInit_EventHandlers {
-	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_CBASettings.sqf";
-	aiSkillSettings="call compile preprocessFileLineNumbers 'AI.sqf'";
+	VCM_CBASettings = "call compile preprocessFileLineNumbers 'Vcom\Functions\VCM_CBASettings.sqf'";
+	aiSkillSettings = "call compile preprocessFileLineNumbers 'AI.sqf'";
 };
 
 class Extended_InitPost_EventHandlers
