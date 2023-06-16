@@ -28,9 +28,11 @@ if (_isAttack == 1) then {
 	{ _helicopter removeWeaponGlobal getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon") } forEach getPylonMagazines _helicopter;
 	{ _helicopter setPylonLoadOut [_forEachIndex + 1, _x, true, _pylonPaths select _forEachIndex] } forEach _pylons;
 
-	_helicopter addEventHandler ["Killed",{ 
-		MaxAttackHelis = MaxAttackHelis - 1;
-		publicVariable "MaxAttackHelis";
+	_helicopter addMPEventHandler ["MPKilled",{ 
+		if(isServer) then {
+			MaxAttackHelis = MaxAttackHelis - 1;
+			publicVariable "MaxAttackHelis";
+		};
 	}];
 
 	[_helicopter,_isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];

@@ -20,9 +20,11 @@ if (_isAttack == 1) then {
 	
 	_tank call Hz_pers_API_addVehicle;
 	
-	_tank addEventHandler ["Killed",{
-		MaxTanks = MaxTanks - 1;
-		publicVariable "MaxTanks";
+	_tank addMPEventHandler ["MPKilled",{
+		if(isServer) then {
+			MaxTanks = MaxTanks - 1;
+			publicVariable "MaxTanks";
+		};
 	}];
 	
 	[_tank] call BADCO_fnc_skinApplier;
@@ -62,10 +64,12 @@ if (_isAttack == 1) then {
 		
 		_tank call Hz_pers_API_addVehicle;
 
-		_tank addEventHandler ["Killed",
+		_tank addMPEventHandler ["MPKilled",
 		{
-			MaxAPC = MaxAPC - 1;
-			publicVariable "MaxAPC";
+			if(isServer) then {
+				MaxAPC = MaxAPC - 1;
+				publicVariable "MaxAPC";
+			};
 		}];
 		[_tank] call BADCO_fnc_skinApplier;
 		
