@@ -2,6 +2,10 @@ waitUntil {
 	sleep 1;
 	!isNull player
 };
+#include "economy\vehicleCargoSpaces.sqf";
+#include "economy\vehicleAttackTypes.sqf";
+#include "economy\crateCargoSizes.sqf";
+#include "data\helicopterLoadouts.sqf"
 
 removeAllWeapons player;
 removeVest player;

@@ -1,8 +1,5 @@
 OPCB_econ_initDone = false;
 
-#include "vehicleCargoSpaces.sqf";
-#include "vehicleAttackTypes.sqf";
-#include "crateCargoSizes.sqf";
 #include "tierList_INF.sqf";
 #include "tierList_ENG.sqf";
 #include "tierList_AIR.sqf";
