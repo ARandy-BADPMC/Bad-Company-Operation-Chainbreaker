@@ -69,10 +69,10 @@ findHousesFront = {
 // from 1 AI up to 20 AIs per player
 findSquadAIName = {
 
-	private ["_i","_squad","_str","_unit","_plrs","_pos","_arr"];
+	private ["_str","_unit","_plrs","_pos","_arr"];
 	
-	_squad = _this select 0;
-	_i     = _this select 1;  
+	params ["_squad","_i"];
+
   _unit = aiArray select _i;
 	
 	if (({alive _x} count aiArray) >= (player call getEffectiveMaxAICount)) exitWith { -1 };
@@ -89,12 +89,11 @@ findSquadAIName = {
 
 fillHouseEast = {
 
-	private ["_pID","_pos","_posASL", "_magazine", "_weapon", "_intersections", "_manPackingRadius", "_numOfNearbyBuildings",	"_intersectionPosASL", "_isVisibleToPlayer", "_unit","_name","_class","_ai","_house","_hID","_wUnits","_i","_group","_skill"];
+	private ["_pID","_pos","_posASL", "_magazine", "_weapon", "_intersections", "_manPackingRadius", "_numOfNearbyBuildings",	"_intersectionPosASL", "_isVisibleToPlayer", "_unit","_name","_class","_ai","_hID","_i","_group","_skill"];
 	
 	scopeName "fillHouseEastMain";
 	
-	_house	 = _this select 0;
-	_wUnits  = _this select 1;
+	params ["_house","_wUnits"];
 	
 	_manPackingRadius = 10;
 	_numOfNearbyBuildings = count (nearestObjects [_house, ["House"], 200, true]); 
