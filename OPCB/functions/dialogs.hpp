@@ -210,6 +210,82 @@ class jey_helispawner
 	
 };
 
+class jey_dronespawner 
+{
+	idd = 9909;
+	movingEnabled = false;
+
+	class controls 
+	{
+		
+		class drone_background: RscPicture
+		{
+			idc = 1200;
+
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = -0.5 * GUI_GRID_W + GUI_GRID_X;
+			y = -0.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 44.5 * GUI_GRID_W;
+			h = 31 * GUI_GRID_H;
+		};
+		class drone_list: RscListBox
+		{
+			idc = 1500;
+			onLBSelChanged = "";
+
+			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 1 * GUI_GRID_H + GUI_GRID_Y;
+			w = 12.2636 * GUI_GRID_W;
+			h = 24.6904 * GUI_GRID_H;
+		};
+		class drone_exit: RscButton
+		{
+			idc = 1600;
+			action = "closeDialog 0";
+
+			text = "Exit"; //--- ToDo: Localize;
+			x = 37 * GUI_GRID_W + GUI_GRID_X;
+			y = 18.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.49903 * GUI_GRID_H;
+		};
+		class drone_spawn: RscButton
+		{
+			idc = 1602;
+			action = "[] call CHAB_fnc_spawn_drone_vehicle; closeDialog 0;";
+
+			text = "Buy"; //--- ToDo: Localize;
+			x = 35 * GUI_GRID_W + GUI_GRID_X;
+			y = 5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.69895 * GUI_GRID_H;
+		};
+		class drone_picture: RscPicture
+		{
+			idc = 1618;
+
+			text = "#(argb,8,8,3)color(1,1,1,1)";
+			x = 14 * GUI_GRID_W + GUI_GRID_X;
+			y = 12 * GUI_GRID_H + GUI_GRID_Y;
+			w = 20 * GUI_GRID_W;
+			h = 11 * GUI_GRID_H;
+		};
+		class money_display: RscStructuredText
+		{
+			idc = 1001;
+
+			x = 14 * GUI_GRID_W + GUI_GRID_X;
+			y = 24 * GUI_GRID_H + GUI_GRID_Y;
+			w = 30 * GUI_GRID_W;
+			h = 3.5 * GUI_GRID_H;
+			colorText[] = {0.3,1,1,1};
+		};
+			
+	}; 
+	
+};
+
+
 class jey_tankspawner 
 {
 	idd = 9901;

@@ -261,9 +261,17 @@ class chainbreaker
 		{
 			file = "functions\helispawner\spawn_heli.sqf";
 		}; 
+		class spawn_drone
+		{
+			file = "functions\helispawner\spawn_drone.sqf";
+		}; 
 		class spawn_heli_vehicle
 		{
 			file = "functions\helispawner\spawn_heli_vehicle.sqf";
+		};
+		class spawn_drone_vehicle
+		{
+			file = "functions\helispawner\spawn_drone_vehicle.sqf";
 		};
 		class spawn_helicopter_server
 		{
