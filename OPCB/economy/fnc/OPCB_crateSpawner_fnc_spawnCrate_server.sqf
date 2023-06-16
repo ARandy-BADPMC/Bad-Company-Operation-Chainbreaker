@@ -28,9 +28,11 @@ if (count _nObjects <= 1) then {
 	
 	_crate call Hz_pers_API_addCrate;
 	
-	_crate addEventHandler ["Killed",
+	_crate addMPEventHandler ["MPKilled",
 	{
-		CrateCount = CrateCount - 1;
+		if(isServer) then {
+			CrateCount = CrateCount - 1;
+		};
 	}];
 	
 	if (_crateType != "ACE_MEDICALSUPPLYCRATE") then {

@@ -43,19 +43,23 @@ publicVariable "OPCB_econ_currentTier";
 			MaxAttackHelis = MaxAttackHelis + 1;
 			publicVariable "MaxAttackHelis";
 
-			_vehicle addEventHandler ["Killed",{ 
-				MaxAttackHelis = MaxAttackHelis - 1;
-				publicVariable "MaxAttackHelis";
+			_vehicle addMPEventHandler ["MPKilled",{ 
+				if(isServer) then {
+					MaxAttackHelis = MaxAttackHelis - 1;
+					publicVariable "MaxAttackHelis";
+				};
 			}];
 				
 		} else {
 			MaxTransHelis = MaxTransHelis + 1;
 			publicVariable "MaxTransHelis";
 
-			_vehicle addEventHandler ["Killed",
+			_vehicle addMPEventHandler ["MPKilled",
 			{
-				MaxTransHelis = MaxTransHelis - 1;
-				publicVariable "MaxTransHelis";
+				if(isServer) then {
+					MaxTransHelis = MaxTransHelis - 1;
+					publicVariable "MaxTransHelis";
+				};
 			}];
 
 			if (_vehType == "RHS_UH60M_MEV_D") then {
@@ -74,9 +78,11 @@ publicVariable "OPCB_econ_currentTier";
 			MaxTanks = MaxTanks + 1;
 			publicVariable "MaxTanks";
 			
-			_vehicle addEventHandler ["Killed",{
-				MaxTanks = MaxTanks - 1;
-				publicVariable "MaxTanks";
+			_vehicle addMPEventHandler ["MPKilled",{
+				if(isServer) then {
+					MaxTanks = MaxTanks - 1;
+					publicVariable "MaxTanks";
+				};
 			}];
 		
 		[_vehicle] remoteExec ["CHAB_fnc_tank_restriction",0,true];
@@ -86,9 +92,11 @@ publicVariable "OPCB_econ_currentTier";
 			MaxAPC = MaxAPC + 1;
 			publicVariable "MaxAPC";
 		
-			_vehicle addEventHandler ["Killed",{
-				MaxAPC = MaxAPC - 1;
-				publicVariable "MaxAPC";
+			_vehicle addMPEventHandler ["MPKilled",{
+				if(isServer) then {
+					MaxAPC = MaxAPC - 1;
+					publicVariable "MaxAPC";
+				};
 			}];
 		
 		};
