@@ -16,7 +16,7 @@ for "_i" from 0 to 3 do {
 	_tanktype = selectRandom OPCB_ArmoredVehicles_OPFOR;
 	_truckpos = _base findEmptyPosition [1, 20, _tanktype];
 	_thetarget = createVehicle [_tanktype, _truckpos, [], 1, "NONE"];
-	_thetarget setVehicleLock "LOCKED";
+	_thetarget setVehicleLock "LOCKEDPLAYER";
 	_thetarget setFuel 0; 
 	_thetarget setDamage 0;
 	_trucks pushBack _thetarget;
