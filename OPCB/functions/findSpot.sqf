@@ -8,24 +8,20 @@ if (_radius < 500) then {
 	
 	private ["_step","_prevStep","_spot","_heading", "_suitable"];
 	
-	private _startingDist = worldSize min (2000 + random [0, 1000, 2000]);
-	
 	private _iter = ((ceil (worldSize/500)) - 5) max 10;
+
+	private _worldHalf = worldSize /2;
 	
 	for "_i" from 1 to _iter do {
 		
-		_suitable = [0,0,0,0];	
+		_suitable = [0,0,0];	
 
-		while {count _suitable == 4 || {surfaceIsWater _suitable}} do {
-			
-			_suitable = [_basePos, 2000, _startingDist, 10, 0, 0.3, 0, [], [[0,0,0,0],[0,0,0,0]]] call BIS_fnc_findSafePos;
-
-			_startingDist = worldSize min (_startingDist + 800);
+		while {count _suitable == 3 || {surfaceIsWater _suitable}} do {
+			_rndPos = _basePos getPos[random [2000,_worldHalf/2, _worldHalf] ,random 360];
+			_suitable = [_rndPos, 0, _worldHalf, 1, 0, 0.3, 0, ["base_marker"], [[0,0,0,0],[0,0,0,0]]] call BIS_fnc_findSafePos;
 		};
 		
 		_suitableSpots pushBack _suitable;
-		
-		_startingDist = worldSize min (_startingDist + 800);
 	
 	};
 	_taskSpot = selectRandom _suitableSpots;

@@ -2,8 +2,12 @@ params ["_playerUnit", "_didJIP"];
 
 _uid = getPlayerUID _playerUnit;
 _playerNetId = netId _playerUnit;
-
-_whiteList = parseSimpleArray (preprocessFile "badco_data\whitelist.sqf");
+private ["_whiteList"];
+if(!isDedicated) then {
+	_whiteList = [_uid];
+} else {
+	_whiteList = parseSimpleArray (preprocessFile "badco_data\whitelist.sqf");
+};
 
 if (_uid in _whiteList) then {
 	_playerUnit setVariable ["WhiteListed", true, true];
