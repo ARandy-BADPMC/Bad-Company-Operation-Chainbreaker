@@ -42,14 +42,14 @@ if (_isAttack == 1) then {
 } else {
 	if (_vehicle in _staticType) then {
 	
-	_tank addMPEventHandler ["MPKilled",
-	{
-		if(isServer) then {
+		_tank addMPEventHandler ["MPKilled",
+		{
+			if(isServer) then {
 
-			MaxStatic = MaxStatic - 1;
-			publicVariable "MaxStatic";
-		};
-	}];
+				MaxStatic = MaxStatic - 1;
+				publicVariable "MaxStatic";
+			};
+		}];
 
 	} else  {
 		

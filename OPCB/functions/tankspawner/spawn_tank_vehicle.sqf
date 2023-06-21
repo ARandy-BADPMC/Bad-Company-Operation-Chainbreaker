@@ -23,10 +23,8 @@ if(_tankselect != -1) then  {
 	
 	if (count _nObjects <= 1) then {
 
-		if ((toUpper _vehicle) in OPCB_econ_vehicleGroundAttackTypes) then 
-		{
-		  if (MaxTanks == 0) then
-		  {
+		if ((toUpper _vehicle) in OPCB_econ_vehicleGroundAttackTypes) then {
+			if (MaxTanks == 0) then {
 			
 				_tier = ["ENG", _vehicle] call OPCB_econ_fnc_getVehicleTier;
 				_cost = ["ENG", _tier] call OPCB_econ_fnc_getTierCost;				
@@ -45,16 +43,17 @@ if(_tankselect != -1) then  {
 				
 				hint "Vehicle delivered";
 
-			MaxTanks = MaxTanks + 1;
-			publicVariable "MaxTanks";
-		    [_vehicle,1] remoteExec ["CHAB_fnc_spawn_tank_server",2];
+				MaxTanks = MaxTanks + 1;
+				publicVariable "MaxTanks";
+				[_vehicle,1] remoteExec ["CHAB_fnc_spawn_tank_server",2];
 
-		  } else {hint "There is already a tank/SPG in game";};
+			} else {
+				hint "There is already a tank/SPG in game";
+			};
 
 		} else {
 			if (_vehicle in _staticType) then {
-			if (MaxStatic != 5) then 
-			{
+			if (MaxStatic != 5) then {
 				MaxStatic = MaxStatic + 1;
 				publicVariable "MaxStatic";
 				[_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2]; 
@@ -64,8 +63,7 @@ if(_tankselect != -1) then  {
 				};
 			} 
 			else {
-			if (MaxAPC != 12) then
-			{	
+			if (MaxAPC != 12) then {	
 					
 				_tier = ["INF", _vehicle] call OPCB_econ_fnc_getVehicleTier;
 				_cost = ["INF", _tier] call OPCB_econ_fnc_getTierCost;				

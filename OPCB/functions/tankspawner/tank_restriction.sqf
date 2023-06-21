@@ -15,13 +15,21 @@ _vehicle addEventHandler ["SeatSwitched", {
 
 	#include "..\..\data\vehicleDriverUnitTypes.sqf";
 
-	{
-		_role = assignedVehicleRole _x;
-		
-		if(_role isEqualTo ["driver"]) then {
-			if !(typeOf _x in _tankDriverTypes) then {
-				moveOut _x; 
-			};
-		};
-	} forEach [_unit1, _unit2];
+	_driver = driver _vehicle;
+	
+	if !((typeOf _driver) in _tankDriverTypes) then {
+		moveOut _driver; 
+	};
+}];
+
+_vehicle addEventHandler ["GetIn", {
+	params ["_vehicle", "_role", "_unit", "_turret"];
+
+	#include "..\..\data\vehicleDriverUnitTypes.sqf";
+	
+	if(_role != "driver" ) exitWith {};
+
+	if !((typeOf _unit) in _tankDriverTypes) then {
+		moveOut _unit; 
+	};
 }];
