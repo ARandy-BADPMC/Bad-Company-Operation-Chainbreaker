@@ -116,6 +116,7 @@ for "_i" from 1 to _staticVehiclesCount do {
 
 	_createdVehicle enableWeaponDisassembly false;
 	[_createdVehicle, false] call ace_dragging_fnc_setDraggable;
+	[_createdVehicle, false] call ace_dragging_fnc_setCarryable;
 
 	[_spawnedGroup] call CHAB_fnc_setVehicleLock;
 

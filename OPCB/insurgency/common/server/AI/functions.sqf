@@ -280,7 +280,9 @@ createRoofGun = {
 	_grp deleteGroupWhenEmpty true;
 	
 	_gun enableWeaponDisassembly false;
-	_gun setVariable ["ace_dragging_canDrag", false, true];
+	[_gun, false] call ace_dragging_fnc_setDraggable;
+	[_gun, false] call ace_dragging_fnc_setCarryable;
+	
 	_gun setVehicleLock "LOCKEDPLAYER";
 	
 	if DEBUG then { [_house, _ai] call createDebugMarker; };  		
