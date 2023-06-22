@@ -115,8 +115,9 @@ for "_i" from 1 to _staticVehiclesCount do {
 	([_spawnPos, 180, selectRandom _staticVehicles, _side] call BIS_fnc_spawnVehicle) params ["_createdVehicle", "_crew", "_spawnedGroup"];
 
 	_createdVehicle enableWeaponDisassembly false;
-	[_createdVehicle, false] call ace_dragging_fnc_setDraggable;
-	[_createdVehicle, false] call ace_dragging_fnc_setCarryable;
+
+	[[_createdVehicle, false]] remoteExec ["ace_dragging_fnc_setDraggable", 0, true]; 
+	[[_createdVehicle, false]] remoteExec ["ace_dragging_fnc_setCarryable", 0, true]; 
 
 	[_spawnedGroup] call CHAB_fnc_setVehicleLock;
 

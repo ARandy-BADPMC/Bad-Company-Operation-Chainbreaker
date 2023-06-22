@@ -280,8 +280,8 @@ createRoofGun = {
 	_grp deleteGroupWhenEmpty true;
 	
 	_gun enableWeaponDisassembly false;
-	[_gun, false] call ace_dragging_fnc_setDraggable;
-	[_gun, false] call ace_dragging_fnc_setCarryable;
+	[[_gun, false]] remoteExec ["ace_dragging_fnc_setDraggable", 0, true]; 
+	[[_gun, false]] remoteExec ["ace_dragging_fnc_setCarryable", 0, true]; 
 	
 	_gun setVehicleLock "LOCKEDPLAYER";
 	
