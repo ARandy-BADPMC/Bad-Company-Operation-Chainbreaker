@@ -6,9 +6,7 @@
 enableSaving [false, false];
 enableSentences true;
 enableTeamswitch false;
-VCM_Debug = false;
 [] execVM "Scripts\ied.sqf";
-[] execVM "Vcom\VcomInit.sqf";
 
 Resistance setFriend [EAST, 1]; Resistance setFriend [WEST, 0]; Resistance setFriend [Civilian, 1];
 
@@ -49,8 +47,6 @@ MaxAPC = 0;
 publicVariable "MaxAPC";
 MaxStatic = 0;
 publicVariable "MaxStatic";
-
-ZeusGroup = createGroup sideLogic;
 
 {
 	_x allowDamage false;

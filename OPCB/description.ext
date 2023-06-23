@@ -7,7 +7,7 @@ forceRotorLibSimulation 		= 1;										// 0 - options based; 1 - force enable; 
 showGroupIndicator 				= 0;										// Enables/Disables the squad hud	
 enableTeamSwitch 				= 0;
 enableItemsDropping 			= 0;										// disabled with 0
-enableDebugConsole 				= 1;										// 0 = disabled. 1 = admins, 2 = everybody. 0 is recommended in MP.		
+enableDebugConsole[] = {"76561198048254349", "76561198002110130"};	
 allowFunctionsLog 				= 0; 										// Log functions to .rpt. disabled with 0					
 respawnDelay = 45;
 ReviveMode = 0;
@@ -40,8 +40,11 @@ class CfgFunctions
 #include "functions\defines.hpp"
 #include "functions\dialogs.hpp"
 
+
 class Extended_PreInit_EventHandlers {
-	VCM_CBASettings = "call compile preprocessFileLineNumbers 'Vcom\Functions\VCM_CBASettings.sqf'";
+	class VCM_CBASettings {
+		init = "call VCM_fnc_CBA_Settings";
+	};
 	aiSkillSettings = "call compile preprocessFileLineNumbers 'AI.sqf'";
 };
 
@@ -91,16 +94,3 @@ class CfgDebriefing {
 		pictureColor[] = {0.0,0.3,0.6,1};
 	};
 };
-
-/*
-class Officer_loadout
-{
-	uniformClass = "TRYK_U_pad_j_blk";
-	linkedItems[] = {"V_PlateCarrier1_rgr","H_HelmetB","ItemCompass","ItemWatch","ItemRadio","NVGoggles"};
-	weapons[] = {"arifle_MX_ACO_pointer_F","hgun_P07_F"};
-	items[] = {"FirstAidKit","FirstAidKit","FirstAidKit"};
-	magazines[] = {"30Rnd_65x39_caseless_mag","16Rnd_9x21_Mag","SmokeShell","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade","HandGrenade"};
-
-	[[],[],[],["TRYK_U_pad_j_blk",[["ACRE_PRC343",1],["ACRE_PRC148",1],["ACE_fieldDressing",3],["ACE_elasticBandage",2],["ACE_quikclot",1]]],["TAC_FS_FOL_B",[]],[],"rhs_beret_mp1","rhs_googles_black",[],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]]
-
-};*/
