@@ -279,7 +279,10 @@ createRoofGun = {
 	_grp setFormDir _dir;
 	_grp deleteGroupWhenEmpty true;
 
-	[_gun] call CHAB_fnc_serverGroups;
+	_gun enableWeaponDisassembly false;
+	[_gun, false] remoteExec ["ace_dragging_fnc_setDraggable", 0, true]; 
+	[_gun, false] remoteExec ["ace_dragging_fnc_setCarryable", 0, true]; 
+	_gun setVariable ["ace_csw_assemblyMode", 0, true];
 	
 	_gun setVehicleLock "LOCKEDPLAYER";
 	

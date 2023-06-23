@@ -18,7 +18,7 @@ if (_radius < 500) then {
 
 		while {count _suitable == 3 || {surfaceIsWater _suitable}} do {
 			_rndPos = _basePos getPos[random [2000,_worldHalf/2, _worldHalf] ,random 360];
-			_suitable = [_rndPos, 0, _worldHalf, 1, 0, 0.3, 0, ["base_marker"], [[0,0,0,0],[0,0,0,0]]] call BIS_fnc_findSafePos;
+			_suitable = [_rndPos, 0, _worldHalf, 1, 0, 0.3, 0, ["base_marker"]] call BIS_fnc_findSafePos;
 		};
 		
 		_suitableSpots pushBack _suitable;

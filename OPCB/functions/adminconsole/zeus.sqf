@@ -1,3 +1,5 @@
+#include "..\..\data\developers.sqf";
+
 private _hasZeus = (allCurators findIf { getAssignedCuratorUnit _x == player}) != -1;
 
 if(!_hasZeus) then {
