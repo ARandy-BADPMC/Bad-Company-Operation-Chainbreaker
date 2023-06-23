@@ -2067,7 +2067,7 @@ _arsenalitems =
 "hlc_muzzle_snds_a6AUG",
 "HLC_Optic_Docter_CADEX",
 "HLC_Optic228_Docter_CADEX",
-"hlc_optic_goshawk",
+//"hlc_optic_goshawk",
 "HLC_optic_HP",
 "HLC_optic228_HP",
 "muzzle_HBADGER",
