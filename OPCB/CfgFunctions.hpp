@@ -180,6 +180,10 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\serverGroups.sqf";
 		};
+		class setStaticVehicleLock
+		{
+			file = "functions\miscellaneous\setStaticVehicleLock.sqf";
+		};
 	};
 	class admin_menu
 	{

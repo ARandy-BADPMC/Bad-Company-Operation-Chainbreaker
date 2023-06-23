@@ -114,7 +114,7 @@ for "_i" from 1 to _staticVehiclesCount do {
 
 	([_spawnPos, 180, selectRandom _staticVehicles, _side] call BIS_fnc_spawnVehicle) params ["_createdVehicle", "_crew", "_spawnedGroup"];
 
-	_createdVehicle enableWeaponDisassembly false;
+	[_createdVehicle] call CHAB_fnc_setStaticVehicleLock;
 
 	[_spawnedGroup] call CHAB_fnc_setVehicleLock;
 

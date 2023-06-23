@@ -1,1 +1,0 @@
-unassignCurator zeus_admin;

@@ -7,7 +7,7 @@ _numbers = ceil (random 3);
 
 for "_i" from 0 to _numbers do {
 	_groupNumber = [[_j,_j,100],random 360,selectrandom _classes,resistance] call BIS_fnc_spawnVehicle;
-	(_groupNumber select 0) setVehicleLock "LOCKED";
+	(_groupNumber select 0) setVehicleLock "LOCKEDPLAYER";
 	_j = _j+100;
 
 	[_groupNumber select 2, getPos _object, random 800] call bis_fnc_taskPatrol;

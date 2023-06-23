@@ -115,7 +115,7 @@ spawnAIVehicle = {
 	_grp deleteGroupWhenEmpty true;
 	sleep 1;
 	cleanupVics pushBack _vcl;
-	_vcl setVehicleLock "LOCKED";
+	_vcl setVehicleLock "LOCKEDPLAYER";
 	patrolVehicles pushBack _vcl;
 	// 2nd argument (marker) is deprecated, just pass empty string
 	[_vcl, "", "noslow", "nowait", _track] execVM "insurgency\common\server\AI\UPS.sqf";
@@ -278,10 +278,13 @@ createRoofGun = {
 	_ai moveInGunner _gun;	
 	_grp setFormDir _dir;
 	_grp deleteGroupWhenEmpty true;
-	
+
 	_gun enableWeaponDisassembly false;
-	_gun setVariable ["ace_dragging_canDrag", false, true];
-	_gun setVehicleLock "LOCKED";
+	[_gun, false] remoteExec ["ace_dragging_fnc_setDraggable", 0, true]; 
+	[_gun, false] remoteExec ["ace_dragging_fnc_setCarryable", 0, true]; 
+	_gun setVariable ["ace_csw_assemblyMode", 0, true];
+	
+	_gun setVehicleLock "LOCKEDPLAYER";
 	
 	if DEBUG then { [_house, _ai] call createDebugMarker; };  		
 }; 

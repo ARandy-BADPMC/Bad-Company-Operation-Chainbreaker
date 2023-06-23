@@ -96,7 +96,7 @@ for "_i" from 0 to 1 do {
 	if (_tries > 0) then {
 		_attacker= [_attackpos, east, selectRandom OPCB_MechanizedGroups_Insurgents] call BIS_fnc_spawnGroup;
 		{
-			(vehicle _x) setVehicleLock "LOCKED";
+			(vehicle _x) setVehicleLock "LOCKEDPLAYER";
 		} foreach ((units _attacker) select {_x == (effectiveCommander vehicle _x)});
 		_wayp = _attacker addWaypoint [_officerPos, 100];
 		_wayp setWaypointType "SAD";

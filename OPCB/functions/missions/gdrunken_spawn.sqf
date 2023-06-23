@@ -25,7 +25,7 @@ for "_i" from 0 to 3 do {
 
 	_groupNumber = [getPos _pad,random 360,selectrandom OPCB_ArmoredVehicles_OPFOR, east] call BIS_fnc_spawnVehicle;
 	(_groupNumber select 0) setFuel 0;
-	(_groupNumber select 0) setVehicleLock "LOCKED";
+	(_groupNumber select 0) setVehicleLock "LOCKEDPLAYER";
 	_tanks pushBack (_groupNumber select 0);
 
 	_comps pushBack _comp;

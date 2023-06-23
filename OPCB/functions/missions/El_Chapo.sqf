@@ -16,7 +16,7 @@ _building = selectRandom _houses;
 _number = count (_building buildingPos -1);
 _buildpos = (_building buildingPos -1) select ( ceil _number/2);
 
-_officer = setPos  _group createUnit [selectRandom OPCB_Commanders_Insurgents, _buildpos, [], 2, "NONE"]; 
+_officer = _group createUnit [selectRandom OPCB_Commanders_Insurgents, _buildpos, [], 2, "NONE"]; 
 _officer setUnitLoadout [["rhs_weap_t5000","","","rhsusf_acc_LEUPOLDMK4",["rhs_5Rnd_338lapua_t5000",5],[],"bipod_02_F_blk"],[],["rhs_weap_makarov_pm","","","",["rhs_mag_9x18_8_57N181S",8],[],""],["U_I_C_Soldier_Para_3_F",[["ACRE_PRC343",1],["ACRE_PRC148",1],["ACE_fieldDressing",3],["ACE_elasticBandage",2],["ACE_quikclot",1],["ACE_microDAGR",1],["ACE_MapTools",1],["ACE_RangeCard",1]]],["TAC_Jvest_U2O",[["rhs_5Rnd_338lapua_t5000",10,5],["rhs_mag_9x18_8_57N181S",4,8],["rhs_mag_rgo",2,1],["rhs_mag_rgn",1,1],["rhs_mag_rgd5",1,1],["rhs_mag_rdg2_white",3,1],["rhs_mag_zarya2",2,1]]],[],"rhsgref_patrolcap_specter","G_Bandanna_khk",["rhs_pdu4","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]];
 _officer disableAI "PATH";
 _officer setSkill 1;

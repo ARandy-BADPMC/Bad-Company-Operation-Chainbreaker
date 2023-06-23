@@ -9,6 +9,6 @@ private _vehicles = [];
 } forEach units _group;
 
 {
-	_x setVehicleLock "LOCKED";
+	_x setVehicleLock "LOCKEDPLAYER";
 	[_x] call CHAB_fnc_vehicleDeleteCheck;
 } foreach _vehicles;
