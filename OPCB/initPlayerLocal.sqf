@@ -13,6 +13,8 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
+["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
+
 //ACRE check & kick
 if (!isServer && {isMultiplayer}) then {
 	[] spawn {

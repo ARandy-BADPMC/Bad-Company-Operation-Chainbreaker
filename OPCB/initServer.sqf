@@ -6,6 +6,7 @@
 enableSaving [false, false];
 enableSentences true;
 enableTeamswitch false;
+["Initialize"] call BIS_fnc_dynamicGroups;
 [] execVM "Scripts\ied.sqf";
 
 Resistance setFriend [EAST, 1]; Resistance setFriend [WEST, 0]; Resistance setFriend [Civilian, 1];
