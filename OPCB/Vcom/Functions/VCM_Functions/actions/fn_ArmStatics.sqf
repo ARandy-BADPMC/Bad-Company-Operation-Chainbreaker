@@ -55,33 +55,37 @@ if (count _assignedPairs isEqualTo 0) exitWith {};
 				sleep 1;
 			};
 			_unit moveInGunner _weap;
-			[_unit,_weap] spawn
-			{
-				params ["_unit","_weap"];
-				private _staticGreen = true;
-				private _statictime = VCM_STATICARMT;
+			[_unit] join grpNull; //make unit join a new group; if unit stays in the group the other units in the group won't be able to leave the vicinity. (distance restriction)
+			(group _unit) deleteGroupWhenEmpty true;
+
+			//this part basically fucks up insurgent and mission static vehicles.
+			// [_unit,_weap] spawn 
+			// {
+			// 	params ["_unit","_weap"];
+			// 	private _staticGreen = true;
+			// 	private _statictime = VCM_STATICARMT;
 				
-				while {_staticGreen && {alive _unit} && {alive _weap} && {!(isNull (gunner _weap))} && {_unit distance2D (leader (group _unit)) < 500} && {behaviour _unit isEqualTo "COMBAT"}} do
-				{
-					sleep 5;
-					private _enemy = _unit findNearestEnemy _unit;
-					if (!(isNull _enemy)) then 
-					{
-							private _cansee = [_unit, "VIEW"] checkVisibility [eyePos _unit, eyePos _enemy];
-							if (_cansee > 0) then {_statictime = _statictime + 3;} else {_statictime = _statictime - 5;};
-					}
-					else
-					{
-						_statictime = _statictime - 5;
-					};
-					if (_statictime < 1) then {_staticGreen = false;};
-				};				
+			// 	while {_staticGreen && {alive _unit} && {alive _weap} && {!(isNull (gunner _weap))} && {_unit distance2D (leader (group _unit)) < 500} && {behaviour _unit isEqualTo "COMBAT"}} do
+			// 	{
+			// 		sleep 5;
+			// 		private _enemy = _unit findNearestEnemy _unit;
+			// 		if (!(isNull _enemy)) then 
+			// 		{
+			// 				private _cansee = [_unit, "VIEW"] checkVisibility [eyePos _unit, eyePos _enemy];
+			// 				if (_cansee > 0) then {_statictime = _statictime + 3;} else {_statictime = _statictime - 5;};
+			// 		}
+			// 		else
+			// 		{
+			// 			_statictime = _statictime - 5;
+			// 		};
+			// 		if (_statictime < 1) then {_staticGreen = false;};
+			// 	};				
 				
-				unassignVehicle _unit;
-				_unit leaveVehicle _weap;
-				doGetOut _unit;
+			// 	unassignVehicle _unit;
+			// 	_unit leaveVehicle _weap;
+			// 	doGetOut _unit;
 			
-			};
+			// };
 		};		
 	};	
 } foreach _assignedPairs;
