@@ -28,7 +28,7 @@ for "_i" from 0 to 3 do {
 	}];
 
 
-	[getPos _civilian,resistance] call CHAB_fnc_enemySpawner;
+	[getPos _civilian,resistance, random [1,3,7],selectRandom [0,1], selectRandom [2,3], 0, false ] call CHAB_fnc_enemySpawner;
 	deleteVehicle _civilian;
 	_stations pushBack _comp;
 };
