@@ -1,9 +1,14 @@
-params ["_centerPosition","_side"];
 private _playerRate = [] call CHAB_fnc_playerScale;
+params [
+	"_centerPosition",
+	"_side",
+ 	["_infantryGroupsCount", floor random [4 * _playerRate, 8 * _playerRate, 12 * _playerRate]],
+ 	["_mechanizedGroupsCount", floor random [0 * _playerRate, 1 * _playerRate, 3 * _playerRate]],
+ 	["_staticVehiclesCount", floor random [2 * _playerRate, 4 * _playerRate, 6 * _playerRate]],
+ 	["_armoredVehiclesCount", floor random [0 * _playerRate, 1 * _playerRate, 3 * _playerRate]],
+ 	["_shouldSpawnCommander", true]
+];
 
-private _infantryGroupsCount = floor random [4 * _playerRate, 8 * _playerRate, 12 * _playerRate];//
-private _mechanizedGroupsCount = floor random [0 * _playerRate, 1 * _playerRate, 3 * _playerRate];//
-private _staticVehiclesCount = floor random [2 * _playerRate, 4 * _playerRate, 6 * _playerRate];//
 private _transportVehiclesCount = floor random [0 * _playerRate, 2 * _playerRate, 4 * _playerRate];
 
 private _transportGroundCount = floor random [0, _transportVehiclesCount/2, _transportVehiclesCount];
@@ -12,7 +17,6 @@ private _transportHelicoptersCount = _transportVehiclesCount - _transportGroundC
 private _attackHelicoptersCount = floor random [0 * _playerRate, 1 * _playerRate, 2 * _playerRate];
 private _artilleryCount = floor random [0 * _playerRate, 1 * _playerRate, 2 * _playerRate];
 
-private _armoredVehiclesCount = floor random [0 * _playerRate, 1 * _playerRate, 3 * _playerRate];
 
 private ["_mechGroups","_infGroups", "_staticVehicles", "_commanderUnits", "_armoredVehicles"];
 
@@ -127,30 +131,33 @@ for "_i" from 1 to _staticVehiclesCount do {
 
 	[[_spawnedGroup,_group]] call CHAB_fnc_serverGroups;
 };
-CommanderSupportActions = [];
+if(_shouldSpawnCommander) then {
 
-{
-	if( ((_x select 1) select 0) > 0 ) then {
-		CommanderSupportActions pushBack _x;
-	};
-} forEach 
-		[["attackHelis",[_attackHelicoptersCount, _side]],
-		["groundTransport",[_transportGroundCount, _side]],
-		["airTransport",[_transportHelicoptersCount, _side]],
-		["artillery",[_artilleryCount,_side]]];
+	CommanderSupportActions = [];
 
-private _commanderSpawnPos = [_centerPosition] call _findSavePosForGroups;
-if!(surfaceIsWater _commanderSpawnPos) then {
-	private _commanderGroup = createGroup [_side, true];
-	private _commander = _commanderGroup createUnit [selectRandom _commanderUnits, _commanderSpawnPos, [], 1, "NONE"];
-	[_commanderGroup, _centerPosition] call BIS_fnc_taskDefend;
-	[_commanderGroup] call CHAB_fnc_serverGroups;
-
-	_commanderGroup addEventHandler ["EnemyDetected", {
-		params ["_group", "_newTarget"];
-		_distance = ((units _group) select 0) distance2D  _newTarget;
-		if(_distance < 1500) then {
-			[_newTarget] call CHAB_fnc_commanderActions;
+	{
+		if( ((_x select 1) select 0) > 0 ) then {
+			CommanderSupportActions pushBack _x;
 		};
-	}];
+	} forEach 
+			[["attackHelis",[_attackHelicoptersCount, _side]],
+			["groundTransport",[_transportGroundCount, _side]],
+			["airTransport",[_transportHelicoptersCount, _side]],
+			["artillery",[_artilleryCount,_side]]];
+
+	private _commanderSpawnPos = [_centerPosition] call _findSavePosForGroups;
+	if!(surfaceIsWater _commanderSpawnPos) then {
+		private _commanderGroup = createGroup [_side, true];
+		private _commander = _commanderGroup createUnit [selectRandom _commanderUnits, _commanderSpawnPos, [], 1, "NONE"];
+		[_commanderGroup, _centerPosition] call BIS_fnc_taskDefend;
+		[_commanderGroup] call CHAB_fnc_serverGroups;
+
+		_commanderGroup addEventHandler ["EnemyDetected", {
+			params ["_group", "_newTarget"];
+			_distance = ((units _group) select 0) distance2D  _newTarget;
+			if(_distance < 1500) then {
+				[_newTarget] call CHAB_fnc_commanderActions;
+			};
+		}];
+	};
 };
