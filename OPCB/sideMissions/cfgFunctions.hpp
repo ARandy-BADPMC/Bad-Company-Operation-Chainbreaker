@@ -23,5 +23,6 @@ class SM
 		
 		// call SM_fnc_randomCrate;
 		class randomCrate {};
+		class openCrate {};
 	};
 };

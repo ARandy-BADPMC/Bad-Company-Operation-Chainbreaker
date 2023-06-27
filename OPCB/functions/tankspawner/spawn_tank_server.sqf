@@ -1,6 +1,7 @@
 params ["_vehicle","_isAttack"];
-_staticType = ["rhs_Metis_9k115_2_vmf","rhs_Kornet_9M133_2_vmf","RHS_Stinger_AA_pod_D","RHS_M2StaticMG_D","RHS_M2StaticMG_MiniTripod_D","RHS_TOW_TriPod_D","RHS_MK19_TriPod_D","B_Mortar_01_F","B_Static_Designator_01_F"];
 _tankpos = getMarkerPos "tank_spawner";
+
+_isStatic = (getNumber (configfile >> "CfgVehicles" >> _vehicle >> "enginePower")) == 0;
 
 _tank = createVehicle [_vehicle, _tankpos, [], 0 , "CAN_COLLIDE"];
 _tank setdir (markerDir "tank_spawner");
@@ -40,7 +41,7 @@ if (_isAttack == 1) then {
 	[_tank] remoteExec ["CHAB_fnc_tank_restriction",0,true];
 
 } else {
-	if (_vehicle in _staticType) then {
+	if (_isStatic) then {
 	
 		_tank addMPEventHandler ["MPKilled",
 		{
