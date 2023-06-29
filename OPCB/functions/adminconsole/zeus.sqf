@@ -14,7 +14,7 @@ if(!_hasZeus) then {
 			};
 		} forEach allCurators;
 	}];
-	[player] remoteExec ["CHAB_fnc_zeus_server",2];
+	[player] remoteExecCall ["CHAB_fnc_zeus_server",2];
 } else {
 	hint "You are not allowed to use this function yet.";
 };
