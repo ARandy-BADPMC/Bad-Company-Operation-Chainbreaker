@@ -69,3 +69,11 @@ Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"]
 setViewDistance 3500;
 setObjectViewDistance 3500;
 
+addMissionEventHandler ["PlayerDisconnected", {
+	{
+		_unit = getAssignedCuratorUnit _x;
+		if(isNull _unit) then {
+			deleteVehicle _x;
+		}
+	} forEach allCurators;
+}];

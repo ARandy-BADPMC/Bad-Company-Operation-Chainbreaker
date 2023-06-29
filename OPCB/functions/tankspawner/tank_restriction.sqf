@@ -1,5 +1,7 @@
 params ["_vehicle"];
 
+if(isNull _vehicle) exitWith{};
+
 _vehicle addEventHandler ["GetIn",{
 	params ["_vehicle","_seat", "_player" ];
 	#include "..\..\data\vehicleDriverUnitTypes.sqf";
