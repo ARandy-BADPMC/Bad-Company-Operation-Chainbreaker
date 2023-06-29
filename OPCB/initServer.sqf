@@ -70,10 +70,11 @@ setViewDistance 3500;
 setObjectViewDistance 3500;
 
 addMissionEventHandler ["PlayerDisconnected", {
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 	{
-		_unit = getAssignedCuratorUnit _x;
-		if(isNull _unit) then {
-			deleteVehicle _x;
-		}
+		_playerUid = _x getVariable ["ZeusUser"];
+		if(isNil "_playerUid" || _playerUid == _uid) then {
+			deleteVehicle _x
+		};
 	} forEach allCurators;
 }];
