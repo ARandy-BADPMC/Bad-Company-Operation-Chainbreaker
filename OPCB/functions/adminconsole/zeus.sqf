@@ -8,7 +8,7 @@ if(!_hasZeus) then {
 	player addMPEventHandler ["Killed", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
 		{
-			_playerUid = _x getVariable ["ZeusUser"];
+			_playerUid = _x getVariable "ZeusUser";
 			if(!isNil "_playerUid" && getPlayerUID player == _playerUid) exitWith {
 				player assignCurator _zeus;
 			};
