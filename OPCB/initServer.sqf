@@ -78,19 +78,3 @@ addMissionEventHandler ["PlayerDisconnected", {
 		};
 	} forEach allCurators;
 }];
-
-addMissionEventHandler ["OnUserSelectedPlayer", {
-	params ["_networkId", "_playerObject"];
-	_info = getUserInfo _networkId;
-	copyToClipboard str _info;
-	_playeruid = _info select 2;
-
-	_prevObjectUID = _playerObject getVariable "PrevPlayerUID";
-	if( isNil "_prevObjectUID") exitWith {
-		_playerObject setVariable ["PrevPlayerUID", [_playeruid, typeOf _playerObject ]];
-	};
-	_prevObjectUID params ["_playeruidPrev", "_playerObjectPrev"];
-	if(_playeruidPrev == _playeruid && {(typeof _playerObject) == _playerObjectPrev}) then {
-		_playerObject setPos (position campfire);
-	};
-}];
