@@ -125,6 +125,7 @@ switch (_action) do {
 					} forEach playableUnits;
 
 					if(count _selectedPos != 4) then {
+						_selectedPos = _selectedPos getPos [random 300,random 360];
 						_createdVehicle commandArtilleryFire [_selectedPos, _ammo, round random[3,5,7]];
 					};
 
