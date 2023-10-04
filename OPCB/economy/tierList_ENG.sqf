@@ -31,7 +31,7 @@ OPCB_econ_TierList_ENG = [
 
 	//TIER 5
 	[
-
+	"B_APC_TRACKED_01_AA_F"
 	],
 
 	//TIER 6
@@ -56,7 +56,8 @@ OPCB_econ_TierList_ENG = [
 
 	//TIER 9
 	[
-	"RHSUSF_M113D_USARMY_M240"
+	"RHSUSF_M113D_USARMY_M240",
+	"RHSGREF_CDF_B_ZSU234"
 	],
 
 	//TIER 10
