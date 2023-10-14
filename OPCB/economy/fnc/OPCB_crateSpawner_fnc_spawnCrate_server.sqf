@@ -10,7 +10,7 @@ _tankpos = markerPos "tank_spawner";
 _nObjects = nearestObjects [_tankpos, [], 7];
 if (count _nObjects <= 1) then {
 
-	"Box delivered" remoteExec ["hint", _callerRE];
+	"Utility delivered" remoteExec ["hint", _callerRE];
 		
 	CrateCount = CrateCount + 1;
 	
