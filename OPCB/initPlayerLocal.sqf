@@ -32,9 +32,9 @@ heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fn
 heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];  
 
 tank_spawner addAction ["<t color='#FFFF00'>Vehicle Spawner</t>","[] spawn CHAB_fnc_spawn_tank;",nil, 1, false, true, "", "true", 10, false,""];
-tank_spawner addAction ["<t color='#00FFFF'>Box Spawner</t>","[] spawn OPCB_crateSpawner_openDialog;",nil, 1, false, true, "", "true", 10, false,""];   
+tank_spawner addAction ["<t color='#00FFFF'>Utility Spawner</t>","[] spawn OPCB_crateSpawner_openDialog;",nil, 1, false, true, "", "true", 10, false,""];   
+tank_spawner addAction ["<t color='#01FF24'>Drone Spawner</t>","[] spawn CHAB_fnc_spawn_drone;",nil, 1, false, true, "", "true", 10, false,""];  
 tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
-tank_spawner addAction ["<t color='#00FFFF'>Drone Spawner</t>","[] spawn CHAB_fnc_spawn_drone;",nil, 1, false, true, "", "true", 10, false,""];  
 
 player addEventHandler ["GetInMan",{[_this select 1, _this select 2] call BADCO_fnc_classCheck;}];
 
