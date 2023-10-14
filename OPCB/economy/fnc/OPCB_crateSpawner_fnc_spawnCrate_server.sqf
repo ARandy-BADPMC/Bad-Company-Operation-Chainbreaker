@@ -2,7 +2,7 @@ params ["_crateType"];
 _callerRE = remoteExecutedOwner;
 
 if (CrateCount > 19) exitWith {
-	"You have reached the box limit!" remoteExec ["hint", _callerRE];
+	"You have reached the utility limit!" remoteExec ["hint", _callerRE];
 };
 
 _tankpos = markerPos "tank_spawner";
@@ -25,6 +25,7 @@ if (count _nObjects <= 1) then {
 	} foreach OPCB_econ_vehicleCargoSizes;
 	
 	[_crate, _cargoRequirement] call ace_cargo_fnc_setSize;
+	[_crate, true, [0, 1, 0], 0] call ace_dragging_fnc_setDraggable;
 	
 	_crate call Hz_pers_API_addCrate;
 	
