@@ -2998,7 +2998,9 @@ _arsenalitems =
 "rhsusf_ihadss",
 "ACE_artilleryTable",
 "ACRE_VHF30108",
-"ACRE_VHF30108MAST"
+"ACRE_VHF30108MAST",
+"ALiVE_Humrat",
+"ALiVE_Waterbottle"
 ];
 
 

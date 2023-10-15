@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=8;
+		nextID=9;
 	};
 	class Camera
 	{
-		pos[]={19072.068,35.035976,14290.68};
-		dir[]={-0.2130342,-0.081753917,0.97361934};
-		up[]={-0.017475007,0.99665189,0.079865165};
-		aside[]={0.97688913,-2.5138434e-009,0.21374971};
+		pos[]={19149.963,70.193764,14234.424};
+		dir[]={0.02736761,-0.27155432,0.96203721};
+		up[]={0.0077219373,0.9624216,0.27144602};
+		aside[]={0.99959868,-3.436071e-009,-0.028436005};
 	};
 };
 binarizationWanted=0;
@@ -582,6 +582,7 @@ randomSeed=9966067;
 class ScenarioData
 {
 	author="Alex K., JeyR., A.Randy, K.Hunter & pogoman, Fireball, Kol9yn";
+	showGPS=0;
 	saving=0;
 	respawnDialog=0;
 	disabledAI=1;
@@ -15349,6 +15350,8 @@ class Mission
 	class Intel
 	{
 		briefingName="BadCo Operation Chainbreaker";
+		resistanceWest=0;
+		resistanceEast=1;
 		timeOfChanges=1800.0002;
 		startWeather=0;
 		startWind=0.1;
@@ -23276,11 +23279,11 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={19146.736,-0.15036011,15571.545};
+				position[]={19146.736,-0.14997101,15571.545};
 			};
 			id=463;
 			type="ALiVE_amb_civ_placement";
-			atlOffset=96.507614;
+			atlOffset=96.508003;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23408,11 +23411,11 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={19135.979,0,15588.604};
+				position[]={19128.561,-0.00016784668,15592.726};
 			};
 			id=464;
 			type="ALiVE_amb_civ_population";
-			atlOffset=96.939552;
+			atlOffset=97.020996;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23515,7 +23518,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="0";
+							value="60";
 						};
 					};
 				};
