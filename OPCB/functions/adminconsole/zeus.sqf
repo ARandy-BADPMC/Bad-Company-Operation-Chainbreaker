@@ -5,7 +5,7 @@ private _hasZeus = (allCurators findIf { getAssignedCuratorUnit _x == player}) !
 if(!_hasZeus) then {
 	hint "Fetching Zeus for you in a second.";
 
-	player addMPEventHandler ["Killed", {
+	player addMPEventHandler ["MPKilled", {
 		params ["_unit", "_killer", "_instigator", "_useEffects"];
 		{
 			_playerUid = _x getVariable "ZeusUser";
