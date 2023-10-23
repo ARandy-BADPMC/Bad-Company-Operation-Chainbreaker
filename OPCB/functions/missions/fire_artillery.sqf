@@ -1,31 +1,35 @@
 params ["_unitar", "_village"];
 private "_close";
 
-_unit = _unitar select 0;
-_gep = vehicle _unit;
+private _unit = _unitar select 0;
+private _mortar = vehicle _unit;
 
 while {alive _unit} do {
-  	{
-		_daytime = daytime;
+	{
+		private ["_markpos", "_ammo"];
 
-		private ["_markpos", "_ammo", "_playerInRange"];
+		private _ammos = getArtilleryAmmo [_mortar];
+		if(count _ammos > 0) then {
+			private _distance = [0,0];
+			if (daytime >= 20 || {daytime <= 5}) then {
+				_distance = [random 300,random 360];
+				if("8Rnd_82mm_Mo_Flare_white" in _ammos) then {
+					_ammo = "8Rnd_82mm_Mo_Flare_white";
+				}
+			}
+			else {
+				_distance = [random 100,random 360];
+				_ammo = _ammos select 0;
+			};
 
-		_ammo = ((getArtilleryAmmo [_gep]) select 0);
-
-		if (_daytime >= 20 || {_daytime <= 5}) then {
-		    _markpos = (getPos _x) getPos [random 300,random 360];
-	  		_playerInRange = _markpos inRangeOfArtillery [[_gep], _ammo];
+			_markpos = (getPos _x) getPos _distance;
+			private _pos = ASLToAGL (getPosASL _markpos);
+			if (_pos inRangeOfArtillery [[_mortar], _ammo] ) exitWith {
+				_mortar commandArtilleryFire [_pos, _ammo, 1];
+			};  
 		}
-		else {
-			_markpos = (getPos _x) getPos [random 100,random 360];
-	  		_playerInRange = _markpos inRangeOfArtillery [[_gep], _ammo];
-		};
-
-		if ( _playerInRange ) exitWith {
-			_gep commandArtilleryFire [_markpos, _ammo, 1];
-		};  
 		   
   	} forEach playableUnits;
 
-  	sleep random 350;
+	sleep random [100, 300, 400];
 };
