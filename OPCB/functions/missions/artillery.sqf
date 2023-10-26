@@ -6,7 +6,7 @@ private _mortars = ["rhs_2b14_82mm_vdv"];
 private _stations = [];
 	
 for "_i" from 0 to 3 do {
-	_base = [random [500,1000,1500], getpos _centerUnit, 2000] call CHAB_fnc_findSpot;
+	_base = [20, getpos _centerUnit, 2000] call CHAB_fnc_findSpot;
 	private _dir = [ _base, _village ] call BIS_fnc_dirTo;
 
 	private _comp = [selectRandom _comps, _base, [0,0,0], _dir, true, true ] call LARs_fnc_spawnComp;
