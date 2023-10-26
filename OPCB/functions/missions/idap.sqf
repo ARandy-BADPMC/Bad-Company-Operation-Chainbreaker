@@ -26,7 +26,7 @@ _village = locationPosition _nearestCity;
 
 [_current_tasknumber,_officerPos] call BIS_fnc_taskSetDestination;
 
-_stations = [_village,_officer] call CHAB_fnc_artillery;
+_stations = [_village, _officer] call CHAB_fnc_artillery;
 
 [_village,(_stations select 1)] call CHAB_fnc_idap_fn;
 [_officer,["<t color='#FF0000'>Tell me which town is under attack.</t>",

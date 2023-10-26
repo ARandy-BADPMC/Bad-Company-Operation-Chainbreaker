@@ -1,8 +1,7 @@
-params ["_unitar", "_village"];
-private "_close";
+params ["_mortar", "_village"];
 
-private _unit = _unitar select 0;
-private _mortar = vehicle _unit;
+private _unit = crew _mortar;
+private _flare = "8Rnd_82mm_Mo_Flare_white";
 
 while {alive _unit} do {
 	{
@@ -13,8 +12,8 @@ while {alive _unit} do {
 			private _distance = [0,0];
 			if (daytime >= 20 || {daytime <= 5}) then {
 				_distance = [random 300,random 360];
-				if("8Rnd_82mm_Mo_Flare_white" in _ammos) then {
-					_ammo = "8Rnd_82mm_Mo_Flare_white";
+				if(_flare in _ammos) then {
+					_ammo = _flare;
 				}
 			}
 			else {
