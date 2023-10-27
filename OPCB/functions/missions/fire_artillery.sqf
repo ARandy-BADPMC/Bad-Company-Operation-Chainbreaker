@@ -22,9 +22,8 @@ while {alive _unit} do {
 			};
 
 			_markpos = (getPos _x) getPos _distance;
-			private _pos = ASLToAGL (getPosASL _markpos);
-			if (_pos inRangeOfArtillery [[_mortar], _ammo] ) exitWith {
-				_mortar commandArtilleryFire [_pos, _ammo, 1];
+			if (_markpos inRangeOfArtillery [[_mortar], _ammo] ) exitWith {
+				_mortar commandArtilleryFire [_markpos, _ammo, 1];
 			};  
 		}
 		   
