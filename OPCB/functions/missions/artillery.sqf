@@ -11,19 +11,23 @@ for "_i" from 0 to 3 do {
 
 	private _comp = [selectRandom _comps, _base, [0,0,0], _dir, true, true ] call LARs_fnc_spawnComp;
 	
-	private _artillery = (nearestObjects [_base, _mortars, 200]) select 0;
+	private _artilleryDummy = nearestObject [_base, "Land_FlowerPot_01_F"];
+	private _artiPos = getPos _artilleryDummy;
+	deleteVehicle _artilleryDummy;
 
-	private _group = createGroup [resistance,true];
-	[_group] call CHAB_fnc_serverGroups;
+	([_artiPos, _dir, selectRandom _mortars, resistance] call BIS_fnc_spawnVehicle) params ["_createdVehicle", "_crew", "_spawnedGroup"]; 
 
-	private _officer = _group createUnit [selectRandom OPCB_Commanders_Insurgents, getPos _artillery, [], 1, "NONE"];
+	_spawnedGroup deleteGroupWhenEmpty true;
 
-	_officer moveInAny _artillery;
-	_artgroups pushBack (_group);
+	[_spawnedGroup] call CHAB_fnc_serverGroups; 
 
-	[_artillery, _village] spawn CHAB_fnc_fire_artillery;
+	_artgroups pushBack (_spawnedGroup);
 
-	_officer addEventHandler ["Killed", {
+	private _unit = _crew select 0;
+
+	[_createdVehicle, _unit] spawn CHAB_fnc_fire_artillery;
+
+	_unit addEventHandler ["Killed", {
 		ArtilleryRemaining = ArtilleryRemaining - 1;
 	}];
 

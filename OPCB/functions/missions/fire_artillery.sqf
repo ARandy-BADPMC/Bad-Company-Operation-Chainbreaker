@@ -1,6 +1,4 @@
-params ["_mortar", "_village"];
-
-private _unit = (crew _mortar) select 0;
+params ["_mortar", "_unit"];
 private _flare = "8Rnd_82mm_Mo_Flare_white";
 
 while {alive _unit} do {
