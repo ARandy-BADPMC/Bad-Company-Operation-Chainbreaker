@@ -10,8 +10,9 @@ for "_i" from 0 to 3 do {
 	private _dir = [ _base, _village ] call BIS_fnc_dirTo;
 
 	private _comp = [selectRandom _comps, _base, [0,0,0], _dir, true, true ] call LARs_fnc_spawnComp;
+
+	private _artilleryDummy = (([ _comp ] call LARs_fnc_getCompObjects) select { (typeOf _x) == "Land_FlowerPot_01_F"}) select 0;
 	
-	private _artilleryDummy = nearestObject [_base, "Land_FlowerPot_01_F"];
 	private _artiPos = getPos _artilleryDummy;
 	deleteVehicle _artilleryDummy;
 
