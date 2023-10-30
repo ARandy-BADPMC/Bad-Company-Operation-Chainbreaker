@@ -11,6 +11,7 @@ enableDebugConsole[] = {"76561198048254349", "76561198002110130"};
 allowFunctionsLog 				= 0; 										// Log functions to .rpt. disabled with 0					
 respawnDelay = 45;
 ReviveMode = 0;
+zeusCompositionScriptLevel = 2;
 
 // 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System
 // {channelid, disablechat, disablevoice}
@@ -19,11 +20,11 @@ disableChannels[] = {{0,false,true},{1,true,true},{2,true,true},{3,true,true},{4
 
 //GarbageCollector
 minPlayerDistance = 1000; //meters
-corpseManagerMode = 3;
+corpseManagerMode = 1;
 corpseLimit = 150;
 corpseRemovalMinTime = 1200;
 corpseRemovalMaxTime = 3600;
-wreckManagerMode = 3;
+wreckManagerMode = 1;
 wreckLimit = 30;
 wreckRemovalMinTime = 1200;
 wreckRemovalMaxTime = 3600;

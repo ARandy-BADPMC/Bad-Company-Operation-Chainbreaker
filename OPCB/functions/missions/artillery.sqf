@@ -13,15 +13,16 @@ for "_i" from 0 to 3 do {
 
 	private _artilleryDummy = (([ _comp ] call LARs_fnc_getCompObjects) select { (typeOf _x) == "Land_FlowerPot_01_F"}) select 0;
 	
+	_artilleryDummy enableSimulation false;
+
 	private _artiPos = getPos _artilleryDummy;
+	private _spawnedGroup = createGroup [resistance, true];
+
+	[_spawnedGroup] call CHAB_fnc_serverGroups;
+	([_artiPos, random 360, selectRandom _mortars, _spawnedGroup] call BIS_fnc_spawnVehicle) params ["_createdVehicle", "_crew"]; 
+	
 	deleteVehicle _artilleryDummy;
-
-	([_artiPos, _dir, selectRandom _mortars, resistance] call BIS_fnc_spawnVehicle) params ["_createdVehicle", "_crew", "_spawnedGroup"]; 
-
-	_spawnedGroup deleteGroupWhenEmpty true;
-
-	[_spawnedGroup] call CHAB_fnc_serverGroups; 
-
+	_createdVehicle setVariable ["disableInsurgencyCleanup", true];
 	_artgroups pushBack (_spawnedGroup);
 
 	private _unit = _crew select 0;

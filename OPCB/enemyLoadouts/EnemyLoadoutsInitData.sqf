@@ -1,6 +1,5 @@
 if(hasInterface) exitWith{};
 
 CHB_EnemyLoadouts_AvailableLoadouts = [
-	//loadout name here example :
-	{#include "loadouts\example.sqf"} //don't forget the ',' after this
+	//{#include "loadouts\SAF_HAT_T5.sqf"} 
 ];

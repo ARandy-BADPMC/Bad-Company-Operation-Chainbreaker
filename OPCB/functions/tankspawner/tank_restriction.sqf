@@ -13,7 +13,7 @@ _vehicle addEventHandler ["GetIn",{
 }];
 
 _vehicle addEventHandler ["SeatSwitched", {
-	params ["_vehicle", "_unit1", "_unit2"];
+	params ["_vehicle"];
 
 	#include "..\..\data\vehicleDriverUnitTypes.sqf";
 

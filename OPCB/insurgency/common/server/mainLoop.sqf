@@ -30,6 +30,5 @@ while { true } do {
 
 	call aiDespawn;
 	call quickCleanup;	
-	call longCleanup;	
 	sleep 20;
 }; 
