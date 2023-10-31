@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=18;
+		nextID=48;
 	};
 	class Camera
 	{
 		pos[]={17964.824,25.242399,16235.014};
-		dir[]={-0.96940106,-0.1918319,-0.15318859};
-		up[]={-0.18948138,0.98142594,-0.0299426};
-		aside[]={-0.15608743,-2.3661414e-008,0.98774499};
+		dir[]={-0.9693988,-0.19183142,-0.15318835};
+		up[]={-0.1894802,0.98142785,-0.029942432};
+		aside[]={-0.15608722,0,0.98774326};
 	};
 };
 binarizationWanted=0;
@@ -662,7 +662,7 @@ class CustomAttributes
 					singleType="ARRAY";
 					class value
 					{
-						items=3;
+						items=5;
 						class Item0
 						{
 							class data
@@ -685,6 +685,22 @@ class CustomAttributes
 							{
 								singleType="STRING";
 								value="Counter";
+							};
+						};
+						class Item3
+						{
+							class data
+							{
+								singleType="STRING";
+								value="TicketsSpawn";
+							};
+						};
+						class Item4
+						{
+							class data
+							{
+								singleType="STRING";
+								value="Tickets";
 							};
 						};
 					};
@@ -36467,7 +36483,7 @@ class Mission
 							};
 							id=1637;
 							type="Land_WaterTower_01_F";
-							atlOffset=2.3841858e-006;
+							atlOffset=3.3378601e-006;
 						};
 						class Item58
 						{
