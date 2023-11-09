@@ -60,6 +60,20 @@ switch (_tierType) do {
 		} foreach OPCB_econ_TierList_DRONE;
 		
 	};
+	
+		case "SEA" : {
+	
+		{
+		
+			_index = _x find (toUpper _className);
+			
+			if (_index != -1) exitWith {
+				_tier = _foreachIndex;
+			};
+			
+		} foreach OPCB_econ_TierList_SEA;
+		
+	};
 	default { 
 		hintc "ERROR in code. Tier type not recognized!";
 		diag_log "ERROR in code. Tier type not recognized!";
