@@ -37,7 +37,8 @@ OPCB_econ_TierList_SEA = [
 	//TIER 8
 	[
 	"B_BOAT_TRANSPORT_01_F",
-	"I_BOAT_TRANSPORT_01_F"
+	"I_BOAT_TRANSPORT_01_F",
+	"B_SDV_01_F"
 	],
 
 	//TIER 9
