@@ -52,7 +52,7 @@ jeff addaction ["Lights off", {
 
 {
 	_x addaction ["Arsenal", {[_this select 0, _this select 1] call ace_arsenal_fnc_openBox;},nil,0,true,false,"","",10];
-} forEach [box1,box2,box3,box4];
+} forEach [box1,box2,box3,box4,box5];
 
 // disable the long-term effect of stamina...
 [] spawn {

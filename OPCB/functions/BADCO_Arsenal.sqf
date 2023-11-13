@@ -3014,7 +3014,7 @@ _arsenalitems =
 ];
 
 
-_boxes = [box1,box2,box3,box4];
+_boxes = [box1,box2,box3,box4,box5];
 
 {
 	[_x,_arsenalitems,true] call ace_arsenal_fnc_initBox;
