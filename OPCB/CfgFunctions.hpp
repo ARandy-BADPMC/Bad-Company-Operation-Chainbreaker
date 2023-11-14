@@ -152,6 +152,10 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\nearest.sqf";
 		}; 
+		class findFlowerPots
+		{
+			file = "functions\miscellaneous\findFlowerPots.sqf";
+		}; 
 		class setVehicleLock
 		{
 			file = "functions\miscellaneous\setVehicleLock.sqf";

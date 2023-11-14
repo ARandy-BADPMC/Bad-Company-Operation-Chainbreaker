@@ -9,6 +9,8 @@ _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
 _comp = [_taskcomp, _base, [0,0,0], random 360, true, true] call LARs_fnc_spawnComp;
 
+[_comp] call CHAB_fnc_findFlowerPots;
+
 _spawncomps = [_base] call CHAB_fnc_roadblock_ins;
 
 [_base,east] call CHAB_fnc_enemySpawner;
