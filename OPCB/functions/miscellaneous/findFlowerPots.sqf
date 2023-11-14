@@ -17,7 +17,7 @@ _vehicle = _selectedPotPos;
 if(!isNil "_replaceWithVehicle") then {
     _vehicle = createVehicle [_replaceWithVehicle, _selectedPotPos, [], 0, "NONE"];
     _vehicle allowDamage false;
-    _vehicle setDirection (direction _selectedPot);
+    _vehicle setDir (direction _selectedPot);
     _vehicle allowDamage true;
 };
 

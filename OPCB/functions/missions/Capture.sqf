@@ -11,11 +11,10 @@ _comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnC
 
 private _targetPos = [_comp] call CHAB_fnc_findFlowerPots;
 _target1 = _capturegroup createUnit [selectRandom OPCB_Commanders_Insurgents, _targetPos, [], 0, "NONE"];
+[_target1, true] call ACE_captives_fnc_setSurrendered;
 
 [_base,resistance] call CHAB_fnc_enemySpawner;
 
-removeAllWeapons _target1;
-_target1 disableAI "AUTOCOMBAT";
 
 _spawncomps = [_base] call CHAB_fnc_roadblock_ins;
 
