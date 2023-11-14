@@ -9,8 +9,9 @@ _current_task = _base getPos[random 600,random 360];
 ["The region is plagued by the pervasive terror inflicted by insurgents, creating a state of fear and instability among the entire population. Our mission is to eliminate the insurgents and restore a sense of peace, ensuring the safety and well-being of the local community. The primary objective of this operation is to bring an end to the reign of terror imposed by the insurgents. By neutralizing their presence, we aim to restore peace, security, and hope for the entire population. The operation will be conducted with utmost professionalism, adhering to the principles of proportionality and respect for human rights.","Operation Peacekeeper"],
  _current_task,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
 
-
 _comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+
+[_comp] call CHAB_fnc_findFlowerPots;
 
 [_base,resistance] call CHAB_fnc_enemySpawner;
 

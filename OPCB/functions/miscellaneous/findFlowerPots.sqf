@@ -10,11 +10,15 @@ if(count _pots == 0) exitWith {
     _x enableSimulation false;
 } forEach _pots;
 
-private _selectedPotPos = getPos (selectRandom _pots);
+private _selectedPot = selectRandom _pots;
+private _selectedPotPos = getPos (_selectedPot);
 _vehicle = _selectedPotPos;
 
 if(!isNil "_replaceWithVehicle") then {
-    _vehicle = _replaceWithVehicle createVehicle _selectedPotPos;
+    _vehicle = createVehicle [_replaceWithVehicle, _selectedPotPos, [], 0, "NONE"];
+    _vehicle allowDamage false;
+    _vehicle setDirection (direction _selectedPot);
+    _vehicle allowDamage true;
 };
 
 {
