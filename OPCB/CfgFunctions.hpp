@@ -247,6 +247,21 @@ class chainbreaker
 			file = "functions\tankspawner\tank_restriction.sqf";
 		};
 	};
+	class boatspawner
+	{
+		class spawn_boat
+		{
+			file = "functions\boatspawner\spawn_boat.sqf";
+		};
+		class spawn_boat_server
+		{
+			file = "functions\boatspawner\spawn_boat_server.sqf";
+		};
+		class spawn_boat_vehicle
+		{
+			file = "functions\boatspawner\spawn_boat_vehicle.sqf";
+		};
+	};
 	class helispawner
 	{
 		class deletebutton_heli

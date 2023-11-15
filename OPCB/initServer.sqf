@@ -48,6 +48,8 @@ MaxAPC = 0;
 publicVariable "MaxAPC";
 MaxStatic = 0;
 publicVariable "MaxStatic";
+MaxBoats = 0;
+publicVariable "MaxBoats";
 
 {
 	_x allowDamage false;
