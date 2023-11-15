@@ -1085,7 +1085,7 @@ _arsenalitems =
 "rhsusf_cvc_green_ess",
 "rhsusf_cvc_helmet",
 "rhsusf_cvc_ess",
-//"ACE_adenosine",
+"ACE_adenosine",
 "rhsusf_acc_grip2",
 "rhsusf_acc_grip2_tan",
 "rhs_acc_uuk",
@@ -1122,7 +1122,7 @@ _arsenalitems =
 "rhsusf_acc_ARDEC_M240",
 "rhs_acc_at4_handler",
 "ACE_ATragMX",
-//"ACE_atropine",
+"ACE_atropine",
 "rhs_googles_clear",
 "rhs_googles_orange",
 "rhs_googles_yellow",
@@ -2067,7 +2067,7 @@ _arsenalitems =
 "hlc_muzzle_snds_a6AUG",
 "HLC_Optic_Docter_CADEX",
 "HLC_Optic228_Docter_CADEX",
-"hlc_optic_goshawk",
+//"hlc_optic_goshawk",
 "HLC_optic_HP",
 "HLC_optic228_HP",
 "muzzle_HBADGER",
@@ -2998,7 +2998,19 @@ _arsenalitems =
 "rhsusf_ihadss",
 "ACE_artilleryTable",
 "ACRE_VHF30108",
-"ACRE_VHF30108MAST"
+"ACRE_VHF30108MAST",
+"ALiVE_Humrat",
+"ALiVE_Waterbottle",
+"ACE_DBAL_A3_Green",
+"ACE_DBAL_A3_Red",
+"ACE_SPIR",
+"rhsusf_acc_grip_m203_blk",
+"rhsusf_acc_grip_m203_d",
+"rhsusf_acc_grip_m203_wd",
+"rhs_acc_1pn34",
+"ACE_NVGoggles_OPFOR_WP",
+"ACE_suture",
+"acex_intelitems_notepad"
 ];
 
 

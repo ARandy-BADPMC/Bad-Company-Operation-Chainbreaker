@@ -4,4 +4,4 @@ if (_select != -1) exitWith {
 	_crateType = _ctrl lbData _select;
 	[_crateType] remoteExec ["OPCB_crateSpawner_fnc_spawnCrate_server",2];
 };
-hint "Select a box first";
+hint "Select a Utility first";
