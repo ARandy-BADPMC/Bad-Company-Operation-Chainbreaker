@@ -1,8 +1,6 @@
 # Bad Company Operation Chainbreaker
 
-Operation Chainbreaker is an ArmA 3 Bad Company project between Alex K., Jey R. & A. Randy. 
-Our goal is to create a fun, laid back yet realistic ArmA 3 mission.
-
-The mission is now under redevelopment with tweaks and new additions after a long break.
+Operation Chainbreaker is an ArmA 3 Bad Company project made by our ACE Pub server development team. 
+Our goal is to create a fun, laid back, yet realistic and persistent ArmA 3 mission that allows for semi-tactical, organised gameplay.
 
 Find us at: www.BadCompanyPMC.com
