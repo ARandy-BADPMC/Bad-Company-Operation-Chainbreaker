@@ -42,6 +42,3 @@ _this linkItem "ItemMap";
 _this linkItem "ItemCompass";
 _this linkItem "ItemWatch";
 _this linkItem "ItemRadio";
-
-// "Set identity";
-[_this,"PersianHead_A3_01","male01gre"] call BIS_fnc_setIdentity;

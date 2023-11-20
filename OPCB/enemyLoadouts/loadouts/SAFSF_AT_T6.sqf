@@ -44,6 +44,3 @@ _this linkItem "ItemCompass";
 _this linkItem "ItemWatch";
 _this linkItem "ItemRadio";
 _this linkItem "rhsusf_ANPVS_14";
-
-// "Set identity";
-[_this,"AsianHead_A3_02","male08eng"] call BIS_fnc_setIdentity;

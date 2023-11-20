@@ -36,6 +36,3 @@ _this linkItem "ItemMap";
 _this linkItem "ItemCompass";
 _this linkItem "ItemWatch";
 _this linkItem "ItemRadio";
-
-// "Set identity";
-[_this,"WhiteHead_05","male05gre"] call BIS_fnc_setIdentity;

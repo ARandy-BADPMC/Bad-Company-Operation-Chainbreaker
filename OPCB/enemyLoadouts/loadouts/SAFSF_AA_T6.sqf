@@ -40,6 +40,3 @@ _this linkItem "ItemCompass";
 _this linkItem "ItemWatch";
 _this linkItem "ItemRadio";
 _this linkItem "rhsusf_ANPVS_14";
-
-// "Set identity";
-[_this,"WhiteHead_08","male08eng"] call BIS_fnc_setIdentity;

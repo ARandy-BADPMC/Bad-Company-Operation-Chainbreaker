@@ -45,7 +45,7 @@ switch (_side) do {
 
 private ["_spawnPos", "_randomDistancePos", "_group"];
 
-private _findSavePosForGroups = {
+private _findSafePosForGroups = {
 	params ["_centerPosition"];
 	private _safePos = [0,0,0];
 	private _tries = 50;
@@ -68,7 +68,7 @@ private _patrolAndFinish = {
 };
 
 for "_i" from 1 to _infantryGroupsCount do {
-	_spawnPos = [_centerPosition] call _findSavePosForGroups;
+	_spawnPos = [_centerPosition] call _findSafePosForGroups;
 	if(surfaceIsWater _spawnPos) then {
 		continue;
 		//skip spawning the unit, we tried enough times
@@ -82,7 +82,7 @@ for "_i" from 1 to _infantryGroupsCount do {
 };
 
 for "_i" from 1 to _mechanizedGroupsCount do {
-	_spawnPos = [_centerPosition] call _findSavePosForGroups;
+	_spawnPos = [_centerPosition] call _findSafePosForGroups;
 	if(surfaceIsWater _spawnPos) then {
 		continue;
 		//skip spawning the unit, we tried enough times
@@ -96,7 +96,7 @@ for "_i" from 1 to _mechanizedGroupsCount do {
 };
 
 for "_i" from 1 to _armoredVehiclesCount do {
-	_spawnPos = [_centerPosition] call _findSavePosForGroups;
+	_spawnPos = [_centerPosition] call _findSafePosForGroups;
 	if(surfaceIsWater _spawnPos) then {
 		continue;
 		//skip spawning the unit, we tried enough times
@@ -110,7 +110,7 @@ for "_i" from 1 to _armoredVehiclesCount do {
 };
 
 for "_i" from 1 to _staticVehiclesCount do {
-	_spawnPos = [_centerPosition] call _findSavePosForGroups;
+	_spawnPos = [_centerPosition] call _findSafePosForGroups;
 	if(surfaceIsWater _spawnPos) then {
 		continue;
 		//skip spawning the unit, we tried enough times
@@ -145,7 +145,7 @@ if(_shouldSpawnCommander) then {
 			["airTransport",[_transportHelicoptersCount, _side]],
 			["artillery",[_artilleryCount,_side]]];
 
-	private _commanderSpawnPos = [_centerPosition] call _findSavePosForGroups;
+	private _commanderSpawnPos = [_centerPosition] call _findSafePosForGroups;
 	if!(surfaceIsWater _commanderSpawnPos) then {
 		private _commanderGroup = createGroup [_side, true];
 		private _commander = _commanderGroup createUnit [selectRandom _commanderUnits, _commanderSpawnPos, [], 1, "NONE"];

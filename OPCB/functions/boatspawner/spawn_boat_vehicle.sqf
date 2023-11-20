@@ -26,7 +26,7 @@ if(_boatselect != -1) then  {
 			hint "Vehicle delivered";
 
 			MaxBoats = MaxBoats +1;
-			publicVariable "MaxAPC";
+			publicVariable "MaxBoats";
 			[_vehicle] remoteExec ["CHAB_fnc_spawn_boat_server",2];
 
 		} else {

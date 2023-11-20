@@ -18,7 +18,6 @@ for "_i" from 0 to 3 do {
 	[_spawnedGroup] call CHAB_fnc_serverGroups;
 	([_artiPos, random 360, selectRandom _mortars, _spawnedGroup] call BIS_fnc_spawnVehicle) params ["_createdVehicle", "_crew"]; 
 	
-	_createdVehicle setVariable ["disableInsurgencyCleanup", true];
 	_artgroups pushBack (_spawnedGroup);
 
 	private _unit = _crew select 0;

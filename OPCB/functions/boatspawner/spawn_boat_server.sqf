@@ -10,7 +10,7 @@ _boat addMPEventHandler ["MPKilled",
 {
 	if(isServer) then {
 		MaxBoats = MaxBoats - 1;
-		publicVariable "MaxAPC";
+		publicVariable "MaxBoats";
 	};
 }];
 [_boat] call BADCO_fnc_skinApplier;
