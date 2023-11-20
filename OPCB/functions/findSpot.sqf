@@ -15,13 +15,16 @@ if(_maxRange == 0) then {
 for "_i" from 1 to _iter do {
 	
 	_suitable = [0,0,0];	
-	while {count _suitable == 3 || {surfaceIsWater _suitable}} do {
+	private _infiniteCounter = 0;
+	while {count _suitable == 3 || {surfaceIsWater _suitable} || {_infiniteCounter > 1000}} do {
 		
 		private _rndPos = _basePos getPos[random [_minDistance,_maxRange/2, _maxRange] ,random 360];
 		_suitable = [_rndPos, 0, _maxRange, 1, 0, 0.3, 0, ["base_marker"]] call BIS_fnc_findSafePos;
+		_infiniteCounter = _infiniteCounter + 1;
 	};
-	
-	_suitableSpots pushBack _suitable;
+	if(_infiniteCounter < 1000) then {
+		_suitableSpots pushBack _suitable;
+	};
 
 };
 _taskSpot = selectRandom _suitableSpots;
