@@ -3010,11 +3010,17 @@ _arsenalitems =
 "rhs_acc_1pn34",
 "ACE_NVGoggles_OPFOR_WP",
 "ACE_suture",
-"acex_intelitems_notepad"
+"acex_intelitems_notepad",
+"rhs_rpg7_PG7VM_mag",
+"rhs_rpg7_PG7VS_mag",
+"ace_csw_m3CarryTripodLow",
+"ace_csw_m3CarryTripod",
+"rhs_weap_m14_socom",
+"rhs_weap_m14_socom_rail"
 ];
 
 
-_boxes = [box1,box2,box3,box4];
+_boxes = [box1,box2,box3,box4,box5];
 
 {
 	[_x,_arsenalitems,true] call ace_arsenal_fnc_initBox;
