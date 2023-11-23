@@ -1,4 +1,4 @@
-private _reward = 60;
+private _reward = 70;
 params ["_current_tasknumber"];
 
 _city = selectRandom Cities;

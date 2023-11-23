@@ -1,4 +1,4 @@
-private _reward = 40;
+private _reward = 80;
 params ["_current_tasknumber"];
 
 _journalistCount = selectRandom [1,2]; 
