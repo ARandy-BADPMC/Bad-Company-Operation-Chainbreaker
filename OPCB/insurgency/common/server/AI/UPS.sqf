@@ -163,6 +163,8 @@ if (_isLandVehicle) then {
 	_npc setUnloadInCombat [true, true];
 	if ((isNull (gunner _npc)) && {(_npc emptyPositions "Gunner") == 0}) then {
 		_vicHasNoGun = true;
+	} else {
+		_npc allowCrewInImmobile true;
 	};
 } else {
 	_npc setUnloadInCombat [false, false];
@@ -470,6 +472,7 @@ while { _loop} do {
 				} forEach crew _npc;
 				if ((count _paradroppers) > 0) then {
 					[_npc,100,_paradroppers] spawn paraEject;
+					_members = _members - _paradroppers;
 				};
 			};
                         

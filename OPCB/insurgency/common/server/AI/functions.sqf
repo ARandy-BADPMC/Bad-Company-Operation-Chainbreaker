@@ -16,36 +16,9 @@ spawnAIVehicle = {
 	_vcl setPosATL ((getPosATL _vcl) vectorAdd [0,0,1]);
 	_vcl setVectorUp (surfaceNormal _pos);
 	
-	// Hunter: anti-bad driving fix (does not cover flipping...)
-	_vcl spawn {
-		sleep 5;
-		 _this removeAllEventHandlers "HandleDamage";
-		 _this addEventHandler ["HandleDamage",{
-		 
-			_return = _this select 2;
-			_source = _this select 3;
-			_unit = _this select 0;
-			_ammo = _this select 4;
-			_selection = _this select 1;
-			
-			if ((_ammo == "") && {(isnull _source) || {_source == _unit}}) then {
-				if (_selection isEqualTo "") then {
-					_return = damage _unit;
-				} else {
-					_return = _unit getHit _selection;
-				};
-			} else {
-				if ((_unit getVariable ["ace_vehicle_damage_handleDamage", -99]) != -99) then {
-					_return = _this call ace_vehicle_damage_fnc_handleDamage;
-				};
-			};
-			
-			_return
-		}];
-	};
-	
 	_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
 	_ai setRank (eastRanks select 2);
+	_ai assignAsDriver _vcl;
 	_ai moveInDriver _vcl;
 	
 	private _withPassengers = false;
@@ -60,6 +33,7 @@ spawnAIVehicle = {
 		{
 			_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
 			_ai setRank (eastRanks select 4); 
+			_ai assignAsTurret [_vcl, _x];
 			_ai moveInTurret [_vcl, _x];
 		} foreach (allTurrets [_vcl, true]) - (allTurrets [_vcl, false]);
 		
@@ -69,6 +43,7 @@ spawnAIVehicle = {
 			for "_i" from 1 to _cargoSeats do {
 				_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];	
 				_ai setRank (eastRanks select 4);
+				_ai assignAsCargo _vcl;
 				_ai moveInCargo _vcl;
 				sleep 0.05;
 			};
@@ -79,36 +54,70 @@ spawnAIVehicle = {
 	{
 		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
 		_ai setRank (eastRanks select 0);
+		_ai assignAsTurret [_vcl, _x];
 		_ai moveInTurret [_vcl, _x];
 	} foreach allTurrets [_vcl, false];
 	
-	{
-			_x spawn {
-				sleep 2;
-				_this removeAllEventHandlers "HandleDamage";
-				_this addEventHandler ["HandleDamage", {
-				
+	if (!(_vcl isKindOf "Air")) then {
+		// Hunter: anti-bad driving fix (does not cover flipping...)
+		_vcl spawn {
+			sleep 5;
+			 _this removeAllEventHandlers "HandleDamage";
+			 _this addEventHandler ["HandleDamage",{
+			 
 				_return = _this select 2;
 				_source = _this select 3;
 				_unit = _this select 0;
+				_ammo = _this select 4;
 				_selection = _this select 1;
 				
-				if (((_this select 4) == "") && {(isnull _source) || {((side _source) getFriend (side _unit)) >= 0.6}}) then {
+				if ((_ammo == "") && {(isnull _source) || {_source == _unit}}) then {
 					if (_selection isEqualTo "") then {
 						_return = damage _unit;
 					} else {
 						_return = _unit getHit _selection;
 					};
 				} else {
-					if ((missionnamespace getVariable ["ace_medical_ai_enabledFor",0]) != 0) then {
-						_return = _this call ace_medical_engine_fnc_handleDamage;
+					if ((_unit getVariable ["ace_vehicle_damage_handleDamage", -99]) != -99) then {
+						_return = _this call ace_vehicle_damage_fnc_handleDamage;
 					};
 				};
 				
-			_return 
+				_return
 			}];
-		};	
-	} foreach (units _grp);
+		};
+		{
+				_x spawn {
+					sleep 2;
+					_this removeAllEventHandlers "HandleDamage";
+					_this addEventHandler ["HandleDamage", {
+					
+					_return = _this select 2;
+					_source = _this select 3;
+					_unit = _this select 0;
+					_selection = _this select 1;
+					
+					if (((_this select 4) == "") && {(isnull _source) || {((side _source) getFriend (side _unit)) >= 0.6}}) then {
+						if (_selection isEqualTo "") then {
+							_return = damage _unit;
+						} else {
+							_return = _unit getHit _selection;
+						};
+					} else {
+						if ((missionnamespace getVariable ["ace_medical_ai_enabledFor",0]) != 0) then {
+							_return = _this call ace_medical_engine_fnc_handleDamage;
+						};
+					};
+					
+				_return 
+				}];
+			};	
+		} foreach (units _grp);
+	};
+	
+	sleep 0.1;
+	(units _grp) allowGetIn true;
+	(units _grp) orderGetIn true;
 
 	_track = ""; 
 	if (DEBUG) then { _track = "track"; }; 
