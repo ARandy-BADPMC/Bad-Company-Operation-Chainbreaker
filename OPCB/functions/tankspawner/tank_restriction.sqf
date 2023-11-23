@@ -17,7 +17,7 @@ _vehicle addEventHandler ["SeatSwitched", {
 
 	private _localSwitched = {
 		params ["_unit", "_vehicle"];
-		[_unit1, _vehicle] spawn {
+		[_unit, _vehicle] spawn {
 			params ["_unit", "_vehicle"];
 
 			#include "..\..\data\vehicleDriverUnitTypes.sqf";
