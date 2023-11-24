@@ -13,6 +13,8 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
+["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
+
 //ACRE check & kick
 if (!isServer && {isMultiplayer}) then {
 	[] spawn {
@@ -34,7 +36,10 @@ heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] sp
 tank_spawner addAction ["<t color='#FFFF00'>Vehicle Spawner</t>","[] spawn CHAB_fnc_spawn_tank;",nil, 1, false, true, "", "true", 10, false,""];
 tank_spawner addAction ["<t color='#00FFFF'>Utility Spawner</t>","[] spawn OPCB_crateSpawner_openDialog;",nil, 1, false, true, "", "true", 10, false,""];   
 tank_spawner addAction ["<t color='#01FF24'>Drone Spawner</t>","[] spawn CHAB_fnc_spawn_drone;",nil, 1, false, true, "", "true", 10, false,""];  
-tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""];   
+
+tank_spawner addAction ["<t color='#FF0000'>I want my vehicle removed!</t>","[] spawn CHAB_fnc_remover_tank;",nil, 1, false, true, "", "true", 10, false,""]; 
+
+boat_jeff_1 addAction ["<t color='#FFFF00'>Boat Spawner</t>","[] spawn CHAB_fnc_spawn_boat;",nil, 1, false, true, "", "true", 10, false,""];
 
 player addEventHandler ["GetInMan",{[_this select 1, _this select 2] call BADCO_fnc_classCheck;}];
 
@@ -52,7 +57,7 @@ jeff addaction ["Lights off", {
 
 {
 	_x addaction ["Arsenal", {[_this select 0, _this select 1] call ace_arsenal_fnc_openBox;},nil,0,true,false,"","",10];
-} forEach [box1,box2,box3,box4];
+} forEach [box1,box2,box3,box4,box5];
 
 // disable the long-term effect of stamina...
 [] spawn {
@@ -63,7 +68,15 @@ jeff addaction ["Lights off", {
 	};
 };
 
+player addEventHandler ["Killed", {
+	params ["_unit"];
+
+	[_unit] remoteExec ['CHAB_fnc_deathPenalty',2];
+}];
+
 Hz_pers_clientReadyForLoad = true;
+
+
 
 [] spawn {
 	waitUntil{

@@ -1,4 +1,4 @@
-private _reward = 60;
+private _reward = 70;
 params ["_base","_current_tasknumber"];
 _taskcomp = selectRandom ["warhead1","warhead2"];
 

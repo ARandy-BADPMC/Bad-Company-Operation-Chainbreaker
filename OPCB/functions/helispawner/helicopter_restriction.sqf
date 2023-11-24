@@ -1,9 +1,9 @@
 params ["_vehicle", "_isAttack"];
+if(isNull _vehicle) exitWith{};
 
 if(_isAttack == 1) then {
 	_vehicle addEventHandler ["GetIn",{
 		params ["_vehicle","_seat","_player"];
-		_playerid = getPlayerUID _player;
 
 		#include "..\..\data\vehicleDriverUnitTypes.sqf";
 

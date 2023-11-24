@@ -4,11 +4,10 @@ _village = _this select 3 select 0;
 _arts = _this select 3 select 1;
 _done = false;
 {
-
-  if (alive _x) exitWith {
-	    _direction = [ _civilian, _x ] call BIS_fnc_dirTo;
-		hint format ["I think the shots are coming from %1 degrees",_direction];
-		_done = true;
+  if ( count (units _x) > 0) exitWith {
+	_direction = [ _civilian, (units _x) select 0 ] call BIS_fnc_dirTo;
+	hint format ["I think the shots are coming from %1 degrees",_direction];
+	_done = true;
   };
 } forEach _arts;
 

@@ -13,12 +13,12 @@ _comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnC
 
 [_base,resistance] call CHAB_fnc_enemySpawner;
 
-_thetarget = createVehicle ["rhsusf_m1a1aimd_usarmy", _base, [], 1, "NONE"];
-_thetarget lock true;
+private _vehicle = [_comp, "rhsusf_m1a1aimd_usarmy"] call CHAB_fnc_findFlowerPots;
+_vehicle lock true;
 
 waitUntil {
   sleep 10;
-  !canMove _thetarget || {damage _thetarget > 0.8}
+  !canMove _vehicle || {damage _vehicle > 0.8}
 };
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
 
@@ -34,8 +34,8 @@ publicVariable "OPCB_econ_credits";
   [ _x ] call LARs_fnc_deleteComp;
 } forEach _spawncomps;
 
-[_thetarget] spawn {
-  params ["_thetarget"];
+[_vehicle] spawn {
+  params ["_vehicle"];
   sleep 60;
-  deleteVehicle _thetarget;
+  deleteVehicle _vehicle;
 };

@@ -6,6 +6,7 @@
 enableSaving [false, false];
 enableSentences true;
 enableTeamswitch false;
+["Initialize"] call BIS_fnc_dynamicGroups;
 [] execVM "Scripts\ied.sqf";
 
 Resistance setFriend [EAST, 1]; Resistance setFriend [WEST, 0]; Resistance setFriend [Civilian, 1];
@@ -34,6 +35,7 @@ IsATaskRunning = false;
 TaskNumber = 0;
 EnemyGroups = [];
 CommanderActionUnderway = false;
+DP_Queue = [];
 
 CrateCount = 0;
 publicVariable "CrateCount";
@@ -47,6 +49,8 @@ MaxAPC = 0;
 publicVariable "MaxAPC";
 MaxStatic = 0;
 publicVariable "MaxStatic";
+MaxBoats = 0;
+publicVariable "MaxBoats";
 
 {
 	_x allowDamage false;
@@ -68,3 +72,12 @@ Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"]
 setViewDistance 3500;
 setObjectViewDistance 3500;
 
+addMissionEventHandler ["PlayerDisconnected", {
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+	{
+		_playerUid = _x getVariable "ZeusUser";
+		if(isNil "_playerUid" || _playerUid == _uid) then {
+			deleteVehicle _x
+		};
+	} forEach allCurators;
+}];

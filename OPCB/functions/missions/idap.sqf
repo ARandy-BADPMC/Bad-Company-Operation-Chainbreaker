@@ -1,4 +1,4 @@
-private _reward = 60;
+private _reward = 80;
 params ["_base","_current_tasknumber"];
 _taskcomp = "peacekeeper";
 _resgroup = createGroup [resistance,true];
@@ -26,9 +26,10 @@ _village = locationPosition _nearestCity;
 
 [_current_tasknumber,_officerPos] call BIS_fnc_taskSetDestination;
 
-_stations = [_village,_officer] call CHAB_fnc_artillery;
+([_village, _officer] call CHAB_fnc_artillery) params ["_stations", "_artyGroups"];
 
-[_village,(_stations select 1)] call CHAB_fnc_idap_fn;
+[_village, _artyGroups] call CHAB_fnc_idap_fn;
+
 [_officer,["<t color='#FF0000'>Tell me which town is under attack.</t>",
 {
 	_village = _this select 3 select 0;
@@ -60,20 +61,4 @@ publicVariable "OPCB_econ_credits";
 
 {
   [ _x ] call LARs_fnc_deleteComp;
-} forEach (_stations select 0);
-
-[_reference] spawn {
-	params ["_reference"];
-	sleep 60;
-	{
-		if(typeName _x == "GROUP") then {
-			{
-				deleteVehicle _x;
-			} forEach (units _x);
-			deleteGroup _x;
-		}
-		else{
-			deleteVehicle _x;
-		};
-	} forEach _reference;
-};
+} forEach _stations;

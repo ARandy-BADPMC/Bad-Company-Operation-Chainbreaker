@@ -152,6 +152,10 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\nearest.sqf";
 		}; 
+		class findFlowerPots
+		{
+			file = "functions\miscellaneous\findFlowerPots.sqf";
+		}; 
 		class setVehicleLock
 		{
 			file = "functions\miscellaneous\setVehicleLock.sqf";
@@ -183,6 +187,14 @@ class chainbreaker
 		class setStaticVehicleLock
 		{
 			file = "functions\miscellaneous\setStaticVehicleLock.sqf";
+		};
+		class deathPenalty
+		{
+			file = "functions\miscellaneous\deathPenalty.sqf";
+		};
+		class deathPenaltyQueue
+		{
+			file = "functions\miscellaneous\deathPenaltyQueue.sqf";
 		};
 	};
 	class admin_menu
@@ -241,6 +253,21 @@ class chainbreaker
 		class tank_restriction
 		{
 			file = "functions\tankspawner\tank_restriction.sqf";
+		};
+	};
+	class boatspawner
+	{
+		class spawn_boat
+		{
+			file = "functions\boatspawner\spawn_boat.sqf";
+		};
+		class spawn_boat_server
+		{
+			file = "functions\boatspawner\spawn_boat_server.sqf";
+		};
+		class spawn_boat_vehicle
+		{
+			file = "functions\boatspawner\spawn_boat_vehicle.sqf";
 		};
 	};
 	class helispawner

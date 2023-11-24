@@ -4,10 +4,12 @@ _veh setVariable ["CHB_CanDespawn", false, false];
 
 [_veh] spawn {
 	params ["_veh"];
-
 	waitUntil {
 		sleep 60;
-		_var = _veh getVariable "CHB_CanDespawn" ;
+		if(isNull _veh) exitWith {
+			true
+		};
+		_var = _veh getVariable "CHB_CanDespawn";
 		isNil '_var' || {_var} || {!IsATaskRunning}
 	};
 
@@ -48,10 +50,10 @@ _veh addEventHandler ["Engine",{
 //check if vehicle has been abandoned
 _veh addEventHandler ["GetOut",{
 	params ["_veh"];
-	["_veh"] spawn {
+	[_veh] spawn {
 		params ["_veh"];
 		sleep 5;
-		if ((count crew _veh) == 0) then {
+		if (!isNull _veh && {(count crew _veh) == 0}) then {
 			_veh setVariable ["CHB_CanDespawn", true, false];
 		};
 	};

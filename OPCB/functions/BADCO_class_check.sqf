@@ -25,7 +25,7 @@ if (_role == "Driver") then
 			hint "You must be a helicopter pilot to fly this";
 		};
 		_whiteListed = player getVariable ["WhiteListed", false];
-		if (_attackVehicle != 0 && {_whiteListed}) exitWith {
+		if (_attackVehicle != 0 && {!_whiteListed}) exitWith {
 			_vehicle engineOn false;
 			moveOut player;
 			hint "You must be whitelisted to fly this";				

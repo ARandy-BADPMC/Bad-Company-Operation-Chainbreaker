@@ -2,7 +2,7 @@ respawnTemplates[] 				= {"MenuPosition"};
 	
 respawn 						= 3;										// NONE. BIRD. INSTANT. BASE. GROUP. SIDE.	
 respawnOnStart 					= -1;										// 1 to respawn player when he joins the game. Available only for INSTANT and BASE respawn types.	
-respawnButton 					= 1;										// Respawn button in the pause menu											
+respawnButton 					= 0;										// Respawn button in the pause menu											
 forceRotorLibSimulation 		= 1;										// 0 - options based; 1 - force enable; 2 - force disable										
 showGroupIndicator 				= 0;										// Enables/Disables the squad hud	
 enableTeamSwitch 				= 0;
@@ -11,6 +11,7 @@ enableDebugConsole[] = {"76561198048254349", "76561198002110130"};
 allowFunctionsLog 				= 0; 										// Log functions to .rpt. disabled with 0					
 respawnDelay = 45;
 ReviveMode = 0;
+zeusCompositionScriptLevel = 2;
 
 // 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System
 // {channelid, disablechat, disablevoice}
@@ -19,11 +20,11 @@ disableChannels[] = {{0,false,true},{1,true,true},{2,true,true},{3,true,true},{4
 
 //GarbageCollector
 minPlayerDistance = 1000; //meters
-corpseManagerMode = 3;
+corpseManagerMode = 1;
 corpseLimit = 150;
 corpseRemovalMinTime = 1200;
 corpseRemovalMaxTime = 3600;
-wreckManagerMode = 3;
+wreckManagerMode = 1;
 wreckLimit = 30;
 wreckRemovalMinTime = 1200;
 wreckRemovalMaxTime = 3600;
@@ -35,6 +36,8 @@ class CfgFunctions
 	#include "LARs\spawnComp\functions\functions.cpp"
 	#include "CfgFunctions.hpp"
 	#include "vcom\cfgFunctions.hpp"
+	#include "sideMissions\cfgFunctions.hpp"
+	#include "enemyLoadouts\cfgFunctions.hpp"
 };
 #include "compositions\compositions.cfg"
 #include "functions\defines.hpp"

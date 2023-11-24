@@ -1,5 +1,7 @@
 params ["_vehicle"];
 
+if(isNull _vehicle) exitWith{};
+
 _vehicle addEventHandler ["GetIn",{
 	params ["_vehicle","_seat", "_player" ];
 	#include "..\..\data\vehicleDriverUnitTypes.sqf";
@@ -13,13 +15,24 @@ _vehicle addEventHandler ["GetIn",{
 _vehicle addEventHandler ["SeatSwitched", {
 	params ["_vehicle", "_unit1", "_unit2"];
 
-	#include "..\..\data\vehicleDriverUnitTypes.sqf";
+	private _localSwitched = {
+		params ["_unit", "_vehicle"];
+		[_unit, _vehicle] spawn {
+			params ["_unit", "_vehicle"];
 
-	_driver = driver _vehicle;
-	
-	if !((typeOf _driver) in _tankDriverTypes) then {
-		moveOut _driver; 
-	};
+			#include "..\..\data\vehicleDriverUnitTypes.sqf";
+			uiSleep 0.1;
+			private _role = (assignedVehicleRole _unit) select 0;
+				
+			if (_role == "driver" && !((typeOf _unit) in _tankDriverTypes)) then {
+				moveOut _unit; 
+			};
+
+		};
+	}
+
+	[_unit1, _vehicle] call _localSwitched;
+	[_unit2, _vehicle] call _localSwitched;
 }];
 
 _vehicle addEventHandler ["GetIn", {

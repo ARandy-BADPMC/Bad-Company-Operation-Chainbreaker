@@ -29,7 +29,12 @@ scriptName "ins_cleanup";
 while { true } do {
 
 	call aiDespawn;
-	call quickCleanup;	
-	call longCleanup;	
+
+	// disable cleanup
+
+	//call quickCleanup;
+	//call longCleanup;
+
 	sleep 20;
+
 }; 

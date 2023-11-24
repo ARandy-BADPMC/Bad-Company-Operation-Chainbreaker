@@ -79,6 +79,25 @@ switch (_tierType) do {
 		};
 		
 	};
+	
+		case "SEA" : {
+		
+		_cost = switch (_tier) do {
+		
+			case 9: {5};
+			case 8: {15};
+			case 7: {20};
+			case 6: {25};
+			case 5: {40};
+			case 4: {200};
+			case 3: {200};
+			case 2: {200};
+			case 1: {200};
+			case 0: {200};
+			
+		};
+		
+	};
 
 	default {
 		hintc "ERROR in code. Tier type not recognized!";

@@ -1,4 +1,3 @@
-
 disableSerialization;
 _loadouts = (findDisplay 9900) displayCtrl 1561;
 _loadout = lbCurSel _loadouts;

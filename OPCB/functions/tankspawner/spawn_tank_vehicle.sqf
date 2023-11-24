@@ -9,17 +9,7 @@ if(_tankselect != -1) then  {
 
 	_nObjects = nearestObjects [_tankpos, ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
 
-	_staticType = [
-		"rhs_Metis_9k115_2_vmf",
-		"rhs_Kornet_9M133_2_vmf",
-		"RHS_Stinger_AA_pod_D",
-		"RHS_M2StaticMG_D",
-		"RHS_M2StaticMG_MiniTripod_D",
-		"RHS_TOW_TriPod_D",
-		"RHS_MK19_TriPod_D",
-		"B_Mortar_01_F",
-		"B_Static_Designator_01_F"
-	];
+	_isStatic = (getNumber (configfile >> "CfgVehicles" >> _vehicle >> "enginePower")) == 0;
 	
 	if (count _nObjects <= 1) then {
 
@@ -52,14 +42,14 @@ if(_tankselect != -1) then  {
 			};
 
 		} else {
-			if (_vehicle in _staticType) then {
-			if (MaxStatic != 5) then {
-				MaxStatic = MaxStatic + 1;
-				publicVariable "MaxStatic";
-				[_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2]; 
-				
-			} else {
-				hint "5 statics are already in game";
+			if (_isStatic) then {
+				if (MaxStatic != 5) then {
+					MaxStatic = MaxStatic + 1;
+					publicVariable "MaxStatic";
+					[_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2]; 
+					
+				} else {
+					hint "5 statics are already in game";
 				};
 			} 
 			else {
@@ -96,7 +86,6 @@ if(_tankselect != -1) then  {
 		hint "Spawn position is not empty";
 	};
 }
-else
-{
+else {
 	hint "Select a vehicle first";
 };
