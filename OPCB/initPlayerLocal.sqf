@@ -68,7 +68,15 @@ jeff addaction ["Lights off", {
 	};
 };
 
+player addEventHandler ["Killed", {
+	params ["_unit"];
+
+	[_unit] remoteExec ['CHAB_fnc_deathPenalty',2];
+}];
+
 Hz_pers_clientReadyForLoad = true;
+
+
 
 [] spawn {
 	waitUntil{

@@ -188,6 +188,14 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\setStaticVehicleLock.sqf";
 		};
+		class deathPenalty
+		{
+			file = "functions\miscellaneous\deathPenalty.sqf";
+		};
+		class deathPenaltyQueue
+		{
+			file = "functions\miscellaneous\deathPenaltyQueue.sqf";
+		};
 	};
 	class admin_menu
 	{
