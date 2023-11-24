@@ -1,8 +1,8 @@
-private _sleepCounter = 5;
+private _sleepCounter = (count DP_Queue) + 1;
 private _creditCounter = 0;
 while {_sleepCounter > 0} do {
 	if(count DP_Queue > 0) then {
-		_sleepCounter = 5;
+		_sleepCounter = (count DP_Queue) + 1;
 		_creditCounter = _creditCounter + 3;
 		DP_Queue deleteAt 0;
 	};
