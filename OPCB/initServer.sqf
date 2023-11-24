@@ -35,6 +35,7 @@ IsATaskRunning = false;
 TaskNumber = 0;
 EnemyGroups = [];
 CommanderActionUnderway = false;
+DP_Queue = [];
 
 CrateCount = 0;
 publicVariable "CrateCount";
