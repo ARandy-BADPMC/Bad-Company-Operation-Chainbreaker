@@ -35,7 +35,7 @@
 #define SHAREDIST (worldSize/8)
 
 // how long AI units should be in alert mode after initially spotting an enemy
-#define ALERTTIME 300
+#define ALERTTIME 900
 
 private __CENTERPOS = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition");
 __CENTERPOS set [2, 0];
@@ -184,9 +184,10 @@ if (_issoldier) then {
 		case west:
 			{ _friends=_friends+KRON_AllWest; _enemies=_enemies+KRON_AllEast+KRON_AllRes; _sharedenemy=0; }; 
 		case east:
-			{ _friends=_friends+KRON_AllEast; _enemies=_enemies+KRON_AllWest+KRON_AllRes; _sharedenemy=1; }; 
+			{ _friends=_friends+KRON_AllEast+KRON_AllRes; _enemies=_enemies+KRON_AllWest; _sharedenemy=1; }; 
 		case resistance:
-			{ _enemies=_enemies+KRON_AllEast+KRON_AllWest; _sharedenemy=2; }; 
+			// Hunter: easy to do TODO above but resistance is always enemies with west for us
+			{ _friends=_friends+KRON_AllEast+KRON_AllRes; _enemies=_enemies+KRON_AllWest; _sharedenemy=2; }; 
 	}; 
 	{ 
 		_friends=_friends-[_x]; 
@@ -391,7 +392,20 @@ while { _loop} do {
 		if (KRON_UPS_Debug) then { server globalChat format["UPS group %1 all dead or surrendered", _grpidx]; };
 	} else { 
 		// did the leader die?
-		if (!alive _npc) then { 
+		// Hunter: handle disabled vehicles so the show can go on
+		if ((!alive _npc) || {!canMove _npc}) then {
+			if ((alive _npc) && {!canMove _npc}) then {
+				[_npc, _grp] spawn {
+					params ["_npc", "_grp"];
+					sleep 600;
+					_grp leaveVehicle _npc;
+					(units _grp) orderGetIn false;
+					(units _grp) allowGetIn false;
+					{
+						unassignVehicle _x;
+					} foreach (units _grp);
+				};
+			};
 			_npc = _members select 0; 
 			group _npc selectLeader _npc;
 			_isman = _npc isKindOf "Man"; 
@@ -577,7 +591,8 @@ while { _loop} do {
 			// we're either close enough, seem to be stuck, or are getting damaged, so find a new target 
 			if ((!_swimming) && ((_dist<=_closeenough) || (_totmove<.2) || (_dammchg>0.01) || (_curTimeontarget>ALERTTIME))) then {
 			
-				_makenewtarget=true; 
+				_makenewtarget=true;
+				/*
 				// Hunter: try to get stuck ones moving again...
 					if (_totmove<.2) then {
 					{
@@ -585,6 +600,7 @@ while { _loop} do {
 					} foreach (_members select {_x == (effectiveCommander vehicle _x)});
 					sleep 60;
 				};
+				*/
 			
 			}; 
 
@@ -668,10 +684,13 @@ while { _loop} do {
 			// reset patrol speed after following enemy for a while
 			if (_curTimeontarget>ALERTTIME) then { 
 				_fightmode="walk"; 
-				_speedmode = _orgSpeed; 
+				_speedmode = _orgSpeed;
+				_members allowGetIn true;
+				_members orderGetIn true;
+				sleep 10;
 				{ 
 					_vcl = vehicle _npc; 
-					if (_vcl != _npc && !(_x in _vcl)) then { _x moveInCargo _vcl; _x assignAsCargo _vcl; }; 
+					if (_vcl != _npc && !(_x in _vcl)) then {_x assignAsCargo _vcl; _x moveInCargo _vcl;}; 
 					_x setSpeedMode _speedmode; 
 					_x setBehaviour _orgMode; 
 					_x setCombatMode "YELLOW";
