@@ -29,7 +29,7 @@ _vehicle addEventHandler ["SeatSwitched", {
 			};
 
 		};
-	}
+	};
 
 	[_unit1, _vehicle] call _localSwitched;
 	[_unit2, _vehicle] call _localSwitched;
