@@ -590,18 +590,50 @@ while { _loop} do {
 			
 			// we're either close enough, seem to be stuck, or are getting damaged, so find a new target 
 			if ((!_swimming) && ((_dist<=_closeenough) || (_totmove<.2) || (_dammchg>0.01) || (_curTimeontarget>ALERTTIME))) then {
-			
-				_makenewtarget=true;
-				/*
+							
 				// Hunter: try to get stuck ones moving again...
-					if (_totmove<.2) then {
+				if (_isLandVehicle && {_totmove<.2}) then {
+					
+					/*
 					{
 						(vehicle _x) doMove _targetPos;
 					} foreach (_members select {_x == (effectiveCommander vehicle _x)});
 					sleep 60;
+					*/
+					doStop _npc;
+					sleep 1;
+					isNil {
+						_agent = calculatePath [typeof _npc, "CARELESS", getPosASL _npc, _targetPos];
+						_agent setVariable ["unit",_npc];
+						
+						_agent addEventHandler ["PathCalculated", {
+						
+							params ["_agent", "_path"];
+							
+							// ignore EH firing a second time (known bug)
+							if ((isNull _agent) || {_agent getVariable ["pathCalculated", false]}) exitWith {};		
+							_agent setVariable ["pathCalculated", true];
+							
+							{
+								_x pushBack 20;
+							} foreach _path;
+							
+							(_agent getVariable "unit") setDriveOnPath _path;
+							
+							call _cleanupAgent;
+							
+						}];
+					};
+					sleep 15;
+					
+					{
+						_x doMove _targetPos;
+					} foreach (_members select {((vehicle _x) == _x) && {(speed _x) < 1}});
+					
+				} else {
+					_makenewtarget=true;
 				};
-				*/
-			
+				
 			}; 
 
 			// in 'attack (approach) mode', so follow the flanking path (don't make it too predictable though)
