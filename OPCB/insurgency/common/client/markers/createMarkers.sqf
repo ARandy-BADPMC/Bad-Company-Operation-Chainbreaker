@@ -9,7 +9,7 @@ private ["_mkr","_var","_pos","_houses"];
 
 _houses = [CENTERPOS,AORADIUS, 3, true] call findHouses;
 _base = markerpos "base_marker";
-
+ins_gridMarkers = [];
 {
 	_pos = _x call getGridPos;
 	_mkr = str _pos;
@@ -23,6 +23,7 @@ _base = markerpos "base_marker";
 	_var = missionNamespace getVariable format["%1cleared", _mkr];
 	if isNil "_var" then {
 		_mkr setMarkerColorLocal "ColorRed"; 
+		ins_gridMarkers pushBack _mkr;
 	} else {
 		_mkr setMarkerColorLocal "ColorGreen";
 	};

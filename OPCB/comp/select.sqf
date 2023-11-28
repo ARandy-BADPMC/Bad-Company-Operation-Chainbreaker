@@ -24,71 +24,71 @@ if (IsATaskRunning) exitWith {
 #include "..\data\tasks.sqf";
 
 if (count _selected == 0) then {
-	_selected = ((selectRandom _tasks) select 0);
+	_selected = selectRandom (keys _tasks);
 };
 
 TaskNumber = TaskNumber + 1;
 
 _currentTasknumber = format ["TaskNumberFinal_%1",TaskNumber];
 
-{
-	if (_selected isEqualTo (_x select 0)) exitWith {
-		_radius = (_x select 1);
-	};
-	_radius = 9999;
-} forEach _tasks;
+_radius = (_tasks get _selected) select 0;
+
+private _credits = (_tasks get _selected) select 1;
 
 _base = [_radius] call CHAB_fnc_findSpot;
 
 IsATaskRunning = true;
 switch ( _selected) do { 
 	case "Neutralize" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Neutralize;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Neutralize;
 	}; 
 	case "Exterminate" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Exterminate;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Exterminate;
 	};
 	case "Eliminate" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Eliminate;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Eliminate;
 	}; 
 	case "Technology" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Technology;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Technology;
 	};
 	case "Destroy" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Destroy;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Destroy;
 	};  
 	case "Annihilate and Destroy" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Annihilate_and_Destroy;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Annihilate_and_Destroy;
 	};  
 	case "Secure" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Secure;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Secure;
 	}; 
 	case "Capture" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Capture;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Capture;
 	};  
+	case "Bomb" : {
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Bomb;
+	}; 
 	case "IDAP" : {
-		[_base,_currentTasknumber] call CHAB_fnc_IDAP;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_IDAP;
 	};  
 	case "Resupply" : {
-		[_base,_currentTasknumber] call CHAB_fnc_Resupply;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Resupply;
 	};  
 	case "Retrieve" : {
-		[_currentTasknumber] call CHAB_fnc_Retrieve;
+		[_currentTasknumber, _credits] call CHAB_fnc_Retrieve;
 	};  
 	case "Attack" : {
-		[_currentTasknumber] call CHAB_fnc_Attack;
+		[_currentTasknumber, _credits] call CHAB_fnc_Attack;
 	}; 
 	case "Clear out" : {
-		[_currentTasknumber] call CHAB_fnc_Clear_out;
+		[_currentTasknumber, _credits] call CHAB_fnc_Clear_out;
 	};
 	case "GDrunken" : {
-		[_base,_currentTasknumber] call CHAB_fnc_GDrunken;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_GDrunken;
 	};  
 	case "Minefield" : {
-		[_currentTasknumber] call CHAB_fnc_Minefield;
+		[_currentTasknumber, _credits] call CHAB_fnc_Minefield;
 	};
 	case "El Chapo" : {
-		[_base,_currentTasknumber] call CHAB_fnc_El_Chapo;
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_El_Chapo;
 	};  
 	default { 
 		"Failed to spawn a task, try again" remoteExec["hint", _callerRE];

@@ -1,5 +1,4 @@
-private _reward = 60;
-params ["_base","_current_tasknumber"];
+params ["_base","_current_tasknumber", "_reward"];
 
 _taskcomp = selectRandom ["insurgent1","insurgent2","insurgent3","insurgent4","insurgent_big","insurgent_hostage"];
 

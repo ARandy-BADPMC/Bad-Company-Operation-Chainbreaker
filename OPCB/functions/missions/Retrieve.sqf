@@ -1,5 +1,4 @@
-private _reward = 70;
-params ["_current_tasknumber"];
+params ["_current_tasknumber", "_reward"];
 
 _city = selectRandom Cities;
 _citypos = locationPosition _city;

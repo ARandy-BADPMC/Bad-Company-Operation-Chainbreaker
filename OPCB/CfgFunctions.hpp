@@ -37,6 +37,10 @@ class chainbreaker
 		{
 			file = "functions\missions\Technology.sqf";
 		};
+		class Bomb
+		{
+			file = "functions\missions\Bomb.sqf";
+		};
 		class Destroy
 		{
 			file = "functions\missions\Destroy.sqf";
@@ -85,10 +89,6 @@ class chainbreaker
 		{
 			file = "functions\missions\gdrunken_spawn.sqf";
 		};
-		class reinforcement
-		{
-			file = "functions\missions\reinforcement.sqf";
-		};
 		class retrieve_create
 		{
 			file = "functions\retrieve_create.sqf";
@@ -107,7 +107,7 @@ class chainbreaker
 		};
 		class roadblock_rus
 		{
-			file = "functions\missions\roadblock.sqf";
+			file = "functions\missions\roadblock_rus.sqf";
 		};
 		class roadblock_ins
 		{
@@ -145,6 +145,18 @@ class chainbreaker
 		{
 			file = "functions\missions\artillery.sqf";
 		};
+		class bombDefusalButtonPress  
+		{
+			file = "functions\missionSpecific\bombDefusalButtonPress.sqf";
+		};
+		class bombDefusalDefuse
+		{
+			file = "functions\missionSpecific\bombDefusalDefuse.sqf";
+		};
+		class bombDefusalDefuse_server
+		{
+			file = "functions\missionSpecific\bombDefusalDefuse_server.sqf";
+		};
 	};
 	class miscellaneous
 	{
@@ -171,10 +183,6 @@ class chainbreaker
 		class commanderActions
 		{
 			file = "functions\commanderActions.sqf";
-		};
-		class shk_patrol
-		{
-			file = "functions\shk_patrol.sqf";
 		};
 		class playerScale
 		{

@@ -25,5 +25,6 @@ class SM
 		class randomCrate {};
 		class openCrate {};
 		class ambientFlyby {};
+		class randomPatrol {};
 	};
 };
