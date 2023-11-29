@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=3266;
+		nextID=3267;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=142;
+		nextID=151;
 	};
 	class Camera
 	{
-		pos[]={19310.512,70.652496,14093.526};
-		dir[]={0.69570082,-0.3558014,0.62422061};
-		up[]={0.26489171,0.93453515,0.23767544};
-		aside[]={0.66789812,1.6757404e-006,-0.74437112};
+		pos[]={19360.166,69.008965,14081.123};
+		dir[]={0.48268807,-0.19207281,0.85447341};
+		up[]={0.094470344,0.9813804,0.16723488};
+		aside[]={0.87068498,8.1810867e-008,-0.49184534};
 	};
 };
 binarizationWanted=0;
@@ -16110,7 +16110,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=1008;
+		items=1009;
 		class Item0
 		{
 			dataType="Logic";
@@ -53539,6 +53539,25 @@ class Mission
 			};
 			id=3265;
 			type="TargetP_Civ2_F";
+		};
+		class Item1008
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19212.633,13.794188,13896.099};
+				angles[]={0,5.4105206,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{this allowdamage false; this setObjectTexture [0, ""images\ChainBreakerDiscord.paa""]}";
+				disableSimulation=1;
+			};
+			id=3266;
+			type="Land_Billboard_F";
+			atlOffset=0.000248909;
 		};
 	};
 	class Connections
