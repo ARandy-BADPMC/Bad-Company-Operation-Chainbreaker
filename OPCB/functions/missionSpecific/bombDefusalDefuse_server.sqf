@@ -1,8 +1,6 @@
 params ["_code"];
 
-hint _code;
-
-if(BombTaskDigits == _code) exitWith {
+if(count BombTaskDigits == 0 || {BombTaskDigits == _code}) exitWith {
 	BombTaskDigits = "";
 };
 

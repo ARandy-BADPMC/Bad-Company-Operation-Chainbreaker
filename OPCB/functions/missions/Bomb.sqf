@@ -18,6 +18,24 @@ private _bomb = [_comp, "Land_Bomb_Trolley_01_F"] call CHAB_fnc_findFlowerPots;
 	createDialog "bombDefusalPanel";
 }, nil,1.5, true, true, "", "true", 5, false, ""]] remoteExecCall ["addaction",0,true];
 
+private _terminal = createVehicle ["RuggedTerminal_01_communications_F", getPosASL jeff, [], 3, "NONE"];
+
+[_terminal,["<t color='#FF0000'>Hack the Bomb (1 time use)</t>",
+{
+	params ["_target", "_caller", "_actionId", "_arguments"];
+
+	_arguments params ["_bomb"];
+
+	private _nearestPlayerDistance = ([_bomb] call CHAB_fnc_nearest) select 1;
+
+	if(_nearestPlayerDistance > 10) exitWith {
+		hint "I can't hack into the terminal from this range. I need to have someone close by to connect me.";
+	};
+
+	[_target] remoteExecCall ["CHAB_fnc_bombDefusalHack_server", 2, false];
+
+}, [_bomb] ,1.5, true, true, "", "true", 5, false, ""]] remoteExecCall ["addaction",0,true];
+
 BombTaskDigits = "";
 for "_i" from 1 to 4 do { 
 	BombTaskDigits = BombTaskDigits + (str floor (random [0,5,9]));

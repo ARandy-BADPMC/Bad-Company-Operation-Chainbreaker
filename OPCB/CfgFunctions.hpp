@@ -157,6 +157,10 @@ class chainbreaker
 		{
 			file = "functions\missionSpecific\bombDefusalDefuse_server.sqf";
 		};
+		class bombDefusalHack_server
+		{
+			file = "functions\missionSpecific\bombDefusalHack_server.sqf";
+		};
 	};
 	class miscellaneous
 	{
