@@ -141,6 +141,10 @@ fillHouseEast = {
 				
 				_class = selectRandom eastInfClasses;
 				_group  = [player, "EastAIGrp", "", "east"] call getGroup; // create an AI group
+				
+				_group setBehaviour "COMBAT";
+				_group setCombatMode "RED";
+				
 				_ai    = _group createUnit [_class, spawnPos, [], 1000, "NONE"];
 				
 				// insurgent RPG-wielders!!!! :D								

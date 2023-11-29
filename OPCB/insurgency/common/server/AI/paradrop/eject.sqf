@@ -21,6 +21,10 @@ _paras = if ( count _this > 2 ) then { _this select 2 } else { assignedcargo _ve
 _dir = direction _vehicle;
 _side = side _vehicle;
 
+_paragrp = createGroup _side;
+_paras joinSilent _paragrp;
+_paragrp deleteGroupWhenEmpty true;
+
 {
 	_inv = name _x;// Get Unique name for Unit's loadout.
 	[_x, [missionNamespace, format["%1%2", "Inventory",_inv]]] call BIS_fnc_saveInventory;// Save Loadout
@@ -36,8 +40,6 @@ _side = side _vehicle;
 	[_x,_chuteheight] spawn paraLandSafe;
 } forEach _paras;
 
-//_vehicle allowDamage true;
+_paragrp leaveVehicle _vehicle;
 
-_paragrp = createGroup _side;
-_paras joinSilent _paragrp;
-_paragrp deleteGroupWhenEmpty true;
+//_vehicle allowDamage true;

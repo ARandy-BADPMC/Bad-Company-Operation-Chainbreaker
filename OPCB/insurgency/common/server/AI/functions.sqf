@@ -287,6 +287,8 @@ createRoofGun = {
 	_ai moveInGunner _gun;	
 	_grp setFormDir _dir;
 	_grp deleteGroupWhenEmpty true;
+	
+	_grp setBehaviour "COMBAT";
 
 	_gun enableWeaponDisassembly false;
 	[_gun, false] remoteExec ["ace_dragging_fnc_setDraggable", 0, true]; 
