@@ -12,9 +12,10 @@ _current_task = _base getPos[random 600,random 360];
 _officer = _officergroup createUnit [selectRandom _rhsOfficers, _base, [], 2, "NONE"];
 _officer disableAI "PATH";
 
-_container = "C_IDAP_supplyCrate_F" createVehicle (getPos dropoffpoint);
-[_container, 5] call ace_cargo_fnc_setSize;
+_container = createVehicle ["LOP_IA_HEMTT_Ammo_D", getPosASL dropoffpoint, [], 5, "NONE"];
+[_container, 5000] call ace_cargo_fnc_setSize;
 clearItemCargoGlobal _container;
+
 _officerPos = getPos _officer;
 _comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 
@@ -36,7 +37,7 @@ waitUntil {
 };
 
 if(!alive _container) exitWith {
-	"The container is destroyed. There aer no more supplies. You have failed this one. " remoteExec ["hint"];
+	"The container is destroyed. There are no more supplies. You have failed this one. " remoteExec ["hint"];
 	[_current_tasknumber, "FAILED",true] call BIS_fnc_taskSetState;
 };
 
