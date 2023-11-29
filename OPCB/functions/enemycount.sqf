@@ -4,7 +4,6 @@ if(_minEnemyPercentage > 100) then {
 	_minEnemyPercentage = 100;
 };
 
-
 _countUnits = {
 
 	private _enemies = 0;

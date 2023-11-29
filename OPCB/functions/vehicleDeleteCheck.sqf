@@ -21,13 +21,11 @@ _veh setVariable ["CHB_CanDespawn", false, false];
 	deleteVehicle _veh;
 };
 
-
 //check if vehicle is destroyed
 _veh addEventHandler ["Killed",{
 	params ["_unit"];
 	_unit setVariable ["CHB_CanDespawn", true, false];
 }];
-
 
 //check when no more crewmembers are alive
 {

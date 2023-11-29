@@ -1,5 +1,4 @@
-private _reward = 80;
-params ["_base","_current_tasknumber"];
+params ["_base","_current_tasknumber", "_reward"];
 _taskcomp = "peacekeeper";
 _resgroup = createGroup [resistance,true];
 _officerGroup = createGroup [civilian,true];
@@ -17,7 +16,7 @@ _reference = [ _comp ] call LARs_fnc_getCompObjects;
 
 _markpos1 = _officerPos getPos[100,random 360];
 _defender1 = [_markpos1, civilian,["B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Soldier_F","B_GEN_Commander_F"]] call BIS_fnc_spawnGroup;
-[_defender1,150] call CHAB_fnc_shk_patrol;
+[_group, _markpos1, 150] call bis_fnc_taskPatrol;
 
 [[_resgroup,_officerGroup,_defender1]] call CHAB_fnc_serverGroups;
 _defender1 deleteGroupWhenEmpty true;

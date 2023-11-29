@@ -10,5 +10,5 @@ _ctrl = (findDisplay 9904) displayCtrl 1500;
 #include "..\..\data\tasks.sqf";
 
 {
-	_ctrl lbAdd (_x select 0);
-} forEach _tasks;
+	_ctrl lbAdd _x;
+} forEach (keys _tasks);

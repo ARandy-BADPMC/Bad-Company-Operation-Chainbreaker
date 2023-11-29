@@ -1,5 +1,4 @@
-private _reward = 100;
-params ["_base","_current_tasknumber"];
+params ["_base","_current_tasknumber", "_reward"];
 
 _city = Cities select { type _x == "NameCity" || type _x == "NameCityCapital"}; //
 _citypos = locationPosition (selectRandom _city);
@@ -52,7 +51,27 @@ waitUntil {
 
 if (alive _officer) then {
 	"The enemies already know we are here. Prepare for the worst. HOLD TIGHT!" remoteExec ["hint"]; 
-	[_officer] call CHAB_fnc_reinforcement;
+	private _reinforcement = {
+		params ["_object"];
+		_classes = ["rhsgref_cdf_reg_Mi17Sh"];
+
+		_j = 100;
+		_numbers = ceil (random 3);
+
+		for "_i" from 0 to _numbers do {
+			_groupNumber = [[_j,_j,100],random 360,selectrandom _classes,resistance] call BIS_fnc_spawnVehicle;
+			(_groupNumber select 0) setVehicleLock "LOCKEDPLAYER";
+			_j = _j+100;
+
+			[_groupNumber select 2, getPos _object, random 800] call bis_fnc_taskPatrol;
+			[_groupNumber select 2, 0] setWaypointSpeed "FULL";
+
+			(_groupNumber select 0) setSkill 0.9;
+			[_groupNumber select 2] call CHAB_fnc_serverGroups;
+		};
+	};
+
+	[_officer] call _reinforcement;
 
 	waitUntil {
 	  !alive _officer

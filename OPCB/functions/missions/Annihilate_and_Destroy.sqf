@@ -1,5 +1,4 @@
-private _reward = 80;
-params ["_base","_current_tasknumber"];
+params ["_base","_current_tasknumber", "_reward"];
 
 _taskcomp = selectRandom ["destroy_chopper","destroy_radar","destroy_tower","destroy_tower2","weap_factory"];
 _current_task = _base getPos[random 600,random 360];

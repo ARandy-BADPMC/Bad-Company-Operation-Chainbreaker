@@ -76,8 +76,6 @@ player addEventHandler ["Killed", {
 
 Hz_pers_clientReadyForLoad = true;
 
-
-
 [] spawn {
 	waitUntil{
 		sleep 1;

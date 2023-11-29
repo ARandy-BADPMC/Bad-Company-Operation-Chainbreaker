@@ -21,11 +21,13 @@ for "_i" from 0 to _roadblocks - 1 do
 			_connection = _connectedroads select 0;
 			_direction = [_road, _connection] call BIS_fnc_DirTo;
 
-			_roadblock = [_block,getpos _road, [0,0,0], _direction, true, true ] call LARs_fnc_spawnComp;
+			_roadPos = getpos _road;
+			_roadblock = [_block,_roadPos, [0,0,0], _direction, true, true ] call LARs_fnc_spawnComp;
 			_spawnComp pushBack _roadblock;
 
-			_group = [getpos _road, east, selectRandom OPCB_InfantryGroups_OPFOR] call BIS_fnc_spawnGroup;
-			[_group,150] call CHAB_fnc_shk_patrol;
+			_group = [_roadPos, east, selectRandom OPCB_InfantryGroups_OPFOR] call BIS_fnc_spawnGroup;
+
+			[_group, _roadPos, 150] call bis_fnc_taskPatrol;
 			[_group] call CHAB_fnc_serverGroups;
 			sleep 1;
 		};

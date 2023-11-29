@@ -67,6 +67,7 @@ class jey_adminconsole_dialog
 		};
 	};
 };
+
 class CHAB_adminTask 
 {
 	idd = 9904;
@@ -285,7 +286,6 @@ class jey_dronespawner
 	
 };
 
-
 class jey_tankspawner 
 {
 	idd = 9901;
@@ -474,6 +474,7 @@ class jey_remover
 		};
 	};
 };
+
 class jey_remover_tank
 {
 	idd = 9903;
@@ -520,6 +521,7 @@ class jey_remover_tank
 		};
 	};
 };
+
 class jey_spectator 
 {
 	idd = 9998;
@@ -610,4 +612,220 @@ class crateSpawner {
 	}; 
 	
 };
+
+class bombDefusalPanel {
+	idd = 74816;
+	movingEnabled = false;
+
+	class controls {
+		class RscPicture_1800: RscPicture
+		{
+			text = "#(argb,8,8,3)color(0,0,0,1)";
+			idc = 1800;
+			x = 0.314375 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.350625 * safezoneW;
+			h = 0.462 * safezoneH;
+		};
+		class digitText1: RscText
+		{
+			idc = 1000;
+			text = ""; //--- ToDo: Localize;
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.335 * safezoneH + safezoneY;
+			w = 0.0309375 * safezoneW;
+			h = 0.09 * safezoneH;
+			sizeEx = 5 * GUI_GRID_H;
+			colorBackground[] = {0.376,0.376,0.376,1};
+			colorText[] = {0.216,0.863,0.239,1};
+			colorShadow[] = {0,0,0,0};
+			style = ST_CENTER + ST_MULTI;
+		};
+		class digitText2: RscText
+		{
+			idc = 1001;
+			text = ""; //--- ToDo: Localize;
+			x = 0.438125 * safezoneW + safezoneX;
+			y = 0.335 * safezoneH + safezoneY;
+			w = 0.0309375 * safezoneW;
+			h = 0.09 * safezoneH;
+			sizeEx = 5 * GUI_GRID_H;
+			colorBackground[] = {0.376,0.376,0.376,1};
+			colorText[] = {0.157,0.741,0.176,1};
+			colorShadow[] = {0,0,0,0};
+			style = ST_CENTER + ST_MULTI;
+		};
+		class digitText3: RscText
+		{
+			idc = 1002;
+			text = ""; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.335 * safezoneH + safezoneY;
+			w = 0.0309375 * safezoneW;
+			h = 0.09 * safezoneH;
+			sizeEx = 5 * GUI_GRID_H;
+			colorBackground[] = {0.376,0.376,0.376,1};
+			colorText[] = {0.157,0.741,0.176,1};
+			colorShadow[] = {0,0,0,0};
+			style = ST_CENTER + ST_MULTI;
+		};
+		class digitText4: RscText
+		{
+			idc = 1003;
+			text = ""; //--- ToDo: Localize;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.335 * safezoneH + safezoneY;
+			w = 0.0309375 * safezoneW;
+			h = 0.09 * safezoneH;
+			sizeEx = 5 * GUI_GRID_H;
+			colorBackground[] = {0.376,0.376,0.376,1};
+			colorShadow[] = {0,0,0,0};
+			colorText[] = {0.157,0.741,0.176,1};
+			style = ST_CENTER + ST_MULTI;
+		};
+		class RscButton_1600: RscButton
+		{
+			idc = 1600;
+			text = "1"; //--- ToDo: Localize;
+			x = 0.438125 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[1] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1601: RscButton
+		{
+			idc = 1601;
+			text = "2"; //--- ToDo: Localize;
+			x = 0.469062 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[2] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1602: RscButton
+		{
+			idc = 1602;
+			text = "3"; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[3] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1603: RscButton
+		{
+			idc = 1603;
+			text = "4"; //--- ToDo: Localize;
+			x = 0.438125 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[4] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1604: RscButton
+		{
+			idc = 1604;
+			text = "5"; //--- ToDo: Localize;
+			x = 0.469062 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[5] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1605: RscButton
+		{
+			idc = 1605;
+			text = "6"; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[6] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1606: RscButton
+		{
+			idc = 1606;
+			text = "7"; //--- ToDo: Localize;
+			x = 0.438125 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[7] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1607: RscButton
+		{
+			idc = 1607;
+			text = "8"; //--- ToDo: Localize;
+			x = 0.469062 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[8] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1608: RscButton
+		{
+			idc = 1608;
+			text = "9"; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[9] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1609: RscButton
+		{
+			idc = 1609;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.469062 * safezoneW + safezoneX;
+			y = 0.665 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[0] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class defuseButton: RscButton
+		{
+			idc = 1610;
+			text = "Defuse"; //--- ToDo: Localize;
+			x = 0.551562 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.0876563 * safezoneW;
+			h = 0.055 * safezoneH;
+			sizeEx = 3 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[] call CHAB_fnc_bombDefusalDefuse;"
+		};
+	}
+}
 	

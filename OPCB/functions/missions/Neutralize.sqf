@@ -1,5 +1,5 @@
-private _reward = 80;
-params ["_base","_current_tasknumber"];
+params ["_base","_current_tasknumber", "_reward"];
+
 _taskcomp = [
 	[
 		"ied_factory", 

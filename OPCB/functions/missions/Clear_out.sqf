@@ -1,5 +1,4 @@
-private _reward = 80;
-params ["_current_tasknumber"];
+params ["_current_tasknumber", "_reward"];
 
 _journalistCount = selectRandom [1,2]; 
 
