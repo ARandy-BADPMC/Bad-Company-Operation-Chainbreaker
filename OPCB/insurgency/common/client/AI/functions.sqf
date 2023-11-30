@@ -23,7 +23,7 @@ aiMonitor = {
 	_ais  = nearestEastMen(getPos player,750,true,"array");
 	_ai   = objNull;
 	{
-		if (((vehicle _x) == _x) && {isNull (assignedTarget _x)}) exitWith {
+		if (((vehicle _x) == _x) && {isNull (assignedTarget _x)} && {(speed _x) < 1}) exitWith {
 			_ai = _x;
 		}; 
 	} foreach _ais;	

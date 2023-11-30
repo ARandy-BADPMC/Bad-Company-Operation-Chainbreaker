@@ -590,6 +590,8 @@ while { _loop} do {
 			
 			// we're either close enough, seem to be stuck, or are getting damaged, so find a new target 
 			if ((!_swimming) && ((_dist<=_closeenough) || (_totmove<.2) || (_dammchg>0.01) || (_curTimeontarget>ALERTTIME))) then {
+			
+				_makenewtarget=true;
 							
 				// Hunter: try to get stuck ones moving again...
 				if (_isLandVehicle && {_totmove<.2}) then {
@@ -602,6 +604,7 @@ while { _loop} do {
 					*/
 					doStop _npc;
 					sleep 1;
+					_agent = objNull;
 					isNil {
 						_agent = calculatePath [typeof _npc, "CARELESS", getPosASL _npc, _targetPos];
 						_agent setVariable ["unit",_npc];
@@ -620,18 +623,32 @@ while { _loop} do {
 							
 							(_agent getVariable "unit") setDriveOnPath _path;
 							
-							call _cleanupAgent;
+							_vehAgent = vehicle _agent;
+							if (_vehAgent == _agent) then {
+								deletevehicle _agent;
+							} else {
+								{_vehAgent deleteVehicleCrew _x} foreach crew _vehAgent;
+							};
+							deleteVehicle _vehAgent;
 							
 						}];
 					};
 					sleep 15;
 					
+					if (!isNull _agent) then {
+						_vehAgent = vehicle _agent;
+						if (_vehAgent == _agent) then {
+							deletevehicle _agent;
+						} else {
+							{_vehAgent deleteVehicleCrew _x} foreach crew _vehAgent;
+						};
+						deleteVehicle _vehAgent;
+					};
+					
 					{
 						_x doMove _targetPos;
 					} foreach (_members select {((vehicle _x) == _x) && {(speed _x) < 1}});
 					
-				} else {
-					_makenewtarget=true;
 				};
 				
 			}; 

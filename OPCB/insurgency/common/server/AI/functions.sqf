@@ -51,12 +51,29 @@ spawnAIVehicle = {
 
 	}; 
 	
+	
+	// allturrets below doesn't seem to cover some vehicle types fully...
+	if ((_vcl emptyPositions "Gunner") > 0) then {
+		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
+		_ai setRank (eastRanks select 2);
+		_ai assignAsGunner _vcl;
+		_ai moveInGunner _vcl;
+	};
+	if ((_vcl emptyPositions "Commander") > 0) then {
+		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
+		_ai setRank (eastRanks select 2);
+		_ai assignAsCommander _vcl;
+		_ai moveInCommander _vcl;
+	};
+	
 	{
 		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
 		_ai setRank (eastRanks select 0);
 		_ai assignAsTurret [_vcl, _x];
 		_ai moveInTurret [_vcl, _x];
 	} foreach allTurrets [_vcl, false];
+	
+	
 	
 	if (!(_vcl isKindOf "Air")) then {
 		// Hunter: anti-bad driving fix (does not cover flipping...)
@@ -296,6 +313,6 @@ createRoofGun = {
 	_gun setVariable ["ace_csw_assemblyMode", 0, true];
 	
 	_gun setVehicleLock "LOCKEDPLAYER";
-	
+		
 	if DEBUG then { [_house, _ai] call createDebugMarker; };  		
 }; 
