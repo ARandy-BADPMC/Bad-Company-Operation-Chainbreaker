@@ -24,6 +24,8 @@ _side = side _vehicle;
 _paragrp = createGroup _side;
 _paras joinSilent _paragrp;
 _paragrp deleteGroupWhenEmpty true;
+_paragrp setBehaviour "COMBAT";
+_paragrp setCombatMode "RED";
 
 {
 	_inv = name _x;// Get Unique name for Unit's loadout.
@@ -41,5 +43,8 @@ _paragrp deleteGroupWhenEmpty true;
 } forEach _paras;
 
 _paragrp leaveVehicle _vehicle;
+
+sleep 600;
+[leader _paragrp, "", "noslow", "nowait", ""] execVM "insurgency\common\server\AI\UPS.sqf";
 
 //_vehicle allowDamage true;
