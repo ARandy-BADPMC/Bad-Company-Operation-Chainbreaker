@@ -313,9 +313,6 @@ createRoofGun = {
 	_gun setVariable ["ace_csw_assemblyMode", 0, true];
 	
 	_gun setVehicleLock "LOCKEDPLAYER";
-	
-	sleep 1;
-	_dummy enableSimulation false;
-	
+		
 	if DEBUG then { [_house, _ai] call createDebugMarker; };  		
 }; 
