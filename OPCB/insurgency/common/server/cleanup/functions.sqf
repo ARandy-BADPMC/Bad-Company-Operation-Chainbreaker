@@ -69,9 +69,13 @@ longCleanup = {
 		sleep 0.001;
 	} forEach cleanupVics;
 	cleanupVics = cleanupVics - [objNull];
+	
+	/*
 	{
 		if (nearestPlayers(getPosATL _x,SPAWNRANGE,true,"count") == 0) then { deleteVehicle _x; };
 		sleep 0.001;
 	} forEach allDead;
 	{ if (count units _x == 0) then { deleteGroup _x; }; sleep 0.001; } forEach allGroups;
+	*/
+	
 };
