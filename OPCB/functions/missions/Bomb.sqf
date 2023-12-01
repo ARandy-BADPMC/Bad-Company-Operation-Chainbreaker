@@ -4,8 +4,8 @@ _taskcomp = "bombdefusal";
 _current_task = _base getPos[random 600,random 360];
 
 [_current_tasknumber ,west,
-["Bomb description",
-"Operation Bomb"], _current_task,"ASSIGNED",10,true,true,"use",true] call BIS_fnc_setTask;
+["Infiltrate enemy territory, locate, and defuse a planted bomb. Use a specialized terminal at base for defusal, with a teammate relaying essential codes. Expect heightened enemy presence, prioritize coordination, and act swiftly to ensure mission success. The clock is ticking – soldiers, time is of the essence.",
+"Operation Codebreaker "], _current_task,"ASSIGNED",10,true,true,"use",true] call BIS_fnc_setTask;
 
 _spawncomps = [_base] call CHAB_fnc_roadblock_rus;
 _comp = [_taskcomp,_base, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
@@ -18,7 +18,7 @@ private _bomb = [_comp, "Land_Bomb_Trolley_01_F"] call CHAB_fnc_findFlowerPots;
 	createDialog "bombDefusalPanel";
 }, nil,1.5, true, true, "", "true", 5, false, ""]] remoteExecCall ["addaction",0,true];
 
-private _terminal = createVehicle ["RuggedTerminal_01_communications_F", getPosASL jeff, [], 3, "NONE"];
+private _terminal = createVehicle ["RuggedTerminal_01_communications_F", getPos jeff, [], 3, "NONE"];
 
 [_terminal,["<t color='#FF0000'>Hack the Bomb (1 time use)</t>",
 {

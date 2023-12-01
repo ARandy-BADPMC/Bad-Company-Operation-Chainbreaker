@@ -10,7 +10,6 @@ while {_sleepCounter > 0} do {
 	sleep 1;
 };
 
-if(OPCB_econ_credits > 100) then {
-	OPCB_econ_credits = OPCB_econ_credits - _creditCounter;
-};
+OPCB_econ_credits = OPCB_econ_credits - _creditCounter;
+
 publicVariable "OPCB_econ_credits";

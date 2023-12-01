@@ -1,4 +1,7 @@
 params ["_radius", ["_basePos", markerPos "base_marker"], ["_maxRange", 0]];
+
+if(_radius > 200) exitWith{};
+
 private _taskSpot = [0,0,0];
 private _list = [];
 private _suitableSpots = [];
