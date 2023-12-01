@@ -18,7 +18,7 @@ private _bomb = [_comp, "Land_Bomb_Trolley_01_F"] call CHAB_fnc_findFlowerPots;
 	createDialog "bombDefusalPanel";
 }, nil,1.5, true, true, "", "true", 5, false, ""]] remoteExecCall ["addaction",0,true];
 
-private _terminal = createVehicle ["RuggedTerminal_01_communications_F", getPosASL jeff, [], 3, "NONE"];
+private _terminal = createVehicle ["RuggedTerminal_01_communications_F", getPos jeff, [], 3, "NONE"];
 
 [_terminal,["<t color='#FF0000'>Hack the Bomb (1 time use)</t>",
 {

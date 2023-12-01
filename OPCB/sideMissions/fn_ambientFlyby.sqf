@@ -1,4 +1,5 @@
 private _planes = ["C_Plane_Civil_01_F"];
+sleep 10;
 while {true} do {
 	if(count allPlayers > 0) then {
 		[west, "HQ"] sideChat "Ambient FlyBy started!";

@@ -26,5 +26,6 @@ class SM
 		class openCrate {};
 		class ambientFlyby {};
 		class randomPatrol {};
+		class scoutTerrain {};
 	};
 };
