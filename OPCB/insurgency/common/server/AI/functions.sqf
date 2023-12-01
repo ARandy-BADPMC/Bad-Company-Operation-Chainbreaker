@@ -50,9 +50,16 @@ spawnAIVehicle = {
 		};
 
 	}; 
+		
+	{
+		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
+		_ai setRank (eastRanks select 0);
+		_ai assignAsTurret [_vcl, _x];
+		_ai moveInTurret [_vcl, _x];
+	} foreach allTurrets [_vcl, false];
 	
-	
-	// allturrets below doesn't seem to cover some vehicle types fully...
+	// above doesn't seem to cover some vehicle types fully...
+	sleep 0.1;
 	if ((_vcl emptyPositions "Gunner") > 0) then {
 		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
 		_ai setRank (eastRanks select 2);
@@ -65,15 +72,6 @@ spawnAIVehicle = {
 		_ai assignAsCommander _vcl;
 		_ai moveInCommander _vcl;
 	};
-	
-	{
-		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
-		_ai setRank (eastRanks select 0);
-		_ai assignAsTurret [_vcl, _x];
-		_ai moveInTurret [_vcl, _x];
-	} foreach allTurrets [_vcl, false];
-	
-	
 	
 	if (!(_vcl isKindOf "Air")) then {
 		// Hunter: anti-bad driving fix (does not cover flipping...)
