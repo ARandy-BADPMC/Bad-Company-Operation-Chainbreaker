@@ -18,4 +18,4 @@ ins_AIspawnMaxRange = switch (toLower worldName) do {
 	default {1000};
 };
 
-ins_AIspawnMinRange = 100;
+ins_AIspawnMinRange = 250;

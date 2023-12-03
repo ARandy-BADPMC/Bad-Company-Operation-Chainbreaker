@@ -157,6 +157,10 @@ _isLandVehicle = _npc isKindOf "LandVehicle";
 _isboat = _npc isKindOf "Ship"; 
 _isair = _npc isKindOf "Air"; 
 
+if (_isair) then {
+	_npc flyInHeight 250;
+};
+
 _vicHasNoGun = false;
 
 if (_isLandVehicle) then {
