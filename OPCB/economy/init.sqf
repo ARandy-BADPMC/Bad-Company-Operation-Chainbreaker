@@ -42,6 +42,13 @@ OPCB_econ_vehicleTypes_SEA = [];
 	} foreach _x;
 } foreach OPCB_econ_TierList_SEA;
 
+OPCB_econ_vehicleTypes_STAT = [];
+{
+	{
+		OPCB_econ_vehicleTypes_STAT pushBack _x;
+	} foreach _x;
+} foreach OPCB_econ_TierList_STAT;
+
 OPCB_econ_crateTypes = [];
 {
 	OPCB_econ_crateTypes pushBack (_x select 0);
