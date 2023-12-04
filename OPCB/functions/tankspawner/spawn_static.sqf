@@ -12,8 +12,8 @@ private _vehicles = [];
 	};
 } foreach OPCB_econ_vehicleTypes_STAT;
 
-_ctrl = (findDisplay 9901) displayCtrl 1500;
-_imageCtrl = (findDisplay 9901) displayCtrl 1608;
+_ctrl = (findDisplay 74817) displayCtrl 1500;
+_imageCtrl = (findDisplay 74817) displayCtrl 1608;
  
 {
 	_text = getText (configFile >> "CfgVehicles" >> _x >> "displayName");
@@ -31,10 +31,10 @@ _ctrl ctrlAddEventHandler ["LBSelChanged",{
 	
 	_classname = _control lbData _selectedIndex;
 	_picture = getText (configFile >> "CfgVehicles" >> _classname >> "editorPreview"); 
-	_imageCtrl = (findDisplay 9901) displayCtrl 1608;
+	_imageCtrl = (findDisplay 74817) displayCtrl 1608;
 	_imageCtrl ctrlSetText _picture;
 	
-	_ctrl = (findDisplay 9901) displayCtrl 1001;
+	_ctrl = (findDisplay 74817) displayCtrl 1001;
 	_tier = ["STAT", _classname] call OPCB_econ_fnc_getVehicleTier;
 	_cost = ["STAT", _tier] call OPCB_econ_fnc_getTierCost;
 	
@@ -43,7 +43,7 @@ _ctrl ctrlAddEventHandler ["LBSelChanged",{
 	
 }];
 
-_ctrl = (findDisplay 9901) displayCtrl 1001;
+_ctrl = (findDisplay 74817) displayCtrl 1001;
 
 _tier = ["STAT", _classname] call OPCB_econ_fnc_getVehicleTier;
 _cost = ["STAT", _tier] call OPCB_econ_fnc_getTierCost;

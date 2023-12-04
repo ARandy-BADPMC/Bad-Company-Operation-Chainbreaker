@@ -80,7 +80,7 @@ switch (_tierType) do {
 		
 	};
 	
-		case "SEA" : {
+	case "SEA" : {
 		
 		_cost = switch (_tier) do {
 		
@@ -99,7 +99,7 @@ switch (_tierType) do {
 		
 	};
 	
-			case "STATIC" : {
+	case "STAT" : {
 		
 		_cost = switch (_tier) do {
 		
