@@ -98,6 +98,25 @@ switch (_tierType) do {
 		};
 		
 	};
+	
+			case "STATIC" : {
+		
+		_cost = switch (_tier) do {
+		
+			case 9: {5};
+			case 8: {10};
+			case 7: {15};
+			case 6: {20};
+			case 5: {25};
+			case 4: {35};
+			case 3: {45};
+			case 2: {65};
+			case 1: {80};
+			case 0: {100};
+			
+		};
+		
+	};
 
 	default {
 		hintc "ERROR in code. Tier type not recognized!";
