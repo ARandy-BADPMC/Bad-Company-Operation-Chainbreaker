@@ -5,6 +5,7 @@ OPCB_econ_initDone = false;
 #include "tierList_AIR.sqf";
 #include "tierList_DRONE.sqf";
 #include "tierList_SEA.sqf";
+#include "tierList_STATIC.sqf";
 
 OPCB_econ_vehicleTypes_INF = [];
 {
