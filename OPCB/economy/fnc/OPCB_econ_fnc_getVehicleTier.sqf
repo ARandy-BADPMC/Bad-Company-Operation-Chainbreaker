@@ -61,7 +61,7 @@ switch (_tierType) do {
 		
 	};
 	
-		case "SEA" : {
+	case "SEA" : {
 	
 		{
 		
@@ -74,6 +74,21 @@ switch (_tierType) do {
 		} foreach OPCB_econ_TierList_SEA;
 		
 	};
+
+	case "STAT" : {
+	
+		{
+		
+			_index = _x find (toUpper _className);
+			
+			if (_index != -1) exitWith {
+				_tier = _foreachIndex;
+			};
+			
+		} foreach OPCB_econ_TierList_STAT;
+		
+	};
+
 	default { 
 		hintc "ERROR in code. Tier type not recognized!";
 		diag_log "ERROR in code. Tier type not recognized!";

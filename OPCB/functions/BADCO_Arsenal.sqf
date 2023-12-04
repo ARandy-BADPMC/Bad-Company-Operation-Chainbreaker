@@ -706,7 +706,7 @@ _arsenalitems =
 "30Rnd_9x21_Mag_SMG_02_Tracer_Red",
 "30Rnd_9x21_Red_Mag",
 "10Rnd_93x64_DMR_05_Mag",
-//"rhs_mag_9k38_rocket",
+"rhs_mag_9k38_rocket",
 "16Rnd_9x21_Mag",
 "30Rnd_9x21_Mag",
 "30Rnd_9x21_Mag_SMG_02",
@@ -825,7 +825,7 @@ _arsenalitems =
 "rhs_VOG25P",
 "APERSMine_Range_Mag",
 "rhs_mag_zarya2",
-//"rhs_fim92_mag",
+"rhs_fim92_mag",
 
 "rhs_mag_30Rnd_556x45_M855_Stanag",
 "rhsusf_100Rnd_556x45_M855_soft_pouch",

@@ -8,8 +8,6 @@ if(_tankselect != -1) then  {
 	_vehicle = _tank lbData _tankselect;
 
 	_nObjects = nearestObjects [_tankpos, ["LandVehicle", "Thing", "Static", "Ship", "Air", "Man"], 7];
-
-	_isStatic = (getNumber (configfile >> "CfgVehicles" >> _vehicle >> "enginePower")) == 0;
 	
 	if (count _nObjects <= 1) then {
 
@@ -42,19 +40,7 @@ if(_tankselect != -1) then  {
 			};
 
 		} else {
-			if (_isStatic) then {
-				if (MaxStatic != 5) then {
-					MaxStatic = MaxStatic + 1;
-					publicVariable "MaxStatic";
-					[_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2]; 
-					
-				} else {
-					hint "5 statics are already in game";
-				};
-			} 
-			else {
 			if (MaxAPC != 12) then {	
-					
 				_tier = ["INF", _vehicle] call OPCB_econ_fnc_getVehicleTier;
 				_cost = ["INF", _tier] call OPCB_econ_fnc_getTierCost;				
 				// just in case
@@ -77,9 +63,9 @@ if(_tankselect != -1) then  {
 				[_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2];
 
 			} else {
-					hint "12 vehicles are already in game. Recover or destroy existing ones.";
-				};
+				hint "12 vehicles are already in game. Recover or destroy existing ones.";
 			};
+			
 		};
 	  	
 	} else {

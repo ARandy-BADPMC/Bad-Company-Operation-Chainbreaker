@@ -1,0 +1,68 @@
+// WARNING !!! Classnames must all be uppercase for search functions to work!
+
+OPCB_econ_TierList_STAT = [
+
+	//TIER 1
+	[
+	"B_MORTAR_01_F",
+	"ITEM_RHS_WEAP_FGM148"
+	],
+
+	//TIER 2
+	[
+	"RHS_TOW_TRIPOD_D",
+	"RHS_KORNET_9M133_2_MSV"
+	],
+
+	//TIER 3
+	[
+	"RHS_METIS_9K115_2_MSV",
+	"RHS_STINGER_AA_POD_D"
+	],
+
+	//TIER 4
+	[
+	"RHS_IGLA_AA_POD_MSV"
+	],
+
+	//TIER 5
+	[
+	"ACE_DRAGON_STATICASSEMBLED",
+	"ITEM_RHS_WEAP_FIM92"
+	],
+
+	//TIER 6
+	[
+
+	],
+
+	//TIER 7
+	[
+	"RHSGREF_CDF_B_ZU23",
+	"RHS_AGS30_TRIPOD_MSV",
+	"RHSGREF_CDF_B_SPG9M"
+	],
+
+	//TIER 8
+	[
+	
+	],
+
+	//TIER 9
+	[
+	"RHS_MK19_TRIPOD_D",
+	"B_G_HMG_02_F",
+	"B_G_HMG_02_HIGH_F",
+	"RHS_KORD_HIGH_MSV",
+	"RHS_KORD_MSV"
+	],
+
+	//TIER 10
+	[
+	"RHS_M2STATICMG_MINITRIPOD_D",
+	"RHS_M2STATICMG_D",
+	"RHS_NSV_TRIPOD_MSV",
+	"ITEM_RHS_WEAP_IGLA"
+	]
+
+];

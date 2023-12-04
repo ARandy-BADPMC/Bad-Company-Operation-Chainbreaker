@@ -5,6 +5,7 @@ OPCB_econ_initDone = false;
 #include "tierList_AIR.sqf";
 #include "tierList_DRONE.sqf";
 #include "tierList_SEA.sqf";
+#include "tierList_STATIC.sqf";
 
 OPCB_econ_vehicleTypes_INF = [];
 {
@@ -40,6 +41,13 @@ OPCB_econ_vehicleTypes_SEA = [];
 		OPCB_econ_vehicleTypes_SEA pushBack _x;
 	} foreach _x;
 } foreach OPCB_econ_TierList_SEA;
+
+OPCB_econ_vehicleTypes_STAT = [];
+{
+	{
+		OPCB_econ_vehicleTypes_STAT pushBack _x;
+	} foreach _x;
+} foreach OPCB_econ_TierList_STAT;
 
 OPCB_econ_crateTypes = [];
 {
