@@ -828,4 +828,74 @@ class bombDefusalPanel {
 		};
 	}
 }
-	
+
+class staticspawner 
+{
+	idd = 74817;
+	movingEnabled = false;
+
+	class controls 
+	{
+		class background: RscPicture
+		{
+			idc = 1200;
+
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = -11.5 * GUI_GRID_W + GUI_GRID_X;
+			y = -0.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 58.5 * GUI_GRID_W;
+			h = 26 * GUI_GRID_H;
+		};
+		class list: RscListBox
+		{
+			idc = 1500;
+
+			x = -9.88 * GUI_GRID_W + GUI_GRID_X;
+			y = 0.2 * GUI_GRID_H + GUI_GRID_Y;
+			w = 13.6263 * GUI_GRID_W;
+			h = 24.6904 * GUI_GRID_H;
+		};
+		class exit: RscButton
+		{
+			idc = 1600;
+			action = "closeDialog 0";
+
+			text = "Exit"; //--- ToDo: Localize;
+			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 17.95 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.49903 * GUI_GRID_H;
+		};
+		class spawn_static: RscButton
+		{
+			idc = 1602;
+			action = "[] call CHAB_fnc_spawn_static_vehicle; closedialog 0;";
+
+			text = "Buy"; //--- ToDo: Localize;
+			x = 31 * GUI_GRID_W + GUI_GRID_X;
+			y = 6.2 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.69895 * GUI_GRID_H;
+		};
+		class image: RscPicture
+		{
+			idc = 1608;
+
+			text = "#(argb,8,8,3)color(1,1,1,1)";
+			x = 5 * GUI_GRID_W + GUI_GRID_X;
+			y = 4 * GUI_GRID_H + GUI_GRID_Y;
+			w = 23 * GUI_GRID_W;
+			h = 16.5 * GUI_GRID_H;
+		};
+		class money: RscStructuredText
+		{
+			idc = 1001;
+			colorText[] = {0.3,1,1,1};
+			x = 5 * GUI_GRID_W + GUI_GRID_X;
+			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 30 * GUI_GRID_W;
+			h = 3.5 * GUI_GRID_H;
+		};
+
+	}; 
+};	

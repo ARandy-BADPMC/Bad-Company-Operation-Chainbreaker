@@ -267,6 +267,22 @@ class chainbreaker
 			file = "functions\tankspawner\tank_restriction.sqf";
 		};
 	};
+	class staticspawner
+	{
+		class spawn_static
+		{
+			file = "functions\tankspawner\spawn_static.sqf";
+		};
+		class spawn_static_server
+		{
+			file = "functions\tankspawner\spawn_static_server.sqf";
+		};
+		class spawn_static_vehicle
+		{
+			file = "functions\tankspawner\spawn_static_vehicle.sqf";
+		};
+	};
+
 	class boatspawner
 	{
 		class spawn_boat
