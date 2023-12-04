@@ -10,7 +10,7 @@ private _vehicles = [];
 	if ((["STAT", _x] call OPCB_econ_fnc_getVehicleTier) >= OPCB_econ_currentTier) then {
 		_vehicles pushBack _x;
 	};
-} foreach OPCB_econ_TierList_STAT;
+} foreach OPCB_econ_vehicleTypes_STAT;
 
 _ctrl = (findDisplay 9901) displayCtrl 1500;
 _imageCtrl = (findDisplay 9901) displayCtrl 1608;
