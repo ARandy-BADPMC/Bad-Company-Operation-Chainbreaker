@@ -5,14 +5,14 @@ class SM
 	// Initialization functions. These should only run once on startup.
 	class Init
 	{
-		class SMInit
-		{
-			file = "sideMissions\SMInit.sqf";
-			postInit = 1;
-		};
 		class SMInitData
 		{
 			file = "sideMissions\initData.sqf";
+			postInit = 1;
+		};
+		class SMInit
+		{
+			file = "sideMissions\SMInit.sqf";
 			postInit = 1;
 		};
 	};
@@ -27,5 +27,7 @@ class SM
 		class ambientFlyby {};
 		class randomPatrol {};
 		class scoutTerrain {};
+		class minefield {};
+		class clearMinefield {};
 	};
 };
