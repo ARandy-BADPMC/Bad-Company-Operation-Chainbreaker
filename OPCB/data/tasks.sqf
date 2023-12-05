@@ -13,6 +13,6 @@ _tasks = createHashMapFromArray [
 	["IDAP",[85, 240]],
 	//["Retrieve",[9999, 210]],
 	["GDrunken",[80, 320]],
-	["Bomb", [100, 270]],
+	["Bomb", [100, 270]]
 	//["Minefield",[9999, 200]]
 ];  /// 1- Name, 2 - range, 3 - credits
