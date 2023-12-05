@@ -7,12 +7,12 @@ _tasks = createHashMapFromArray [
 	["Capture",[25, 240]],
 	["Exterminate",[25, 180]],
 	["Neutralize",[45, 240]],
-	["Attack",[9999, 210]],
-	["Clear out",[9999, 240]],
+	//["Attack",[9999, 210]],
+	//["Clear out",[9999, 240]],
 	["Resupply",[100, 150]],
 	["IDAP",[85, 240]],
-	["Retrieve",[9999, 210]],
+	//["Retrieve",[9999, 210]],
 	["GDrunken",[80, 320]],
 	["Bomb", [100, 270]],
-	["Minefield",[9999, 200]]
+	//["Minefield",[9999, 200]]
 ];  /// 1- Name, 2 - range, 3 - credits
