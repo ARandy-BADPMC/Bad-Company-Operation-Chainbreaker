@@ -359,7 +359,7 @@ class jey_tankspawner
 
 class jey_boatspawner 
 {
-	idd = 9901;
+	idd = 74810;
 	movingEnabled = false;
 
 	class controls 
@@ -899,3 +899,56 @@ class staticspawner
 
 	}; 
 };	
+
+class vehicleSpawnerHistory {
+
+	idd = 74818;
+	class controls {
+
+		class PlayerTableHeader : RscControlsTable
+		{
+			idc = 20000;
+
+			x = safeZoneX + ( safeZoneW / 2 ) - GRID_X( pixelGridNoUIScale, 8, ( 15 / 2 ));
+			y = safeZoneY + GRID_Y( pixelGridNoUIScale, 8, 10 );
+			w = GRID_X( pixelGridNoUIScale, 8, 15 );
+			h = GRID_Y( pixelGridNoUIScale, 8, 1 );
+
+			//False header - only ever going to need 7 controls
+			firstIDC = ( 20000 + 1 );
+			lastIDC = ( 20000 + 8 );
+
+			headerHeight = GRID_Y( pixelGridNoUIScale, 8, 1 );
+			rowHeight = GRID_Y( pixelGridNoUIScale, 8, 1 );
+
+			lineSpacing = 0;
+			selectedRowAnimLength = 0;
+			selectedRowColorFrom[] = {0,0,0,0};
+			selectedRowColorTo[] = {0,0,0,0};
+
+			class HeaderTemplate {};
+			class HScrollbar : ScrollBar
+			{
+				height = GRID_Y( pixelGridNoUIScale, 4, 1 );
+			};
+			class RowTemplate {};
+			class VScrollbar : ScrollBar
+			{
+				width = GRID_X( pixelGridNoUIScale, 4, 1 );
+			};
+		};
+
+		class PlayerTableData : PlayerTableHeader
+		{
+			idc = 30000;
+
+			y = safeZoneY + GRID_Y( pixelGridNoUIScale, 8, 10 + 1 );
+			//enough for 10 rows to start, can change through script depending on ammount of players data
+			h = GRID_Y( pixelGridNoUIScale, 8, 1 * 10 );
+
+			//False header - only ever going to need 7 controls
+			firstIDC = ( 30000 + 1 );
+			lastIDC = ( 30000 + 1001 ) ; //1 thousand idcs, 1 row has 4 controls so is enough for 250 players data
+		};
+	};
+};

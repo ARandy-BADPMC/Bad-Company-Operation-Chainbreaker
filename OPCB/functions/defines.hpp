@@ -1,8 +1,3 @@
-///////////////////////////////////////////////////////////////////////////
-/// Styles
-///////////////////////////////////////////////////////////////////////////
-
-// Control types
 #define CT_STATIC           0
 #define CT_BUTTON           1
 #define CT_EDIT             2
@@ -14,6 +9,7 @@
 #define CT_PROGRESS         8
 #define CT_HTML             9
 #define CT_STATIC_SKEW      10
+#define CT_CONTROLS_TABLE   19
 #define CT_ACTIVETEXT       11
 #define CT_TREE             12
 #define CT_STRUCTURED_TEXT  13
@@ -36,6 +32,7 @@
 #define CT_MAP_MAIN         101
 #define CT_LISTNBOX         102
 #define CT_CHECKBOX         77
+
 
 // Static styles
 #define ST_POS            0x0F
@@ -91,6 +88,15 @@
 #define MB_BUTTON_OK      1
 #define MB_BUTTON_CANCEL  2
 #define MB_BUTTON_USER    4
+
+// Pixel grid
+#define pixelScale	0.50
+#define GRID_W (pixelW * pixelGrid * pixelScale)
+#define GRID_H (pixelH * pixelGrid * pixelScale)
+
+#define SCALEFACTOR getNumber( configFile >> "uiScaleFactor" )
+#define GRID_X( gridType, gridScale, num ) ( pixelW * gridType * ((( num ) * ( gridScale )) / SCALEFACTOR ))
+#define GRID_Y( gridType, gridScale, num ) ( pixelH * gridType * ((( num ) * ( gridScale )) / SCALEFACTOR ))
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -1581,4 +1587,199 @@ class RscControlsGroup
 	h = 1;
 	shadow = 0;
 	style = 16;
+};
+
+class ScrollBar
+{
+	color[] = {1,1,1,0.6};
+	colorActive[] = {1,1,1,1};
+	colorDisabled[] = {1,1,1,0.3};
+	thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
+	arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
+	arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
+	border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+	shadow = 0;
+	scrollSpeed = 0.06;
+	width = 0;
+	height = 0;
+	autoScrollEnabled = 0;
+	autoScrollSpeed = -1;
+	autoScrollDelay = 5;
+	autoScrollRewind = 0;
+};
+class RscControlsTable
+{
+	deletable = 0;
+	fade = 0;
+	access = 0;
+	type = CT_CONTROLS_TABLE;
+	style = SL_TEXTURES;
+	idc = -1;
+	x = 0;
+	y = 0;
+	w = 1;
+	h = 1;
+	firstIDC = -1;
+	lastIDC = -1;
+	headerHeight = "((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+	rowHeight = "((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+	lineSpacing = 0;
+	selectedRowAnimLength = 1.2;
+	selectedRowColorFrom[] = {0.7,0.85,1,0.25};
+	selectedRowColorTo[] = {0.7,0.85,1,0.5};
+
+	class HeaderTemplate {};
+	class HScrollbar : ScrollBar
+	{
+		height = 0.028;
+	};
+	class RowTemplate {};
+	class VScrollbar : ScrollBar
+	{
+		width = 0.021;
+	};
+};
+class ctrlDefault
+{
+	access = 0;
+	idc = -1;
+	style = ST_LEFT;
+	default = 0;
+	show = 1;
+	fade = 0;
+	blinkingPeriod = 0;
+	deletable = 0;
+	x = 0;
+	y = 0;
+	w = 0;
+	h = 0;
+	tooltip = "";
+	tooltipMaxWidth = 0.5;
+	tooltipColorShade[] = {0,0,0,1};
+	tooltipColorText[] = {1,1,1,1};
+	tooltipColorBox[] = {0,0,0,0};
+	class ScrollBar
+	{
+		width = 0;
+		height = 0;
+		scrollSpeed = 0.06;
+		arrowEmpty = "\a3\3DEN\Data\Controls\ctrlDefault\arrowEmpty_ca.paa";
+		arrowFull = "\a3\3DEN\Data\Controls\ctrlDefault\arrowFull_ca.paa";
+		border = "\a3\3DEN\Data\Controls\ctrlDefault\border_ca.paa";
+		thumb = "\a3\3DEN\Data\Controls\ctrlDefault\thumb_ca.paa";
+		color[] = {1,1,1,1};
+	};
+};
+class ctrlDefaultText: ctrlDefault
+{
+	sizeEx = "4.32 * (1 / (getResolution select 3)) * pixelGrid * 0.5";
+	font = "RobotoCondensedLight";
+	shadow = 1;
+};
+class ctrlStatic: ctrlDefaultText
+{
+	type = CT_STATIC;
+	colorBackground[] = {0,0,0,0};
+	text = "";
+	lineSpacing = 1;
+	fixedWidth = 0;
+	colorText[] = {1,1,1,1};
+	colorShadow[] = {0,0,0,1};
+	moving = 0;
+	autoplay = 0;
+	loops = 0;
+	tileW = 1;
+	tileH = 1;
+	onCanDestroy = "";
+	onDestroy = "";
+	onMouseEnter = "";
+	onMouseExit = "";
+	onSetFocus = "";
+	onKillFocus = "";
+	onKeyDown = "";
+	onKeyUp = "";
+	onMouseButtonDown = "";
+	onMouseButtonUp = "";
+	onMouseButtonClick = "";
+	onMouseButtonDblClick = "";
+	onMouseZChanged = "";
+	onMouseMoving = "";
+	onMouseHolding = "";
+	onVideoStopped = "";
+};
+class ctrlStaticBackground: ctrlStatic
+{
+	colorBackground[] = {0.2,0.2,0.2,1};
+};
+
+class FalseHeaderRow
+{
+	class RowBackground
+	{
+		controlBaseClassPath[] = {"ctrlStaticBackground"};
+		columnX = 0;
+		columnW = GRID_X( pixelGridNoUIScale, 8, 15 );
+		controlH = GRID_Y( pixelGridNoUIScale, 8, 1 );
+		controlOffsetY = 0;
+	};
+	class PlayerName
+	{
+		controlBaseClassPath[] = {"ctrlStatic"};
+		columnX = 0;
+		columnW = GRID_X( pixelGridNoUIScale, 8, 4 );
+		controlH = GRID_Y( pixelGridNoUIScale, 8, 1 );
+		controlOffsetY = 0;
+	};
+	class NumberOfKills
+	{
+		controlBaseClassPath[] = {"ctrlStatic"};
+		columnX = GRID_X( pixelGridNoUIScale, 8, 5 );
+		columnW = GRID_X( pixelGridNoUIScale, 8, 4 );
+		controlH = GRID_Y( pixelGridNoUIScale, 8, 1 );
+		controlOffsetY = 0;
+	};
+	class TotalScore
+	{
+		controlBaseClassPath[] = {"ctrlStatic"};
+		columnX = GRID_X( pixelGridNoUIScale, 8, 10 );
+		columnW = GRID_X( pixelGridNoUIScale, 8, 4 );
+		controlH = GRID_Y( pixelGridNoUIScale, 8, 1 );
+		controlOffsetY = 0;
+	};
+};
+
+class DataRow
+{
+	class RowBackground
+	{
+		controlBaseClassPath[] = {"ctrlStaticBackground"};
+		columnX = 0;
+		columnW = GRID_X( pixelGridNoUIScale, 8, 15 );
+		controlH = GRID_Y( pixelGridNoUIScale, 8, 1 );
+		controlOffsetY = 0;
+	};
+	class PlayerName
+	{
+		controlBaseClassPath[] = {"ctrlStatic"};
+		columnX = 0;
+		columnW = GRID_X( pixelGridNoUIScale, 8, 5 );
+		controlH = GRID_Y( pixelGridNoUIScale, 8, 1 );
+		controlOffsetY = 0;
+	};
+	class NumberOfKills
+	{
+		controlBaseClassPath[] = {"ctrlStatic"};
+		columnX = GRID_X( pixelGridNoUIScale, 8, 5 );
+		columnW = GRID_X( pixelGridNoUIScale, 8, 5 );
+		controlH = GRID_Y( pixelGridNoUIScale, 8, 1 );
+		controlOffsetY = 0;
+	};
+	class TotalScore
+	{
+		controlBaseClassPath[] = {"ctrlStatic"};
+		columnX = GRID_X( pixelGridNoUIScale, 8, 10 );
+		columnW = GRID_X( pixelGridNoUIScale, 8, 5 );
+		controlH = GRID_Y( pixelGridNoUIScale, 8, 1 );
+		controlOffsetY = 0;
+	};
 };

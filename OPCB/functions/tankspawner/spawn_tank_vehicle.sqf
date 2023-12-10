@@ -33,7 +33,11 @@ if(_tankselect != -1) then  {
 
 				MaxTanks = MaxTanks + 1;
 				publicVariable "MaxTanks";
-				[_vehicle,1] remoteExec ["CHAB_fnc_spawn_tank_server",2];
+
+				VehicleSpawnerHistory pushBack [name player, getText (configFile >> "CfgVehicles" >> _vehicle >> "displayName"), _cost];
+				publicVariable "VehicleSpawnerHistory";
+
+				[_vehicle, true] remoteExec ["CHAB_fnc_spawn_tank_server",2];
 
 			} else {
 				hint "There is already a tank/SPG in game";
@@ -60,7 +64,10 @@ if(_tankselect != -1) then  {
 
 				MaxAPC = MaxAPC +1;
 				publicVariable "MaxAPC";
-				[_vehicle,0] remoteExec ["CHAB_fnc_spawn_tank_server",2];
+
+				VehicleSpawnerHistory pushBack [name player, getText (configFile >> "CfgVehicles" >> _vehicle >> "displayName"), _cost];
+				publicVariable "VehicleSpawnerHistory";
+				[_vehicle, false] remoteExec ["CHAB_fnc_spawn_tank_server",2];
 
 			} else {
 				hint "12 vehicles are already in game. Recover or destroy existing ones.";

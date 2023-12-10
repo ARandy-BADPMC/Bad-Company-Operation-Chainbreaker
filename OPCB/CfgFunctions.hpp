@@ -208,6 +208,10 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\deathPenaltyQueue.sqf";
 		};
+		class vehicleSpawnerHistory
+		{
+			file = "functions\miscellaneous\vehicleSpawnerHistory.sqf";
+		};
 	};
 	class admin_menu
 	{

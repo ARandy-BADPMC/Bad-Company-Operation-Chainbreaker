@@ -50,6 +50,9 @@ publicVariable "MaxAPC";
 MaxBoats = 0;
 publicVariable "MaxBoats";
 
+VehicleSpawnerHistory = [];
+publicVariable "VehicleSpawnerHistory";
+
 {
 	_x allowDamage false;
 	[_x, "LISTEN_BRIEFING", "Light"] call BIS_fnc_ambientAnim;

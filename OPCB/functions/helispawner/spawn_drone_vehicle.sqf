@@ -20,6 +20,9 @@ if (count _nObjects == 0) then {
 	OPCB_econ_credits = OPCB_econ_credits - _cost;
 	publicVariable "OPCB_econ_credits";
 
+	VehicleSpawnerHistory pushBack [name player, getText (configFile >> "CfgVehicles" >> _vehicle >> "displayName"), _cost];
+	publicVariable "VehicleSpawnerHistory";
+
 	_drone = _vehicle createVehicle (_tankpos);	
 	_drone setdir 40;
 	

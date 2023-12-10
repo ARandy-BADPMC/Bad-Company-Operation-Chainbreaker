@@ -3,7 +3,7 @@ private "_helicopter";
 _helicopter = createVehicle [_vehicle, getMarkerPos "aircraft_spawner", [], 0 , "CAN_COLLIDE"];
 _helicopter setdir (markerDir "aircraft_spawner");
 
-if (_isAttack == 1) then {	
+if (_isAttack) then {	
 	if (_vehicle == "B_UAV_02_dynamicLoadout_f") then {
 		createVehicleCrew _helicopter;
 	};
