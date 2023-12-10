@@ -29,7 +29,7 @@ _trucks append (_stations select 1);
 
 waitUntil {
 	sleep 5;
-	_trucks findIf {alive _x } == -1
+	_trucks findIf {alive _x || {canMove _x}} == -1
 };
 
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
