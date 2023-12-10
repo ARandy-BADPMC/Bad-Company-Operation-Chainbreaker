@@ -13,6 +13,9 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
+enableSentences false;
+enableRadio false;
+
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 
 //ACRE check & kick
