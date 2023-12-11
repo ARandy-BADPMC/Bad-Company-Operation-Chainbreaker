@@ -38,8 +38,11 @@ if(_loadout != -1) then  {
 
 			MaxAttackHelis = MaxAttackHelis + 1;
 			publicVariable "MaxAttackHelis"; 
+
+			VehicleSpawnerHistory pushBack [name player, getText (configFile >> "CfgVehicles" >> _vehicle >> "displayName"), _cost];
+			publicVariable "VehicleSpawnerHistory";
 			
-		    [_vehicle,_pylons,1] remoteExec ["CHAB_fnc_spawn_helicopter_server",2];
+		    [_vehicle,_pylons,true] remoteExec ["CHAB_fnc_spawn_helicopter_server",2];
 
 		  } else {
 				hint "There are already 2 attack helicopters in game";
@@ -62,7 +65,11 @@ if(_loadout != -1) then  {
 			
 			MaxTransHelis = MaxTransHelis + 1;
 			publicVariable "MaxTransHelis";
-		    [_vehicle,_pylons,0] remoteExec ["CHAB_fnc_spawn_helicopter_server",2];
+
+			VehicleSpawnerHistory pushBack [name player, getText (configFile >> "CfgVehicles" >> _vehicle >> "displayName"), _cost];
+			publicVariable "VehicleSpawnerHistory";
+
+		    [_vehicle,_pylons,false] remoteExec ["CHAB_fnc_spawn_helicopter_server",2];
 
 		  } else {
 				hint "3 Transport helicopters are already in game.";

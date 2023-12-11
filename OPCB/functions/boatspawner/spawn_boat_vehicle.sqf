@@ -1,5 +1,5 @@
 disableSerialization;
-_boat = (findDisplay 9901) displayCtrl 1500;
+_boat = (findDisplay 74810) displayCtrl 1500;
 _boatselect = lbCurSel _boat;
 _boatpos = getPos boat_spawner;
 
@@ -27,15 +27,17 @@ if(_boatselect != -1) then  {
 
 			MaxBoats = MaxBoats +1;
 			publicVariable "MaxBoats";
+			VehicleSpawnerHistory pushBack [name player, getText (configFile >> "CfgVehicles" >> _vehicle >> "displayName"), _cost];
+			publicVariable "VehicleSpawnerHistory";
 			[_vehicle] remoteExec ["CHAB_fnc_spawn_boat_server",2];
 
 		} else {
-			hint "12 vehicles are already in game. Recover or destroy existing ones.";
+			hint "12 Boats are already in game. Recover or destroy existing ones.";
 		};
 	} else {
 		hint "Spawn position is not empty";
 	};
 }
 else {
-	hint "Select a vehicle first";
+	hint "Select a boat first";
 };

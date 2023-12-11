@@ -4,7 +4,7 @@ _tankpos = getMarkerPos "tank_spawner";
 _tank = createVehicle [_vehicle, _tankpos, [], 0 , "CAN_COLLIDE"];
 _tank setdir (markerDir "tank_spawner");
 
-if (_isAttack == 1) then {
+if (_isAttack ) then {
 	private _cargoIndex = -1;
 	_vehicle = toUpper _vehicle;
 	{

@@ -1,7 +1,7 @@
 params ["_vehicle", "_isAttack"];
 if(isNull _vehicle) exitWith{};
 
-if(_isAttack == 1) then {
+if(_isAttack ) then {
 	_vehicle addEventHandler ["GetIn",{
 		params ["_vehicle","_seat","_player"];
 
