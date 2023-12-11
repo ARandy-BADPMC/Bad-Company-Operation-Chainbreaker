@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=3273;
+		nextID=3279;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=169;
+		nextID=178;
 	};
 	class Camera
 	{
-		pos[]={17973.398,25.014112,15085.412};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={19277.619,34.551193,14120.392};
+		dir[]={-0.16119301,-0.35560223,0.92063344};
+		up[]={-0.061329201,0.93463743,0.35027406};
+		aside[]={0.9850173,4.0105078e-008,0.17246574};
 	};
 };
 binarizationWanted=0;
@@ -924,7 +924,7 @@ class CustomAttributes
 								singleType="ARRAY";
 								class value
 								{
-									items=430;
+									items=433;
 									class Item0
 									{
 										class data
@@ -4365,6 +4365,30 @@ class CustomAttributes
 											value="acex_fortify_settinghint";
 										};
 									};
+									class Item430
+									{
+										class data
+										{
+											singleType="STRING";
+											value="ace_medical_engine_damagepassthrougheffect";
+										};
+									};
+									class Item431
+									{
+										class data
+										{
+											singleType="STRING";
+											value="ace_medical_dropweaponunconsciouschance";
+										};
+									};
+									class Item432
+									{
+										class data
+										{
+											singleType="STRING";
+											value="ace_medical_painunconsciousthreshold";
+										};
+									};
 								};
 							};
 						};
@@ -4375,7 +4399,7 @@ class CustomAttributes
 								singleType="ARRAY";
 								class value
 								{
-									items=430;
+									items=433;
 									class Item0
 									{
 										class data
@@ -12807,7 +12831,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=0;
+														value=1;
 													};
 												};
 												class Item1
@@ -12915,7 +12939,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=0;
+														value=2;
 													};
 												};
 												class Item1
@@ -16040,6 +16064,87 @@ class CustomAttributes
 													{
 														singleType="SCALAR";
 														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														singleType="SCALAR";
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item430
+									{
+										class data
+										{
+											singleType="ARRAY";
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														singleType="SCALAR";
+														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														singleType="SCALAR";
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item431
+									{
+										class data
+										{
+											singleType="ARRAY";
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														singleType="SCALAR";
+														value=0;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														singleType="SCALAR";
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item432
+									{
+										class data
+										{
+											singleType="ARRAY";
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														singleType="SCALAR";
+														value=0.5;
 													};
 												};
 												class Item1
@@ -21774,7 +21879,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="CHIRPY";
+							value="IRON HORSE";
 						};
 					};
 				};
@@ -21800,7 +21905,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="RHS_MELB_MH6M";
+							value="rhs_uh1h_hidf_unarmed";
 						};
 					};
 				};
@@ -21813,7 +21918,7 @@ class Mission
 						class data
 						{
 							singleType="BOOL";
-							value=0;
+							value=1;
 						};
 					};
 				};
@@ -21960,7 +22065,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="GIANT";
+							value="BANANA";
 						};
 					};
 				};
@@ -21986,7 +22091,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="rhsusf_CH53E_USMC_GAU21_D";
+							value="RHS_CH_47F_light";
 						};
 					};
 				};
@@ -22078,7 +22183,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, 300, {_this allowDamage true; [_this, 2] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
 			};
 			id=562;
 			type="rhsusf_M978A4_usarmy_d";
@@ -22132,18 +22236,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={19203.951,13.545119,14131.725};
-				angles[]={0.0077281403,3.947088,0.010720021};
+				position[]={19203.951,13.545586,14131.726};
+				angles[]={0.0077318083,3.9470797,0.010716322};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, 300, {_this allowDamage true; [_this, 2] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
 			};
 			id=563;
 			type="rhsusf_M977A4_AMMO_usarmy_d";
-			atlOffset=-0.0014762878;
+			atlOffset=-0.0010004044;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22193,18 +22296,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={19211.994,13.726491,14123.909};
-				angles[]={0.0085414592,3.9471188,0};
+				position[]={19211.994,13.726257,14123.909};
+				angles[]={0.0085346596,3.9471145,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, 300, {_this allowDamage true; [_this, 2] call ace_cargo_fnc_setSpace;}, -1, false] call FRED_fnc_vehicleRespawn;}";
 			};
 			id=564;
 			type="rhsusf_M977A4_REPAIR_usarmy_d";
-			atlOffset=-0.0037660599;
+			atlOffset=-0.0039997101;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -53845,7 +53947,7 @@ class Mission
 			class Item4
 			{
 				linkID=4;
-				item0=550;
+				item0=551;
 				item1=300;
 				class CustomData
 				{
@@ -53855,7 +53957,7 @@ class Mission
 			class Item5
 			{
 				linkID=5;
-				item0=551;
+				item0=553;
 				item1=300;
 				class CustomData
 				{
@@ -53865,7 +53967,7 @@ class Mission
 			class Item6
 			{
 				linkID=6;
-				item0=553;
+				item0=550;
 				item1=300;
 				class CustomData
 				{
