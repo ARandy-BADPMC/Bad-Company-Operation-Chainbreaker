@@ -22,7 +22,7 @@ deleteVehicle _flower;
 
 private _taskId = format ["SM_TaskNumber_%1",SM_TaskNumber];
 
-[_taskId, west, ["Opposition has laid Mines nearby. Clear it.","Operation Free Movement"], _taskMarker,"AUTOASSIGNED",10,true,true,"scout",true] call BIS_fnc_setTask;
+[_taskId, west, ["Opposition has laid Mines nearby. Clear it.","Operation Free Movement"], _taskMarker,"AUTOASSIGNED",10,true,true,"mine",true] call BIS_fnc_setTask;
 
 waitUntil { 
 	sleep 10;
