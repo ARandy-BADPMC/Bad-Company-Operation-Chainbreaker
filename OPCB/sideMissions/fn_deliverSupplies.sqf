@@ -2,7 +2,7 @@ private _axis = worldSize / 2;
 private _center = [_axis, _axis , 0];
 
 private _taskId = format ["SM_TaskNumber_%1",SM_TaskNumber];
-[_taskId, west, ["Civilian population is in need of supplies. Deliver some to the nearby FOBs.","Operation Free Supplies"], _center,"AUTOASSIGNED",10,true,true,"meet",true] call BIS_fnc_setTask;
+[_taskId, west, ["Safely transport Ambulances carrying vital medical supplies to up to four FOBs. Navigate through enemy territory, coordinate convoy movements, and ensure the secure delivery of essential cargo. Enemy forces may attempt to intercept. In case of ambulance destruction, replacements can be purchased at the vehicle store.","Operation Lifeline"], _center,"AUTOASSIGNED",10,true,true,"meet",true] call BIS_fnc_setTask;
 
 private _noSupplyPoints = random [1, 2, 3];
 private _comps = [];
