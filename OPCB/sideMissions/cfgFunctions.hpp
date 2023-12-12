@@ -29,5 +29,6 @@ class SM
 		class scoutTerrain {};
 		class minefield {};
 		class clearMinefield {};
+		class deliverSupplies {};
 	};
 };

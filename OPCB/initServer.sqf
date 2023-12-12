@@ -73,6 +73,11 @@ Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"]
 setViewDistance 3500;
 setObjectViewDistance 3500;
 
+boat_jeff_1 disableConversation true;
+tank_spawner disableConversation true;
+heli_jeff disableConversation true;
+jeff disableConversation true;
+
 addMissionEventHandler ["PlayerDisconnected", {
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
 	{

@@ -1,5 +1,4 @@
 params ["_role", "_vehicle"];
-private ["_jetPilotTypes", "_helicopterPilotTypes", "_tankDriverTypes"];
 
 #include "..\data\vehicleDriverUnitTypes.sqf";
 
@@ -14,7 +13,7 @@ if (_role == "Driver") then
 		if !(_unitType in _jetPilotTypes) exitWith {
 			_vehicle engineOn false;
 			moveOut player;
-			hint "You must be a jet pilot to fly this"
+			hint "You must be a jet pilot to fly this";
 							
 		};
 	};
