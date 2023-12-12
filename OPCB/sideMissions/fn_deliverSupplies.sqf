@@ -15,25 +15,26 @@ for "_i" from 1 to _noSupplyPoints do {
 	_comps pushBack _comp;
 
 	private _taskIdIter = format ["SM_TaskNumber_%1_%2",SM_TaskNumber, _i];
-	[_taskIdIter, west, ["Civilian FOB","Deliver FOB supplies"], _base,"AUTOASSIGNED",10,true,true,"talk"+_i,true] call BIS_fnc_setTask;
+	[_taskIdIter, west, ["Civilian FOB","Deliver FOB supplies"], _base,"AUTOASSIGNED",10,true,true,format ["talk%1", _i],true] call BIS_fnc_setTask;
 
-	private _container = createVehicle ["LOP_IA_HEMTT_Ammo_D", getPosASL dropoffpoint, [], 10, "NONE"];
+	private _container = createVehicle ["LOP_IA_HEMTT_Ammo_D", getpos dropoffpoint, [], 30, "NONE"];
 	[_container, 5000] call ace_cargo_fnc_setSize;
 	clearItemCargoGlobal _container;
 	_trucks pushBack _container;
 
-	private _taskTrigger = createTrigger ["EmptyDetector", _base, false];
-	_taskTrigger setVariable ["taskPosition", _base];
-	_taskTrigger setVariable ["taskId", _taskIdIter];
-	_taskTrigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-	_taskTrigger setTriggerArea [50, 50, 45, true];
-	_taskTrigger setTriggerStatements    position nearestObject typeOrId
-	[
-		"((thisTrigger getVariable ""taskPosition"") nearestObject ""LOP_IA_HEMTT_Ammo_D"") != objNull",
-		"[(thisTrigger getVariable ""taskId""), ""SUCCEEDED"", true] call BIS_fnc_taskSetState",
-		""
-	];
-};
+	[_taskIdIter, _base] spawn {
+		params ["_taskId", "_basePos"];
+		waitUntil {
+			sleep 10;
+
+			private _truck = nearestObject [_basePos, "LOP_IA_HEMTT_Ammo_D"];
+
+			!isNull _truck
+		};
+
+		[_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+	};
+}; 
 
 waitUntil { 
 	sleep 10;
@@ -51,9 +52,9 @@ waitUntil {
 	_canFinish
 };
 
-[_comps, _trucks] spawns {
+[_comps, _trucks] spawn {
 	params ["_comps", "_trucks"];
-	sleep 60;
+	sleep 120;
 
 	{
 		[ _x ] call LARs_fnc_deleteComp;

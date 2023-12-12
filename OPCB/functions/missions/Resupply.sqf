@@ -12,7 +12,7 @@ _current_task = _base getPos[random 600,random 360];
 _officer = _officergroup createUnit [selectRandom _rhsOfficers, _base, [], 2, "NONE"];
 _officer disableAI "PATH";
 
-_container = createVehicle ["LOP_IA_HEMTT_Ammo_D", getPosASL dropoffpoint, [], 5, "NONE"];
+_container = createVehicle ["LOP_IA_HEMTT_Ammo_D", getPos dropoffpoint, [], 5, "NONE"];
 [_container, 5000] call ace_cargo_fnc_setSize;
 clearItemCargoGlobal _container;
 
