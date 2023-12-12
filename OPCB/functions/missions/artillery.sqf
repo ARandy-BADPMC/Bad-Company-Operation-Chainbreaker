@@ -24,7 +24,7 @@ for "_i" from 0 to 3 do {
 
 	[_createdVehicle, _unit] spawn CHAB_fnc_fire_artillery;
 
-	_unit addEventHandler ["Killed", {
+	_createdVehicle addEventHandler ["Killed", {
 		ArtilleryRemaining = ArtilleryRemaining - 1;
 	}];
 

@@ -5,7 +5,7 @@ _officerGroup = createGroup [civilian,true];
 
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
-["IDAP Units have encountered hostile mortar fire at one of their locations, resulting in injuries to both peacekeepers and civilians. The exact origin and motive of the attack are currently unknown. The mission requires immediate investigation and a swift response to ensure the safety of personnel and the local population. The primary objective of this operation is to investigate the hostile attack, identify the responsible individuals or groups, and neutralize their firing positions. By securing the area and gathering actionable intelligence, we will enhance the safety of IDAP personnel and local civilians. Additionally, we aim to prevent future attacks and maintain a secure environment.","Operation Resolute Guard"],
+["IDAP Units have encountered hostile mortar fire at one of their locations, resulting in injuries to both peacekeepers and civilians. The exact origin and motive of the attack are currently unknown. The mission requires immediate investigation and a swift response to ensure the safety of personnel and the local population. The primary objective of this operation is to investigate the hostile attack, identify the responsible individuals or groups, and neutralize their 4 firing positions. By securing the area and gathering actionable intelligence, we will enhance the safety of IDAP personnel and local civilians. Additionally, we aim to prevent future attacks and maintain a secure environment.","Operation Resolute Guard"],
  _current_task,"ASSIGNED",10,true,true,"interact",true] call BIS_fnc_setTask;
  
 _officer = _officerGroup createUnit ["B_GEN_Commander_F", _base, [], 2, "NONE"];
