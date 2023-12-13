@@ -48,7 +48,11 @@ tank_spawner addAction ["<t color='#01FF24'>Shop history</t>","[] spawn CHAB_fnc
 boat_jeff_1 addAction ["<t color='#FFFF00'>Boat Spawner</t>","[] spawn CHAB_fnc_spawn_boat;",nil, 1, false, true, "", "true", 10, false,""];
 boat_jeff_1 addAction ["<t color='#01FF24'>Shop history</t>","[] spawn CHAB_fnc_vehicleSpawnerHistory;",nil, 1, false, true, "", "true", 10, false,""]; 
 
-player addEventHandler ["GetInMan",{[_this select 1, _this select 2] call BADCO_fnc_classCheck;}];
+player addEventHandler ["GetInMan",{
+	params ["_unit", "_role", "_vehicle"];
+
+	[_role, _vehicle, _unit] call BADCO_fnc_classCheck;
+}];
 
 jeff addaction ["Lights on", {
 	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
