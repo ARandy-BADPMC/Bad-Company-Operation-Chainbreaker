@@ -11,4 +11,5 @@ private _vehicles = [];
 {
 	_x setVehicleLock "LOCKEDPLAYER";
 	[_x] call CHAB_fnc_vehicleDeleteCheck;
+	_x allowCrewInImmobile true;
 } foreach _vehicles;
