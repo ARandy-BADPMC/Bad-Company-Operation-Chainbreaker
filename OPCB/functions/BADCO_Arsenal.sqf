@@ -3048,7 +3048,6 @@ _arsenalitems =
 "PO_V_SPCS_TUB_GREN",
 "PO_V_SPCS_TUB_MG",
 "PO_V_SPCS_TUB_SNIP",
-"G_Balaclava_Skull1",
 "G_Bandanna_CandySkull",
 "G_Bandanna_Skull1",
 "G_Bandanna_Syndikat1",
@@ -3075,9 +3074,7 @@ _arsenalitems =
 "TRYK_SBeard_BL6",
 "TRYK_SBeard6",
 "TRYK_SBeard_BW6",
-"TRYK_SBeard_Gr6",
-"ACE_SpareBarrel",
-"ACE_WaterBottle"
+"TRYK_SBeard_Gr6"
 ];
 
 
