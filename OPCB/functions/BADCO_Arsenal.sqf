@@ -3074,7 +3074,9 @@ _arsenalitems =
 "TRYK_SBeard_BL6",
 "TRYK_SBeard6",
 "TRYK_SBeard_BW6",
-"TRYK_SBeard_Gr6"
+"TRYK_SBeard_Gr6",
+"ACE_SpareBarrel",
+"ACE_WaterBottle"
 ];
 
 
