@@ -31,6 +31,14 @@ for "_i" from 1 to _noSupplyPoints do {
 
 			!isNull _truck
 		};
+		
+		_truck setVehicleLock "LOCKED";
+		_truck engineOn false;
+		sleep 1;
+
+		{
+			moveOut _x;
+		} forEach (crew _truck); 
 
 		[_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 	};
