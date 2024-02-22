@@ -52,7 +52,8 @@ OPCB_econ_TierList_ENG = [
 
 	//TIER 8
 	[
-	"B_APC_TRACKED_01_RCWS_F"
+	"B_APC_TRACKED_01_RCWS_F",
+	"RHSUSF_M113D_USARMY"
 	],
 
 	//TIER 9
