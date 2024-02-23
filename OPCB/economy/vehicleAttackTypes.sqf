@@ -18,11 +18,10 @@ OPCB_econ_vehicleAirAttackTypes = [
 	"RHS_L159_CDF_B_CDF",
 	"RHSGREF_CDF_B_SU25",
 	"RHS_C130J",
-	 "C_PLANE_CIVIL_01_F",
-	"C_PLANE_CIVIL_01_RACING_F",
-	"RHS_AN2_B",
 	"RHSSAF_AIRFORCE_L_18",
-	"RHS_MI24P_VDV"
+	"RHS_MI24P_VDV",
+	"O_PLANE_CAS_02_DYNAMICLOADOUT_F",
+	"RHS_L39_CDF"
 ];
 
 OPCB_econ_vehicleGroundAttackTypes = [
