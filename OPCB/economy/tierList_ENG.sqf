@@ -19,7 +19,8 @@ OPCB_econ_TierList_ENG = [
 	//TIER 3
 	[
 	"RHS_M6",
-	"RHS_BMD4MA_VDV"
+	"RHS_BMD4MA_VDV",
+	"B_AFV_WHEELED_01_CANNON_F"
 	],
 
 	//TIER 4
