@@ -3078,7 +3078,18 @@ _arsenalitems =
 "ACE_SpareBarrel",
 "ACE_WaterBottle",
 "B_RadioBag_01_black_F",
-"B_RadioBag_01_wdl_F"
+"B_RadioBag_01_wdl_F",
+"rhssaf_booniehat_woodland",
+"LOP_U_PMC_Fatigue_03",
+"TRYK_U_hood_mc",
+"LOP_H_Beanie_dmpw",
+"LOP_H_Beanie_flec",
+"LOP_H_Beanie_m81",
+"LOP_H_Beanie_marpat",
+"LOP_H_Beanie_digit",
+"LOP_H_Beanie_mtp",
+"LOP_H_Beanie_multicam",
+"LOP_H_Beanie_tan"
 ];
 
 

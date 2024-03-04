@@ -3,7 +3,7 @@ private _creditCounter = 0;
 while {_sleepCounter > 0} do {
 	if(count DP_Queue > 0) then {
 		_sleepCounter = (count DP_Queue) + 1;
-		_creditCounter = _creditCounter + 3;
+		_creditCounter = _creditCounter + 5;
 		DP_Queue deleteAt 0;
 	};
 	_sleepCounter = _sleepCounter - 1;
