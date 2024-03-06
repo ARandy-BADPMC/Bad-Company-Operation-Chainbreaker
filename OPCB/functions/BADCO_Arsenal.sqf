@@ -3122,7 +3122,10 @@ _arsenalitems =
 "rhs_weap_m14_ris_wd",
 "ACE_10Rnd_127x99_AMAX_Mag",
 "ACE_PlottingBoard",
-"ACE_40mm_Flare_ir"
+"ACE_40mm_Flare_ir",
+"arifle_MSBS65_black_F",
+"arifle_MSBS65_GL_black_F",
+"30Rnd_65x39_caseless_msbs_mag"
 ];
 
 
