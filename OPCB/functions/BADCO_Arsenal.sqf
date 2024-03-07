@@ -3090,6 +3090,7 @@ _arsenalitems =
 "LOP_H_Beanie_mtp",
 "LOP_H_Beanie_multicam",
 "LOP_H_Beanie_tan",
+<<<<<<< Updated upstream
 "rhs_30Rnd_762x39mm_polymer",
 "rhs_30Rnd_762x39mm_polymer_89",
 "rhs_30Rnd_762x39mm_polymer_tracer",
@@ -3126,6 +3127,13 @@ _arsenalitems =
 "arifle_MSBS65_black_F",
 "arifle_MSBS65_GL_black_F",
 "30Rnd_65x39_caseless_msbs_mag"
+=======
+"arifle_MSBS65_UBS_black_F",
+"6Rnd_12Gauge_Slug",
+"6Rnd_12Gauge_Pellets",
+"arifle_MSBS65_Mark_black_f",
+"ACE_30Rnd_65_Creedmor_msbs_mag"
+>>>>>>> Stashed changes
 ];
 
 
