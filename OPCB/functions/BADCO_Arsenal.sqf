@@ -3130,7 +3130,32 @@ _arsenalitems =
 "6Rnd_12Gauge_Slug",
 "6Rnd_12Gauge_Pellets",
 "arifle_MSBS65_Mark_black_f",
-"ACE_30Rnd_65_Creedmor_msbs_mag"
+"ACE_30Rnd_65_Creedmor_msbs_mag",
+"hlc_acc_AIM1D_Generic",
+"hlc_acc_AIM1D_M16",
+"hlc_acc_SF660_Barrel",
+"hlc_wp_mod653",
+"TRYK_T_camo_wood_marpat",
+"TRYK_T_camo_Wood",
+"TRYK_T_camo_tan",
+"TRYK_T_camo_Desert_marpat",
+"TRYK_T_camo_3c",
+"TRYK_T_PAD",
+"TRYK_T_BLK_PAD",
+"TRYK_T_OD_PAD",
+"TRYK_T_TAN_PAD",
+"TRYK_U_pad_hood_Blod",
+"TRYK_U_pad_hood_Blk",
+"TRYK_U_pad_hood_Tan",
+"TRYK_U_nohoodPcu_gry",
+"TRYK_U_pad_hood_odBK",
+"TRYK_U_pad_hood_odBK",
+"TRYK_U_pad_hood_Cl",
+"TRYK_hoodie_3c",
+"TRYK_hoodie_FR",
+"TRYK_hoodie_Blk",
+"TRYK_hoodie_Wood",
+"rhs_tr8_periscope_pip"
 ];
 
 
