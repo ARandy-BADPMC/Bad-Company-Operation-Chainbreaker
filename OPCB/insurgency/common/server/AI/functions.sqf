@@ -1,16 +1,12 @@
 spawnAIVehicle = {
 	private ["_track","_speed","_grp","_type","_obj","_pos","_vcl","_ai"];
-	waitUntil {
-		sleep 3;
-		((count playableUnits) > 1) || {!isMultiplayer}
-	};
 	
 	waitUntil {
 		sleep 1;
-		({_logic = _x; (({(_logic distance _x) < 2200} count playableUnits) == 0)} count patrolSpawnPositionLogics) > 0
+		({_logic = _x; (({(_logic distance _x) < 1200} count playableUnits) == 0)} count patrolSpawnPositionLogics) > 0
 	};
 	
-	_obj = selectRandom (patrolSpawnPositionLogics select {_logic = _x; (({(_logic distance _x) < 2000} count playableUnits) == 0)});
+	_obj = selectRandom (patrolSpawnPositionLogics select {_logic = _x; (({(_logic distance _x) < 1000} count playableUnits) == 0)});
 	
 	_grp = createGroup east;
 	_type = selectRandom eastVclClasses; 		
@@ -20,36 +16,9 @@ spawnAIVehicle = {
 	_vcl setPosATL ((getPosATL _vcl) vectorAdd [0,0,1]);
 	_vcl setVectorUp (surfaceNormal _pos);
 	
-	// Hunter: anti-bad driving fix (does not cover flipping...)
-	_vcl spawn {
-		sleep 5;
-		 _this removeAllEventHandlers "HandleDamage";
-		 _this addEventHandler ["HandleDamage",{
-		 
-			_return = _this select 2;
-			_source = _this select 3;
-			_unit = _this select 0;
-			_ammo = _this select 4;
-			_selection = _this select 1;
-			
-			if ((_ammo == "") && {(isnull _source) || {_source == _unit}}) then {
-				if (_selection isEqualTo "") then {
-					_return = damage _unit;
-				} else {
-					_return = _unit getHit _selection;
-				};
-			} else {
-				if ((_unit getVariable ["ace_vehicle_damage_handleDamage", -99]) != -99) then {
-					_return = _this call ace_vehicle_damage_fnc_handleDamage;
-				};
-			};
-			
-			_return
-		}];
-	};
-	
 	_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
 	_ai setRank (eastRanks select 2);
+	_ai assignAsDriver _vcl;
 	_ai moveInDriver _vcl;
 	
 	private _withPassengers = false;
@@ -64,6 +33,7 @@ spawnAIVehicle = {
 		{
 			_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
 			_ai setRank (eastRanks select 4); 
+			_ai assignAsTurret [_vcl, _x];
 			_ai moveInTurret [_vcl, _x];
 		} foreach (allTurrets [_vcl, true]) - (allTurrets [_vcl, false]);
 		
@@ -73,53 +43,103 @@ spawnAIVehicle = {
 			for "_i" from 1 to _cargoSeats do {
 				_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];	
 				_ai setRank (eastRanks select 4);
+				_ai assignAsCargo _vcl;
 				_ai moveInCargo _vcl;
 				sleep 0.05;
 			};
 		};
 
 	}; 
-	
+		
 	{
 		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
 		_ai setRank (eastRanks select 0);
+		_ai assignAsTurret [_vcl, _x];
 		_ai moveInTurret [_vcl, _x];
 	} foreach allTurrets [_vcl, false];
 	
-	{
-			_x spawn {
-				sleep 2;
-				_this removeAllEventHandlers "HandleDamage";
-				_this addEventHandler ["HandleDamage", {
-				
+	// above doesn't seem to cover some vehicle types fully...
+	sleep 0.1;
+	if ((_vcl emptyPositions "Gunner") > 0) then {
+		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
+		_ai setRank (eastRanks select 2);
+		_ai assignAsGunner _vcl;
+		_ai moveInGunner _vcl;
+	};
+	if ((_vcl emptyPositions "Commander") > 0) then {
+		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
+		_ai setRank (eastRanks select 2);
+		_ai assignAsCommander _vcl;
+		_ai moveInCommander _vcl;
+	};
+	
+	if (!(_vcl isKindOf "Air")) then {
+		// Hunter: anti-bad driving fix (does not cover flipping...)
+		_vcl spawn {
+			sleep 5;
+			 _this removeAllEventHandlers "HandleDamage";
+			 _this addEventHandler ["HandleDamage",{
+			 
 				_return = _this select 2;
 				_source = _this select 3;
 				_unit = _this select 0;
+				_ammo = _this select 4;
 				_selection = _this select 1;
 				
-				if (((_this select 4) == "") && {(isnull _source) || {((side _source) getFriend (side _unit)) >= 0.6}}) then {
+				if ((_ammo == "") && {(isnull _source) || {_source == _unit}}) then {
 					if (_selection isEqualTo "") then {
 						_return = damage _unit;
 					} else {
 						_return = _unit getHit _selection;
 					};
 				} else {
-					if ((missionnamespace getVariable ["ace_medical_ai_enabledFor",0]) != 0) then {
-						_return = _this call ace_medical_engine_fnc_handleDamage;
+					if ((_unit getVariable ["ace_vehicle_damage_handleDamage", -99]) != -99) then {
+						_return = _this call ace_vehicle_damage_fnc_handleDamage;
 					};
 				};
 				
-			_return 
+				_return
 			}];
-		};	
-	} foreach (units _grp);
+		};
+		{
+				_x spawn {
+					sleep 2;
+					_this removeAllEventHandlers "HandleDamage";
+					_this addEventHandler ["HandleDamage", {
+					
+					_return = _this select 2;
+					_source = _this select 3;
+					_unit = _this select 0;
+					_selection = _this select 1;
+					
+					if (((_this select 4) == "") && {(isnull _source) || {((side _source) getFriend (side _unit)) >= 0.6}}) then {
+						if (_selection isEqualTo "") then {
+							_return = damage _unit;
+						} else {
+							_return = _unit getHit _selection;
+						};
+					} else {
+						if ((missionnamespace getVariable ["ace_medical_ai_enabledFor",0]) != 0) then {
+							_return = _this call ace_medical_engine_fnc_handleDamage;
+						};
+					};
+					
+				_return 
+				}];
+			};	
+		} foreach (units _grp);
+	};
+	
+	sleep 0.1;
+	(units _grp) allowGetIn true;
+	(units _grp) orderGetIn true;
 
 	_track = ""; 
 	if (DEBUG) then { _track = "track"; }; 
 	_grp deleteGroupWhenEmpty true;
 	sleep 1;
 	cleanupVics pushBack _vcl;
-	_vcl setVehicleLock "LOCKED";
+	_vcl setVehicleLock "LOCKEDPLAYER";
 	patrolVehicles pushBack _vcl;
 	// 2nd argument (marker) is deprecated, just pass empty string
 	[_vcl, "", "noslow", "nowait", _track] execVM "insurgency\common\server\AI\UPS.sqf";
@@ -129,11 +149,17 @@ patrolVehicles = [];
 
 spawnAIVehicles = {
 
+	// first run (no delay)
+	for "_i" from 1 to eastVehicleNum do {
+		call spawnAIVehicle;
+		sleep 120;
+	};
+
 	while {true} do {
 		waitUntil {
 			sleep 10;
 			patrolVehicles = patrolVehicles select {canMove _x};
-			(count patrolVehicles) < eastVehicleNum
+			((count patrolVehicles) < eastVehicleNum) && {(count playableUnits) > 1}
 		};
 		call spawnAIVehicle;
 		sleep patrolSpawnDelay;
@@ -249,6 +275,9 @@ createRoofGun = {
 	if (_maxAngle < 180) then {
 		_maxAngle = (_maxAngle - 15) max 5;
 		[_gun, _maxAngle, _dirOffset] spawn {
+		
+			scriptName "ins_roofgun";
+		
 			params ["_gun", "_maxAngle","_dirOffset"];
 			while {true} do {
 				sleep 10;
@@ -274,9 +303,14 @@ createRoofGun = {
 	_grp setFormDir _dir;
 	_grp deleteGroupWhenEmpty true;
 	
+	_grp setBehaviour "COMBAT";
+
 	_gun enableWeaponDisassembly false;
-	_gun setVariable ["ace_dragging_canDrag", false, true];
-	_gun setVehicleLock "LOCKED";
+	[_gun, false] remoteExec ["ace_dragging_fnc_setDraggable", 0, true]; 
+	[_gun, false] remoteExec ["ace_dragging_fnc_setCarryable", 0, true]; 
+	_gun setVariable ["ace_csw_assemblyMode", 0, true];
 	
+	_gun setVehicleLock "LOCKEDPLAYER";
+		
 	if DEBUG then { [_house, _ai] call createDebugMarker; };  		
 }; 

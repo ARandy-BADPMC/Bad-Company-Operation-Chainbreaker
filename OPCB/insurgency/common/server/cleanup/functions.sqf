@@ -7,15 +7,23 @@ aiDespawn = {
 	private _nearDudes = 0;
 	private _nearPlayers = 0;
 	private _playerDist = SPAWNRANGE+200;
+	private _nearPlayer = objNull;
+	private _nearPlayersCount = 0;
 	
 	{
 		if (!isNull _x) then {
 			_dude = _x;
 			_nearDudes = {(_x distance2D _dude) < 200} count _AIunits;
-			_nearPlayers = {(_x distance2D _dude) < _playerDist} count playableUnits;
-			if (_nearPlayers < (_nearDudes/(call getEffectiveMaxAICount))) then {
-				deleteVehicle _dude; 
-			};
+			_nearPlayers = playableUnits select {(_x distance2D _dude) < _playerDist};
+			_nearPlayersCount = count _nearPlayers;
+			if (_nearPlayersCount == 0) then {
+				deleteVehicle _dude;
+			} else {
+				_nearPlayer = _nearPlayers select 0;
+				if (_nearPlayersCount < (_nearDudes/(_nearPlayer call getEffectiveMaxAICount))) then {
+					deleteVehicle _dude; 
+				};
+			};			
 			sleep 0.3;
 		};
 	} foreach _AIunits;
@@ -61,9 +69,13 @@ longCleanup = {
 		sleep 0.001;
 	} forEach cleanupVics;
 	cleanupVics = cleanupVics - [objNull];
+	
+	/*
 	{
 		if (nearestPlayers(getPosATL _x,SPAWNRANGE,true,"count") == 0) then { deleteVehicle _x; };
 		sleep 0.001;
 	} forEach allDead;
 	{ if (count units _x == 0) then { deleteGroup _x; }; sleep 0.001; } forEach allGroups;
+	*/
+	
 };

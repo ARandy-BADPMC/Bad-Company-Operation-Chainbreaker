@@ -2,14 +2,12 @@ disableSerialization;
 createDialog "jey_helispawner";
 
 waitUntil {
-  !isNull (findDisplay 9900)
+  !isNull (findDisplay 9900) && {!(isNil "OPCB_econ_initDone") && {OPCB_econ_initDone}}
 };
 
-waitUntil {
-	(!isNil "OPCB_econ_initDone") && {OPCB_econ_initDone}
-};
+#include "..\..\data\vehicleDriverUnitTypes.sqf";
 
-if (!((typeof player) in ["rhsusf_airforce_jetpilot", "rhsusf_army_ocp_helipilot"])) exitWith {
+if !((typeof player) in (_jetPilotTypes + _helicopterPilotTypes)) exitWith {
 
 	closeDialog 0;
 	hint "You must be a pilot to use the aircraft spawner!";

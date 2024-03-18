@@ -1,10 +1,12 @@
 // used by cleanup timers
 private ["_WCTime","_BCTime"];
-_WCTime     		= time;
-_BCTime                 = time;
+_WCTime = time;
+_BCTime = time;
 
 // AI rearm & refuel
 [] spawn {
+
+	scriptName "ins_AIresupply";
 
 	while {true} do {
 	
@@ -22,9 +24,17 @@ _BCTime                 = time;
 
 };
 
-while { true } do { 
+scriptName "ins_cleanup";
+
+while { true } do {
+
 	call aiDespawn;
-	call quickCleanup;	
-	call longCleanup;	
+
+	// disable cleanup
+	//call quickCleanup;	
+	// (dead cleanup disabled inside)
+	call longCleanup;
+
 	sleep 20;
+
 }; 

@@ -106,7 +106,7 @@ nearest_EastMen = {
 		_result = 0; 
 		{ 
 			{ 
-				if (((lifeState _x) != "INCAPACITATED") && {(typeOf _x) in eastInfClasses} ) then { 
+				if ((alive _x) && {(lifeState _x) != "INCAPACITATED"} && {(typeOf _x) in eastInfClasses} ) then { 
 					_result = _result + 1;
 				};
 			} forEach crew _x; 
@@ -115,7 +115,7 @@ nearest_EastMen = {
 		_result = []; 
 		{ 
 			{ 
-				if (((lifeState _x) != "INCAPACITATED") && {(typeOf _x) in eastInfClasses} ) then { 
+				if ((alive _x) && {(lifeState _x) != "INCAPACITATED"} && {(typeOf _x) in eastInfClasses} ) then { 
 					 _result pushBack _x;
 				};
 			} forEach crew _x; 
@@ -302,27 +302,26 @@ createDebugMarker = {
 	};
 }; 
 
-// solve issue with grids being too easy with very low player count
 getEffectiveMaxAICount = {
 
-	private _playerCnt = count allPlayers;
-
-	if (_playerCnt < 5) then {
-		if (_playerCnt < 4) then {
-			if (_playerCnt < 3) then {
-				if (_playerCnt < 2) then {
-					maxAIPerPlayer*3
-				} else {
-					maxAIPerPlayer*2
-				}				
-			} else {
+	private _playerCnt = {(_x distance2D _this) < ins_AIspawnMinRange} count playableUnits;
+	
+	switch (_playerCnt) do {
+		case 1: { 
+			maxAIPerPlayer*3
+			};
+		case 2: { 
+			maxAIPerPlayer*2
+			};
+		case 3: { 
 				round (maxAIPerPlayer*1.5)
-			}			
-		} else {
-			round (maxAIPerPlayer*1.25)
-		}
-	} else {
-		maxAIPerPlayer
-	}
+			};
+		case 4: { 
+				round (maxAIPerPlayer*1.25)
+			};
+		default { 
+			maxAIPerPlayer
+		};
+	};
 
 };

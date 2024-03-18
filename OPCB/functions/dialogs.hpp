@@ -14,16 +14,6 @@ class jey_adminconsole_dialog
 			w = 0.458333 * safezoneW;
 			h = 0.549786 * safezoneH;
 		};
-		/*class jey_getgroups: RscButton
-		{
-			idc = 1600;
-			text = "Groups"; //--- ToDo: Localize;
-			x = 0.282292 * safezoneW + safezoneX;
-			y = 0.247099 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_getgroups";
-		};*/
 		class jey_close: RscButton
 		{
 			idc = 1601;
@@ -34,18 +24,6 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "closeDialog 0";
 		};
-		/*
-		class jey_leave_spectator: RscButton
-		{
-			idc = 1622;
-			text = "Leave Spectator"; //--- ToDo: Localize;
-			x = 0.282292 * safezoneW + safezoneX;
-			y = 0.697923 * safezoneH + safezoneY;
-			w = 0.0632917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "['Terminate'] call BIS_fnc_EGSpectator;closeDialog 0";
-		};
-		*/
 		class fix_task: RscButton
 		{
 			idc = 1632;
@@ -66,88 +44,7 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "[] call CHAB_fnc_zeus";
 		};
-		/*
-		class jey_kick: RscButton
-		{
-			idc = 1602;
-			text = "Kick"; //--- ToDo: Localize;
-			x = 0.4325 * safezoneW + safezoneX;
-			y = 0.247099 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_kick";
-		};
-		class jey_ban: RscButton
-		{
-			idc = 1604;
-			text = "Ban"; //--- ToDo: Localize;
-			x = 0.4325 * safezoneW + safezoneX;
-			y = 0.327013 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_ban";
-		};
 		
-		class jey_kicklist: RscListbox
-		{
-			idc = 1500;
-			x = 0.491667 * safezoneW + safezoneX;
-			y = 0.247099 * safezoneH + safezoneY;
-			w = 0.22042 * safezoneW;
-			h = 0.175931 * safezoneH;
-		};
-		class jey_restart: RscButton
-		{
-			idc = 1605;
-			text = "Restart Mission"; //--- ToDo: Localize;
-			x = 0.282292 * safezoneW + safezoneX;
-			y = 0.510996 * safezoneH + safezoneY;
-			w = 0.0622917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "remoteExec ['CHAB_fnc_restart',2]";
-		};
-		class jey_spectator: RscButton
-		{
-			idc = 1626;
-			text = "Spectate"; //--- ToDo: Localize;
-			x = 0.282292 * safezoneW + safezoneX;
-			y = 0.598962 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_spectate;closeDialog 0";
-		};
-		
-		class jey_restart_server: RscButton
-		{
-			idc = 1625;
-			text = "Restart Server"; //--- ToDo: Localize;
-			x = 0.3625 * safezoneW + safezoneX;
-			y = 0.510996 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "remoteExec ['CHAB_fnc_restart_server',2]";
-		};
-		class jey_getpilots: RscButton
-		{
-			idc = 1606;
-			text = "Pilots"; //--- ToDo: Localize;
-			x = 0.3625 * safezoneW + safezoneX;
-			y = 0.247099 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_getpilots";
-		};
-		class jey_gettankcrew: RscButton
-		{
-			idc = 1607;
-			text = "Tank crew"; //--- ToDo: Localize;
-			x = 0.282887 * safezoneW + safezoneX;
-			y = 0.336016 * safezoneH + safezoneY;
-			w = 0.0572917 * safezoneW;
-			h = 0.0659743 * safezoneH;
-			action = "[] call CHAB_fnc_gettankcrew";
-		};
-		*/
 		class jey_day: RscButton
 		{
 			idc = 1609;
@@ -170,6 +67,7 @@ class jey_adminconsole_dialog
 		};
 	};
 };
+
 class CHAB_adminTask 
 {
 	idd = 9904;
@@ -313,6 +211,81 @@ class jey_helispawner
 	
 };
 
+class jey_dronespawner 
+{
+	idd = 9909;
+	movingEnabled = false;
+
+	class controls 
+	{
+		
+		class drone_background: RscPicture
+		{
+			idc = 1200;
+
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = -0.5 * GUI_GRID_W + GUI_GRID_X;
+			y = -0.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 44.5 * GUI_GRID_W;
+			h = 31 * GUI_GRID_H;
+		};
+		class drone_list: RscListBox
+		{
+			idc = 1500;
+			onLBSelChanged = "";
+
+			x = 0.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 1 * GUI_GRID_H + GUI_GRID_Y;
+			w = 12.2636 * GUI_GRID_W;
+			h = 24.6904 * GUI_GRID_H;
+		};
+		class drone_exit: RscButton
+		{
+			idc = 1600;
+			action = "closeDialog 0";
+
+			text = "Exit"; //--- ToDo: Localize;
+			x = 37 * GUI_GRID_W + GUI_GRID_X;
+			y = 18.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.49903 * GUI_GRID_H;
+		};
+		class drone_spawn: RscButton
+		{
+			idc = 1602;
+			action = "[] call CHAB_fnc_spawn_drone_vehicle; closeDialog 0;";
+
+			text = "Buy"; //--- ToDo: Localize;
+			x = 35 * GUI_GRID_W + GUI_GRID_X;
+			y = 5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.69895 * GUI_GRID_H;
+		};
+		class drone_picture: RscPicture
+		{
+			idc = 1618;
+
+			text = "#(argb,8,8,3)color(1,1,1,1)";
+			x = 14 * GUI_GRID_W + GUI_GRID_X;
+			y = 12 * GUI_GRID_H + GUI_GRID_Y;
+			w = 20 * GUI_GRID_W;
+			h = 11 * GUI_GRID_H;
+		};
+		class money_display: RscStructuredText
+		{
+			idc = 1001;
+
+			x = 14 * GUI_GRID_W + GUI_GRID_X;
+			y = 24 * GUI_GRID_H + GUI_GRID_Y;
+			w = 30 * GUI_GRID_W;
+			h = 3.5 * GUI_GRID_H;
+			colorText[] = {0.3,1,1,1};
+		};
+			
+	}; 
+	
+};
+
 class jey_tankspawner 
 {
 	idd = 9901;
@@ -384,6 +357,77 @@ class jey_tankspawner
 	}; 
 };
 
+class jey_boatspawner 
+{
+	idd = 74810;
+	movingEnabled = false;
+
+	class controls 
+	{
+		class boat_background: RscPicture
+		{
+			idc = 1200;
+
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = -11.5 * GUI_GRID_W + GUI_GRID_X;
+			y = -0.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 58.5 * GUI_GRID_W;
+			h = 26 * GUI_GRID_H;
+		};
+		class boat_list: RscListBox
+		{
+			idc = 1500;
+
+			x = -9.88 * GUI_GRID_W + GUI_GRID_X;
+			y = 0.2 * GUI_GRID_H + GUI_GRID_Y;
+			w = 13.6263 * GUI_GRID_W;
+			h = 24.6904 * GUI_GRID_H;
+		};
+		class boat_exit: RscButton
+		{
+			idc = 1600;
+			action = "closeDialog 0";
+
+			text = "Exit"; //--- ToDo: Localize;
+			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 17.95 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.49903 * GUI_GRID_H;
+		};
+		class boat_spawn: RscButton
+		{
+			idc = 1602;
+			action = "[] call CHAB_fnc_spawn_boat_vehicle; closedialog 0;";
+
+			text = "Buy"; //--- ToDo: Localize;
+			x = 31 * GUI_GRID_W + GUI_GRID_X;
+			y = 6.2 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.69895 * GUI_GRID_H;
+		};
+		class boat_image: RscPicture
+		{
+			idc = 1608;
+
+			text = "#(argb,8,8,3)color(1,1,1,1)";
+			x = 5 * GUI_GRID_W + GUI_GRID_X;
+			y = 4 * GUI_GRID_H + GUI_GRID_Y;
+			w = 23 * GUI_GRID_W;
+			h = 16.5 * GUI_GRID_H;
+		};
+		class money_display: RscStructuredText
+		{
+			idc = 1001;
+			colorText[] = {0.3,1,1,1};
+			x = 5 * GUI_GRID_W + GUI_GRID_X;
+			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 30 * GUI_GRID_W;
+			h = 3.5 * GUI_GRID_H;
+		};
+
+	}; 
+};
+
 class jey_remover
 {
 	idd = 9902;
@@ -430,6 +474,7 @@ class jey_remover
 		};
 	};
 };
+
 class jey_remover_tank
 {
 	idd = 9903;
@@ -476,6 +521,7 @@ class jey_remover_tank
 		};
 	};
 };
+
 class jey_spectator 
 {
 	idd = 9998;
@@ -535,7 +581,7 @@ class crateSpawner {
 		class heli_spawn: RscButton
 		{
 			idc = 1602;
-			action = "call OPCB_crateSpawner_fnc_spawnCrate; closeDialog 0;";
+			action = "[] call OPCB_crateSpawner_fnc_spawnCrate; closeDialog 0;";
 
 			text = "GIMME !"; //--- ToDo: Localize;
 			x = 31 * GUI_GRID_W + GUI_GRID_X;
@@ -566,4 +612,343 @@ class crateSpawner {
 	}; 
 	
 };
-	
+
+class bombDefusalPanel {
+	idd = 74816;
+	movingEnabled = false;
+
+	class controls {
+		class RscPicture_1800: RscPicture
+		{
+			text = "#(argb,8,8,3)color(0,0,0,1)";
+			idc = 1800;
+			x = 0.314375 * safezoneW + safezoneX;
+			y = 0.258 * safezoneH + safezoneY;
+			w = 0.350625 * safezoneW;
+			h = 0.462 * safezoneH;
+		};
+		class digitText1: RscText
+		{
+			idc = 1000;
+			text = ""; //--- ToDo: Localize;
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.335 * safezoneH + safezoneY;
+			w = 0.0309375 * safezoneW;
+			h = 0.09 * safezoneH;
+			sizeEx = 5 * GUI_GRID_H;
+			colorBackground[] = {0.376,0.376,0.376,1};
+			colorText[] = {0.216,0.863,0.239,1};
+			colorShadow[] = {0,0,0,0};
+			style = ST_CENTER + ST_MULTI;
+		};
+		class digitText2: RscText
+		{
+			idc = 1001;
+			text = ""; //--- ToDo: Localize;
+			x = 0.438125 * safezoneW + safezoneX;
+			y = 0.335 * safezoneH + safezoneY;
+			w = 0.0309375 * safezoneW;
+			h = 0.09 * safezoneH;
+			sizeEx = 5 * GUI_GRID_H;
+			colorBackground[] = {0.376,0.376,0.376,1};
+			colorText[] = {0.157,0.741,0.176,1};
+			colorShadow[] = {0,0,0,0};
+			style = ST_CENTER + ST_MULTI;
+		};
+		class digitText3: RscText
+		{
+			idc = 1002;
+			text = ""; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.335 * safezoneH + safezoneY;
+			w = 0.0309375 * safezoneW;
+			h = 0.09 * safezoneH;
+			sizeEx = 5 * GUI_GRID_H;
+			colorBackground[] = {0.376,0.376,0.376,1};
+			colorText[] = {0.157,0.741,0.176,1};
+			colorShadow[] = {0,0,0,0};
+			style = ST_CENTER + ST_MULTI;
+		};
+		class digitText4: RscText
+		{
+			idc = 1003;
+			text = ""; //--- ToDo: Localize;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.335 * safezoneH + safezoneY;
+			w = 0.0309375 * safezoneW;
+			h = 0.09 * safezoneH;
+			sizeEx = 5 * GUI_GRID_H;
+			colorBackground[] = {0.376,0.376,0.376,1};
+			colorShadow[] = {0,0,0,0};
+			colorText[] = {0.157,0.741,0.176,1};
+			style = ST_CENTER + ST_MULTI;
+		};
+		class RscButton_1600: RscButton
+		{
+			idc = 1600;
+			text = "1"; //--- ToDo: Localize;
+			x = 0.438125 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[1] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1601: RscButton
+		{
+			idc = 1601;
+			text = "2"; //--- ToDo: Localize;
+			x = 0.469062 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[2] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1602: RscButton
+		{
+			idc = 1602;
+			text = "3"; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[3] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1603: RscButton
+		{
+			idc = 1603;
+			text = "4"; //--- ToDo: Localize;
+			x = 0.438125 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[4] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1604: RscButton
+		{
+			idc = 1604;
+			text = "5"; //--- ToDo: Localize;
+			x = 0.469062 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[5] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1605: RscButton
+		{
+			idc = 1605;
+			text = "6"; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[6] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1606: RscButton
+		{
+			idc = 1606;
+			text = "7"; //--- ToDo: Localize;
+			x = 0.438125 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[7] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1607: RscButton
+		{
+			idc = 1607;
+			text = "8"; //--- ToDo: Localize;
+			x = 0.469062 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[8] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1608: RscButton
+		{
+			idc = 1608;
+			text = "9"; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[9] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class RscButton_1609: RscButton
+		{
+			idc = 1609;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.469062 * safezoneW + safezoneX;
+			y = 0.665 * safezoneH + safezoneY;
+			w = 0.020625 * safezoneW;
+			h = 0.044 * safezoneH;
+			sizeEx = 2 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[0] call CHAB_fnc_bombDefusalButtonPress;";
+		};
+		class defuseButton: RscButton
+		{
+			idc = 1610;
+			text = "Defuse"; //--- ToDo: Localize;
+			x = 0.551562 * safezoneW + safezoneX;
+			y = 0.61 * safezoneH + safezoneY;
+			w = 0.0876563 * safezoneW;
+			h = 0.055 * safezoneH;
+			sizeEx = 3 * GUI_GRID_H;
+			colorShadow[] = {0,0,0,0};
+			colorBackground[] = {0.251,0.251,0.251,1};
+			action = "[] call CHAB_fnc_bombDefusalDefuse;"
+		};
+	}
+}
+
+class staticspawner 
+{
+	idd = 74817;
+	movingEnabled = false;
+
+	class controls 
+	{
+		class background: RscPicture
+		{
+			idc = 1200;
+
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = -11.5 * GUI_GRID_W + GUI_GRID_X;
+			y = -0.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 58.5 * GUI_GRID_W;
+			h = 26 * GUI_GRID_H;
+		};
+		class list: RscListBox
+		{
+			idc = 1500;
+
+			x = -9.88 * GUI_GRID_W + GUI_GRID_X;
+			y = 0.2 * GUI_GRID_H + GUI_GRID_Y;
+			w = 13.6263 * GUI_GRID_W;
+			h = 24.6904 * GUI_GRID_H;
+		};
+		class exit: RscButton
+		{
+			idc = 1600;
+			action = "closeDialog 0";
+
+			text = "Exit"; //--- ToDo: Localize;
+			x = 35.5 * GUI_GRID_W + GUI_GRID_X;
+			y = 17.95 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.49903 * GUI_GRID_H;
+		};
+		class spawn_static: RscButton
+		{
+			idc = 1602;
+			action = "[] call CHAB_fnc_spawn_static_vehicle; closedialog 0;";
+
+			text = "Buy"; //--- ToDo: Localize;
+			x = 31 * GUI_GRID_W + GUI_GRID_X;
+			y = 6.2 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.69895 * GUI_GRID_H;
+		};
+		class image: RscPicture
+		{
+			idc = 1608;
+
+			text = "#(argb,8,8,3)color(1,1,1,1)";
+			x = 5 * GUI_GRID_W + GUI_GRID_X;
+			y = 4 * GUI_GRID_H + GUI_GRID_Y;
+			w = 23 * GUI_GRID_W;
+			h = 16.5 * GUI_GRID_H;
+		};
+		class money: RscStructuredText
+		{
+			idc = 1001;
+			colorText[] = {0.3,1,1,1};
+			x = 5 * GUI_GRID_W + GUI_GRID_X;
+			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 30 * GUI_GRID_W;
+			h = 3.5 * GUI_GRID_H;
+		};
+
+	}; 
+};	
+
+class vehicleSpawnerHistory {
+
+	idd = 74818;
+	class controls {
+
+		class PlayerTableHeader : RscControlsTable
+		{
+			idc = 20000;
+
+			x = safeZoneX + ( safeZoneW / 2 ) - GRID_X( pixelGridNoUIScale, 8, ( 15 / 2 ));
+			y = safeZoneY + GRID_Y( pixelGridNoUIScale, 8, 10 );
+			w = GRID_X( pixelGridNoUIScale, 8, 15 );
+			h = GRID_Y( pixelGridNoUIScale, 8, 1 );
+
+			//False header - only ever going to need 7 controls
+			firstIDC = ( 20000 + 1 );
+			lastIDC = ( 20000 + 8 );
+
+			headerHeight = GRID_Y( pixelGridNoUIScale, 8, 1 );
+			rowHeight = GRID_Y( pixelGridNoUIScale, 8, 1 );
+
+			lineSpacing = 0;
+			selectedRowAnimLength = 0;
+			selectedRowColorFrom[] = {0,0,0,0};
+			selectedRowColorTo[] = {0,0,0,0};
+
+			class HeaderTemplate {};
+			class HScrollbar : ScrollBar
+			{
+				height = GRID_Y( pixelGridNoUIScale, 4, 1 );
+			};
+			class RowTemplate {};
+			class VScrollbar : ScrollBar
+			{
+				width = GRID_X( pixelGridNoUIScale, 4, 1 );
+			};
+		};
+
+		class PlayerTableData : PlayerTableHeader
+		{
+			idc = 30000;
+
+			y = safeZoneY + GRID_Y( pixelGridNoUIScale, 8, 10 + 1 );
+			//enough for 10 rows to start, can change through script depending on ammount of players data
+			h = GRID_Y( pixelGridNoUIScale, 8, 1 * 10 );
+
+			//False header - only ever going to need 7 controls
+			firstIDC = ( 30000 + 1 );
+			lastIDC = ( 30000 + 1001 ) ; //1 thousand idcs, 1 row has 4 controls so is enough for 250 players data
+		};
+	};
+};

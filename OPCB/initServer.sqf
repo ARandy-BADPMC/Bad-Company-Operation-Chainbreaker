@@ -1,76 +1,89 @@
-call compile preprocessFileLineNumbers "unitTypes.sqf";
+#include "data\unitTypes.sqf"
+#include "economy\vehicleCargoSpaces.sqf";
+#include "economy\vehicleAttackTypes.sqf";
+#include "economy\crateCargoSizes.sqf";
 
+enableSaving [false, false];
+enableSentences true;
+enableTeamswitch false;
 ["Initialize"] call BIS_fnc_dynamicGroups;
-call compileFinal preprocessfilelinenumbers "functions\BADCO_skin_applier.sqf";
-call compileFinal preprocessfilelinenumbers "Scripts\BADCO_Arsenal.sqf";
+[] execVM "Scripts\ied.sqf";
 
-missionNamespace setVariable ["running_task",0];
-missionNamespace setVariable ["task_spot",[5840,5700,0]];
+Resistance setFriend [EAST, 1]; Resistance setFriend [WEST, 0]; Resistance setFriend [Civilian, 1];
 
-missionNamespace setVariable ["enemy_groups",[]];
+EAST setFriend [Resistance, 1]; EAST setFriend [WEST, 0]; EAST setFriend [Civilian, 1];	
 
-missionNamespace setVariable ["Chapo_trigger",false];
+WEST setFriend [EAST, 0]; WEST setFriend [Resistance, 0]; WEST setFriend [Civilian, 1]; 	
+
+Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [Resistance, 1];
+
+Hz_pers_var_insurgencyClearedMarkers = [];
+Hz_pers_customLoadFunction = compileFinal preprocessFileLineNumbers "Hz_pers_customLoadFunction.sqf";
+Hz_pers_firstTimeLaunchFunction = compileFinal preprocessFileLineNumbers "Hz_pers_firstTimeLaunchFunction.sqf";	
+OPCB_crateSpawner_fnc_spawnCrate_server = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_fnc_spawnCrate_server.sqf";
+
+#include "functions\BADCO_Arsenal.sqf"
 
 
-missionNamespace setVariable ["MaxTanks",0,true];
-missionNamespace setVariable ["MaxAttackHelis",0,true];
-missionNamespace setVariable ["MaxTransHelis",0,true];
-missionNamespace setVariable ["MaxAPC",0,true];
-missionNamespace setVariable ["MaxStatic",0,true];
+// tier count is 0-based in code so it goes from 9 to 0! (T10 = 9, T1 = 0)
+OPCB_econ_currentTier = 9;
+publicVariable "OPCB_econ_currentTier";	
+OPCB_econ_credits = 1000;
+publicVariable "OPCB_econ_credits";
 
-_zeus_group = createGroup sideLogic;
+IsATaskRunning = false;
+TaskNumber = 0;
+EnemyGroups = [];
+CommanderActionUnderway = false;
+DP_Queue = [];
 
-missionNamespace setVariable ["Zeus_group",_zeus_group];
+CrateCount = 0;
+publicVariable "CrateCount";
+MaxTanks = 0;
+publicVariable "MaxTanks";
+MaxAttackHelis = 0;
+publicVariable "MaxAttackHelis";
+MaxTransHelis = 0;
+publicVariable "MaxTransHelis";
+MaxAPC = 0;
+publicVariable "MaxAPC";
+MaxBoats = 0;
+publicVariable "MaxBoats";
+
+VehicleSpawnerHistory = [];
+publicVariable "VehicleSpawnerHistory";
 
 {
 	_x allowDamage false;
 	[_x, "LISTEN_BRIEFING", "Light"] call BIS_fnc_ambientAnim;
-} forEach [officer_jeff,tank_spawner,heli_jeff]; 
+} forEach [officer_jeff,tank_spawner,heli_jeff,boat_jeff_1]; 
 
 globalWaterPos = [3067.06,16839.7,10.1122]; //universal for all maps, has to be changed manually 
 
+CityMarker = createMarker ["citymarker",  getpos officer_jeff];
 
-/*
-/\
-||
+_axis = worldSize / 2;
+_center = [_axis, _axis , 0];
 
-Result:
-0.116768 ms
+#include "data\blackListedCities.sqf";
 
-Cycles:
-8564/10000
-
-old results:
-
-Result:
-0.242012 ms
-
-Cycles:
-9651/10000
-*/ //if you want to check execution time : BIS_fnc_codePerformance; 
-
-
-//[7427,7955,0] [7480,13351,0] [1403.27,7529.75,0]
-/*
-
-11680
-[5840,5700,0];
-11400
-
-*/
-missionNamespace setVariable ["World_center",[5840,5700,0]];
-_citymarker = createMarker ["citymarker",  getpos officer_jeff];
-missionNamespace setVariable ["citymarker",_citymarker];
-
-_nearbyLocations = nearestLocations [[5840,5700,0], ["NameCity","NameCityCapital","NameVillage"], 8000];
-/*
-{
-	_marker1 = createMarker ["Marker"+ str _x, getPos _x];
-	_marker1 setMarkerType "hd_objective";
-} forEach _nearbyLocations;*/
-
-missionNamespace setVariable ["Cities",_nearbyLocations];
+Cities = nearestLocations [_center, ["NameCity","NameCityCapital","NameVillage"], _axis] select { !((text _x) in _blackListedCities)};
 
 // for AI -- let's see if this strains the server too much (with more AI)
 setViewDistance 3500;
 setObjectViewDistance 3500;
+
+boat_jeff_1 disableConversation true;
+tank_spawner disableConversation true;
+heli_jeff disableConversation true;
+jeff disableConversation true;
+
+addMissionEventHandler ["PlayerDisconnected", {
+	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+	{
+		_playerUid = _x getVariable "ZeusUser";
+		if(isNil "_playerUid" || _playerUid == _uid) then {
+			deleteVehicle _x
+		};
+	} forEach allCurators;
+}];

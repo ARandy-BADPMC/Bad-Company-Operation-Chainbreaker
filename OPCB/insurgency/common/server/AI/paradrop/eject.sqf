@@ -13,12 +13,19 @@
    0 = [vehicle, altitude] execVM "eject.sqf"
 */  
 
-private ["_paras","_vehicle","_chuteHeight","_dir"];
+private ["_paras","_vehicle","_chuteHeight","_dir", "_paragrp", "_side"];
 _vehicle = _this select 0; 
 _chuteheight = if ( count _this > 1 ) then { _this select 1 } else { 100 };
 //_vehicle allowDamage false;
 _paras = if ( count _this > 2 ) then { _this select 2 } else { assignedcargo _vehicle };
-_dir = direction _vehicle;    
+_dir = direction _vehicle;
+_side = side _vehicle;
+
+_paragrp = createGroup _side;
+_paras joinSilent _paragrp;
+_paragrp deleteGroupWhenEmpty true;
+_paragrp setBehaviour "COMBAT";
+_paragrp setCombatMode "RED";
 
 {
 	_inv = name _x;// Get Unique name for Unit's loadout.
@@ -32,10 +39,12 @@ _dir = direction _vehicle;
 	moveout _x;
 	_x setDir (_dir + 90);// Exit the chopper at right angles.
 	sleep 3;
-} forEach _paras;
-
-//_vehicle allowDamage true;
-
-{ 
 	[_x,_chuteheight] spawn paraLandSafe;
 } forEach _paras;
+
+_paragrp leaveVehicle _vehicle;
+
+sleep 600;
+[leader _paragrp, "", "noslow", "nowait", ""] execVM "insurgency\common\server\AI\UPS.sqf";
+
+//_vehicle allowDamage true;

@@ -22,4 +22,4 @@ OpenPlayerChute =
 	_paraPlayer action ["openParachute", _paraPlayer];
 };
 
-paraEject = compile preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\eject.sqf";
+paraEject = compileFinal preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\eject.sqf";

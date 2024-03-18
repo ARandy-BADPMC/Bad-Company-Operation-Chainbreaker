@@ -28,7 +28,7 @@ aiMonitorRemote = {
 	_gun = _this select 2;
 	if !isNull _ai then {
 		_ai reveal _plr;
-		_ai setUnitPos "UP";
+		//_ai setUnitPos "UP";
 		//_ai doWatch _plr;
 		_ai doWatch (getpos _plr);
 		_ai doMove getPosATL _plr;

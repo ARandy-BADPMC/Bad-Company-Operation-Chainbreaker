@@ -35,7 +35,7 @@
 #define SHAREDIST (worldSize/8)
 
 // how long AI units should be in alert mode after initially spotting an enemy
-#define ALERTTIME 300
+#define ALERTTIME 900
 
 private __CENTERPOS = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition");
 __CENTERPOS set [2, 0];
@@ -62,6 +62,8 @@ nearestPlayers = {
 };
 	
 #define nearestPlayers(W,X,Y,Z)	([W,X,Y,Z] call nearestPlayers)
+
+scriptName "ins_vehiclePatrol";
 
 // ---------------------------------------------------------------------------------------------------------
 //echo format["[K] %1",_this]; 
@@ -155,12 +157,18 @@ _isLandVehicle = _npc isKindOf "LandVehicle";
 _isboat = _npc isKindOf "Ship"; 
 _isair = _npc isKindOf "Air"; 
 
+if (_isair) then {
+	_npc flyInHeight 250;
+};
+
 _vicHasNoGun = false;
 
 if (_isLandVehicle) then {
 	_npc setUnloadInCombat [true, true];
 	if ((isNull (gunner _npc)) && {(_npc emptyPositions "Gunner") == 0}) then {
 		_vicHasNoGun = true;
+	} else {
+		_npc allowCrewInImmobile true;
 	};
 } else {
 	_npc setUnloadInCombat [false, false];
@@ -180,9 +188,10 @@ if (_issoldier) then {
 		case west:
 			{ _friends=_friends+KRON_AllWest; _enemies=_enemies+KRON_AllEast+KRON_AllRes; _sharedenemy=0; }; 
 		case east:
-			{ _friends=_friends+KRON_AllEast; _enemies=_enemies+KRON_AllWest+KRON_AllRes; _sharedenemy=1; }; 
+			{ _friends=_friends+KRON_AllEast+KRON_AllRes; _enemies=_enemies+KRON_AllWest; _sharedenemy=1; }; 
 		case resistance:
-			{ _enemies=_enemies+KRON_AllEast+KRON_AllWest; _sharedenemy=2; }; 
+			// Hunter: easy to do TODO above but resistance is always enemies with west for us
+			{ _friends=_friends+KRON_AllEast+KRON_AllRes; _enemies=_enemies+KRON_AllWest; _sharedenemy=2; }; 
 	}; 
 	{ 
 		_friends=_friends-[_x]; 
@@ -350,13 +359,6 @@ while { _loop} do {
 	//Hunter: update enemies and point it to players 
 	_enemies = nearestPlayers(getPosATL _npc,20000,true,"array");
 	
-	if ((count allplayers) == 0) then {
-		{
-			(vehicle _x) setpos [50000,50000,0];
-			(vehicle _x) setDamage 1;
-		} foreach _members;
-	};
-	
 	// did anybody in the group got hit?
 	_newdamage=0; 
 	{ 
@@ -392,12 +394,22 @@ while { _loop} do {
 	if (count _members==0) then { 
 		_exit=true; 
 		if (KRON_UPS_Debug) then { server globalChat format["UPS group %1 all dead or surrendered", _grpidx]; };
-		//deleteGroup (group _npc);
-		sleep (300+(random aiVehicleRespawnTime));
-		(call compile _grpidx) call spawnAIVehicle;
 	} else { 
 		// did the leader die?
-		if (!alive _npc) then { 
+		// Hunter: handle disabled vehicles so the show can go on
+		if ((!alive _npc) || {!canMove _npc}) then {
+			if ((alive _npc) && {!canMove _npc}) then {
+				[_npc, _grp] spawn {
+					params ["_npc", "_grp"];
+					sleep 600;
+					_grp leaveVehicle _npc;
+					(units _grp) orderGetIn false;
+					(units _grp) allowGetIn false;
+					{
+						unassignVehicle _x;
+					} foreach (units _grp);
+				};
+			};
 			_npc = _members select 0; 
 			group _npc selectLeader _npc;
 			_isman = _npc isKindOf "Man"; 
@@ -478,6 +490,7 @@ while { _loop} do {
 				} forEach crew _npc;
 				if ((count _paradroppers) > 0) then {
 					[_npc,100,_paradroppers] spawn paraEject;
+					_members = _members - _paradroppers;
 				};
 			};
                         
@@ -581,16 +594,67 @@ while { _loop} do {
 			
 			// we're either close enough, seem to be stuck, or are getting damaged, so find a new target 
 			if ((!_swimming) && ((_dist<=_closeenough) || (_totmove<.2) || (_dammchg>0.01) || (_curTimeontarget>ALERTTIME))) then {
-			
-				_makenewtarget=true; 
+							
 				// Hunter: try to get stuck ones moving again...
-					if (_totmove<.2) then {
+				if (_isLandVehicle && {_totmove<.2}) then {
+					
+					/*
 					{
 						(vehicle _x) doMove _targetPos;
 					} foreach (_members select {_x == (effectiveCommander vehicle _x)});
 					sleep 60;
+					*/
+					doStop _npc;
+					sleep 1;
+					_agent = objNull;
+					isNil {
+						_agent = calculatePath [typeof _npc, "CARELESS", getPosASL _npc, _targetPos];
+						_agent setVariable ["unit",_npc];
+						
+						_agent addEventHandler ["PathCalculated", {
+						
+							params ["_agent", "_path"];
+							
+							// ignore EH firing a second time (known bug)
+							if ((isNull _agent) || {_agent getVariable ["pathCalculated", false]}) exitWith {};		
+							_agent setVariable ["pathCalculated", true];
+							
+							{
+								_x pushBack 20;
+							} foreach _path;
+							
+							(_agent getVariable "unit") setDriveOnPath _path;
+							
+							_vehAgent = vehicle _agent;
+							if (_vehAgent == _agent) then {
+								deletevehicle _agent;
+							} else {
+								{_vehAgent deleteVehicleCrew _x} foreach crew _vehAgent;
+							};
+							deleteVehicle _vehAgent;
+							
+						}];
+					};
+					sleep 15;
+					
+					if (!isNull _agent) then {
+						_vehAgent = vehicle _agent;
+						if (_vehAgent == _agent) then {
+							deletevehicle _agent;
+						} else {
+							{_vehAgent deleteVehicleCrew _x} foreach crew _vehAgent;
+						};
+						deleteVehicle _vehAgent;
+					};
+					
+					{
+						_x doMove _targetPos;
+					} foreach (_members select {((vehicle _x) == _x) && {(speed _x) < 1}});
+					
+				} else {
+					_makenewtarget=true;
 				};
-			
+				
 			}; 
 
 			// in 'attack (approach) mode', so follow the flanking path (don't make it too predictable though)
@@ -673,10 +737,13 @@ while { _loop} do {
 			// reset patrol speed after following enemy for a while
 			if (_curTimeontarget>ALERTTIME) then { 
 				_fightmode="walk"; 
-				_speedmode = _orgSpeed; 
+				_speedmode = _orgSpeed;
+				_members allowGetIn true;
+				_members orderGetIn true;
+				sleep 10;
 				{ 
 					_vcl = vehicle _npc; 
-					if (_vcl != _npc && !(_x in _vcl)) then { _x moveInCargo _vcl; _x assignAsCargo _vcl; }; 
+					if (_vcl != _npc && !(_x in _vcl)) then {_x assignAsCargo _vcl; _x moveInCargo _vcl;}; 
 					_x setSpeedMode _speedmode; 
 					_x setBehaviour _orgMode; 
 					_x setCombatMode "YELLOW";

@@ -25,10 +25,6 @@ class chainbreaker
 		{
 			file = "functions\missions\El_Chapo.sqf";
 		};
-		class Neutralize2
-		{
-			file = "functions\missions\Neutralize2.sqf";
-		};
 		class Neutralize
 		{
 			file = "functions\missions\Neutralize.sqf";
@@ -40,6 +36,10 @@ class chainbreaker
 		class Technology
 		{
 			file = "functions\missions\Technology.sqf";
+		};
+		class Bomb
+		{
+			file = "functions\missions\Bomb.sqf";
 		};
 		class Destroy
 		{
@@ -89,10 +89,6 @@ class chainbreaker
 		{
 			file = "functions\missions\gdrunken_spawn.sqf";
 		};
-		class reinforcement
-		{
-			file = "functions\missions\reinforcement.sqf";
-		};
 		class retrieve_create
 		{
 			file = "functions\retrieve_create.sqf";
@@ -111,7 +107,7 @@ class chainbreaker
 		};
 		class roadblock_rus
 		{
-			file = "functions\missions\roadblock.sqf";
+			file = "functions\missions\roadblock_rus.sqf";
 		};
 		class roadblock_ins
 		{
@@ -121,17 +117,9 @@ class chainbreaker
 		{
 			file = "functions\missions\spawn_city_rus.sqf";
 		};
-		class spawn_ins
+		class enemySpawner
 		{
-			file = "functions\spawn_ins.sqf";
-		};
-		class spawn_rus
-		{
-			file = "functions\spawn_rus.sqf";
-		};
-		class spawn_nat
-		{
-			file = "functions\spawn_nat.sqf";
+			file = "functions\enemySpawner.sqf";
 		};
 		class spawn_city_ins 
 		{
@@ -149,13 +137,29 @@ class chainbreaker
 		{
 			file = "functions\missions\idap_fn.sqf";
 		};
-		class fire_artilerry  
+		class fire_artillery  
 		{
-			file = "functions\missions\fire_artilerry.sqf";
+			file = "functions\missions\fire_artillery.sqf";
 		};
-		class artilerry  
+		class artillery  
 		{
-			file = "functions\missions\artilerry.sqf";
+			file = "functions\missions\artillery.sqf";
+		};
+		class bombDefusalButtonPress  
+		{
+			file = "functions\missionSpecific\bombDefusalButtonPress.sqf";
+		};
+		class bombDefusalDefuse
+		{
+			file = "functions\missionSpecific\bombDefusalDefuse.sqf";
+		};
+		class bombDefusalDefuse_server
+		{
+			file = "functions\missionSpecific\bombDefusalDefuse_server.sqf";
+		};
+		class bombDefusalHack_server
+		{
+			file = "functions\missionSpecific\bombDefusalHack_server.sqf";
 		};
 	};
 	class miscellaneous
@@ -164,21 +168,25 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\nearest.sqf";
 		}; 
-		class lander_action
+		class findFlowerPots
 		{
-			file = "functions\miscellaneous\lander_action.sqf";
-		};
-		class lander
+			file = "functions\miscellaneous\findFlowerPots.sqf";
+		}; 
+		class setVehicleLock
 		{
-			file = "functions\miscellaneous\lander.sqf";
-		};
+			file = "functions\miscellaneous\setVehicleLock.sqf";
+		}; 
 		class findSpot
 		{
 			file = "functions\findSpot.sqf";
 		};
-		class shk_patrol
+		class vehicleDeleteCheck
 		{
-			file = "functions\shk_patrol.sqf";
+			file = "functions\vehicleDeleteCheck.sqf";
+		};
+		class commanderActions
+		{
+			file = "functions\commanderActions.sqf";
 		};
 		class playerScale
 		{
@@ -188,28 +196,21 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\serverGroups.sqf";
 		};
-	};
-	class choppers
-	{
-		class checkpilot 
+		class setStaticVehicleLock
 		{
-			file = "functions\miscellaneous\checkpilot.sqf";
+			file = "functions\miscellaneous\setStaticVehicleLock.sqf";
 		};
-		class checkdriver 
+		class deathPenalty
 		{
-			file = "functions\miscellaneous\checkdriver.sqf";
+			file = "functions\miscellaneous\deathPenalty.sqf";
 		};
-		class checkjetpilot
+		class deathPenaltyQueue
 		{
-			file = "functions\miscellaneous\checkjetpilot.sqf";
+			file = "functions\miscellaneous\deathPenaltyQueue.sqf";
 		};
-		class checkengine
+		class vehicleSpawnerHistory
 		{
-			file = "functions\miscellaneous\checkengine.sqf";
-		};
-		class checktankengine
-		{
-			file = "functions\miscellaneous\checktankengine.sqf";
+			file = "functions\miscellaneous\vehicleSpawnerHistory.sqf";
 		};
 	};
 	class admin_menu
@@ -226,38 +227,6 @@ class chainbreaker
 		{
 			file = "functions\adminconsole\admin_order_task.sqf";
 		};
-		class kick
-		{
-			file = "functions\adminconsole\kick.sqf";
-		};
-		class hint
-		{
-			file = "functions\adminconsole\hint.sqf";
-		};
-		class restart_server
-		{
-			file = "functions\adminconsole\restart_server.sqf";
-		};
-		class ban
-		{
-			file = "functions\adminconsole\ban.sqf";
-		};
-		class ban_server
-		{
-			file = "functions\adminconsole\ban_server.sqf";
-		};
-		class kick_server
-		{
-			file = "functions\adminconsole\kick_server.sqf";
-		};
-		class getgroups
-		{
-			file = "functions\adminconsole\getgroups.sqf";
-		};
-		class restart
-		{
-			file = "functions\adminconsole\restart.sqf";
-		};
 		class zeus
 		{
 			file = "functions\adminconsole\zeus.sqf";
@@ -265,18 +234,6 @@ class chainbreaker
 		class zeus_server
 		{
 			file = "functions\adminconsole\zeus_server.sqf";
-		};
-		class getpilots
-		{
-			file = "functions\adminconsole\getpilots.sqf";
-		};
-		class gettankcrew
-		{
-			file = "functions\adminconsole\gettankcrew.sqf";
-		};
-		class spectate
-		{
-			file = "functions\adminconsole\spectate.sqf";
 		};
 		class skip12
 		{
@@ -314,6 +271,37 @@ class chainbreaker
 			file = "functions\tankspawner\tank_restriction.sqf";
 		};
 	};
+	class staticspawner
+	{
+		class spawn_static
+		{
+			file = "functions\tankspawner\spawn_static.sqf";
+		};
+		class spawn_static_server
+		{
+			file = "functions\tankspawner\spawn_static_server.sqf";
+		};
+		class spawn_static_vehicle
+		{
+			file = "functions\tankspawner\spawn_static_vehicle.sqf";
+		};
+	};
+
+	class boatspawner
+	{
+		class spawn_boat
+		{
+			file = "functions\boatspawner\spawn_boat.sqf";
+		};
+		class spawn_boat_server
+		{
+			file = "functions\boatspawner\spawn_boat_server.sqf";
+		};
+		class spawn_boat_vehicle
+		{
+			file = "functions\boatspawner\spawn_boat_vehicle.sqf";
+		};
+	};
 	class helispawner
 	{
 		class deletebutton_heli
@@ -336,24 +324,36 @@ class chainbreaker
 		{
 			file = "functions\helispawner\spawn_heli.sqf";
 		}; 
+		class spawn_drone
+		{
+			file = "functions\helispawner\spawn_drone.sqf";
+		}; 
 		class spawn_heli_vehicle
 		{
 			file = "functions\helispawner\spawn_heli_vehicle.sqf";
+		};
+		class spawn_drone_vehicle
+		{
+			file = "functions\helispawner\spawn_drone_vehicle.sqf";
 		};
 		class spawn_helicopter_server
 		{
 			file = "functions\helispawner\spawn_helicopter_server.sqf";
 		};
 	};
-	class player_required
-	{
-		class whitelist
-		{
-			file = "functions\playerreq\whitelist.sqf";
-		};
-		class setServerVariables
-		{
-			file = "functions\playerreq\setServerVariables.sqf";
-		};
-	};
 };
+class badco
+{
+	tag = "BADCO";
+	class miscellaneous
+	{
+		class classCheck
+		{
+			file = "functions\BADCO_class_check.sqf";
+		};
+		class skinApplier
+		{
+			file = "functions\BADCO_skin_applier.sqf";
+		};
+	}
+}

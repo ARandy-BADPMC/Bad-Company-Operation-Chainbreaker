@@ -42,11 +42,13 @@ ins_allMarkerCount = count _markerPositions;
 ins_halfMarkerCount = round (ins_allMarkerCount*0.55);
 
 
-call compile preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\init.sqf";
+call compileFinal preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\init.sqf";
 
 cleanupVics = [];
 
 [] spawn {
+
+	scriptName "ins_roofGunSpawner";
 
 	#ifdef ENABLE_PERSISTENCY
 		waitUntil {
@@ -62,6 +64,18 @@ cleanupVics = [];
 	#endif
 
 };
-[] spawn { call spawnAIVehicles; };
+
+[] spawn {
+
+	scriptName "ins_vehiclePatrolsHandler";
+	
+	waitUntil {
+		sleep 10;
+		(count playableUnits) > 1
+	};
+
+	call spawnAIVehicles; 
+
+};
 
 #include "server\mainLoop.sqf"

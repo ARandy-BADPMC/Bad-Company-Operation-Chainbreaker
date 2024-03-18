@@ -1,10 +1,5 @@
 params ["_tierType", "_tier"];
 
-if (!(_tierType in ["INF", "ENG", "AIR"])) exitWith {
-	hintc "ERROR in code. Tier type must be either INF, ENG or AIR!";
-	diag_log "ERROR in code. Tier type must be either INF, ENG or AIR!";
-};
-
 private _cost = 0;
 
 switch (_tierType) do {
@@ -13,16 +8,16 @@ switch (_tierType) do {
 		
 		_cost = switch (_tier) do {
 		
-			case 9: {20};
-			case 8: {40};
-			case 7: {60};
-			case 6: {80};
-			case 5: {100};
-			case 4: {120};
-			case 3: {160};
-			case 2: {180};
-			case 1: {200};
-			case 0: {220};
+			case 9: {30};
+			case 8: {60};
+			case 7: {90};
+			case 6: {110};
+			case 5: {130};
+			case 4: {150};
+			case 3: {170};
+			case 2: {190};
+			case 1: {210};
+			case 0: {230};
 			
 		};
 		
@@ -32,16 +27,16 @@ switch (_tierType) do {
 		
 		_cost = switch (_tier) do {
 		
-			case 9: {30};
-			case 8: {60};
-			case 7: {90};
-			case 6: {120};
-			case 5: {150};
-			case 4: {180};
-			case 3: {240};
-			case 2: {270};
-			case 1: {300};
-			case 0: {330};
+			case 9: {40};
+			case 8: {70};
+			case 7: {110};
+			case 6: {150};
+			case 5: {190};
+			case 4: {240};
+			case 3: {290};
+			case 2: {330};
+			case 1: {380};
+			case 0: {420};
 			
 		};
 		
@@ -51,19 +46,81 @@ switch (_tierType) do {
 		
 		_cost = switch (_tier) do {
 		
-			case 9: {40};
-			case 8: {80};
-			case 7: {120};
-			case 6: {160};
-			case 5: {200};
-			case 4: {240};
-			case 3: {320};
-			case 2: {360};
-			case 1: {400};
-			case 0: {440};
+			case 9: {60};
+			case 8: {100};
+			case 7: {130};
+			case 6: {210};
+			case 5: {290};
+			case 4: {390};
+			case 3: {490};
+			case 2: {590};
+			case 1: {670};
+			case 0: {740};
 			
 		};
 		
+	};
+
+	case "DRONE" : {
+		
+		_cost = switch (_tier) do {
+		
+			case 9: {5};
+			case 8: {10};
+			case 7: {15};
+			case 6: {20};
+			case 5: {20};
+			case 4: {20};
+			case 3: {20};
+			case 2: {20};
+			case 1: {20};
+			case 0: {20};
+			
+		};
+		
+	};
+	
+	case "SEA" : {
+		
+		_cost = switch (_tier) do {
+		
+			case 9: {5};
+			case 8: {15};
+			case 7: {20};
+			case 6: {25};
+			case 5: {40};
+			case 4: {200};
+			case 3: {200};
+			case 2: {200};
+			case 1: {200};
+			case 0: {200};
+			
+		};
+		
+	};
+	
+	case "STAT" : {
+		
+		_cost = switch (_tier) do {
+		
+			case 9: {5};
+			case 8: {10};
+			case 7: {15};
+			case 6: {20};
+			case 5: {25};
+			case 4: {35};
+			case 3: {45};
+			case 2: {65};
+			case 1: {80};
+			case 0: {100};
+			
+		};
+		
+	};
+
+	default {
+		hintc "ERROR in code. Tier type not recognized!";
+		diag_log "ERROR in code. Tier type not recognized!";
 	};
 
 };

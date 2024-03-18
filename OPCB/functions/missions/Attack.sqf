@@ -1,31 +1,21 @@
-private _reward = 40;
-params ["_base","_current_tasknumber"];
-_cities = missionNamespace getVariable["Cities",0];
-_city = selectRandom _cities;
+params ["_current_tasknumber", "_reward"];
+
+_city = selectRandom Cities;
 _citypos = locationPosition _city;
-_citymarker = missionNamespace getVariable ["citymarker",_citypos];
-_citymarker setMarkerPos _citypos;
-[_current_tasknumber ,west,["The area has been overrun by OPFOR. Re-capture it.","Re-capture",_citymarker],getMarkerPos _citymarker,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
-_guardgroup = createGroup [east,true];
-_guard = _guardgroup createUnit [OPCB_unitTypes_inf_commander, getMarkerPos _citymarker, [], 2, "NONE"];
-_guardpos = getPos _guard;
-[_guard] call CHAB_fnc_spawn_city_rus;
-_trg = createTrigger ["EmptyDetector", _guardpos,true];
-_trg setTriggerArea [450, 450, 0, false];
-_trg setTriggerActivation ["EAST", "NOT PRESENT", false];
-_trg setTriggerStatements ["this", "", ""];
-[_guard,10,2,2] call CHAB_fnc_spawn_rus;
+
+CityMarker setMarkerPos _citypos;
+
+[_current_tasknumber ,west,["The area has fallen under the control of OPFOR, jeopardizing the safety and stability of the region. Our mission is to reclaim the area, neutralize the enemy forces, and restore order to prevent further harm to the local population. The primary objective of this operation is to re-capture the area overrun by OPFOR and re-establish control. By swiftly neutralizing the enemy forces and restoring stability, we aim to create a secure environment that allows for the safe return of the local population and the resumption of normal activities.","Operation Victory Reclaim",CityMarker],_citypos,"ASSIGNED",10,true,true,"attack",true] call BIS_fnc_setTask;
+
+[_citypos] call CHAB_fnc_spawn_city_rus;
+
+[_citypos,east] call CHAB_fnc_enemySpawner;
 
 [] call CHAB_fnc_enemycount;
-waitUntil {
-	sleep 10;
-	triggerActivated _trg
-};
+
 [_current_tasknumber, "SUCCEEDED",true] call BIS_fnc_taskSetState;
 OPCB_econ_credits = OPCB_econ_credits + _reward;
 publicVariable "OPCB_econ_credits";
     
 (format ["You earned %1 C for successfully completing the mission!", _reward]) remoteExec ["hint"];
-[_base] call CHAB_fnc_endmission;
-
-deleteVehicle _trg;
+[_citypos] call CHAB_fnc_endmission;

@@ -1,53 +1,41 @@
+params ["_radius", ["_basePos", markerPos "base_marker"], ["_maxRange", 0]];
 
-_howBig = _this select 0;
+if(_radius > 200) exitWith{};
 
-if (_howBig < 500) then {
+private _taskSpot = [0,0,0];
+private _list = [];
+private _suitableSpots = [];
+private ["_step","_prevStep","_spot","_heading", "_suitable"];
 
-	missionNamespace setVariable["task_underway",true];
+private _iter = ((ceil (worldSize/500)) - 5) max 10;
+private _minDistance = 2000;
+
+if(_maxRange == 0) then {
+	_maxRange = worldSize / 2;
+	_minDistance = 100;
+};
+
+for "_i" from 1 to _iter do {
 	
-	_suitableSpots = [];
-	
-	private ["_step","_prevStep","_spot","_heading"];
-	
-	_startingDist = 2500;
-	
-	_iter = ((ceil (worldSize/500)) - 5) max 10;
-	
-	for "_i" from 1 to _iter do {
+	_suitable = [0,0,0];	
+	private _infiniteCounter = 0;
+	while {count _suitable == 3 || {surfaceIsWater _suitable} || {_infiniteCounter > 1000}} do {
 		
-		_suitable = [0,0,0];	
-		_list = [];
-
-		while {((count _suitable) == 3) || {count _list > 0}} do {
-			
-			_suitable = [markerpos "base_marker", 2000, _startingDist, 10, 0, 0.7] call BIS_fnc_findSafePos;
-			
-			if ((count _suitable) == 3) then {
-				_startingDist = worldSize min (_startingDist + 500);
-			} else {
-				_list = nearestTerrainObjects [_suitable,["TREE","BUILDING","RUIN","ROCK","HOUSE"], _howBig,false];
-			};		
-			
-		};
-		
+		private _rndPos = _basePos getPos[random [_minDistance,_maxRange/2, _maxRange] ,random 360];
+		_suitable = [_rndPos, 0, _maxRange, 1, 0, 0.3, 0, ["base_marker"]] call BIS_fnc_findSafePos;
+		_infiniteCounter = _infiniteCounter + 1;
+	};
+	if(_infiniteCounter < 1000) then {
 		_suitableSpots pushBack _suitable;
-		
-		_startingDist = worldSize min (_startingDist + 500);
-	
 	};
 
-	missionNamespace setVariable ["task_spot", selectRandom _suitableSpots];
-	
-	/*
-	// test code
-	_marker = createMarker [str random 1000, task_spot];
-	_marker setMarkerType "hd_destroy";
-	_marker setMarkerColor "ColorRed";
-	player setpos task_spot;
-	*/
-	
-}
-else
-{
-	missionNamespace setVariable ["task_spot",[0,0,0]];
 };
+_taskSpot = selectRandom _suitableSpots;
+	
+_list = nearestTerrainObjects [_taskSpot,[], _radius,false];
+
+{
+	_x hideObjectGlobal true;
+} forEach _list;
+
+[_taskSpot select 0, _taskSpot select 1, 0]
