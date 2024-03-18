@@ -14,7 +14,14 @@ switch (toLower worldName) do {
 		];
 		
 		eastInfClasses_t2 = [
-			"LOP_SLA_Infantry_AA"			
+			"LOP_SLA_Infantry_AA",
+			"LOP_SLA_Infantry_GL",
+			"LOP_SLA_Infantry_Corpsman",
+			"LOP_SLA_Infantry_AT",
+			"LOP_SLA_Infantry_MG",
+			"LOP_SLA_Infantry_Marksman",
+			"LOP_SLA_Infantry_Rifleman",
+			"LOP_SLA_Infantry_Rifleman_2"			
 		];
 		
 		eastInfClasses_t3 = [
