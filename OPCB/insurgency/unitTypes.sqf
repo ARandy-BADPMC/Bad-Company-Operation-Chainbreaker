@@ -36,7 +36,7 @@ switch (toLower worldName) do {
 		];
 		
 		eastInfClasses_t4 = [
-			""			
+			"LOP_RACS_Infantry_Rifleman_3"			
 		];
 		
 		eastInfClasses_t5 = [
@@ -55,7 +55,7 @@ switch (toLower worldName) do {
 		];
 		
 		eastInfClasses_t6 = [
-			""			
+			"LOP_PMC_Infantry_Rifleman_4"			
 		];
 		
 		vclCrewClass_t1 = "LOP_SLA_Infantry_Rifleman_2";
