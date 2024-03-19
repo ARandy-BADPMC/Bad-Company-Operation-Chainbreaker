@@ -20,11 +20,13 @@ ins_gridMarkers = [];
 		_mkr setMarkerSizeLocal [50,50]; 
 		_mkr setMarkerAlphaLocal 0.2; 
 	};
-	_var = missionNamespace getVariable format["%1cleared", _mkr];
+	_var = missionNamespace getVariable format["%1cleared", _mkr];	
 	if isNil "_var" then {
-		_mkr setMarkerColorLocal "ColorRed"; 
-		ins_gridMarkers pushBack _mkr;
+		_mkr setMarkerColorLocal "ColorRed";		
 	} else {
 		_mkr setMarkerColorLocal "ColorGreen";
 	};
+	
+	ins_gridMarkers pushBack _mkr;
+	
 } forEach (_houses select {(_x distance _base) > 750});
