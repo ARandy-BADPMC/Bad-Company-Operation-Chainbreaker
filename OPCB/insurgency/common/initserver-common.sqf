@@ -71,7 +71,7 @@ cleanupVics = [];
 	
 	waitUntil {
 		sleep 10;
-		(count playableUnits) > 1
+		((count playableUnits) > 1) || {!isMultiplayer}
 	};
 
 	call spawnAIVehicles; 

@@ -52,10 +52,13 @@ spawnAIVehicle = {
 	}; 
 		
 	{
-		_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
-		_ai setRank (eastRanks select 0);
-		_ai assignAsTurret [_vcl, _x];
-		_ai moveInTurret [_vcl, _x];
+		// RHS has some weird configs so we have to check if they're "actual" turrets...
+		if (!(_vcl lockedTurret _x)) then {
+			_ai = _grp createUnit [vclCrewClass, _pos, [], 100, "None"];
+			_ai setRank (eastRanks select 0);
+			_ai assignAsTurret [_vcl, _x];
+			_ai moveInTurret [_vcl, _x];
+		};
 	} foreach allTurrets [_vcl, false];
 	
 	// above doesn't seem to cover some vehicle types fully...
