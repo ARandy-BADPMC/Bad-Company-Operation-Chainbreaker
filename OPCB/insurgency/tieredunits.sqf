@@ -103,7 +103,11 @@
 			"LOP_RACS_Landrover",
 			"LOP_RACS_M113_W",
 			"LOP_IRAN_AH1Z_WD",
-			"LOP_IRAN_CH47F"
+			"LOP_IRAN_CH47F",
+			"LOP_RACS_UH60M",
+			"rhsgref_cdf_t80bv_tv",
+			"rhsusf_m1a1hc_wd",
+			"I_C_Offroad_02_AT_F"
 
 		];
 
