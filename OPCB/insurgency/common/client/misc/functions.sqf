@@ -37,38 +37,38 @@ moveInVehicle = {
 };  
 
 updateTier = {
-	completionRatio = (count Hz_pers_var_insurgencyClearedMarkers) / ins_allMarkerCount * 100;
-	worldTiers = tieredUnits get toLower worldName;
+	_completionRatio = (count Hz_pers_var_insurgencyClearedMarkers) / ins_allMarkerCount * 100;
+	_worldTiers = tieredUnits get toLower worldName;
 
-	infantryTiers = worldTiers get "infantry_tiers";
-	infantryNumberTiers = count infantryTiers;
-	insurgentsTier = ceil(completionRatio / 100 * infantryNumberTiers);
-	if (insurgentsTier == 0) then {
-		insurgentsTier = 1;
+	_infantryTiers = _worldTiers get "infantry_tiers";
+	_infantryNumberTiers = count _infantryTiers;
+	_insurgentsTier = ceil(_completionRatio / 100 * _infantryNumberTiers);
+	if (_insurgentsTier == 0) then {
+		_insurgentsTier = 1;
 	};
-	eastInfClasses = infantryTiers get insurgentsTier;
+	eastInfClasses = _infantryTiers get _insurgentsTier;
 
-	vehicleCrewTiers = worldTiers get "vehicle_crew_tiers";
-	vehicleNumberTiers = count vehicleCrewTiers;
-	insurgentsTier = ceil(completionRatio / 100 * vehicleNumberTiers);
-	if (insurgentsTier == 0) then {
-		insurgentsTier = 1;
+	_vehicleCrewTiers = _worldTiers get "vehicle_crew_tiers";
+	_vehicleNumberTiers = count _vehicleCrewTiers;
+	_insurgentsTier = ceil(completionRatio / 100 * _vehicleNumberTiers);
+	if (_insurgentsTier == 0) then {
+		_insurgentsTier = 1;
 	};
-	vclCrewClass = vehicleCrewTiers get insurgentsTier;
+	vclCrewClass = _vehicleCrewTiers get _insurgentsTier;
 
-	staticCrewTiers = worldTiers get "static_crew_tiers";
-	StaticCrewNumberTiers = count staticCrewTiers;
-	insurgentsTier = ceil(completionRatio / 100 * StaticCrewNumberTiers);
-	if (insurgentsTier == 0) then {
-		insurgentsTier = 1;
+	_staticCrewTiers = _worldTiers get "static_crew_tiers";
+	_StaticCrewNumberTiers = count _staticCrewTiers;
+	_insurgentsTier = ceil(_completionRatio / 100 * _StaticCrewNumberTiers);
+	if (_insurgentsTier == 0) then {
+		_insurgentsTier = 1;
 	};
-	staticClass = staticCrewTiers get insurgentsTier;
+	staticClass = _staticCrewTiers get _insurgentsTier;
 
-	vehicleTiers = worldTiers get "vehicle_tiers";
-	vehicleNumberTiers = count vehicleTiers;
-	insurgentsTier = ceil(completionRatio / 100 * vehicleNumberTiers);
-	if (insurgentsTier == 0) then {
-		insurgentsTier = 1;
+	_vehicleTiers = _worldTiers get "vehicle_tiers";
+	_vehicleNumberTiers = count _vehicleTiers;
+	_insurgentsTier = ceil(_completionRatio / 100 * _vehicleNumberTiers);
+	if (_insurgentsTier == 0) then {
+		_insurgentsTier = 1;
 	};
-	eastVclClasses = vehicleTiers get insurgentsTier;
+	eastVclClasses = _vehicleTiers get _insurgentsTier;
 };

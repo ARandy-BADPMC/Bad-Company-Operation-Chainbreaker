@@ -35,8 +35,5 @@ while { true } do {
 	//Misc
 	call clearHouses;
 
-	//
-	call updateTier;
-
 	sleep 1;
 };	

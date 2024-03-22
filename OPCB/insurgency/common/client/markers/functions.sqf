@@ -15,6 +15,7 @@ gridPath = {
 	publicVariable _mkrVar;
 	
 	#ifdef ENABLE_PERSISTENCY
+		remoteExecCall ["updateTier"];
 		_gMkr remoteExecCall ["insurgencyMarkerUpdate", 2, false];
 	#endif
 	

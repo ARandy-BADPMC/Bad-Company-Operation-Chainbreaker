@@ -17,7 +17,7 @@
 				OPCB_econ_currentTier = _newTier;
 				publicVariable "OPCB_econ_currentTier";
 			};
-			
+			remoteExecCall ["updateTier"];
 	};
 
 #endif
