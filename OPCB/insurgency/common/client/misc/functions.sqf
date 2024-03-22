@@ -42,7 +42,7 @@ updateTier = {
 
 	infantryTiers = worldTiers get "infantry_tiers";
 	infantryNumberTiers = count infantryTiers;
-	insurgentsTier = ceil(completionRatio / infantryNumberTiers);
+	insurgentsTier = ceil(completionRatio / 100 * infantryNumberTiers);
 	if (insurgentsTier == 0) then {
 		insurgentsTier = 1;
 	};
@@ -50,7 +50,7 @@ updateTier = {
 
 	vehicleCrewTiers = worldTiers get "vehicle_crew_tiers";
 	vehicleNumberTiers = count vehicleCrewTiers;
-	insurgentsTier = ceil(completionRatio / vehicleNumberTiers);
+	insurgentsTier = ceil(completionRatio / 100 * vehicleNumberTiers);
 	if (insurgentsTier == 0) then {
 		insurgentsTier = 1;
 	};
@@ -58,7 +58,7 @@ updateTier = {
 
 	staticCrewTiers = worldTiers get "static_crew_tiers";
 	StaticCrewNumberTiers = count staticCrewTiers;
-	insurgentsTier = ceil(completionRatio / StaticCrewNumberTiers);
+	insurgentsTier = ceil(completionRatio / 100 * StaticCrewNumberTiers);
 	if (insurgentsTier == 0) then {
 		insurgentsTier = 1;
 	};
@@ -66,7 +66,7 @@ updateTier = {
 
 	vehicleTiers = worldTiers get "vehicle_tiers";
 	vehicleNumberTiers = count vehicleTiers;
-	insurgentsTier = ceil(completionRatio / vehicleNumberTiers);
+	insurgentsTier = ceil(completionRatio / 100 * vehicleNumberTiers);
 	if (insurgentsTier == 0) then {
 		insurgentsTier = 1;
 	};
