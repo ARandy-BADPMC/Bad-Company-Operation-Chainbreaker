@@ -29,4 +29,4 @@ ins_gridMarkers = [];
 	
 	ins_gridMarkers pushBack _mkr;
 	
-} forEach (_houses select {(_x distance _base) > 750});
+} forEach (_houses select {(_x distance _base) > 1250});
