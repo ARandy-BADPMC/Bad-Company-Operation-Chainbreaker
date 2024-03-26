@@ -4,7 +4,7 @@
 // do not touch any of these except the last two
 spawnPos =					[0,0,50000];
 #define CENTERPOS			getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition")
-#define AORADIUS 			((sqrt 2 / 2 * worldSize)*0.9)
+#define AORADIUS 			((sqrt 2 / 2 * worldSize)*1.5)
 
 // TODO Hunter: modernise house checks and get rid of these...
 #define CACHEHOUSEPOSITIONS ["Land_House_K_1_EP1",[1,2,3,4],"Land_House_L_4_EP1",[6],"Land_House_C_5_V3_EP1",[0,2,6],"Land_House_C_12_EP1",[5,6],"Land_House_K_3_EP1",[9,1,2,3,5],"Land_House_C_5_V2_EP1",[4,0,1,5],"Land_House_L_8_EP1",[7,8],"Land_House_C_4_EP1",[7,12,13,15],"Land_House_C_2_EP1",[1,2,5,6,7,8,9],"Land_House_L_7_EP1",[0,1,2,3,4,5],"Land_House_C_10_EP1",[7,8,9,10,11,12,13,14],"Land_House_K_6_EP1",[6,7,8,9,10],"Land_House_C_11_EP1",[7,8,9,10],"Land_House_C_9_EP1",[2,3,4,5],"Land_House_C_3_EP1",[7,8,9,10,11,12,13,28,29,30,31,32],"Land_A_Office01_EP1",[5,6],"Land_A_Mosque_small_1_EP1",[3,4,5],"Land_A_Stationhouse_ep1",[6,9,13],"Land_House_C_5_EP1",[3,4,5],"Land_House_K_7_EP1",[4,5,6,11],"Land_Mil_ControlTower_EP1",[2,3,4,6],"Land_House_C_5_V1_EP1",[6,7],"Land_House_K_8_EP1",[4,0,1,2,3],"Land_A_BuildingWIP_EP1",[18,20,24,25,26,27,28,29,30,31],"Land_A_Villa_EP1",[4,6,7,8,9],"Land_House_C_1_EP1",[3],"Land_House_L_6_EP1",[4,0,3],"Land_House_L_3_EP1",[0,1,2],"Land_House_K_5_EP1",[1,2],"Land_House_C_1_v2_EP1",[0,1,2,3]]

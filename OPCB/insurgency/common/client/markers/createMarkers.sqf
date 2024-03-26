@@ -9,6 +9,7 @@ private ["_mkr","_var","_pos","_houses"];
 
 _houses = [CENTERPOS,AORADIUS, 3, true] call findHouses;
 _base = markerpos "base_marker";
+_baseMarkerSize = getMarkerSize "base_marker" select 0;	
 ins_gridMarkers = [];
 {
 	_pos = _x call getGridPos;
@@ -28,5 +29,5 @@ ins_gridMarkers = [];
 	};
 	
 	ins_gridMarkers pushBack _mkr;
-	
-} forEach (_houses select {(_x distance _base) > 750});
+
+} forEach (_houses select {(_x distance _base) > _baseMarkerSize});
