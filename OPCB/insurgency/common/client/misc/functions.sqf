@@ -1,5 +1,6 @@
 #include "../../../tiered_units/tiered_lythium.sqf"
 #include "../../../tiered_units/tiered_sara.sqf"
+#include "../../../tiered_units/tiered_sara_dbe1.sqf"
 
 clearHouses = {
     private ["_house","_cleared","_houses","_gMkr"];
