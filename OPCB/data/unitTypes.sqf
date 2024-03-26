@@ -147,9 +147,9 @@ switch (toLower worldName) do {
 	case "lythium" : {
 		OPCB_Commanders_Insurgents = ["LOP_TKA_Infantry_Officer"];
 
-		OPCB_InfantryGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "LOP_TKA" >> "Infantry"] call _configParser;
+		OPCB_InfantryGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "LOP_AM_OPF" >> "Infantry"] call _configParser;
 
-		OPCB_MechanizedGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "LOP_TKA" >> "Motorized"] call _configParser;
+		OPCB_MechanizedGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "LOP_AM_OPF" >> "Motorized"] call _configParser;
 
 		OPCB_ArmoredVehicles_Insurgents = [
 			"LOP_TKA_T34",
