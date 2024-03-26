@@ -1,4 +1,5 @@
-#include "../../../tieredUnits.sqf"
+#include "../../../tiered_units/tiered_lythium.sqf"
+#include "../../../tiered_units/tiered_sara.sqf"
 
 clearHouses = {
     private ["_house","_cleared","_houses","_gMkr"];
