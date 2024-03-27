@@ -80,7 +80,7 @@ sara_dbe1InfantryTiers = createHashMapFromArray [
 	]
 ];
 
-sara_dbe1_dbe1VehicleCrewTiers = createHashMapFromArray [[1,"LOP_SLA_Infantry_Rifleman_2"], [2,"LOP_UA_Infantry_Rifleman"]];
+sara_dbe1VehicleCrewTiers = createHashMapFromArray [[1,"LOP_SLA_Infantry_Rifleman_2"], [2,"LOP_UA_Infantry_Rifleman"]];
 sara_dbe1StaticCrewTiers = createHashMapFromArray [[1,"LOP_SLA_Infantry_Rifleman_2"], [2,"LOP_UA_Infantry_Rifleman"]];
 
 sara_dbe1VehicleTiers = createHashMapFromArray [
