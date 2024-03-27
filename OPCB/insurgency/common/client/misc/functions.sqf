@@ -1,6 +1,6 @@
-#include "tiered_lythium.sqf"
-#include "tiered_sara.sqf"
-#include "tiered_sara_dbe1.sqf"
+#include "..\..\..\tiers\tiered_lythium.sqf"
+#include "..\..\..\tiers\tiered_sara.sqf"
+#include "..\..\..\tiers\tiered_sara_dbe1.sqf"
 
 clearHouses = {
     private ["_house","_cleared","_houses","_gMkr"];
