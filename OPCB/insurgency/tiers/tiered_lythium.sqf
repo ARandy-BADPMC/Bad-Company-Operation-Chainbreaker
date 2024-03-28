@@ -1,4 +1,3 @@
-tieredUnits = createHashMap;
 lythiumTieredUnits = createHashMap;
 lythiumInfantryTiers = createHashMapFromArray [
 	[

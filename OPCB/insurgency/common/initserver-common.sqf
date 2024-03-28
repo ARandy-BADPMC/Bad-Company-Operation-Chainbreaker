@@ -17,12 +17,13 @@
 				OPCB_econ_currentTier = _newTier;
 				publicVariable "OPCB_econ_currentTier";
 			};
-			remoteExecCall ["updateTier"];
+			
 	};
 
 #endif
 
 // get marker count
+
 private ["_mkr","_pos","_houses", "_markerPositions"];
 
 _houses = [CENTERPOS,AORADIUS, 3, true] call findHouses;

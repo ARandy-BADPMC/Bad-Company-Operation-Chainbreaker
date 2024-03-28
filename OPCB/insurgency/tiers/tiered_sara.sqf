@@ -1,4 +1,3 @@
-tieredUnits = createHashMap;
 saraTieredUnits = createHashMap;
 saraInfantryTiers = createHashMapFromArray [
 	[
