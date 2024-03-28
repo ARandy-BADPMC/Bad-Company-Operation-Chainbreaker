@@ -23,6 +23,7 @@
 #endif
 
 // get marker count
+
 private ["_mkr","_pos","_houses", "_markerPositions"];
 
 _houses = [CENTERPOS,AORADIUS, 3, true] call findHouses;

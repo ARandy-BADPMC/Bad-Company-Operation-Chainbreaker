@@ -14,6 +14,11 @@ gridPath = {
 	missionNamespace setVariable [_mkrVar, true];
 	publicVariable _mkrVar;
 	
+	// if world has tiered units, update them
+	if (keys tieredUnits find worldName > -1) then {
+		remoteExecCall ["updateTier"];
+	};
+	
 	#ifdef ENABLE_PERSISTENCY
 		_gMkr remoteExecCall ["insurgencyMarkerUpdate", 2, false];
 	#endif

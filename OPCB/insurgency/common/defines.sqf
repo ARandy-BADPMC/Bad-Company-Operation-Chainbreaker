@@ -19,7 +19,7 @@
 #define startLocation (markerpos "base_marker")
 
 // getDirTo - vector of X towards Y in degrees while Y can be either a position or an object; 
-// if X is in the East of Y, vector is from 0.01° to 179.99° and if on the West it's from -0.01° to -179.99° (N is 0°, S is 180°)
+// if X is in the East of Y, vector is from 0.01ï¿½ to 179.99ï¿½ and if on the West it's from -0.01ï¿½ to -179.99ï¿½ (N is 0ï¿½, S is 180ï¿½)
 #define getDirTo(X,Y)       (((if(typeName Y == "OBJECT")then{getPosATL Y}else{Y} select 0) - (getPosATL X select 0)) atan2 ((if(typeName Y == "OBJECT")then{getPosATL Y}else{Y} select 1) - (getPosATL X select 1)))  
 
 aiMonitorRemote = {
@@ -57,3 +57,5 @@ aiMonitorRemote = {
 		};
 	};
 };
+
+tieredUnits = createHashMap;
