@@ -33,7 +33,6 @@
     if (_insurgentsTier != currentVCrewTier) then {
       currentVCrewTier = _insurgentsTier;
       vclCrewClass = _vehicleCrewTiers get _insurgentsTier;
-      publicVariable "vclCrewClass";
     };
         
     private _staticCrewTiers = _worldTiers get "static_crew_tiers";
@@ -45,7 +44,6 @@
     if (_insurgentsTier != currentSCrewTier) then {
       currentSCrewTier = _insurgentsTier;
       staticClass = _staticCrewTiers get _insurgentsTier;
-      publicVariable "staticClass";
     };
     
     private _vehicleTiers = _worldTiers get "vehicle_tiers";
@@ -57,7 +55,6 @@
     if (_insurgentsTier != currentVehTier) then {
       currentVehTier = _insurgentsTier;
       eastVclClasses = _vehicleTiers get _insurgentsTier;
-      publicVariable "eastVclClasses";
     };    
     
   };
