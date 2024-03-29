@@ -14,8 +14,3 @@ onMapSingleClick "_shift";
 enableSentences false;
 
 #include "client\mainLoop.sqf"
-
-// if world has tiered units, update them
-if (keys tieredUnits find worldName > -1) then {
-	remoteExecCall ["updateTier"];
-}

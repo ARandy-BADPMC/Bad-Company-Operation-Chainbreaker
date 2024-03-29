@@ -57,5 +57,3 @@ aiMonitorRemote = {
 		};
 	};
 };
-
-tieredUnits = createHashMap;

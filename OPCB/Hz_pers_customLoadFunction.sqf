@@ -1,14 +1,6 @@
-private ["_mkrVar", "_cargoIndex", "_vehType", "_vehicle"];
+private ["_cargoIndex", "_vehType", "_vehicle"];
 
-{
-	_mkrVar = format["%1cleared", _x];	
-	missionNamespace setVariable [_mkrVar, true];
-	publicVariable _mkrVar;
-} foreach Hz_pers_var_insurgencyClearedMarkers;
-
-// calculate current tier
-OPCB_econ_currentTier = (ceil (10 - ((1 min ((count Hz_pers_var_insurgencyClearedMarkers) / ins_halfMarkerCount))*10))) - 1;
-publicVariable "OPCB_econ_currentTier";
+#include "insurgency\common\server\persistencyCustomLoadFunction.sqf"
 
 // vehicle inits
 {

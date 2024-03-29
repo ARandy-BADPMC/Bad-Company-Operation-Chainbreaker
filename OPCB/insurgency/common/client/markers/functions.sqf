@@ -14,13 +14,13 @@ gridPath = {
 	missionNamespace setVariable [_mkrVar, true];
 	publicVariable _mkrVar;
 	
-	// if world has tiered units, update them
-	if (keys tieredUnits find worldName > -1) then {
-		remoteExecCall ["updateTier"];
-	};
-	
+  // execute handler if either are true
 	#ifdef ENABLE_PERSISTENCY
-		_gMkr remoteExecCall ["insurgencyMarkerUpdate", 2, false];
-	#endif
+		_gMkr remoteExecCall ["serverHandleGridCaptured", 2, false];
+	#else
+    #ifdef ENABLE_TIERED_UNITS
+      _gMkr remoteExecCall ["serverHandleGridCaptured", 2, false];
+    #endif
+  #endif
 	
 };

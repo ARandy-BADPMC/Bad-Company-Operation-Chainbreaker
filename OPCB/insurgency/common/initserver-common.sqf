@@ -5,22 +5,85 @@
 #include "server\AI\functions.sqf"
 #include "server\AI\initUPS.sqf"
 
-#ifdef ENABLE_PERSISTENCY
+#ifdef ENABLE_TIERED_UNITS
 
-	insurgencyMarkerUpdate = {
-	
-			Hz_pers_var_insurgencyClearedMarkers pushBackUnique _this;
-			
-			// check if we progressed a tier and update
-			_newTier = (ceil (10 - ((1 min ((count Hz_pers_var_insurgencyClearedMarkers) / ins_halfMarkerCount))*10))) - 1;
-			if (_newTier != OPCB_econ_currentTier) then {
-				OPCB_econ_currentTier = _newTier;
-				publicVariable "OPCB_econ_currentTier";
-			};
-			
-	};
+  updateTieredUnits = {
+  
+    private _completionRatio = (count Hz_pers_var_insurgencyClearedMarkers) / ins_allMarkerCount * 100;
+    private _worldTiers = tieredUnits get toLower worldName;
 
+    private _infantryTiers = _worldTiers get "infantry_tiers";
+    private _infantryNumberTiers = count _infantryTiers;
+    private _insurgentsTier = ceil(_completionRatio / 100 * _infantryNumberTiers) min _infantryNumberTiers;
+    if (_insurgentsTier == 0) then {
+      _insurgentsTier = 1;
+    };    
+    if (_insurgentsTier != currentInfTier) then {
+      currentInfTier = _insurgentsTier;
+      eastInfClasses = _infantryTiers get _insurgentsTier;
+      publicVariable "eastInfClasses";
+    };
+
+    private _vehicleCrewTiers = _worldTiers get "vehicle_crew_tiers";
+    private _vehicleNumberTiers = count _vehicleCrewTiers;
+    _insurgentsTier = ceil(completionRatio / 100 * _vehicleNumberTiers) min _vehicleNumberTiers;
+    if (_insurgentsTier == 0) then {
+      _insurgentsTier = 1;
+    };    
+    if (_insurgentsTier != currentVCrewTier) then {
+      currentVCrewTier = _insurgentsTier;
+      vclCrewClass = _vehicleCrewTiers get _insurgentsTier;
+      publicVariable "vclCrewClass";
+    };
+        
+    private _staticCrewTiers = _worldTiers get "static_crew_tiers";
+    private _StaticCrewNumberTiers = count _staticCrewTiers;
+    _insurgentsTier = ceil(_completionRatio / 100 * _StaticCrewNumberTiers) min _StaticCrewNumberTiers;
+    if (_insurgentsTier == 0) then {
+      _insurgentsTier = 1;
+    };
+    if (_insurgentsTier != currentSCrewTier) then {
+      currentSCrewTier = _insurgentsTier;
+      staticClass = _staticCrewTiers get _insurgentsTier;
+      publicVariable "staticClass";
+    };
+    
+    private _vehicleTiers = _worldTiers get "vehicle_tiers";
+    private _vehicleNumberTiers = count _vehicleTiers;
+    _insurgentsTier = ceil(_completionRatio / 100 * _vehicleNumberTiers) min _vehicleNumberTiers;
+    if (_insurgentsTier == 0) then {
+      _insurgentsTier = 1;
+    };
+    if (_insurgentsTier != currentVehTier) then {
+      currentVehTier = _insurgentsTier;
+      eastVclClasses = _vehicleTiers get _insurgentsTier;
+      publicVariable "eastVclClasses";
+    };    
+    
+  };
+  
 #endif
+
+serverHandleGridCaptured = {
+
+    #ifdef ENABLE_PERSISTENCY
+
+      Hz_pers_var_insurgencyClearedMarkers pushBackUnique _this;
+      
+      // check if we progressed a tier and update
+      _newTier = (ceil (10 - ((1 min ((count Hz_pers_var_insurgencyClearedMarkers) / ins_halfMarkerCount))*10))) - 1;
+      if (_newTier != OPCB_econ_currentTier) then {
+        OPCB_econ_currentTier = _newTier;
+        publicVariable "OPCB_econ_currentTier";
+      };
+     
+    #endif
+
+    #ifdef ENABLE_TIERED_UNITS
+      call updateTieredUnits;
+    #endif
+    
+};
 
 // get marker count
 

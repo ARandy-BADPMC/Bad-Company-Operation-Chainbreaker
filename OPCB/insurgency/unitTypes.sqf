@@ -1,3 +1,8 @@
+#ifdef ENABLE_TIERED_UNITS
+  // ensure current units aren't overriden for JIP
+  if (isServer || {isNil "eastInfClasses"}) then {
+#endif
+
 switch (toLower worldName) do {
 	
 	// South america
@@ -101,3 +106,8 @@ switch (toLower worldName) do {
 	};
 	
 };
+
+#ifdef ENABLE_TIERED_UNITS
+  // close bracket
+  };
+#endif
