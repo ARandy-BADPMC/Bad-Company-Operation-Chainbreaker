@@ -21,3 +21,6 @@ RHSDecalsOff = true;
 		deleteMarkerLocal _x;
 	};
 } forEach allMapMarkers;
+
+// Arsenal buzzer
+fnc_buzzInOut = compile preprocessFileLineNumbers "buzzIn.sqf";
