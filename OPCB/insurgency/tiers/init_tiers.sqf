@@ -6,4 +6,4 @@ currentSCrewTier = 1;
 currentVehTier = 1;
 
 // get hashmap for current world
-call compile preprocessFileLineNumbers ("tiered_" +(toLower worldName)+".sqf");
+call compile preprocessFileLineNumbers ("insurgency\tiers\tiered_" +(toLower worldName)+".sqf");
