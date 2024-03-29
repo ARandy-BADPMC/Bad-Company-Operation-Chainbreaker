@@ -1,4 +1,5 @@
 #define ENABLE_PERSISTENCY
+#define ENABLE_TIERED_UNITS
 
 //spawnPos must remain available in global missionNamespace, a definition does not
 // do not touch any of these except the last two

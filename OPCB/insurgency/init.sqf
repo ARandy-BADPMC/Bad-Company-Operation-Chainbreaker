@@ -1,5 +1,5 @@
-#include "params.sqf"
 #include "defines.sqf"
+#include "params.sqf"
 
 if (isServer) then {
 
