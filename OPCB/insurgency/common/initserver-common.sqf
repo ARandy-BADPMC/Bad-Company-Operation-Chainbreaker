@@ -128,14 +128,23 @@ cleanupVics = [];
 
 [] spawn {
 
-	scriptName "ins_vehiclePatrolsHandler";
-	
-	waitUntil {
-		sleep 10;
-		((count playableUnits) > 1) || {!isMultiplayer}
-	};
+  scriptName "ins_vehiclePatrolsHandler";
 
-	call spawnAIVehicles; 
+  waitUntil {
+    sleep 10;
+    ((count playableUnits) > 1) || {!isMultiplayer}
+  };
+
+  #ifdef ENABLE_TIERED_UNITS
+      #ifdef ENABLE_PERSISTENCY
+        waitUntil {
+          sleep 2;
+          !isNil "Hz_pers_serverInitialised" && {Hz_pers_serverInitialised}
+        };
+      #endif
+  #endif
+
+  call spawnAIVehicles; 
 
 };
 
