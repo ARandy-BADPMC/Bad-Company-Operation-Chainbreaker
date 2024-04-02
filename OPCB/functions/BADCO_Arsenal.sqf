@@ -3155,7 +3155,8 @@ _arsenalitems =
 "TRYK_hoodie_FR",
 "TRYK_hoodie_Blk",
 "TRYK_hoodie_Wood",
-"rhs_tr8_periscope_pip"
+"rhs_tr8_periscope_pip",
+"ACE_painkillers"
 ];
 
 
