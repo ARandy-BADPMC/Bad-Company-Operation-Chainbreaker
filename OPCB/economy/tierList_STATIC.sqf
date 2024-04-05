@@ -33,7 +33,7 @@ OPCB_econ_TierList_STAT = [
 
 	//TIER 6
 	[
-
+	"B_Respawn_TentDome_F"
 	],
 
 	//TIER 7

@@ -107,7 +107,7 @@ switch (_tierType) do {
 			case 8: {10};
 			case 7: {15};
 			case 6: {20};
-			case 5: {25};
+			case 5: {1500};
 			case 4: {35};
 			case 3: {45};
 			case 2: {65};
