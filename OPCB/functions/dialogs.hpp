@@ -824,7 +824,7 @@ class bombDefusalPanel {
 			sizeEx = 3 * GUI_GRID_H;
 			colorShadow[] = {0,0,0,0};
 			colorBackground[] = {0.251,0.251,0.251,1};
-			action = "[] call CHAB_fnc_bombDefusalDefuse;"
+			action = "[] call CHAB_fnc_bombDefusalDefuse;";
 		};
 	}
 }
