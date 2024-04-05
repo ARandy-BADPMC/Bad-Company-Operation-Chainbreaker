@@ -48,9 +48,9 @@ _nearestplayer = ([_officer] call CHAB_fnc_nearest) select 0;
 _dir = [ _officer, _nearestplayer ] call BIS_fnc_dirTo;
 _opposite = _dir + 140;
 
-for "_i" from 0 to 5 do {
-	_opposite = _opposite +20;
-	_attackpos = globalWaterPos;
+for "_i" from 0 to 7 do {
+	_opposite = _opposite + 50;
+	_attackpos = _officerPos getPos[random [700, 900, 1200],_opposite];
 	_tries = 5;
 
 	while {
@@ -58,7 +58,7 @@ for "_i" from 0 to 5 do {
 		} do {
 		
 		sleep 1;
-		_attackpos = _officerPos getPos[random [500,700,1000],_opposite];
+		_attackpos = _officerPos getPos[random [700, 900, 1200],_opposite];
 		_suitable = [_attackpos, 0, 300, 10, 0, 0.5, 0,[],[globalWaterPos,globalWaterPos]] call BIS_fnc_findSafePos;
 		if (count _suitable == 3) then {
 			_suitable = [_suitable select 0,_suitable select 1];
@@ -77,14 +77,14 @@ for "_i" from 0 to 5 do {
 	
 };
 
-_opposite = _dir +160;
-for "_i" from 0 to 1 do {
-	_opposite = _opposite +20;
-	_attackpos = globalWaterPos;
+_opposite = _dir + 160;
+for "_i" from 0 to 2 do {
+	_opposite = _opposite + 50;
+	_attackpos = _officerPos getPos[random  [700, 900, 1200],_opposite];
 	_tries = 10;
 		
 	while {surfaceIsWater _attackpos && _tries >0 } do {
-		_attackpos = _officerPos getPos[random [500,700,1000],_opposite];
+		_attackpos = _officerPos getPos[random  [700, 900, 1200],_opposite];
 		_suitable = [_attackpos, 0, 300, 10, 0, 0.5, 0,[],[globalWaterPos,globalWaterPos]] call BIS_fnc_findSafePos;
 		if (count _suitable == 3) then {
 		  _suitable = [_suitable select 0,_suitable select 1];
