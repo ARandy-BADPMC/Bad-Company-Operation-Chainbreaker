@@ -34,7 +34,11 @@ lythiumInfantryTiers = createHashMapFromArray [
 			"LOP_TKA_Infantry_Rifleman",
 			"LOP_TKA_Infantry_GL",
 			"LOP_TKA_Infantry_Engineer",
-			"LOP_TKA_Infantry_Corpsman"			
+			"LOP_TKA_Infantry_Corpsman",
+			"LOP_TKA_Infantry_Rifleman_3",
+			"LOP_TKA_Infantry_AA",
+			"LOP_TKA_Infantry_MG",
+			"LOP_TKA_Infantry_MG_Asst"	
 		]
 	],
 	[
@@ -48,26 +52,12 @@ lythiumInfantryTiers = createHashMapFromArray [
 			"LOP_TKA_Infantry_Rifleman_3",
 			"LOP_TKA_Infantry_AA",
 			"LOP_TKA_Infantry_MG",
-			"LOP_TKA_Infantry_MG_Asst"
+			"LOP_TKA_Infantry_MG_Asst",
+			"LOP_TKA_Infantry_AT"	
 		]
 	],
 	[
 		5,
-		[
-			"LOP_TKA_Infantry_SL",
-			"LOP_TKA_Infantry_Rifleman",
-			"LOP_TKA_Infantry_GL",
-			"LOP_TKA_Infantry_Engineer",
-			"LOP_TKA_Infantry_Corpsman",
-			"LOP_TKA_Infantry_Rifleman_3",
-			"LOP_TKA_Infantry_AA",
-			"LOP_TKA_Infantry_MG",
-			"LOP_TKA_Infantry_MG_Asst",
-			"LOP_TKA_Infantry_AT"			
-		]
-	],
-	[
-		6,
 		[
 			"LOP_ISTS_OPF_Infantry_SL",
 			"LOP_ISTS_OPF_Infantry_Rifleman_5",
@@ -78,7 +68,29 @@ lythiumInfantryTiers = createHashMapFromArray [
 			"LOP_ISTS_OPF_Infantry_Rifleman_3",
 			"LOP_ISTS_OPF_Infantry_AT",
 			"LOP_ISTS_OPF_Infantry_Rifleman_9",
-			"LOP_TKA_Infantry_AA"
+			"LOP_TKA_Infantry_AA"		
+		]
+	],
+	[
+		6,
+		[
+			"LOP_PMC_Infantry_TL",
+			"LOP_PMC_Infantry_SL",
+			"LOP_PMC_Infantry_Engineer",
+			"LOP_PMC_Infantry_Rifleman_4",
+			"LOP_PMC_Infantry_Marksman_2",
+			"LOP_PMC_Infantry_Corpsman",
+			"LOP_PMC_Infantry_Rifleman",
+			"LOP_PMC_Infantry_Rifleman_3",
+			"LOP_PMC_Infantry_MG",
+			"LOP_PMC_Infantry_MG_Asst",
+			"LOP_PMC_Infantry_GL",
+			"LOP_PMC_Infantry_Rifleman_2",
+			"LOP_PMC_Infantry_Marksman",
+			"LOP_PMC_Infantry_EOD",
+			"LOP_PMC_Infantry_AT",
+			"LOP_PMC_Infantry_AA",
+			"LOP_PMC_Infantry_AT_Asst"
 		]
 	]
 ];
