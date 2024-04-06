@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=3470;
+		nextID=3471;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=241;
+		nextID=250;
 	};
 	class Camera
 	{
-		pos[]={19284.053,35.509403,14197.865};
-		dir[]={0.090129763,-0.23998576,0.96658337};
-		up[]={0.022280991,0.97077644,0.23894919};
-		aside[]={0.99568081,-1.8626451e-009,-0.092842966};
+		pos[]={19228.74,79.85128,14202.751};
+		dir[]={-0.055614144,-0.19207752,0.97981334};
+		up[]={-0.010885006,0.98137873,0.19177586};
+		aside[]={0.99840415,3.200521e-007,0.056670107};
 	};
 };
 binarizationWanted=0;
@@ -17128,7 +17128,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=1123;
+		items=1124;
 		class Item0
 		{
 			dataType="Logic";
@@ -37686,7 +37686,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };";
 					class Value
 					{
 						class data
@@ -38441,7 +38441,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };";
 					class Value
 					{
 						class data
@@ -57289,7 +57289,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8431.8135,35.528217,6320.8359};
-				angles[]={-0,1.5707964,0};
+				angles[]={0,1.5707964,0};
 			};
 			side="Empty";
 			flags=4;
@@ -57306,7 +57306,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8431.8145,35.572594,6323.2798};
-				angles[]={-0,1.5707964,0};
+				angles[]={0,1.5707964,0};
 			};
 			side="Empty";
 			flags=4;
@@ -57323,7 +57323,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8431.8076,35.572594,6324.5942};
-				angles[]={-0,1.5707964,0};
+				angles[]={0,1.5707964,0};
 			};
 			side="Empty";
 			flags=4;
@@ -57357,7 +57357,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8432.0137,36.00547,6337.2368};
-				angles[]={-0,1.5707964,0};
+				angles[]={0,1.5707964,0};
 			};
 			side="Empty";
 			flags=4;
@@ -57473,7 +57473,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={8419.7041,35.956444,6298.3853};
-				angles[]={-0,0,0.01293724};
+				angles[]={0,0,0.01293724};
 			};
 			side="Empty";
 			flags=4;
@@ -57636,6 +57636,53 @@ class Mission
 					};
 				};
 				nAttributes=1;
+			};
+		};
+		class Item1123
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={19221.453,11.97,13968.298};
+				angles[]={-0,0.69813168,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="dropoffpoint1";
+				disableSimulation=1;
+			};
+			id=3470;
+			type="HeliHEmpty";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ace_cargo_size";
+					expression="[_this, _value] call ace_cargo_fnc_setSize";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=-1;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
 			};
 		};
 	};
