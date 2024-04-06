@@ -1,18 +1,18 @@
 private _axis = worldSize / 2;
 private _center = [_axis, _axis , 0];
-private _selectedForest = selectRandom (nearestLocations [_center, ["VegetationBroadleaf","VegetationFir","VegetationPalm","VegetationVineyard"], _axis]);
-
-private _taskMarker = locationPosition _selectedForest;
+private _selectedArea = [random [0, worldSize / 2, worldSize], random [0, worldSize / 2, worldSize]];
+private _selectedRoad = [_selectedArea, worldSize / 2] call BIS_fnc_nearestRoad;
+private _taskMarker = getpos _selectedRoad;
 
 private _flower = createVehicle ["Land_FlowerPot_01_F", [_taskMarker select 0, _taskMarker select 1, 0], [], 5, "NONE"];
 
 {
 	_flower setVariable _x
 } forEach [
-	["axisA", "100"],
-	["axisB", "100"],
+	["axisA", "70"],
+	["axisB", "70"],
 	["minesCount", "10"],
-	["minesType", "rhs_mine_TM43"],
+	["minesType", ["rhs_mine_TM43", "rhs_mine_glasmine43_bz"]],
 	["shape", "rectangle"]
 ];
 

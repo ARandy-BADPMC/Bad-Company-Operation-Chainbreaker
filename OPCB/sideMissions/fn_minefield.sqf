@@ -11,7 +11,7 @@ private _h = 0;
 
 private _minesToReturn = [];
 
-if (_minesType == "UnderwaterMine") then {_h = -2};
+// if (_minesType == "UnderwaterMine") then {_h = -2};
 
 _getPos = {};
 
@@ -38,17 +38,19 @@ if (_shape == "rectangle") then {
 
 for [{_x = 0}, {_x < _minesCnt}, {_x = _x + 1}] do
 {
+	_mineType = selectRandom _minesType;
 	_pos = call _getPos;
-	if (_minesType == "UnderwaterMineAB") then {
+	if (_mineType == "UnderwaterMineAB") then {
 		_pos = [_pos select 0, _pos select 1, getTerrainHeightASL _pos];
 	};
 
-	_mine = createMine [_minesType, _pos, [], 0];
+	_mine = createMine [_mineType, _pos, [], 0];
 	_mine setDir (random(360));
 	{
 		_x revealMine _mine
 	} forEach [EAST, RESISTANCE];
 
+	// // For debugging purposes
 	// _minePos = getPosWorld _mine;
 	// _mkrID = format["m %1",_minePos];
 	// _mkr = createMarker[_mkrID, _minePos];
