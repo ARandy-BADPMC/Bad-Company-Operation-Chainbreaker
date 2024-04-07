@@ -21,7 +21,7 @@ if (_fobselect in Hz_pers_var_boughtFobs) exitWith {
 if (_clearfob) then {
 	if (OPCB_econ_currentTier < 6) then {
 		if (OPCB_econ_credits >= fobPrice) then {
-			[west, fob_pos] call BIS_fnc_addRespawnPosition;
+			[west, _fob_pos] call BIS_fnc_addRespawnPosition;
 			OPCB_econ_credits = OPCB_econ_credits - fobPrice;
 			Hz_pers_var_boughtFobs pushBackUnique _fobselect;
 			publicVariableServer "Hz_pers_var_boughtFobs";
