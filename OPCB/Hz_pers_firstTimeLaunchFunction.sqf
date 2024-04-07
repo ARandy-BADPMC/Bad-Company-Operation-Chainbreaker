@@ -11,3 +11,4 @@
 
 
 ["Hz_pers_var_insurgencyClearedMarkers",ONE_D_ARRAY,false] call Hz_pers_API_addMissionVariable;
+["Hz_pers_var_boughtFobs",ONE_D_ARRAY,false] call Hz_pers_API_addMissionVariable;

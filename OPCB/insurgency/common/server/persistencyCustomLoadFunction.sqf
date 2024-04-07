@@ -15,3 +15,9 @@ publicVariable "OPCB_econ_currentTier";
 #ifdef ENABLE_TIERED_UNITS
   call updateTieredUnits;
 #endif
+
+// setup bought fobs
+{
+	fob_pos = markerPos _x;
+	[west, fob_pos] call BIS_fnc_addRespawnPosition;	
+} foreach Hz_pers_var_boughtFobs;
