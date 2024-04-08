@@ -20,7 +20,7 @@ enableRadio false;
 
 
 // init fob store vars
-fobPrice = 1000;
+fobPrice = 1350;
 
 //ACRE check & kick
 if (!isServer && {isMultiplayer}) then {
