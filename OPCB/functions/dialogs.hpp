@@ -952,3 +952,55 @@ class vehicleSpawnerHistory {
 		};
 	};
 };
+
+
+class fobStore {
+	
+	idd = 74819;
+	movingEnabled = false;
+	
+	class controls {
+		class fob_list: RscListBox
+		{
+			idc = 2000;
+
+			x = 0 * GUI_GRID_W + GUI_GRID_X;
+			y = 0 * GUI_GRID_H + GUI_GRID_Y;
+			w = 15 * GUI_GRID_W;
+			h = 24 * GUI_GRID_H;
+		};
+		class fob_buy: RscButton
+		{
+			idc = 2002;
+			action = "[] call CHAB_fnc_buyFob;";
+
+			text = "Buy Fob"; //--- ToDo: Localize;
+			x = 15.2 * GUI_GRID_W + GUI_GRID_X;
+			y = 18.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.5 * GUI_GRID_H;
+		};
+		class fob_exit: RscButton
+		{
+			idc = 2001;
+			action = "closeDialog 0";
+
+			text = "Exit"; //--- ToDo: Localize;
+			x = 15.2 * GUI_GRID_W + GUI_GRID_X;
+			y = 21.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 4 * GUI_GRID_W;
+			h = 2.5 * GUI_GRID_H;
+		};
+		class info_display: RscStructuredText
+		{
+			idc = 2003;
+			colorText[] = {0.3,1,1,1};
+			x = 0 * GUI_GRID_W + GUI_GRID_X;
+			y = 25 * GUI_GRID_H + GUI_GRID_Y;
+			w = 30 * GUI_GRID_W;
+			h = 3.5 * GUI_GRID_H;
+		};
+
+	}; 
+	
+};

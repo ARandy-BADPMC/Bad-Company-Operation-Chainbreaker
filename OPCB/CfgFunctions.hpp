@@ -161,6 +161,14 @@ class chainbreaker
 		{
 			file = "functions\missionSpecific\bombDefusalHack_server.sqf";
 		};
+		class buyFob
+		{
+			file = "functions\buy_fob.sqf";
+		};
+		class fobStore
+		{
+			file = "functions\fob_store.sqf";
+		};
 	};
 	class miscellaneous
 	{

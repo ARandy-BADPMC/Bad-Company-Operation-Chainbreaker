@@ -18,6 +18,10 @@ WEST setFriend [EAST, 0]; WEST setFriend [Resistance, 0]; WEST setFriend [Civili
 Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [Resistance, 1];
 
 Hz_pers_var_insurgencyClearedMarkers = [];
+
+Hz_pers_var_boughtFobs = [];
+publicVariable "Hz_pers_var_boughtFobs";
+
 Hz_pers_customLoadFunction = compileFinal preprocessFileLineNumbers "Hz_pers_customLoadFunction.sqf";
 Hz_pers_firstTimeLaunchFunction = compileFinal preprocessFileLineNumbers "Hz_pers_firstTimeLaunchFunction.sqf";	
 OPCB_crateSpawner_fnc_spawnCrate_server = compileFinal preprocessFileLineNumbers "economy\fnc\OPCB_crateSpawner_fnc_spawnCrate_server.sqf";
