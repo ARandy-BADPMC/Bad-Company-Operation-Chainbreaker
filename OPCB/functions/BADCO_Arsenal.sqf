@@ -3157,7 +3157,20 @@ _arsenalitems =
 "TRYK_hoodie_Wood",
 "rhs_tr8_periscope_pip",
 "ACE_painkillers",
-"ACE_CTS9"
+"ACE_CTS9",
+"BHD_BUTT1",
+"BHD_BUTT2",
+"TAC_BP_buttB_ACU",
+"TAC_BP_buttB_B",
+"TAC_BP_buttB_Khaki",
+"TAC_BP_buttB_MTP",
+"TAC_BP_buttB_OD",
+"TAC_BP_buttB_RG",
+"TAC_BP_KAR_B",
+"H_HelmetB_light_wdl",
+"rhs_scarf",
+"rhs_uniform_emr_des_patchless",
+"rhs_uniform_6sh122_v2"
 ];
 
 
