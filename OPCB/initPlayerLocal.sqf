@@ -60,13 +60,13 @@ player addEventHandler ["GetInMan",{
 }];
 
 jeff addaction ["Lights on", {
-	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
+	_lamp = [11753.754,25.629173,2334.1289] nearestObject "Land_LampAirport_F";
 	_lamp sethit ["light_1_hitpoint",0];
 	_lamp sethit ["light_2_hitpoint",0];
 }];
 
 jeff addaction ["Lights off", {
-	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
+	_lamp = [11753.754,25.629173,2334.1289] nearestObject "Land_LampAirport_F";
 	_lamp sethit ["light_1_hitpoint",1];
 	_lamp sethit ["light_2_hitpoint",1];	
 }];
