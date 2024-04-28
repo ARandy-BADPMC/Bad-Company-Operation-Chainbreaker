@@ -91,3 +91,12 @@ addMissionEventHandler ["PlayerDisconnected", {
 		};
 	} forEach allCurators;
 }];
+
+[] spawn {
+	while {true} do {
+		if (fog > 0.005) then {
+			1 setFog 0;
+		};
+		sleep 1800;
+	};
+};
