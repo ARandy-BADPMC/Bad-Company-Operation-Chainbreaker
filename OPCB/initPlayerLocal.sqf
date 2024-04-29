@@ -117,3 +117,5 @@ Hz_pers_clientReadyForLoad = true;
 		player addAction ["<t color='#00AAFF'>Developer Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, -99, false, true, "", "true", 10, false,""];
 	};	
 };
+
+_null = [] execVM "Briefing.sqf";  // Briefing tabs
