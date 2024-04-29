@@ -24,3 +24,4 @@ RHSDecalsOff = true;
 
 // Arsenal buzzer
 fnc_buzzInOut = compile preprocessFileLineNumbers "buzzIn.sqf";
+fnc_buzzInOutBadco = compile preprocessFileLineNumbers "buzzInBadco.sqf";
