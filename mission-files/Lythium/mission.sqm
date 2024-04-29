@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=676;
+		nextID=698;
 	};
 	class Camera
 	{
-		pos[]={11800.235,155.19711,1783.6731};
-		dir[]={0.26826951,-0.32069656,-0.90840214};
-		up[]={0.090830758,0.94717962,-0.30756679};
-		aside[]={-0.95905483,-1.0873191e-007,-0.28322893};
+		pos[]={11811.307,123.29893,1962.4244};
+		dir[]={0.26066113,-0.25998411,-0.92978799};
+		up[]={0.070183367,0.96560687,-0.25034776};
+		aside[]={-0.96289647,2.8703653e-009,-0.26994374};
 	};
 };
 binarizationWanted=0;
@@ -881,7 +881,7 @@ class CustomAttributes
 								singleType="ARRAY";
 								class value
 								{
-									items=458;
+									items=459;
 									class Item0
 									{
 										class data
@@ -4546,6 +4546,14 @@ class CustomAttributes
 											value="ace_medical_treatment_gravediggingmarker";
 										};
 									};
+									class Item458
+									{
+										class data
+										{
+											singleType="STRING";
+											value="ace_medical_vitals_simulatespo2";
+										};
+									};
 								};
 							};
 						};
@@ -4556,7 +4564,7 @@ class CustomAttributes
 								singleType="ARRAY";
 								class value
 								{
-									items=458;
+									items=459;
 									class Item0
 									{
 										class data
@@ -16274,7 +16282,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="SCALAR";
-														value=0;
+														value=0.10258836;
 													};
 												};
 												class Item1
@@ -16977,6 +16985,33 @@ class CustomAttributes
 													{
 														singleType="BOOL";
 														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														singleType="SCALAR";
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item458
+									{
+										class data
+										{
+											singleType="ARRAY";
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														singleType="BOOL";
+														value=0;
 													};
 												};
 												class Item1
@@ -45546,7 +45581,7 @@ class Mission
 			position[]={11811.789,24.683001,2309.6479};
 			name="public_spawn";
 			type="Empty";
-			angle=178.57498;
+			angle=178.57497;
 			id=4359;
 			atlOffset=-0.0004196167;
 		};
@@ -45633,14 +45668,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={11936.631,27.282978,2258.6577};
+				position[]={11936.631,27.282978,2258.658};
 				angles[]={0,1.5707964,0};
 			};
 			side="Empty";
 			flags=5;
 			class Attributes
 			{
-				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];}; _this setVariable ['bis_disabled_Door_1',1,true]";
+				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOutBadco;},nil,6,false,false,"""",""true""];}; _this setVariable ['bis_disabled_Door_1',1,true]";
 			};
 			id=4368;
 			type="Land_BackAlley_01_l_gate_F";
