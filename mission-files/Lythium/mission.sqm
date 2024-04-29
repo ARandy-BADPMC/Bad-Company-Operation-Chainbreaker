@@ -8,22 +8,22 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=4358;
+		nextID=4375;
 	};
 	class MarkerIDProvider
 	{
-		nextID=13;
+		nextID=15;
 	};
 	class LayerIndexProvider
 	{
-		nextID=588;
+		nextID=676;
 	};
 	class Camera
 	{
-		pos[]={11948.72,209.33514,1867.2118};
-		dir[]={0.15039949,-0.29221186,-0.94445533};
-		up[]={0.045954231,0.95635325,-0.28857666};
-		aside[]={-0.9875586,-1.2718374e-008,-0.15726307};
+		pos[]={11800.235,155.19711,1783.6731};
+		dir[]={0.26826951,-0.32069656,-0.90840214};
+		up[]={0.090830758,0.94717962,-0.30756679};
+		aside[]={-0.95905483,-1.0873191e-007,-0.28322893};
 	};
 };
 binarizationWanted=0;
@@ -17028,7 +17028,7 @@ class Mission
 		briefingName="BadCo Operation Chainbreaker";
 		resistanceWest=0;
 		resistanceEast=1;
-		timeOfChanges=1800.0002;
+		timeOfChanges=28800;
 		startWeather=0;
 		startWind=0.1;
 		startWaves=0.30403143;
@@ -17036,18 +17036,17 @@ class Mission
 		forecastWind=0.1;
 		forecastWaves=0.59798443;
 		forecastLightnings=0.1;
-		wavesForced=1;
 		year=2022;
 		day=25;
-		hour=5;
-		minute=28;
+		hour=10;
+		minute=-30;
 		startFogBase=-1000;
 		startFogDecay=0;
-		forecastFogDecay=0.014;
+		forecastFogDecay=0;
 	};
 	class Entities
 	{
-		items=679;
+		items=688;
 		class Item0
 		{
 			dataType="Logic";
@@ -39396,7 +39395,7 @@ class Mission
 			flags=5;
 			class Attributes
 			{
-				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];}";
+				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];}; _this setVariable ['bis_disabled_Door_1',1,true]";
 			};
 			id=4069;
 			type="Land_BackAlley_01_l_gate_F";
@@ -39637,7 +39636,7 @@ class Mission
 			flags=5;
 			class Attributes
 			{
-				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];}";
+				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];}; _this setVariable ['bis_disabled_Door_1',1,true]";
 			};
 			id=4076;
 			type="Land_BackAlley_01_l_gate_F";
@@ -45531,6 +45530,296 @@ class Mission
 				};
 				nAttributes=2;
 			};
+		};
+		class Item679
+		{
+			dataType="Marker";
+			position[]={11959.254,25.712,2299.2871};
+			name="badco_spawn";
+			type="Empty";
+			id=4358;
+			atlOffset=-0.00040626526;
+		};
+		class Item680
+		{
+			dataType="Marker";
+			position[]={11811.789,24.683001,2309.6479};
+			name="public_spawn";
+			type="Empty";
+			angle=178.57498;
+			id=4359;
+			atlOffset=-0.0004196167;
+		};
+		class Item681
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={11936.839,25.641842,2260.3618};
+				angles[]={0.0084078256,0,0.052273717};
+			};
+			areaSize[]={2,0,2};
+			flags=1;
+			id=4360;
+			type="ModuleHideTerrainObjects_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item682
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11933.324,26.318142,2264.6699};
+				angles[]={0.0084124869,0,0.05227261};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				disableSimulation=1;
+			};
+			id=4364;
+			type="Land_HBarrier_large";
+			atlOffset=-0.1439991;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item683
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11936.631,27.282978,2258.6577};
+				angles[]={0,1.5707964,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];}; _this setVariable ['bis_disabled_Door_1',1,true]";
+			};
+			id=4368;
+			type="Land_BackAlley_01_l_gate_F";
+			atlOffset=1.9073486e-006;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="DoorStates";
+					expression="['init',_this,_value] call bis_fnc_3DENAttributeDoorStates;";
+					class Value
+					{
+						class data
+						{
+							singleType="ARRAY";
+							class value
+							{
+								items=3;
+								class Item0
+								{
+									class data
+									{
+										singleType="SCALAR";
+										value=1;
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										singleType="SCALAR";
+										value=0;
+									};
+								};
+								class Item2
+								{
+									class data
+									{
+										singleType="SCALAR";
+										value=0;
+									};
+								};
+							};
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item684
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11936.621,27.268646,2260.7908};
+				angles[]={0,4.712389,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				disableSimulation=1;
+			};
+			id=4369;
+			type="Land_BackAlley_01_l_1m_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item685
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11936.615,27.258902,2261.9114};
+				angles[]={0,4.712389,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				disableSimulation=1;
+			};
+			id=4372;
+			type="Land_BackAlley_01_l_1m_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item686
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11936.624,27.25004,2263.0259};
+				angles[]={0,4.712389,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				disableSimulation=1;
+			};
+			id=4373;
+			type="Land_BackAlley_01_l_1m_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item687
+		{
+			dataType="Trigger";
+			position[]={11957.675,25.781635,2286.8989};
+			class Attributes
+			{
+				onActivation="null= [] spawn {  " \n "    _clanStatus = (squadparams player select 0) select 0;  " \n "    switch (_clanStatus) do {  " \n "        case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the Badco base!"";};  " \n "        case ""Bad Co"": {hint ""Welcome B.A.D. PMC member to the Badco base!"";};  " \n "        default {  " \n "              hint ""Warning! You're entering a restricted area and will be teleported!"";   " \n "              sleep 3;  " \n "        player setPos getMarkerPos ""plebians_spawn"";  " \n "    };  " \n "  }; " \n "};";
+				sizeA=19;
+				sizeB=47;
+				sizeC=20;
+				activationBy="ANYPLAYER";
+				isRectangle=1;
+			};
+			id=4374;
+			type="EmptyDetector";
 		};
 	};
 	class Connections
