@@ -39361,7 +39361,7 @@ class Mission
 			flags=5;
 			class Attributes
 			{
-				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];}; _this setVariable ['bis_disabled_Door_1',1,true];";
+				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];this setVariable ['bis_disabled_Door_1',1,true];};";
 			};
 			id=4069;
 			type="Land_BackAlley_01_l_gate_F";
@@ -39602,7 +39602,7 @@ class Mission
 			flags=5;
 			class Attributes
 			{
-				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];}; _this setVariable ['bis_disabled_Door_1',1,true];";
+				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOut;},nil,6,false,false,"""",""true""];this setVariable ['bis_disabled_Door_1',1,true];};";
 			};
 			id=4076;
 			type="Land_BackAlley_01_l_gate_F";
@@ -45592,7 +45592,7 @@ class Mission
 			flags=5;
 			class Attributes
 			{
-				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOutBadco;},nil,6,false,false,"""",""true""];}; _this setVariable ['bis_disabled_Door_1',1,true];";
+				init="call{this addaction [""<t color='#FF0000'>BUZZ IN/OUT</t>"",{[_this] spawn fnc_buzzInOutBadco;},nil,6,false,false,"""",""true""];this setVariable ['bis_disabled_Door_1',1,true];}; ";
 			};
 			id=4368;
 			type="Land_BackAlley_01_l_gate_F";
@@ -45763,14 +45763,13 @@ class Mission
 			position[]={11957.675,25.781635,2286.8989};
 			class Attributes
 			{
-				onActivation="null= [] spawn {  " \n "    _clanStatus = (squadparams player select 0) select 0;  " \n "    switch (_clanStatus) do {  " \n "        case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};  " \n "        case ""Bad Co"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};  " \n "        default {  " \n "              hint ""Warning! You're entering a restricted area and will be teleported!"";   " \n "              sleep 3;  " \n "        player setPos getMarkerPos ""public_spawn"";  " \n "    };  " \n "  }; " \n "};";
+				onActivation="null= [] spawn {_clanStatus = (squadparams player select 0) select 0;switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};default { hint ""Warning! You're entering a restricted area and will be teleported!""; sleep 3; player setPos getMarkerPos ""public_spawn"";};};};";
 				sizeA=19;
 				sizeB=47;
 				sizeC=20;
 				repeatable=1;
 				activationBy="ANYPLAYER";
 				isRectangle=1;
-				isServerOnly=1;
 			};
 			id=4374;
 			type="EmptyDetector";
