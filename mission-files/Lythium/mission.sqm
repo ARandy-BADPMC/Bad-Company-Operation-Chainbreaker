@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=4436;
+		nextID=4442;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=699;
+		nextID=709;
 	};
 	class Camera
 	{
-		pos[]={12053.932,289.18536,1354.0889};
-		dir[]={0.26210764,-0.35158437,-0.89873952};
-		up[]={0.098439313,0.93615198,-0.33753771};
-		aside[]={-0.96002764,-2.1434971e-008,-0.27998248};
+		pos[]={11984.648,159.6424,1648.1978};
+		dir[]={0.21373267,-0.36374399,-0.90671355};
+		up[]={0.083466068,0.93147862,-0.35408428};
+		aside[]={-0.97337675,-1.4201942e-007,-0.22944698};
 	};
 };
 binarizationWanted=0;
@@ -165,13 +165,14 @@ addons[]=
 	"A3_Structures_F_Exp_Industrial_SurfaceMine_01",
 	"A3_Structures_F_Bootcamp_Items_Electronics",
 	"ace_field_rations",
-	"A3_Structures_F_Exp_Military_Barracks_01"
+	"A3_Structures_F_Exp_Military_Barracks_01",
+	"FFAA_Billboards"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=85;
+		items=86;
 		class Item0
 		{
 			className="A3_Modules_F";
@@ -725,6 +726,13 @@ class AddonsMetaData
 			name="ACE3 - Field Rations";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
+		};
+		class Item85
+		{
+			className="lythiumenv";
+			name="LYTHIUMENV - Enviorement and Structures";
+			author="FFAA_MOD";
+			url="http://ffaamod.es";
 		};
 	};
 };
@@ -17081,7 +17089,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=676;
+		items=677;
 		class Item0
 		{
 			dataType="Logic";
@@ -45773,6 +45781,22 @@ class Mission
 			};
 			id=4374;
 			type="EmptyDetector";
+		};
+		class Item676
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11830.566,29.450756,2249.5378};
+				angles[]={0,3.1415927,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=4441;
+			type="Land_FFAA_BillBoard_GBR15";
 		};
 	};
 	class Connections
