@@ -60,13 +60,13 @@ player addEventHandler ["GetInMan",{
 }];
 
 jeff addaction ["Lights on", {
-	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
+	_lamp = [11753.754,25.629173,2334.1289] nearestObject "Land_LampAirport_F";
 	_lamp sethit ["light_1_hitpoint",0];
 	_lamp sethit ["light_2_hitpoint",0];
 }];
 
 jeff addaction ["Lights off", {
-	_lamp = [12068,12595.7,0] nearestObject "Land_LampAirport_F";
+	_lamp = [11753.754,25.629173,2334.1289] nearestObject "Land_LampAirport_F";
 	_lamp sethit ["light_1_hitpoint",1];
 	_lamp sethit ["light_2_hitpoint",1];	
 }];
@@ -118,6 +118,7 @@ Hz_pers_clientReadyForLoad = true;
 	};	
 };
 
+
 fnc_teleport_to_spawn = {
 	params ["_player"];
 	_clanStatus = (squadparams player select 0) select 0;
@@ -135,3 +136,5 @@ player addMPEventHandler ["MPRespawn", {
 	params ["_unit", "_corpse"];
 	[_unit] spawn fnc_teleport_to_spawn;
 }];
+
+_null = [] execVM "Briefing.sqf";  // Briefing tabs
