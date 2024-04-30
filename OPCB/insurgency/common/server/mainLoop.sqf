@@ -88,7 +88,7 @@ _BCTime = time;
 		// ["Starting grid Retaking System"] remoteExec ["systemChat"];
 		while {true} do {
 			if ((count Hz_pers_var_insurgencyClearedMarkers) > _thresholdGridCount) then {
-				private _completionRatio = (count Hz_pers_var_insurgencyClearedMarkers) / ins_allMarkerCount;
+				private _completionRatio = (count Hz_pers_var_insurgencyClearedMarkers) / ins_allMarkerCount * 10/8;
 				// linear fashion: | tier6 -> 4 grids/h | tier 5 -> 3 grids/h | tier 4 -> 2 grid/h  | tier 3 -> 1 grid/h
 				private _total_time_to_sleep = 3600;
 				private _numGridsToRecap = ceil(_completionRatio * 6) - 2;
@@ -120,7 +120,7 @@ _BCTime = time;
 						};
 					};
 					private _useLastGridAsCenter = false;
-					for "_i" from 0 to 8 do {
+					for "_i" from 0 to (count _spiral_traversal -1) do {
 						offset = _spiral_traversal select _i;
 						next_grid_to_retake = [(grid_to_retake select 0) + (offset select 0), (grid_to_retake select 1) + (offset select 1), 0];
 						if ((str next_grid_to_retake) in Hz_pers_var_insurgencyClearedMarkers) then {
