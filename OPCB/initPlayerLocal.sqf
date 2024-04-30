@@ -118,4 +118,23 @@ Hz_pers_clientReadyForLoad = true;
 	};	
 };
 
+
+fnc_teleport_to_spawn = {
+	params ["_player"];
+	_clanStatus = (squadparams player select 0) select 0;
+	_badco_respawn_pos = markerPos "badco_spawn";
+	if (((getPos _player) distance _badco_respawn_pos) < 1000) then {
+		switch (_clanStatus) do {
+			case "B.A.D. PMC": {_player setPos _badco_respawn_pos;};
+			case "Bad Co": {hint str _player; _player setPos _badco_respawn_pos;};
+			default {};
+		};
+	};
+};
+
+player addMPEventHandler ["MPRespawn", {
+	params ["_unit", "_corpse"];
+	[_unit] spawn fnc_teleport_to_spawn;
+}];
+
 _null = [] execVM "Briefing.sqf";  // Briefing tabs
