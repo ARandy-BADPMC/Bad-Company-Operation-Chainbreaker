@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=709;
+		nextID=719;
 	};
 	class Camera
 	{
-		pos[]={11984.648,159.6424,1648.1978};
-		dir[]={0.21373267,-0.36374399,-0.90671355};
-		up[]={0.083466068,0.93147862,-0.35408428};
-		aside[]={-0.97337675,-1.4201942e-007,-0.22944698};
+		pos[]={11965.444,126.25343,1901.9161};
+		dir[]={0.074741371,-0.33623147,-0.9388786};
+		up[]={0.026685923,0.94176114,-0.33522022};
+		aside[]={-0.99690628,2.5547706e-009,-0.079360969};
 	};
 };
 binarizationWanted=0;
@@ -29778,7 +29778,7 @@ class Mission
 			};
 			id=2589;
 			type="Land_Pliers_F";
-			atlOffset=0.83869934;
+			atlOffset=0.83870125;
 		};
 		class Item208
 		{
@@ -34448,7 +34448,7 @@ class Mission
 			};
 			id=2827;
 			type="Land_WaterBottle_01_full_F";
-			atlOffset=0.28967667;
+			atlOffset=0.41791534;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -35768,7 +35768,7 @@ class Mission
 			};
 			id=2885;
 			type="Land_Pliers_F";
-			atlOffset=0.85261917;
+			atlOffset=0.85275078;
 		};
 		class Item406
 		{
@@ -41082,7 +41082,7 @@ class Mission
 					};
 					id=4122;
 					type="Land_WaterBottle_01_full_F";
-					atlOffset=0.64338303;
+					atlOffset=0.7716217;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -41103,7 +41103,7 @@ class Mission
 				};
 			};
 			id=4123;
-			atlOffset=0.70453644;
+			atlOffset=0.76865387;
 		};
 		class Item572
 		{
@@ -41399,6 +41399,7 @@ class Mission
 						angles[]={0,3.1459715,6.282495};
 					};
 					side="Empty";
+					flags=4;
 					class Attributes
 					{
 						createAsSimpleObject=1;
@@ -41406,7 +41407,7 @@ class Mission
 					};
 					id=4132;
 					type="Land_WaterBottle_01_full_F";
-					atlOffset=0.69036102;
+					atlOffset=0.0055770874;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -41427,7 +41428,7 @@ class Mission
 				};
 			};
 			id=4133;
-			atlOffset=0.74222946;
+			atlOffset=0.80634308;
 		};
 		class Item573
 		{
@@ -41719,6 +41720,7 @@ class Mission
 						position[]={9456.5166,113.95782,8373.4287};
 					};
 					side="Empty";
+					flags=4;
 					class Attributes
 					{
 						createAsSimpleObject=1;
@@ -41726,7 +41728,7 @@ class Mission
 					};
 					id=4142;
 					type="Land_WaterBottle_01_full_F";
-					atlOffset=3.791214;
+					atlOffset=0.00011444092;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -41747,7 +41749,7 @@ class Mission
 				};
 			};
 			id=4143;
-			atlOffset=0.74539948;
+			atlOffset=0.80951691;
 		};
 		class Item574
 		{
@@ -42045,6 +42047,7 @@ class Mission
 						angles[]={6.2811427,0,0.0014235723};
 					};
 					side="Empty";
+					flags=4;
 					class Attributes
 					{
 						createAsSimpleObject=1;
@@ -42052,7 +42055,7 @@ class Mission
 					};
 					id=4152;
 					type="Land_WaterBottle_01_full_F";
-					atlOffset=0.68551254;
+					atlOffset=0.00074386597;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -42073,7 +42076,7 @@ class Mission
 				};
 			};
 			id=4153;
-			atlOffset=0.74612808;
+			atlOffset=0.81024551;
 		};
 		class Item575
 		{
@@ -42376,7 +42379,7 @@ class Mission
 					};
 					id=4182;
 					type="Land_WaterBottle_01_full_F";
-					atlOffset=0.67875671;
+					atlOffset=0.80702209;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -42397,7 +42400,7 @@ class Mission
 				};
 			};
 			id=4183;
-			atlOffset=0.73802185;
+			atlOffset=0.80213928;
 		};
 		class Item576
 		{
@@ -42692,6 +42695,7 @@ class Mission
 						position[]={12602.955,353.09149,17774.938};
 					};
 					side="Empty";
+					flags=4;
 					class Attributes
 					{
 						createAsSimpleObject=1;
@@ -42699,7 +42703,7 @@ class Mission
 					};
 					id=4192;
 					type="Land_WaterBottle_01_full_F";
-					atlOffset=0.68490601;
+					atlOffset=0.00012207031;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -42720,7 +42724,7 @@ class Mission
 				};
 			};
 			id=4193;
-			atlOffset=0.74594116;
+			atlOffset=0.81005859;
 		};
 		class Item577
 		{
@@ -45771,7 +45775,7 @@ class Mission
 			position[]={11957.675,25.781635,2286.8989};
 			class Attributes
 			{
-				onActivation="null= [] spawn {_clanStatus = (squadparams player select 0) select 0;switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};default { hint ""Warning! You're entering a restricted area and will be teleported!""; sleep 3; player setPos getMarkerPos ""public_spawn"";};};};";
+				onActivation="null= [] spawn {if (getPos player inArea thisTrigger) then {_clanStatus = (squadparams player select 0) select 0;switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};default { hint ""Warning! You're entering a restricted area and will be teleported!""; sleep 3; player setPos getMarkerPos ""public_spawn"";};};};};";
 				sizeA=19;
 				sizeB=47;
 				sizeC=20;
