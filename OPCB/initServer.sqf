@@ -18,8 +18,9 @@ WEST setFriend [EAST, 0]; WEST setFriend [Resistance, 0]; WEST setFriend [Civili
 Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [Resistance, 1];
 
 Hz_pers_var_insurgencyClearedMarkers = [];
-
+centerOfGridRetakingStr = "";
 Hz_pers_var_boughtFobs = [];
+publicVariable "centerOfGridRetakingStr";
 publicVariable "Hz_pers_var_boughtFobs";
 
 Hz_pers_customLoadFunction = compileFinal preprocessFileLineNumbers "Hz_pers_customLoadFunction.sqf";

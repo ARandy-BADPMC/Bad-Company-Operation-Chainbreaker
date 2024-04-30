@@ -7,6 +7,7 @@
 ["MaxTransHelis",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["MaxAPC",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["MaxBoats",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
+["centerOfGridRetakingStr",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["VehicleSpawnerHistory",2,true] call Hz_pers_API_addMissionVariable;
 
 
