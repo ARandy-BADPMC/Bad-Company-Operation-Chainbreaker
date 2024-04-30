@@ -57,7 +57,7 @@ _BCTime = time;
 		
 		waitUntil {
 			sleep 10;
-			serverTime > 30
+			serverTime > 300
 		};
 		waitUntil {
 			sleep 10;
