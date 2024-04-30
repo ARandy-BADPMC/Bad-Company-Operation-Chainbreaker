@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=719;
+		nextID=729;
 	};
 	class Camera
 	{
@@ -45775,7 +45775,7 @@ class Mission
 			position[]={11957.675,25.781635,2286.8989};
 			class Attributes
 			{
-				onActivation="null= [] spawn {if (getPos player inArea thisTrigger) then {_clanStatus = (squadparams player select 0) select 0;switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};default { hint ""Warning! You're entering a restricted area and will be teleported!""; sleep 3; player setPos getMarkerPos ""public_spawn"";};};};};";
+				onActivation="null= [thisTrigger] spawn { params [""_trigger""]; if (getPos player inArea _trigger) then {_clanStatus = (squadparams player select 0) select 0;switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};default { hint ""Warning! You're entering a restricted area and will be teleported!""; sleep 3; player setPos getMarkerPos ""public_spawn"";};};};};";
 				sizeA=19;
 				sizeB=47;
 				sizeC=20;
