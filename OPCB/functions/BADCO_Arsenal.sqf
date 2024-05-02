@@ -1982,9 +1982,6 @@ _arsenalitems =
 "V_LegStrapBag_olive_F",
 "V_LegStrapBag_black_F",
 "ACE_SpraypaintBlue",
-"V_EOD_blue_F",
-"V_EOD_coyote_F",
-"V_EOD_olive_F",
 "optic_ERCO_snd_F",
 "U_I_G_Story_Protagonist_F",
 "ACE_SpraypaintGreen",
@@ -5054,9 +5051,6 @@ _arsenalitems =
 "V_LegStrapBag_olive_F",
 "V_LegStrapBag_black_F",
 "ACE_SpraypaintBlue",
-"V_EOD_blue_F",
-"V_EOD_coyote_F",
-"V_EOD_olive_F",
 "optic_ERCO_snd_F",
 "ACE_SpraypaintGreen",
 "rhsusf_hgu56p_black",
@@ -6726,7 +6720,8 @@ _arsenalitems =
 "MRAWS_HEAT_F",
 "launch_NLAW_F",
 "rhs_weap_rpg75",
-"rhs_weap_m80"
+"rhs_weap_m80",
+"B_Bergen_mcamo_F"
 ];
 
 
