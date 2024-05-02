@@ -3170,7 +3170,22 @@ _arsenalitems =
 "H_HelmetB_light_wdl",
 "rhs_scarf",
 "rhs_uniform_emr_des_patchless",
-"rhs_uniform_6sh122_v2"
+"rhs_uniform_6sh122_v2",
+"hlc_wp_XM177E1",
+"hlc_wp_XM177E2",
+"hlc_wp_XM177E2_M203",
+"hlc_muzzle_XM177E1_Moderator",
+"hlc_muzzle_XM177E2_Moderator",
+"V_CarrierRigKBT_01_light_EAF_F",
+"V_CarrierRigKBT_01_light_Olive_F",
+"TAC_EI_RRV1_RG",
+"rhs_rk_sht_30_olive",
+"rhs_rk_sht_30_olive_engineer_empty",
+"TAC_V_tacv1LC_BK",
+"TAC_V_tacv1LC_OD",
+"TAC_V_tacv1LC_CY",
+"rhs_beanie_green",
+"H_Cap_headphones"
 ];
 
 
@@ -6156,7 +6171,26 @@ _arsenalitems =
 "H_HelmetB_light_wdl",
 "rhs_scarf",
 "rhs_uniform_emr_des_patchless",
-"rhs_uniform_6sh122_v2"
+"rhs_uniform_6sh122_v2",
+"hlc_wp_XM177E1",
+"hlc_wp_XM177E2",
+"hlc_wp_XM177E2_M203",
+"hlc_muzzle_XM177E1_Moderator",
+"hlc_muzzle_XM177E2_Moderator",
+"V_CarrierRigKBT_01_light_EAF_F",
+"V_CarrierRigKBT_01_light_Olive_F",
+"TAC_EI_RRV1_RG",
+"rhs_rk_sht_30_olive",
+"rhs_rk_sht_30_olive_engineer_empty",
+"TAC_V_tacv1LC_BK",
+"TAC_V_tacv1LC_OD",
+"TAC_V_tacv1LC_CY",
+"rhs_beanie_green",
+"H_Cap_headphones",
+"LOP_H_Beanie_tan",
+"TRYK_U_pad_hood_Cl",
+"TRYK_U_nohoodPcu_gry",
+"TRYK_U_pad_hood_Blk"
 ];
 
 
