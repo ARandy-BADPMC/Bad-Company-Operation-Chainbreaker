@@ -6721,7 +6721,11 @@ _arsenalitems =
 "launch_NLAW_F",
 "rhs_weap_rpg75",
 "rhs_weap_m80",
-"B_Bergen_mcamo_F"
+"B_Bergen_mcamo_F",
+"ALiVE_Humrat",
+"ALiVE_Watterbottle",
+"rhs_rpg7_PG7VS_mag",
+"ToolKit"
 ];
 
 
