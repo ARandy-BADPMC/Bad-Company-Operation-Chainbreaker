@@ -6725,7 +6725,13 @@ _arsenalitems =
 "ALiVE_Humrat",
 "ALiVE_Watterbottle",
 "rhs_rpg7_PG7VS_mag",
-"ToolKit"
+"ToolKit",
+"ACE_CableTie",
+"ACE_IR_Strobe_Item",
+"ACE_SpareBarrel",
+"ACE_UAVBattery",
+"ACRE_VHF30108",
+"ACE_WaterBottle"
 ];
 
 
