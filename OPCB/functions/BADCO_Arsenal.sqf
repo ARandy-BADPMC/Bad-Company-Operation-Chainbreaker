@@ -1982,9 +1982,6 @@ _arsenalitems =
 "V_LegStrapBag_olive_F",
 "V_LegStrapBag_black_F",
 "ACE_SpraypaintBlue",
-"V_EOD_blue_F",
-"V_EOD_coyote_F",
-"V_EOD_olive_F",
 "optic_ERCO_snd_F",
 "U_I_G_Story_Protagonist_F",
 "ACE_SpraypaintGreen",
@@ -3170,7 +3167,22 @@ _arsenalitems =
 "H_HelmetB_light_wdl",
 "rhs_scarf",
 "rhs_uniform_emr_des_patchless",
-"rhs_uniform_6sh122_v2"
+"rhs_uniform_6sh122_v2",
+"hlc_wp_XM177E1",
+"hlc_wp_XM177E2",
+"hlc_wp_XM177E2_M203",
+"hlc_muzzle_XM177E1_Moderator",
+"hlc_muzzle_XM177E2_Moderator",
+"V_CarrierRigKBT_01_light_EAF_F",
+"V_CarrierRigKBT_01_light_Olive_F",
+"TAC_EI_RRV1_RG",
+"rhs_rk_sht_30_olive",
+"rhs_rk_sht_30_olive_engineer_empty",
+"TAC_V_tacv1LC_BK",
+"TAC_V_tacv1LC_OD",
+"TAC_V_tacv1LC_CY",
+"rhs_beanie_green",
+"H_Cap_headphones"
 ];
 
 
@@ -5039,9 +5051,6 @@ _arsenalitems =
 "V_LegStrapBag_olive_F",
 "V_LegStrapBag_black_F",
 "ACE_SpraypaintBlue",
-"V_EOD_blue_F",
-"V_EOD_coyote_F",
-"V_EOD_olive_F",
 "optic_ERCO_snd_F",
 "ACE_SpraypaintGreen",
 "rhsusf_hgu56p_black",
@@ -6156,7 +6165,26 @@ _arsenalitems =
 "H_HelmetB_light_wdl",
 "rhs_scarf",
 "rhs_uniform_emr_des_patchless",
-"rhs_uniform_6sh122_v2"
+"rhs_uniform_6sh122_v2",
+"hlc_wp_XM177E1",
+"hlc_wp_XM177E2",
+"hlc_wp_XM177E2_M203",
+"hlc_muzzle_XM177E1_Moderator",
+"hlc_muzzle_XM177E2_Moderator",
+"V_CarrierRigKBT_01_light_EAF_F",
+"V_CarrierRigKBT_01_light_Olive_F",
+"TAC_EI_RRV1_RG",
+"rhs_rk_sht_30_olive",
+"rhs_rk_sht_30_olive_engineer_empty",
+"TAC_V_tacv1LC_BK",
+"TAC_V_tacv1LC_OD",
+"TAC_V_tacv1LC_CY",
+"rhs_beanie_green",
+"H_Cap_headphones",
+"LOP_H_Beanie_tan",
+"TRYK_U_pad_hood_Cl",
+"TRYK_U_nohoodPcu_gry",
+"TRYK_U_pad_hood_Blk"
 ];
 
 
@@ -6692,7 +6720,18 @@ _arsenalitems =
 "MRAWS_HEAT_F",
 "launch_NLAW_F",
 "rhs_weap_rpg75",
-"rhs_weap_m80"
+"rhs_weap_m80",
+"B_Bergen_mcamo_F",
+"ALiVE_Humrat",
+"ALiVE_Watterbottle",
+"rhs_rpg7_PG7VS_mag",
+"ToolKit",
+"ACE_CableTie",
+"ACE_IR_Strobe_Item",
+"ACE_SpareBarrel",
+"ACE_UAVBattery",
+"ACRE_VHF30108",
+"ACE_WaterBottle"
 ];
 
 
