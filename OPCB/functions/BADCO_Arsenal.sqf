@@ -6723,7 +6723,7 @@ _arsenalitems =
 "rhs_weap_m80",
 "B_Bergen_mcamo_F",
 "ALiVE_Humrat",
-"ALiVE_Watterbottle",
+"ALiVE_Waterbottle",
 "rhs_rpg7_PG7VS_mag",
 "ToolKit",
 "ACE_CableTie",
@@ -6731,7 +6731,8 @@ _arsenalitems =
 "ACE_SpareBarrel",
 "ACE_UAVBattery",
 "ACRE_VHF30108",
-"ACE_WaterBottle"
+"ACE_WaterBottle",
+"rhs_uniform_g3_blk"
 ];
 
 
