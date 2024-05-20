@@ -3182,7 +3182,9 @@ _arsenalitems =
 "TAC_V_tacv1LC_OD",
 "TAC_V_tacv1LC_CY",
 "rhs_beanie_green",
-"H_Cap_headphones"
+"H_Cap_headphones",
+"rhs_uniform_g3_blk",
+"ACE_NVG_Gen4_Black_WP"
 ];
 
 
@@ -6184,7 +6186,9 @@ _arsenalitems =
 "LOP_H_Beanie_tan",
 "TRYK_U_pad_hood_Cl",
 "TRYK_U_nohoodPcu_gry",
-"TRYK_U_pad_hood_Blk"
+"TRYK_U_pad_hood_Blk",
+"rhs_uniform_g3_blk",
+"ACE_NVG_Gen4_Black_WP"
 ];
 
 
@@ -6731,8 +6735,7 @@ _arsenalitems =
 "ACE_SpareBarrel",
 "ACE_UAVBattery",
 "ACRE_VHF30108",
-"ACE_WaterBottle",
-"rhs_uniform_g3_blk"
+"ACE_WaterBottle"
 ];
 
 
