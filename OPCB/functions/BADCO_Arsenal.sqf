@@ -3265,7 +3265,13 @@ _arsenalitems =
 "avm224_M_6Rnd_60mm_ILLUM_csw",
 "avm224_M_6Rnd_60mm_ILLUM_IR_csw",
 "avm224_M_6Rnd_60mm_HE_0_csw",
-"avm224_M_6Rnd_60mm_HE_csw"
+"avm224_M_6Rnd_60mm_HE_csw",
+"H_beret_EAF_01_F",
+"hlc_muzzle_A1_FlashHider",
+"LOP_U_US_Fatigue_8",
+"LOP_U_US_Fatigue_9",
+"TRYK_Shemagh",
+"TRYK_Shemagh_G"
 ];
 
 
@@ -6350,7 +6356,13 @@ _arsenalitems =
 "avm224_M_6Rnd_60mm_ILLUM_csw",
 "avm224_M_6Rnd_60mm_ILLUM_IR_csw",
 "avm224_M_6Rnd_60mm_HE_0_csw",
-"avm224_M_6Rnd_60mm_HE_csw"
+"avm224_M_6Rnd_60mm_HE_csw",
+"H_beret_EAF_01_F",
+"hlc_muzzle_A1_FlashHider",
+"LOP_U_US_Fatigue_8",
+"LOP_U_US_Fatigue_9",
+"TRYK_Shemagh",
+"TRYK_Shemagh_G"
 ];
 
 
