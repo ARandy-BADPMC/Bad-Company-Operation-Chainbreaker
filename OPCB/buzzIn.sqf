@@ -6,6 +6,6 @@ fnc_buzzInOut =
 	sleep 0.5;
 	systemChat str _gate;
 	_gate animate ["door_1_rot", 1];
-	sleep 2;
+	sleep 5;
 	_gate animate ["door_1_rot", 0];
 };
