@@ -90,14 +90,14 @@ _BCTime = time;
 			if ((count Hz_pers_var_insurgencyClearedMarkers) > _thresholdGridCount) then {
 				private _completionRatio = (count Hz_pers_var_insurgencyClearedMarkers) / ins_allMarkerCount * 10/8;
 				// linear fashion: | tier6 -> 4 grids/h | tier 5 -> 3 grids/h | tier 4 -> 2 grid/h  | tier 3 -> 1 grid/h
-				private _total_time_to_sleep = 3600;
+				private _total_time_to_sleep = 3600 * 1.5;
 				private _numGridsToRecap = ceil(_completionRatio * 6) - 2;
 				if ((count allPlayers) < 2) then {
-					_total_time_to_sleep = 3600 * 2;
+					_total_time_to_sleep = 3600 * 4;
 					_numGridsToRecap = 1;
 				};
-				sleep 1800;
-				_timeSlept = _timeSlept + 1800;
+				sleep 600;
+				_timeSlept = _timeSlept + 600;
 				if(_timeSlept >= _total_time_to_sleep) then {
 					_timeSlept = 0;
 					_grids_retaken = 0;
