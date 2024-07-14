@@ -3274,7 +3274,8 @@ _arsenalitems =
 "TRYK_Shemagh_G",
 "H_Cap_marshall",
 "hlc_muzzle_556NATO_M42000",
-"hlc_30Rnd_545x39_t_ak_Black"
+"hlc_30Rnd_545x39_t_ak_Black",
+"rhs_weap_ak103_zenitco01_b33"
 ];
 
 
@@ -6368,7 +6369,8 @@ _arsenalitems =
 "TRYK_Shemagh_G",
 "hlc_muzzle_556NATO_M42000",
 "hlc_30Rnd_545x39_t_ak_Black",
-"rhsusf_opscore_bk_pelt"
+"rhsusf_opscore_bk_pelt",
+"rhs_weap_ak103_zenitco01_b33"
 ];
 
 
