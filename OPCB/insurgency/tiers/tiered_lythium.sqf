@@ -67,8 +67,7 @@ lythiumInfantryTiers = createHashMapFromArray [
 			"LOP_ISTS_OPF_Infantry_AR_2",
 			"LOP_ISTS_OPF_Infantry_Rifleman_3",
 			"LOP_ISTS_OPF_Infantry_AT",
-			"LOP_ISTS_OPF_Infantry_Rifleman_9",
-			// "LOP_TKA_Infantry_AA"		
+			"LOP_ISTS_OPF_Infantry_Rifleman_9"		
 		]
 	],
 	[
