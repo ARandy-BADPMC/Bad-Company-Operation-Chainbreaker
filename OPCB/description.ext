@@ -47,6 +47,7 @@ class CfgFunctions
 	#include "CfgFunctions.hpp"
 	#include "sideMissions\cfgFunctions.hpp"
 	#include "enemyLoadouts\cfgFunctions.hpp"
+	#include "vcom\cfgFunctions.hpp"
 };
 #include "compositions\compositions.cfg"
 #include "functions\defines.hpp"
@@ -55,6 +56,7 @@ class CfgFunctions
 
 class Extended_PreInit_EventHandlers {
 	aiSkillSettings = "call compile preprocessFileLineNumbers 'AI.sqf'";
+	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_Functions\fn_CBASettings.sqf";
 };
 
 class Extended_InitPost_EventHandlers
@@ -73,11 +75,17 @@ class CfgRemoteExec
 	{
 		mode = 2;
 		jip = 1;		
+		
+		class vcm_serverask { allowedTargets = 0;jip = 1; };
+		class VCM_PublicScript { allowedTargets = 0;jip = 1; };
 		class BIS_fnc_debugConsoleExec { allowedTargets = 0;jip = 1; };
 		class SpawnScript { allowedTargets = 0;jip = 1; };
 		class enableSimulationGlobal { allowedTargets = 0;jip = 1; };
+		class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
 		
 	};
+	
+	
 };
 
 class CfgDebriefing {  

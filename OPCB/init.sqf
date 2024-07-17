@@ -25,3 +25,7 @@ RHSDecalsOff = true;
 // Arsenal buzzer
 fnc_buzzInOut = compile preprocessFileLineNumbers "buzzIn.sqf";
 fnc_buzzInOutBadco = compile preprocessFileLineNumbers "buzzInBadco.sqf";
+
+//Exec Vcom AI function
+[] execVM "Vcom\VcomInit.sqf";
+//End of Vcom commands
