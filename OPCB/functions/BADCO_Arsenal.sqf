@@ -3268,10 +3268,14 @@ _arsenalitems =
 "avm224_M_6Rnd_60mm_HE_csw",
 "H_beret_EAF_01_F",
 "hlc_muzzle_A1_FlashHider",
-"LOP_U_US_Fatigue_8",
-"LOP_U_US_Fatigue_9",
+"LOP_U_US_Fatigue_08",
+"LOP_U_US_Fatigue_09",
 "TRYK_Shemagh",
-"TRYK_Shemagh_G"
+"TRYK_Shemagh_G",
+"H_Cap_marshall",
+"hlc_muzzle_556NATO_M42000",
+"hlc_30Rnd_545x39_t_ak_Black",
+"rhs_weap_ak103_zenitco01_b33"
 ];
 
 
@@ -6359,10 +6363,14 @@ _arsenalitems =
 "avm224_M_6Rnd_60mm_HE_csw",
 "H_beret_EAF_01_F",
 "hlc_muzzle_A1_FlashHider",
-"LOP_U_US_Fatigue_8",
-"LOP_U_US_Fatigue_9",
+"LOP_U_US_Fatigue_08",
+"LOP_U_US_Fatigue_09",
 "TRYK_Shemagh",
-"TRYK_Shemagh_G"
+"TRYK_Shemagh_G",
+"hlc_muzzle_556NATO_M42000",
+"hlc_30Rnd_545x39_t_ak_Black",
+"rhsusf_opscore_bk_pelt",
+"rhs_weap_ak103_zenitco01_b33"
 ];
 
 
@@ -6914,7 +6922,8 @@ _arsenalitems =
 "avm224_M_6Rnd_60mm_ILLUM_csw",
 "avm224_M_6Rnd_60mm_ILLUM_IR_csw",
 "avm224_M_6Rnd_60mm_HE_0_csw",
-"avm224_M_6Rnd_60mm_HE_csw"
+"avm224_M_6Rnd_60mm_HE_csw",
+"hlc_30Rnd_545x39_t_ak_Black"
 ];
 
 
