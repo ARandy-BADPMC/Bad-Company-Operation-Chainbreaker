@@ -41,8 +41,8 @@ Vcm_Settings =
 	VCM_FRMCHANGE = true; //AI GROUPS WILL CHANGE FORMATIONS TO THEIR BEST GUESS.
 	VCM_SKILLCHANGE = true; //AI Groups will have their skills changed by Vcom.
 	VCM_USECBASETTINGS = true;//If CBA is enabled on the host, use the CBA default settings. If false, use the filepatching settings instead.
-	VCM_CARGOCHNG = true; //If true, Vcom will handle disembarking/re-embarking orders instead of vanilla. This is with the intention to prevent the endless embark/disembark loops AI are given.	
-	VCM_TURRETUNLOAD = true;//If true, AI will automatically disembark turret positions in vehicles, if the vehicle is badly damaged. This is to prevent AI leaving a tank, when the tracks are damaged.	
+	VCM_CARGOCHNG = true; //If true, Vcom will handle disembarking/re-embarking orders instead of vanilla. This is with the intention to prevent the endless embark/disembark loops AI are given.
+	VCM_TURRETUNLOAD = true;//If true, AI will automatically disembark turret positions in vehicles, if the vehicle is badly damaged. This is to prevent AI leaving a tank, when the tracks are damaged.
 	VCM_DISEMBARKRANGE = 200; //How far AI will disembark from their enemies. If the vehicle is damaged, they will disembark.
 	
 	//AI SKILL SETTINGS HERE!!!!!!!!!!!!
@@ -50,15 +50,15 @@ Vcm_Settings =
 	//VCM_AIDIFA = [['aimingAccuracy',0.15],['aimingShake',0.1],['aimingSpeed',0.25],['commanding',1],['courage',1],['endurance',1],['general',0.5],['reloadSpeed',1],['spotDistance',0.8],['spotTime',0.8]];
 		
 	//MEDIUM DIFFICULTY
-	VCM_AIDIFA = [['aimingAccuracy',0.25],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.5],['general',1],['reloadSpeed',1],['spotDistance',0.85],['spotTime',0.85]];
+	VCM_AIDIFA = [['aimingAccuracy',0.2],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.65],['general',0.7],['reloadSpeed',1],['spotDistance',0.3],['spotTime',0.6]];
 	
 	//HIGH DIFFICULTY
-	//VCM_AIDIFA = [['aimingAccuracy',0.35],['aimingShake',0.4],['aimingSpeed',0.45],['commanding',1],['courage',1],['endurance',1],['general',0.5],['reloadSpeed',1],['spotDistance',0.8],['spotTime',0.8]];
+	//VCM_AIDIFA = [['aimingAccuracy',0.4],['aimingShake',0.4],['aimingSpeed',0.45],['commanding',1],['courage',0.75],['endurance',1],['general',0.5],['reloadSpeed',1],['spotDistance',0.8],['spotTime',0.8]];
 	
 	//SIDE SPECIFIC
 	VCM_AIDIFWEST = [['aimingAccuracy',0.25],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.5],['general',1],['reloadSpeed',1],['spotDistance',0.85],['spotTime',0.85]];
-	VCM_AIDIFEAST = [['aimingAccuracy',0.25],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.5],['general',1],['reloadSpeed',1],['spotDistance',0.85],['spotTime',0.85]];
-	VCM_AIDIFRESISTANCE = [['aimingAccuracy',0.25],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.5],['general',1],['reloadSpeed',1],['spotDistance',0.85],['spotTime',0.85]];
+	VCM_AIDIFEAST = [['aimingAccuracy',0.2],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.65],['general',0.7],['reloadSpeed',1],['spotDistance',0.3],['spotTime',0.6]];
+	VCM_AIDIFRESISTANCE = [['aimingAccuracy',0.2],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.65],['general',0.7],['reloadSpeed',1],['spotDistance',0.3],['spotTime',0.6]];
 		
 	VCM_AISIDESPEC =
 	{
@@ -137,6 +137,5 @@ Vcm_Settings =
 if (VCM_USECBASETTINGS) then {
     [] call VCM_fnc_CBASettings;
 };
-
 
 };
