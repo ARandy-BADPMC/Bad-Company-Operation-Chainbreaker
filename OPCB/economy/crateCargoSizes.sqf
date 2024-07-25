@@ -8,6 +8,8 @@ OPCB_econ_vehicleCargoSizes = [
 	["MASH", 5],
 	["FlexibleTank_01_forest_F", 3],
 	["ACE_TRACK", 1],
-	["ACE_WHEEL", 1]
+	["ACE_WHEEL", 1],
+	["LAND_PORTABLELIGHT_SINGLE_F", 1],
+	["LAND_PORTABLELIGHT_DOUBLE_F", 2]
 
 ];

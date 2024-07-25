@@ -4,14 +4,16 @@ OPCB_econ_TierList_STAT = [
 
 	//TIER 1
 	[
-	"B_MORTAR_01_F",
+	"RHS_M119_D",
+	"RHSGREF_INS_D30",
 	"ITEM_RHS_WEAP_FGM148"
 	],
 
 	//TIER 2
 	[
 	"RHS_TOW_TRIPOD_D",
-	"RHS_KORNET_9M133_2_MSV"
+	"RHS_KORNET_9M133_2_MSV",
+	"B_MORTAR_01_F"
 	],
 
 	//TIER 3
