@@ -1,4 +1,4 @@
-private _planes = ["C_Plane_Civil_01_F","Do228","RHS_C130J","B_Plane_CAS_01_dynamicLoadout_F","RHS_AN2_B","B_Plane_Fighter_01_Stealth_F","L159ALCA","Yak130"];
+private _planes = ["C_Plane_Civil_01_F","RHS_C130J","B_Plane_CAS_01_dynamicLoadout_F","RHS_AN2_B","B_Plane_Fighter_01_Stealth_F","L159ALCA","Yak130"];
 sleep 10;
 while {true} do {
 	if(count allPlayers > 0) then {
