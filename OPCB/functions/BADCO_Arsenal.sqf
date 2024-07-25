@@ -3272,10 +3272,12 @@ _arsenalitems =
 "LOP_U_US_Fatigue_09",
 "TRYK_Shemagh",
 "TRYK_Shemagh_G",
-"H_Cap_marshall",
+"H_Cap_marshal",
 "hlc_muzzle_556NATO_M42000",
 "hlc_30Rnd_545x39_t_ak_Black",
-"rhs_weap_ak103_zenitco01_b33"
+"rhs_weap_ak103_zenitco01_b33",
+"hgun_Pistol_heavy_01_green_F",
+"optic_MRD_black"
 ];
 
 
@@ -6370,7 +6372,9 @@ _arsenalitems =
 "hlc_muzzle_556NATO_M42000",
 "hlc_30Rnd_545x39_t_ak_Black",
 "rhsusf_opscore_bk_pelt",
-"rhs_weap_ak103_zenitco01_b33"
+"rhs_weap_ak103_zenitco01_b33",
+"hgun_Pistol_heavy_01_green_F",
+"optic_MRD_black"
 ];
 
 
