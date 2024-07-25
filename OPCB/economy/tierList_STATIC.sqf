@@ -5,7 +5,7 @@ OPCB_econ_TierList_STAT = [
 	//TIER 1
 	[
 	"RHS_M119_D",
-	"RHSGREF_INS_D30"
+	"RHSGREF_INS_D30",
 	"ITEM_RHS_WEAP_FGM148"
 	],
 
