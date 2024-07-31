@@ -118,7 +118,7 @@ Hz_pers_clientReadyForLoad = true;
 	};	
 
 	_spectator = player getVariable ["AdminSpectator", false];
-	if(_developer) then {
+	if(_spectator) then {
 	player addAction ["<t color='#00AAFF'>Start/Stop Admin Spectate</t>","[] spawn CHAB_fnc_adminSpectate;",nil, -99, false, true, "", "true", 10, false,""];
 	};
 
