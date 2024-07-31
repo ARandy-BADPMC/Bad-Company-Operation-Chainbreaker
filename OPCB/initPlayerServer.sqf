@@ -21,7 +21,7 @@ if(_uid in _developers) then {
 
 #include "data\admin_spectators.sqf";
 
-if(_uid in _developers) then {
+if(_uid in _admin_spectators) then {
 	_playerUnit setVariable ["AdminSpectator", true, true];
 };
 
