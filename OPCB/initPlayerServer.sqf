@@ -19,4 +19,10 @@ if(_uid in _developers) then {
 	_playerUnit setVariable ["Developer", true, true];
 };
 
+#include "data\admin_spectators.sqf";
+
+if(_uid in _admin_spectators) then {
+	_playerUnit setVariable ["AdminSpectator", true, true];
+};
+
 _playerUnit setVariable ["InitDone", true, true];

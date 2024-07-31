@@ -116,8 +116,16 @@ Hz_pers_clientReadyForLoad = true;
 	if(_developer) then {
 		player addAction ["<t color='#00AAFF'>Developer Console</t>","[] spawn CHAB_fnc_adminconsole;",nil, -99, false, true, "", "true", 10, false,""];
 	};	
-};
 
+	_spectator = player getVariable ["AdminSpectator", false];
+	if(_spectator) then {
+	player addAction ["<t color='#00AAFF'>Start/Stop Admin Spectate</t>","[] spawn CHAB_fnc_adminSpectate;",nil, -99, false, true, "", "true", 10, false,""];
+	};
+
+	// spectate is a monitor defined in the missionFile wher users could spectate.
+	spectate addAction ["<t color='#00AAFF'>Start/Stop Admin Spectate</t>","[] spawn CHAB_fnc_adminSpectate;",nil, -99, false, true, "", "true", 10, false,""]
+
+};
 
 fnc_teleport_to_spawn = {
 	params ["_player"];

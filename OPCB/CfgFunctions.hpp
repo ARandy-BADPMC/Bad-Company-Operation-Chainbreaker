@@ -188,6 +188,10 @@ class chainbreaker
 		{
 			file = "functions\findSpot.sqf";
 		};
+		class adminSpectate
+		{
+			file = "functions\adminspectate.sqf";
+		};
 		class vehicleDeleteCheck
 		{
 			file = "functions\vehicleDeleteCheck.sqf";
