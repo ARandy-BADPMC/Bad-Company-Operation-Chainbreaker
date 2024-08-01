@@ -84,8 +84,8 @@ saraInfantryTiers = createHashMapFromArray [
 	]
 ];
 
-saraVehicleCrewTiers = createHashMapFromArray [[1,["LOP_SLA_Infantry_Rifleman_2"]], [2,["LOP_RACS_Infantry_Rifleman_2"]]];
-saraStaticCrewTiers = createHashMapFromArray [[1,["LOP_SLA_Infantry_Rifleman_2"]], [2,["LOP_RACS_Infantry_Rifleman_2"]]];
+saraVehicleCrewTiers = createHashMapFromArray [[1,"LOP_SLA_Infantry_Rifleman_2"], [2,"LOP_RACS_Infantry_Rifleman_2"]];
+saraStaticCrewTiers = createHashMapFromArray [[1,"LOP_SLA_Infantry_Rifleman_2"], [2,"LOP_RACS_Infantry_Rifleman_2"]];
 
 saraVehicleTiers = createHashMapFromArray [
 	[
