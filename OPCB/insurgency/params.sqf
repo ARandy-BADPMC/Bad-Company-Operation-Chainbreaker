@@ -13,9 +13,10 @@ patrolSpawnDelay = 1200;
 
 ins_AIspawnMaxRange = switch (toLower worldName) do {
 	case "zargabad" : {700};
-	case "sara" : {1000};
+	case "sara"	: {1000};
 	case "takistan" : {1200};
+	case "lythium"	: {800};
 	default {1000};
 };
 
-ins_AIspawnMinRange = 250;
+ins_AIspawnMinRange = 300;
