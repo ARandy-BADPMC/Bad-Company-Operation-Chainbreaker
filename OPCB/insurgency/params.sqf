@@ -7,7 +7,7 @@ maxAIPerPlayer = 4;
 playersNeeded = 2;
 
 // max number of map patrol vehicles allowed to be active at the same time
-eastVehicleNum = 5;
+eastVehicleNum = 8;
 
 patrolSpawnDelay = 1200;
 
