@@ -94,8 +94,8 @@ lythiumInfantryTiers = createHashMapFromArray [
 	]
 ];
 
-lythiumVehicleCrewTiers = createHashMapFromArray [[1,["LOP_AM_OPF_Infantry_Rifleman_7"]], [2,["LOP_TKA_Infantry_Rifleman_3"]]];
-lythiumStaticCrewTiers = createHashMapFromArray [[1,["LOP_AM_OPF_Infantry_Rifleman_7"]], [2,["LOP_TKA_Infantry_Rifleman_3"]]];
+lythiumVehicleCrewTiers = createHashMapFromArray [[1,"LOP_AM_OPF_Infantry_Rifleman_7"], [2,"LOP_TKA_Infantry_Rifleman_3"]];
+lythiumStaticCrewTiers = createHashMapFromArray [[1,"LOP_AM_OPF_Infantry_Rifleman_7"], [2,"LOP_TKA_Infantry_Rifleman_3"]];
 
 lythiumVehicleTiers = createHashMapFromArray [
 	[
