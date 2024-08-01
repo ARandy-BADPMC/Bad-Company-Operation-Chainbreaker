@@ -84,45 +84,49 @@ saraInfantryTiers = createHashMapFromArray [
 	]
 ];
 
-saraVehicleCrewTiers = createHashMapFromArray [[1,"LOP_SLA_Infantry_Rifleman_2"], [2,"LOP_RACS_Infantry_Rifleman_2"]];
-saraStaticCrewTiers = createHashMapFromArray [[1,"LOP_SLA_Infantry_Rifleman_2"], [2,"LOP_RACS_Infantry_Rifleman_2"]];
+saraVehicleCrewTiers = createHashMapFromArray [[1,["LOP_SLA_Infantry_Rifleman_2"]], [2,["LOP_RACS_Infantry_Rifleman_2"]]];
+saraStaticCrewTiers = createHashMapFromArray [[1,["LOP_SLA_Infantry_Rifleman_2"]], [2,["LOP_RACS_Infantry_Rifleman_2"]]];
 
 saraVehicleTiers = createHashMapFromArray [
 	[
 		1,
-		"LOP_SLA_BTR60",
-		"LOP_SLA_BTR70",
-		"LOP_SLA_ZSU234",
-		"LOP_SLA_UAZ",
-		"LOP_SLA_UAZ_AGS",
-		"LOP_SLA_UAZ_DshKM",
-		"LOP_SLA_UAZ_Open",
-		"LOP_SLA_UAZ_SPG",
-		"LOP_SLA_Mi8MT_Cargo",
-		"LOP_SLA_Mi8MTV3_UPK23",
-		"LOP_SLA_BMP1D",
-		"LOP_SLA_BMP2D",
-		"LOP_SLA_T72BA",
-		"LOP_SLA_T72BB",
-		"LOP_SLA_Ural",
-		"LOP_SLA_Ural_open",
-		"LOP_UKR_Mi24V_UPK23",
-		//"LOP_UKR_Mi24V_FAB",
-		//"LOP_SLA_Mi8MTV3_FAB",
-		"rhsgref_cdf_Mi35"
+		[
+			"LOP_SLA_BTR60",
+			"LOP_SLA_BTR70",
+			"LOP_SLA_ZSU234",
+			"LOP_SLA_UAZ",
+			"LOP_SLA_UAZ_AGS",
+			"LOP_SLA_UAZ_DshKM",
+			"LOP_SLA_UAZ_Open",
+			"LOP_SLA_UAZ_SPG",
+			"LOP_SLA_Mi8MT_Cargo",
+			"LOP_SLA_Mi8MTV3_UPK23",
+			"LOP_SLA_BMP1D",
+			"LOP_SLA_BMP2D",
+			"LOP_SLA_T72BA",
+			"LOP_SLA_T72BB",
+			"LOP_SLA_Ural",
+			"LOP_SLA_Ural_open",
+			"LOP_UKR_Mi24V_UPK23",
+			//"LOP_UKR_Mi24V_FAB",
+			//"LOP_SLA_Mi8MTV3_FAB",
+			"rhsgref_cdf_Mi35"
+		]
 
 	],
 	[
-		2, 
-		"LOP_RACS_Landrover_M2",
-		"LOP_RACS_Landrover",
-		"LOP_RACS_M113_W",
-		"LOP_IRAN_AH1Z_WD",
-		"LOP_IRAN_CH47F",
-		"LOP_RACS_UH60M",
-		"rhsgref_cdf_t80bv_tv",
-		"rhsusf_m1a1hc_wd",
-		"I_C_Offroad_02_AT_F"
+		2,
+		[
+			"LOP_RACS_Landrover_M2",
+			"LOP_RACS_Landrover",
+			"LOP_RACS_M113_W",
+			"LOP_IRAN_AH1Z_WD",
+			"LOP_IRAN_CH47F",
+			"LOP_RACS_UH60M",
+			"rhsgref_cdf_t80bv_tv",
+			"rhsusf_m1a1hc_wd",
+			"I_C_Offroad_02_AT_F"
+		]
 	]
 ];
 

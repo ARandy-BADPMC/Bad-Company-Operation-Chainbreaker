@@ -79,49 +79,53 @@ sara_dbe1InfantryTiers = createHashMapFromArray [
 	]
 ];
 
-sara_dbe1VehicleCrewTiers = createHashMapFromArray [[1,"LOP_SLA_Infantry_Rifleman_2"], [2,"LOP_UA_Infantry_Rifleman"]];
-sara_dbe1StaticCrewTiers = createHashMapFromArray [[1,"LOP_SLA_Infantry_Rifleman_2"], [2,"LOP_UA_Infantry_Rifleman"]];
+sara_dbe1VehicleCrewTiers = createHashMapFromArray [[1,["LOP_SLA_Infantry_Rifleman_2"]], [2,["LOP_UA_Infantry_Rifleman"]]];
+sara_dbe1StaticCrewTiers = createHashMapFromArray [[1,["LOP_SLA_Infantry_Rifleman_2"]], [2,["LOP_UA_Infantry_Rifleman"]]];
 
 sara_dbe1VehicleTiers = createHashMapFromArray [
 	[
 		1,
-		"LOP_SLA_BTR60",
-		"LOP_SLA_BTR70",
-		"LOP_SLA_ZSU234",
-		"LOP_SLA_UAZ",
-		"LOP_SLA_UAZ_AGS",
-		"LOP_SLA_UAZ_DshKM",
-		"LOP_SLA_UAZ_Open",
-		"LOP_SLA_UAZ_SPG",
-		"LOP_SLA_Mi8MT_Cargo",
-		"LOP_SLA_Mi8MTV3_UPK23",
-		"LOP_SLA_BMP1D",
-		"LOP_SLA_BMP2D",
-		"LOP_SLA_T72BA",
-		"LOP_SLA_T72BB",
-		"LOP_SLA_Ural",
-		"LOP_SLA_Ural_open",
-		"LOP_UKR_Mi24V_UPK23",
-		//"LOP_UKR_Mi24V_FAB",
-		//"LOP_SLA_Mi8MTV3_FAB",
-		"rhsgref_cdf_Mi35",
-		"rhs_btr80a_msv"
+		[
+			"LOP_SLA_BTR60",
+			"LOP_SLA_BTR70",
+			"LOP_SLA_ZSU234",
+			"LOP_SLA_UAZ",
+			"LOP_SLA_UAZ_AGS",
+			"LOP_SLA_UAZ_DshKM",
+			"LOP_SLA_UAZ_Open",
+			"LOP_SLA_UAZ_SPG",
+			"LOP_SLA_Mi8MT_Cargo",
+			"LOP_SLA_Mi8MTV3_UPK23",
+			"LOP_SLA_BMP1D",
+			"LOP_SLA_BMP2D",
+			"LOP_SLA_T72BA",
+			"LOP_SLA_T72BB",
+			"LOP_SLA_Ural",
+			"LOP_SLA_Ural_open",
+			"LOP_UKR_Mi24V_UPK23",
+			//"LOP_UKR_Mi24V_FAB",
+			//"LOP_SLA_Mi8MTV3_FAB",
+			"rhsgref_cdf_Mi35",
+			"rhs_btr80a_msv"
+		]
 
 	],
 	[
-		2, 
-		"LOP_US_T72BC",
-		"LOP_US_BMP2D",
-		"LOP_US_UAZ",
-		"LOP_US_UAZ_AGS",
-		"LOP_US_UAZ_DshKM",
-		"LOP_US_UAZ_Open",
-		"LOP_US_UAZ_SPG",
-		"RHS_Ka52_vvsc",
-		"LOP_SLA_Mi8MT_Cargo",
-		"LOP_TKA_Mi24V_AT",
-		"rhs_t80bv",
-		"rhs_btr80a_msv"
+		2,
+		[
+			"LOP_US_T72BC",
+			"LOP_US_BMP2D",
+			"LOP_US_UAZ",
+			"LOP_US_UAZ_AGS",
+			"LOP_US_UAZ_DshKM",
+			"LOP_US_UAZ_Open",
+			"LOP_US_UAZ_SPG",
+			"RHS_Ka52_vvsc",
+			"LOP_SLA_Mi8MT_Cargo",
+			"LOP_TKA_Mi24V_AT",
+			"rhs_t80bv",
+			"rhs_btr80a_msv"
+		]
 	]
 ];
 
