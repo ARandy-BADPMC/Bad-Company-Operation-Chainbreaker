@@ -38,7 +38,8 @@ lythiumInfantryTiers = createHashMapFromArray [
 			"LOP_TKA_Infantry_Rifleman_3",
 			// "LOP_TKA_Infantry_AA",
 			"LOP_TKA_Infantry_MG",
-			"LOP_TKA_Infantry_MG_Asst"	
+			"LOP_TKA_Infantry_MG_Asst",
+			"LOP_PMC_Infantry_TL"	
 		]
 	],
 	[
@@ -53,7 +54,9 @@ lythiumInfantryTiers = createHashMapFromArray [
 			// "LOP_TKA_Infantry_AA",
 			"LOP_TKA_Infantry_MG",
 			"LOP_TKA_Infantry_MG_Asst",
-			"LOP_TKA_Infantry_AT"	
+			"LOP_TKA_Infantry_AT",
+			"LOP_PMC_Infantry_Rifleman",
+			"LOP_PMC_Infantry_TL"
 		]
 	],
 	[
@@ -67,7 +70,10 @@ lythiumInfantryTiers = createHashMapFromArray [
 			"LOP_ISTS_OPF_Infantry_AR_2",
 			"LOP_ISTS_OPF_Infantry_Rifleman_3",
 			"LOP_ISTS_OPF_Infantry_AT",
-			"LOP_ISTS_OPF_Infantry_Rifleman_9"		
+			"LOP_ISTS_OPF_Infantry_Rifleman_9",
+			"LOP_PMC_Infantry_TL",
+			"LOP_PMC_Infantry_Rifleman",
+			"LOP_PMC_Infantry_Marksman_2"		
 		]
 	],
 	[
@@ -94,7 +100,7 @@ lythiumInfantryTiers = createHashMapFromArray [
 	]
 ];
 
-lythiumVehicleCrewTiers = createHashMapFromArray [[1,"LOP_AM_OPF_Infantry_Rifleman_7"], [2,"LOP_TKA_Infantry_Rifleman_3"]];
+lythiumVehicleCrewTiers = createHashMapFromArray [[1,"LOP_AM_OPF_Infantry_Rifleman_7"], [2,"LOP_PMC_Infantry_Rifleman"]];
 lythiumStaticCrewTiers = createHashMapFromArray [[1,"LOP_AM_OPF_Infantry_Rifleman_7"], [2,"LOP_TKA_Infantry_Rifleman_3"]];
 
 lythiumVehicleTiers = createHashMapFromArray [
@@ -125,7 +131,7 @@ lythiumVehicleTiers = createHashMapFromArray [
 			"LOP_TKA_UAZ_SPG",
 			"LOP_TKA_ZSU234",
 			"LOP_TKA_BTR70",
-			"LOP_TKA_T55",
+			"rhsusf_m1a1hc_wd",
 			"LOP_TKA_T72BA",
 			"LOP_IRAN_CH47F",
 			"LOP_IRAN_AH1Z_WD",
