@@ -21,7 +21,7 @@ _HQstate 			= startLocation;
 		if (((player distance2D startLocation) > 1000) && {(east knowsAbout player) > 1}) then {
 			call aiMonitor; 
 		};		
-		sleep (90 + (random 180));
+		sleep (90 + (random 120));
 	};
 };
 
