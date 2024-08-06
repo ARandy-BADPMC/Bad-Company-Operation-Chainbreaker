@@ -15,8 +15,8 @@ ins_AIspawnMaxRange = switch (toLower worldName) do {
 	case "zargabad" : {700};
 	case "sara"	: {1000};
 	case "takistan" : {1200};
-	case "lythium"	: {800};
+	case "lythium"	: {1200};
 	default {1000};
 };
 
-ins_AIspawnMinRange = 300;
+ins_AIspawnMinRange = 250;
