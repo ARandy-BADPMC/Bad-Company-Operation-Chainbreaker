@@ -73,7 +73,7 @@ findSquadAIName = {
 	
 	params ["_squad","_i"];
 
-  _unit = aiArray select _i;
+	_unit = aiArray select _i;
 	
 	if (({alive _x} count aiArray) >= (player call getEffectiveMaxAICount)) exitWith { -1 };
 	
@@ -246,4 +246,5 @@ aiSpawn = {
 		};
 		if exitCondition exitWith {};
 	};
+	sleep (30 + (random 120));
 };
