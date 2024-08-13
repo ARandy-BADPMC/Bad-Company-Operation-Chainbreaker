@@ -123,19 +123,21 @@ lythiumVehicleTiers = createHashMapFromArray [
 	[
 		2,
 		[
-			"LOP_TKA_Mi24V_UPK23",
-			"LOP_TKA_Mi8MT_Cargo",
+			"LOP_PMC_Mi24V_UPK23",
+			"LOP_PMC_Mi8AMT",
 			"LOP_TKA_Mi8MTV3_UPK23",
-			"LOP_TKA_UAZ",
-			"LOP_TKA_UAZ_AGS",
-			"LOP_TKA_UAZ_SPG",
+			"LOP_PMC_Offroad_M2",
+			"I_G_Offroad_01_AT_F",
 			"LOP_TKA_ZSU234",
 			"LOP_TKA_BTR70",
-			"rhsusf_m1a1hc_wd",
-			"LOP_TKA_T72BA",
+			"rhsgref_cdf_t80b_tv",
 			"LOP_IRAN_CH47F",
-			"LOP_IRAN_AH1Z_WD",
-			"LOP_IRAN_M113_C"
+			"LOP_PMC_MH9_armed",
+			"LOP_RACS_UH60M",
+			"LOP_PMC_MH9",
+			"LOP_PMC_Truck",
+			"O_Heli_Light_02_dynamicLoadout_F",
+			"O_Heli_Light_02_unarmed_F"
 		]
 
 	]
