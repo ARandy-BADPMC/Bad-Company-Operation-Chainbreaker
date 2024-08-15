@@ -2492,9 +2492,25 @@ _arsenalitems =
 "H_Cap_marshal",
 "rhs_weap_ak103_zenitco01_b33",
 "hgun_Pistol_heavy_01_green_F",
-"optic_MRD_black"
+"optic_MRD_black",
+"TRYK_Shemagh_Shade_MH",
+"TRYK_Shemagh_Shade_G",
+"TRYK_Shemagh_Shade",
+"TRYK_Shemagh_Shade_WH",
+"TRYK_TAC_SET_MESH_2",
+"TRYK_TAC_SET_OD_2",
+"TRYK_TAC_SET_TAN_2",
+"TRYK_TAC_SET_WH_2",
+"TRYK_TAC_SET_MESH",
+"TRYK_TAC_SET_OD",
+"TRYK_TAC_SET_TAN",
+"TRYK_TAC_SET_WH",
+"rhs_mag_30Rnd_556x45_M855A1_Stanag_Pull_Tracer_Red",
+"rhs_mag_30Rnd_556x45_M855_Stanag_Pull_Tracer_Red",
+"rhs_weap_m249_light_S"
 ];
 
+// end of clan arsenal
 
 _boxes = [box5];
 
@@ -4804,9 +4820,13 @@ _arsenalitems =
 "rhsusf_opscore_bk_pelt",
 "rhs_weap_ak103_zenitco01_b33",
 "hgun_Pistol_heavy_01_green_F",
-"optic_MRD_black"
+"optic_MRD_black",
+"rhs_mag_30Rnd_556x45_M855A1_Stanag_Pull_Tracer_Red",
+"rhs_mag_30Rnd_556x45_M855_Stanag_Pull_Tracer_Red",
+"rhs_weap_m249_light_S"
 ];
 
+// end of public arsenal
 
 _boxes = [box1,box2];
 
