@@ -2808,7 +2808,30 @@ _arsenalitems =
 "Tier1_MicroT1_Leap_Black",
 "Tier1_MicroT1_Leap_Desert",
 "Tier1_MicroT1_Leap_3xMag_Black_Up",
-"Tier1_MicroT1_Leap_3xMag_Desert_Up"
+"Tier1_MicroT1_Leap_3xMag_Desert_Up",
+"VSM_RAV_Breacher_AOR1",
+"VSM_RAV_MG_AOR1",
+"VSM_RAV_operator_AOR1",
+"VSM_LBT6094_breacher_AOR1",
+"VSM_LBT6094_MG_AOR1",
+"VSM_LBT6094_operator_AOR1",
+"dr_AOR2lbt_br",
+"dr_AOR2lbt_mg",
+"dr_AOR2lbt_op",
+"dr_AOR2par_br",
+"dr_AOR2par_mg",
+"dr_AOR2lbt_op",
+"DTSlbt_br",
+"DTSlbt_mg",
+"DTSlbt_op",
+"DTSpar_br",
+"DTSpar_mg",
+"DTSpar_op",
+"VSM_beard_hair",
+"VSM_beard_2",
+"VSM_beard_2_hair",
+"VSM_beard_3",
+"VSM_beard_3_hair"
 ];
 
 // end of clan arsenal
@@ -5414,7 +5437,30 @@ _arsenalitems =
 "Tier1_MicroT1_Leap_Black",
 "Tier1_MicroT1_Leap_Desert",
 "Tier1_MicroT1_Leap_3xMag_Black_Up",
-"Tier1_MicroT1_Leap_3xMag_Desert_Up"
+"Tier1_MicroT1_Leap_3xMag_Desert_Up",
+"VSM_RAV_Breacher_AOR1",
+"VSM_RAV_MG_AOR1",
+"VSM_RAV_operator_AOR1",
+"VSM_LBT6094_breacher_AOR1",
+"VSM_LBT6094_MG_AOR1",
+"VSM_LBT6094_operator_AOR1",
+"dr_AOR2lbt_br",
+"dr_AOR2lbt_mg",
+"dr_AOR2lbt_op",
+"dr_AOR2par_br",
+"dr_AOR2par_mg",
+"dr_AOR2lbt_op",
+"DTSlbt_br",
+"DTSlbt_mg",
+"DTSlbt_op",
+"DTSpar_br",
+"DTSpar_mg",
+"DTSpar_op",
+"VSM_beard_hair",
+"VSM_beard_2",
+"VSM_beard_2_hair",
+"VSM_beard_3",
+"VSM_beard_3_hair"
 ];
 
 //end of public arsenal
