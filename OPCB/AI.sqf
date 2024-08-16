@@ -1,14 +1,14 @@
 //global params
 
-AI_skill_general = 0.7;
+AI_skill_general = 0.6;
 AI_skill_aimingAccuracy = 0.2;
-AI_skill_aimingShake = 0.15;
-AI_skill_aimingSpeed = 0.35;
+AI_skill_aimingShake = 0.1;
+AI_skill_aimingSpeed = 0.25;
 AI_skill_reloadSpeed = 1;
-AI_skill_commanding = 0.85;
-AI_skill_courage = 0.65;
+AI_skill_commanding = 0.75;
+AI_skill_courage = 0.4;
 AI_skill_spotDistance = 0.3;
-AI_skill_spotTime = 0.6;
+AI_skill_spotTime = 0.4;
 
 
 AI_setSkill = {
