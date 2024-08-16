@@ -50,15 +50,15 @@ Vcm_Settings =
 	//VCM_AIDIFA = [['aimingAccuracy',0.15],['aimingShake',0.1],['aimingSpeed',0.25],['commanding',1],['courage',1],['endurance',1],['general',0.5],['reloadSpeed',1],['spotDistance',0.8],['spotTime',0.8]];
 		
 	//MEDIUM DIFFICULTY
-	VCM_AIDIFA = [['aimingAccuracy',0.2],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.65],['general',0.7],['reloadSpeed',1],['spotDistance',0.3],['spotTime',0.6]];
+	VCM_AIDIFA = [['aimingAccuracy',0.2],['aimingShake',0.1],['aimingSpeed',0.25],['commanding',0.75],['courage',0.4],['general',0.6],['reloadSpeed',1],['spotDistance',0.3],['spotTime',0.4]];
 	
 	//HIGH DIFFICULTY
 	//VCM_AIDIFA = [['aimingAccuracy',0.4],['aimingShake',0.4],['aimingSpeed',0.45],['commanding',1],['courage',0.75],['endurance',1],['general',0.5],['reloadSpeed',1],['spotDistance',0.8],['spotTime',0.8]];
 	
 	//SIDE SPECIFIC
 	VCM_AIDIFWEST = [['aimingAccuracy',0.25],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.5],['general',1],['reloadSpeed',1],['spotDistance',0.85],['spotTime',0.85]];
-	VCM_AIDIFEAST = [['aimingAccuracy',0.2],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.65],['general',0.7],['reloadSpeed',1],['spotDistance',0.3],['spotTime',0.6]];
-	VCM_AIDIFRESISTANCE = [['aimingAccuracy',0.2],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',0.85],['courage',0.65],['general',0.7],['reloadSpeed',1],['spotDistance',0.3],['spotTime',0.6]];
+	VCM_AIDIFEAST = [['aimingAccuracy',0.2],['aimingShake',0.1],['aimingSpeed',0.25],['commanding',0.75],['courage',0.4],['general',0.6],['reloadSpeed',1],['spotDistance',0.3],['spotTime',0.4]];
+	VCM_AIDIFRESISTANCE = [['aimingAccuracy',0.2],['aimingShake',0.1],['aimingSpeed',0.25],['commanding',0.75],['courage',0.4],['general',0.6],['reloadSpeed',1],['spotDistance',0.3],['spotTime',0.4]];
 		
 	VCM_AISIDESPEC =
 	{

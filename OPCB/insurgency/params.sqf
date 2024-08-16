@@ -1,7 +1,7 @@
 #include "unitTypes.sqf"
 
 // number of dynamically spawned AI units per player
-maxAIPerPlayer = 3;
+maxAIPerPlayer = 2.5;
 
 // min number of players needed to capture a grid
 playersNeeded = 2;
