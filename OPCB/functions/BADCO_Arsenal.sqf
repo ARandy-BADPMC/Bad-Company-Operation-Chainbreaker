@@ -2871,7 +2871,10 @@ _arsenalitems =
 "VSM_Shemagh_Facemask_tan_Peltor",
 "VSM_Shemagh_Facemask_OD_Peltor_Glasses",
 "VSM_Shemagh_Facemask_tan_Peltor_Glasses",
-"VSM_Multicam_casual_Camo"
+"VSM_Multicam_casual_Camo",
+"VSM_OGA_Crye_SS_grey_od_pants_Camo",
+"VSM_OGA_Crye_SS_grey_tan_pants_Camo",
+"VSM_OGA_Crye_SS_grey_Camo"
 ];
 
 // end of clan arsenal
@@ -5540,7 +5543,10 @@ _arsenalitems =
 "VSM_Shemagh_Facemask_tan_Peltor",
 "VSM_Shemagh_Facemask_OD_Peltor_Glasses",
 "VSM_Shemagh_Facemask_tan_Peltor_Glasses",
-"VSM_Multicam_casual_Camo"
+"VSM_Multicam_casual_Camo",
+"VSM_OGA_Crye_SS_grey_od_pants_Camo",
+"VSM_OGA_Crye_SS_grey_tan_pants_Camo",
+"VSM_OGA_Crye_SS_grey_Camo"
 ];
 
 //end of public arsenal
