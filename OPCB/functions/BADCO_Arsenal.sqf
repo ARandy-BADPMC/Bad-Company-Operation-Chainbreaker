@@ -2999,7 +2999,19 @@ _arsenalitems =
 "VSM_M81_Crye_od_shirt_Camo",
 "VSM_Multicam_Crye_od_shirt_Camo",
 "VSM_M81_Crye_SS_od_shirt_Camo",
-"VSM_Multicam_Crye_SS_od_shirt_Camo"
+"VSM_Multicam_Crye_SS_od_shirt_Camo",
+"Tier1_145_LA5_Side",
+"Tier1_145_LA5_Top",
+"Tier1_145_LA5_M300C",
+"Tier1_145_LA5_M600V",
+"Tier1_145_LA5_M600V_alt",
+"Tier1_145_LA5_M603V",
+"Tier1_145_NGAL_Side",
+"Tier1_145_NGAL_Top",
+"Tier1_145_NGAL_M300C",
+"Tier1_145_NGAL_M600V",
+"Tier1_145_NGAL_M600V_alt",
+"Tier1_145_NGAL_M603V"
 ];
 
 // end of clan arsenal
@@ -5794,7 +5806,19 @@ _arsenalitems =
 "VSM_M81_Crye_od_shirt_Camo",
 "VSM_Multicam_Crye_od_shirt_Camo",
 "VSM_M81_Crye_SS_od_shirt_Camo",
-"VSM_Multicam_Crye_SS_od_shirt_Camo"
+"VSM_Multicam_Crye_SS_od_shirt_Camo",
+"Tier1_145_LA5_Side",
+"Tier1_145_LA5_Top",
+"Tier1_145_LA5_M300C",
+"Tier1_145_LA5_M600V",
+"Tier1_145_LA5_M600V_alt",
+"Tier1_145_LA5_M603V",
+"Tier1_145_NGAL_Side",
+"Tier1_145_NGAL_Top",
+"Tier1_145_NGAL_M300C",
+"Tier1_145_NGAL_M600V",
+"Tier1_145_NGAL_M600V_alt",
+"Tier1_145_NGAL_M603V"
 ];
 
 //end of public arsenal
