@@ -3060,7 +3060,9 @@ _arsenalitems =
 "Tier1_MW_NGAL_Top",
 "Tier1_MW_NGAL_M300C_Black",
 "Tier1_MW_NGAL_M600V_alt_Black",
-"Tier1_MW_NGAL_M600V_alt"
+"Tier1_MW_NGAL_M600V_alt",
+"Tier1_M110k5_65mm",
+"Tier1_20Rnd_65x48_Creedmoor_SR25_Mag"
 ];
 
 // end of clan arsenal
@@ -5916,7 +5918,9 @@ _arsenalitems =
 "Tier1_MW_NGAL_Top",
 "Tier1_MW_NGAL_M300C_Black",
 "Tier1_MW_NGAL_M600V_alt_Black",
-"Tier1_MW_NGAL_M600V_alt"
+"Tier1_MW_NGAL_M600V_alt",
+"Tier1_M110k5_65mm",
+"Tier1_20Rnd_65x48_Creedmoor_SR25_Mag"
 ];
 
 //end of public arsenal
