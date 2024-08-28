@@ -21,7 +21,9 @@ OPCB_econ_vehicleAirAttackTypes = [
 	"RHSSAF_AIRFORCE_L_18",
 	"RHS_MI24P_VDV",
 	"O_PLANE_CAS_02_DYNAMICLOADOUT_F",
-	"RHS_L39_CDF"
+	"RHS_L39_CDF",
+	"FIR_F15E",
+	"FIR_A10C"
 ];
 
 OPCB_econ_vehicleGroundAttackTypes = [
@@ -46,8 +48,6 @@ OPCB_econ_vehicleGroundAttackTypes = [
 	"I_LT_01_SCOUT_F",
 	"RHS_T72BB_TV",
 	"RHSUSF_M142_USARMY_D",
-	"BURNES_FV4034_02",
-	"BURNES_FV4034_01",
 	"O_T_APC_TRACKED_02_CANNON_GHEX_F",
 	"RHSUSF_M1A2SEP2D_USARMY"
 ];
