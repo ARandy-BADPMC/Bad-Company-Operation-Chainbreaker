@@ -55,7 +55,7 @@ OPCB_econ_TierList_AIR = [
 	"I_HELI_TRANSPORT_02_F",
 	"RHS_L39_CDF",
 	"AW101",
-	"RHS_UH60M2_d",
+	"RHS_UH60M2_D",
 	"RHS_MELB_AH6M"
 	],
 
@@ -69,7 +69,7 @@ OPCB_econ_TierList_AIR = [
 
 	//TIER 9
 	[
-	"RHS_UH1Y_UNARMED_d",
+	"RHS_UH1Y_UNARMED_D",
 	"C_PLANE_CIVIL_01_F",
 	"RHS_AN2_B",
 	"DO228"
