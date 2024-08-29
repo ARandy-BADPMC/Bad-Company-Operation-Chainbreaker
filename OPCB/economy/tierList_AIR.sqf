@@ -7,7 +7,8 @@ OPCB_econ_TierList_AIR = [
 	"RHS_AH64D",
 	"RHS_KA52_VVSC",
 	"RHS_AH1Z",
-	"FIR_F15E"
+	"FIR_F15E",
+	"RHS_MI28N_VVS"
 	],
 
 	//TIER 2
