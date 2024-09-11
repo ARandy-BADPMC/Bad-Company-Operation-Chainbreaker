@@ -89,7 +89,10 @@ switch ( _selected) do {
 	};
 	case "El Chapo" : {
 		[_base,_currentTasknumber, _credits] call CHAB_fnc_El_Chapo;
-	};  
+	};
+	case "Narco" : {
+		[_base,_currentTasknumber, _credits] call CHAB_fnc_Narco;
+	};
 	default { 
 		"Failed to spawn a task, try again" remoteExec["hint", _callerRE];
 	}; 

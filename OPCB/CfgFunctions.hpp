@@ -81,6 +81,10 @@ class chainbreaker
 		{
 			file = "functions\missions\Clear_out.sqf";
 		};
+		class Narco
+		{
+			file = "functions\missions\narco.sqf";
+		};
 		
 	};
 	class mission_related
