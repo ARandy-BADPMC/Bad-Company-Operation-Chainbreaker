@@ -6,7 +6,7 @@ _narcogroup = createGroup [west,true];
 _current_task = _base getPos[random 600,random 360];
 [_current_tasknumber ,west,
 ["After lengthy interrogations by the CIA, a drug lord was brought to this region for negotiations with locals and a U.S. officer. We don't know anything specific, but whoever is paying the bills does not want us to know much more anyway. Bring him to the mansion, where the meeting is being held, and make sure he survives it. He is waiting at the delivery point for pickup.",
-"Operation Bloody Bag"], _current_task,"ASSIGNED",10,true,true,"rearm",true] call BIS_fnc_setTask;
+"Operation Bloody Bag"], _current_task,"ASSIGNED",10,true,true,"talk",true] call BIS_fnc_setTask;
 
 #include "..\..\data\friendlyClasses.sqf";
 
