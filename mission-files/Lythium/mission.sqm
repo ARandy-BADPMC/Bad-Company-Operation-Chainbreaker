@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=955;
+		nextID=973;
 	};
 	class Camera
 	{
-		pos[]={11982.416,136.71785,1612.5315};
-		dir[]={0.26878724,-0.20678547,-0.9407655};
-		up[]={0.056812853,0.97837913,-0.19884814};
-		aside[]={-0.96154487,-2.5422196e-007,-0.27472585};
+		pos[]={12207.381,246.32999,1418.271};
+		dir[]={0.34312576,-0.18963936,-0.9199577};
+		up[]={0.06630192,0.98183715,-0.17776273};
+		aside[]={-0.93695974,-1.9185245e-007,-0.34946686};
 	};
 };
 binarizationWanted=0;
@@ -33143,7 +33143,7 @@ class Mission
 			};
 			id=2589;
 			type="Land_Pliers_F";
-			atlOffset=0.83869934;
+			atlOffset=0.83870125;
 		};
 		class Item207
 		{
@@ -39144,7 +39144,7 @@ class Mission
 			};
 			id=2885;
 			type="Land_Pliers_F";
-			atlOffset=0.85261917;
+			atlOffset=0.85275078;
 		};
 		class Item405
 		{
@@ -49523,7 +49523,6 @@ class Mission
 					{
 						rank="COLONEL";
 						name="officer_pmc";
-						disableSimulation=1;
 						ignoreByDynSimulGrid=1;
 						class Inventory
 						{
@@ -49586,7 +49585,7 @@ class Mission
 								class data
 								{
 									singleType="BOOL";
-									value=0;
+									value=1;
 								};
 							};
 						};
@@ -53146,12 +53145,13 @@ class Mission
 						position[]={12132.042,37.481068,1838.1062};
 					};
 					side="West";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 					};
 					id=4906;
 					type="B_UAV_AI";
+					atlOffset=1.7564735;
 				};
 				class Item1
 				{
