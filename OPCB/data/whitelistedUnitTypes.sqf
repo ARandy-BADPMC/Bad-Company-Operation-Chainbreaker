@@ -1,1 +1,1 @@
-_whitelistedUnitTypes = ["rhsusf_usmc_marpat_d_uav", "rhsusf_airforce_jetpilot"]; 
+_whitelistedUnitTypes = ["rhsusf_usmc_marpat_d_uav","rhsusf_airforce_jetpilot","rhsusf_army_ocp_helipilot"]; 
