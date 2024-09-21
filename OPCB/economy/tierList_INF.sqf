@@ -96,11 +96,11 @@ OPCB_econ_TierList_INF = [
 
 	//TIER 10
 	[
-	"C_OFFROAD_01_F",
+	/*"C_OFFROAD_01_F",
 	"C_OFFROAD_02_UNARMED_F",
 	"RHSUSF_MRZR4_D",
 	"C_VAN_01_FUEL_F",
-	"C_VAN_02_MEDEVAC_F"
+	"C_VAN_02_MEDEVAC_F"*/
 	]
 
 ];
