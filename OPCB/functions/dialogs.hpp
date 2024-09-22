@@ -948,7 +948,7 @@ class vehicleSpawnerHistory {
 
 			//False header - only ever going to need 7 controls
 			firstIDC = ( 30000 + 1 );
-			lastIDC = ( 30000 + 1001 ) ; //1 thousand idcs, 1 row has 4 controls so is enough for 250 players data
+			lastIDC = ( 30000 + 10001 ) ; //1 thousand idcs, 1 row has 4 controls so is enough for 2500 players data
 		};
 	};
 };
