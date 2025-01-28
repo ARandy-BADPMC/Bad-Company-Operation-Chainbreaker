@@ -3168,7 +3168,9 @@ _arsenalitems =
 "VSM_OCP_carryall",
 "VSM_OCP_Backpack_Compact",
 "VSM_OGA_carryall",
-"VSM_OGA_OD_carryall"
+"VSM_OGA_OD_carryall",
+"ACE_40mm_Pike",
+"ACE_APERSMine_ToePopper_Mag"
 ];
 
 // end of clan arsenal
@@ -6130,7 +6132,9 @@ _arsenalitems =
 "VSM_OCP_carryall",
 "VSM_OCP_Backpack_Compact",
 "VSM_OGA_carryall",
-"VSM_OGA_OD_carryall"
+"VSM_OGA_OD_carryall",
+"ACE_40mm_Pike",
+"ACE_APERSMine_ToePopper_Mag"
 ];
 
 //end of public arsenal
@@ -6525,7 +6529,9 @@ _arsenalitems =
 "ACE_rope27",
 "ACE_rope36",
 "launch_MRAWS_olive_F",
-"rhs_weap_rpg7"
+"rhs_weap_rpg7",
+"ACE_40mm_Pike",
+"ACE_APERSMine_ToePopper_Mag"
 ];
 
 
