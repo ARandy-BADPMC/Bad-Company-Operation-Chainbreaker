@@ -26,7 +26,7 @@
 
     private _vehicleCrewTiers = _worldTiers get "vehicle_crew_tiers";
     private _vehicleNumberTiers = count _vehicleCrewTiers;
-    _insurgentsTier = ceil(_completionRatio /  * _vehicleNumberTiers) min _vehicleNumberTiers;
+    _insurgentsTier = ceil(_completionRatio / 95 * _vehicleNumberTiers) min _vehicleNumberTiers;
     if (_insurgentsTier == 0) then {
       _insurgentsTier = 1;
     };    
