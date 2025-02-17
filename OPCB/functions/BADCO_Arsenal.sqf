@@ -1521,8 +1521,6 @@ _arsenalitems =
 "rhsusf_acc_g33_T1",
 "rhsusf_acc_g33_xps3",
 "rhsusf_acc_g33_xps3_tan",
-"ACRE_SEM52SL",
-"ACRE_SEM70",
 "rhs_acc_tgpv2",
 "rhsusf_acc_eotech_552_wd",
 "rhsusf_acc_M2010S_d",
@@ -2206,8 +2204,6 @@ _arsenalitems =
 "rhsusf_20Rnd_762x51_SR25_mk316_special_Mag",
 "rhs_acc_okp7_dovetail",
 "rhs_acc_okp7_picatinny",
-"ACRE_SEM52SL",
-"ACRE_SEM70",
 "MiniGrenade",
 "rhs_weap_m14_ris_d",
 
@@ -3169,8 +3165,11 @@ _arsenalitems =
 "VSM_OCP_Backpack_Compact",
 "VSM_OGA_carryall",
 "VSM_OGA_OD_carryall",
-"ACE_40mm_Pike",
-"ACE_APERSMine_ToePopper_Mag"
+"ACE_APERSMine_ToePopper_Mag",
+"ACE_EHP",
+"Tier1_SR25_LA5_Side",
+"Tier1_SR25_LA5_Top",
+"Tier1_Harris_Bipod_Tan"
 ];
 
 // end of clan arsenal
@@ -3189,7 +3188,6 @@ _arsenalitems = nil;
 // Public arsenal
 _arsenalitems = 
 [
-
 "rhs_weap_ak103_gp25_npz",
 "rhs_weap_ak103_gp25",
 "rhs_weap_ak103",
@@ -4579,8 +4577,6 @@ _arsenalitems =
 "rhsusf_acc_g33_T1",
 "rhsusf_acc_g33_xps3",
 "rhsusf_acc_g33_xps3_tan",
-"ACRE_SEM52SL",
-"ACRE_SEM70",
 "rhs_acc_tgpv2",
 "rhsusf_acc_eotech_552_wd",
 "rhsusf_acc_M2010S_d",
@@ -5229,8 +5225,6 @@ _arsenalitems =
 "rhsusf_20Rnd_762x51_SR25_mk316_special_Mag",
 "rhs_acc_okp7_dovetail",
 "rhs_acc_okp7_picatinny",
-"ACRE_SEM52SL",
-"ACRE_SEM70",
 "MiniGrenade",
 "rhs_weap_m14_ris_d",
 
@@ -6133,8 +6127,11 @@ _arsenalitems =
 "VSM_OCP_Backpack_Compact",
 "VSM_OGA_carryall",
 "VSM_OGA_OD_carryall",
-"ACE_40mm_Pike",
-"ACE_APERSMine_ToePopper_Mag"
+"ACE_APERSMine_ToePopper_Mag",
+"ACE_EHP",
+"Tier1_SR25_LA5_Side",
+"Tier1_SR25_LA5_Top",
+"Tier1_Harris_Bipod_Tan"
 ];
 
 //end of public arsenal
