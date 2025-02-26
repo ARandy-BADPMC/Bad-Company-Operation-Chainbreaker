@@ -2,7 +2,7 @@ params ["_flowerPot"];
 _taskcomp = "samsite";
 private _axis = worldSize / 2;
 private _center = [_axis, _axis , 0];
-private _sam = ["O_SAM_System_04_F"];
+private _sams = ["O_SAM_System_04_F"];
 private _targetPos = [_comp] call CHAB_fnc_findFlowerPots;
 _base = [_radius] call CHAB_fnc_findSpot;
 _radius = 100;
