@@ -2,7 +2,7 @@
 private _axis = worldSize / 2;
 private _center = [_axis, _axis , 0];
 private _towers = ["Land_Communication_F"];
-private _selectedHill = selectRandom (nearestLocations [_center, ["Hill"], _axis]);
+private _selectedHill = selectRandom (nearestLocations [_center, ["Hill", "ViewPoint"], _axis]);
 
 private _taskMarker = locationPosition _selectedHill;
 
