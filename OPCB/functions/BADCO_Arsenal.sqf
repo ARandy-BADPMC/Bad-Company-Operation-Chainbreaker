@@ -3161,7 +3161,15 @@ _arsenalitems =
 "ACE_EHP",
 "Tier1_SR25_LA5_Side",
 "Tier1_SR25_LA5_Top",
-"Tier1_Harris_Bipod_Tan"
+"Tier1_Harris_Bipod_Tan",
+"rhs_weap_rpk74m",
+"rhs_weap_rpk74m_npz",
+"rhs_45Rnd_545X39_AK",
+"rhs_45Rnd_545X39_AK_Green",
+"rhs_45Rnd_545X39_7N10_AK",
+"rhs_45Rnd_545X39_7N22_AK",
+"rhs_45Rnd_545X39_7N6_AK",
+"rhs_45Rnd_545X39_7U1_AK"
 ];
 
 // end of clan arsenal
