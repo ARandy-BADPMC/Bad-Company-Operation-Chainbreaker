@@ -186,22 +186,22 @@ mehlandInfantryTiers = createHashMapFromArray [
 	[
 		9, // Tier 9 PMC Spec Ops
 		[
-		"UK3CB_ION_I_Woodland_SF_TL",
-		"UK3CB_ION_I_Woodland_SF_SNI",
-		"UK3CB_ION_I_Woodland_SF_SPOT",
-		"UK3CB_ION_I_Woodland_SF_SL",
-		"UK3CB_ION_I_Woodland_SF_RIF_1",
-		"UK3CB_ION_I_Woodland_SF_RIF_2",
-		"UK3CB_ION_I_Woodland_SF_RIF_4",
-		"UK3CB_ION_I_Woodland_SF_RIF_3",
-		"UK3CB_ION_I_Woodland_SF_MD",
-		"UK3CB_ION_I_Woodland_SF_MK",
-		"UK3CB_ION_I_Woodland_SF_MG",
-		"UK3CB_ION_I_Woodland_SF_LAT",
-		"UK3CB_ION_I_Woodland_SF_GL",
-		"UK3CB_ION_I_Woodland_SF_ENG",
-		"UK3CB_ION_I_Woodland_SF_DEM",
-		"UK3CB_ION_I_Woodland_SF_AT"
+			"UK3CB_ION_I_Woodland_SF_TL",
+			"UK3CB_ION_I_Woodland_SF_SNI",
+			"UK3CB_ION_I_Woodland_SF_SPOT",
+			"UK3CB_ION_I_Woodland_SF_SL",
+			"UK3CB_ION_I_Woodland_SF_RIF_1",
+			"UK3CB_ION_I_Woodland_SF_RIF_2",
+			"UK3CB_ION_I_Woodland_SF_RIF_4",
+			"UK3CB_ION_I_Woodland_SF_RIF_3",
+			"UK3CB_ION_I_Woodland_SF_MD",
+			"UK3CB_ION_I_Woodland_SF_MK",
+			"UK3CB_ION_I_Woodland_SF_MG",
+			"UK3CB_ION_I_Woodland_SF_LAT",
+			"UK3CB_ION_I_Woodland_SF_GL",
+			"UK3CB_ION_I_Woodland_SF_ENG",
+			"UK3CB_ION_I_Woodland_SF_DEM",
+			"UK3CB_ION_I_Woodland_SF_AT"
 		]
 	]
 ];
