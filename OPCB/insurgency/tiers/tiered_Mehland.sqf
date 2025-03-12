@@ -206,44 +206,84 @@ MehlandInfantryTiers = createHashMapFromArray [
 	]
 ];
 
-MehlandVehicleCrewTiers = createHashMapFromArray [[1,"LOP_AM_OPF_Infantry_Rifleman_7"], [2,"LOP_PMC_Infantry_Rifleman"]];
-MehlandStaticCrewTiers = createHashMapFromArray [[1,"LOP_AM_OPF_Infantry_Rifleman_7"], [2,"LOP_TKA_Infantry_Rifleman_3"]];
+MehlandVehicleCrewTiers = createHashMapFromArray [[1,"UK3CB_LNM_I_SF_RIF_1"], [2,"UK3CB_LDF_I_RIF_1"]];
+MehlandStaticCrewTiers = createHashMapFromArray [[1,"UK3CB_LNM_I_SF_RIF_1"], [2,"UK3CB_LDF_I_RIF_1"]];
 
 MehlandVehicleTiers = createHashMapFromArray [
 	[
 		1,
 		[
-			"LOP_AM_OPF_BTR60",
-			"LOP_AM_OPF_Landrover",
-			"LOP_AM_OPF_Nissan_PKM",
-			"LOP_AM_OPF_Landrover_SPG9",
-			"LOP_TKA_UAZ",
-			"LOP_TKA_Mi8MT_Cargo",
-			"LOP_TKA_Mi24V_UPK23",
-			"LOP_TKA_T34",
-			"LOP_TKA_T55",
-			"LOP_AM_UAZ_DshKM"
+			"UK3CB_LNM_I_BMP1",
+			"UK3CB_LNM_I_BTR40_MG",
+			"UK3CB_LNM_I_MTLB_BMP",
+			"UK3CB_LNM_I_MTLB_KPVT",
+			"UK3CB_LNM_I_BRDM2",
+			"UK3CB_LNM_I_Hilux_Dshkm",
+			"UK3CB_LNM_I_Hilux_Metis",
+			"UK3CB_LNM_I_LR_M2",
+			"UK3CB_LNM_I_LR_SF_M2",
+			"UK3CB_LNM_I_Offroad_AT",
+			"UK3CB_LNM_I_Offroad_M2",
+			"UK3CB_LNM_I_Pickup_DSHKM",
+			"UK3CB_LNM_I_Pickup_SPG9",
+			"UK3CB_LNM_I_UAZ_MG",
+			"UK3CB_LNM_I_UAZ_SPG9",
+			"UK3CB_LNM_I_Hilux_Pkm",
+			"UK3CB_LNM_I_LR_Open",
+			"UK3CB_LNM_I_LR_Closed",
+			"UK3CB_LNM_I_UAZ_Open",
+			"UK3CB_LNM_I_Ural_Open",
+			"UK3CB_LNM_I_Van_Transport",
+			"UK3CB_LNM_I_Zil131_Open",
+			"UK3CB_LDF_I_Mi8AMTSh",
+			"UK3CB_LDF_I_Mi8",
+			"UK3CB_LDF_I_Mi_24V",
+			"UK3CB_LNM_I_T55",
+			"UK3CB_LNM_I_T72A",
+			"UK3CB_LNM_I_T72B",
+			"UK3CB_LNM_I_T72BM",
+			"UK3CB_LNM_I_Hilux_Open"
 		]
 
 	],
 	[
 		2,
 		[
-			"LOP_PMC_Mi24V_UPK23",
-			"LOP_PMC_Mi8AMT",
-			"LOP_TKA_Mi8MTV3_UPK23",
-			"LOP_PMC_Offroad_M2",
-			"I_G_Offroad_01_AT_F",
-			"LOP_TKA_ZSU234",
-			"LOP_TKA_BTR70",
-			"rhsgref_cdf_t80b_tv",
-			"LOP_IRAN_CH47F",
-			"LOP_PMC_MH9_armed",
-			"LOP_RACS_UH60M",
-			"LOP_PMC_MH9",
-			"LOP_PMC_Truck",
-			"O_Heli_Light_02_dynamicLoadout_F",
-			"O_Heli_Light_02_unarmed_F"
+			"UK3CB_LDF_I_Tigr_STS",
+			"UK3CB_LDF_I_Tigr_FFV",
+			"UK3CB_LDF_I_M1025_M2",
+			"UK3CB_LDF_I_M1025_TOW",
+			"UK3CB_LDF_I_M1151_GPK_M2",
+			"UK3CB_LDF_I_M1151_GPK_PKM",
+			"UK3CB_LDF_I_M1151_OGPK_M2",
+			"UK3CB_LDF_I_M998_2DR",
+			"UK3CB_LDF_I_T810_Closed_PKM",
+			"UK3CB_LDF_I_Marshall",
+			"UK3CB_LDF_I_Marshall_Cage",
+			"UK3CB_LDF_I_Marshall_Camo",
+			"UK3CB_LDF_I_Offroad",
+			"UK3CB_LDF_I_Offroad_M2",
+			"UK3CB_LDF_I_Offroad_AT",
+			"UK3CB_LDF_I_Pickup",
+			"UK3CB_LDF_I_Pickup_M2",
+			"UK3CB_LDF_I_Pickup_SPG9",
+			"UK3CB_LDF_I_Leopard",
+			"UK3CB_ION_I_Woodland_MELB_AH6M"
+			"UK3CB_ION_I_Woodland_Bell412_Utility",
+			"UK3CB_ION_I_Woodland_Bell412_Armed",
+			"UK3CB_ION_I_Woodland_Merlin",
+			"UK3CB_ION_I_Woodland_MELB_MH6M",
+			"UK3CB_ION_I_Woodland_Orca",
+			"UK3CB_ION_I_Woodland_Orca_Armed_MULTI",
+			"UK3CB_ION_I_Woodland_UH1H_M240",
+			"UK3CB_ION_I_Woodland_UH1H_GUNSHIP",
+			"UK3CB_ION_I_Woodland_UH1H",
+			"UK3CB_LDF_I_ZsuTank",
+			"UK3CB_LDF_I_T810_ZU23",
+			"UK3CB_LDF_I_Mi_24G",
+			"UK3CB_LDF_I_Mi_24G_UPK23",
+			"UK3CB_LDF_I_Mi8AMTSh",
+			"UK3CB_LDF_I_Mi8"
 		]
 
 	]
