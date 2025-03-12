@@ -1,5 +1,5 @@
-MehlandTieredUnits = createHashMap;
-MehlandInfantryTiers = createHashMapFromArray [
+mehlandTieredUnits = createHashMap;
+mehlandInfantryTiers = createHashMapFromArray [
 	[
 		1, // Tier #1 Looters
 		[
@@ -206,10 +206,10 @@ MehlandInfantryTiers = createHashMapFromArray [
 	]
 ];
 
-MehlandVehicleCrewTiers = createHashMapFromArray [[1,"UK3CB_LNM_I_SF_RIF_1"], [2,"UK3CB_LDF_I_RIF_1"]];
-MehlandStaticCrewTiers = createHashMapFromArray [[1,"UK3CB_LNM_I_SF_RIF_1"], [2,"UK3CB_LDF_I_RIF_1"]];
+mehlandVehicleCrewTiers = createHashMapFromArray [[1,"UK3CB_LNM_I_SF_RIF_1"], [2,"UK3CB_LDF_I_RIF_1"]];
+mehlandStaticCrewTiers = createHashMapFromArray [[1,"UK3CB_LNM_I_SF_RIF_1"], [2,"UK3CB_LDF_I_RIF_1"]];
 
-MehlandVehicleTiers = createHashMapFromArray [
+mehlandVehicleTiers = createHashMapFromArray [
 	[
 		1,
 		[
@@ -289,10 +289,10 @@ MehlandVehicleTiers = createHashMapFromArray [
 	]
 ];
 
-MehlandTieredUnits set ["world_name", "Mehland"];
-MehlandTieredUnits set ["infantry_tiers", MehlandInfantryTiers];
-MehlandTieredUnits set ["vehicle_crew_tiers", MehlandVehicleCrewTiers];
-MehlandTieredUnits set ["static_crew_tiers", MehlandStaticCrewTiers];
-MehlandTieredUnits set ["vehicle_tiers", MehlandVehicleTiers];
+mehlandTieredUnits set ["world_name", "mehland"];
+mehlandTieredUnits set ["infantry_tiers", mehlandInfantryTiers];
+mehlandTieredUnits set ["vehicle_crew_tiers", mehlandVehicleCrewTiers];
+mehlandTieredUnits set ["static_crew_tiers", mehlandStaticCrewTiers];
+mehlandTieredUnits set ["vehicle_tiers", mehlandVehicleTiers];
 
-tieredUnits set ["Mehland", MehlandTieredUnits];
+tieredUnits set ["mehland", mehlandTieredUnits];
