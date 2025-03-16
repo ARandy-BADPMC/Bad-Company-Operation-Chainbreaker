@@ -56,7 +56,7 @@ OPCB_econ_TierList_AIR = [
 	//TIER 7
 	[
 	"I_HELI_TRANSPORT_02_F",
-	"RHS_L39_CDF",
+	//"RHS_L39_CDF",
 	"AW101",
 	"RHS_UH60M2_D",
 	"RHS_MELB_AH6M",
