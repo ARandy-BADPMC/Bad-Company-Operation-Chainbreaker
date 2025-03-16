@@ -1,7 +1,7 @@
 mehlandTieredUnits = createHashMap;
 mehlandInfantryTiers = createHashMapFromArray [
 	[
-		1, // Tier #1 Looters
+		1,
 		[
 			"I_L_Hunter_F",
 			"I_L_Looter_Rifle_F",
@@ -12,7 +12,7 @@ mehlandInfantryTiers = createHashMapFromArray [
 		
 	],
 	[
-		2, // Tier 2 Looters + Militia
+		2,
 		[			
 			"I_L_Hunter_F",
 			"I_L_Looter_Rifle_F",
@@ -42,7 +42,7 @@ mehlandInfantryTiers = createHashMapFromArray [
 		]
 	],
 	[
-		3, // Tier 3 Militia
+		3,
 		[
 			"UK3CB_LNM_I_TL",
 			"UK3CB_LNM_I_SEN_1",
@@ -67,7 +67,7 @@ mehlandInfantryTiers = createHashMapFromArray [
 		]
 	],
 	[
-		4, // Tier 4 Armored Milltia + Militia
+		4,
 		[
 			"UK3CB_LNM_I_TL",
 			"UK3CB_LNM_I_SEN_1",
@@ -106,7 +106,7 @@ mehlandInfantryTiers = createHashMapFromArray [
 		]
 	],
 	[
-		5, // Tier 5 Armored Militia
+		5,
 		[
 			"UK3CB_LNM_I_SF_TL",
 			"UK3CB_LNM_I_SF_SL",
@@ -125,7 +125,7 @@ mehlandInfantryTiers = createHashMapFromArray [
 		]
 	],
 	[
-		6, // Tier 6 Millitary
+		6,
 		[
 			"UK3CB_LDF_I_TL",
 			"UK3CB_LDF_I_SL",
@@ -143,7 +143,7 @@ mehlandInfantryTiers = createHashMapFromArray [
 		]
 	],
 	[
-		7, // Tier 7 Spec-Ops
+		7,
 		[
 			"UK3CB_LDF_I_SF_TL",
 			"UK3CB_LDF_I_SF_SPOT",
@@ -163,7 +163,7 @@ mehlandInfantryTiers = createHashMapFromArray [
 		]
 	],
 	[
-		8, // Tier 8 PMC
+		8,
 		[
 			"UK3CB_ION_I_Woodland_TL",
 			"UK3CB_ION_I_Woodland_SL",
@@ -184,7 +184,7 @@ mehlandInfantryTiers = createHashMapFromArray [
 		]
 	],
 	[
-		9, // Tier 9 PMC Spec Ops
+		9,
 		[
 			"UK3CB_ION_I_Woodland_SF_TL",
 			"UK3CB_ION_I_Woodland_SF_SNI",
