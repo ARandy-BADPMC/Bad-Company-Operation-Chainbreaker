@@ -280,24 +280,24 @@ switch (toLower worldName) do {
 
 		OPCB_Commanders_Insurgents = ["LOP_SLA_Infantry_Officer"];
 
-		OPCB_InfantryGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "LOP_RACS" >> "Infantry"] call _configParser;
+		OPCB_InfantryGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "UK3CB_LDF" >> "Infantry"] call _configParser;
 
-		OPCB_MechanizedGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "LOP_RACS" >> "Motorized"] call _configParser;
+		OPCB_MechanizedGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "UK3CB_LDF" >> "Motorized"] call _configParser;
 
 		OPCB_ArmoredVehicles_Insurgents = [
-			"LOP_RACS_T72BB",
-			"LOP_RACS_T72BA"
+			"UK3CB_LDF_I_Leopard",
+			"UK3CB_LDF_I_ZsuTank"
 		];
 
 		OPCB_Artillery_Insurgents = ["LOP_SLA_BM21"];
 
 		OPCB_TransportVehicles_Insurgents = [
-			"LOP_RACS_Landrover",
-			"LOP_RACS_Landrover_M2",
-			"LOP_RACS_Truck",
-			"LOP_RACS_Offroad",
-			"LOP_RACS_M113_W",
-			"LOP_RACS_Offroad_M2"
+			"UK3CB_LDF_I_Offroad",
+			"UK3CB_LDF_I_Offroad_M2",
+			"UK3CB_LDF_I_Offroad_AT",
+			"UK3CB_LDF_I_Pickup",
+			"UK3CB_LDF_I_Pickup_M2",
+			"UK3CB_LDF_I_Pickup_SPG9"
 		]; 
 
 		OPCB_StaticVehicles_Insurgents = [
@@ -307,19 +307,26 @@ switch (toLower worldName) do {
 		];
 
 		OPCB_TransportHelicopters_Insurgents = [
-			"LOP_RACS_UH60M",
-			"LOP_RACS_MH9"
+			"UK3CB_ION_I_Woodland_MELB_AH6M",
+			"UK3CB_ION_I_Woodland_Bell412_Utility",
+			"UK3CB_ION_I_Woodland_Bell412_Armed",
+			"UK3CB_ION_I_Woodland_Merlin",
+			"UK3CB_ION_I_Woodland_MELB_MH6M",
+			"UK3CB_ION_I_Woodland_Orca"
 		];
 
 		OPCB_AttackHelicopters_Insurgents = [
-			"LOP_RACS_MH9_armed"
+			"UK3CB_ION_I_Woodland_UH1H_GUNSHIP",
+			"UK3CB_LDF_I_Mi_24G",
+			"UK3CB_LDF_I_Mi_24G_UPK23",
+			"UK3CB_LDF_I_Mi8AMTSh"
 		];
 
 		OPCB_Commanders_OPFOR = ["LOP_SLA_Infantry_Officer"];
 
-		OPCB_InfantryGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "LOP_SLA" >> "Infantry"] call _configParser;
+		OPCB_InfantryGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "UK3CB_LNM" >> "Infantry"] call _configParser;
 
-		OPCB_MechanizedGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "LOP_SLA" >> "Mechanized"] call _configParser;
+		OPCB_MechanizedGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "UK3CB_LNM" >> "Mechanized"] call _configParser;
 
 		OPCB_ArmoredVehicles_OPFOR = [
 			"LOP_SLA_ZSU234",
