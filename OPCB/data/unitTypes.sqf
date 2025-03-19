@@ -278,18 +278,18 @@ switch (toLower worldName) do {
 	// Mehland
 	case "mehland" : {
 
-		OPCB_Commanders_Insurgents = ["LOP_SLA_Infantry_Officer"];
+		OPCB_Commanders_Insurgents = ["UK3CB_ION_I_Woodland_TL"];
 
-		OPCB_InfantryGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "UK3CB_LDF" >> "Infantry"] call _configParser;
+		OPCB_InfantryGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "UK3CB_LDF_I" >> "Infantry"] call _configParser;
 
-		OPCB_MechanizedGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "UK3CB_LDF" >> "Motorized"] call _configParser;
+		OPCB_MechanizedGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "UK3CB_LDF_I" >> "Motorized"] call _configParser;
 
 		OPCB_ArmoredVehicles_Insurgents = [
 			"UK3CB_LDF_I_Leopard",
 			"UK3CB_LDF_I_ZsuTank"
 		];
 
-		OPCB_Artillery_Insurgents = ["LOP_SLA_BM21"];
+		OPCB_Artillery_Insurgents = ["UK3CB_LDF_I_T810_MLRS"];
 
 		OPCB_TransportVehicles_Insurgents = [
 			"UK3CB_LDF_I_Offroad",
@@ -322,35 +322,27 @@ switch (toLower worldName) do {
 			"UK3CB_LDF_I_Mi8AMTSh"
 		];
 
-		OPCB_Commanders_OPFOR = ["LOP_SLA_Infantry_Officer"];
+		OPCB_Commanders_OPFOR = ["UK3CB_ION_I_Woodland_TL"];
 
-		OPCB_InfantryGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "UK3CB_LNM" >> "Infantry"] call _configParser;
+		OPCB_InfantryGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "UK3CB_LNM_O" >> "Infantry"] call _configParser;
 
-		OPCB_MechanizedGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "UK3CB_LNM" >> "Mechanized"] call _configParser;
+		OPCB_MechanizedGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "UK3CB_LNM_O" >> "Mechanized"] call _configParser;
 
 		OPCB_ArmoredVehicles_OPFOR = [
-			"LOP_SLA_ZSU234",
-			"LOP_SLA_BTR60",
-			"LOP_SLA_BTR70",
-			//"LOP_SLA_BM21", artillery
-			"LOP_SLA_BMP1",
-			"LOP_SLA_BMP1D",
-			"LOP_SLA_BMP2",
-			"LOP_SLA_BMP2D",
-			"LOP_SLA_T72BA",
-			"LOP_SLA_T72BB"
+			"UK3CB_LNM_I_T55",
+			"UK3CB_LNM_I_T72A",
+			"UK3CB_LNM_I_T72B"
 		];
 
-		OPCB_Artillery_OPFOR = ["LOP_SLA_BM21"];
+		OPCB_Artillery_OPFOR = ["UK3CB_LNM_I_BM21"];
 
 		OPCB_TransportVehicles_OPFOR = [
-			"LOP_SLA_UAZ",
-			"LOP_SLA_UAZ_AGS",
-			"LOP_SLA_UAZ_DshKM",
-			"LOP_SLA_UAZ_Open",
-			"LOP_SLA_UAZ_SPG",
-			"LOP_SLA_Ural",
-			"LOP_SLA_Ural_open"
+			"UK3CB_LNM_I_BRDM2",
+			"UK3CB_LNM_I_Hilux_Dshkm",
+			"UK3CB_LNM_I_Hilux_Metis",
+			"UK3CB_LNM_I_LR_M2",
+			"UK3CB_LNM_I_LR_SF_M2",
+			"UK3CB_LNM_I_Offroad_M2"
 		]; 
 
 		OPCB_StaticVehicles_OPFOR = [
@@ -367,12 +359,12 @@ switch (toLower worldName) do {
 		];
 
 		OPCB_TransportHelicopters_OPFOR = [
-			"LOP_SLA_Mi8MT_Cargo"
+			"UK3CB_LDF_I_Mi8"
 		];
 
 		OPCB_AttackHelicopters_OPFOR = [
-			"LOP_SLA_Mi8MTV3_FAB",
-			"LOP_SLA_Mi8MTV3_UPK23"
+			"UK3CB_LDF_I_Mi_24G",
+			"UK3CB_LDF_I_Mi_24G_UPK23"
 		];
 
 
