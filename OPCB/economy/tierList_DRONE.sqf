@@ -16,9 +16,6 @@ OPCB_econ_TierList_DRONE = [
 
 	//TIER 4
 	[
-		"B_UAV_01_BACKPACK_F",
-		"B_UAV_06_BACKPACK_F",
-		"B_UAV_06_MEDICAL_BACKPACK_F"
 	],
 
 	//TIER 5
@@ -35,6 +32,9 @@ OPCB_econ_TierList_DRONE = [
 
 	//TIER 8
 	[
+		"B_UAV_01_BACKPACK_F",
+		"B_UAV_06_BACKPACK_F",
+		"B_UAV_06_MEDICAL_BACKPACK_F"
 	],
 
 	//TIER 9
