@@ -3169,7 +3169,10 @@ _arsenalitems =
 "rhs_45Rnd_545X39_7N10_AK",
 "rhs_45Rnd_545X39_7N22_AK",
 "rhs_45Rnd_545X39_7N6_AK",
-"rhs_45Rnd_545X39_7U1_AK"
+"rhs_45Rnd_545X39_7U1_AK",
+"rhs_60Rnd_545X39_AK_Green",
+"rhs_60Rnd_545X39_7N10_AK",
+"rhs_60Rnd_545X39_7N22_AK"
 ];
 
 // end of clan arsenal
