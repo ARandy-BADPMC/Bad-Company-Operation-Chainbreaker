@@ -8,16 +8,16 @@ switch (_tierType) do {
 		
 		_cost = switch (_tier) do {
 		
-			case 9: {60};
-			case 8: {120};
-			case 7: {180};
-			case 6: {220};
-			case 5: {240};
-			case 4: {260};
-			case 3: {280};
-			case 2: {300};
-			case 1: {320};
-			case 0: {340};
+			case 9: {80};
+			case 8: {140};
+			case 7: {200};
+			case 6: {240};
+			case 5: {260};
+			case 4: {280};
+			case 3: {300};
+			case 2: {320};
+			case 1: {340};
+			case 0: {360};
 			
 		};
 		
@@ -27,16 +27,16 @@ switch (_tierType) do {
 		
 		_cost = switch (_tier) do {
 		
-			case 9: {80};
-			case 8: {140};
-			case 7: {220};
-			case 6: {300};
-			case 5: {380};
-			case 4: {480};
-			case 3: {580};
-			case 2: {660};
-			case 1: {760};
-			case 0: {840};
+			case 9: {120};
+			case 8: {160};
+			case 7: {240};
+			case 6: {320};
+			case 5: {400};
+			case 4: {500};
+			case 3: {600};
+			case 2: {680};
+			case 1: {780};
+			case 0: {860};
 			
 		};
 		
@@ -103,16 +103,16 @@ switch (_tierType) do {
 		
 		_cost = switch (_tier) do {
 		
-			case 9: {5};
-			case 8: {10};
-			case 7: {15};
-			case 6: {20};
-			case 5: {25};
-			case 4: {35};
-			case 3: {45};
-			case 2: {65};
-			case 1: {80};
-			case 0: {100};
+			case 9: {15};
+			case 8: {20};
+			case 7: {25};
+			case 6: {30};
+			case 5: {35};
+			case 4: {45};
+			case 3: {55};
+			case 2: {75};
+			case 1: {120};
+			case 0: {500};
 			
 		};
 		
