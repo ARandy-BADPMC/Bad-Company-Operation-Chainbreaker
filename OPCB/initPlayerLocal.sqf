@@ -38,6 +38,8 @@ call compileFinal preprocessFileLineNumbers "economy\init.sqf";
 jeff addAction ["<t color='#FF0000'>Request Mission</t>", "[] remoteExec ['CHAB_fnc_mission_selector',2];", nil, 1, false, true, "", "true", 10, false,""];
 jeff addAction ["<t color='#FF0000'>Buy FOB</t>", "[] spawn CHAB_fnc_fobStore;", nil, 1, false, true, "", "true", 10, false,""];
 
+pmc addAction ["<t color='#0db804'>Request Mission</t>", "[] remoteExec ['CHAB_fnc_mission_selector',2];", nil, 1, false, true, "", "true", 10, false,""];
+
 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];  
 heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];  
 heli_jeff addAction ["<t color='#01FF24'>Shop history</t>","[] spawn CHAB_fnc_vehicleSpawnerHistory;",nil, 1, false, true, "", "true", 10, false,""]; 

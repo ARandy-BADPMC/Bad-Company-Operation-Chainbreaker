@@ -8,3 +8,4 @@ _rhsUSF = ["rhsusf_army_ocp_rifleman_m590",
 "rhsusf_army_ocp_rifleman_m16"];
 
 _rhsOfficers = ["rhsusf_usmc_marpat_d_officer"];
+_narcolord = ["B_G_Survivor_F"];

@@ -61,7 +61,7 @@ publicVariable "VehicleSpawnerHistory";
 {
 	_x allowDamage false;
 	[_x, "LISTEN_BRIEFING", "Light"] call BIS_fnc_ambientAnim;
-} forEach [officer_jeff,tank_spawner,heli_jeff,boat_jeff_1]; 
+} forEach [officer_jeff,tank_spawner,heli_jeff,boat_jeff_1,officer_pmc]; 
 
 globalWaterPos = [3067.06,16839.7,10.1122]; //universal for all maps, has to be changed manually 
 
@@ -82,6 +82,7 @@ boat_jeff_1 disableConversation true;
 tank_spawner disableConversation true;
 heli_jeff disableConversation true;
 jeff disableConversation true;
+officer_pmc disableConversation true;
 
 addMissionEventHandler ["PlayerDisconnected", {
 	params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
