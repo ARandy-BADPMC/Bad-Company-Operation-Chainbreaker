@@ -8,15 +8,24 @@
 #ifdef ENABLE_TIERED_UNITS
 
   updateTieredUnits = {
-  
-    private _completionRatio = (count Hz_pers_var_insurgencyClearedMarkers) / ins_allMarkerCount * 100;
+    if (isNil "Hz_pers_var_insurgencyClearedMarkers" or isNil "ins_allMarkerCount") then 
+    {
+      completionRatio = 0;
+    }
+    else 
+    {
+      completionRatio = (count Hz_pers_var_insurgencyClearedMarkers) / ins_allMarkerCount * 100;
+    };
     private _worldTiers = tieredUnits get toLower worldName;
 
     private _infantryTiers = _worldTiers get "infantry_tiers";
     private _infantryNumberTiers = count _infantryTiers;
-    private _insurgentsTier = ceil(_completionRatio / 80 * _infantryNumberTiers) min _infantryNumberTiers;
+    private _insurgentsTier = ceil(completionRatio / 80 * _infantryNumberTiers) min _infantryNumberTiers;
     if (_insurgentsTier == 0) then {
       _insurgentsTier = 1;
+      currentInfTier = _insurgentsTier;
+      eastInfClasses = _infantryTiers get _insurgentsTier;
+      publicVariable "eastInfClasses";
     };    
     if (_insurgentsTier != currentInfTier) then {
       currentInfTier = _insurgentsTier;
@@ -26,9 +35,11 @@
 
     private _vehicleCrewTiers = _worldTiers get "vehicle_crew_tiers";
     private _vehicleNumberTiers = count _vehicleCrewTiers;
-    _insurgentsTier = ceil(_completionRatio / 95 * _vehicleNumberTiers) min _vehicleNumberTiers;
+    _insurgentsTier = ceil(completionRatio / 95 * _vehicleNumberTiers) min _vehicleNumberTiers;
     if (_insurgentsTier == 0) then {
       _insurgentsTier = 1;
+      currentVCrewTier = _insurgentsTier;
+      vclCrewClass = _vehicleCrewTiers get _insurgentsTier;
     };    
     if (_insurgentsTier != currentVCrewTier) then {
       currentVCrewTier = _insurgentsTier;
@@ -37,9 +48,11 @@
         
     private _staticCrewTiers = _worldTiers get "static_crew_tiers";
     private _StaticCrewNumberTiers = count _staticCrewTiers;
-    _insurgentsTier = ceil(_completionRatio / 80 * _StaticCrewNumberTiers) min _StaticCrewNumberTiers;
+    _insurgentsTier = ceil(completionRatio / 80 * _StaticCrewNumberTiers) min _StaticCrewNumberTiers;
     if (_insurgentsTier == 0) then {
       _insurgentsTier = 1;
+      currentSCrewTier = _insurgentsTier;
+      staticClass = _staticCrewTiers get _insurgentsTier;
     };
     if (_insurgentsTier != currentSCrewTier) then {
       currentSCrewTier = _insurgentsTier;
@@ -48,9 +61,11 @@
     
     private _vehicleTiers = _worldTiers get "vehicle_tiers";
     private _vehicleNumberTiers = count _vehicleTiers;
-    _insurgentsTier = ceil(_completionRatio / 80 * _vehicleNumberTiers) min _vehicleNumberTiers;
+    _insurgentsTier = ceil(completionRatio / 80 * _vehicleNumberTiers) min _vehicleNumberTiers;
     if (_insurgentsTier == 0) then {
       _insurgentsTier = 1;
+      currentVehTier = _insurgentsTier;
+      eastVclClasses = _vehicleTiers get _insurgentsTier;
     };
     if (_insurgentsTier != currentVehTier) then {
       currentVehTier = _insurgentsTier;
@@ -101,6 +116,10 @@ _markerPositions = [];
 ins_allMarkerCount = count _markerPositions;
 // it's actually 55% for reasons...
 ins_halfMarkerCount = round (ins_allMarkerCount*0.55);
+
+#ifdef ENABLE_TIERED_UNITS
+  call updateTieredUnits;
+#endif
 
 
 call compileFinal preprocessFileLineNumbers "insurgency\common\server\AI\paradrop\init.sqf";

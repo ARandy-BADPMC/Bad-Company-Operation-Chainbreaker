@@ -275,7 +275,141 @@ switch (toLower worldName) do {
 	
 	};
 
-		default {
+	// Mehland
+	case "mehland" : {
+
+		OPCB_Commanders_Insurgents = ["UK3CB_ION_I_Woodland_TL"];
+
+		OPCB_InfantryGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "UK3CB_LDF_I" >> "Infantry"] call _configParser;
+
+		OPCB_MechanizedGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "UK3CB_LDF_I" >> "Motorized"] call _configParser;
+
+		OPCB_ArmoredVehicles_Insurgents = [
+			"UK3CB_LDF_I_Leopard",
+			"UK3CB_LDF_I_ZsuTank"
+		];
+
+		OPCB_Artillery_Insurgents = ["UK3CB_LDF_I_T810_MLRS"];
+
+		OPCB_TransportVehicles_Insurgents = [
+			"UK3CB_LDF_I_Offroad",
+			"UK3CB_LDF_I_Offroad_M2",
+			"UK3CB_LDF_I_Offroad_AT",
+			"UK3CB_LDF_I_Pickup",
+			"UK3CB_LDF_I_Pickup_M2",
+			"UK3CB_LDF_I_Pickup_SPG9"
+		]; 
+
+		OPCB_StaticVehicles_Insurgents = [
+			"LOP_RACS_Static_M2_MiniTripod",
+			"LOP_RACS_Static_Mk19_TriPod",
+			"LOP_RACS_Static_M2"
+		];
+
+		OPCB_TransportHelicopters_Insurgents = [
+			"UK3CB_ION_I_Woodland_MELB_AH6M",
+			"UK3CB_ION_I_Woodland_Bell412_Utility",
+			"UK3CB_ION_I_Woodland_Bell412_Armed",
+			"UK3CB_ION_I_Woodland_Merlin",
+			"UK3CB_ION_I_Woodland_MELB_MH6M",
+			"UK3CB_ION_I_Woodland_Orca"
+		];
+
+		OPCB_AttackHelicopters_Insurgents = [
+			"UK3CB_ION_I_Woodland_UH1H_GUNSHIP",
+			"UK3CB_LDF_I_Mi_24G",
+			"UK3CB_LDF_I_Mi_24G_UPK23",
+			"UK3CB_LDF_I_Mi8AMTSh"
+		];
+
+		OPCB_Commanders_OPFOR = ["UK3CB_ION_I_Woodland_TL"];
+
+		OPCB_InfantryGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "UK3CB_LNM_O" >> "Infantry"] call _configParser;
+
+		OPCB_MechanizedGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "UK3CB_LNM_O" >> "Mechanized"] call _configParser;
+
+		OPCB_ArmoredVehicles_OPFOR = [
+			"UK3CB_LNM_I_T55",
+			"UK3CB_LNM_I_T72A",
+			"UK3CB_LNM_I_T72B"
+		];
+
+		OPCB_Artillery_OPFOR = ["UK3CB_LNM_I_BM21"];
+
+		OPCB_TransportVehicles_OPFOR = [
+			"UK3CB_LNM_I_BRDM2",
+			"UK3CB_LNM_I_Hilux_Dshkm",
+			"UK3CB_LNM_I_Hilux_Metis",
+			"UK3CB_LNM_I_LR_M2",
+			"UK3CB_LNM_I_LR_SF_M2",
+			"UK3CB_LNM_I_Offroad_M2"
+		]; 
+
+		OPCB_StaticVehicles_OPFOR = [
+			"LOP_SLA_Static_D30",
+			"LOP_SLA_Static_AT4",
+			"LOP_SLA_Igla_AA_pod",
+			"LOP_SLA_AGS30_TriPod",
+			"LOP_SLA_Static_DSHKM",
+			"LOP_SLA_Kord",
+			"LOP_SLA_Kord_High",
+			"LOP_SLA_NSV_TriPod",
+			"LOP_SLA_Static_SPG9",
+			"LOP_SLA_ZU23"
+		];
+
+		OPCB_TransportHelicopters_OPFOR = [
+			"UK3CB_LDF_I_Mi8"
+		];
+
+		OPCB_AttackHelicopters_OPFOR = [
+			"UK3CB_LDF_I_Mi_24G",
+			"UK3CB_LDF_I_Mi_24G_UPK23"
+		];
+
+
+
+		//old code from here on
+		
+		
+		// unit type arrays		
+		OPCB_unitTypes_inf_ins = [
+			"LOP_SLA_Infantry_AA",
+			"LOP_SLA_Infantry_AT_Asst",
+			"LOP_SLA_Infantry_Corpsman",
+			"LOP_SLA_Infantry_Engineer",
+			"LOP_SLA_Infantry_GL",
+			"LOP_SLA_Infantry_AT",
+			"LOP_SLA_Infantry_MG",
+			"LOP_SLA_Infantry_MG_Asst",
+			"LOP_SLA_Infantry_Marksman",
+			"LOP_SLA_Infantry_Rifleman",
+			"LOP_SLA_Infantry_Rifleman_2",
+			"LOP_SLA_Infantry_SL",
+			"LOP_SLA_Infantry_TL"
+		];
+		
+		OPCB_unitTypes_inf = [
+			"LOP_RACS_Infantry_Corpsman",
+			"LOP_RACS_Infantry_Engineer",
+			"LOP_RACS_Infantry_GL",
+			"LOP_RACS_Infantry_GL_2",
+			"LOP_RACS_Infantry_AT",
+			"LOP_RACS_Infantry_AT_Asst",
+			"LOP_RACS_Infantry_MG",
+			"LOP_RACS_Infantry_MG_Asst",
+			"LOP_RACS_Infantry_Marksman",
+			"LOP_RACS_Infantry_Rifleman",
+			"LOP_RACS_Infantry_Rifleman_2",
+			"LOP_RACS_Infantry_Rifleman_3",
+			"LOP_RACS_Infantry_SL",
+			"LOP_RACS_Infantry_TL"
+		];
+		
+	};
+
+
+	default {
 		OPCB_Commanders_Insurgents = ["LOP_SLA_Infantry_Officer"];
 
 		OPCB_InfantryGroups_Insurgents = [configfile >> "CfgGroups" >> "Indep" >> "LOP_RACS" >> "Infantry"] call _configParser;

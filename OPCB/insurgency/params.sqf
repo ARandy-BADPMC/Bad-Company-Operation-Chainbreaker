@@ -16,6 +16,7 @@ ins_AIspawnMaxRange = switch (toLower worldName) do {
 	case "sara"	: {1000};
 	case "takistan" : {1200};
 	case "lythium"	: {1000};
+	case "mehland"	: {800};
 	default {1000};
 };
 
