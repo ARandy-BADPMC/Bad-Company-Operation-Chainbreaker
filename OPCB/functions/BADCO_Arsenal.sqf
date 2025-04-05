@@ -3196,7 +3196,7 @@ _arsenalitems =
 "uk3cb_optic_STANAGZF2D_G3",
 "uk3cb_optic_ZFSG1",
 "uk3cb_muzzle_snds_g3",
-"UK3CB_G3_20rnd_762x51".
+"UK3CB_G3_20rnd_762x51",
 "UK3CB_G3_20rnd_762x51_R",
 "UK3CB_G3_20rnd_762x51_W",
 "UK3CB_G3_20rnd_762x51_Y",
@@ -6207,7 +6207,7 @@ _arsenalitems =
 "uk3cb_optic_STANAGZF2D_G3",
 "uk3cb_optic_ZFSG1",
 "uk3cb_muzzle_snds_g3",
-"UK3CB_G3_20rnd_762x51".
+"UK3CB_G3_20rnd_762x51",
 "UK3CB_G3_20rnd_762x51_R",
 "UK3CB_G3_20rnd_762x51_W",
 "UK3CB_G3_20rnd_762x51_Y",
