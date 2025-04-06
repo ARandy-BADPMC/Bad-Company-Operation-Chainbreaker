@@ -3229,7 +3229,34 @@ _arsenalitems =
 "UK3CB_M16A3",
 "UK3CB_M16A3_UGL",
 "UK3CB_Uzi_Stock",
-"UK3CB_Uzi_32Rnd_Magazine"
+"UK3CB_Uzi_32Rnd_Magazine",
+"uk3cb_auga3",
+"uk3cb_auga3_blu",
+"uk3cb_auga3_blk ",
+"uk3cb_auga3_gl",
+"uk3cb_auga3_gl_blu",
+"uk3cb_auga3_gl_blk",
+"UK3CB_ACR_Crew",
+"UK3CB_ACR_Rifle_Long",
+"UK3CB_ACR_Carbine",
+"UK3CB_ACR_Rifle",
+"UK3CB_ACR_Carbine_UGL",
+"UK3CB_ION_O_B_Radiobag_BRN",
+"UK3CB_ION_O_B_Radiobag_DES",
+"UK3CB_ION_O_B_Radiobag_OLI",
+"UCK3CB_CHD_B_B_MD_WDL",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_01_URB",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_02_URB",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_07_URB",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_04_URB",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_05_URB",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_01_WDL",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_02_WDL",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_03_WDL",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_04_WDL",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_05_WDL",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_07_WDL",
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_06_WDL"
 ];
 
 // end of clan arsenal
@@ -6240,7 +6267,16 @@ _arsenalitems =
 "UK3CB_M16A3",
 "UK3CB_M16A3_UGL",
 "UK3CB_Uzi_Stock",
-"UK3CB_Uzi_32Rnd_Magazine"
+"UK3CB_Uzi_32Rnd_Magazine",
+"UK3CB_ACR_Crew",
+"UK3CB_ACR_Rifle_Long",
+"UK3CB_ACR_Carbine",
+"UK3CB_ACR_Rifle",
+"UK3CB_ACR_Carbine_UGL",
+"UK3CB_ION_O_B_Radiobag_BRN",
+"UK3CB_ION_O_B_Radiobag_DES",
+"UK3CB_ION_O_B_Radiobag_OLI",
+"UCK3CB_CHD_B_B_MD_WDL"
 ];
 
 //end of public arsenal
