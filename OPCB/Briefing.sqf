@@ -62,7 +62,7 @@ Foreign/native language communication is permissible within a team/squad with me
 <br/>
 #7 Players need to fulfill their respective roles to the best of their abilities (e.g. Leaders lead, machine gunners suppress, AT Rifleman prioritize armored targets, snipers/marksman engage deadly threats beyond the effective range of their team/squadmates, engineers/demolitionists sabotage, destroy, or build, medics prioritize and stabilize the wounded when applicable, etc...).
 <br/>
-#8 Players are required to use sensible and realistic loadouts (e.g. Under-barreled Grenade Launchers/Standalone Grenade Launchers with Heavy AT/AA (Javelin, NLAW, Dragon, Stinger, etc...), high-powered optics other than LPVOs on carbines/non-DMR/short-barrel rifles, or "Machinegun-Sniper-Medics“ are not allowed).
+#8 Players are required to use sensible and realistic loadouts (e.g. Under-barreled Grenade Launchers/Standalone Grenade Launchers with Heavy AT/AA (Javelin, NLAW, Dragon, Stinger, etc...), high-powered optics other than LPVOs on carbines/non-DMR/short-barrel rifles, or 'Machinegun-Sniper-Medics' are not allowed).
 <br/>
 A couple notes:
 <br/>
@@ -74,7 +74,7 @@ In certain situations (like sustained firefights or unexpected contact with enem
 <br/>
 Players that respawn at base are allowed to pick up a Long-Range Radio and contact units in the field to organise a pickup or transport to the frontline.
 <br/>
-Always make sure to mark players, vehicles, and crates on the map for later retrieval/recovery in case they were left in the field with the type of asset and condition of asset within the marker (e.g. "Pvt. Parts, Unc/Stable", "Bradley, Yellow, missing R Track," "Ammo crate, empty," etc... ).
+Always make sure to mark players, vehicles, and crates on the map for later retrieval/recovery in case they were left in the field with the type of asset and condition of asset within the marker (e.g. 'Pvt. Parts, Unc/Stable', 'Bradley, Yellow, missing R Track,' 'Ammo crate, empty,' etc... ).
 <br/>
 Vehicle crews (both air and ground) should always stick to their respective vehicles. In case the vehicle is destroyed, crew members must return to base when feasible. Also, appropriate gear is required (Rule #7/#8.).
 <br/>
@@ -84,7 +84,7 @@ Credits are our currency system and are shared between all players. Keep that in
 <br/>
 Admins will decide on appropriate actions if the rules are broken. Do not take matter into your own hands as this may result in your own ban.
 <br/>
-Stating "ignorance does not protect one from punishment" does not apply on the server. You are required to read the rules and regulations mentioned above before joining the server and should forward it to new/unfamiliar players to the ACE Pub server.
+Stating 'ignorance does not protect one from punishment' does not apply on the server. You are required to read the rules and regulations mentioned above before joining the server and should forward it to new/unfamiliar players to the ACE Pub server.
 <br/>
 As mentioned beforehand, any questions in relation to the ACE Public Server can be addressed to one of our ACE Public Developers (Alex K, A.Randy, D3fiance, JeyR, Sgt. Levis, and W.Frost), on our forums, or through our Discord channel (ace-pub).
 <br/>
