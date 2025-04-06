@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1236;
+		nextID=1247;
 	};
 	class Camera
 	{
@@ -165,14 +165,13 @@ addons[]=
 	"UK3CB_Factions_Vehicles_Motorbikes",
 	"UK3CB_Factions_ION_B_Woodland",
 	"A3_Structures_F_Exp_Military_Barracks_01",
-	"A3_Props_F_Exp_Military_Camps",
-	"Hz_mod_ambientWar"
+	"A3_Props_F_Exp_Military_Camps"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=85;
+		items=84;
 		class Item0
 		{
 			className="A3_Modules_F";
@@ -724,13 +723,6 @@ class AddonsMetaData
 			name="Arma 3 Apex - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
-		};
-		class Item84
-		{
-			className="Hz_mod_ambientWar";
-			name="Hunter'z Ambient War Module";
-			author="K.Hunter";
-			url="https://github.com/KHunter-Arma";
 		};
 	};
 };
@@ -20339,7 +20331,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=823;
+		items=822;
 		class Item0
 		{
 			dataType="Logic";
@@ -54525,7 +54517,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={823.90747,65.277,17449.313};
-				angles[]={-0,6.0339375,0};
+				angles[]={0,6.0339375,0};
 			};
 			side="Empty";
 			flags=4;
@@ -54632,7 +54624,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={821.8147,65.277,17448.795};
-				angles[]={-0,6.078433,0};
+				angles[]={0,6.078433,0};
 			};
 			side="Empty";
 			flags=4;
@@ -55602,541 +55594,6 @@ class Mission
 		};
 		class Item815
 		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={6049.187,28.249058,19793.184};
-			};
-			id=7419;
-			type="Hz_mod_ambientWar_module";
-			atlOffset=64.080994;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="Hz_ambw_module_pArmedCivilianTargetSide";
-					expression="_this setVariable ['ArmedCivilianTargetSide',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="west";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="Hz_ambw_module_pPatrolFactionsBalanceRatio";
-					expression="_this setVariable ['PatrolFactionsBalanceRatio',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0.65";
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="Hz_ambw_module_pSectorCaptureTime";
-					expression="_this setVariable ['SectorCaptureTime',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="1";
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="Hz_ambw_module_pFundsPenaltyPerKill";
-					expression="_this setVariable ['FundsPenaltyPerKill',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="100000";
-						};
-					};
-				};
-				class Attribute4
-				{
-					property="Hz_ambw_module_pPenaltyPerStolenWeapon";
-					expression="_this setVariable ['PenaltyPerStolenWeapon',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="2";
-						};
-					};
-				};
-				class Attribute5
-				{
-					property="Hz_ambw_module_pPositiveRelationsCivilianBleedAmount";
-					expression="_this setVariable ['PositiveRelationsCivilianBleedAmount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0";
-						};
-					};
-				};
-				class Attribute6
-				{
-					property="Hz_ambw_module_pHostileCivTypes";
-					expression="_this setVariable ['HostileCivTypes',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="['C_journalist_F','C_Journalist_01_War_F','C_man_p_beggar_F','C_man_p_beggar_F','C_Man_formal_1_F_euro','C_man_sport_2_F_euro','C_scientist_02_formal_F','C_scientist_01_informal_F']";
-						};
-					};
-				};
-				class Attribute7
-				{
-					property="Hz_ambw_module_pPositiveRelationsBleedOnlyWhenServerPopulated";
-					expression="_this setVariable ['PositiveRelationsBleedOnlyWhenServerPopulated',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="BOOL";
-							value=1;
-						};
-					};
-				};
-				class Attribute8
-				{
-					property="Hz_ambw_module_pPenaltyPerStolenItem";
-					expression="_this setVariable ['PenaltyPerStolenItem',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="1";
-						};
-					};
-				};
-				class Attribute9
-				{
-					property="Hz_ambw_module_pArmedCivilianSide";
-					expression="_this setVariable ['ArmedCivilianSide',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="resistance";
-						};
-					};
-				};
-				class Attribute10
-				{
-					property="Hz_ambw_module_pEnableHzEcon";
-					expression="_this setVariable ['EnableHzEcon',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="BOOL";
-							value=0;
-						};
-					};
-				};
-				class Attribute11
-				{
-					property="Hz_ambw_module_pHostileCivRatio";
-					expression="_this setVariable ['HostileCivRatio',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0.3";
-						};
-					};
-				};
-				class Attribute12
-				{
-					property="Hz_ambw_module_pSectorFlagTypes";
-					expression="_this setVariable ['SectorFlagTypes',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="['ace_flags_carrier_black']";
-						};
-					};
-				};
-				class Attribute13
-				{
-					property="Hz_ambw_module_pSectorTransportVehicleTypes";
-					expression="_this setVariable ['SectorTransportVehicleTypes',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[['LOP_TKA_Ural'],['LOP_IA_Ural'],[]]";
-						};
-					};
-				};
-				class Attribute14
-				{
-					property="Hz_ambw_module_pSectorMaxDefenderCount";
-					expression="_this setVariable ['SectorMaxDefenderCount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="24";
-						};
-					};
-				};
-				class Attribute15
-				{
-					property="Hz_ambw_module_pSectorMinStaticCount";
-					expression="_this setVariable ['SectorMinStaticCount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="2";
-						};
-					};
-				};
-				class Attribute16
-				{
-					property="Hz_ambw_module_pSectorMinEmplacementCount";
-					expression="_this setVariable ['SectorMinEmplacementCount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="5";
-						};
-					};
-				};
-				class Attribute17
-				{
-					property="Hz_ambw_module_pSectorFortificationTypes";
-					expression="_this setVariable ['SectorFortificationTypes',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[['Land_BagBunker_Small_F','Land_BagBunker_Small_F','Land_BagBunker_Small_F','Land_BagBunker_Large_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Long_F','Land_BagFence_Long_F','Land_SandbagBarricade_01_half_F','Land_SandbagBarricade_01_half_F','Land_SandbagBarricade_01_half_F','Land_Razorwire_F','Land_Razorwire_F','Land_Razorwire_F','Land_Razorwire_F','Land_CzechHedgehog_01_new_F','Land_CzechHedgehog_01_new_F','Land_CzechHedgehog_01_new_F'],['Land_BagBunker_Small_F','Land_BagBunker_Small_F','Land_BagBunker_Small_F','Land_BagBunker_Large_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Round_F','Land_BagFence_Long_F','Land_BagFence_Long_F','Land_SandbagBarricade_01_half_F','Land_SandbagBarricade_01_half_F','Land_SandbagBarricade_01_half_F','Land_Razorwire_F','Land_Razorwire_F','Land_Razorwire_F','Land_Razorwire_F','Land_CzechHedgehog_01_new_F','Land_CzechHedgehog_01_new_F','Land_CzechHedgehog_01_new_F'],[]]";
-						};
-					};
-				};
-				class Attribute18
-				{
-					property="Hz_ambw_module_pPenaltyPerKill";
-					expression="_this setVariable ['PenaltyPerKill',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="5";
-						};
-					};
-				};
-				class Attribute19
-				{
-					property="Hz_ambw_module_pLockPatrolVehicles";
-					expression="_this setVariable ['LockPatrolVehicles',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="BOOL";
-							value=1;
-						};
-					};
-				};
-				class Attribute20
-				{
-					property="Hz_ambw_module_pSectorMaxStaticCount";
-					expression="_this setVariable ['SectorMaxStaticCount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="3";
-						};
-					};
-				};
-				class Attribute21
-				{
-					property="Hz_ambw_module_pCivilianLoadouts";
-					expression="_this setVariable ['CivilianLoadouts',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[[0.45, 'hgun_ACPC2_F', '9Rnd_45ACP_Mag', 8],[1, 'hgun_Pistol_heavy_02_F', '6Rnd_45ACP_Cylinder', 8]]";
-						};
-					};
-				};
-				class Attribute22
-				{
-					property="Hz_ambw_module_pCivilianMultiplier";
-					expression="_this setVariable ['CivilianMultiplier',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0.75";
-						};
-					};
-				};
-				class Attribute23
-				{
-					property="Hz_ambw_module_pPositiveRelationsOwnSideBleedAmount";
-					expression="_this setVariable ['PositiveRelationsOwnSideBleedAmount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0";
-						};
-					};
-				};
-				class Attribute24
-				{
-					property="Hz_ambw_module_pPatrolVehicleCleanupMinimumPlayerDistance";
-					expression="_this setVariable ['PatrolVehicleCleanupMinimumPlayerDistance',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="2000";
-						};
-					};
-				};
-				class Attribute25
-				{
-					property="Hz_ambw_module_pMaxCivCount";
-					expression="_this setVariable ['MaxCivCount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="50";
-						};
-					};
-				};
-				class Attribute26
-				{
-					property="Hz_ambw_module_pCleanupLeftoverPatrolVehiclesTime";
-					expression="_this setVariable ['CleanupLeftoverPatrolVehiclesTime',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="10800";
-						};
-					};
-				};
-				class Attribute27
-				{
-					property="Hz_ambw_module_pRelationsOwnSide";
-					expression="_this setVariable ['RelationsOwnSide',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="100";
-						};
-					};
-				};
-				class Attribute28
-				{
-					property="Hz_ambw_module_pFactions";
-					expression="_this setVariable ['Factions',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[['B.A.D. PMC',west,5,['C_MAN_POLO_1_F','C_MAN_HUNTER_1_F']],['Iraqi Army',west,1,['LOP_IA']],['US Forces',west,10,['USAF','USAF_AFSOC','USAF_SFS_PILOTS','RHS_FACTION_SOCOM','RHS_FACTION_USAF','RHS_FACTION_USARMY','RHS_FACTION_USARMY_D','RHS_FACTION_USARMY_WD','RHS_FACTION_USMC','RHS_FACTION_USMC_D','RHS_FACTION_USMC_WD','RHS_FACTION_USN']],['Friendly Insurgents',west,0.3,[]],['Enemy Insurgents',east,0,['UK3CB_LDF_I']],['Takistani Army',east,0,['LOP_TKA']],['Civilians',civilian,1,['LOP_TAK_CIV','CIV_F','CIV_IDAP_F']]]";
-						};
-					};
-				};
-				class Attribute29
-				{
-					property="Hz_ambw_module_pCivTypes";
-					expression="_this setVariable ['CivTypes',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="['C_journalist_F','C_Journalist_01_War_F','C_man_p_beggar_F','C_man_p_beggar_F','C_Man_formal_1_F_euro','C_man_sport_2_F_euro','C_scientist_02_formal_F','C_scientist_01_informal_F']";
-						};
-					};
-				};
-				class Attribute30
-				{
-					property="Hz_ambw_module_pSectorMaxEmplacementCount";
-					expression="_this setVariable ['SectorMaxEmplacementCount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="15";
-						};
-					};
-				};
-				class Attribute31
-				{
-					property="Hz_ambw_module_pSuicideBomberProbability";
-					expression="_this setVariable ['SuicideBomberProbability',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0.2";
-						};
-					};
-				};
-				class Attribute32
-				{
-					property="Hz_ambw_module_pPatrolsMasterHCName";
-					expression="_this setVariable ['PatrolsMasterHCName',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="patrol";
-						};
-					};
-				};
-				class Attribute33
-				{
-					property="Hz_ambw_module_pSectorStaticTypes";
-					expression="_this setVariable ['SectorStaticTypes',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[['rhsgref_ins_DSHKM','rhsgref_ins_DSHKM','rhsgref_ins_DSHKM','rhsgref_ins_ZU23','rhsgref_ins_SPG9'],['LOP_IA_Static_M2','LOP_IA_Static_M2','LOP_IA_Static_DSHKM','LOP_IA_Static_SPG9'],[]]";
-						};
-					};
-				};
-				class Attribute34
-				{
-					property="Hz_ambw_module_pSectorMarkers";
-					expression="_this setVariable ['SectorMarkers',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="['sector_1']";
-						};
-					};
-				};
-				class Attribute35
-				{
-					property="Hz_ambw_module_pSectorMinDefenderCount";
-					expression="_this setVariable ['SectorMinDefenderCount',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="12";
-						};
-					};
-				};
-				class Attribute36
-				{
-					property="Hz_ambw_module_pSectorDefenderTypes";
-					expression="_this setVariable ['SectorDefenderTypes',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[['UK3CB_LNM_I_SF_RIF_1'],[]]";
-						};
-					};
-				};
-				class Attribute37
-				{
-					property="Hz_ambw_module_pRelationsCivilian";
-					expression="_this setVariable ['RelationsCivilian',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="100";
-						};
-					};
-				};
-				class Attribute38
-				{
-					property="Hz_ambw_module_pSectorStaticGunnerTypes";
-					expression="_this setVariable ['SectorStaticGunnerTypes',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="[['UK3CB_LNM_I_SF_RIF_1'],['LOP_IA_Infantry_Rifleman_4'],[]]";
-						};
-					};
-				};
-				class Attribute39
-				{
-					property="Hz_ambw_module_pMaxNumOfUnitsAllowedBeforeSpawningNewPatrol";
-					expression="_this setVariable ['MaxNumOfUnitsAllowedBeforeSpawningNewPatrol',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="1000";
-						};
-					};
-				};
-				nAttributes=40;
-			};
-		};
-		class Item816
-		{
 			dataType="Object";
 			class PositionInfo
 			{
@@ -56151,7 +55608,7 @@ class Mission
 			id=7420;
 			type="Land_PortableLight_double_F";
 		};
-		class Item817
+		class Item816
 		{
 			dataType="Object";
 			class PositionInfo
@@ -56167,7 +55624,7 @@ class Mission
 			id=7421;
 			type="Land_PortableLight_double_F";
 		};
-		class Item818
+		class Item817
 		{
 			dataType="Object";
 			class PositionInfo
@@ -56201,7 +55658,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item819
+		class Item818
 		{
 			dataType="Object";
 			class PositionInfo
@@ -56235,7 +55692,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item820
+		class Item819
 		{
 			dataType="Object";
 			class PositionInfo
@@ -56269,7 +55726,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item821
+		class Item820
 		{
 			dataType="Object";
 			class PositionInfo
@@ -56303,7 +55760,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item822
+		class Item821
 		{
 			dataType="Object";
 			class PositionInfo
