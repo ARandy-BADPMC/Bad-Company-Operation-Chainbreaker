@@ -3256,7 +3256,17 @@ _arsenalitems =
 "UK3CB_ION_B_U_SF_Uniform_SHIRT_04_WDL",
 "UK3CB_ION_B_U_SF_Uniform_SHIRT_05_WDL",
 "UK3CB_ION_B_U_SF_Uniform_SHIRT_07_WDL",
-"UK3CB_ION_B_U_SF_Uniform_SHIRT_06_WDL"
+"UK3CB_ION_B_U_SF_Uniform_SHIRT_06_WDL",
+"Tier1_KAC_556_QDC_CQB_Tan",
+"Tier1_KAC_556_QDC_CQB_Black",
+"Tier1_KAC_556_QDC_Tan",
+"Tier1_KAC_556_QDC_Black",
+"UK3CB_HK33KA2",
+"UK3CB_HK33KA2_RIS",
+"UK3CB_HK33KA2_RIS_GL",
+"UK3CB_HK33KA3",
+"UK3CB_HK33_30rnd_556x45",
+"UK3CB_M16_Carbine"
 ];
 
 // end of clan arsenal
@@ -6276,7 +6286,17 @@ _arsenalitems =
 "UK3CB_ION_O_B_Radiobag_BRN",
 "UK3CB_ION_O_B_Radiobag_DES",
 "UK3CB_ION_O_B_Radiobag_OLI",
-"UCK3CB_CHD_B_B_MD_WDL"
+"UCK3CB_CHD_B_B_MD_WDL",
+"Tier1_KAC_556_QDC_CQB_Tan",
+"Tier1_KAC_556_QDC_CQB_Black",
+"Tier1_KAC_556_QDC_Tan",
+"Tier1_KAC_556_QDC_Black",
+"UK3CB_HK33KA2",
+"UK3CB_HK33KA2_RIS",
+"UK3CB_HK33KA2_RIS_GL",
+"UK3CB_HK33KA3",
+"UK3CB_HK33_30rnd_556x45",
+"UK3CB_M16_Carbine"
 ];
 
 //end of public arsenal
