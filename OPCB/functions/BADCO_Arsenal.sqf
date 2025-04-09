@@ -3266,7 +3266,11 @@ _arsenalitems =
 "UK3CB_HK33KA2_RIS_GL",
 "UK3CB_HK33KA3",
 "UK3CB_HK33_30rnd_556x45",
-"UK3CB_M16_Carbine"
+"UK3CB_M16_Carbine",
+"UK3CB_TKA_O_B_RIF_Khk",
+"UK3CB_TKA_O_B_ENG_Khk",
+"UK3CB_CHD_B_B_RIF_WDL",
+"UK3CB_CHD_B_B_ENG_WDL"
 ];
 
 // end of clan arsenal
@@ -6296,7 +6300,11 @@ _arsenalitems =
 "UK3CB_HK33KA2_RIS_GL",
 "UK3CB_HK33KA3",
 "UK3CB_HK33_30rnd_556x45",
-"UK3CB_M16_Carbine"
+"UK3CB_M16_Carbine",
+"UK3CB_TKA_O_B_RIF_Khk",
+"UK3CB_TKA_O_B_ENG_Khk",
+"UK3CB_CHD_B_B_RIF_WDL",
+"UK3CB_CHD_B_B_ENG_WDL"
 ];
 
 //end of public arsenal
