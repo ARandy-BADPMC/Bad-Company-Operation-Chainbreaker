@@ -3270,7 +3270,11 @@ _arsenalitems =
 "UK3CB_TKA_O_B_RIF_Khk",
 "UK3CB_TKA_O_B_ENG_Khk",
 "UK3CB_CHD_B_B_RIF_WDL",
-"UK3CB_CHD_B_B_ENG_WDL"
+"UK3CB_CHD_B_B_ENG_WDL",
+"UK3CB_G_Tactical_Clear_Shemagh_Tan",
+"UK3CB_G_Tactical_Black_Shemagh_Tan",
+"UK3CB_G_Tactical_Black_Shemagh_Green",
+"UK3CB_G_Tactical_Clear_Shemagh_Green"
 ];
 
 // end of clan arsenal
@@ -6304,7 +6308,11 @@ _arsenalitems =
 "UK3CB_TKA_O_B_RIF_Khk",
 "UK3CB_TKA_O_B_ENG_Khk",
 "UK3CB_CHD_B_B_RIF_WDL",
-"UK3CB_CHD_B_B_ENG_WDL"
+"UK3CB_CHD_B_B_ENG_WDL",
+"UK3CB_G_Tactical_Clear_Shemagh_Tan",
+"UK3CB_G_Tactical_Black_Shemagh_Tan",
+"UK3CB_G_Tactical_Black_Shemagh_Green",
+"UK3CB_G_Tactical_Clear_Shemagh_Green"
 ];
 
 //end of public arsenal
