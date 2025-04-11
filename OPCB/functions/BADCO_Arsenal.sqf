@@ -3274,7 +3274,15 @@ _arsenalitems =
 "UK3CB_G_Tactical_Clear_Shemagh_Tan",
 "UK3CB_G_Tactical_Black_Shemagh_Tan",
 "UK3CB_G_Tactical_Black_Shemagh_Green",
-"UK3CB_G_Tactical_Clear_Shemagh_Green"
+"UK3CB_G_Tactical_Clear_Shemagh_Green",
+"Tier1_SIG_MCX_115_VIRTUS_DESERT",
+"UK3CB_KRG_B_B_FieldPack_SF_MED",
+"UK3CB_ION_B_B_RIF_MED_BLK",
+"UK3CB_ION_B_B_RIF_MED_BRN",
+"UK3CB_ION_B_B_RIF_MED_DES",
+"UK3CB_ION_B_B_RIF_MED_OLI",
+"Tier1_MicroT2_Low_Black",
+"Tier1_MicroT2_Low_Tan"
 ];
 
 // end of clan arsenal
@@ -6312,7 +6320,15 @@ _arsenalitems =
 "UK3CB_G_Tactical_Clear_Shemagh_Tan",
 "UK3CB_G_Tactical_Black_Shemagh_Tan",
 "UK3CB_G_Tactical_Black_Shemagh_Green",
-"UK3CB_G_Tactical_Clear_Shemagh_Green"
+"UK3CB_G_Tactical_Clear_Shemagh_Green",
+"Tier1_SIG_MCX_115_VIRTUS_DESERT",
+"UK3CB_KRG_B_B_FieldPack_SF_MED",
+"UK3CB_ION_B_B_RIF_MED_BLK",
+"UK3CB_ION_B_B_RIF_MED_BRN",
+"UK3CB_ION_B_B_RIF_MED_DES",
+"UK3CB_ION_B_B_RIF_MED_OLI",
+"Tier1_MicroT2_Low_Black",
+"Tier1_MicroT2_Low_Tan"
 ];
 
 //end of public arsenal
