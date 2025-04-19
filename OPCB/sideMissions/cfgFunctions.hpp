@@ -30,5 +30,6 @@ class SM
 		class minefield {};
 		class clearMinefield {};
 		class deliverSupplies {};
+		class GPSJam {};
 	};
 };
