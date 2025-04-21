@@ -29,15 +29,15 @@ disableChannels[] = {{0,false,true},{1,true,true},{2,true,true},{3,true,true},{4
 
 
 //GarbageCollector
-minPlayerDistance = 2000; //meters
+minPlayerDistance = 1600; //meters
 corpseManagerMode = 1;
-corpseLimit = 250;
-corpseRemovalMinTime = 1200;
-corpseRemovalMaxTime = 3600;
+corpseLimit = 200;
+corpseRemovalMinTime = 600;
+corpseRemovalMaxTime = 1800;
 wreckManagerMode = 1;
-wreckLimit = 10;
-wreckRemovalMinTime = 1200;
-wreckRemovalMaxTime = 3600;
+wreckLimit = 8;
+wreckRemovalMinTime = 600;
+wreckRemovalMaxTime = 1800;
 
 #include "CHVD\dialog.hpp"
 class CfgFunctions 
