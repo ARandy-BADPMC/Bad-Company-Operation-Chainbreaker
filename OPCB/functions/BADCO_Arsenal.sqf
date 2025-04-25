@@ -6779,7 +6779,7 @@ _arsenalitems =
 ];
 
 
-_boxes = [box3];
+_boxes = [box3,box7];
 
 {
 	[_x,_arsenalitems,true] call ace_arsenal_fnc_initBox;
