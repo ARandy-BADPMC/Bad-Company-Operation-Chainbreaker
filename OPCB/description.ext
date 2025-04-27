@@ -1,3 +1,15 @@
+class cfgsounds 
+{
+    sounds[]={};
+    class Medicalvoice
+        {
+        name="Medicalvoice";
+        sound[]={"Medicalvoice.ogg",db+120,1,10};
+        titles[]={};
+        };
+};
+
+
 class cfgmusic 
 {
     sounds[]={};
@@ -29,15 +41,15 @@ disableChannels[] = {{0,false,true},{1,true,true},{2,true,true},{3,true,true},{4
 
 
 //GarbageCollector
-minPlayerDistance = 600; //meters
+minPlayerDistance = 400; //meters
 corpseManagerMode = 1;
-corpseLimit = 20;
-corpseRemovalMinTime = 150;
-corpseRemovalMaxTime = 300;
+corpseLimit = 10;
+corpseRemovalMinTime = 10;
+corpseRemovalMaxTime = 60;
 wreckManagerMode = 1;
 wreckLimit = 4;
-wreckRemovalMinTime = 150;
-wreckRemovalMaxTime = 300;
+wreckRemovalMinTime = 10;
+wreckRemovalMaxTime = 60;
 
 #include "CHVD\dialog.hpp"
 class CfgFunctions 
