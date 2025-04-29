@@ -6643,7 +6643,6 @@ _arsenalitems =
 "ACE_rope36",
 "launch_MRAWS_olive_F",
 "rhs_weap_rpg7",
-"ACE_40mm_Pike",
 "ACE_APERSMine_ToePopper_Mag"
 ];
 
