@@ -329,9 +329,8 @@ switch (toLower worldName) do {
 		OPCB_MechanizedGroups_OPFOR = [configfile >> "CfgGroups" >> "East" >> "UK3CB_LNM_O" >> "Mechanized"] call _configParser;
 
 		OPCB_ArmoredVehicles_OPFOR = [
-			"UK3CB_LNM_I_T55",
-			"UK3CB_LNM_I_T72A",
-			"UK3CB_LNM_I_T72B"
+			"O_T_MBT_04_cannon_F",
+			"O_T_MBT_04_command_F"
 		];
 
 		OPCB_Artillery_OPFOR = ["UK3CB_LNM_I_BM21"];
