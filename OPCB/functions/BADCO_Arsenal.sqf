@@ -6643,7 +6643,6 @@ _arsenalitems =
 "ACE_rope36",
 "launch_MRAWS_olive_F",
 "rhs_weap_rpg7",
-"ACE_40mm_Pike",
 "ACE_APERSMine_ToePopper_Mag"
 ];
 
@@ -6691,7 +6690,7 @@ _arsenalitems =
 ];
 
 
-_boxes = [box3,box7];
+_boxes = [box3,box6,box7];
 
 {
 	[_x,_arsenalitems,true] call ace_arsenal_fnc_initBox;
