@@ -5,29 +5,29 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=1025;
 	class ItemIDProvider
 	{
-		nextID=8514;
+		nextID=8519;
 	};
 	class MarkerIDProvider
 	{
-		nextID=26;
+		nextID=27;
 	};
 	class LayerIndexProvider
 	{
-		nextID=1383;
+		nextID=1425;
 	};
 	class Camera
 	{
-		pos[]={179.20465,192.66382,17454.645};
-		dir[]={-0.97609842,-0.18428963,0.11524308};
-		up[]={-0.18302052,0.98287016,0.021608202};
-		aside[]={0.11725127,-7.3378033e-08,0.99310648};
+		pos[]={647.38739,68.083656,17359.104};
+		dir[]={0.28378159,-0.34910747,-0.89308727};
+		up[]={0.10572544,0.93707764,-0.33272719};
+		aside[]={-0.95304734,4.258618e-07,-0.30283502};
 	};
 };
 binarizationWanted=0;
-sourceName="OPCB-Mehland";
+sourceName="OPCB-MehlandDEV";
 addons[]=
 {
 	"A3_Modules_F_Multiplayer",
@@ -22860,7 +22860,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=1066;
+		items=1067;
 		class Item0
 		{
 			dataType="Logic";
@@ -23600,11 +23600,12 @@ class Mission
 		class Item17
 		{
 			dataType="Marker";
-			position[]={693.79773,63.700001,17469.535};
+			position[]={692.117,63.700001,17465.129};
 			name="tank_spawner";
 			text="Vehicle Spawner";
 			type="b_mech_inf";
 			colorName="ColorWEST";
+			angle=76.878983;
 			id=99;
 		};
 		class Item18
@@ -41026,11 +41027,11 @@ class Mission
 		class Item539
 		{
 			dataType="Trigger";
-			position[]={805.35828,63.700001,17465.162};
+			position[]={805.35797,63.700001,17465.162};
 			angle=1.3247567;
 			class Attributes
 			{
-				onActivation="null= [thisTrigger] spawn { params [""_trigger""]; if (getPos player inArea _trigger) then {_clanStatus = (squadparams player select 0) select 0;switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. Co member to the BadCo base!"";};default { hint ""Warning! You're entering a restricted area and will be teleported!""; sleep 3; player setPos getMarkerPos ""public_spawn"";};};};};";
+				onActivation="private _trigger = thisTrigger;  " \n "null = [_trigger] spawn {params [""_trigger""];private _clanStatus = """";private _squadParams = squadParams player;if (!isNil ""_squadParams"" && {count _squadParams > 0 && {count (_squadParams select 0) > 0}}) then {_clanStatus = (_squadParams select 0) select 0;};if (getPos player inArea _trigger) then {switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. Co member to the BadCo base!"";};default {hint ""Warning! You're entering a restricted area and will be teleported!"";sleep 3;player setPos (getMarkerPos ""thrown_out"");};};};};";
 				sizeA=25;
 				sizeB=49;
 				sizeC=20;
@@ -54379,7 +54380,6 @@ class Mission
 					class Attributes
 					{
 						description="Rifleman";
-						isPlayer=1;
 						isPlayable=1;
 						aiRadarUsage=1919905119;
 					};
@@ -58127,7 +58127,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={659.33179,64.626839,17359.041};
+				position[]={659.33197,64.626839,17359.039};
 				angles[]={0,1.3359098,0};
 			};
 			side="Empty";
@@ -59308,12 +59308,11 @@ class Mission
 		class Item865
 		{
 			dataType="Marker";
-			position[]={652.87915,63.899986,17353.625};
+			position[]={653.03564,63.799995,17353.695};
 			name="PatientSpawn2";
 			type="Empty";
 			angle=149.81464;
 			id=7917;
-			atlOffset=0.099990845;
 		};
 		class Item866
 		{
@@ -62875,7 +62874,7 @@ class Mission
 			position[]={961.85101,145.03331,16836.072};
 			class Attributes
 			{
-				onActivation="null= [thisTrigger] spawn { params [""_trigger""]; if (getPos player inArea _trigger) then {_clanStatus = (squadparams player select 0) select 0;switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo holiday inn!"";};case ""Bad Co"": {hint ""Welcome B.A.D. Co member to the BadCo holiday inn!"";};default { hint ""Warning! You're entering a restricted area and will be teleported!""; sleep 3; player setPos getMarkerPos ""public_spawn"";};};};};";
+				onActivation="private _trigger = thisTrigger;  " \n "null = [_trigger] spawn {params [""_trigger""];private _clanStatus = """";private _squadParams = squadParams player;if (!isNil ""_squadParams"" && {count _squadParams > 0 && {count (_squadParams select 0) > 0}}) then {_clanStatus = (_squadParams select 0) select 0;};if (getPos player inArea _trigger) then {switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. Co member to the BadCo base!"";};default {hint ""Warning! You're entering a restricted area and will be teleported!"";sleep 3;player setPos (getMarkerPos ""thrown_out"");};};};};";
 				sizeA=30;
 				sizeB=17;
 				sizeC=20;
@@ -65467,26 +65466,6 @@ class Mission
 		};
 		class Item1046
 		{
-			dataType="Trigger";
-			position[]={759.71301,84.385223,17055.051};
-			angle=4.8807297;
-			class Attributes
-			{
-				onActivation="gate_badco_1 animate [""Door_1_rot"", 1]";
-				onDeactivation="gate_badco_1 animate [""Door_1_rot"", 0]";
-				sizeA=10;
-				sizeB=1.7;
-				sizeC=5;
-				repeatable=1;
-				activationBy="WEST";
-				isRectangle=1;
-				isServerOnly=1;
-			};
-			id=8485;
-			type="EmptyDetectorArea10x10";
-		};
-		class Item1047
-		{
 			dataType="Object";
 			class PositionInfo
 			{
@@ -65520,7 +65499,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1048
+		class Item1047
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65556,7 +65535,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1049
+		class Item1048
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65592,7 +65571,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1050
+		class Item1049
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65628,7 +65607,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1051
+		class Item1050
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65664,7 +65643,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1052
+		class Item1051
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65700,7 +65679,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1053
+		class Item1052
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65736,7 +65715,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1054
+		class Item1053
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65772,7 +65751,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1055
+		class Item1054
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65808,7 +65787,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1056
+		class Item1055
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65842,7 +65821,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1057
+		class Item1056
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65878,7 +65857,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1058
+		class Item1057
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65913,7 +65892,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1059
+		class Item1058
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65947,7 +65926,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1060
+		class Item1059
 		{
 			dataType="Object";
 			class PositionInfo
@@ -65982,13 +65961,13 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1061
+		class Item1060
 		{
 			dataType="Object";
 			class PositionInfo
 			{
 				position[]={759.974,88.529198,17053.797};
-				angles[]={0,0.12126547,0};
+				angles[]={0.073862329,0.16301376,0.0020071287};
 			};
 			side="Empty";
 			flags=4;
@@ -66016,7 +65995,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1062
+		class Item1061
 		{
 			dataType="Object";
 			class PositionInfo
@@ -66050,7 +66029,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1063
+		class Item1062
 		{
 			dataType="Object";
 			class PositionInfo
@@ -66084,7 +66063,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item1064
+		class Item1063
 		{
 			dataType="Object";
 			class PositionInfo
@@ -66100,7 +66079,7 @@ class Mission
 			id=8512;
 			type="Land_PortableLight_double_F";
 		};
-		class Item1065
+		class Item1064
 		{
 			dataType="Object";
 			class PositionInfo
@@ -66116,6 +66095,34 @@ class Mission
 			id=8513;
 			type="Land_PortableLight_02_quad_olive_F";
 			atlOffset=0.00046539307;
+		};
+		class Item1065
+		{
+			dataType="Trigger";
+			position[]={693.65802,63.700001,17462.549};
+			angle=2.8569818;
+			class Attributes
+			{
+				name="ShopRS";
+				onActivation="null = [] execVM ""zoneRestrictor.sqf""; " \n "";
+				sizeA=16.858;
+				sizeB=16.212999;
+				sizeC=10;
+				repeatable=1;
+				activationBy="ANYPLAYER";
+				isRectangle=1;
+				isServerOnly=1;
+			};
+			id=8514;
+			type="EmptyDetector";
+		};
+		class Item1066
+		{
+			dataType="Marker";
+			position[]={812.73578,63.700001,17515.246};
+			name="thrown_out";
+			type="Empty";
+			id=8515;
 		};
 	};
 	class Connections
