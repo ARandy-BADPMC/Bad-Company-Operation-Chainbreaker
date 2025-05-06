@@ -33,12 +33,12 @@ OPCB_econ_TierList_SEA = [
 
 	//TIER 7
 	[
-	//"UK3CB_MDF_B_RHIB_GUNBOAT"
+	"UK3CB_MDF_B_RHIB_GUNBOAT"
 	],
 
 	//TIER 8
 	[
-	//"UK3CB_MDF_B_RHIB",
+	"UK3CB_MDF_B_RHIB",
 	"B_SDV_01_F"
 	],
 
@@ -51,7 +51,7 @@ OPCB_econ_TierList_SEA = [
 	//TIER 10
 	[
 	"RHSGREF_HIDF_CANOE"
-	//"UK3CB_B_G_SMALL_BOAT_OPEN"
+	"UK3CB_B_G_SMALL_BOAT_OPEN"
 	]
 
 ];
