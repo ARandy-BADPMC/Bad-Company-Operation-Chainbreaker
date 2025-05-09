@@ -31,5 +31,7 @@ class SM
 		class clearMinefield {};
 		class deliverSupplies {};
 		class GPSJam {};
+		class deadload {};
+		class whisperofmehland {};
 	};
 };
