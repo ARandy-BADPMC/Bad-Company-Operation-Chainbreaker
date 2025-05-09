@@ -12,7 +12,7 @@ if (isNil "OPCB_econ_credits") then {
 private _missionPos = [150] call CHAB_fnc_findSpot;
 
 private _taskDesc = "The higher-ups have sent out two secret agents to collect data from a high-priority target (classified). The agents have gathered very important information, critical for a future operation! However, the agents have been called back to a small FOB, where they were planned to be transported back to base to deliver the critical information.\n\nBut it seems the enemy wasn’t as naive as we thought. They have figured out the location of the FOB and launched an attack to eliminate our agents.";
-[_taskID, west, [_taskDesc, "Operation Whispers of Mehland"], _missionPos, "ASSIGNED", 1, true] call BIS_fnc_setTask;
+[_taskID, west, [_taskDesc, "Recover the Whispers"], _missionPos, "ASSIGNED", 1, true] call BIS_fnc_setTask;
 
 private _comps = ["fob4", _missionPos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
 

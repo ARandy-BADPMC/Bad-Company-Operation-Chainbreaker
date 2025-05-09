@@ -32,6 +32,6 @@ class SM
 		class deliverSupplies {};
 		class GPSJam {};
 		class deadload {};
-		class whisperofmehland {};
+		class RecovertheWhispers {};
 	};
 };
