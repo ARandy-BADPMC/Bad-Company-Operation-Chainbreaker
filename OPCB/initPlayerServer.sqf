@@ -26,11 +26,10 @@ if(_uid in _admin_spectators) then {
 };
 
 private _zoneWhiteList = [];
-if (!isDedicated) then {
-    _zoneWhiteList = [_uid];
+if (isDedicated) then {
+    _zoneWhiteList = parseSimpleArray (preprocessFileLineNumbers "badco_data/zonewhitelist.sqf");
 } else {
-    _zoneWhiteList = parseSimpleArray (preprocessFile "badco_data\zonewhitelist.sqf");
-};
+    _zoneWhiteList = [getPlayerUID _playerUnit];  };
 
 if (_uid in _zoneWhiteList) then {
     _playerUnit setVariable ["zonelisted", true, true];
