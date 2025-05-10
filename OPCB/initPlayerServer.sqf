@@ -25,8 +25,6 @@ if(_uid in _admin_spectators) then {
 	_playerUnit setVariable ["AdminSpectator", true, true];
 };
 
-params ["_playerUnit", "_didJIP"];
-private _uid = getPlayerUID _playerUnit;
 private _zoneWhiteList = [];
 if (!isDedicated) then {
     _zoneWhiteList = [_uid];
