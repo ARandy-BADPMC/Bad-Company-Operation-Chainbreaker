@@ -50,7 +50,7 @@ OPCB_econ_TierList_SEA = [
 
 	//TIER 10
 	[
-	"RHSGREF_HIDF_CANOE"
+	"RHSGREF_HIDF_CANOE",
 	"UK3CB_B_G_SMALL_BOAT_OPEN"
 	]
 
