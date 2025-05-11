@@ -75,10 +75,6 @@ private _taskDesc = "The higher-ups have sent out two secret agents to collect d
     terminate _failThread;
     [_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-    OPCB_econ_credits = OPCB_econ_credits + 100;
-    publicVariable "OPCB_econ_credits";
-    format ["You earned %1 C for completing %2!", 100, _title] remoteExec ["hint"];
-
     sleep 4;
     { deleteVehicle _x } forEach _agents + (units _crewGroup) + [_flowerPot];
     deleteGroup _crewGroup;
