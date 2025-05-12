@@ -16,18 +16,18 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1506;
+		nextID=1517;
 	};
 	class Camera
 	{
-		pos[]={240.59718,266.43448,18400.225};
-		dir[]={-0.93983907,-0.34171855,-0.0092381136};
-		up[]={-0.34175983,0.93977875,-0.0033604787};
-		aside[]={-0.0098278746,-1.3409627e-06,1.0000306};
+		pos[]={238.68933,225.0842,18391.854};
+		dir[]={-0.96445006,-0.26388299,-0.017942045};
+		up[]={-0.26388785,0.96453583,-0.0049080802};
+		aside[]={-0.018602734,-1.8018886e-07,0.99988943};
 	};
 };
 binarizationWanted=0;
-sourceName="OPCB-MehlandStaging";
+sourceName="OPCB-Mehland";
 addons[]=
 {
 	"A3_Modules_F_Multiplayer",
@@ -52077,7 +52077,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={806.96179,65.277,17446.598};
-				angles[]={-0,6.0784407,0};
+				angles[]={0,6.0784407,0};
 			};
 			side="Empty";
 			flags=4;
@@ -52268,7 +52268,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={823.32452,65.126175,17451.324};
-				angles[]={-0,6.0426607,0};
+				angles[]={0,6.0426607,0};
 			};
 			side="Empty";
 			flags=4;
@@ -52278,6 +52278,7 @@ class Mission
 			};
 			id=7383;
 			type="UK3CB_ION_B_Woodland_Quadbike";
+			atlOffset=-0.2001152;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -62752,7 +62753,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={810.26678,65.277,17447.641};
-				angles[]={-0,6.0784407,0};
+				angles[]={0,6.0784407,0};
 			};
 			side="Empty";
 			flags=4;
@@ -65295,32 +65296,69 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={963.73285,149.54071,16832.342};
-				angles[]={0,5.4717884,0};
+				position[]={985.81598,146.41434,16837.797};
+				angles[]={0,4.4939609,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				disableSimulation=1;
 			};
 			id=8481;
 			type="Land_Sun_chair_F";
+			atlOffset=0.0001373291;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item1033
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={962.19824,149.54071,16829.877};
-				angles[]={0,5.6399322,0};
+				position[]={985.81299,146.41402,16835.713};
+				angles[]={0,4.9468913,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
+				disableSimulation=1;
 			};
 			id=8482;
 			type="Land_Sun_chair_F";
+			atlOffset=2.0319977;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item1034
 		{
@@ -66029,7 +66067,7 @@ class Mission
 		class Item1055
 		{
 			dataType="Trigger";
-			position[]={693.65802,63.700001,17462.549};
+			position[]={607.4812,63.799999,17337.086};
 			angle=2.8569818;
 			class Attributes
 			{
