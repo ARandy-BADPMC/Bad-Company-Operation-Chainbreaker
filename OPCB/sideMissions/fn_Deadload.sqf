@@ -92,10 +92,6 @@ private _failThread = [_taskID, _vehicle, _crewGroup, _flowerPot] spawn {
     terminate _failThread;
     [_taskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-    OPCB_econ_credits = OPCB_econ_credits + 80;
-    publicVariable "OPCB_econ_credits";
-    format ["You earned %1 C for completing Operation Dead Load!", 80] remoteExec ["hint"];
-
     sleep 4;
     { deleteVehicle _x } forEach (units _crewGroup) + [_vehicle, _flowerPot];
     deleteGroup _crewGroup;
