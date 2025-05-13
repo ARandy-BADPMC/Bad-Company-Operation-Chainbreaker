@@ -23,6 +23,8 @@ D3fiance [BadCo]
 <br/>
 Sgt. Levis [BadCo]
 <br/>
+Mr.Flip Flops [BadCo]
+<br/>
 Special thanks to our alpha-testers: L.Pastor [B.A.D. PMC], Artale and NOMAD
 "]];
 
