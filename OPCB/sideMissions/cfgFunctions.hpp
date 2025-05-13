@@ -33,5 +33,6 @@ class SM
 		class GPSJam {};
 		class deadload {};
 		class RecovertheWhispers {};
+		class Pitfall {};
 	};
 };
