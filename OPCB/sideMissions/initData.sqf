@@ -8,6 +8,9 @@ SM_Rewards = createHashMapFromArray [
 	["deliverSupplies", [60, {[] spawn SM_fnc_deliverSupplies}]],
 	["clearMinefield", [60, {[] spawn SM_fnc_clearMinefield}]],
 	["GPSJam", [80, {[] spawn SM_fnc_GPSJam}]],
-	["deadload", [80, {[] spawn SM_fnc_deadload}]],
-	["RecovertheWhispers", [80, {[] spawn SM_fnc_RecovertheWhispers}]]
+	["deadload", [60, {[] spawn SM_fnc_deadload}]],
+	["RecovertheWhispers", [80, {[] spawn SM_fnc_RecovertheWhispers}]],
+	["Pitfall", [80, {[] spawn SM_fnc_Pitfall}]],
+	["slowResupply", [60, {[] spawn SM_fnc_slowResupply}]]
+
 ];

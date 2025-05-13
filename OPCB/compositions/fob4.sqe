@@ -1,8 +1,8 @@
-version=53;
+version=54;
 center[]={974.32086,5,3996.1995};
 class items
 {
-	items=3;
+	items=2;
 	class Item0
 	{
 		dataType="Layer";
@@ -723,124 +723,12 @@ class items
 				};
 				id=1199;
 				type="Land_Cargo_HQ_V1_F";
-				atlOffset=4.7683716e-007;
+				atlOffset=4.7683716e-07;
 			};
 		};
 		id=1197;
 	};
 	class Item1
-	{
-		dataType="Group";
-		side="West";
-		class Entities
-		{
-			items=1;
-			class Item0
-			{
-				dataType="Object";
-				class PositionInfo
-				{
-					position[]={5.8045044,17.890924,-4.7775879};
-					angles[]={0,4.6579323,0};
-				};
-				side="West";
-				flags=6;
-				class Attributes
-				{
-				};
-				id=1293;
-				type="rhsusf_army_ocp_rifleman";
-				class CustomAttributes
-				{
-					class Attribute0
-					{
-						property="acex_headless_blacklist";
-						expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
-						class Value
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"BOOL"
-									};
-								};
-								value=0;
-							};
-						};
-					};
-					class Attribute1
-					{
-						property="speaker";
-						expression="_this setspeaker _value;";
-						class Value
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"STRING"
-									};
-								};
-								value="Male05ENG";
-							};
-						};
-					};
-					class Attribute2
-					{
-						property="pitch";
-						expression="_this setpitch _value;";
-						class Value
-						{
-							class data
-							{
-								class type
-								{
-									type[]=
-									{
-										"SCALAR"
-									};
-								};
-								value=1.05;
-							};
-						};
-					};
-					nAttributes=3;
-				};
-			};
-		};
-		class Attributes
-		{
-		};
-		class CrewLinks
-		{
-			class LinkIDProvider
-			{
-				nextID=1;
-			};
-			class Links
-			{
-				items=1;
-				class Item0
-				{
-					linkID=0;
-					item0=1293;
-					item1=1292;
-					class CustomData
-					{
-						role=2;
-						turretPath[]={0};
-					};
-				};
-			};
-		};
-		id=1291;
-	};
-	class Item2
 	{
 		dataType="Object";
 		class PositionInfo
@@ -848,8 +736,8 @@ class items
 			position[]={5.8045044,19.407211,-4.8293457};
 			angles[]={0,4.6579323,0};
 		};
-		side="West";
-		flags=6;
+		side="Empty";
+		flags=4;
 		class Attributes
 		{
 		};

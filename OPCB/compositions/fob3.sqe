@@ -1,8 +1,8 @@
-version=53;
+version=54;
 center[]={222.97791,5,4004.7554};
 class items
 {
-	items=3;
+	items=2;
 	class Item0
 	{
 		dataType="Layer";
@@ -179,7 +179,7 @@ class items
 				};
 				id=1105;
 				type="Land_Cargo_Patrol_V1_F";
-				atlOffset=4.7683716e-007;
+				atlOffset=4.7683716e-07;
 			};
 			class Item10
 			{
@@ -814,18 +814,12 @@ class items
 					class Attribute0
 					{
 						property="ace_isMedicalFacility";
-						expression="_this setVariable [""ace_medical_isMedicalFacility"",_value,true];";
+						expression="_this setVariable [""ace_medical_isMedicalFacility"", _value, true];";
 						class Value
 						{
 							class data
 							{
-								class type
-								{
-									type[]=
-									{
-										"BOOL"
-									};
-								};
+								singleType="BOOL";
 								value=1;
 							};
 						};
@@ -838,70 +832,18 @@ class items
 	};
 	class Item1
 	{
-		dataType="Group";
-		side="West";
-		class Entities
-		{
-			items=1;
-			class Item0
-			{
-				dataType="Object";
-				class PositionInfo
-				{
-					position[]={-0.75085449,4.3454819,10.58252};
-				};
-				side="West";
-				flags=6;
-				class Attributes
-				{
-				};
-				id=1307;
-				type="rhsusf_army_ocp_rifleman";
-				atlOffset=9.5367432e-007;
-			};
-		};
-		class Attributes
-		{
-		};
-		class CrewLinks
-		{
-			class LinkIDProvider
-			{
-				nextID=1;
-			};
-			class Links
-			{
-				items=1;
-				class Item0
-				{
-					linkID=0;
-					item0=1307;
-					item1=1306;
-					class CustomData
-					{
-						role=2;
-						turretPath[]={0};
-					};
-				};
-			};
-		};
-		id=1305;
-		atlOffset=9.5367432e-007;
-	};
-	class Item2
-	{
 		dataType="Object";
 		class PositionInfo
 		{
 			position[]={-0.75085449,6.0227089,10.532715};
 		};
-		side="West";
-		flags=6;
+		side="Empty";
+		flags=4;
 		class Attributes
 		{
 		};
 		id=1306;
 		type="RHS_M2StaticMG_D";
-		atlOffset=9.5367432e-007;
+		atlOffset=9.5367432e-07;
 	};
 };

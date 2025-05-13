@@ -1,8 +1,8 @@
-version=53;
+version=54;
 center[]={208.15215,5,4933.5757};
 class items
 {
-	items=5;
+	items=3;
 	class Item0
 	{
 		dataType="Layer";
@@ -694,18 +694,12 @@ class items
 					class Attribute0
 					{
 						property="ace_isMedicalFacility";
-						expression="_this setVariable [""ace_medical_isMedicalFacility"",_value,true];";
+						expression="_this setVariable [""ace_medical_isMedicalFacility"", _value, true];";
 						class Value
 						{
 							class data
 							{
-								class type
-								{
-									type[]=
-									{
-										"BOOL"
-									};
-								};
+								singleType="BOOL";
 								value=1;
 							};
 						};
@@ -729,72 +723,19 @@ class items
 				};
 				id=1202;
 				type="Land_Cargo_Patrol_V1_F";
-				atlOffset=4.7683716e-007;
+				atlOffset=4.7683716e-07;
 			};
 		};
 		id=1045;
 	};
 	class Item1
 	{
-		dataType="Group";
-		side="West";
-		class Entities
-		{
-			items=1;
-			class Item0
-			{
-				dataType="Object";
-				class PositionInfo
-				{
-					position[]={-9.1589508,3.1279516,10.811523};
-				};
-				side="West";
-				flags=2;
-				class Attributes
-				{
-				};
-				id=1310;
-				type="rhsusf_army_ocp_rifleman";
-				atlOffset=2.5248394;
-			};
-		};
-		class Attributes
-		{
-		};
-		class CrewLinks
-		{
-			class LinkIDProvider
-			{
-				nextID=1;
-			};
-			class Links
-			{
-				items=1;
-				class Item0
-				{
-					linkID=0;
-					item0=1310;
-					item1=1309;
-					class CustomData
-					{
-						role=2;
-						turretPath[]={0};
-					};
-				};
-			};
-		};
-		id=1308;
-		atlOffset=2.5248394;
-	};
-	class Item2
-	{
 		dataType="Object";
 		class PositionInfo
 		{
 			position[]={-9.1589508,4.6442375,10.759766};
 		};
-		side="West";
-		flags=2;
+		side="Empty";
 		class Attributes
 		{
 		};
@@ -802,58 +743,7 @@ class items
 		type="RHS_Stinger_AA_pod_D";
 		atlOffset=2.5248394;
 	};
-	class Item3
-	{
-		dataType="Group";
-		side="West";
-		class Entities
-		{
-			items=1;
-			class Item0
-			{
-				dataType="Object";
-				class PositionInfo
-				{
-					position[]={18.202255,4.3454809,-14.435547};
-					angles[]={0,2.389905,0};
-				};
-				side="West";
-				flags=6;
-				class Attributes
-				{
-				};
-				id=1313;
-				type="rhsusf_army_ocp_rifleman";
-			};
-		};
-		class Attributes
-		{
-		};
-		class CrewLinks
-		{
-			class LinkIDProvider
-			{
-				nextID=1;
-			};
-			class Links
-			{
-				items=1;
-				class Item0
-				{
-					linkID=0;
-					item0=1313;
-					item1=1312;
-					class CustomData
-					{
-						role=2;
-						turretPath[]={0};
-					};
-				};
-			};
-		};
-		id=1311;
-	};
-	class Item4
+	class Item2
 	{
 		dataType="Object";
 		class PositionInfo
@@ -861,8 +751,8 @@ class items
 			position[]={18.202255,6.0227079,-14.485352};
 			angles[]={0,2.389905,0};
 		};
-		side="West";
-		flags=6;
+		side="Empty";
+		flags=4;
 		class Attributes
 		{
 		};
