@@ -6,7 +6,7 @@ Dbug = false;								//Show IED markers on map?						[Default: false]
 //!!DO NOT EDIT BELOW!!
 iedBlast=["Bo_Mk82","Rocket_03_HE_F","M_Mo_82mm_AT_LG","HelicopterExploSmall"];
 iedList=["IEDLandBig_F","IEDLandSmall_F","IEDUrbanBig_F","IEDUrbanSmall_F"];
-iedAmmo=["IEDUrbanSmall_Remote_Ammo","IEDLandSmall_Remote_Ammo","IEDUrbanBig_Remote_Ammo","IEDLandBig_Remote_Ammo"];
+iedAmmo=["IEDUrbanSmall_Remote_Ammo","IEDLandSmall_Remote_Ammo","IEDUrbanBig_Remote_Ammo","IEDLandBig_Remote_Ammo","SLAMDirectionalMine","APERSMine","Explosive"];
 iedJunk=["Land_Garbage_square3_F","Land_Garbage_square5_F","Land_Garbage_line_F"];
 if(!Dbug) then {
 	{
@@ -63,7 +63,7 @@ iedAct = {
 		_junk setPosATL(getPosATL _junk select 2+1);
 		_junk enableSimulationGlobal false;
 		_trig=createTrigger["EmptyDetector",getPosATL _ied];
-		_trig setTriggerArea[10,10,0,FALSE,10];
+		_trig setTriggerArea[20,25,0,FALSE,10];
 		_trig setTriggerActivation["ANY","PRESENT",false];
 		_trig setTriggerTimeout[1,1,1,true];
 		if(isMultiplayer)then {
