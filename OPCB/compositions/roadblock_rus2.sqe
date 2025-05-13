@@ -1,8 +1,8 @@
-version=53;
+version=54;
 center[]={2830.1191,5,2997.6418};
 class items
 {
-	items=29;
+	items=27;
 	class Item0
 	{
 		dataType="Object";
@@ -266,7 +266,7 @@ class items
 		};
 		id=763;
 		type="Land_LampHalogen_F";
-		atlOffset=4.7683716e-007;
+		atlOffset=4.7683716e-07;
 	};
 	class Item17
 	{
@@ -366,67 +366,13 @@ class items
 	};
 	class Item23
 	{
-		dataType="Group";
-		side="East";
-		class Entities
-		{
-			items=1;
-			class Item0
-			{
-				dataType="Object";
-				class PositionInfo
-				{
-					position[]={4.5913086,2.2817307,-1.1657715};
-					angles[]={0,3.0898888,0};
-				};
-				side="East";
-				flags=2;
-				class Attributes
-				{
-				};
-				id=1247;
-				type="rhs_vdv_rifleman";
-				atlOffset=2.2802916;
-			};
-		};
-		class Attributes
-		{
-		};
-		class CrewLinks
-		{
-			class LinkIDProvider
-			{
-				nextID=1;
-			};
-			class Links
-			{
-				items=1;
-				class Item0
-				{
-					linkID=0;
-					item0=1247;
-					item1=1246;
-					class CustomData
-					{
-						role=2;
-						turretPath[]={0};
-					};
-				};
-			};
-		};
-		id=1245;
-		atlOffset=2.2802916;
-	};
-	class Item24
-	{
 		dataType="Object";
 		class PositionInfo
 		{
 			position[]={4.5913086,3.8992748,-1.2155762};
 			angles[]={0,3.0898888,0};
 		};
-		side="East";
-		flags=2;
+		side="Empty";
 		class Attributes
 		{
 		};
@@ -434,7 +380,7 @@ class items
 		type="rhs_KORD_high_VDV";
 		atlOffset=2.2802916;
 	};
-	class Item25
+	class Item24
 	{
 		dataType="Object";
 		class PositionInfo
@@ -450,72 +396,22 @@ class items
 		id=2938;
 		type="Land_BagBunker_Small_F";
 	};
-	class Item26
-	{
-		dataType="Group";
-		side="East";
-		class Entities
-		{
-			items=1;
-			class Item0
-			{
-				dataType="Object";
-				class PositionInfo
-				{
-					position[]={4.1086426,0.0014390945,18.295654};
-				};
-				side="East";
-				flags=6;
-				class Attributes
-				{
-				};
-				id=2941;
-				type="rhs_vdv_rifleman";
-			};
-		};
-		class Attributes
-		{
-		};
-		class CrewLinks
-		{
-			class LinkIDProvider
-			{
-				nextID=1;
-			};
-			class Links
-			{
-				items=1;
-				class Item0
-				{
-					linkID=0;
-					item0=2941;
-					item1=2940;
-					class CustomData
-					{
-						role=2;
-						turretPath[]={0};
-					};
-				};
-			};
-		};
-		id=2939;
-	};
-	class Item27
+	class Item25
 	{
 		dataType="Object";
 		class PositionInfo
 		{
 			position[]={4.1086426,1.6189833,18.245605};
 		};
-		side="East";
-		flags=6;
+		side="Empty";
+		flags=4;
 		class Attributes
 		{
 		};
 		id=2940;
 		type="rhs_KORD_high_VDV";
 	};
-	class Item28
+	class Item26
 	{
 		dataType="Object";
 		class PositionInfo

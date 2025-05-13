@@ -34,5 +34,6 @@ class SM
 		class deadload {};
 		class RecovertheWhispers {};
 		class Pitfall {};
+		class slowResupply {};
 	};
 };
