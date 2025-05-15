@@ -1654,11 +1654,6 @@ _arsenalitems =
 "TRYK_B_Belt",
 "TRYK_B_Belt_GR",
 "TRYK_B_Belt_tan",
-"TRYK_B_BAF_BAG_BLK",
-"TRYK_B_BAF_BAG_CYT",
-"TRYK_B_BAF_BAG_mcamo",
-"TRYK_B_BAF_BAG_OD",
-"TRYK_B_BAF_BAG_rgr",
 "TRYK_B_tube_blk",
 "TRYK_B_tube_cyt",
 "TRYK_B_tube_od",
@@ -3320,7 +3315,15 @@ _arsenalitems =
 "UK3CB_V_Carrier_Rig_CQB_TAN",
 "VSM_CarrierRig_Operator_Multicam",
 "VSM_CarrierRig_Gunner_Multicam",
-"VSM_CarrierRig_Breacher_Multicam"
+"VSM_CarrierRig_Breacher_Multicam",
+"rhs_6b48",
+"rhs_altyn_novisor",
+"TAC_BP_buttB_B",
+"UK3CB_M60",
+"UK3CB_P320_9x19_17Rnd",
+"UK3CB_UKM2000P",
+"UK3CB_UKM_100rnd_762x51",
+"rhssaf_acc_G36_Rotex"
 ];
 
 // end of clan arsenal
@@ -4856,10 +4859,6 @@ _arsenalitems =
 "TRYK_B_Belt",
 "TRYK_B_Belt_GR",
 "TRYK_B_Belt_tan",
-"TRYK_B_BAF_BAG_CYT",
-"TRYK_B_BAF_BAG_mcamo",
-"TRYK_B_BAF_BAG_OD",
-"TRYK_B_BAF_BAG_rgr",
 "TRYK_B_tube_cyt",
 "TRYK_B_tube_od",
 "B_ViperHarness_ghex_F",
@@ -6412,7 +6411,15 @@ _arsenalitems =
 "UK3CB_V_Carrier_Rig_CQB_TAN",
 "VSM_CarrierRig_Operator_Multicam",
 "VSM_CarrierRig_Gunner_Multicam",
-"VSM_CarrierRig_Breacher_Multicam"
+"VSM_CarrierRig_Breacher_Multicam",
+"rhs_6b48",
+"rhs_altyn_novisor",
+"TAC_BP_buttB_B",
+"UK3CB_M60",
+"UK3CB_P320_9x19_17Rnd",
+"UK3CB_UKM2000P",
+"UK3CB_UKM_100rnd_762x51",
+"rhssaf_acc_G36_Rotex"
 ];
 
 //end of public arsenal
