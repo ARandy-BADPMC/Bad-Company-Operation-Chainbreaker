@@ -26,7 +26,7 @@ if (_missionPos isEqualTo [0,0,0]) exitWith {
     _taskID,
     west,
     [
-        "Intel suggests an enemy BMP-2 was damaged nearby. Retrieve it. Enemy patrols may still be close.",
+        "Intel suggests an enemy BMP-2 was damaged nearby. Retrieve it. Enemy patrols may still be close. Make sure to repair it before returning, so it's ready to join the fight for our cause!",
         "Operation Pitfall"
     ],
     _missionPos,
