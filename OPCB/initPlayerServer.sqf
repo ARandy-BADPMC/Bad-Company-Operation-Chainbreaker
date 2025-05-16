@@ -29,7 +29,7 @@ private _zoneWhiteList = [];
 if (!isDedicated) then {
     _zoneWhiteList = [_uid];
 } else {
-    _zoneWhiteList = parseSimpleArray (preprocessFile "badco_data\zonewhitelist.sqf");
+    _zoneWhiteList = parseSimpleArray (preprocessFile "data\zonewhitelist.sqf");
 };
 
 if (_uid in _zoneWhiteList) then {
