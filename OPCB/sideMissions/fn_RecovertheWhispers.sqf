@@ -8,10 +8,10 @@ private _taskId = format ["SM_TaskNumber_%1", SM_TaskNumber];
 private _taskDesc = "The higher-ups have sent out two secret agents to collect data from a high-priority target (classified). The agents have gathered very important information, critical for a future operation! However, the agents have been called back to a small FOB, where they were planned to be transported back to base to deliver the critical information.\n\nBut it seems the enemy wasn’t as naive as we thought. They have figured out the location of the FOB and launched an attack to eliminate our agents your mission is to bring the 2 agents back to base safely!";
 [_taskId, west, [_taskDesc, "Recover the Whispers"], _missionPos, "AUTOASSIGNED", 10, true, true, "move", true] call BIS_fnc_setTask;
 
-["Recover the Whispers", _taskId, _missionPos] call {
-    params ["_title", "_taskId", "_missionPos"];
+[_taskId, _missionPos] call {
+    params ["_taskId", "_missionPos"];
 
-    private _comps = ["fob4", _missionPos, [0,0,0], random 360, true, true ] call LARs_fnc_spawnComp;
+    private _comps = ["fob4", _missionPos, [0,0,0], random 360, true, true] call LARs_fnc_spawnComp;
     private _flowerPot = createVehicle ["Land_FlowerPot_01_F", _missionPos, [], 0, "NONE"];
     _flowerPot hideObjectGlobal true;
 
@@ -49,31 +49,36 @@ private _taskDesc = "The higher-ups have sent out two secret agents to collect d
 
     [_flowerPot, resistance, 1, 0, 0, 0, false] call CHAB_fnc_enemySpawner;
 
-    private _failThread = [_taskId, _agents, _crewGroup, _flowerPot, _comps] spawn {
-        params ["_taskId", "_agents", "_crewGroup", "_flowerPot", "_comps"];
-        while { true } do {
-            sleep 5;
-            if ({ (!alive _x && !(_x getVariable ["whispers_safe", false])) } count _agents > 0) exitWith {
-                [_taskId, "FAILED", true] call BIS_fnc_taskSetState;
-                { deleteVehicle _x } forEach _agents + (units _crewGroup) + [_flowerPot];
-                deleteGroup _crewGroup;
-                [_comps] call LARs_fnc_deleteComp;
-            };
-        };
-    };
-
     private _deliveryPoint = getMarkerPos "Delivery Point";
-    waitUntil {
-        sleep 5;
-        ({ alive _x && (_x distance2D _deliveryPoint) < 10 } count _agents) == 2
+    private _complete = false;
+    private _failed = false;
+
+   while {!_complete && !_failed} do {
+    sleep 5;
+
+    // FIRST: check failure
+    if ({ (!alive _x && !(_x getVariable ["whispers_safe", false])) } count _agents > 0) then {
+        _failed = true;
     };
 
-    {
-        _x setVariable ["whispers_safe", true];
-    } forEach _agents;
+    // ONLY check success if not failed
+    if (!_failed && { alive _x && (_x distance2D _deliveryPoint) < 10 } count _agents == 2) then {
+        _complete = true;
+    };
+};
 
-    terminate _failThread;
-    [_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+
+    if (_failed) then {
+        [_taskId, "FAILED", true] call BIS_fnc_taskSetState;
+    };
+
+    if (_complete) then {
+        {
+            _x setVariable ["whispers_safe", true];
+        } forEach _agents;
+
+        [_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+    };
 
     sleep 4;
     { deleteVehicle _x } forEach _agents + (units _crewGroup) + [_flowerPot];
