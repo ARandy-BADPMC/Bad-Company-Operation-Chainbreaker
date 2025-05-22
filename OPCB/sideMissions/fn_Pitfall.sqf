@@ -2,7 +2,7 @@ if (isNil "CHAB_fnc_playerScale") then {
     CHAB_fnc_playerScale = { 1 };
 };
 
-private _taskID = format ["task_pitfall_%1", round random 9999];
+private _taskID = format ["SM_TaskNumber_%1", SM_TaskNumber];
 
 private _axis = worldSize / 2;
 private _center = [_axis, _axis, 0];
@@ -95,8 +95,8 @@ if (_missionPos isEqualTo [0,0,0]) exitWith {
     if (_done) then {
         [_taskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
     };
-
-    sleep 4;
+	    
+sleep 4;
     { deleteVehicle _x } forEach (units _enemyGroup) + [_vehicle, _flowerPot];
     deleteGroup _enemyGroup;
 };

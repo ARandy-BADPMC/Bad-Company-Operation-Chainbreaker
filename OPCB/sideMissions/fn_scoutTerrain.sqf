@@ -17,3 +17,5 @@ waitUntil {
 
 	!alive _tower
 };
+
+[_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
