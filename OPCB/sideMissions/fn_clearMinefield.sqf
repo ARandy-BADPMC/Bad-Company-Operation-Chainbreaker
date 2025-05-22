@@ -30,3 +30,4 @@ waitUntil {
 	({ mineActive _x } count _mines) == 0
 };
 
+[_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;

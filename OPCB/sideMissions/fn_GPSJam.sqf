@@ -27,3 +27,5 @@ waitUntil {
 };
 
 deleteMarker "GPSBlackout";
+
+[_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;

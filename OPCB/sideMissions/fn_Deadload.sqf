@@ -2,7 +2,7 @@ if (isNil "CHAB_fnc_playerScale") then {
     CHAB_fnc_playerScale = { 1 };
 };
 
-private _taskID = format ["task_deadLoad_%1", round random 9999];
+private _taskId = format ["SM_TaskNumber_%1", SM_TaskNumber];
 
 private _axis = worldSize / 2;
 private _center = [_axis, _axis, 0];
@@ -27,7 +27,8 @@ if (_missionPos isEqualTo [0,0,0]) exitWith {
     "Operation Dead Load"
 ], _missionPos, "AUTOASSIGNED", 10, true, true, "repair", true] call BIS_fnc_setTask;
 
-[_taskID, _missionPos] call {
+
+[_taskID, _missionPos] spawn {
     params ["_taskID", "_missionPos"];
 
     private _flowerPot = createVehicle ["Land_FlowerPot_01_F", _missionPos, [], 0, "NONE"];
@@ -54,16 +55,16 @@ if (_missionPos isEqualTo [0,0,0]) exitWith {
 
     private _basePos = getMarkerPos "Delivery Point";
 
-    private _done = false;
-    private _failed = false;
-
-    while {!_done && !_failed} do {
+    waitUntil {
         sleep 5;
 
+        // If destroyed
         if (isNull _vehicle || {!alive _vehicle}) exitWith {
-            _failed = true;
+            [_taskID, "FAILED", true] call BIS_fnc_taskSetState;
+            true
         };
 
+        // If successful
         if (
             !isNull _vehicle &&
             alive _vehicle &&
@@ -74,17 +75,15 @@ if (_missionPos isEqualTo [0,0,0]) exitWith {
             (_vehicle getHitPointDamage "HitRFWheel") < 0.1 &&
             (_vehicle distance2D _basePos) < 30
         ) exitWith {
-            _done = true;
+            [_taskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+            true
         };
-    };
 
-    if (_failed) then {
-        [_taskID, "FAILED", true] call BIS_fnc_taskSetState;
+        false
     };
-
-    if (_done) then {
-        [_taskID, "SUCCEEDED", true] call BIS_fnc_taskSetState;
-    };
+	OPCB_econ_credits = OPCB_econ_credits + 60;  
+	publicVariable "OPCB_econ_credits";
+	format ["You earned %1 C for successfully completing the side mission!", 60] remoteExec ["hint"];
 
     sleep 4;
     { deleteVehicle _x } forEach (units _crewGroup) + [_vehicle, _flowerPot];

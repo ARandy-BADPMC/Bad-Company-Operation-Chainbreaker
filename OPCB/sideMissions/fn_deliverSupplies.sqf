@@ -25,7 +25,7 @@ for "_i" from 1 to _noSupplyPoints do {
 	_trucks pushBack _container;
 
 	[_taskIdIter, _base] spawn {
-		params ["_taskId", "_basePos"];
+		params ["_taskIdIter", "_basePos"];
 		waitUntil {
 			sleep 10;
 			private _truck = nearestObject [_basePos, "C_VAN_02_MEDEVAC_F"];
@@ -33,13 +33,10 @@ for "_i" from 1 to _noSupplyPoints do {
 		};
 
 		private _truck = nearestObject [_basePos, "C_VAN_02_MEDEVAC_F"];
+		[_taskIdIter, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
-		
-		[_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+		sleep 2;
 
-		sleep 2; 
-
-		
 		if (!isNull _truck) then {
 			_truck lock true;
 			{
@@ -63,6 +60,8 @@ waitUntil {
 	};
 	_canFinish
 };
+
+[_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
 
 [_comps, _trucks] spawn {
 	params ["_comps", "_trucks"];
