@@ -63,7 +63,7 @@ iedAct = {
 		_junk setPosATL(getPosATL _junk select 2+1);
 		_junk enableSimulationGlobal false;
 		_trig=createTrigger["EmptyDetector",getPosATL _ied];
-		_trig setTriggerArea[15,15,0,FALSE,10];
+		_trig setTriggerArea[12,12,0,FALSE,10];
 		_trig setTriggerActivation["ANY","PRESENT",false];
 		_trig setTriggerTimeout[1,1,1,true];
 		if(isMultiplayer)then {
