@@ -1,5 +1,5 @@
 iedMkr = ["ied"];	//List of markers to spawn IEDs in
-iedNum = 120;								//Number of IEDs per marker, defined in iedMkr	[Default: 5]
+iedNum = 150;								//Number of IEDs per marker, defined in iedMkr	[Default: 5]
 iedDmg = false;							//Can the IED be killed with weapons?			[Default: false] TRUE = Yes | FALSE = Can only be disarmed
 Dbug = false;								//Show IED markers on map?						[Default: false]
 
@@ -63,7 +63,7 @@ iedAct = {
 		_junk setPosATL(getPosATL _junk select 2+1);
 		_junk enableSimulationGlobal false;
 		_trig=createTrigger["EmptyDetector",getPosATL _ied];
-		_trig setTriggerArea[20,25,0,FALSE,10];
+		_trig setTriggerArea[12,12,0,FALSE,10];
 		_trig setTriggerActivation["ANY","PRESENT",false];
 		_trig setTriggerTimeout[1,1,1,true];
 		if(isMultiplayer)then {
