@@ -12,5 +12,6 @@ _admin_spectators = [
     '76561198017258138',//A.Mitchell
     '76561198107313290',//Mr.Princess
     '76561198003443129',//Heldring
-    '76561198093031504'//TheReverend
+    '76561198093031504',//TheReverend
+    '76561198152038970. // Nothing
 ];
