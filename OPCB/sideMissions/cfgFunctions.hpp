@@ -35,5 +35,7 @@ class SM
 		class RecovertheWhispers {};
 		class Pitfall {};
 		class slowResupply {};
+		class leakbreak {};
+		class medicalemergency {};
 	};
 };
