@@ -9,6 +9,16 @@ _tankpos = markerPos "tank_spawner";
 
 _nObjects = nearestObjects [_tankpos, [], 7];
 
+_nObjects = _nObjects select {
+    !(_x isKindOf "EmptyDetector") &&   
+    !(_x isKindOf "Logic") &&           
+    !(_x isKindOf "ThingEffect") &&     
+    !(_x isKindOf "CAManBase") &&       
+    !(_x isKindOf "Bag_Base") &&        
+    !(_x isKindOf "WeaponHolderSimulated") &&
+    !(_x isKindOf "GroundWeaponHolder")
+};
+
 if (count _nObjects == 0) then {
 
 	_tier = ["DRONE", _vehicle] call OPCB_econ_fnc_getVehicleTier;
