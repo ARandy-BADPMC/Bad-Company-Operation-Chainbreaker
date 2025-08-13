@@ -1,6 +1,7 @@
 params ["_taskobjective"];
 private ["_radius","_currentTasknumber","_base","_selected"];
 
+scopeName "OPCB_REQ";
 _callerRE = remoteExecutedOwner;
 
 _baseMarker = markerPos "base_marker";
@@ -9,6 +10,15 @@ _closeFriendlies = {(_baseMarker distance2d _x) < 1000 } count playableUnits;
 
 if ( _closeFriendlies < 2 && {isNil "_taskobjective"}) exitWith {
 	"At least 2 people are required to be at base to request a mission!" remoteExec["hint", _callerRE];
+};
+
+if (isNil "OPCB_nextMissionTime") then { OPCB_nextMissionTime = 0; publicVariable "OPCB_nextMissionTime"; };
+if (isNil "_taskobjective") then {
+    private _now = serverTime;
+    if (_now < OPCB_nextMissionTime) then {
+        "Sorry, I have no task for you at the moment. Come back later" remoteExec ["hint", _callerRE];
+	 breakOut "OPCB_REQ";
+	};
 };
 
 if (isNil "_taskobjective") then {
@@ -38,6 +48,13 @@ private _credits = (_tasks get _selected) select 1;
 _base = [_radius] call CHAB_fnc_findSpot;
 
 IsATaskRunning = true;
+
+
+private _nowCooldown = serverTime;
+private _cooldownSeconds = 2700 + (random 900);
+OPCB_nextMissionTime = _nowCooldown + _cooldownSeconds;
+publicVariable "OPCB_nextMissionTime";
+
 switch ( _selected) do { 
 	case "Neutralize" : {
 		[_base,_currentTasknumber, _credits] call CHAB_fnc_Neutralize;
@@ -56,16 +73,16 @@ switch ( _selected) do {
 	};  
 	case "Annihilate and Destroy" : {
 		[_base,_currentTasknumber, _credits] call CHAB_fnc_Annihilate_and_Destroy;
-	};  
+	}; 
 	case "Secure" : {
 		[_base,_currentTasknumber, _credits] call CHAB_fnc_Secure;
-	}; 
+	};
 	case "Capture" : {
 		[_base,_currentTasknumber, _credits] call CHAB_fnc_Capture;
-	};  
+	};
 	case "Bomb" : {
 		[_base,_currentTasknumber, _credits] call CHAB_fnc_Bomb;
-	}; 
+	};  
 	case "IDAP" : {
 		[_base,_currentTasknumber, _credits] call CHAB_fnc_IDAP;
 	};  
@@ -80,10 +97,10 @@ switch ( _selected) do {
 	}; 
 	case "Clear out" : {
 		[_currentTasknumber, _credits] call CHAB_fnc_Clear_out;
-	};
+	}; 
 	case "GDrunken" : {
 		[_base,_currentTasknumber, _credits] call CHAB_fnc_GDrunken;
-	};  
+	};
 	case "Minefield" : {
 		[_currentTasknumber, _credits] call CHAB_fnc_Minefield;
 	};
