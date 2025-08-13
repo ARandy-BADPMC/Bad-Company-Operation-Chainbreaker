@@ -58,6 +58,11 @@ publicVariable "MaxBoats";
 VehicleSpawnerHistory = [];
 publicVariable "VehicleSpawnerHistory";
 
+if (isNil "OPCB_nextMissionTime") then {
+    OPCB_nextMissionTime = 0;
+    publicVariable "OPCB_nextMissionTime";
+};
+
 {
 	_x allowDamage false;
 	[_x, "LISTEN_BRIEFING", "Light"] call BIS_fnc_ambientAnim;
