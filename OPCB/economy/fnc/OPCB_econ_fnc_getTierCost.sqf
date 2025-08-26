@@ -88,12 +88,12 @@ switch (_tierType) do {
 			case 8: {30};
 			case 7: {60};
 			case 6: {100};
-			case 5: {120};
-			case 4: {140};
-			case 3: {180};
-			case 2: {220};
-			case 1: {240};
-			case 0: {200};
+			case 5: {140};
+			case 4: {180};
+			case 3: {200};
+			case 2: {240};
+			case 1: {260};
+			case 0: {300};
 			
 		};
 		
