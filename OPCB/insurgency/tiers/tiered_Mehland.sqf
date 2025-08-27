@@ -34,8 +34,6 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_LNM_I_LMG",
 			"UK3CB_LNM_I_LAT",
 			"UK3CB_LNM_I_GL",
-			"UK3CB_LNM_I_ENG",
-			"UK3CB_LNM_I_DEM",
 			"UK3CB_LNM_I_COM",
 			"UK3CB_LNM_I_AR",
 			"UK3CB_LNM_I_AT"
@@ -59,8 +57,6 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_LNM_I_LMG",
 			"UK3CB_LNM_I_LAT",
 			"UK3CB_LNM_I_GL",
-			"UK3CB_LNM_I_ENG",
-			"UK3CB_LNM_I_DEM",
 			"UK3CB_LNM_I_COM",
 			"UK3CB_LNM_I_AR",
 			"UK3CB_LNM_I_AT"
@@ -84,8 +80,6 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_LNM_I_LMG",
 			"UK3CB_LNM_I_LAT",
 			"UK3CB_LNM_I_GL",
-			"UK3CB_LNM_I_ENG",
-			"UK3CB_LNM_I_DEM",
 			"UK3CB_LNM_I_COM",
 			"UK3CB_LNM_I_AR",
 			"UK3CB_LNM_I_AT",
@@ -99,8 +93,6 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_LNM_I_SF_LMG",
 			"UK3CB_LNM_I_SF_LAT",
 			"UK3CB_LNM_I_SF_GL",
-			"UK3CB_LNM_I_SF_ENG",
-			"UK3CB_LNM_I_SF_DEM",
 			"UK3CB_LNM_I_SF_AR",
 			"UK3CB_LNM_I_SF_AT"
 		]
@@ -118,8 +110,6 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_LNM_I_SF_LMG",
 			"UK3CB_LNM_I_SF_LAT",
 			"UK3CB_LNM_I_SF_GL",
-			"UK3CB_LNM_I_SF_ENG",
-			"UK3CB_LNM_I_SF_DEM",
 			"UK3CB_LNM_I_SF_AR",
 			"UK3CB_LNM_I_SF_AT"
 		]
@@ -136,7 +126,6 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_LDF_I_LAT",
 			"UK3CB_LDF_I_JNR_OFF",
 			"UK3CB_LDF_I_GL",
-			"UK3CB_LDF_I_ENG",
 			"UK3CB_LDF_I_AR",
 			"UK3CB_LDF_I_AT",
 			"UK3CB_LDF_I_MD"
@@ -156,8 +145,6 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_LDF_I_SF_MG",
 			"UK3CB_LDF_I_SF_LAT",
 			"UK3CB_LDF_I_SF_GL",
-			"UK3CB_LDF_I_SF_ENG",
-			"UK3CB_LDF_I_SF_DEM",
 			"UK3CB_LDF_I_SF_AR",
 			"UK3CB_LDF_I_SF_AT"
 		]
@@ -176,11 +163,9 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_ION_I_Woodland_MG",
 			"UK3CB_ION_I_Woodland_LAT",
 			"UK3CB_ION_I_Woodland_GL",
-			"UK3CB_ION_I_Woodland_ENG",
-			"UK3CB_ION_I_Woodland_ENG",
-			"UK3CB_ION_I_Woodland_DEM",
 			"UK3CB_ION_I_Woodland_AR",
-			"UK3CB_ION_I_Woodland_AT"
+			"UK3CB_ION_I_Woodland_AT",
+			"rhssaf_army_m10_para_sniper_m82a1"
 		]
 	],
 	[
@@ -199,9 +184,9 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_ION_I_Woodland_SF_MG",
 			"UK3CB_ION_I_Woodland_SF_LAT",
 			"UK3CB_ION_I_Woodland_SF_GL",
-			"UK3CB_ION_I_Woodland_SF_ENG",
-			"UK3CB_ION_I_Woodland_SF_DEM",
-			"UK3CB_ION_I_Woodland_SF_AT"
+			"UK3CB_ION_I_Woodland_SF_AT",
+			"rhssaf_army_m10_para_sniper_m82a1",
+			"UK3CB_ION_I_Woodland_SF_AR"
 		]
 	]
 ];
@@ -265,16 +250,16 @@ mehlandVehicleTiers = createHashMapFromArray [
 			"UK3CB_ION_I_Woodland_Merlin",
 			"UK3CB_ION_I_Woodland_MELB_MH6M",
 			"UK3CB_ION_I_Woodland_Orca",
-			"UK3CB_ION_I_Woodland_Orca_Armed_MULTI",
 			"UK3CB_ION_I_Woodland_UH1H_M240",
 			"UK3CB_ION_I_Woodland_UH1H_GUNSHIP",
 			"UK3CB_ION_I_Woodland_UH1H",
-			"UK3CB_LDF_I_ZsuTank",
-			"UK3CB_LDF_I_T810_ZU23",
 			"UK3CB_LDF_I_Mi_24G",
 			"UK3CB_LDF_I_Mi_24G_UPK23",
 			"UK3CB_LDF_I_Mi8AMTSh",
-			"UK3CB_LDF_I_Mi8"
+			"UK3CB_LDF_I_Mi8",
+			"UK3CB_ION_I_Woodland_MELB_AH6M_H",
+			"UK3CB_ION_I_Woodland_Bell412_Armed_AT",
+			"LOP_IRAN_AH1Z_GS"
 		]
 
 	]
