@@ -26,7 +26,7 @@ if (_missionPos isEqualTo [0,0,0]) exitWith {
     _taskID,
     west,
     [
-        "Intel suggests an enemy BRDM-2 was damaged and abandoned nearby. Retrieve the vehicle before opposing forces can reclaim or destroy it. Enemy patrols may still be active in the area. Make sure to repair it before returning — we want it ready to rejoin the fight for our cause!",
+        "Intel suggests an enemy troop transporter was damaged and is stuck. Retrieve the vehicle before opposing forces can reclaim or destroy it. Enemy patrols may still be active in the area. Make sure to repair it before returning",
         "Operation Pitfall"
     ],
     _missionPos,
@@ -44,7 +44,7 @@ if (_missionPos isEqualTo [0,0,0]) exitWith {
     private _flowerPot = createVehicle ["Land_FlowerPot_01_F", _missionPos, [], 0, "NONE"];
     _flowerPot hideObjectGlobal true;
 
-    private _vehicle = createVehicle ["UK3CB_LDF_B_BRDM2", _missionPos, [], 0, "NONE"];
+    private _vehicle = createVehicle ["UK3CB_B_M939_Closed_DES", _missionPos, [], 0, "NONE"];
     _vehicle setFuel 1;
     _vehicle setVariable ["BIS_enableRandomization", false, true];
     _vehicle setHitPointDamage ["HitEngine", 0.85];
