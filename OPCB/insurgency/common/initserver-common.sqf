@@ -151,7 +151,7 @@ cleanupVics = [];
 
   waitUntil {
     sleep 10;
-    ((count playableUnits) > 1) || {!isMultiplayer}
+    ((count playableUnits) > 0) || {!isMultiplayer}
   };
 
   #ifdef ENABLE_TIERED_UNITS
