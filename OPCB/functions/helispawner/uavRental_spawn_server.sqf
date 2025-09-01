@@ -10,7 +10,6 @@ private _padPos = getMarkerPos "aircraft_spawner";
 if (_padPos isEqualTo [0,0,0]) exitWith {
  };
 
-// (optional) pad vehicles only
 private _near = nearestObjects [_padPos, ["AllVehicles"], 7];
 if (count _near > 0) exitWith {
     private _idx  = OPCB_uavRental_list findIf { toUpper (_x select 1) == toUpper _classname };
