@@ -1004,3 +1004,81 @@ class fobStore {
 	}; 
 	
 };
+
+		class flips_uavrental
+{
+    idd = 9915;
+    movingEnable = 0;
+    enableSimulation = 1;
+    onUnload = "";
+
+    class ControlsBackground
+    {
+        class BG: RscText
+        {
+            x = 0.30 * safezoneW + safezoneX;
+            y = 0.24 * safezoneH + safezoneY;
+            w = 0.40 * safezoneW;
+            h = 0.42 * safezoneH;
+            colorBackground[] = {0,0,0,0.7};
+        };
+        class Title: RscText
+        {
+            text = "UAV Rental";
+            x = 0.30 * safezoneW + safezoneX;
+            y = 0.24 * safezoneH + safezoneY;
+            w = 0.40 * safezoneW;
+            h = 0.04 * safezoneH;
+            sizeEx = 0.04;
+            colorBackground[] = {0,0,0,0.9};
+        };
+    };
+
+    class Controls
+    {
+        
+        class Credits: RscStructuredText
+        {
+            idc = 1001;
+            x = 0.62 * safezoneW + safezoneX;
+            y = 0.29 * safezoneH + safezoneY;
+            w = 0.08 * safezoneW;
+            h = 0.035 * safezoneH;
+            size = 0.035;
+        };
+
+        
+        class List: RscListbox
+        {
+            idc = 1500;
+            x = 0.32 * safezoneW + safezoneX;
+            y = 0.30 * safezoneH + safezoneY;
+            w = 0.36 * safezoneW;
+            h = 0.26 * safezoneH;
+            sizeEx = 0.038;
+        };
+
+        class RentBtn: RscButton
+        {
+            idc = 1600;
+            text = "Rent";
+            x = 0.40 * safezoneW + safezoneX;
+            y = 0.58 * safezoneH + safezoneY;
+            w = 0.12 * safezoneW;
+            h = 0.05 * safezoneH;
+            action = "[] execVM 'functions\helispawner\uavRental_doRent.sqf';";
+        };
+
+        class CloseBtn: RscButton
+        {
+            idc = 1601;
+            text = "Close";
+            x = 0.54 * safezoneW + safezoneX;
+            y = 0.58 * safezoneH + safezoneY;
+            w = 0.12 * safezoneW;
+            h = 0.05 * safezoneH;
+            action = "closeDialog 0;";
+        };
+    };
+};
+

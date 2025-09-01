@@ -44,6 +44,26 @@ heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fn
 heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];  
 heli_jeff addAction ["<t color='#01FF24'>Shop history</t>","[] spawn CHAB_fnc_vehicleSpawnerHistory;",nil, 1, false, true, "", "true", 10, false,""]; 
 
+private _rentalAccessCond = "
+    private _isZoneListed = player getVariable ['zonelisted', false];
+
+    private _squadParams = squadParams player;
+    private _clanUnit = '';
+    if (!isNil '_squadParams' && {count _squadParams > 0 && {count (_squadParams select 0) > 0}}) then {
+        _clanUnit = (_squadParams select 0) select 0;
+    };
+
+    private _unitWhitelist = ['Bad Co', 'B.A.D. PMC'];
+    private _isClanWL = _clanUnit in _unitWhitelist;
+
+    (_isZoneListed || _isClanWL)
+";
+
+heli_jeff addAction ["<t color='#00FFFF'>Rent UAV</t>", "[] execVM 'functions\helispawner\uavRental_open.sqf';", nil, 1, false, true, "", _rentalAccessCond, 10, false, ""];
+
+heli_jeff addAction ["<t color='#00FFFF'>Return Rented UAV</t>", "[] execVM 'functions\helispawner\uavRental_return.sqf';", nil, 1, false, true, "", _rentalAccessCond, 10, false, ""]; 
+
+
 tank_spawner addAction ["<t color='#FFFF00'>Vehicle Spawner</t>","[] spawn CHAB_fnc_spawn_tank;",nil, 1, false, true, "", "true", 10, false,""];
 tank_spawner addAction ["<t color='#FFFF00'>Static Spawner</t>","[] spawn CHAB_fnc_spawn_static;",nil, 1, false, true, "", "true", 10, false,""];
 tank_spawner addAction ["<t color='#00FFFF'>Utility Spawner</t>","[] spawn OPCB_crateSpawner_openDialog;",nil, 1, false, true, "", "true", 10, false,""];   
