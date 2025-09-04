@@ -257,7 +257,8 @@ mehlandVehicleTiers = createHashMapFromArray [
 			"UK3CB_LDF_I_Mi8",
 			"UK3CB_ION_I_Woodland_MELB_AH6M_H",
 			"UK3CB_ION_I_Woodland_Bell412_Armed_AT",
-			"LOP_IRAN_AH1Z_GS"
+			"LOP_IRAN_AH1Z_GS",
+			"UK3CB_CW_SOV_O_LATE_2S6_Tunguska"
 		]
 
 	]
