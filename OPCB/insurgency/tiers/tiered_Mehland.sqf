@@ -164,7 +164,6 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_ION_I_Woodland_LAT",
 			"UK3CB_ION_I_Woodland_GL",
 			"UK3CB_ION_I_Woodland_AR",
-			"UK3CB_ION_I_Woodland_AT",
 			"rhssaf_army_m10_para_sniper_m82a1"
 		]
 	],
@@ -184,7 +183,6 @@ mehlandInfantryTiers = createHashMapFromArray [
 			"UK3CB_ION_I_Woodland_SF_MG",
 			"UK3CB_ION_I_Woodland_SF_LAT",
 			"UK3CB_ION_I_Woodland_SF_GL",
-			"UK3CB_ION_I_Woodland_SF_AT",
 			"rhssaf_army_m10_para_sniper_m82a1",
 			"UK3CB_ION_I_Woodland_SF_AR"
 		]
