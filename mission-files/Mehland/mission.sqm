@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1026;
+	toggles=1025;
 	class ItemIDProvider
 	{
-		nextID=10180;
+		nextID=10181;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1603;
+		nextID=1624;
 	};
 	class Camera
 	{
-		pos[]={241.07033,199.09128,18319.652};
-		dir[]={-0.94462824,-0.32774538,0.016586075};
-		up[]={-0.32769835,0.94476545,0.0057543796};
-		aside[]={0.017556315,-8.7557055e-09,0.99985367};
+		pos[]={249.0732,211.35248,18360.518};
+		dir[]={-0.94529915,-0.32504383,0.027744262};
+		up[]={-0.3249065,0.94569403,0.0095358687};
+		aside[]={0.029337026,-8.9864443e-08,0.99957412};
 	};
 };
 binarizationWanted=0;
@@ -22933,7 +22933,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=1181;
+		items=1182;
 		class Item0
 		{
 			dataType="Logic";
@@ -26748,8 +26748,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={4548.7544,21.205254,4.252779};
-				angles[]={0.0053932494,1.2323351,6.2765889};
+				position[]={5389.3774,46.567829,22.2878};
+				angles[]={0.013995145,6.0805416,6.2753882};
 			};
 			name="vclSpawn1";
 			id=466;
@@ -26760,13 +26760,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={20444.566,24.012987,7583.5439};
+				position[]={20430.623,23.720016,7579.3389};
 				angles[]={0.035784964,2.6010439,0.013398951};
 			};
 			name="vclSpawn2";
 			id=467;
 			type="Logic";
-			atlOffset=0.15267944;
 		};
 		class Item90
 		{
@@ -40942,14 +40941,14 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={20444.883,23.845903,7584.0654};
-				angles[]={0.035784964,4.4693346,0.013398951};
+				position[]={20423.852,23.57774,7576.3521};
+				angles[]={0.035203289,4.428616,0.014852752};
 			};
-			areaSize[]={60,0,60};
+			areaSize[]={75,0,75};
 			flags=1;
 			id=4355;
 			type="ModuleHideTerrainObjects_F";
-			atlOffset=2.0980835e-05;
+			atlOffset=-1.9073486e-06;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -40986,10 +40985,10 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={4551.521,21.191349,4.6412067};
-				angles[]={0.013197246,1.4234905,6.278985};
+				position[]={5387.4219,46.448586,30.737};
+				angles[]={0.019600049,1.4234905,6.2699904};
 			};
-			areaSize[]={50,0,50};
+			areaSize[]={75,0,75};
 			flags=1;
 			id=4356;
 			type="ModuleHideTerrainObjects_F";
@@ -41207,7 +41206,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={805.35797,63.700001,17465.162};
-			angle=1.3247569;
+			angle=1.3247567;
 			class Attributes
 			{
 				onActivation="private _trigger = thisTrigger;  " \n "null = [_trigger] spawn {params [""_trigger""];private _clanStatus = """";private _squadParams = squadParams player;if (!isNil ""_squadParams"" && {count _squadParams > 0 && {count (_squadParams select 0) > 0}}) then {_clanStatus = (_squadParams select 0) select 0;};if (getPos player inArea _trigger) then {switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. Co member to the BadCo base!"";};default {hint ""Warning! You're entering a restricted area and will be teleported!"";sleep 3;player setPos (getMarkerPos ""thrown_out"");};};};};";
@@ -94317,6 +94316,7 @@ class Mission
 			};
 			id=10178;
 			type="ModuleWeather_F";
+			atlOffset=-7.6293945e-06;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -94372,6 +94372,49 @@ class Mission
 					};
 				};
 				nAttributes=4;
+			};
+		};
+		class Item1181
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={9951.0254,3.8,18735.459};
+				angles[]={0,2.6582153,-0};
+			};
+			areaSize[]={5,-1,5};
+			flags=1;
+			id=10180;
+			type="ModuleHideTerrainObjects_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="SCALAR";
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							singleType="BOOL";
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
 			};
 		};
 	};
