@@ -29,7 +29,7 @@
 #define SAFEDIST 150
 
 // how close unit has to be to target to generate a new one 
-#define CLOSEENOUGH 100
+#define CLOSEENOUGH 500
 
 // how close units have to be to each other to share information
 #define SHAREDIST (worldSize/8)
@@ -37,11 +37,10 @@
 // how long AI units should be in alert mode after initially spotting an enemy
 #define ALERTTIME 900
 
-private __CENTERPOS = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition");
-__CENTERPOS set [2, 0];
-
-#define DEFAULT_RANGEX (worldSize/2)
-#define DEFAULT_RANGEY (worldSize/2)
+private __CENTERPOS = [10000,10000];
+__CENTERPOS set [10000,10000];
+#define DEFAULT_RANGEX (worldSize/2);
+#define DEFAULT_RANGEY (worldSize/2);
 
 nearestPlayers = {
 	private ["_result","_pos","_range","_type","_alive"];
@@ -164,6 +163,7 @@ if (_isair) then {
 _vicHasNoGun = false;
 
 if (_isLandVehicle) then {
+	_npc setSpeedMode "LIMITED";
 	_npc setUnloadInCombat [true, true];
 	if ((isNull (gunner _npc)) && {(_npc emptyPositions "Gunner") == 0}) then {
 		_vicHasNoGun = true;
@@ -694,7 +694,7 @@ while { _loop} do {
 						_posX = _targetPos select 0;
 						_posY = _targetPos select 1;
 						if (isNil "_posX" || isNil "_posY") then { _targetPos = __CENTERPOS; };
-						_roadlist = _targetPos nearRoads 200;
+						_roadlist = _targetPos nearRoads 1000;
 						if (count _roadlist>0) then { _targetPos = getPosATL (_roadlist select 0); };
 						//_road=[_targetPos,(_isair||_isboat),_road] call KRON_OnRoad; 
 						sleep .01; 			
