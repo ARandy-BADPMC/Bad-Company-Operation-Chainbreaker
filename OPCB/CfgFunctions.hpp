@@ -356,7 +356,20 @@ class chainbreaker
 		{
 			file = "functions\helispawner\spawn_helicopter_server.sqf";
 		};
-	};
+		class uavRental_spawn_server
+		{
+			file = "functions\helispawner\uavRental_spawn_server.sqf";
+		};
+		class uavRental_return_server
+		{
+			file = "functions\helispawner\uavRental_return_server.sqf";
+		};
+		class uavRental_refund_client
+		{
+			file = "functions\helispawner\uavRental_refund_client.sqf";
+		};
+
+	};	
 };
 class badco
 {

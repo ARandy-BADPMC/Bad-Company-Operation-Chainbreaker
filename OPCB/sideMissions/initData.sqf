@@ -13,7 +13,9 @@ SM_Rewards = createHashMapFromArray [
 	["Pitfall", [80, {[] spawn SM_fnc_Pitfall}]],
 	["slowResupply", [60, {[] spawn SM_fnc_slowResupply}]],
 	["leakbreak", [60, {[] spawn SM_fnc_leakbreak}]],
-	["medicalemergency", [80, {[] spawn SM_fnc_medicalemergency}]]
+	["medicalemergency", [80, {[] spawn SM_fnc_medicalemergency}]],
+	["wingbreaker", [90, {[] spawn SM_fnc_wingbreaker}]]
+
 	
 
 ];

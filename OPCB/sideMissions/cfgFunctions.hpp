@@ -37,5 +37,6 @@ class SM
 		class slowResupply {};
 		class leakbreak {};
 		class medicalemergency {};
+		class wingbreaker {};
 	};
 };
