@@ -6528,7 +6528,7 @@ _arsenalitems =
 
 //end of public arsenal
 
-_boxes = [box1,box2];
+_boxes = [box1,box2,box8];
 
 {
 	[_x,_arsenalitems,true] call ace_arsenal_fnc_initBox;
