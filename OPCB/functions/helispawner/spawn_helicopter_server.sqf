@@ -17,7 +17,7 @@ private _buyerID = remoteExecutedOwner;
 if (_isAttack) then {
     [format ["Attack Vehicle delivered Slots left: %1", (2 - (count OPCB_AttackHelis)) max 0]] remoteExec ["hint", _buyerID];
 } else {
-    [format ["Trnasport vehicle delivered Slots left: %1", (3 - (count OPCB_TransHelis)) max 0]] remoteExec ["hint", _buyerID];
+    [format ["Transport vehicle delivered Slots left: %1", (3 - (count OPCB_TransHelis)) max 0]] remoteExec ["hint", _buyerID];
 };
 
 // Flipflops - mark destruction + array cleanup
