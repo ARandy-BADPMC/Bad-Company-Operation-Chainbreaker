@@ -3,93 +3,66 @@ private "_helicopter";
 _helicopter = createVehicle [_vehicle, getMarkerPos "aircraft_spawner", [], 0 , "CAN_COLLIDE"];
 _helicopter setdir (markerDir "aircraft_spawner");
 
+if (_isAttack) then {	
+	if (_vehicle == "B_UAV_02_dynamicLoadout_f") then {
+		createVehicleCrew _helicopter;
+	};
+	
+	private _cargoIndex = -1;
+	_vehicle = toUpper _vehicle;
+	{
+		if ((_x select 0) == _vehicle) exitWith {
+			_cargoIndex = _foreachIndex;
+		};
+	} foreach OPCB_econ_vehicleCargoSpaces;
+	
+	if (_cargoIndex != -1) then {
+		[_helicopter, (OPCB_econ_vehicleCargoSpaces select _cargoIndex) select 1] call ace_cargo_fnc_setSize;
+	};
+	
+	_helicopter call Hz_pers_API_addVehicle;
+	
+	[_helicopter] call BADCO_fnc_skinApplier;
+	
+	_pylonPaths = (configProperties [configFile >> "CfgVehicles" >> typeOf _helicopter >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"]) apply {getArray (_x >> "turret")};
+	{ _helicopter removeWeaponGlobal getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon") } forEach getPylonMagazines _helicopter;
+	{ _helicopter setPylonLoadOut [_forEachIndex + 1, _x, true, _pylonPaths select _forEachIndex] } forEach _pylons;
 
-if (_isAttack) then {
-    OPCB_AttackHelis pushBackUnique _helicopter;
-    publicVariable "OPCB_AttackHelis";
+	_helicopter addMPEventHandler ["MPKilled",{ 
+		if(isServer) then {
+			MaxAttackHelis = MaxAttackHelis - 1;
+			publicVariable "MaxAttackHelis";
+		};
+	}];
+
+	[_helicopter,_isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
+		
 } else {
-    OPCB_TransHelis pushBackUnique _helicopter;
-    publicVariable "OPCB_TransHelis";
-};
+	private _cargoIndex = -1;
+	_vehicle = toUpper _vehicle;
+	{
+		if ((_x select 0) == _vehicle) exitWith {
+			_cargoIndex = _foreachIndex;
+		};
+	} foreach OPCB_econ_vehicleCargoSpaces;
+	
+	if (_cargoIndex != -1) then {
+		[_helicopter, (OPCB_econ_vehicleCargoSpaces select _cargoIndex) select 1] call ace_cargo_fnc_setSize;
+	};
+	
+	_helicopter call Hz_pers_API_addVehicle;
+	
+	[_helicopter] call BADCO_fnc_skinApplier;
+	
+	_helicopter addEventHandler ["MPKilled",
+	{
+		MaxTransHelis = MaxTransHelis - 1;
+		publicVariable "MaxTransHelis";
+	}];
 
-
-private _buyerID = remoteExecutedOwner;
-if (_isAttack) then {
-    [format ["Attack Vehicle delivered Slots left: %1", (2 - (count OPCB_AttackHelis)) max 0]] remoteExec ["hint", _buyerID];
-} else {
-    [format ["Transport vehicle delivered Slots left: %1", (3 - (count OPCB_TransHelis)) max 0]] remoteExec ["hint", _buyerID];
-};
-
-// Flipflops - mark destruction + array cleanup
-_helicopter addEventHandler ["Killed", { (_this select 0) setVariable ["OPCB_destroyed", true, true]; }];
-_helicopter addEventHandler ["Deleted", {
-    params ["_h"];
-    OPCB_AttackHelis = OPCB_AttackHelis - [_h];
-    OPCB_TransHelis  = OPCB_TransHelis  - [_h];
-    publicVariable "OPCB_AttackHelis";
-    publicVariable "OPCB_TransHelis";
-}];
-
-if (_isAttack) then {    
-    if (_vehicle == "B_UAV_02_dynamicLoadout_f") then {
-        createVehicleCrew _helicopter;
-    };
-    
-    private _cargoIndex = -1;
-    _vehicle = toUpper _vehicle;
-    {
-        if ((_x select 0) == _vehicle) exitWith {
-            _cargoIndex = _foreachIndex;
-        };
-    } foreach OPCB_econ_vehicleCargoSpaces;
-    
-    if (_cargoIndex != -1) then {
-        [_helicopter, (OPCB_econ_vehicleCargoSpaces select _cargoIndex) select 1] call ace_cargo_fnc_setSize;
-    };
-    
-    _helicopter call Hz_pers_API_addVehicle;
-    
-    [_helicopter] call BADCO_fnc_skinApplier;
-    
-    _pylonPaths = (configProperties [configFile >> "CfgVehicles" >> typeOf _helicopter >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"]) apply {getArray (_x >> "turret")};
-    { _helicopter removeWeaponGlobal getText (configFile >> "CfgMagazines" >> _x >> "pylonWeapon") } forEach getPylonMagazines _helicopter;
-    { _helicopter setPylonLoadOut [_forEachIndex + 1, _x, true, _pylonPaths select _forEachIndex] } forEach _pylons;
-
-    _helicopter addMPEventHandler ["MPKilled",{ 
-        if(isServer) then {
-            MaxAttackHelis = MaxAttackHelis - 1;
-            publicVariable "MaxAttackHelis";
-        };
-    }];
-
-    [_helicopter,_isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
-        
-} else {
-    private _cargoIndex = -1;
-    _vehicle = toUpper _vehicle;
-    {
-        if ((_x select 0) == _vehicle) exitWith {
-            _cargoIndex = _foreachIndex;
-        };
-    } foreach OPCB_econ_vehicleCargoSpaces;
-    
-    if (_cargoIndex != -1) then {
-        [_helicopter, (OPCB_econ_vehicleCargoSpaces select _cargoIndex) select 1] call ace_cargo_fnc_setSize;
-    };
-    
-    _helicopter call Hz_pers_API_addVehicle;
-    
-    [_helicopter] call BADCO_fnc_skinApplier;
-    
-    _helicopter addEventHandler ["MPKilled",
-    {
-        MaxTransHelis = MaxTransHelis - 1;
-        publicVariable "MaxTransHelis";
-    }];
-
-    if (typeOf _helicopter == "RHS_UH60M_MEV_d") then {
-      _helicopter setVariable ["ace_medical_medicClass",1];
-    };
-    [_helicopter, _isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
-    
+	if (typeOf _helicopter == "RHS_UH60M_MEV_d") then {
+	  _helicopter setVariable ["ace_medical_medicClass",1];
+	};
+	[_helicopter, _isAttack] remoteExec ["CHAB_fnc_helicopter_restriction",0,true];
+	
 };

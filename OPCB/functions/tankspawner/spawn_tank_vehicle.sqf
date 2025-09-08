@@ -44,7 +44,7 @@ if(_tankselect != -1) then  {
 			};
 
 		} else {
-			if (MaxAPC != 2) then {	
+			if (MaxAPC != 12) then {	
 				_tier = ["INF", _vehicle] call OPCB_econ_fnc_getVehicleTier;
 				_cost = ["INF", _tier] call OPCB_econ_fnc_getTierCost;				
 				// just in case
@@ -70,7 +70,7 @@ if(_tankselect != -1) then  {
 				[_vehicle, false] remoteExec ["CHAB_fnc_spawn_tank_server",2];
 
 			} else {
-				hint "2 vehicles are already in game. Recover or destroy existing ones.";
+				hint "12 vehicles are already in game. Recover or destroy existing ones.";
 			};
 			
 		};
