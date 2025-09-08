@@ -19,6 +19,7 @@ publicVariable "OPCB_econ_currentTier";
 // setup bought fobs
 {
 	fob_pos = markerPos _x;
-	[west, _pos] remoteExecCall ["BIS_fnc_addRespawnPosition", 0, true];	
+	[west, fob_pos] remoteExecCall ["BIS_fnc_addRespawnPosition", 0, true];	
 } foreach Hz_pers_var_boughtFobs;
+
 
