@@ -29,3 +29,10 @@ fnc_buzzInOutBadco = compile preprocessFileLineNumbers "buzzInBadco.sqf";
 //Exec Vcom AI function
 [] execVM "Vcom\VcomInit.sqf";
 //End of Vcom commands
+
+if (isServer) then {
+
+	_code = compile preprocessFileLineNumbers "Scripts\RandomWeatherScript.sqf";
+	[] spawn _code;
+
+};
