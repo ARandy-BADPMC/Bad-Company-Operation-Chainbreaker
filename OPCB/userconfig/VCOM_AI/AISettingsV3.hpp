@@ -25,7 +25,7 @@ Vcm_Settings =
 	VCM_ARTYSIDES = [west,east,resistance];  //Sides that will use VCOM/FFE artillery
 	VCM_AIMagLimit = 5; //Number of mags remaining before AI looks for ammo.
 	VCM_Debug = false; //Enable debug mode.
-	VCM_MINECHANCE = 75; //Chance to lay a mine
+	VCM_MINECHANCE = 0; //Chance to lay a mine
 	VCM_SIDEENABLED = [west,east,resistance]; //Sides that will activate Vcom AI
 	VCM_RAGDOLL = true; //Should AI ragdoll when hit
 	VCM_RAGDOLLCHC = 50; //CHANCE AI RAGDOLL	
@@ -34,10 +34,10 @@ Vcm_Settings =
 	VCM_WARNDIST = 1000; //How far AI can request help from other groups.
 	VCM_WARNDELAY = 30; //How long the AI have to survive before they can call in for support. This activates once the AI enter combat.
 	VCM_STATICARMT = 300; //How long AI stay on static weapons when initially arming them. This is just for AI WITHOUT static bags. They will stay for this duration when NO ENEMIES ARE SEEN, or their group gets FAR away.	
-	VCM_StealVeh = true; //Will the AI steal vehicles.
+	VCM_StealVeh = false; //Will the AI steal vehicles.
 	VCM_ClassSteal = true; //If true, crewmen are required to steal tracked vehicles. Pilots are required to steal aircraft. false = anyone can steal any vehicle.
 	VCM_AIDISTANCEVEHPATH = 100; //Distance AI check from the squad leader to steal vehicles
-	VCM_ADVANCEDMOVEMENT = true; //True means AI will actively generate waypoints if no other waypoints are generated for the AI group (2 or more). False disables this advanced movements.
+	VCM_ADVANCEDMOVEMENT = false; //True means AI will actively generate waypoints if no other waypoints are generated for the AI group (2 or more). False disables this advanced movements.
 	VCM_FRMCHANGE = true; //AI GROUPS WILL CHANGE FORMATIONS TO THEIR BEST GUESS.
 	VCM_SKILLCHANGE = true; //AI Groups will have their skills changed by Vcom.
 	VCM_USECBASETTINGS = true;//If CBA is enabled on the host, use the CBA default settings. If false, use the filepatching settings instead.
@@ -56,7 +56,7 @@ Vcm_Settings =
 	//VCM_AIDIFA = [['aimingAccuracy',0.4],['aimingShake',0.4],['aimingSpeed',0.45],['commanding',1],['courage',0.75],['endurance',1],['general',0.5],['reloadSpeed',1],['spotDistance',0.8],['spotTime',0.8]];
 	
 	//SIDE SPECIFIC
-	VCM_AIDIFWEST = [['aimingAccuracy',1],['aimingShake',1],['aimingSpeed',0.35],['commanding',0.85],['courage',1],['general',1],['reloadSpeed',1],['spotDistance',1],['spotTime',1]];
+	VCM_AIDIFWEST = [['aimingAccuracy',1],['aimingShake',1],['aimingSpeed',1],['commanding',1],['courage',1],['general',3],['reloadSpeed',1],['spotDistance',1],['spotTime',1]];
 	VCM_AIDIFEAST = [['aimingAccuracy',0.2],['aimingShake',0.1],['aimingSpeed',0.25],['commanding',0.75],['courage',0.4],['general',0.6],['reloadSpeed',0.8],['spotDistance',0.3],['spotTime',0.4]];
 	VCM_AIDIFRESISTANCE = [['aimingAccuracy',0.2],['aimingShake',0.1],['aimingSpeed',0.15],['commanding',0.65],['courage',0.15],['general',0.55],['reloadSpeed',1],['spotDistance',0.2],['spotTime',0.2]];
 		
