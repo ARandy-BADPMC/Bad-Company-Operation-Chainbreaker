@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=11343;
+		nextID=11348;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1690;
+		nextID=1712;
 	};
 	class Camera
 	{
-		pos[]={319.05203,297.61337,18350.914};
-		dir[]={-0.93777668,-0.34523183,0.037617706};
-		up[]={-0.34495839,0.93851697,0.013837676};
-		aside[]={0.040082082,5.7061698e-09,0.99920601};
+		pos[]={258.89383,240.32663,18327.111};
+		dir[]={-0.90824556,-0.41770691,-0.02514476};
+		up[]={-0.41755235,0.90857744,-0.011559935};
+		aside[]={-0.027675979,-1.4636544e-07,0.99962485};
 	};
 };
 binarizationWanted=0;
@@ -194,13 +194,14 @@ addons[]=
 	"A3_Structures_F_Naval_Buoys",
 	"A3_Props_F_Exp_Naval_Boats",
 	"CUP_CAMisc_ACR_Shooting_range",
-	"A3_Boat_F_EPC_Submarine_01"
+	"A3_Boat_F_EPC_Submarine_01",
+	"A3_Boat_F_Jets_Carrier_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=101;
+		items=102;
 		class Item0
 		{
 			className="A3_Modules_F";
@@ -865,6 +866,13 @@ class AddonsMetaData
 		{
 			className="A3_Boat_F_EPC";
 			name="Arma 3 Win Episode - Boats and Submersibles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item101
+		{
+			className="A3_Boat_F_Jets";
+			name="Arma 3 Jets - Boats and Submersibles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -22900,7 +22908,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=1184;
+		items=1186;
 		class Item0
 		{
 			dataType="Logic";
@@ -101113,6 +101121,38 @@ class Mission
 			id=11345;
 			type="Submarine_01_F";
 			atlOffset=0.98853254;
+		};
+		class Item1184
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2280.9109,0,15205.31};
+				angles[]={0,0.034918476,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=11343;
+			type="Land_Carrier_01_base_F";
+			atlOffset=9.6334534;
+		};
+		class Item1185
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2339.8879,12.93417,15383.88};
+				angles[]={0,3.1547508,-0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=11346;
+			type="land_airport_02_controltower_f";
 		};
 	};
 	class Connections
