@@ -9,7 +9,7 @@ playersNeeded = 2;
 // max number of map patrol vehicles allowed to be active at the same time
 eastVehicleNum = 8;
 
-patrolSpawnDelay = 120;
+patrolSpawnDelay = 600;
 
 ins_AIspawnMaxRange = switch (toLower worldName) do {
 	case "zargabad" : {700};
