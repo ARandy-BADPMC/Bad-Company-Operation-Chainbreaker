@@ -304,7 +304,7 @@ createDebugMarker = {
 
 getEffectiveMaxAICount = {
 
-	private _playerCnt = {(_x distance2D _this) < ins_AIspawnMinRange} count playableUnits;
+	private _playerCnt =  count playableUnits;
 	
 	switch (_playerCnt) do {
 		case 1: { 
@@ -319,9 +319,12 @@ getEffectiveMaxAICount = {
 		case 4: { 
 				round (maxAIPerPlayer*1.25)
 			};
-		default { 
+		case (_number > 4 && _number < 10): {
 			maxAIPerPlayer
-		};
+			};
+		default { 
+				round (maxAIPerPlayer*0.8)
+			};
 	};
 
 };
