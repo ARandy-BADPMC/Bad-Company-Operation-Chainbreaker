@@ -43,12 +43,18 @@ while {_activated && _On} do {
 		};
 	};
 	_overcastChange = random [3000,3300,3600];
-	//randomise overcast
-	_overcastChangeTo = (_overcast selectRandomWeighted [1,4,3,2,1]);
+
+	private _currentHour = daytime * 24; // Current server hour
+	if (_currentHour > 20 || _currentHour < 6) then ((_overcastChange / timeMultiplier) setOvercast 0.1) else {// Check if its night to disable night overcast
+	_overcastChangeTo = (_overcast selectRandomWeighted [1,4,3,2,1]); //Randomise overcast
 	(_overcastChange / timeMultiplier) setOvercast _overcastChangeTo;
 	(_overcastChange / timeMultiplier) setGusts _overcastChangeTo;
 	(_overcastChange / timeMultiplier) setWindStr _overcastChangeTo;
 	(_overcastChange / timeMultiplier) setWindForce (1 /( _overcastChangeTo + 0.01));
+
+	};
+
+
 	//hint "Weather Change";
 	sleep (_overcastChange / timeMultiplier);
 };

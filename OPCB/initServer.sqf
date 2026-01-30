@@ -107,3 +107,12 @@ addMissionEventHandler ["PlayerDisconnected", {
 		sleep 1800;
 	};
 };
+
+private _year = date select 0;
+private _month = date select 1;
+private _day = date select 2;
+
+private _hour = floor (random 24);
+private _minute = floor (random 60);
+
+setDate [_year, _month, _day, _hour, _minute];
