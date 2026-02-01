@@ -259,7 +259,8 @@ _sin270=-1; _cos270=0;
 
 // set target tolerance high for choppers & planes
 _closeenough=CLOSEENOUGH; 
-if (_isair) then { _closeenough=2500}; 
+if (_isair) then { _closeenough=2500};
+if (_isLandVehicle) then { _closeenough=1000};
 
 // ***************************************** optional arguments *****************************************
 
