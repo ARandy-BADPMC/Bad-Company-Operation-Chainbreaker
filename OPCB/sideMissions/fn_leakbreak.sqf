@@ -6,7 +6,7 @@ private _taskID = format ["SM_TaskNumber_%1", SM_TaskNumber];
 
 private _axis = worldSize / 2;
 private _center = [_axis, _axis, 0];
-private _locations = nearestLocations [_center, ["NameVillage", "NameLocal"], _axis];
+private _locations = nearestLocations [_center, ["BorderCrossing", "NameLocal"], _axis];
 private _missionPos = [0, 0, 0];
 
 {

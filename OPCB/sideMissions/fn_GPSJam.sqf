@@ -2,7 +2,7 @@
 private _axis = worldSize / 2;
 private _center = [_axis, _axis , 0];
 private _towers = ["land_mobileradar_01_radar_f"];
-private _selectedHill = selectRandom (nearestLocations [_center, ["Hill", "ViewPoint"], _axis]);
+private _selectedHill = selectRandom (nearestLocations [_center, ["Hill", "BorderCrossing", "ViewPoint"], _axis]);
 private _selectedArea = selectRandom (nearestLocations [_center, ["Airport", "NameCity", "NameCityCapital", "NameVillage", "NameLocal"], _axis]);
 
 private _taskMarker = locationPosition _selectedHill;
