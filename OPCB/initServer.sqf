@@ -20,7 +20,6 @@ Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [
 Hz_pers_var_insurgencyClearedMarkers = [];
 centerOfGridRetakingStr = "";
 Hz_pers_var_boughtFobs = [];
-Hz_pers_API_addVariable "Hz_pers_var_boughtFobs";
 publicVariable "centerOfGridRetakingStr";
 publicVariable "Hz_pers_var_boughtFobs";
 
