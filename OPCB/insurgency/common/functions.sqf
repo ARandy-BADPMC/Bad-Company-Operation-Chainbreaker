@@ -314,16 +314,16 @@ getEffectiveMaxAICount = {
 			maxAIPerPlayer*2
 			};
 		case 3: { 
-				round (maxAIPerPlayer*1.5)
+				round (maxAIPerPlayer*1.75)
 			};
 		case 4: { 
-				round (maxAIPerPlayer*1.25)
+				round (maxAIPerPlayer*1.5)
 			};
 		case (_playerCnt > 4 && _playerCnt< 10): {
 			maxAIPerPlayer
 			};
 		default { 
-				round (maxAIPerPlayer*0.8)
+				round (maxAIPerPlayer*1)
 			};
 	};
 
