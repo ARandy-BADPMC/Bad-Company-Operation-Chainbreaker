@@ -253,7 +253,7 @@ class jey_dronespawner
 		class drone_spawn: RscButton
 		{
 			idc = 1602;
-			action = "[] call CHAB_fnc_spawn_drone_vehicle; closeDialog 0;";
+			 action = "[] call CHAB_fnc_spawn_drone_vehicle;";
 
 			text = "Buy"; //--- ToDo: Localize;
 			x = 35 * GUI_GRID_W + GUI_GRID_X;
@@ -326,7 +326,7 @@ class jey_tankspawner
 		class heli_spawn: RscButton
 		{
 			idc = 1602;
-			action = "[] call CHAB_fnc_spawn_tank_vehicle; closedialog 0;";
+			action = "[] call CHAB_fnc_spawn_tank_vehicle;";
 
 			text = "Buy"; //--- ToDo: Localize;
 			x = 31 * GUI_GRID_W + GUI_GRID_X;
@@ -581,7 +581,7 @@ class crateSpawner {
 		class heli_spawn: RscButton
 		{
 			idc = 1602;
-			action = "[] call OPCB_crateSpawner_fnc_spawnCrate; closeDialog 0;";
+			 action = "[] call OPCB_crateSpawner_fnc_spawnCrate;";
 
 			text = "GIMME !"; //--- ToDo: Localize;
 			x = 31 * GUI_GRID_W + GUI_GRID_X;
@@ -869,7 +869,7 @@ class staticspawner
 		class spawn_static: RscButton
 		{
 			idc = 1602;
-			action = "[] call CHAB_fnc_spawn_static_vehicle; closedialog 0;";
+			 action = "[] call CHAB_fnc_spawn_static_vehicle;";
 
 			text = "Buy"; //--- ToDo: Localize;
 			x = 31 * GUI_GRID_W + GUI_GRID_X;
@@ -1080,5 +1080,63 @@ class fobStore {
             action = "closeDialog 0;";
         };
     };
+};
+
+class shopSpawnLocation
+{
+	idd = 74820;
+	movingEnabled = false;
+	onUnload = "[] call CHAB_fnc_shopSpawnLocationClosed;";
+
+	class controls
+	{
+		class Background: RscText
+		{
+			idc = -1;
+			colorBackground[] = {0, 0, 0, 0.88};
+			x = 0.34 * safezoneW + safezoneX;
+			y = 0.28 * safezoneH + safezoneY;
+			w = 0.32 * safezoneW;
+			h = 0.44 * safezoneH;
+		};
+		class Title: RscText
+		{
+			idc = -1;
+			text = "Choose vehicle spawn location";
+			colorText[] = {1, 1, 1, 1};
+			x = 0.36 * safezoneW + safezoneX;
+			y = 0.30 * safezoneH + safezoneY;
+			w = 0.28 * safezoneW;
+			h = 0.05 * safezoneH;
+		};
+		class Locations: RscListBox
+		{
+			idc = 74821;
+			x = 0.36 * safezoneW + safezoneX;
+			y = 0.36 * safezoneH + safezoneY;
+			w = 0.28 * safezoneW;
+			h = 0.27 * safezoneH;
+		};
+		class SpawnHere: RscButton
+		{
+			idc = 74822;
+			text = "Spawn Here";
+			action = "[] call CHAB_fnc_shopSpawnLocationConfirm;";
+			x = 0.36 * safezoneW + safezoneX;
+			y = 0.64 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.05 * safezoneH;
+		};
+		class Cancel: RscButton
+		{
+			idc = 74823;
+			text = "Cancel";
+			action = "closeDialog 0;";
+			x = 0.51 * safezoneW + safezoneX;
+			y = 0.64 * safezoneH + safezoneY;
+			w = 0.13 * safezoneW;
+			h = 0.05 * safezoneH;
+		};
+	};
 };
 

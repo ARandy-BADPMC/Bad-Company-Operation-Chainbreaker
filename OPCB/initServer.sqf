@@ -19,9 +19,11 @@ Civilian setFriend [EAST, 1]; Civilian setFriend [WEST, 1]; Civilian setFriend [
 
 Hz_pers_var_insurgencyClearedMarkers = [];
 centerOfGridRetakingStr = "";
-Hz_pers_var_boughtFobs = [];
+if (isNil "Hz_pers_var_boughtFobs") then {
+	Hz_pers_var_boughtFobs = [];
+	publicVariable "Hz_pers_var_boughtFobs";
+};
 publicVariable "centerOfGridRetakingStr";
-publicVariable "Hz_pers_var_boughtFobs";
 
 Hz_pers_customLoadFunction = compileFinal preprocessFileLineNumbers "Hz_pers_customLoadFunction.sqf";
 Hz_pers_firstTimeLaunchFunction = compileFinal preprocessFileLineNumbers "Hz_pers_firstTimeLaunchFunction.sqf";	
@@ -116,3 +118,28 @@ private _hour = floor (random 24);
 private _minute = floor (random 60);
 
 setDate [_year, _month, _day, _hour, _minute];
+
+if (isNil "OPCB_civRelation") then {
+	OPCB_civRelation = 50;
+	publicVariable "OPCB_civRelation";
+};
+if (isNil "OPCB_civLastHarmAt") then { OPCB_civLastHarmAt = -1e6; };
+call CHAB_fnc_civRelationsUpdatePressure;
+
+Hz_ambw_civ_fnc_spawnCivs = {
+	params ["_trigger"];
+	[_trigger] call CHAB_fnc_civiliansSpawnZone;
+};
+Hz_ambw_civ_fnc_despawnCivs = {
+	params ["_trigger"];
+	[_trigger] call CHAB_fnc_civiliansDespawnZone;
+};
+
+[] spawn {
+	while {true} do {
+		sleep 5400;
+		if (serverTime - (missionNamespace getVariable ["OPCB_civLastHarmAt", -1e6]) >= 5400) then {
+			[2] call CHAB_fnc_civRelationChange;
+		};
+	};
+};

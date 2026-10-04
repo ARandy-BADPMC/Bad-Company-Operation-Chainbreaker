@@ -6,36 +6,38 @@ private _taskID = format ["SM_TaskNumber_%1", SM_TaskNumber];
 
 private _axis = worldSize / 2;
 private _center = [_axis, _axis, 0];
-private _locations = nearestLocations [_center, ["BorderCrossing", "NameLocal"], _axis];
+private _locations = nearestLocations [_center, ["NameCity", "NameCityCapital", "NameVillage", "NameLocal"], _axis];
+_locations = _locations select { locationPosition _x distance2D (markerPos "base_marker") > 1500 };
+_locations = _locations call BIS_fnc_arrayShuffle;
 private _missionPos = [0, 0, 0];
 
 {
     private _loc = locationPosition _x;
-    private _barns = nearestObjects [_loc, ["Land_Barn_01_brown_F","Land_Barn_02_F"], 200];
+    private _barns = nearestObjects [_loc, ["Land_Barn_01_brown_F", "Land_Barn_02_F", "Land_Shed_01_F", "Land_Shed_02_F"], 350];
     if (count _barns > 0) then {
         private _barnPos = getPosATL (selectRandom _barns);
-        private _roads = _barnPos nearRoads 100;
+        private _roads = _barnPos nearRoads 200;
         if (count _roads > 0) exitWith {
             _missionPos = _barnPos;
         };
     };
-} forEach (_locations apply { selectRandom _locations });
+} forEach _locations;
 
 if (_missionPos isEqualTo [0,0,0]) then {
     {
         private _loc = locationPosition _x;
-        private _houses = nearestObjects [_loc, ["House","House_Small"], 200];
+        private _houses = nearestObjects [_loc, ["House", "House_Small", "Building"], 350];
         private _enterable = _houses select {
             count ([_x] call BIS_fnc_buildingPositions) > 0
         };
         if (count _enterable > 0) then {
             private _housePos = getPosATL (selectRandom _enterable);
-            private _roads = _housePos nearRoads 100;
+            private _roads = _housePos nearRoads 200;
             if (count _roads > 0) exitWith {
                 _missionPos = _housePos;
             };
         };
-    } forEach (_locations apply { selectRandom _locations });
+    } forEach _locations;
 };
 
 if (_missionPos isEqualTo [0,0,0]) exitWith {

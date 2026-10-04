@@ -1,3 +1,4 @@
+
 class cfgsounds 
 {
     sounds[]={};
@@ -7,8 +8,16 @@ class cfgsounds
         sound[]={"Medicalvoice.ogg",db+120,1,10};
         titles[]={};
         };
+
+class PrisonAlarm
+{
+	name="PrisonAlarm";
+	sound[]={"sounds\PrisonAlarm.ogg",db+25,1,150};
+	titles[]={};
 };
 
+
+};
 
 class cfgmusic 
 {
@@ -86,18 +95,36 @@ class CfgRemoteExec
 	class Functions
 	{
 		mode = 2;
-		jip = 1;		
-		
-		class vcm_serverask { allowedTargets = 0;jip = 1; };
-		class VCM_PublicScript { allowedTargets = 0;jip = 1; };
-		class BIS_fnc_debugConsoleExec { allowedTargets = 0;jip = 1; };
-		class SpawnScript { allowedTargets = 0;jip = 1; };
-		class enableSimulationGlobal { allowedTargets = 0;jip = 1; };
-		class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
-		
+		jip = 1;
+
+		class vcm_serverask { allowedTargets = 0; jip = 1; };
+		class VCM_PublicScript { allowedTargets = 0; jip = 1; };
+		class BIS_fnc_debugConsoleExec { allowedTargets = 0; jip = 1; };
+		class SpawnScript { allowedTargets = 0; jip = 1; };
+		class enableSimulationGlobal { allowedTargets = 0; jip = 1; };
+		class VCM_fnc_KnowAbout { allowedTargets = 0; jip = 1; };
+
+		// Custom missions / interactions
+		class CHAB_fnc_PMC_PrisonRescue { allowedTargets = 2; jip = 0; };
+		// NOTE: function name is CHAB_fnc_prisonAddUnlockAction (no pmc_ prefix).
+		// Keep the old pmc_ entry too so nothing breaks if any script still calls it.
+		class CHAB_fnc_prisonAddUnlockAction { allowedTargets = 0; jip = 1; };
+		class CHAB_fnc_pmc_prisonAddUnlockAction { allowedTargets = 0; jip = 1; };
+		class CHAB_fnc_prisonUnlockDoors { allowedTargets = 2; jip = 0; };
+		class CHAB_fnc_prisonPlayAlarm { allowedTargets = 0; jip = 0; };
+		class CHAB_fnc_pmc_mission_selector { allowedTargets = 2; jip = 0; };
+		class CHAB_fnc_mission_selector { allowedTargets = 2; jip = 0; };
+		class SM_fnc_medicalemergency { allowedTargets = 2; jip = 0; };
+		class CHAB_fnc_Defend_and_Counterattack { allowedTargets = 2; jip = 0; };
+		class CHAB_fnc_civiliansAddAction { allowedTargets = 0; jip = 1; };
+		class CHAB_fnc_civiliansTalk { allowedTargets = 2; jip = 0; };
 	};
-	
-	
+
+	class Commands
+	{
+		mode = 0;
+		jip = 0;
+	};
 };
 
 class CfgDebriefing {  

@@ -8,8 +8,12 @@ _baseMarker = markerPos "base_marker";
 
 _closeFriendlies = {(_baseMarker distance2d _x) < 1000 } count playableUnits;
 
-if ( _closeFriendlies < 2 && {isNil "_taskobjective"}) exitWith {
-	"At least 2 people are required to be at base to request a mission!" remoteExec["hint", _callerRE];
+// Allow server/admins to temporarily adjust how many players must be at base to request missions.
+// Default is 2.
+private _minPlayersAtBase = missionNamespace getVariable ["OPCB_minPlayersAtBase", 2];
+
+if ( _closeFriendlies < _minPlayersAtBase && {isNil "_taskobjective"}) exitWith {
+	(format ["At least %1 people are required to be at base to request a mission!", _minPlayersAtBase]) remoteExec["hint", _callerRE];
 };
 
 if (isNil "OPCB_nextMissionTime") then { OPCB_nextMissionTime = 0; publicVariable "OPCB_nextMissionTime"; };
@@ -109,6 +113,12 @@ switch ( _selected) do {
 	};
 	case "Narco" : {
 		[_base,_currentTasknumber, _credits] call CHAB_fnc_Narco;
+	};
+	case "Grid Sweep" : {
+		[_currentTasknumber, _credits] call CHAB_fnc_GridSweep;
+	};
+	case "Defend and Counterattack" : {
+		[_base, _currentTasknumber, _credits] call CHAB_fnc_Defend_and_Counterattack;
 	};
 	default { 
 		"Failed to spawn a task, try again" remoteExec["hint", _callerRE];

@@ -21,7 +21,7 @@ ins_gridMarkers = [];
 		_mkr setMarkerSizeLocal [50,50]; 
 		_mkr setMarkerAlphaLocal 0.2; 
 	};
-_var = missionNamespace getVariable [format["%1cleared", _mkr], nil];
+	_var = missionNamespace getVariable [format["%1cleared", _mkr], nil];
 	private _isCleared = !isNil "_var";
 	if (!_isCleared && {!isNil "Hz_pers_var_insurgencyClearedMarkers"}) then {
 		_isCleared = _mkr in Hz_pers_var_insurgencyClearedMarkers;

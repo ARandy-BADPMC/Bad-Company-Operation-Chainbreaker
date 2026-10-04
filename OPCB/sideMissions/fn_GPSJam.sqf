@@ -2,10 +2,14 @@
 private _axis = worldSize / 2;
 private _center = [_axis, _axis , 0];
 private _towers = ["land_mobileradar_01_radar_f"];
-private _selectedHill = selectRandom (nearestLocations [_center, ["Hill", "BorderCrossing", "ViewPoint"], _axis]);
+private _selectedHill = selectRandom (nearestLocations [_center, ["Hill", "ViewPoint"], _axis]);
 private _selectedArea = selectRandom (nearestLocations [_center, ["Airport", "NameCity", "NameCityCapital", "NameVillage", "NameLocal"], _axis]);
 
 private _taskMarker = locationPosition _selectedHill;
+private _hiddenTerrain = nearestTerrainObjects [_taskMarker, ["TREE", "SMALL TREE", "BUSH"], 60, false];
+{
+	_x hideObjectGlobal true;
+} forEach _hiddenTerrain;
 
 private _taskId = format ["SM_TaskNumber_%1",SM_TaskNumber];
 
@@ -29,3 +33,9 @@ waitUntil {
 deleteMarker "GPSBlackout";
 
 [_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+
+sleep 60;
+{
+	_x hideObjectGlobal false;
+} forEach _hiddenTerrain;
+deleteVehicle _tower;

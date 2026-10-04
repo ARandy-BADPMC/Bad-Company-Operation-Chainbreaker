@@ -13,6 +13,26 @@ class chainbreaker
 	tag = "CHAB";
 	class missions
 	{
+		class PMC_SAMSite
+		{
+			file = "functions\missions\PMC_SAMSite.sqf";
+		};
+		class Defend_and_Counterattack
+		{
+			file = "functions\missions\Defend_and_Counterattack.sqf";
+		};
+		class PMC_ConvoyIntercept
+		{
+			file = "functions\missions\PMC_ConvoyIntercept.sqf";
+		};
+		class PMC_PrisonRescue
+		{
+			file = "functions\missions\PMC_PrisonRescue.sqf";
+		};
+		class GridSweep
+		{
+			file = "functions\missions\GridSweep.sqf";
+		};
 		class Minefield
 		{
 			file = "functions\missions\Minefield.sqf";
@@ -101,6 +121,10 @@ class chainbreaker
 		{
 			file = "comp\select.sqf";
 		};
+		class pmc_mission_selector
+		{
+			file = "comp\select_pmc.sqf";
+		};
 		class endmission
 		{
 			file = "functions\endmission.sqf";
@@ -176,7 +200,67 @@ class chainbreaker
 	};
 	class miscellaneous
 	{
-		class nearest
+		class shopSlotTrack
+		{
+			file = "functions\miscellaneous\shopSlotTrack.sqf";
+		};
+		class shopSlotReleased
+		{
+			file = "functions\miscellaneous\shopSlotReleased.sqf";
+		};
+		class civRelationChange
+		{
+			file = "functions\miscellaneous\civRelationChange.sqf";
+		};
+		class civRelationsUpdatePressure
+		{
+			file = "functions\miscellaneous\civRelationsUpdatePressure.sqf";
+		};
+		class civApplyTrustState
+		{
+			file = "functions\miscellaneous\civApplyTrustState.sqf";
+		};
+		class civiliansSpawnZone
+		{
+			file = "functions\miscellaneous\civiliansSpawnZone.sqf";
+		};
+		class civiliansDespawnZone
+		{
+			file = "functions\miscellaneous\civiliansDespawnZone.sqf";
+		};
+		class civiliansAddAction
+		{
+			file = "functions\miscellaneous\civiliansAddAction.sqf";
+		};
+		class civiliansTalk
+		{
+			file = "functions\miscellaneous\civiliansTalk.sqf";
+		};
+		class shopSpawnLocationOpen
+		{
+			file = "functions\miscellaneous\shopSpawnLocationOpen.sqf";
+		};
+		class shopSpawnLocationConfirm
+		{
+			file = "functions\miscellaneous\shopSpawnLocationConfirm.sqf";
+		};
+		class shopSpawnLocationClosed
+		{
+			file = "functions\miscellaneous\shopSpawnLocationClosed.sqf";
+		};
+				class prisonAddUnlockAction
+		{
+			file = "functions\miscellaneous\prisonAddUnlockAction.sqf";
+		};
+		class prisonUnlockDoors
+		{
+			file = "functions\miscellaneous\prisonUnlockDoors.sqf";
+		};
+		class prisonPlayAlarm
+		{
+			file = "functions\miscellaneous\prisonPlayAlarm.sqf";
+		};
+class nearest
 		{
 			file = "functions\miscellaneous\nearest.sqf";
 		}; 

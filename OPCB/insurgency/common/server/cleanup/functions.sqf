@@ -20,7 +20,9 @@ aiDespawn = {
 				deleteVehicle _dude;
 			} else {
 				_nearPlayer = _nearPlayers select 0;
-				if (_nearPlayersCount < (_nearDudes/(_nearPlayer call getEffectiveMaxAICount))) then {
+				// density culling only for AI that no player is close to
+				if ({(_x distance2D _dude) < 500} count _nearPlayers == 0
+					&& {_nearPlayersCount < (_nearDudes/(_nearPlayer call getEffectiveMaxAICount))}) then {
 					deleteVehicle _dude; 
 				};
 			};			

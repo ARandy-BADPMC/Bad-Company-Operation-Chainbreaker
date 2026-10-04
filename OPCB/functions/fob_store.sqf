@@ -5,7 +5,7 @@ waitUntil {
   !isNull (findDisplay 74819) && { !(isNil "OPCB_econ_initDone") && {OPCB_econ_initDone}}
 };
 
-private _fob_markers = allMapMarkers select {["fob_", _x] call BIS_fnc_inString};
+private _fob_markers = allMapMarkers select {(toLower _x) select [0, 4] == "fob_" && {!((toLower _x) find "fob_spawner" == 0)}};
 if (count _fob_markers == 0) exitWith {hint "There no FOBs to purchase on this map !"};
 
 _ctrl = (findDisplay 74819) displayCtrl 2000;
