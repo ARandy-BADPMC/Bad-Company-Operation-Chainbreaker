@@ -8,7 +8,6 @@ _baseMarker = markerPos "base_marker";
 
 _closeFriendlies = {(_baseMarker distance2d _x) < 1000 } count playableUnits;
 
-// Allow server/admins to temporarily adjust how many players must be at base to request missions.
 // Default is 2.
 private _minPlayersAtBase = missionNamespace getVariable ["OPCB_minPlayersAtBase", 2];
 

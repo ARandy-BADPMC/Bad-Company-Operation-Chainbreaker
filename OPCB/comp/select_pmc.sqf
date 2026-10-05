@@ -58,7 +58,7 @@ if (_selected == "Convoy Intercept") then {
 IsAPMCTaskRunning = true;
 
 private _nowCooldown = serverTime;
-private _cooldownSeconds = 1800 + (random 900); // PMC can be a bit more frequent if desired
+private _cooldownSeconds = 1800 + (random 900); 
 OPCB_pmc_nextMissionTime = _nowCooldown + _cooldownSeconds;
 publicVariable "OPCB_pmc_nextMissionTime";
 
