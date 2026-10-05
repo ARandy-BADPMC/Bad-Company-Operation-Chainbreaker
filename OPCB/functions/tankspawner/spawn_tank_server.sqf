@@ -1,10 +1,15 @@
-params ["_vehicle","_isAttack"];
-_tankpos = getMarkerPos "tank_spawner";
+params ["_vehicle", "_isAttack", ["_spawnMarker", "tank_spawner"]];
+private _tankpos = markerPos _spawnMarker;
+
+{
+	if (!alive _x) then { deleteVehicle _x; };
+} forEach (nearestObjects [_tankpos, ["LandVehicle"], 7]);
 
 _tank = createVehicle [_vehicle, _tankpos, [], 0 , "CAN_COLLIDE"];
-_tank setdir (markerDir "tank_spawner");
+_tank setDir (markerDir _spawnMarker);
 
 if (_isAttack ) then {
+	[_tank, "Tank"] call CHAB_fnc_shopSlotTrack;
 	private _cargoIndex = -1;
 	_vehicle = toUpper _vehicle;
 	{
@@ -18,13 +23,6 @@ if (_isAttack ) then {
 	};
 	
 	_tank call Hz_pers_API_addVehicle;
-	
-	_tank addMPEventHandler ["MPKilled",{
-		if(isServer) then {
-			MaxTanks = MaxTanks - 1;
-			publicVariable "MaxTanks";
-		};
-	}];
 	
 	[_tank] call BADCO_fnc_skinApplier;
 	
@@ -39,6 +37,7 @@ if (_isAttack ) then {
 	[_tank] remoteExec ["CHAB_fnc_tank_restriction",0,true];
 
 } else {
+	[_tank, "APC"] call CHAB_fnc_shopSlotTrack;
 	private _cargoIndex = -1;
 	_vehicle = toUpper _vehicle;
 	{
@@ -53,13 +52,6 @@ if (_isAttack ) then {
 	
 	_tank call Hz_pers_API_addVehicle;
 
-	_tank addMPEventHandler ["MPKilled",
-	{
-		if(isServer) then {
-			MaxAPC = MaxAPC - 1;
-			publicVariable "MaxAPC";
-		};
-	}];
 	[_tank] call BADCO_fnc_skinApplier;
 	
 	if (_tank isKindOf "Tank") then {

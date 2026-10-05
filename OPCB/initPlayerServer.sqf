@@ -1,5 +1,10 @@
 params ["_playerUnit", "_didJIP"];
 
+if (isNil "Hz_pers_var_boughtFobs") then {
+	Hz_pers_var_boughtFobs = [];
+	publicVariable "Hz_pers_var_boughtFobs";
+};
+
 _uid = getPlayerUID _playerUnit;
 _playerNetId = netId _playerUnit;
 private ["_whiteList"];

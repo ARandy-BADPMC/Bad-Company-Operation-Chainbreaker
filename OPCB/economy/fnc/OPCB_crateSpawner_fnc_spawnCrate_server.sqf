@@ -1,21 +1,19 @@
-params ["_crateType"];
+params ["_crateType", ["_spawnMarker", "tank_spawner"]];
 _callerRE = remoteExecutedOwner;
 
 if (CrateCount > 19) exitWith {
 	"You have reached the utility limit!" remoteExec ["hint", _callerRE];
 };
 
-_tankpos = markerPos "tank_spawner";
-
-_nObjects = nearestObjects [_tankpos, [], 7];
-if (count _nObjects <= 1) then {
+_tankpos = markerPos _spawnMarker;
 
 	"Utility delivered" remoteExec ["hint", _callerRE];
 		
 	CrateCount = CrateCount + 1;
 	
 	_crate = _crateType createVehicle (_tankpos);	
-	_crate setdir 40;
+	_crate setDir (if (_spawnMarker == "tank_spawner") then { 40 } else { markerDir _spawnMarker });
+	[_crate, "Crate"] call CHAB_fnc_shopSlotTrack;
 	
 	_cargoRequirement = 0;
 	{
@@ -29,20 +27,9 @@ if (count _nObjects <= 1) then {
 	
 	_crate call Hz_pers_API_addCrate;
 	
-	_crate addMPEventHandler ["MPKilled",
-	{
-		if(isServer) then {
-			CrateCount = CrateCount - 1;
-		};
-	}];
-	
 	if (_crateType != "ACE_MEDICALSUPPLYCRATE") then {
 		clearBackpackCargoGlobal _crate;
 		clearWeaponCargoGlobal _crate;
 		clearMagazineCargoGlobal _crate;
 		clearItemCargoGlobal _crate;
 	};
-	
-} else {
-	"Spawn position is not empty" remoteExec ["hint", _callerRE];
-};

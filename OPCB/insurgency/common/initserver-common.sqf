@@ -77,6 +77,9 @@
 #endif
 
 serverHandleGridCaptured = {
+  if (serverTime - (missionNamespace getVariable ["OPCB_civLastHarmAt", -1e6]) >= 600) then {
+    [2] call CHAB_fnc_civRelationChange;
+  };
 
     #ifdef ENABLE_PERSISTENCY
 

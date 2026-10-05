@@ -224,6 +224,7 @@ aiSpawn = {
     private ["_inc","_hPos","_eCount","_wUnits","_wUnitVehicles","_wCount","_house","_clear","_gMkr","_houses","_hCount"];
     
     if exitCondition exitWith {}; // player dead or has no name for ai squad name generation, then exit
+	while {count aiArray < ceil (maxAIPerPlayer*4)} do { aiArray pushBack objNull; };
 	_houses = [getPosATL player, SPAWNRANGE, 3] call findHousesFront; // find available houses for spawn posits
 	_hCount = count _houses;
 	if (_hCount == 0) exitWith {};	

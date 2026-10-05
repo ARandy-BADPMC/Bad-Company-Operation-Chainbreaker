@@ -1,3 +1,7 @@
+if (!isServer) exitWith {
+    [] remoteExec ["SM_fnc_medicalemergency", 2];
+};
+
 if (isNil "CHAB_fnc_playerScale") then {
     CHAB_fnc_playerScale = { 1 };
 };
@@ -37,6 +41,30 @@ private _crewGroup = createGroup west;
 ];
 
 
+private _keepPatientDown = {
+    params ["_patient"];
+    if (!alive _patient) exitWith {};
+    {
+        _patient disableAI _x;
+    } forEach ["MOVE", "PATH", "AUTOCOMBAT", "TARGET", "AUTOTARGET"];
+    _patient setCaptive true;
+    if (!isNil "ace_medical_fnc_setBloodVolume") then {
+        if ([_patient] call ace_medical_fnc_getBloodVolume < 3.6) then {
+            [_patient, 3.6] call ace_medical_fnc_setBloodVolume;
+        };
+    } else {
+        _patient setVariable ["ace_medical_bloodVolume", 3.6, true];
+    };
+    if (_patient getVariable ["ace_medical_inCardiacArrest", false]) then {
+        ["ace_medical_CPRSucceeded", _patient, _patient] call CBA_fnc_targetEvent;
+    };
+    _patient setUnconscious true;
+    if !(lifeState _patient isEqualTo "INCAPACITATED") then {
+        [_patient, true] call ace_medical_fnc_setUnconscious;
+    };
+    _patient setVariable ["ace_medical_statemachine_permanentUnconscious", true, true];
+};
+
 private _woundedGroup = createGroup civilian;
 private _woundedUnits = [];
 for "_i" from 1 to 4 do {
@@ -51,29 +79,18 @@ for "_i" from 1 to 4 do {
         "U_B_CombatUniform_mcam_tshirt",
         "U_B_CombatUniform_mcam_vest"
     ];
-    _unit setCaptive true;
-    _unit disableAI "MOVE";
-    _unit disableAI "PATH";
-    _unit disableAI "AUTOCOMBAT";
-    _unit disableAI "TARGET";
-
     [_unit, 0.35, "leg_r", "bullet"] call ace_medical_fnc_addDamageToUnit;
     [_unit, 0.35, "leg_l", "bullet"] call ace_medical_fnc_addDamageToUnit;
     [_unit, 0.35, "body", "bullet"] call ace_medical_fnc_addDamageToUnit;
     [_unit, 0.15, "head", "bullet"] call ace_medical_fnc_addDamageToUnit;
-    [_unit, true] call ace_medical_fnc_setUnconscious;
-    _unit setVariable ["ace_medical_statemachine_permanentUnconscious", true, true];
+    [_unit] call _keepPatientDown;
     _unit setVariable ["medevac_safe", false];
 
-    
-    [_unit] spawn {
-        params ["_cas"];
+    [_unit, _keepPatientDown] spawn {
+        params ["_cas", "_keepPatientDown"];
         while {alive _cas && !(_cas getVariable ["medevac_safe", false])} do {
-            if !(lifeState _cas isEqualTo "INCAPACITATED") then {
-                [_cas, true] call ace_medical_fnc_setUnconscious;
-            };
-            _cas setVariable ["ace_medical_statemachine_permanentUnconscious", true, true];
-            sleep 5;
+            [_cas] call _keepPatientDown;
+            sleep 0.5;
         };
     };
 
@@ -90,23 +107,13 @@ private _enemyTypes = [
     "UK3CB_LDF_I_MED"
 ];
 
-private _spawnDist = 200;
+private _spawnDist = 100;
 private _enemySpawnPos = _missionPos getPos [_spawnDist, random 360];
 
 for "_i" from 1 to 10 do {
     private _type = selectRandom _enemyTypes;
     private _posE = _enemySpawnPos getPos [random 10, random 360];
     private _unit = _enemyGroup createUnit [_type, _posE, [], 0, "NONE"];
-
-    _unit setSkill 0.55;
-    _unit setSkill ["aimingAccuracy", 0.20];
-    _unit setSkill ["aimingSpeed", 0.20];
-    _unit setSkill ["aimingShake", 0.15];
-    _unit setSkill ["commanding", 1.00];
-    _unit setSkill ["courage", 0.65];
-    _unit setSkill ["spotDistance", 0.20];
-    _unit setSkill ["spotTime", 0.20];
-    _unit setSkill ["reloadSpeed", 1.00];
 };
 
 _enemyGroup setBehaviour "AWARE";

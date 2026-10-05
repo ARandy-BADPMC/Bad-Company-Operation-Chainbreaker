@@ -2,6 +2,46 @@ waitUntil {
 	sleep 1;
 	!isNull player
 };
+
+if (hasInterface) then {
+	[] spawn {
+		waitUntil { !isNull findDisplay 46 };
+		private _display = findDisplay 46;
+		private _hud = _display ctrlCreate ["RscText", -1];
+		_hud ctrlSetPosition [safeZoneX + safeZoneW - 0.34, safeZoneY + 0.18, 0.32, 0.04];
+		_hud ctrlSetBackgroundColor [0, 0, 0, 0];
+		_hud ctrlSetTextColor [1, 1, 1, 1];
+		_hud ctrlSetFont "PuristaMedium";
+		_hud ctrlSetFontHeight 0.028;
+		_hud ctrlSetShadow 1;
+		_hud ctrlShow false;
+		_hud ctrlCommit 0;
+		uiNamespace setVariable ["OPCB_civRelationHud", _hud];
+
+		_display displayAddEventHandler ["KeyDown", {
+			params ["_display", "_keyCode"];
+			if (_keyCode == 15) then {
+				private _hud = uiNamespace getVariable ["OPCB_civRelationHud", controlNull];
+				if (!isNull _hud) then {
+					private _relation = missionNamespace getVariable ["OPCB_civRelation", 50];
+					_hud ctrlSetText format ["Civilian Trust: %1/100", _relation];
+					_hud ctrlShow true;
+				};
+			};
+			false
+		}];
+
+		_display displayAddEventHandler ["KeyUp", {
+			params ["_display", "_keyCode"];
+			if (_keyCode == 15) then {
+				private _hud = uiNamespace getVariable ["OPCB_civRelationHud", controlNull];
+				if (!isNull _hud) then { _hud ctrlShow false; };
+			};
+			false
+		}];
+	};
+};
+
 #include "economy\vehicleCargoSpaces.sqf";
 #include "economy\vehicleAttackTypes.sqf";
 #include "economy\crateCargoSizes.sqf";
@@ -38,7 +78,9 @@ call compileFinal preprocessFileLineNumbers "economy\init.sqf";
 jeff addAction ["<t color='#FF0000'>Request Mission</t>", "[] remoteExec ['CHAB_fnc_mission_selector',2];", nil, 1, false, true, "", "true", 10, false,""];
 jeff addAction ["<t color='#FF0000'>Buy FOB</t>", "[] spawn CHAB_fnc_fobStore;", nil, 1, false, true, "", "true", 10, false,""];
 
-pmc addAction ["<t color='#0db804'>Request Mission</t>", "[] remoteExec ['CHAB_fnc_mission_selector',2];", nil, 1, false, true, "", "true", 10, false,""];
+// PMC mission pool (Hunter)
+pmc addAction ["<t color='#0db804'>Request Mission</t>", "[] remoteExec ['CHAB_fnc_pmc_mission_selector',2];", nil, 1, false, true, "", "true", 10, false,""];
+
 
 heli_jeff addAction ["<t color='#FF0000'>Aircraft Spawner</t>","[] spawn CHAB_fnc_spawn_heli;",nil, 1, false, true, "", "true", 10, false,""];  
 heli_jeff addAction ["<t color='#FF0000'>I want my Aircraft removed!</t>","[] spawn CHAB_fnc_remover_heli;",nil, 1, false, true, "", "true", 10, false,""];  
