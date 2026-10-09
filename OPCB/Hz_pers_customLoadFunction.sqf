@@ -8,7 +8,6 @@
 ["MaxAPC",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["MaxBoats",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["centerOfGridRetakingStr",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
-["VehicleSpawnerHistory",2,true] call Hz_pers_API_addMissionVariable;
 ["ShopVehicleCount",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["Hz_pers_var_insurgencyClearedMarkers",ONE_D_ARRAY,false] call Hz_pers_API_addMissionVariable;
 ["Hz_pers_var_boughtFobs",ONE_D_ARRAY,false] call Hz_pers_API_addMissionVariable;
