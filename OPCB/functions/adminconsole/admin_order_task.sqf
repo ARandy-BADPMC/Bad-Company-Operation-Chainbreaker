@@ -4,14 +4,7 @@ _unit = lbCurSel _ctrl;
 if(_unit != -1) then 
 {
 	_name = _ctrl lbText _unit;
-	_type = _ctrl lbData _unit;
-	
-	_isPMC = _type == "PMC";
-	if (_isPMC) then {
-		[_name] remoteExec ['CHAB_fnc_pmc_mission_selector',2];
-	} else {
-		[_name] remoteExec ['CHAB_fnc_mission_selector',2];
-	};
+	[_name] remoteExec ['CHAB_fnc_mission_selector',2];
 }
 else
 {

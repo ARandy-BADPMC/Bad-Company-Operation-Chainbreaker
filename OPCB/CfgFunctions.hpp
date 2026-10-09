@@ -327,62 +327,6 @@ class nearest
 		{
 			file = "functions\adminconsole\admin_order_task.sqf";
 		};
-		class resetCounters
-		{
-			file = "functions\adminconsole\resetCounters.sqf";
-		};
-		class counterControl
-		{
-			file = "functions\adminconsole\counterControl.sqf";
-		};
-		class counterControlRefresh
-		{
-			file = "functions\adminconsole\counterControlRefresh.sqf";
-		};
-		class countedVehicles
-		{
-			file = "functions\adminconsole\countedVehicles.sqf";
-		};
-		class countedVehiclesRefresh
-		{
-			file = "functions\adminconsole\countedVehiclesRefresh.sqf";
-		};
-		class countedVehiclesMark
-		{
-			file = "functions\adminconsole\countedVehiclesMark.sqf";
-		};
-		class countedVehiclesUnmark
-		{
-			file = "functions\adminconsole\countedVehiclesUnmark.sqf";
-		};
-		class countedVehiclesEnableMapDelete
-		{
-			file = "functions\adminconsole\countedVehiclesEnableMapDelete.sqf";
-		};
-		class countedVehiclesMapKeyDown
-		{
-			file = "functions\adminconsole\countedVehiclesMapKeyDown.sqf";
-		};
-		class executeCode
-		{
-			file = "functions\adminconsole\executeCode.sqf";
-		};
-		class executeCodeRun
-		{
-			file = "functions\adminconsole\executeCodeRun.sqf";
-		};
-		class executeCodePayload
-		{
-			file = "functions\adminconsole\executeCodePayload.sqf";
-		};
-		class executeCodePresetsLoad
-		{
-			file = "functions\adminconsole\executeCodePresetsLoad.sqf";
-		};
-		class executeCodePresetSelect
-		{
-			file = "functions\adminconsole\executeCodePresetSelect.sqf";
-		};
 		class zeus
 		{
 			file = "functions\adminconsole\zeus.sqf";

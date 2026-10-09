@@ -11,10 +11,10 @@ if (_fobselect in Hz_pers_var_boughtFobs) exitWith {
 {
 	_pos = _x call getGridPos;
 	_gmkr = str _pos;
-	_mkrVar = format["%1cleared", _gmkr];	
+	_mkrVar = format["%1cleared", _gMkr];	
 	_marker_clear = missionNamespace getVariable [_mkrVar, false];
 	if (!_marker_clear) exitWith {
-		_clearfob = false;
+		clearfob = false;
 	};
 } forEach (_houses);
 

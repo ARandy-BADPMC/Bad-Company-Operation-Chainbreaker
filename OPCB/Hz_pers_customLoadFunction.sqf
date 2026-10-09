@@ -9,7 +9,6 @@
 ["MaxBoats",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["centerOfGridRetakingStr",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["VehicleSpawnerHistory",2,true] call Hz_pers_API_addMissionVariable;
-["ShopVehicleCount",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["Hz_pers_var_insurgencyClearedMarkers",ONE_D_ARRAY,false] call Hz_pers_API_addMissionVariable;
 ["Hz_pers_var_boughtFobs",ONE_D_ARRAY,false] call Hz_pers_API_addMissionVariable;
 ["OPCB_civRelation",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
@@ -48,6 +47,9 @@ private ["_cargoIndex", "_vehType", "_vehicle"];
 		_isAttack = _vehType in OPCB_econ_vehicleAirAttackTypes;
 		
 		if (_isAttack) then {
+			MaxAttackHelis = MaxAttackHelis + 1;
+			publicVariable "MaxAttackHelis";
+
 			_vehicle addMPEventHandler ["MPKilled",{ 
 				if(isServer) then {
 					MaxAttackHelis = MaxAttackHelis - 1;
@@ -56,6 +58,9 @@ private ["_cargoIndex", "_vehType", "_vehicle"];
 			}];
 				
 		} else {
+			MaxTransHelis = MaxTransHelis + 1;
+			publicVariable "MaxTransHelis";
+
 			_vehicle addMPEventHandler ["MPKilled",
 			{
 				if(isServer) then {
@@ -75,22 +80,31 @@ private ["_cargoIndex", "_vehType", "_vehicle"];
 	} else {
 		
 		_isAttack = _vehType in OPCB_econ_vehicleGroundAttackTypes;
-		_shopSlot = _vehicle getVariable ["OPCB_shopSlot", ""];
-		if (_shopSlot in ["Tank", "APC", "Vehicle"]) then {
-			[_vehicle, _shopSlot] call CHAB_fnc_shopSlotTrack;
-		};
 		
 		if (_isAttack) then {
-			if !(_shopSlot == "Tank") then {
-				_vehicle addMPEventHandler ["MPKilled",{
-					if(isServer) then {
-						MaxTanks = MaxTanks - 1;
-						publicVariable "MaxTanks";
-					};
-				}];
-			};
+			MaxTanks = MaxTanks + 1;
+			publicVariable "MaxTanks";
+			
+			_vehicle addMPEventHandler ["MPKilled",{
+				if(isServer) then {
+					MaxTanks = MaxTanks - 1;
+					publicVariable "MaxTanks";
+				};
+			}];
 		
-			[_vehicle] remoteExec ["CHAB_fnc_tank_restriction",0,true];
+		[_vehicle] remoteExec ["CHAB_fnc_tank_restriction",0,true];
+		
+		} else {
+		
+			MaxAPC = MaxAPC + 1;
+			publicVariable "MaxAPC";
+		
+			_vehicle addMPEventHandler ["MPKilled",{
+				if(isServer) then {
+					MaxAPC = MaxAPC - 1;
+					publicVariable "MaxAPC";
+				};
+			}];
 		
 		};
 		

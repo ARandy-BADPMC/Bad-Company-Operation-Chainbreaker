@@ -1,11 +1,7 @@
 #ifdef ENABLE_PERSISTENCY
 	waitUntil {
-		sleep 0.5;
+		sleep 2;
 		!isNil "Hz_pers_serverInitialised" && {Hz_pers_serverInitialised}
-	};
-	waitUntil {
-		sleep 0.5;
-		!isNil "Hz_pers_var_insurgencyClearedMarkers"
 	};
 #endif
 

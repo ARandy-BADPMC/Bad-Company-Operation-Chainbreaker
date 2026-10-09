@@ -10,7 +10,7 @@ findHouses = {
 		if (
 			((count (_x buildingPos -1)) >= _minPositions)
 		&& {EP1HOUSES} 
-		&& {(alive _x || {!_alive}) && {!(typeOf _x in ILLEGALHOUSES)} && {!(_x getVariable ["OPCB_ignoreInsurgencyGrid", false])} }
+		&& {(alive _x || {!_alive}) && {!(typeOf _x in ILLEGALHOUSES)} }
 		) then { 
 			_enterables pushBack _x; 
 		}; 
