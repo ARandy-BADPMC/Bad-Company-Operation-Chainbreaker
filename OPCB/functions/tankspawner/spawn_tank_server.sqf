@@ -1,4 +1,4 @@
-params ["_vehicle", "_isAttack", ["_spawnMarker", "tank_spawner"]];
+params ["_vehicle", "_groundSlot", ["_spawnMarker", "tank_spawner"]];
 private _tankpos = markerPos _spawnMarker;
 
 {
@@ -8,7 +8,7 @@ private _tankpos = markerPos _spawnMarker;
 _tank = createVehicle [_vehicle, _tankpos, [], 0 , "CAN_COLLIDE"];
 _tank setDir (markerDir _spawnMarker);
 
-if (_isAttack ) then {
+if (_groundSlot == "Tank") then {
 	[_tank, "Tank"] call CHAB_fnc_shopSlotTrack;
 	private _cargoIndex = -1;
 	_vehicle = toUpper _vehicle;
@@ -37,7 +37,7 @@ if (_isAttack ) then {
 	[_tank] remoteExec ["CHAB_fnc_tank_restriction",0,true];
 
 } else {
-	[_tank, "APC"] call CHAB_fnc_shopSlotTrack;
+	[_tank, _groundSlot] call CHAB_fnc_shopSlotTrack;
 	private _cargoIndex = -1;
 	_vehicle = toUpper _vehicle;
 	{

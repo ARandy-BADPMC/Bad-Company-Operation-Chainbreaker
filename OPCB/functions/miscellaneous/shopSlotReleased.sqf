@@ -14,6 +14,10 @@ switch (_object getVariable ["OPCB_shopSlot", ""]) do {
 		MaxAPC = ((missionNamespace getVariable ["MaxAPC", 0]) - 1) max 0;
 		publicVariable "MaxAPC";
 	};
+	case "Vehicle": {
+		ShopVehicleCount = ((missionNamespace getVariable ["ShopVehicleCount", 0]) - 1) max 0;
+		publicVariable "ShopVehicleCount";
+	};
 	case "Crate": {
 		CrateCount = ((missionNamespace getVariable ["CrateCount", 0]) - 1) max 0;
 		publicVariable "CrateCount";
