@@ -65,6 +65,26 @@ class jey_adminconsole_dialog
 			h = 0.0659743 * safezoneH;
 			action = "[] call CHAB_fnc_skip6";
 		};
+		class jey_counter_control: RscButton
+		{
+			idc = 1611;
+			text = "Counter control";
+			x = 0.442708 * safezoneW + safezoneX;
+			y = 0.379523 * safezoneH + safezoneY;
+			w = 0.104167 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "closeDialog 0; [] call CHAB_fnc_counterControl;";
+		};
+		class jey_execute_code: RscButton
+		{
+			idc = 1612;
+			text = "Execute code";
+			x = 0.5625 * safezoneW + safezoneX;
+			y = 0.379523 * safezoneH + safezoneY;
+			w = 0.104167 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "closeDialog 0; [] call CHAB_fnc_executeCode;";
+		};
 	};
 };
 
@@ -113,6 +133,388 @@ class CHAB_adminTask
 			y = 0.247099 * safezoneH + safezoneY;
 			w = 0.22042 * safezoneW;
 			h = 0.175931 * safezoneH;
+		};
+	};
+};
+
+class CHAB_counterControl
+{
+	idd = 9910;
+	movingEnabled = false;
+
+	class controls
+	{
+		class counter_background: RscPicture
+		{
+			idc = 1200;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0.270833 * safezoneW + safezoneX;
+			y = 0.225107 * safezoneH + safezoneY;
+			w = 0.458333 * safezoneW;
+			h = 0.549786 * safezoneH;
+		};
+		class counter_title: RscText
+		{
+			idc = 1000;
+			text = "Counter control";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.247099 * safezoneH + safezoneY;
+			w = 0.145833 * safezoneW;
+			h = 0.0329871 * safezoneH;
+		};
+		class counter_close: RscButton
+		{
+			idc = 1601;
+			text = "Close";
+			x = 0.666146 * safezoneW + safezoneX;
+			y = 0.697923 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "closeDialog 0";
+		};
+		class counter_back: RscButton
+		{
+			idc = 1602;
+			text = "Back";
+			x = 0.601042 * safezoneW + safezoneX;
+			y = 0.697923 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "closeDialog 0; [] spawn CHAB_fnc_adminconsole;";
+		};
+		class counter_reset_shopvehicles: RscButton
+		{
+			idc = 1611;
+			text = "Reset vehicles";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.313073 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""ShopVehicleCount""] remoteExec [""CHAB_fnc_resetCounters"", 2];";
+		};
+		class counter_reset_crates: RscButton
+		{
+			idc = 1612;
+			text = "Reset crates";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.379523 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""CrateCount""] remoteExec [""CHAB_fnc_resetCounters"", 2];";
+		};
+		class counter_reset_tanks: RscButton
+		{
+			idc = 1613;
+			text = "Reset tanks";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.445973 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""MaxTanks""] remoteExec [""CHAB_fnc_resetCounters"", 2];";
+		};
+		class counter_reset_attackhelis: RscButton
+		{
+			idc = 1614;
+			text = "Reset atk helis";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.512423 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""MaxAttackHelis""] remoteExec [""CHAB_fnc_resetCounters"", 2];";
+		};
+		class counter_reset_transhelis: RscButton
+		{
+			idc = 1615;
+			text = "Reset trans helis";
+			x = 0.40625 * safezoneW + safezoneX;
+			y = 0.313073 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""MaxTransHelis""] remoteExec [""CHAB_fnc_resetCounters"", 2];";
+		};
+		class counter_reset_apc: RscButton
+		{
+			idc = 1616;
+			text = "Reset APC";
+			x = 0.40625 * safezoneW + safezoneX;
+			y = 0.379523 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""MaxAPC""] remoteExec [""CHAB_fnc_resetCounters"", 2];";
+		};
+		class counter_reset_boats: RscButton
+		{
+			idc = 1617;
+			text = "Reset boats";
+			x = 0.40625 * safezoneW + safezoneX;
+			y = 0.445973 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""MaxBoats""] remoteExec [""CHAB_fnc_resetCounters"", 2];";
+		};
+		class counter_reset_all: RscButton
+		{
+			idc = 1618;
+			text = "Reset all";
+			x = 0.40625 * safezoneW + safezoneX;
+			y = 0.512423 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[] remoteExec [""CHAB_fnc_resetCounters"", 2];";
+		};
+		class counter_show_counted: RscButton
+		{
+			idc = 1619;
+			text = "Show counted";
+			x = 0.346354 * safezoneW + safezoneX;
+			y = 0.58989 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "closeDialog 0; [] call CHAB_fnc_countedVehicles;";
+		};
+		class counter_counts_background: RscText
+		{
+			idc = 1001;
+			x = 0.536458 * safezoneW + safezoneX;
+			y = 0.313073 * safezoneH + safezoneY;
+			w = 0.171875 * safezoneW;
+			h = 0.351863 * safezoneH;
+			colorBackground[] = {0,0,0,0.35};
+		};
+		class counter_counts_title: RscText
+		{
+			idc = 1002;
+			text = "Live counts";
+			x = 0.549479 * safezoneW + safezoneX;
+			y = 0.324069 * safezoneH + safezoneY;
+			w = 0.09375 * safezoneW;
+			h = 0.0329871 * safezoneH;
+		};
+		class counter_counts_info: RscStructuredText
+		{
+			idc = 1100;
+			x = 0.549479 * safezoneW + safezoneX;
+			y = 0.368527 * safezoneH + safezoneY;
+			w = 0.145833 * safezoneW;
+			h = 0.274893 * safezoneH;
+		};
+	};
+};
+
+class CHAB_countedVehicles
+{
+	idd = 9911;
+	movingEnabled = false;
+
+	class controls
+	{
+		class counted_background: RscPicture
+		{
+			idc = 1200;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0.270833 * safezoneW + safezoneX;
+			y = 0.225107 * safezoneH + safezoneY;
+			w = 0.458333 * safezoneW;
+			h = 0.549786 * safezoneH;
+		};
+		class counted_title: RscText
+		{
+			idc = 1000;
+			text = "Counted vehicles";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.247099 * safezoneH + safezoneY;
+			w = 0.145833 * safezoneW;
+			h = 0.0329871 * safezoneH;
+		};
+		class counted_summary: RscStructuredText
+		{
+			idc = 1100;
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.291057 * safezoneH + safezoneY;
+			w = 0.40625 * safezoneW;
+			h = 0.0439829 * safezoneH;
+		};
+		class counted_list: RscListbox
+		{
+			idc = 1500;
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.346036 * safezoneH + safezoneY;
+			w = 0.40625 * safezoneW;
+			h = 0.30788 * safezoneH;
+		};
+		class counted_mark: RscButton
+		{
+			idc = 1600;
+			text = "Mark location";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.697923 * safezoneH + safezoneY;
+			w = 0.09375 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "[] call CHAB_fnc_countedVehiclesMark;";
+		};
+		class counted_remove_mark: RscButton
+		{
+			idc = 1603;
+			text = "Remove mark";
+			x = 0.385417 * safezoneW + safezoneX;
+			y = 0.697923 * safezoneH + safezoneY;
+			w = 0.09375 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "[] call CHAB_fnc_countedVehiclesUnmark;";
+		};
+		class counted_back: RscButton
+		{
+			idc = 1601;
+			text = "Back";
+			x = 0.536458 * safezoneW + safezoneX;
+			y = 0.697923 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "closeDialog 0; [] call CHAB_fnc_counterControl;";
+		};
+		class counted_close: RscButton
+		{
+			idc = 1602;
+			text = "Close";
+			x = 0.666146 * safezoneW + safezoneX;
+			y = 0.697923 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0659743 * safezoneH;
+			action = "closeDialog 0";
+		};
+	};
+};
+
+class CHAB_executeCode
+{
+	idd = 9912;
+	movingEnabled = false;
+
+	class controls
+	{
+		class execute_background: RscPicture
+		{
+			idc = 1200;
+			text = "#(argb,8,8,3)color(0,0,0,0.5)";
+			x = 0.270833 * safezoneW + safezoneX;
+			y = 0.225107 * safezoneH + safezoneY;
+			w = 0.458333 * safezoneW;
+			h = 0.549786 * safezoneH;
+		};
+		class execute_title: RscText
+		{
+			idc = 1000;
+			text = "Execute code";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.247099 * safezoneH + safezoneY;
+			w = 0.145833 * safezoneW;
+			h = 0.0329871 * safezoneH;
+		};
+		class execute_edit_background: RscText
+		{
+			idc = 1001;
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.291057 * safezoneH + safezoneY;
+			w = 0.270833 * safezoneW;
+			h = 0.285889 * safezoneH;
+			colorBackground[] = {0,0,0,0.35};
+		};
+		class execute_code_edit: RscEdit
+		{
+			idc = 1400;
+			x = 0.291667 * safezoneW + safezoneX;
+			y = 0.302053 * safezoneH + safezoneY;
+			w = 0.260417 * safezoneW;
+			h = 0.263898 * safezoneH;
+			style = ST_MULTI;
+			lineSpacing = 1;
+		};
+		class execute_presets_title: RscText
+		{
+			idc = 1002;
+			text = "Preset scripts";
+			x = 0.5625 * safezoneW + safezoneX;
+			y = 0.291057 * safezoneH + safezoneY;
+			w = 0.130208 * safezoneW;
+			h = 0.0329871 * safezoneH;
+		};
+		class execute_presets_list: RscListbox
+		{
+			idc = 1501;
+			x = 0.5625 * safezoneW + safezoneX;
+			y = 0.324044 * safezoneH + safezoneY;
+			w = 0.130208 * safezoneW;
+			h = 0.252903 * safezoneH;
+			onLBSelChanged = "_this call CHAB_fnc_executeCodePresetSelect;";
+		};
+		class execute_info: RscStructuredText
+		{
+			idc = 1100;
+			text = "<t size='0.95'>Paste SQF code here and choose where to run it. Selecting a preset auto-fills the editor.</t>";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.58789 * safezoneH + safezoneY;
+			w = 0.40625 * safezoneW;
+			h = 0.0549786 * safezoneH;
+		};
+		class execute_local: RscButton
+		{
+			idc = 1600;
+			text = "Local";
+			x = 0.286458 * safezoneW + safezoneX;
+			y = 0.653865 * safezoneH + safezoneY;
+			w = 0.0729167 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""local""] call CHAB_fnc_executeCodeRun;";
+		};
+		class execute_server: RscButton
+		{
+			idc = 1601;
+			text = "Server";
+			x = 0.364583 * safezoneW + safezoneX;
+			y = 0.653865 * safezoneH + safezoneY;
+			w = 0.0729167 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""server""] call CHAB_fnc_executeCodeRun;";
+		};
+		class execute_global: RscButton
+		{
+			idc = 1602;
+			text = "Global";
+			x = 0.442708 * safezoneW + safezoneX;
+			y = 0.653865 * safezoneH + safezoneY;
+			w = 0.0729167 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""global""] call CHAB_fnc_executeCodeRun;";
+		};
+		class execute_global_jip: RscButton
+		{
+			idc = 1603;
+			text = "Global + JIP";
+			x = 0.520833 * safezoneW + safezoneX;
+			y = 0.653865 * safezoneH + safezoneY;
+			w = 0.09375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[""globalJip""] call CHAB_fnc_executeCodeRun;";
+		};
+		class execute_back: RscButton
+		{
+			idc = 1604;
+			text = "Back";
+			x = 0.619792 * safezoneW + safezoneX;
+			y = 0.653865 * safezoneH + safezoneY;
+			w = 0.0729167 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "closeDialog 0; [] spawn CHAB_fnc_adminconsole;";
+		};
+		class execute_close: RscButton
+		{
+			idc = 1605;
+			text = "Close";
+			x = 0.619792 * safezoneW + safezoneX;
+			y = 0.719839 * safezoneH + safezoneY;
+			w = 0.0729167 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "closeDialog 0";
 		};
 	};
 };
@@ -1139,4 +1541,3 @@ class shopSpawnLocation
 		};
 	};
 };
-

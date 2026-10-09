@@ -16,10 +16,11 @@ publicVariable "OPCB_econ_currentTier";
   call updateTieredUnits;
 #endif
 
-// setup bought fobs
-{
-	fob_pos = markerPos _x;
-	[west, fob_pos] remoteExecCall ["BIS_fnc_addRespawnPosition", 0, true];	
-} foreach Hz_pers_var_boughtFobs;
-
+// setup bought fobs - only run on server, not on late joiners
+if (isServer) then {
+	{
+		fob_pos = markerPos _x;
+		[west, fob_pos] call BIS_fnc_addRespawnPosition;	
+	} foreach Hz_pers_var_boughtFobs;
+};
 
