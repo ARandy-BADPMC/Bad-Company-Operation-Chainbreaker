@@ -117,6 +117,10 @@ if ( random 1 <= _presence && { call compile _preCondition } ) then {
 
 	if ( isNull _veh ) exitWith { objNull };
 
+	if (!_isSimpleObject && {_type isKindOf "House"}) then {
+		_veh setVariable ["OPCB_ignoreInsurgencyGrid", true, true];
+	};
+
 	if ( DEBUG_DEV ) then {
 		[ _veh, [ 1, 0, 0, 1 ] ] call LARs_fnc_drawBounds;
 	};

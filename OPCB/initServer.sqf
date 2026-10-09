@@ -56,6 +56,8 @@ MaxAPC = 0;
 publicVariable "MaxAPC";
 MaxBoats = 0;
 publicVariable "MaxBoats";
+ShopVehicleCount = 0;
+publicVariable "ShopVehicleCount";
 
 VehicleSpawnerHistory = [];
 publicVariable "VehicleSpawnerHistory";
