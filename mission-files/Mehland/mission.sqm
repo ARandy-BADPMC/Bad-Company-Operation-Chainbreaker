@@ -41200,7 +41200,7 @@ class Mission
 			angle=1.3247567;
 			class Attributes
 			{
-				onActivation="private _trigger = thisTrigger; null = [_trigger] spawn {params [""_trigger""];while {triggerActivated _trigger} do {{private _unit = _x;if (isPlayer _unit && {!(_unit getVariable [""BadCo_AreaChecked"",false])}) then {_unit setVariable [""BadCo_AreaChecked"",true];[_unit,_trigger] spawn {params [""_unit"",""_trigger""];private _clanStatus = """";private _squadParams = squadParams _unit;if (count _squadParams > 0 && {count (_squadParams select 0) > 0}) then {_clanStatus = (_squadParams select 0) select 0;};switch (_clanStatus) do {case ""B.A.D. PMC"": {""Welcome B.A.D. PMC member to the BadCo base!"" remoteExec [""hint"",owner _unit];};case ""Bad Co"": {""Welcome B.A.D. Co member to the BadCo base!"" remoteExec [""hint"",owner _unit];};default {""Warning! You're entering a restricted area and will be teleported!"" remoteExec [""hint"",owner _unit];sleep 3;if (alive _unit && {_unit inArea _trigger}) then {[_unit,getMarkerPos ""thrown_out""] remoteExec [""setPos"",owner _unit];};};};};};} forEach (allPlayers select {_x inArea _trigger});{if (!(_x inArea _trigger)) then {_x setVariable [""BadCo_AreaChecked"",false];};} forEach allPlayers;sleep 1;};};";
+				name="BadCoRestrictedZone1";
 				sizeA=25;
 				sizeB=49;
 				sizeC=20;
@@ -62922,7 +62922,7 @@ class Mission
 			position[]={961.85101,145.03331,16836.072};
 			class Attributes
 			{
-				onActivation="private _trigger = thisTrigger;  " \n "null = [_trigger] spawn {params [""_trigger""];private _clanStatus = """";private _squadParams = squadParams player;if (!isNil ""_squadParams"" && {count _squadParams > 0 && {count (_squadParams select 0) > 0}}) then {_clanStatus = (_squadParams select 0) select 0;};if (getPos player inArea _trigger) then {switch (_clanStatus) do {case ""B.A.D. PMC"": {hint ""Welcome B.A.D. PMC member to the BadCo base!"";};case ""Bad Co"": {hint ""Welcome B.A.D. Co member to the BadCo base!"";};default {hint ""Warning! You're entering a restricted area and will be teleported!"";sleep 3;player setPos (getMarkerPos ""thrown_out"");};};};};";
+				name="BadCoRestrictedZone2";
 				sizeA=30;
 				sizeB=17;
 				sizeC=20;
@@ -66083,7 +66083,6 @@ class Mission
 			class Attributes
 			{
 				name="ShopRS";
-				onActivation="[] execVM ""zoneRestrictor.sqf""; " \n "";
 				sizeA=16.858;
 				sizeB=16.212999;
 				sizeC=10;
