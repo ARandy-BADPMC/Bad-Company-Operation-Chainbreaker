@@ -7,16 +7,13 @@ _object setVariable ["OPCB_shopSlotReleased", true, true];
 
 switch (_object getVariable ["OPCB_shopSlot", ""]) do {
 	case "Tank": {
-		MaxTanks = ((missionNamespace getVariable ["MaxTanks", 0]) - 1) max 0;
-		publicVariable "MaxTanks";
+		call CHAB_fnc_shopGroundReconcile;
 	};
 	case "APC": {
-		MaxAPC = ((missionNamespace getVariable ["MaxAPC", 0]) - 1) max 0;
-		publicVariable "MaxAPC";
+		call CHAB_fnc_shopGroundReconcile;
 	};
 	case "Vehicle": {
-		ShopVehicleCount = ((missionNamespace getVariable ["ShopVehicleCount", 0]) - 1) max 0;
-		publicVariable "ShopVehicleCount";
+		call CHAB_fnc_shopGroundReconcile;
 	};
 	case "Crate": {
 		CrateCount = ((missionNamespace getVariable ["CrateCount", 0]) - 1) max 0;

@@ -3,6 +3,8 @@ waitUntil {
 	!isNull player
 };
 
+[] execVM "zoneRestrictor.sqf";
+
 if (hasInterface) then {
 	[] spawn {
 		waitUntil { !isNull findDisplay 46 };

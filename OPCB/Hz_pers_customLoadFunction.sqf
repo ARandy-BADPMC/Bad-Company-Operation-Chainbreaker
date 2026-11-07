@@ -1,5 +1,9 @@
 #include "\x\Hz\Hz_mod_persistency\parsing_descriptors.txt"
 
+private _legacyShopSlots = (Hz_pers_saveVar_vehicles_variableNames findIf {(_x select 0) == "OPCB_shopSlot"}) == -1;
+["OPCB_shopSlot",true] call Hz_pers_API_addVehicleVariable;
+["OPCB_shopPurchaseSlot",true] call Hz_pers_API_addVehicleVariable;
+
 ["OPCB_econ_credits",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["CrateCount",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
 ["MaxTanks",SINGLE_VARIABLE,true] call Hz_pers_API_addMissionVariable;
@@ -75,20 +79,16 @@ private ["_cargoIndex", "_vehType", "_vehicle"];
 		
 		_isAttack = _vehType in OPCB_econ_vehicleGroundAttackTypes;
 		_shopSlot = _vehicle getVariable ["OPCB_shopSlot", ""];
+		if (_legacyShopSlots && {alive _vehicle} && {_vehicle isKindOf "LandVehicle"} && {!(_vehicle isKindOf "StaticWeapon")} && {_vehType in (OPCB_econ_vehicleTypes_INF + OPCB_econ_vehicleTypes_ENG)}) then {
+			_shopSlot = if (_isAttack) then {"Tank"} else {
+				if (_vehType in OPCB_econ_vehicleGroundApcTypes) then {"APC"} else {"Vehicle"}
+			};
+		};
 		if (_shopSlot in ["Tank", "APC", "Vehicle"]) then {
 			[_vehicle, _shopSlot] call CHAB_fnc_shopSlotTrack;
 		};
 		
 		if (_isAttack) then {
-			if !(_shopSlot == "Tank") then {
-				_vehicle addMPEventHandler ["MPKilled",{
-					if(isServer) then {
-						MaxTanks = MaxTanks - 1;
-						publicVariable "MaxTanks";
-					};
-				}];
-			};
-		
 			[_vehicle] remoteExec ["CHAB_fnc_tank_restriction",0,true];
 		
 		};
@@ -96,6 +96,8 @@ private ["_cargoIndex", "_vehType", "_vehicle"];
 	};	
 	
 } foreach Hz_pers_saveVar_vehicles_type;
+
+call CHAB_fnc_shopGroundReconcile;
 
 // crate inits
 {

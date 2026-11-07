@@ -4,24 +4,36 @@ if (!isServer) exitWith {
 	hint "Only server can reset counters";
 };
 
-if (_counter == "" || _counter == "ALL") exitWith {
-	MaxTanks = 0;
-	publicVariable "MaxTanks";
+if (isRemoteExecuted && {(allPlayers findIf {owner _x == remoteExecutedOwner && {_x getVariable ["Developer", false]}}) < 0}) exitWith {};
+if !(missionNamespace getVariable ["Hz_pers_serverInitialised", false]) exitWith {};
 
+private _groundSlots = switch (_counter) do {
+	case "": { ["Tank", "APC", "Vehicle"] };
+	case "ALL": { ["Tank", "APC", "Vehicle"] };
+	case "MaxTanks": { ["Tank"] };
+	case "MaxAPC": { ["APC"] };
+	case "ShopVehicleCount": { ["Vehicle"] };
+	default { [] };
+};
+if !(_groundSlots isEqualTo []) then {
+	{
+		if ((_x getVariable ["OPCB_shopSlot", ""]) in _groundSlots) then {
+			_x setVariable ["OPCB_shopSlotReleased", true, true];
+			_x setVariable ["OPCB_shopSlot", "", true];
+		};
+	} forEach vehicles;
+	call CHAB_fnc_shopGroundReconcile;
+};
+
+if (_counter == "" || _counter == "ALL") exitWith {
 	MaxAttackHelis = 0;
 	publicVariable "MaxAttackHelis";
 
 	MaxTransHelis = 0;
 	publicVariable "MaxTransHelis";
 
-	MaxAPC = 0;
-	publicVariable "MaxAPC";
-
 	MaxBoats = 0;
 	publicVariable "MaxBoats";
-
-	ShopVehicleCount = 0;
-	publicVariable "ShopVehicleCount";
 
 	CrateCount = 0;
 	publicVariable "CrateCount";
@@ -31,8 +43,6 @@ if (_counter == "" || _counter == "ALL") exitWith {
 
 switch (_counter) do {
 	case "MaxTanks": {
-		MaxTanks = 0;
-		publicVariable "MaxTanks";
 		hint "MaxTanks reset to 0";
 	};
 	case "MaxAttackHelis": {
@@ -46,8 +56,6 @@ switch (_counter) do {
 		hint "MaxTransHelis reset to 0";
 	};
 	case "MaxAPC": {
-		MaxAPC = 0;
-		publicVariable "MaxAPC";
 		hint "MaxAPC reset to 0";
 	};
 	case "MaxBoats": {
@@ -56,8 +64,6 @@ switch (_counter) do {
 		hint "MaxBoats reset to 0";
 	};
 	case "ShopVehicleCount": {
-		ShopVehicleCount = 0;
-		publicVariable "ShopVehicleCount";
 		hint "ShopVehicleCount reset to 0";
 	};
 	case "CrateCount": {

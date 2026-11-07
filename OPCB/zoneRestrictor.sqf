@@ -1,33 +1,62 @@
-[] spawn {
-    private _wasInside = false; 
+if (!hasInterface) exitWith {};
 
-    while {true} do {
-        private _inside = player inArea ShopRS;
+waitUntil {
+    sleep 1;
+    !isNull player && {player getVariable ["InitDone", false]}
+};
 
-        if (_inside) then {
-            private _isZoneListed = player getVariable ["zonelisted", false];
+{
+    _x spawn {
+        params ["_trigger", "_isShop"];
+        private _wasInside = false;
+        private _lastUnit = objNull;
 
-            private _squadParams = squadParams player;
-            private _clanUnit = "";
-            if (!isNil "_squadParams" && {count _squadParams > 0 && {count (_squadParams select 0) > 0}}) then {
-                _clanUnit = (_squadParams select 0) select 0;
+        while {true} do {
+            private _unit = player;
+            if (_unit != _lastUnit) then {
+                _wasInside = false;
+                _lastUnit = _unit;
             };
 
-            private _unitWhitelist = ["Bad Co", "B.A.D. PMC"];
-            private _isClanWL = _clanUnit in _unitWhitelist;
+            private _inside = alive _unit && {_unit inArea _trigger};
+            if (_inside && {!_wasInside}) then {
+                private _clanUnit = "";
+                private _squadParams = squadParams _unit;
+                if (count _squadParams > 0 && {count (_squadParams select 0) > 0}) then {
+                    _clanUnit = (_squadParams select 0) select 0;
+                };
 
-            if (!(_isZoneListed || _isClanWL)) then {
-                hint "You are not authorized to enter. Apply via Discord.";
-                sleep 3;
-                player setPos (getMarkerPos "thrown_out");
-            } else {
-                if (!_wasInside) then { 
-                    hint "Welcome whitelisted player to the store!";
+                private _isClanMember = _clanUnit in ["Bad Co", "B.A.D. PMC"];
+                private _authorized = _isClanMember || {_isShop && {_unit getVariable ["zonelisted", false]}};
+
+                if (_authorized) then {
+                    if (_isShop) then {
+                        hint "Welcome whitelisted player to the store!";
+                    } else {
+                        if (_clanUnit == "B.A.D. PMC") then {
+                            hint "Welcome B.A.D. PMC member to the BadCo base!";
+                        } else {
+                            hint "Welcome B.A.D. Co member to the BadCo base!";
+                        };
+                    };
+                } else {
+                    hint (if (_isShop) then {
+                        "You are not authorized to enter. Apply via Discord."
+                    } else {
+                        "Warning! You're entering a restricted area and will be teleported!"
+                    });
+                    [_unit, _trigger] spawn {
+                        params ["_unit", "_trigger"];
+                        sleep 3;
+                        if (player == _unit && {alive _unit} && {_unit inArea _trigger}) then {
+                            _unit setPos (getMarkerPos "thrown_out");
+                        };
+                    };
                 };
             };
-        };
 
-        _wasInside = _inside;
-        sleep 2;
+            _wasInside = _inside;
+            sleep 0.5;
+        };
     };
-};
+} forEach [[BadCoRestrictedZone1, false], [BadCoRestrictedZone2, false], [ShopRS, true]];

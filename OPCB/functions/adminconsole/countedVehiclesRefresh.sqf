@@ -18,6 +18,9 @@ _summary ctrlSetStructuredText parseText format [
 	count _trackedVehicles
 ];
 
+private _selectedId = "";
+private _selectedRow = lbCurSel _list;
+if (_selectedRow >= 0) then {_selectedId = _list lbData _selectedRow;};
 lbClear _list;
 
 if (_trackedVehicles isEqualTo []) exitWith {
@@ -30,4 +33,5 @@ if (_trackedVehicles isEqualTo []) exitWith {
 	private _row = format ["%1 | %2", _slot, _name];
 	private _rowIndex = _list lbAdd _row;
 	_list lbSetData [_rowIndex, netId _x];
+	if (netId _x == _selectedId) then {_list lbSetCurSel _rowIndex;};
 } forEach _trackedVehicles;

@@ -3,6 +3,8 @@
 #include "economy\vehicleAttackTypes.sqf";
 #include "economy\crateCargoSizes.sqf";
 
+call compileFinal preprocessFileLineNumbers "economy\init.sqf";
+
 enableSaving [false, false];
 enableSentences true;
 enableTeamswitch false;
@@ -58,6 +60,17 @@ MaxBoats = 0;
 publicVariable "MaxBoats";
 ShopVehicleCount = 0;
 publicVariable "ShopVehicleCount";
+
+[] spawn {
+	waitUntil {
+		sleep 1;
+		missionNamespace getVariable ["Hz_pers_serverInitialised", false]
+	};
+	while {true} do {
+		call CHAB_fnc_shopGroundReconcile;
+		sleep 2;
+	};
+};
 
 VehicleSpawnerHistory = [];
 publicVariable "VehicleSpawnerHistory";

@@ -1,26 +1,14 @@
 gridPath = {
-    private ["_gMkr", "_mkrVar"];
-    
-    if (vehicle player != player) exitWith {};
-	_gMkr  = str(player call getGridPos);
-	if isNil "_gMkr" exitWith {};
-	if (markerColor _gMkr == "ColorGreen") exitWith {};
-	if (markerColor _gMkr != "ColorRed") exitWith {}; // making sure blacklisted areas with no actual markers aren't getting checked
-	if (nearestEastMen(call compile _gMkr,70,true,"count") > 0 
-		|| nearestPlayers(call compile _gMkr,140,true,"count") < playersNeeded) exitWith {};
-	_gMkr setMarkerColor "ColorGreen";
-	
-	_mkrVar = format["%1cleared", _gMkr];	
-	missionNamespace setVariable [_mkrVar, true];
-	publicVariable _mkrVar;
-	
-  // execute handler if either are true
-	#ifdef ENABLE_PERSISTENCY
-		_gMkr remoteExecCall ["serverHandleGridCaptured", 2, false];
-	#else
-    #ifdef ENABLE_TIERED_UNITS
-      _gMkr remoteExecCall ["serverHandleGridCaptured", 2, false];
-    #endif
-  #endif
-	
+	if (isNull player || {!alive player} || {vehicle player != player}) exitWith {};
+	private _gridPos = player call getGridPos;
+	private _gridMarker = str _gridPos;
+	if (missionNamespace getVariable [format ["%1cleared", _gridMarker], false]) exitWith {
+		if (markerColor _gridMarker == "ColorRed") then {_gridMarker setMarkerColorLocal "ColorGreen";};
+	};
+	if (markerColor _gridMarker != "ColorRed") exitWith {};
+	private _playersInGrid = {
+		isPlayer _x && {alive _x} && {!(_x isKindOf "HeadlessClient_F")} && {(_x call getGridPos) isEqualTo _gridPos}
+	} count allPlayers;
+	if (_playersInGrid < (2 max playersNeeded) || {nearestEastMen(_gridPos,70,true,"count") > 0}) exitWith {};
+	_gridMarker remoteExecCall ["serverHandleGridCaptured", 2, false];
 };

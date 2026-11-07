@@ -204,6 +204,10 @@ class chainbreaker
 		{
 			file = "functions\miscellaneous\shopSlotTrack.sqf";
 		};
+		class shopGroundReconcile
+		{
+			file = "functions\miscellaneous\shopGroundReconcile.sqf";
+		};
 		class shopSlotReleased
 		{
 			file = "functions\miscellaneous\shopSlotReleased.sqf";
@@ -330,6 +334,10 @@ class nearest
 		class resetCounters
 		{
 			file = "functions\adminconsole\resetCounters.sqf";
+		};
+		class reloadShopVehicles
+		{
+			file = "functions\adminconsole\reloadShopVehicles.sqf";
 		};
 		class counterControl
 		{
