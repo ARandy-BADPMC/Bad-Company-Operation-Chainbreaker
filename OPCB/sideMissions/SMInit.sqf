@@ -1,4 +1,4 @@
-if (hasInterface && !isServer) exitWith {};
+if (!isServer) exitWith {};
 
 [] spawn {
 	waitUntil {
@@ -9,19 +9,26 @@ if (hasInterface && !isServer) exitWith {};
 
 	sleep 10;
 	while {true} do {
+		waitUntil {
+			sleep 10;
+			{isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}} count allPlayers > 0
+		};
+
 		SM_TaskActive = true;
 
 		private _randomTask = selectRandom keys SM_Rewards;
 		(SM_Rewards get _randomTask) params ["_reward", "_sm"];
+		private _taskId = format ["SM_TaskNumber_%1", SM_TaskNumber];
+		SM_activeTaskId = _taskId;
+		SM_activeTaskType = _randomTask;
 
-		private _handle = [] call _sm;
+		private _handle = [_taskId] call _sm;
 
 		waitUntil { 
 			sleep 10;
 			scriptDone _handle
 		};
 
-		private _taskId = format ["SM_TaskNumber_%1", SM_TaskNumber];
 		SM_TaskNumber = SM_TaskNumber + 1;
 
 		private _state = [_taskId] call BIS_fnc_taskState;
@@ -34,6 +41,8 @@ if (hasInterface && !isServer) exitWith {};
 		};
 
 		SM_TaskActive = false;
+		SM_activeTaskId = "";
+		SM_activeTaskType = "";
 
 		sleep random [1800, 2400, 3600];  
 

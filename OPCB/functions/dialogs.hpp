@@ -266,11 +266,21 @@ class CHAB_counterControl
 		{
 			idc = 1619;
 			text = "Show counted";
-			x = 0.346354 * safezoneW + safezoneX;
+			x = 0.286458 * safezoneW + safezoneX;
 			y = 0.58989 * safezoneH + safezoneY;
 			w = 0.109375 * safezoneW;
 			h = 0.0549786 * safezoneH;
 			action = "closeDialog 0; [] call CHAB_fnc_countedVehicles;";
+		};
+		class counter_reload_counted: RscButton
+		{
+			idc = 1620;
+			text = "Reload vehicles";
+			x = 0.40625 * safezoneW + safezoneX;
+			y = 0.58989 * safezoneH + safezoneY;
+			w = 0.109375 * safezoneW;
+			h = 0.0549786 * safezoneH;
+			action = "[] remoteExecCall [""CHAB_fnc_reloadShopVehicles"", 2];";
 		};
 		class counter_counts_background: RscText
 		{
@@ -325,6 +335,16 @@ class CHAB_countedVehicles
 			y = 0.247099 * safezoneH + safezoneY;
 			w = 0.145833 * safezoneW;
 			h = 0.0329871 * safezoneH;
+		};
+		class counted_reload: RscButton
+		{
+			idc = 1604;
+			text = "Reload vehicles";
+			x = 0.570312 * safezoneW + safezoneX;
+			y = 0.247099 * safezoneH + safezoneY;
+			w = 0.122396 * safezoneW;
+			h = 0.0329871 * safezoneH;
+			action = "[] remoteExecCall [""CHAB_fnc_reloadShopVehicles"", 2];";
 		};
 		class counted_summary: RscStructuredText
 		{

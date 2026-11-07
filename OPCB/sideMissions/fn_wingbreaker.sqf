@@ -1,32 +1,52 @@
 if (!isServer) exitWith {};
+params [['_taskId', '', ['']]];
+if (_taskId == "" || {!(missionNamespace getVariable ["SM_TaskActive", false])} || {_taskId != (missionNamespace getVariable ["SM_activeTaskId", ""])} || {(missionNamespace getVariable ["SM_activeTaskType", ""]) != "wingbreaker"}) exitWith {};
 
 private _cleanupDelay = 300;
+private _emptyServerTimeout = 300;
+private _aaClass = "UK3CB_CW_SOV_O_LATE_2S6_Tunguska";
+if !(isClass (configFile >> "CfgVehicles" >> _aaClass)) exitWith {
+  diag_log "Wingbreaker: Tunguska class is unavailable; mission not started.";
+};
 
 private _missionPos = [150] call CHAB_fnc_findSpot;
 if !(_missionPos isEqualType [] && {count _missionPos >= 2}) exitWith {};
+if ({isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}} count allPlayers == 0) exitWith {};
 
-private _taskId    = format ["SM_TaskNumber_%1", SM_TaskNumber];
 private _taskTitle = "Wingbreaker";
 private _taskDesc  = "A Tunguska has been pushed forward by hostile forces. Its radar and cannons will shred any bird Hunt it, kill it, and free the skies.";
 
-[allPlayers, _taskId, [_taskDesc, _taskTitle, _taskTitle], _missionPos, "ASSIGNED", 1, true, "destroy"] call BIS_fnc_taskCreate;
+[true, _taskId, [_taskDesc, _taskTitle, _taskTitle], _missionPos, "ASSIGNED", 1, true, "destroy"] call BIS_fnc_taskCreate;
+if !([_taskId] call BIS_fnc_taskExists) exitWith {
+  diag_log "Wingbreaker: Task creation failed; Tunguska not spawned.";
+};
 
 private _anchor = createVehicle ["Land_FlowerPot_01_F", _missionPos, [], 0, "CAN_COLLIDE"];
+if (isNull _anchor) exitWith {
+  [_taskId, "FAILED", true] call BIS_fnc_taskSetState;
+};
 _anchor hideObjectGlobal true;
 _anchor allowDamage false;
 _anchor enableSimulationGlobal false;
-
-private _aaClass = "UK3CB_CW_SOV_O_LATE_2S6_Tunguska";
-if !(isClass (configFile >> "CfgVehicles" >> _aaClass)) exitWith {};
 
 private _aaPos = _anchor modelToWorld [0,0,0];
 private _aaDir = random 360;
 
 private _aa = createVehicle [_aaClass, _aaPos, [], 0, "NONE"];
+if (isNull _aa) exitWith {
+  [_taskId, "FAILED", true] call BIS_fnc_taskSetState;
+  deleteVehicle _anchor;
+};
 _aa setDir _aaDir;
 _aa setVectorUp surfaceNormal _aaPos;
 
 createVehicleCrew _aa;
+private _aaCrew = +crew _aa;
+if (_aaCrew isEqualTo []) exitWith {
+  [_taskId, "FAILED", true] call BIS_fnc_taskSetState;
+  deleteVehicle _aa;
+  deleteVehicle _anchor;
+};
 _aa setBehaviour "COMBAT";
 {_x setBehaviour "COMBAT"; _x setSkill ["spotDistance", 1]; _x setSkill ["spotTime", 1];} forEach crew _aa;
 
@@ -56,17 +76,57 @@ private _guardGrp = createGroup resistance;
 } forEach _infPool;
 {if (_forEachIndex < 5) then {_x disableAI "PATH"}} forEach units _guardGrp;
 
-[_anchor, resistance, 1, 0, 0, 0, false] call CHAB_fnc_enemySpawner;
+private _patrolGroups = [];
+[_anchor, resistance, 1, 0, 0, 0, false, _patrolGroups] call CHAB_fnc_enemySpawner;
 
-[_aa, _taskId, _guardGrp, _anchor, _cleanupDelay] spawn {
-  params ["_aa","_taskId","_guardGrp","_anchor","_cleanupDelay"];
-  waitUntil {
-    sleep 2;
-    (!isNull _aa) && ((!alive _aa) || ({alive _x} count (crew _aa) == 0))
+private _emptySince = -1;
+private _completed = false;
+waitUntil {
+  sleep 2;
+  private _state = [_taskId] call BIS_fnc_taskState;
+  private _finished = _state in ["", "SUCCEEDED", "FAILED", "CANCELED"];
+
+  if (!_finished && {isNull _aa}) then {
+    [_taskId, "FAILED", true] call BIS_fnc_taskSetState;
+    _finished = true;
   };
-  [_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
-  sleep _cleanupDelay;
-  if (!isNull _guardGrp) then {{deleteVehicle _x} forEach units _guardGrp; deleteGroup _guardGrp};
-  if (!isNull _aa) then {{deleteVehicle _x} forEach crew _aa; deleteVehicle _aa};
-  if (!isNull _anchor) then {deleteVehicle _anchor};
+  if (!_finished && {!alive _aa || {{alive _x} count (crew _aa) == 0}}) then {
+    [_taskId, "SUCCEEDED", true] call BIS_fnc_taskSetState;
+    _completed = true;
+    _finished = true;
+  };
+  if (!_finished) then {
+    if ({isPlayer _x && {!(_x isKindOf "HeadlessClient_F")}} count allPlayers == 0) then {
+      if (_emptySince < 0) then {_emptySince = diag_tickTime;};
+      if (diag_tickTime - _emptySince >= _emptyServerTimeout) then {
+        [_taskId, "CANCELED", false] call BIS_fnc_taskSetState;
+        _finished = true;
+      };
+    } else {
+      _emptySince = -1;
+    };
+  };
+  _finished
 };
+
+if (_completed) then {sleep _cleanupDelay;};
+{
+  if (!isNull _x) then {
+    {if (!isPlayer _x) then {deleteVehicle _x;};} forEach units _x;
+    deleteGroup _x;
+  };
+} forEach ([_guardGrp] + _patrolGroups);
+if (!isNil "EnemyGroups") then {EnemyGroups = EnemyGroups - _patrolGroups;};
+if (!isNull _aa) then {
+  {_aaCrew pushBackUnique _x;} forEach crew _aa;
+};
+private _aaGroups = [];
+{
+  if (!isNull _x && {!isPlayer _x}) then {
+    _aaGroups pushBackUnique group _x;
+    deleteVehicle _x;
+  };
+} forEach _aaCrew;
+{if (!isNull _x) then {deleteGroup _x;};} forEach _aaGroups;
+if (!isNull _aa) then {deleteVehicle _aa};
+if (!isNull _anchor) then {deleteVehicle _anchor};

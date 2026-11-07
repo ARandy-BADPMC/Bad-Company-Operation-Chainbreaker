@@ -77,13 +77,43 @@
 #endif
 
 serverHandleGridCaptured = {
+  if (!isServer || {!isRemoteExecuted} || {!(_this isEqualType "")}) exitWith {};
+  private _gridMarker = _this;
+  private _callerIndex = allPlayers findIf {owner _x == remoteExecutedOwner && {isPlayer _x} && {!(_x isKindOf "HeadlessClient_F")}};
+  if (_callerIndex < 0 || {isNil "ins_gridCaptureMarkers"}) exitWith {};
+  private _caller = allPlayers select _callerIndex;
+  if (!alive _caller || {vehicle _caller != _caller}) exitWith {};
+  private _gridPos = _caller call getGridPos;
+  if (_gridMarker != str _gridPos || {!(_gridMarker in ins_gridCaptureMarkers)}) exitWith {};
+  #ifdef ENABLE_PERSISTENCY
+    if !(missionNamespace getVariable ["Hz_pers_serverInitialised", false]) exitWith {};
+    if (_gridMarker in Hz_pers_var_insurgencyClearedMarkers) exitWith {};
+  #endif
+  private _markerVariable = format ["%1cleared", _gridMarker];
+  if (missionNamespace getVariable [_markerVariable, false]) exitWith {};
+  private _playersInGrid = {
+    isPlayer _x && {alive _x} && {!(_x isKindOf "HeadlessClient_F")} && {(_x call getGridPos) isEqualTo _gridPos}
+  } count allPlayers;
+  if (_playersInGrid < (2 max playersNeeded) || {nearestEastMen(_gridPos,70,true,"count") > 0}) exitWith {};
+
+  if (markerShape _gridMarker == "") then {
+    createMarkerLocal [_gridMarker, _gridPos];
+    _gridMarker setMarkerShapeLocal "RECTANGLE";
+    _gridMarker setMarkerTypeLocal "SOLID";
+    _gridMarker setMarkerSizeLocal [50,50];
+    _gridMarker setMarkerAlphaLocal 0.2;
+  };
+  _gridMarker setMarkerColor "ColorGreen";
+  missionNamespace setVariable [_markerVariable, true];
+  publicVariable _markerVariable;
+
   if (serverTime - (missionNamespace getVariable ["OPCB_civLastHarmAt", -1e6]) >= 600) then {
     [2] call CHAB_fnc_civRelationChange;
   };
 
     #ifdef ENABLE_PERSISTENCY
 
-      Hz_pers_var_insurgencyClearedMarkers pushBackUnique _this;
+      Hz_pers_var_insurgencyClearedMarkers pushBackUnique _gridMarker;
       
       // check if we progressed a tier and update
       _newTier = (ceil (10 - ((1 min ((count Hz_pers_var_insurgencyClearedMarkers) / ins_halfMarkerCount))*10))) - 1;
@@ -106,15 +136,16 @@ private ["_mkr","_pos","_houses", "_markerPositions"];
 
 _houses = [CENTERPOS,AORADIUS, 3, true] call findHouses;
 _base = markerpos "base_marker";
+private _baseMarkerSize = getMarkerSize "base_marker" select 0;
 
 _markerPositions = [];
+ins_gridCaptureMarkers = [];
 {
 	_pos = _x call getGridPos;
 	_mkr = str _pos;
-	
-	_markerPositions pushBackUnique _mkr;
-	
-} forEach (_houses select {(_x distance _base) > 750});
+	if ((_x distance _base) > 750) then {_markerPositions pushBackUnique _mkr;};
+	if ((_x distance _base) > _baseMarkerSize) then {ins_gridCaptureMarkers pushBackUnique _mkr;};
+} forEach _houses;
 
 ins_allMarkerCount = count _markerPositions;
 // it's actually 55% for reasons...
