@@ -247,5 +247,5 @@ aiSpawn = {
 		};
 		if exitCondition exitWith {};
 	};
-	sleep (30 + (random 120));
+	sleep (30 + (random 100));
 };
